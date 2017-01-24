@@ -1,0 +1,25 @@
+---
+output: pdf_document
+---
+
+# Introduction
+In Ericsson, many test runs have been executed for testing the software packages in the simulation environment. Before launching product to customer, they need to test how well do the software package perform. The performance of these software packages are evaluated by considering on the CPU utilization, a percent of the CPU's cycle that spent on each process, and some other metrics (e.g., memory usage, latency). CPU utilization is one of the main focus in the test run that need to be optimized for the released of upgrade software package. They are visualized over a period of time.
+
+Nowadays, whenever they need to inspect on the performance of new released software package, they have to visualize by themselves. With the rise of data generation and a large number of test runs, this work becomes more difficult and perhaps inefficient to do it manually. This is when Machine learning, the algorithm that has an ability to learn from data,  comes into focus. The algorithm will help indicate whether the performance of software package is degradation, improvement or steady. There is also a case when there is no change in the software package but the changes in the test environment affect performance. 
+
+
+# Background
+
+## Ericsson
+Ericsson founded by Lars Magnus Ericsson since 1876 is one of the world's leading in telecommunication industry. It provides services, software and information and communications technology (ICT). Its head quater is located in Stockholm, Sweden. Nowadays, Ericsson starts to expand its service and product beyond telecoms sector.
+
+## LTE/4G
+
+
+# Objective
+The main objective for this thesis is to implement machine learning to analyze the performance trend. 
+
+- Detect the degradation, improvement or stable in CPU Utilisation
+- Detect whether there is some change in test environment that impact to CPU Utilisation
+
+

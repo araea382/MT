@@ -1,0 +1,15 @@
+% Encoding: UTF-8
+
+@Article{matteson2014nonparametric,
+  author    = {Matteson, David S and James, Nicholas A},
+  title     = {A nonparametric approach for multiple change point analysis of multivariate data},
+  journal   = {Journal of the American Statistical Association},
+  year      = {2014},
+  volume    = {109},
+  number    = {505},
+  pages     = {334--345},
+  publisher = {Taylor \& Francis},
+  review    = {dfs},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
