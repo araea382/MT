@@ -19,7 +19,18 @@ Ericsson founded by Lars Magnus Ericsson since 1876 is one of the world's leadin
 # Objective
 The main objective for this thesis is to implement machine learning to analyze the performance trend. 
 
-- Detect the degradation, improvement or stable in CPU Utilisation
-- Detect whether there is some change in test environment that impact to CPU Utilisation
+- Detect the degradation, improvement or steady state in CPU Utilization
+- Detect whether there is some changes in test environment that impact on CPU Utilization
+
+# R vs Python
+Both R and Python are powerful programming language for data analysis. Python has been known as a general purpose language with an easy to understand syntax.  
+
+R is developed by and for statistician. It provides huge number of essential packages in statistics and started to expand to different fields. R has a great reputation for data visualization.
+
+In term of computation, R cannot compete with Python which is .
+
+With strength and weakness between R and Python described earlier, R is chosen to be used in this study. It offers more algorithm to implement for the problem. Moreover, as  and provides a great feature in visualizing data interactive graph 
+
+# ecp package
 
 

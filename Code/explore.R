@@ -162,10 +162,10 @@ for(i in 5:length(level)){
 #----------------------------------------------------------------------#
 # try ecp package
 
-# g2_filter data
+# g2 data
 # univariate: TotCpu%
 result1 <- e.divisive(matrix(g2_L16B$`TotCpu%`), R=499, alpha=2) # approx time 5 mins
-result2 <- e.divisive(matrix(g2_L16B$`TotCpu%`), R=499, alpha=1)
+result2 <- e.divisive(matrix(g2_L16B$`TotCpu%`), R=499, alpha=1) # approx time 7 mins
 
 result2$k.hat
 result2$order.found
@@ -178,7 +178,7 @@ ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-divisive")
 abline(v=result2$estimates[c(-1,-19)], col="red", lty=2)
 
 
-result <- e.agglo(matrix(g2_L16B_filter$`TotCpu%`), alpha=1)
+result <- e.agglo(matrix(g2_L16B$`TotCpu%`), alpha=1)
 result$estimates
 tail(result$fit, 5)
 z <- result$progression
