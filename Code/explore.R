@@ -371,6 +371,8 @@ get_train_test <- function(data){
   return(result)
 }
 
+train <- data.table()
+test <- data.table()
 train_L16B <- get_train_test(g2_L16B)$train
 test_L16B <- get_train_test(g2_L16B)$test
 
