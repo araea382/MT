@@ -25,12 +25,16 @@ The main objective for this thesis is to implement machine learning to analyze t
 # R vs Python
 Both R and Python are powerful programming language for data analysis. Python has been known as a general purpose language with an easy to understand syntax.  
 
-R is developed by and for statistician. It provides huge number of essential packages in statistics and started to expand to different fields. R has a great reputation for data visualization.
+R is developed by and for statistician. It provides huge number of essential packages in statistics and started to expand to different fields. R also has a great reputation for data visualization.
 
-In term of computation, R cannot compete with Python which is .
+In term of computation, R cannot compete with Python which is buit specifically for computer programming.
 
-With strength and weakness between R and Python described earlier, R is chosen to be used in this study. It offers more algorithm to implement for the problem. Moreover, as  and provides a great feature in visualizing data interactive graph 
+With strength and weakness between R and Python described earlier, R is chosen to be used in this study. It offers more algorithm to implement for the problem. Moreover, as visualization  and provides a great feature in visualizing data interactive graph 
 
 # ecp package
+ecp is an extension package in R which mainly focus on computing nonparametric test for multiple change point analysis. It is applicable to both univariate and multivariate time series. A fundamental idea for building the alogrithms to identify the change point is from hierrachical clustering approach either divisive or agglomerative method. 
 
+
+
+where no assumption are made about the distribution
 
