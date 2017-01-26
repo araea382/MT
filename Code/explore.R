@@ -8,9 +8,6 @@ library(cpm)
 library(ggplot2)
 library(dplyr)
 
-# g2_org <- fread("master-g2.csv.txt") # some lines don't have 17 columns
-# g2 <- read.table("master-g2.csv.txt", sep=",") # line 1147 did not have 17 elements
-
 g2 <- fread("master-g2-17col.csv.txt")
 g2_filter <- fread("master-g2.filtered.csv.txt")
 colnames(g2_filter) <- colnames(g2)
@@ -18,18 +15,6 @@ colnames(g2_filter) <- colnames(g2)
 g1_filter <- fread("master.filtered.ALL.csv.txt")
 
 #----------------------------------------------------------------------#
-# testing sort: For SW
-# x <- c("R2AKX","R18U","R9GT","R10AG")
-# sort(x) # "R10AG" "R18U"  "R2AKX" "R9GT" 
-# mixedsort(x) # "R2AKX" "R9GT"  "R10AG" "R18U" 
-# 
-# y <- c("18","2","1")
-# z <- c("R18","R2","R1")
-# sort(y) # "1" 18" "2" 
-# sort(z) # "R1"  "R18" "R2" 
-# mixedsort(y)
-# mixedsort(z)
-
 # sort on multiple columns
 # converting all character vectors to factors with mixedsorted sorted levels, and pass all vectors on to the standard order function
 # http://stackoverflow.com/questions/20396582/order-a-mixed-vector-numbers-with-letters
@@ -46,33 +31,27 @@ multi.mixedorder <- function(..., na.last = TRUE, decreasing = FALSE){
   ))
 }
 
-
 #----------------------------------------------------------------------#
 # sort by Release and SW column
-# g2_sort <- g2[order(Release, SW)] # problem with some sorting
-# g2_sort <- g2[mixedorder(Release, SW)] # error # mixedorder does not support multiple columns
 g2_sort <- g2[multi.mixedorder(Release, SW),] 
 g2_sort_filter <- g2_filter[multi.mixedorder(Release, SW),] 
 
-# another way if can't fix the 'mixedorder' is to sepearte Release first then sort by SW
-# g2_L16A <- g2[which(Release == "L16A")]
-# g2_L16A_sort <- g2_L16A[mixedorder(SW)]
-# g2_L16B <- g2[which(Release == "L16B")]
-# g2_L16B_sort <- g2_L16B[mixedorder(SW)]
-
-# g2_L16A <- g2_sort[which(Release == "L16A")]
 g2_L16B <- g2_sort[which(Release == "L16B")]
 g2_L16B_filter <- g2_sort_filter[which(Release == "L16B")]
-# g2_L17A <- g2_sort[which(Release == "L17A")]
+g2_L16A <- g2_sort[which(Release == "L16A")]
+g2_L17A <- g2_sort[which(Release == "L17A")]
 
+#----------------------------------------------------------------------#
+.explore_R15G <- function(){
 g2_R15G <- g2_L16B[which(SW == "R15G")] # 3 test runs in raw data but only 2 test runs show in platypus
 # write.table(g2_R15G$EventsPerSec, file="dat.txt")
 
 # R15G = 208.5 # orange # 10.75.74.55
 # R15G = 210.07 # green # 10.75.74.48
 # R15G = 206.57 # not show # EventsPerSec most component is not around 165
-
+}
 #----------------------------------------------------------------------#
+.explore_R12AK <- function(){
 g2_green <- g2_L16B[which(NodeName == "10.75.74.48")]
 g2_green_R12AK <- g2_green[which(SW == "R12AK")]
 # write.table(g2_green_R12AK$EventsPerSec, file="dat-green.txt")
@@ -81,9 +60,9 @@ g2_green_R12AK <- g2_green[which(SW == "R12AK")]
 # it seems like there is only the last test run which make it to the graph (at least the number is the same)
 # first two test runs also have EventsPerSec component around 165. Do they make it or not??
 ## ANSWER: select the minimum value
-
+}
 #----------------------------------------------------------------------#
-# LOOK and DECIDE again
+# sort ***LOOK and DECIDE again***
 # sort by Timestamp
 g2_sort_time <- g2[order(Timestamp),]
 
@@ -99,7 +78,7 @@ level_filter <- unique(g2_L16B_filter$SW)
 g2_L16B_filter$SW <- factor(g2_L16B_filter$SW, levels=level_filter)
 
 # plot TotCpu% vs SW
-plot(g2_L16B$SW, g2_L16B$`TotCpu%`, xlab="") #
+plot(g2_L16B$SW, g2_L16B$`TotCpu%`, xlab="", main="Average CPU Utilisation L16B") #
 ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_point()
 ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_boxplot()
 plot(density(g2_L16B_filter$`TotCpu%`))
@@ -108,62 +87,63 @@ plot(g2_L16B_filter$SW, g2_L16B_filter$`TotCpu%`, xlab="", main="Filter: Average
 ggplot(data=g2_L16B_filter, aes(SW, `TotCpu%`)) + geom_point()
 ggplot(data=g2_L16B_filter, aes(SW, `TotCpu%`)) + geom_boxplot() # getting the same result as in plot
 
-
 #----------------------------------------------------------------------#
-# t-test for L16B
-
+# t-test for g2 data L16B
+.ttest <- function(){
 # subset for each software package (SW)
-# tr <- list()
-# for(i in 1:length(level)){
-#   tr[[i]] <- subset(g2_L16B, SW==level[i])
-# }
-# 
-# t.test(tr[[2]]$`TotCpu%`,tr[[3]]$`TotCpu%`) # try t-test for one pair
-# 
-# # apply t-test by considering on one SW
-# t <- lapply(2:length(level), function(i){
-#   if(nrow(tr[[i-1]]) > 1 & nrow(tr[[i]]) > 1){
-#     t.test(tr[[i-1]]$`TotCpu%`, tr[[i]]$`TotCpu%`) 
-#   } else "Only one observation in subset"
-# })
-# 
-# tr_no <- apply(1:length(level), function(i){
-#   nrow(tr[[i]])
-# })
-# 
-# tr_no <- data.frame(unlist(tr_no))
-# 
-# t[1:10] # investigate for first ten SW (no.2 is significant)
-# ggplot(data=g2_L16B[1:sum(tr_no[1:10,]),], aes(SW, `TotCpu%`)) + geom_point()
-# ggplot(data=g2_L16B[1:sum(tr_no[1:10,]),], aes(SW, `TotCpu%`)) + geom_boxplot()
-# 
-# sig <- c()
-# for(i in 1:(length(level)-1)){
-#   if(is.character(t[i][[1]])){}
-#   else{
-#       if(t[i][[1]]$p.value < 0.05){
-#       sig <- c(sig,i)
-#     }
-#   }
-# }
-# 
-# sig
-# length(sig) # 26 significant points
-# ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_point() + geom_vline(xintercept=sig, linetype="dashed", color="red")
-# 
-# 
-# # 5 SW
-# t <- lapply(2:length(level), function(i){
-#   t.test(tr[[i-1]]$`TotCpu%`, tr[[i]]$`TotCpu%`) 
-# })
-# 
-# tr2 <- list()
-# for(i in 5:length(level)){
-#   tr2[[i]] <- rbind(tr[[i-4]],tr[[i-3]],tr[[i-2]],tr[[i-1]],tr[[i]]) 
-# }
+tr <- list()
+for(i in 1:length(level)){
+  tr[[i]] <- subset(g2_L16B, SW==level[i])
+}
+
+t.test(tr[[2]]$`TotCpu%`,tr[[3]]$`TotCpu%`) # try t-test for one pair
+
+# apply t-test by considering on one SW
+t <- lapply(2:length(level), function(i){
+  if(nrow(tr[[i-1]]) > 1 & nrow(tr[[i]]) > 1){
+    t.test(tr[[i-1]]$`TotCpu%`, tr[[i]]$`TotCpu%`)
+  } else "Only one observation in subset"
+})
+
+tr_no <- apply(1:length(level), function(i){
+  nrow(tr[[i]])
+})
+
+tr_no <- data.frame(unlist(tr_no))
+
+t[1:10] # investigate for first ten SW (no.2 is significant)
+ggplot(data=g2_L16B[1:sum(tr_no[1:10,]),], aes(SW, `TotCpu%`)) + geom_point()
+ggplot(data=g2_L16B[1:sum(tr_no[1:10,]),], aes(SW, `TotCpu%`)) + geom_boxplot()
+
+sig <- c()
+for(i in 1:(length(level)-1)){
+  if(is.character(t[i][[1]])){}
+  else{
+      if(t[i][[1]]$p.value < 0.05){
+      sig <- c(sig,i)
+    }
+  }
+}
+
+sig
+length(sig) # 26 significant points
+ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_point() + geom_vline(xintercept=sig, linetype="dashed", color="red")
+
+
+# 5 SW
+t <- lapply(2:length(level), function(i){
+  t.test(tr[[i-1]]$`TotCpu%`, tr[[i]]$`TotCpu%`)
+})
+
+tr2 <- list()
+for(i in 5:length(level)){
+  tr2[[i]] <- rbind(tr[[i-4]],tr[[i-3]],tr[[i-2]],tr[[i-1]],tr[[i]])
+}
+
+}
 
 #----------------------------------------------------------------------#
-# try ecp package
+# ecp package
 t1 <- Sys.time()
 t2 <- Sys.time()
 print(t2 - t1)
@@ -193,8 +173,8 @@ abline(v=Ediv2$estimates[c(-1,-length(Ediv2$estimates))], col="blue", lty=2)
 
 # E-agglo
 mem <- c(rep(1:40, each=6), rep(41:212, each=5), rep(213:243, each=6)) # just make it up without any speical reason
-Eagglo1 <- e.ag
-Eagglo3 <- e.agglo(matrix(g2_L16B$`TotCpu%`), member=mem, alpha=2) glo(matrix(g2_L16B$`TotCpu%`), member=mem, alpha=1)
+Eagglo1 <- e.agglo(matrix(g2_L16B$`TotCpu%`), member=mem, alpha=1)
+Eagglo3 <- e.agglo(matrix(g2_L16B$`TotCpu%`), member=mem, alpha=2) 
 
 pen <- function(x) -length(x)
 Eagglo2 <- e.agglo(matrix(g2_L16B$`TotCpu%`), member=mem, alpha=1, penalty=pen)
@@ -236,9 +216,8 @@ abline(v=Ediv1_filter$estimates[c(-1,-length(Ediv1_filter$estimates))], col="red
 ts.plot(matrix(g2_L16B_filter$`TotCpu%`), main="E-divisive filter, alpha=2")
 abline(v=Ediv2_filter$estimates[c(-1,-length(Ediv2_filter$estimates))], col="blue", lty=2)
 
-
 #----------------------------------------------------------------------#
-# try BreakoutDetection
+# BreakoutDetection
 # EDM: E-divisive median
 library(BreakoutDetection)
 
@@ -256,7 +235,7 @@ res2 <- breakout(g2_L16B$`TotCpu%`, method="multi", plot=TRUE)
 res2$plot
 
 #----------------------------------------------------------------------#
-# try cpm
+# cpm package
 # g2 FILTER data L16B
 # batch detection
 resultsStudent <- detectChangePointBatch(g2_L16B_filter$`TotCpu%`, cpmType = "Student", alpha = 0.05)
@@ -282,7 +261,6 @@ if (resultsStudent$changeDetected)
 if (resultsMW$changeDetected)
   abline(v = resultsMW$detectionTime, col = "blue") # mann-whitney
 
-
 # sequences containing multiple change points
 res <- processStream(g2_L16B_filter$`TotCpu%`, cpmType = "Mann-Whitney", ARL0 = 500, startup = 20)
 plot(g2_L16B_filter$`TotCpu%`, type = "l", xlab = "Observation", ylab = "", bty = "l")
@@ -292,6 +270,7 @@ abline(v = res$changePoints, lty = 2) # estimated change point locations
 #----------------------------------------------------------------------#
 # divide train/test set (70/30)
 # g2 data L16B
+.split <- function(){
 length(unique(g2_L16B$SW)) # 243
 filter(g2_L16B, SW == "R2AE") # try subset
 
@@ -305,29 +284,30 @@ subset <- lapply(1:length(g2_L16B_subset), function(x){
     train <- g2_L16B_subset[[x]]
   }
   else{
-    set.seed(1234)
-    index <- sample(1:nrow(g2_L16B_subset[[x]]), size=0.3*nrow(g2_L16B_subset[[x]]))
+    n <- nrow(g2_L16B_subset[[x]])
+    index <- sample(1:n, size=round(0.3*n))
     test <- g2_L16B_subset[[x]][index,]
     train <- g2_L16B_subset[[x]][-index,]
   }
   temp <- list("train"=train, "test"=test)
 })
 
+unlist(lapply(1:243,function(x) nrow(subset[[x]]$train)))
+unlist(lapply(1:243,function(x) nrow(subset[[x]]$test)))
 # another way which might be better when changing the dataset
 divide <- function(subset,x){
   if(nrow(subset[[x]]) == 1){ # if there is only one obs then assign to train
     train <- subset[[x]]
   }
   else{
-    set.seed(1234)
-    index <- sample(1:nrow(subset[[x]]), size=0.3*nrow(subset[[x]]))
+    n <- nrow(g2_L16B_subset[[x]])
+    index <- sample(1:n, size=round(0.3*n))
     test <- subset[[x]][index,]
     train <- subset[[x]][-index,]
   }
   temp <- list("train"=train, "test"=test)
   return(temp)
 }
-
 subset2 <- lapply(1:length(g2_L16B_subset), function(x) divide(g2_L16B_subset,x))
 
 # combine all train and test from different subset together
@@ -343,16 +323,23 @@ length(unique(test$SW)) # 98
 # an attempt to divide train/test by using dplyr 
 # train <- sample_n(g2_L16B_subset[[2]], round(nrow(g2_L16B_subset[[2]])*0.7))
 # test <- g2_L16B_subset[[2]][which()]
-
-ggplot(data=train, aes(SW, `TotCpu%`)) + geom_point()
-ggplot(data=train, aes(SW, `TotCpu%`)) + geom_boxplot()
-plot(density(train$`TotCpu%`))
-
-ggplot(data=test, aes(SW, `TotCpu%`)) + geom_point()
-ggplot(data=test, aes(SW, `TotCpu%`)) + geom_boxplot()
+}
 
 # combine the code above into one big function
 # function for split data (in each product) for train/test set
+divide <- function(subset,x){
+  if(nrow(subset[[x]]) == 1){ # if there is only one obs then assign to train
+    train <- subset[[x]]
+  }
+  else{
+    n <- nrow(subset[[x]])
+    index <- sample(1:n, size=round(0.3*n))
+    test <- subset[[x]][index,]
+    train <- subset[[x]][-index,]
+  }
+  temp <- list("train"=train, "test"=test)
+  return(temp)
+}
 get_train_test <- function(data){
   sw_name <- unique(data$SW)
   subset <- lapply(sw_name, function(x) filter(data, SW == x))
@@ -376,17 +363,23 @@ test <- data.table()
 train_L16B <- get_train_test(g2_L16B)$train
 test_L16B <- get_train_test(g2_L16B)$test
 
+ggplot(data=train_L16B , aes(SW, `TotCpu%`)) + geom_point()
+ggplot(data=train_L16B , aes(SW, `TotCpu%`)) + geom_boxplot()
+plot(density(train_L16B $`TotCpu%`))
+
+ggplot(data=test_L16B, aes(SW, `TotCpu%`)) + geom_point()
+ggplot(data=test_L16B, aes(SW, `TotCpu%`)) + geom_boxplot()
+
 Ediv1_train <- e.divisive(matrix(train_L16B$`TotCpu%`), R=499, alpha=1) 
 Ediv2_train <- e.divisive(matrix(train_L16B$`TotCpu%`), R=499, alpha=2) 
 
-Ediv1_train$k.hat # 14 clusters
+Ediv1_train$k.hat # 16 clusters
 Ediv1_train$order.found
 Ediv1_train$estimates 
 
-Ediv2_train$k.hat # 13 clusters
+Ediv2_train$k.hat # 14 clusters
 Ediv2_train$order.found
-Ediv2_train$estimates # discard 272, 466 to 462
-# a bit different 
+Ediv2_train$estimates # discard 202, 451 to 455
 
 ts.plot(matrix(train_L16B$`TotCpu%`), main="E-divisive, alpha=1")
 abline(v=Ediv1_train$estimates[c(-1,-length(Ediv1_train$estimates))], col="red", lty=2)
@@ -394,7 +387,24 @@ abline(v=Ediv1_train$estimates[c(-1,-length(Ediv1_train$estimates))], col="red",
 ts.plot(matrix(train_L16B$`TotCpu%`), main="E-divisive, alpha=2")
 abline(v=Ediv2_train$estimates[c(-1,-length(Ediv2_train$estimates))], col="blue", lty=2)
 
-
+# g2 FILTER data L16B
 train_L16B_filter <- get_train_test(g2_L16B_filter)$train
 test_L16B_filter <- get_train_test(g2_L16B_filter)$test
 
+ggplot(data=train_L16B_filter , aes(SW, `TotCpu%`)) + geom_point()
+ggplot(data=train_L16B_filter , aes(SW, `TotCpu%`)) + geom_boxplot()
+
+Ediv1_train_filter <- e.divisive(matrix(train_L16B_filter$`TotCpu%`), R=499, alpha=1) 
+Ediv2_train_filter <- e.divisive(matrix(train_L16B_filter$`TotCpu%`), R=499, alpha=2) 
+
+Ediv1_train_filter$k.hat # 4 clusters
+Ediv1_train_filter$estimates 
+
+Ediv2_train_filter$k.hat # 3 clusters
+Ediv2_train_filter$estimates # discard 121, 64 to 65
+
+ts.plot(matrix(train_L16B_filter$`TotCpu%`), main="E-divisive Filter, alpha=1")
+abline(v=Ediv1_train_filter$estimates[c(-1,-length(Ediv1_train_filter$estimates))], col="red", lty=2)
+
+ts.plot(matrix(train_L16B_filter$`TotCpu%`), main="E-divisive Filter, alpha=2")
+abline(v=Ediv2_train_filter$estimates[c(-1,-length(Ediv2_train_filter$estimates))], col="blue", lty=2)
