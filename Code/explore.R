@@ -144,9 +144,9 @@ for(i in 5:length(level)){
 
 #----------------------------------------------------------------------#
 # ecp package
-t1 <- Sys.time()
-t2 <- Sys.time()
-print(t2 - t1)
+# t1 <- Sys.time()
+# t2 <- Sys.time()
+# print(t2 - t1)
 
 # g2 data L16B
 # univariate: TotCpu%

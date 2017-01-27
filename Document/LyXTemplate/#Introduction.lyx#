@@ -314,13 +314,6 @@ name "sec:Background"
 Change point detection is the method to detect the abrupt change in time
  series data.
  
-\begin_inset CommandInset citation
-LatexCommand citet
-key "james2013ecp"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

@@ -123,7 +123,7 @@ customHeadersFooters
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \branch NoChildDocument
 \selected 0
 \filename_suffix 0
