@@ -240,10 +240,6 @@ Master Thesis in Statistics and Data Mining
 Applying Machine Learning to Performance Trend Analysis
 \end_layout
 
-\begin_layout Subtitle
-Statistics for the 21th century
-\end_layout
-
 \begin_layout Author
 Araya Eamrurksiri
 \end_layout
@@ -328,7 +324,7 @@ Examiner
 \end_inset
 
 Prof.
- Isaac Newton
+ 
 \begin_inset VSpace smallskip
 \end_inset
 
@@ -340,8 +336,13 @@ Prof.
 \end_layout
 
 \begin_layout Dedication
-Sometimes a scream is better than a thesis (smart quote here, if you want)
- 
+
+\emph on
+Nothing endures but change
+\emph default
+ - 
+\emph on
+Heraclitus
 \end_layout
 
 \begin_layout Standard

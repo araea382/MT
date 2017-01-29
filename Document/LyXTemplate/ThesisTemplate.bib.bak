@@ -8,7 +8,6 @@
   volume    = {109},
   number    = {505},
   pages     = {334--345},
-  file      = {:matteson2014nonparametric - A nonparametric approach for multiple change point analysis of multivariate data.pdf:PDF},
   publisher = {Taylor \& Francis},
 }
 
@@ -17,7 +16,88 @@
   title   = {ecp: An R package for nonparametric multiple change point analysis of multivariate data},
   journal = {arXiv preprint arXiv:1309.3295},
   year    = {2013},
-  file    = {:james2013ecp - ecp_ An R package for nonparametric multiple change point analysis of multivariate data.pdf:PDF},
+}
+
+@book{basseville1993detection,
+	title={Detection of abrupt changes: theory and application},
+	author={Basseville, Mich{\`e}le and Nikiforov, Igor V and others},
+	volume={104},
+	year={1993},
+	publisher={Prentice Hall Englewood Cliffs}
+}
+
+@Article{reeves2007review,
+  author  = {Reeves, Jaxk and Chen, Jien and Wang, Xiaolan L and Lund, Robert and Lu, Qi Qi},
+  title   = {A review and comparison of changepoint detection techniques for climate data},
+  journal = {Journal of Applied Meteorology and Climatology},
+  year    = {2007},
+  volume  = {46},
+  number  = {6},
+  pages   = {900--915},
+  comment = {example in background section},
+}
+
+@Article{beaulieu2012change,
+  author    = {Beaulieu, Claudie and Chen, Jie and Sarmiento, Jorge L},
+  title     = {Change-point analysis as a tool to detect abrupt climate variations},
+  journal   = {Philosophical Transactions of the Royal Society of London A: Mathematical, Physical and Engineering Sciences},
+  year      = {2012},
+  volume    = {370},
+  number    = {1962},
+  pages     = {1228--1249},
+  comment   = {example in background section},
+  publisher = {The Royal Society},
+}
+
+@Article{staudacher2005new,
+  author    = {Staudacher, M and Telser, S and Amann, A and Hinterhuber, H and Ritsch-Marte, M},
+  title     = {A new method for change-point detection developed for on-line analysis of the heart beat variability during sleep},
+  journal   = {Physica A: Statistical Mechanics and its Applications},
+  year      = {2005},
+  volume    = {349},
+  number    = {3},
+  pages     = {582--596},
+  comment   = {example in background section},
+  publisher = {Elsevier},
+}
+
+@article{aminikhanghahi2016survey,
+	title={A survey of methods for time series change point detection},
+	author={Aminikhanghahi, Samaneh and Cook, Diane J},
+	journal={Knowledge and Information Systems},
+	pages={1--29},
+	year={2016},
+	publisher={Springer}
+}
+
+
+@article{page1954continuous,
+	title={Continuous inspection schemes},
+	author={Page, ES},
+	journal={Biometrika},
+	volume={41},
+	number={1/2},
+	pages={100--115},
+	year={1954},
+	publisher={JSTOR}
+}
+
+@article{bolton2002statistical,
+	title={Statistical fraud detection: A review},
+	author={Bolton, Richard J and Hand, David J},
+	journal={Statistical science},
+	pages={235--249},
+	year={2002},
+	publisher={JSTOR}
+}
+
+@inproceedings{gu2013fast,
+	title={Fast Change Point Detection for electricity market analysis},
+	author={Gu, William and Choi, Jaesik and Gu, Ming and Simon, Horst and Wu, Kesheng},
+	booktitle={Big Data, 2013 IEEE International Conference on},
+	pages={50--57},
+	year={2013},
+	organization={IEEE}
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

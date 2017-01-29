@@ -123,7 +123,7 @@ customHeadersFooters
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
+\use_refstyle 0
 \branch NoChildDocument
 \selected 0
 \filename_suffix 0
@@ -311,27 +311,78 @@ name "sec:Background"
 \end_layout
 
 \begin_layout Standard
-Change point detection is the method to detect the abrupt change in time
- series data.
- 
+Change point detection is the method to detect abrupt changes in time series
+ data when the time instant is unknown
 \begin_inset CommandInset citation
-LatexCommand citet
-key "james2013ecp"
+LatexCommand citep
+key "basseville1993detection"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-In this study, change point detection will be used to from the system performanc
-e by Ericsson.
+.
+ It has been studied over decades as it is a problem of interest in many
+ applications.
+ Change point detection can be utilized in medical condition monitoring
  
+\begin_inset CommandInset citation
+LatexCommand citep
+key "staudacher2005new"
+
+\end_inset
+
+, to evaluate the sleep of patients based on their hearth rate variability.
+ It can be found in crimate analysis 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "reeves2007review,beaulieu2012change"
+
+\end_inset
+
+, where temperature or climate variations is detected.
+ This has been arised since the greenhouse gas emission rapidly increases
+ for several decades and the effects from global warming 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "aminikhanghahi2016survey"
+
+\end_inset
+
+.
+ Applications are extensively implemented in the field of quality control
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "page1954continuous"
+
+\end_inset
+
+in which the industrial process is monitored over a continuous period and
+ should be able to identify when something went wrong (i.e., defective products,
+ machine breakdowns).
+ Methods are also useful in signal processing to detect the significant
+ change in the streaming data 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "basseville1993detection"
+
+\end_inset
+
+, identify fraud as soon as it commited or there is a failure in fraud preventio
+n 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "bolton2002statistical"
+
+\end_inset
+
+, and detect finance industry.
 \end_layout
 
 \begin_layout Standard
-Many test runs have been executed for testing the software packages in the
- simulation environment.
+In this study, change point detection will be used to identify the changes
+ in performance of Ericsson's system.
+ Many test runs have been executed for testing the software packages in
+ the simulation environment.
  Before launching product to customer, they need to test how well do the
  software package perform.
  The performance of these software packages are evaluated by considering
@@ -342,12 +393,9 @@ Many test runs have been executed for testing the software packages in the
 \end_layout
 
 \begin_layout Standard
-The main idea of this thesis is to reduce the laborer work 
-\end_layout
-
-\begin_layout Standard
-Nowadays, they have to do visual inspection by themselves whenever they
- want to analyze the performance of update software package.
+The main idea of this thesis is to reduce the laborer work to do visual
+ inspection whenever they want to analyze the performance of update software
+ package.
  With the rise of data generation and a large number of test runs, this
  work becomes more difficult and perhaps inefficient to do it manually.
  This is when Machine learning, the algorithm that has an ability to learn
@@ -358,6 +406,33 @@ Nowadays, they have to do visual inspection by themselves whenever they
 e even though there is no change in the software package.
  The implemented algorithm should be able to detect when the test environment
  is altered.
+\end_layout
+
+\begin_layout Standard
+There are two approaches, parametric and nonparametric analysis, for detecting
+ the change point in time series.
+\end_layout
+
+\begin_layout Standard
+discovering time point where property of time series is changed 
+\end_layout
+
+\begin_layout Standard
+detect the change and estimate the location of the places (times) where
+ the changes occur
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+write about the parametric and nonparametric
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -387,7 +462,7 @@ To detect whether there is some changes in test environment that impact
 \end_layout
 
 \begin_layout Standard
-The thesis is structured as follows: 
+The thesis is structured as follows: Chapter 2 
 \end_layout
 
 \begin_layout Standard

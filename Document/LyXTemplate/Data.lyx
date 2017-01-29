@@ -1,7 +1,9 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % increases link area for cross-references and autoname them
@@ -68,16 +70,16 @@ customHeadersFooters
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans lmss
-\font_typewriter lmtt
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
-
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -101,15 +103,24 @@ customHeadersFooters
 \pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 2
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \branch NoChildDocument
 \selected 0
@@ -138,7 +149,7 @@ customHeadersFooters
 \begin_body
 
 \begin_layout Left Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -203,7 +214,7 @@ Enable page headers and add the chapter to the header line.
 \end_layout
 
 \begin_layout Right Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -228,7 +239,7 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -257,7 +268,7 @@ thepage
 \end_layout
 
 \begin_layout Right Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -308,237 +319,6 @@ Figure legends below the graph
 
 \begin_layout Section
 Secondary data
-\end_layout
-
-\begin_layout Standard
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- Morbi tincidunt elit ac convallis blandit.
- Pellentesque pharetra urna orci, vel malesuada mi imperdiet ac.
- Duis viverra faucibus nunc, eget lacinia nulla congue sit amet.
- Sed molestie velit sit amet diam fringilla congue.
- Fusce in est ut felis porttitor porttitor id a massa.
- Aliquam dapibus, libero et mollis condimentum, orci nulla luctus libero,
- vel condimentum purus erat eget est.
- Donec ligula ante, lacinia a scelerisque eget, lacinia vel sapien.
- Nam placerat cursus leo, ac tristique mauris auctor nec.
- Praesent faucibus dignissim mauris, non ultricies quam euismod a.
- Proin euismod purus massa, ac lobortis nisl molestie vitae.
- Duis porta diam diam, eget ornare justo mollis eget.
- Duis erat eros, volutpat non nulla at, pretium sodales sem.
- Donec vitae enim consectetur, venenatis urna sed, aliquet nisl.
-\end_layout
-
-\begin_layout Standard
-Pellentesque lorem lectus, semper a ligula id, vulputate eleifend orci.
- Integer adipiscing, sem sit amet imperdiet congue, augue nunc laoreet sem,
- dictum porta quam ante id neque.
- Nam dolor lorem, varius ac libero ac, blandit dictum lorem.
- Nunc ultricies lectus sed aliquet malesuada.
- Nullam ut eros lacus.
- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- Ut egestas sit amet velit sit amet dignissim.
- In non odio imperdiet, semper lectus quis, elementum nisi.
- Cras eu lobortis ligula, in congue ante.
- Nunc non tincidunt purus, at interdum mauris.
- Fusce vel eros faucibus, tristique dui eu, lobortis tortor.
- Vivamus fringilla dictum bibendum.
- Ut erat sem, bibendum ut convallis eget, porttitor quis odio.
- In eget tortor quis nibh ornare varius feugiat eu neque.
- In vehicula augue nisl, placerat semper leo iaculis eget.
- Vivamus vel libero sit amet quam vulputate eleifend.
-\end_layout
-
-\begin_layout Standard
-Donec lacinia lacus in urna vestibulum, ut venenatis diam mattis.
- Integer venenatis consequat augue vitae dictum.
- Pellentesque facilisis molestie lorem, id sodales justo tempor et.
- Suspendisse nec justo diam.
- Cras sed volutpat risus.
- Nulla facilisi.
- Etiam hendrerit, turpis eget adipiscing tempor, purus risus imperdiet velit,
- nec euismod velit tellus quis nisl.
-\end_layout
-
-\begin_layout Standard
-Nullam ultrices justo justo.
- Donec accumsan sodales porttitor.
- Cras euismod et velit eget sagittis.
- Ut pellentesque nec ante quis cursus.
- Phasellus posuere leo diam, lobortis blandit elit pulvinar sed.
- Sed id elementum quam.
- Vivamus eu pharetra ligula.
- Nulla consequat tellus non massa mattis, at adipiscing dui hendrerit.
-\end_layout
-
-\begin_layout Standard
-Maecenas a elementum erat.
- Praesent mollis tellus nisi, nec placerat ipsum iaculis lobortis.
- Vivamus vitae arcu eget massa sodales gravida vel eu quam.
- Nunc nisl nisl, ultricies dictum libero et, gravida porttitor elit.
- Nam non blandit dui.
- Sed et mollis nibh, porta ultricies lacus.
- Quisque et scelerisque libero, a laoreet purus.
- Duis ut interdum eros, sed interdum felis.
- Pellentesque quis elementum est.
- Maecenas nunc leo, congue at ligula et, malesuada cursus felis.
- Curabitur ac magna a urna luctus vehicula nec sit amet arcu.
- Duis in ultrices leo.
- Aliquam ut varius est, in pharetra odio.
- Nullam vitae vestibulum diam.
-\end_layout
-
-\begin_layout Standard
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- Morbi tincidunt elit ac convallis blandit.
- Pellentesque pharetra urna orci, vel malesuada mi imperdiet ac.
- Duis viverra faucibus nunc, eget lacinia nulla congue sit amet.
- Sed molestie velit sit amet diam fringilla congue.
- Fusce in est ut felis porttitor porttitor id a massa.
- Aliquam dapibus, libero et mollis condimentum, orci nulla luctus libero,
- vel condimentum purus erat eget est.
- Donec ligula ante, lacinia a scelerisque eget, lacinia vel sapien.
- Nam placerat cursus leo, ac tristique mauris auctor nec.
- Praesent faucibus dignissim mauris, non ultricies quam euismod a.
- Proin euismod purus massa, ac lobortis nisl molestie vitae.
- Duis porta diam diam, eget ornare justo mollis eget.
- Duis erat eros, volutpat non nulla at, pretium sodales sem.
- Donec vitae enim consectetur, venenatis urna sed, aliquet nisl.
-\end_layout
-
-\begin_layout Standard
-Pellentesque lorem lectus, semper a ligula id, vulputate eleifend orci.
- Integer adipiscing, sem sit amet imperdiet congue, augue nunc laoreet sem,
- dictum porta quam ante id neque.
- Nam dolor lorem, varius ac libero ac, blandit dictum lorem.
- Nunc ultricies lectus sed aliquet malesuada.
- Nullam ut eros lacus.
- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- Ut egestas sit amet velit sit amet dignissim.
- In non odio imperdiet, semper lectus quis, elementum nisi.
- Cras eu lobortis ligula, in congue ante.
- Nunc non tincidunt purus, at interdum mauris.
- Fusce vel eros faucibus, tristique dui eu, lobortis tortor.
- Vivamus fringilla dictum bibendum.
- Ut erat sem, bibendum ut convallis eget, porttitor quis odio.
- In eget tortor quis nibh ornare varius feugiat eu neque.
- In vehicula augue nisl, placerat semper leo iaculis eget.
- Vivamus vel libero sit amet quam vulputate eleifend.
-\end_layout
-
-\begin_layout Standard
-Donec lacinia lacus in urna vestibulum, ut venenatis diam mattis.
- Integer venenatis consequat augue vitae dictum.
- Pellentesque facilisis molestie lorem, id sodales justo tempor et.
- Suspendisse nec justo diam.
- Cras sed volutpat risus.
- Nulla facilisi.
- Etiam hendrerit, turpis eget adipiscing tempor, purus risus imperdiet velit,
- nec euismod velit tellus quis nisl.
-\end_layout
-
-\begin_layout Standard
-Nullam ultrices justo justo.
- Donec accumsan sodales porttitor.
- Cras euismod et velit eget sagittis.
- Ut pellentesque nec ante quis cursus.
- Phasellus posuere leo diam, lobortis blandit elit pulvinar sed.
- Sed id elementum quam.
- Vivamus eu pharetra ligula.
- Nulla consequat tellus non massa mattis, at adipiscing dui hendrerit.
-\end_layout
-
-\begin_layout Standard
-Maecenas a elementum erat.
- Praesent mollis tellus nisi, nec placerat ipsum iaculis lobortis.
- Vivamus vitae arcu eget massa sodales gravida vel eu quam.
- Nunc nisl nisl, ultricies dictum libero et, gravida porttitor elit.
- Nam non blandit dui.
- Sed et mollis nibh, porta ultricies lacus.
- Quisque et scelerisque libero, a laoreet purus.
- Duis ut interdum eros, sed interdum felis.
- Pellentesque quis elementum est.
- Maecenas nunc leo, congue at ligula et, malesuada cursus felis.
- Curabitur ac magna a urna luctus vehicula nec sit amet arcu.
- Duis in ultrices leo.
- Aliquam ut varius est, in pharetra odio.
- Nullam vitae vestibulum diam.
-\end_layout
-
-\begin_layout Standard
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- Morbi tincidunt elit ac convallis blandit.
- Pellentesque pharetra urna orci, vel malesuada mi imperdiet ac.
- Duis viverra faucibus nunc, eget lacinia nulla congue sit amet.
- Sed molestie velit sit amet diam fringilla congue.
- Fusce in est ut felis porttitor porttitor id a massa.
- Aliquam dapibus, libero et mollis condimentum, orci nulla luctus libero,
- vel condimentum purus erat eget est.
- Donec ligula ante, lacinia a scelerisque eget, lacinia vel sapien.
- Nam placerat cursus leo, ac tristique mauris auctor nec.
- Praesent faucibus dignissim mauris, non ultricies quam euismod a.
- Proin euismod purus massa, ac lobortis nisl molestie vitae.
- Duis porta diam diam, eget ornare justo mollis eget.
- Duis erat eros, volutpat non nulla at, pretium sodales sem.
- Donec vitae enim consectetur, venenatis urna sed, aliquet nisl.
-\end_layout
-
-\begin_layout Standard
-Pellentesque lorem lectus, semper a ligula id, vulputate eleifend orci.
- Integer adipiscing, sem sit amet imperdiet congue, augue nunc laoreet sem,
- dictum porta quam ante id neque.
- Nam dolor lorem, varius ac libero ac, blandit dictum lorem.
- Nunc ultricies lectus sed aliquet malesuada.
- Nullam ut eros lacus.
- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- Ut egestas sit amet velit sit amet dignissim.
- In non odio imperdiet, semper lectus quis, elementum nisi.
- Cras eu lobortis ligula, in congue ante.
- Nunc non tincidunt purus, at interdum mauris.
- Fusce vel eros faucibus, tristique dui eu, lobortis tortor.
- Vivamus fringilla dictum bibendum.
- Ut erat sem, bibendum ut convallis eget, porttitor quis odio.
- In eget tortor quis nibh ornare varius feugiat eu neque.
- In vehicula augue nisl, placerat semper leo iaculis eget.
- Vivamus vel libero sit amet quam vulputate eleifend.
-\end_layout
-
-\begin_layout Standard
-Donec lacinia lacus in urna vestibulum, ut venenatis diam mattis.
- Integer venenatis consequat augue vitae dictum.
- Pellentesque facilisis molestie lorem, id sodales justo tempor et.
- Suspendisse nec justo diam.
- Cras sed volutpat risus.
- Nulla facilisi.
- Etiam hendrerit, turpis eget adipiscing tempor, purus risus imperdiet velit,
- nec euismod velit tellus quis nisl.
-\end_layout
-
-\begin_layout Standard
-Nullam ultrices justo justo.
- Donec accumsan sodales porttitor.
- Cras euismod et velit eget sagittis.
- Ut pellentesque nec ante quis cursus.
- Phasellus posuere leo diam, lobortis blandit elit pulvinar sed.
- Sed id elementum quam.
- Vivamus eu pharetra ligula.
- Nulla consequat tellus non massa mattis, at adipiscing dui hendrerit.
-\end_layout
-
-\begin_layout Standard
-Maecenas a elementum erat.
- Praesent mollis tellus nisi, nec placerat ipsum iaculis lobortis.
- Vivamus vitae arcu eget massa sodales gravida vel eu quam.
- Nunc nisl nisl, ultricies dictum libero et, gravida porttitor elit.
- Nam non blandit dui.
- Sed et mollis nibh, porta ultricies lacus.
- Quisque et scelerisque libero, a laoreet purus.
- Duis ut interdum eros, sed interdum felis.
- Pellentesque quis elementum est.
- Maecenas nunc leo, congue at ligula et, malesuada cursus felis.
- Curabitur ac magna a urna luctus vehicula nec sit amet arcu.
- Duis in ultrices leo.
- Aliquam ut varius est, in pharetra odio.
- Nullam vitae vestibulum diam.
 \end_layout
 
 \begin_layout Standard
