@@ -7,6 +7,9 @@ library(ecp)
 library(cpm)
 library(ggplot2)
 library(dplyr)
+library(depmixS4)
+library(HiddenMarkov)
+library(HMM)
 
 g2 <- fread("master-g2-17col.csv.txt")
 g2_filter <- fread("master-g2.filtered.csv.txt")
@@ -63,12 +66,13 @@ g2_green_R12AK <- g2_green[which(SW == "R12AK")]
 }
 #----------------------------------------------------------------------#
 # sort ***LOOK and DECIDE again***
+.sort <- function(){
 # sort by Timestamp
 g2_sort_time <- g2[order(Timestamp),]
 
 # sort all three
 g2_sort_all <- g2[multi.mixedorder(Timestamp, Release, SW),] 
-
+}
 #----------------------------------------------------------------------#
 # change SW from character to factor and set the factor levels to be the same as in factor labels
 level <- unique(g2_L16B$SW)
@@ -78,12 +82,12 @@ level_filter <- unique(g2_L16B_filter$SW)
 g2_L16B_filter$SW <- factor(g2_L16B_filter$SW, levels=level_filter)
 
 # plot TotCpu% vs SW
-plot(g2_L16B$SW, g2_L16B$`TotCpu%`, xlab="", main="Average CPU Utilisation L16B") #
+plot(g2_L16B$SW, g2_L16B$`TotCpu%`, xlab="", main="Average CPU Utilisation g2_L16B") #
 ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_point()
 ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_boxplot()
 plot(density(g2_L16B_filter$`TotCpu%`))
 
-plot(g2_L16B_filter$SW, g2_L16B_filter$`TotCpu%`, xlab="", main="Filter: Average CPU Utilisation L16B") # compare with platypus
+plot(g2_L16B_filter$SW, g2_L16B_filter$`TotCpu%`, xlab="", main="Average CPU Utilisation g2_L16B_filter") # compare with platypus
 ggplot(data=g2_L16B_filter, aes(SW, `TotCpu%`)) + geom_point()
 ggplot(data=g2_L16B_filter, aes(SW, `TotCpu%`)) + geom_boxplot() # getting the same result as in plot
 
@@ -165,12 +169,13 @@ Ediv2$estimates
 # Ediv2$p.values
 # Ediv2$permutations
 
-ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-divisive, alpha=1")
+ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-divisive g2_L16B, alpha=1")
 abline(v=Ediv1$estimates[c(-1,-length(Ediv1$estimates))], col="red", lty=2)
 
-ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-divisive, alpha=2")
+ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-divisive g2_L16B, alpha=2")
 abline(v=Ediv2$estimates[c(-1,-length(Ediv2$estimates))], col="blue", lty=2)
 
+#----------------------#
 # E-agglo
 mem <- c(rep(1:40, each=6), rep(41:212, each=5), rep(213:243, each=6)) # just make it up without any speical reason
 Eagglo1 <- e.agglo(matrix(g2_L16B$`TotCpu%`), member=mem, alpha=1)
@@ -186,15 +191,15 @@ Eagglo1$merged
 
 Eagglo2$estimates
 
-ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-agglo, alpha=1")
+ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-agglo g2_L16B, alpha=1")
 abline(v=Eagglo1$estimates, col="red", lty=2)
 
-ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-agglo, alpha=1, penalty")
+ts.plot(matrix(g2_L16B$`TotCpu%`), main="E-agglo g2_L16B, alpha=1, penalty")
 abline(v=Eagglo2$estimates, col="blue", lty=2)
 
 abline(v=Eagglo3$estimates, col="green", lty=2)
 
-
+#----------------------#
 # g2 FILTER data L16B
 # univariate: TotCpu%
 # E-divisive
@@ -210,15 +215,16 @@ Ediv2_filter$order.found
 Ediv2_filter$estimates
 # value is the same
 
-ts.plot(matrix(g2_L16B_filter$`TotCpu%`), main="E-divisive filter, alpha=1", ylim=c(50,300))
+ts.plot(matrix(g2_L16B_filter$`TotCpu%`), main="E-divisive g2_L16B_filter, alpha=1", ylim=c(50,300))
 abline(v=Ediv1_filter$estimates[c(-1,-length(Ediv1_filter$estimates))], col="red", lty=2)
 
-ts.plot(matrix(g2_L16B_filter$`TotCpu%`), main="E-divisive filter, alpha=2")
+ts.plot(matrix(g2_L16B_filter$`TotCpu%`), main="E-divisive g2_L16B_filter, alpha=2")
 abline(v=Ediv2_filter$estimates[c(-1,-length(Ediv2_filter$estimates))], col="blue", lty=2)
 
 #----------------------------------------------------------------------#
 # BreakoutDetection
 # EDM: E-divisive median
+.breakoutdetection <- function(){
 library(BreakoutDetection)
 
 data(Scribe)
@@ -233,11 +239,12 @@ abline(v=Ediv_scribe$estimates, col="red", lty=2)
 
 res2 <- breakout(g2_L16B$`TotCpu%`, method="multi", plot=TRUE)
 res2$plot
-
+}
 #----------------------------------------------------------------------#
 # cpm package
 # g2 FILTER data L16B
 # batch detection
+.cpm <- function(){
 resultsStudent <- detectChangePointBatch(g2_L16B_filter$`TotCpu%`, cpmType = "Student", alpha = 0.05)
 resultsMW <- detectChangePointBatch(g2_L16B_filter$`TotCpu%`, cpmType = "Mann-Whitney", alpha = 0.05)
 plot(g2_L16B_filter$`TotCpu%`, type = "l", xlab = "Observation", ylab = "x", bty = "l")
@@ -266,7 +273,7 @@ res <- processStream(g2_L16B_filter$`TotCpu%`, cpmType = "Mann-Whitney", ARL0 = 
 plot(g2_L16B_filter$`TotCpu%`, type = "l", xlab = "Observation", ylab = "", bty = "l")
 abline(v = res$detectionTimes) # change was detected
 abline(v = res$changePoints, lty = 2) # estimated change point locations
-
+}
 #----------------------------------------------------------------------#
 # divide train/test set (70/30)
 # g2 data L16B
@@ -363,31 +370,31 @@ test <- data.table()
 train_L16B <- get_train_test(g2_L16B)$train
 test_L16B <- get_train_test(g2_L16B)$test
 
-ggplot(data=train_L16B , aes(SW, `TotCpu%`)) + geom_point()
 ggplot(data=train_L16B , aes(SW, `TotCpu%`)) + geom_boxplot()
-plot(density(train_L16B $`TotCpu%`))
-
-ggplot(data=test_L16B, aes(SW, `TotCpu%`)) + geom_point()
 ggplot(data=test_L16B, aes(SW, `TotCpu%`)) + geom_boxplot()
 
+#----------------------#
+# implement e-divisive
+# g2 data L16B train
 Ediv1_train <- e.divisive(matrix(train_L16B$`TotCpu%`), R=499, alpha=1) 
 Ediv2_train <- e.divisive(matrix(train_L16B$`TotCpu%`), R=499, alpha=2) 
 
 Ediv1_train$k.hat # 16 clusters
-Ediv1_train$order.found
+# Ediv1_train$order.found
 Ediv1_train$estimates 
 
 Ediv2_train$k.hat # 14 clusters
-Ediv2_train$order.found
+# Ediv2_train$order.found
 Ediv2_train$estimates # discard 202, 451 to 455
 
-ts.plot(matrix(train_L16B$`TotCpu%`), main="E-divisive, alpha=1")
+ts.plot(matrix(train_L16B$`TotCpu%`), main="E-divisive train_L16B, alpha=1")
 abline(v=Ediv1_train$estimates[c(-1,-length(Ediv1_train$estimates))], col="red", lty=2)
 
-ts.plot(matrix(train_L16B$`TotCpu%`), main="E-divisive, alpha=2")
+ts.plot(matrix(train_L16B$`TotCpu%`), main="E-divisive train_L16B, alpha=2")
 abline(v=Ediv2_train$estimates[c(-1,-length(Ediv2_train$estimates))], col="blue", lty=2)
 
-# g2 FILTER data L16B
+#----------------------#
+# g2 FILTER data L16B train 
 train_L16B_filter <- get_train_test(g2_L16B_filter)$train
 test_L16B_filter <- get_train_test(g2_L16B_filter)$test
 
@@ -403,8 +410,124 @@ Ediv1_train_filter$estimates
 Ediv2_train_filter$k.hat # 3 clusters
 Ediv2_train_filter$estimates # discard 121, 64 to 65
 
-ts.plot(matrix(train_L16B_filter$`TotCpu%`), main="E-divisive Filter, alpha=1")
+ts.plot(matrix(train_L16B_filter$`TotCpu%`), main="E-divisive train_L16B_filter, alpha=1")
 abline(v=Ediv1_train_filter$estimates[c(-1,-length(Ediv1_train_filter$estimates))], col="red", lty=2)
 
-ts.plot(matrix(train_L16B_filter$`TotCpu%`), main="E-divisive Filter, alpha=2")
+ts.plot(matrix(train_L16B_filter$`TotCpu%`), main="E-divisive train_L16B_filter, alpha=2")
 abline(v=Ediv2_train_filter$estimates[c(-1,-length(Ediv2_train_filter$estimates))], col="blue", lty=2)
+
+#----------------------#
+# average TotCpu% for the same software package (sw)
+# not include in the get_train_test just in case not using it
+get_average <- function(data){
+  sw_name <- unique(data$SW)
+  subset <- lapply(sw_name, function(x) filter(data, SW == x))
+  sw_mean <- unlist(lapply(1:length(subset), function(x) mean(subset[x][[1]]$`TotCpu%`)))
+  sw <- data.frame(SW=sw_name, value=sw_mean)
+  return(sw)
+}
+
+train_L16B_avg <- get_average(train_L16B)
+test_L16B_avg <- get_average(test_L16B)
+
+# plot average TotCpu% for the same sw
+ggplot(data=train_L16B_avg , aes(SW, value)) + geom_point()
+plot(density(train_L16B_avg$value))
+ggplot(data=test_L16B_avg, aes(SW, value)) + geom_point()
+
+# g2 data L16B train_avg
+Ediv1_train_avg <- e.divisive(matrix(train_L16B_avg$value), R=499, alpha=1) 
+Ediv2_train_avg <- e.divisive(matrix(train_L16B_avg$value), R=499, alpha=2) 
+
+Ediv1_train_avg$k.hat # 3 clusters
+Ediv1_train_avg$estimates 
+
+Ediv2_train_avg$k.hat # 3 clusters
+Ediv2_train_avg$estimates # same
+
+ggplot(data=train_L16B_avg , aes(SW, value, group=1)) + geom_line() + ggtitle("E-divisive train_L16B_avg, alpha=1") + geom_vline(xintercept=Ediv1_train_avg$estimates[c(-1,-length(Ediv1_train_avg$estimates))], color="red")
+ts.plot(train_L16B_avg$value, main="E-divisive train_L16B_avg, alpha=1")
+abline(v=Ediv1_train_avg$estimates[c(-1,-length(Ediv1_train_avg$estimates))], col="red", lty=2)
+
+ts.plot(train_L16B_avg$value, main="E-divisive train_L16B_avg, alpha=2")
+abline(v=Ediv2_train_avg$estimates[c(-1,-length(Ediv2_train_avg$estimates))], col="blue", lty=2)
+
+#----------------------#
+# g2 FILTER data L16B train_avg
+train_L16B_filter_avg <- get_average(train_L16B_filter)
+test_L16B_filter_avg <- get_average(test_L16B_filter)
+
+# plot average TotCpu% for the same sw
+ggplot(data=train_L16B_filter_avg , aes(SW, value)) + geom_point()
+plot(density(train_L16B_filter_avg$value))
+ggplot(data=test_L16B_filter_avg, aes(SW, value)) + geom_point()
+
+# g2 FILTER data L16B train_avg
+Ediv1_train_filter_avg <- e.divisive(matrix(train_L16B_filter_avg$value), R=499, alpha=1) 
+Ediv2_train_filter_avg <- e.divisive(matrix(train_L16B_filter_avg$value), R=499, alpha=2) 
+
+Ediv1_train_filter_avg$k.hat # 4 clusters
+Ediv1_train_filter_avg$estimates 
+
+Ediv2_train_filter_avg$k.hat # 3 clusters
+Ediv2_train_filter_avg$estimates # discard 112, 62 to 63
+
+ggplot(data=train_L16B_filter_avg , aes(SW, value, group=1)) + geom_line() + ggtitle("E-divisive train_L16B_filter_avg, alpha=1") + geom_vline(xintercept=Ediv1_train_filter_avg$estimates[c(-1,-length(Ediv1_train_filter_avg$estimates))], color="red")
+ts.plot(train_L16B_filter_avg$value, main="E-divisive train_L16B_filter_avg, alpha=1")
+abline(v=Ediv1_train_filter_avg$estimates[c(-1,-length(Ediv1_train_filter_avg$estimates))], col="red", lty=2)
+
+ts.plot(train_L16B_filter_avg$value, main="E-divisive train_L16B_filter_avg, alpha=2")
+abline(v=Ediv2_train_filter_avg$estimates[c(-1,-length(Ediv2_train_filter_avg$estimates))], col="blue", lty=2)
+
+#----------------------#
+# select min TotCpu% for the same software package (sw)
+# not include in the get_train_test just in case not using it
+# get_min <- function(data){
+#   sw_name <- unique(data$SW)
+#   subset <- lapply(sw_name, function(x) filter(data, SW == x))
+#   sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]]$`TotCpu%`)))
+#   sw <- data.frame(SW=sw_name, value=sw_min)
+#   return(sw)
+# }
+# 
+# train_L16B_min <- get_min(train_L16B)
+# test_L16B_min <- get_min(test_L16B)
+# 
+# 
+
+#----------------------------------------------------------------------#
+# try depmixS4
+temp <- get_average(g2_L16B_filter)
+model <- depmix(`TotCpu%` ~ 1, data = g2_L16B_filter, nstates = 3)
+model <- depmix(value ~ 1, data = temp, nstates = 3)
+set.seed(1)
+fitted <- fit(model)
+summary(fitted)
+print(fitted)
+# state 1 is the starting state for the process
+
+prob <- posterior(fitted) # Compute probability of being in each state
+head(prob)
+rowSums(head(prob)[,2:4]) # Check that probabilities sum to 1
+
+par(mfrow=c(2,1))
+ts.plot(matrix(temp$value))
+plot(1:nrow(prob), prob[,1], type='l')
+
+dat <- temp
+p <- prob[,2] # Pick out the first state
+dat$p <- p # Put it in the data frame for plotting
+
+# Pick out an interesting subset of the data or plotting and
+# reshape the data in a form convenient for ggplot
+dat2 <- melt(dat[,c(7,14,18)],id="SW",measure=c("TotCpu%","p"))
+dat2 <- melt(dat[,1:3],id="SW",measure=c("value","p"))
+#head(df)
+
+# Plot the log return time series along withe the time series of probabilities
+qplot(SW,value,data=dat2,geom="line", ylab = "") + facet_grid(variable ~ ., scales="free_y")
+
+
+#----------------------------------------------------------------------#
+
+
