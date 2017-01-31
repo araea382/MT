@@ -148,6 +148,7 @@ for(i in 5:length(level)){
 
 #----------------------------------------------------------------------#
 # ecp package
+
 # t1 <- Sys.time()
 # t2 <- Sys.time()
 # print(t2 - t1)
@@ -159,11 +160,11 @@ Ediv1 <- e.divisive(matrix(g2_L16B$`TotCpu%`), R=499, alpha=1)
 Ediv2 <- e.divisive(matrix(g2_L16B$`TotCpu%`), R=499, alpha=2) 
 
 Ediv1$k.hat
-Ediv1$order.found
+# Ediv1$order.found
 Ediv1$estimates
 
 Ediv2$k.hat
-Ediv2$order.found
+# Ediv2$order.found
 Ediv2$estimates
 # Ediv2$considered.last
 # Ediv2$p.values
@@ -186,7 +187,7 @@ Eagglo2 <- e.agglo(matrix(g2_L16B$`TotCpu%`), member=mem, alpha=1, penalty=pen)
 
 Eagglo1$estimates
 tail(Eagglo1$fit, 5)
-z <- Eagglo1$progression
+Eagglo1$progression
 Eagglo1$merged
 
 Eagglo2$estimates
@@ -207,11 +208,11 @@ Ediv1_filter <- e.divisive(matrix(g2_L16B_filter$`TotCpu%`), R=499, alpha=1)
 Ediv2_filter <- e.divisive(matrix(g2_L16B_filter$`TotCpu%`), R=499, alpha=2) 
 
 Ediv1_filter$k.hat
-Ediv1_filter$order.found
+# Ediv1_filter$order.found
 Ediv1_filter$estimates
 
 Ediv2_filter$k.hat
-Ediv2_filter$order.found
+# Ediv2_filter$order.found
 Ediv2_filter$estimates
 # value is the same
 
@@ -529,5 +530,6 @@ qplot(SW,value,data=dat2,geom="line", ylab = "") + facet_grid(variable ~ ., scal
 
 
 #----------------------------------------------------------------------#
+#try HiddenMarkov
 
 

@@ -294,31 +294,45 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Data (2-8 pages)
+Data
 \end_layout
 
 \begin_layout Section
-Data sources (<1 page)
+Data sources
+\end_layout
+
+\begin_layout Standard
+The dataset is provided by Ericsson.
+ 
+\end_layout
+
+\begin_layout Section
+Data description
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Brief description of variables and cases in the given data
+\end_layout
+
+\begin_layout Plain Layout
+Table headings above the table
+\end_layout
+
+\begin_layout Plain Layout
+Figure legends below the graph
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 Raw data
-\end_layout
-
-\begin_layout Standard
-Brief description of variables and cases in the given data 
-\end_layout
-
-\begin_layout Standard
-Table headings above the table
-\end_layout
-
-\begin_layout Standard
-Figure legends below the graph
-\end_layout
-
-\begin_layout Section
-Secondary data
 \end_layout
 
 \begin_layout Standard

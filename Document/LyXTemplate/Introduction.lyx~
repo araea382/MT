@@ -367,15 +367,22 @@ key "basseville1993detection"
 
 \end_inset
 
-, identify fraud as soon as it commited or there is a failure in fraud preventio
-n 
+, identify fraud as soon as it is commited when fraud prevention is failed
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "bolton2002statistical"
 
 \end_inset
 
-, and detect finance industry.
+, and detect anomalies in the market price 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "gu2013fast"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
