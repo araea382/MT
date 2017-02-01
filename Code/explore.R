@@ -1,5 +1,6 @@
-setwd("C:/Users/EARAEAM/Documents/Thesis/Data")
+# RUN EVERY TIME
 setwd("~/Dropbox/Thesis/Data")
+setwd("C:/Users/EARAEAM/Documents/Thesis/Data")
 
 library(data.table)
 library(gtools) # for sorting RW column
@@ -11,6 +12,7 @@ library(depmixS4)
 library(HiddenMarkov)
 library(HMM)
 
+#----------------------------------------------------------------------#
 g2 <- fread("master-g2-17col.csv.txt")
 g2_filter <- fread("master-g2.filtered.csv.txt")
 colnames(g2_filter) <- colnames(g2)
@@ -63,6 +65,16 @@ g2_green_R12AK <- g2_green[which(SW == "R12AK")]
 # it seems like there is only the last test run which make it to the graph (at least the number is the same)
 # first two test runs also have EventsPerSec component around 165. Do they make it or not??
 ## ANSWER: select the minimum value
+}
+#----------------------------------------------------------------------#
+.explore_g1_filter <- function(){
+  t <- filter(g1_filter, Release == "L17A")
+  tt <- filter(t, eNB == "kienb2064")
+  # cpu3 (?)
+  tt2 <- filter(t, eNB == "kienb1058")
+  
+  # Average CPU Utilization %, LmMonitor, DUS41, L17A
+  # Average CPU Utilization, LmCell/LmCentral, DUS41, L17A
 }
 #----------------------------------------------------------------------#
 # sort ***LOOK and DECIDE again***
@@ -495,6 +507,8 @@ abline(v=Ediv2_train_filter_avg$estimates[c(-1,-length(Ediv2_train_filter_avg$es
 # test_L16B_min <- get_min(test_L16B)
 # 
 # 
+#----------------------------------------------------------------------#
+
 
 #----------------------------------------------------------------------#
 # try depmixS4
@@ -528,8 +542,10 @@ dat2 <- melt(dat[,1:3],id="SW",measure=c("value","p"))
 # Plot the log return time series along withe the time series of probabilities
 qplot(SW,value,data=dat2,geom="line", ylab = "") + facet_grid(variable ~ ., scales="free_y")
 
-
 #----------------------------------------------------------------------#
-#try HiddenMarkov
+
+regexpr("RrcConnectionSetupComplete", q)
+
+
 
 
