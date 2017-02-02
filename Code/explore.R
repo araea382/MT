@@ -20,6 +20,11 @@ colnames(g2_filter) <- colnames(g2)
 g1_filter <- fread("master.filtered.ALL.csv.txt")
 
 #----------------------------------------------------------------------#
+# discard test run which has no value in EventsPerSec
+g2 <- filter(g2, EventsPerSec != "")
+g2 <- as.data.table(g2)
+
+#----------------------------------------------------------------------#
 # sort on multiple columns
 # converting all character vectors to factors with mixedsorted sorted levels, and pass all vectors on to the standard order function
 # http://stackoverflow.com/questions/20396582/order-a-mixed-vector-numbers-with-letters
@@ -508,6 +513,19 @@ abline(v=Ediv2_train_filter_avg$estimates[c(-1,-length(Ediv2_train_filter_avg$es
 # 
 # 
 #----------------------------------------------------------------------#
+# plot different NodeName and SW
+g2_L16B_nn <- lapply(unique(g2_L16B$NodeName), function(x) filter(g2_L16B, NodeName == x))
+
+get_average2 <- function(data){
+  sw_name <- unique(data$SW)
+  subset <- lapply(sw_name, function(x) filter(data, SW == x))
+  sw_mean <- unlist(lapply(1:length(subset), function(x) mean(subset[x][[1]]$Normalize)))
+  sw <- data.frame(SW=sw_name, value=sw_mean)
+  return(sw)
+}
+
+a <- get_average2(g2_L16B_nn[[1]])
+
 
 
 #----------------------------------------------------------------------#
@@ -543,8 +561,6 @@ dat2 <- melt(dat[,1:3],id="SW",measure=c("value","p"))
 qplot(SW,value,data=dat2,geom="line", ylab = "") + facet_grid(variable ~ ., scales="free_y")
 
 #----------------------------------------------------------------------#
-
-regexpr("RrcConnectionSetupComplete", q)
 
 
 
