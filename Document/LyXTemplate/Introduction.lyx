@@ -400,33 +400,24 @@ In this study, change point detection will be used to identify the changes
 \end_layout
 
 \begin_layout Standard
-The main idea of this thesis is to reduce the laborer work to do visual
- inspection whenever they want to analyze the performance of update software
- package.
- With the rise of data generation and a large number of test runs, this
- work becomes more difficult and perhaps inefficient to do it manually.
- This is when Machine learning, the algorithm that has an ability to learn
- from data, comes into focus.
- The algorithm will help indicate whether the performance of software package
- is degradation, improvement or in a steady state.
- There is also a case when the changes in the test environment affect performanc
-e even though there is no change in the software package.
- The implemented algorithm should be able to detect when the test environment
- is altered.
-\end_layout
-
-\begin_layout Standard
 There are two approaches, parametric and nonparametric analysis, for detecting
  the change point in time series.
+ Parametric analysis benefits from assuming some knowledge of data distribution
+ and integrates it to the detection scheme.
+ On the other hand, nonparametric analysis has lessen a restriction/ is
+ more flexible in which there is no assumption made about the distribution.
+ It can, therefore, apply to a wider range of application and capturing
+ various kinds of changes.
+ Generally, real-world data do not always have a well-defined structure
+ and most of the time they are no known distributional form.
+ 
 \end_layout
 
 \begin_layout Standard
-discovering time point where property of time series is changed 
-\end_layout
-
-\begin_layout Standard
-detect the change and estimate the location of the places (times) where
- the changes occur
+Change point detection has a bottom line for discovering and estimating
+ the time point where the changes in time series occur.
+ The change should be flagged as soon as it happened in order to reduce
+ the effect and can investigate.
 \end_layout
 
 \begin_layout Standard
@@ -434,7 +425,8 @@ detect the change and estimate the location of the places (times) where
 status open
 
 \begin_layout Plain Layout
-write about the parametric and nonparametric
+discovering time point where property of time series is changed/ detect
+ the change and estimate the location of the places where the changes occur
 \end_layout
 
 \end_inset
@@ -454,18 +446,35 @@ name "sec:Objective"
 \end_layout
 
 \begin_layout Standard
-The main objectives for this thesis is to implement machine learning to
+The main idea of this thesis is to reduce the laborer work to do visual
+ inspection whenever they want to analyze the performance of update software
+ package.
+ With the rise of data generation and a large number of test runs, this
+ work becomes more difficult and perhaps inefficient to do it manually.
+ This is when Machine learning, the algorithm that has an ability to learn
+ from data, comes into focus.
+ The main objectives for this thesis is to implement machine learning to
  analyze the performance of the system.
+ The algorithm will help indicate whether the performance of software package
+ is degradation, improvement or in a steady state.
+ There is also a case when the changes in the test environment affect performanc
+e even though there is no change in the software package.
+ The implemented algorithm should be able to detect when the test environment
+ is altered.
  
 \end_layout
 
-\begin_layout Itemize
-To detect the degradation, improvement or steady state in CPU Utilization
+\begin_layout Standard
+To summarize, this thesis aims to:
 \end_layout
 
 \begin_layout Itemize
-To detect whether there is some changes in test environment that impact
- on CPU Utilization
+Detect the degradation, improvement or steady state in CPU Utilization
+\end_layout
+
+\begin_layout Itemize
+Detect whether there is some changes in test environment that impact on
+ CPU Utilization
 \end_layout
 
 \begin_layout Standard

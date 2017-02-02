@@ -418,6 +418,19 @@ e even though there is no change in the software package.
 \begin_layout Standard
 There are two approaches, parametric and nonparametric analysis, for detecting
  the change point in time series.
+ Parametric analysis benefits from assuming some knowledge of data distribution
+ and integrates it to the detection scheme.
+ On the other hand, nonparametric analysis has lessen a restriction/ is
+ more flexible in which there is no assumption made about the distribution.
+ It can, therefore, apply to a wider range of application and capturing
+ various kinds of changes.
+ Generally, real-world data do not always have a well-defined structure
+ and most of the time they are no known distributional form.
+ 
+\end_layout
+
+\begin_layout Standard
+Change should be 
 \end_layout
 
 \begin_layout Standard
@@ -427,19 +440,6 @@ discovering time point where property of time series is changed
 \begin_layout Standard
 detect the change and estimate the location of the places (times) where
  the changes occur
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-write about the parametric and nonparametric
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -469,7 +469,8 @@ To detect whether there is some changes in test environment that impact
 \end_layout
 
 \begin_layout Standard
-The thesis is structured as follows: Chapter 2 
+The thesis is structured as follows: Chapter 2 provides a description of
+ data 
 \end_layout
 
 \begin_layout Standard

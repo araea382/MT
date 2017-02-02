@@ -41,4 +41,6 @@ Parametric and Nonparametric test are the two procedures used for performing cha
 `E-agglomerative` alogrithm trys to maximized a goodness of fit test after merging segments in the iteration. The estimated change point is defined by the iteration that maximized a goodness of fit statistic. It allows user to input an initial segmentation for the time series or a prior knowledge of the possible change point in order to reduce the computation time.
 
 
+# Hidden Markov Model
+
 
