@@ -513,20 +513,50 @@ abline(v=Ediv2_train_filter_avg$estimates[c(-1,-length(Ediv2_train_filter_avg$es
 # 
 # 
 #----------------------------------------------------------------------#
-# plot different NodeName and SW
-g2_L16B_nn <- lapply(unique(g2_L16B$NodeName), function(x) filter(g2_L16B, NodeName == x))
-
+# plot different NodeName and SW (like in platypus)
 get_average2 <- function(data){
   sw_name <- unique(data$SW)
   subset <- lapply(sw_name, function(x) filter(data, SW == x))
-  sw_mean <- unlist(lapply(1:length(subset), function(x) mean(subset[x][[1]]$Normalize)))
+  sw_mean <- unlist(lapply(1:length(subset), function(x) mean(subset[x][[1]]$`TotCpu%`)))
   sw <- data.frame(SW=sw_name, value=sw_mean)
   return(sw)
 }
 
-a <- get_average2(g2_L16B_nn[[1]])
+# g2 L16B
+nn_name <- unique(g2_L16B$NodeName)
+sw_name <- unique(g2_L16B$SW)
+g2_L16B_nn <- lapply(unique(g2_L16B$NodeName), function(x) filter(g2_L16B, NodeName == x))
 
+range <- seq(min(g2_L16B$`TotCpu%`),max(g2_L16B$`TotCpu%`),length.out=length(sw_name)) # in order to make the plot
 
+plot(as.numeric(sw_name), range, type="n", xaxt="n", xlab="SW", ylab="CPU") # make blank plot
+axis(1, at=1:length(sw_name), labels=sw_name)
+
+for(i in 1:length(nn_name)){
+  nn_subset <- get_average2(g2_L16B_nn[[i]])
+  points(as.numeric(nn_subset$SW), nn_subset$value, col=i, type="o")
+}
+
+# g2 FILTER L16B
+.plot_filter <- function(){
+nn_name_filter <- unique(g2_L16B_filter$NodeName)
+sw_name_filter <- unique(g2_L16B_filter$SW)
+g2_L16B_nn_filter <- lapply(unique(g2_L16B_filter$NodeName), function(x) filter(g2_L16B_filter, NodeName == x))
+
+a <- get_average2(g2_L16B_nn_filter[[1]])
+
+range <- seq(min(g2_L16B_filter$`TotCpu%`),max(g2_L16B_filter$`TotCpu%`),length.out=length(sw_name_filter))
+
+plot(as.numeric(sw_name_filter), range, type="n", ylim=c(50,300), xaxt="n", xlab="SW", ylab="CPU")
+axis(1, at=1:length(sw_name_filter), labels=sw_name_filter)
+# axis(1, at=1:length(sw_name_filter), labels=FALSE)
+# text(1:length(sw_name_filter), par("usr")[3]-0.2, labels=sw_name_filter, cex=0.5, srt=45, pos=2, xpd=TRUE)
+
+for(i in 1:length(nn_name_filter)){
+  nn_subset_filter <- get_average2(g2_L16B_nn_filter[[i]])
+  points(as.numeric(nn_subset_filter$SW), nn_subset_filter$value, col=i, type="o") # same as in platypus
+}
+}
 
 #----------------------------------------------------------------------#
 # try depmixS4

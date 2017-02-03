@@ -302,12 +302,28 @@ Data sources
 \end_layout
 
 \begin_layout Standard
-The dataset is provided by Ericsson.
+Data is collected by Ericsson.
  
 \end_layout
 
 \begin_layout Section
 Data description
+\end_layout
+
+\begin_layout Subsection
+Dataset 1: The first generation
+\end_layout
+
+\begin_layout Standard
+Dataset 1 contains
+\end_layout
+
+\begin_layout Subsection
+Dataset 2: The second generation
+\end_layout
+
+\begin_layout Standard
+The second dataset includes
 \end_layout
 
 \begin_layout Standard
