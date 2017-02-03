@@ -1,0 +1,25 @@
+matteson2014nonparametric
+- perhaps use the same idea as in its introduction to write mine.. :)
+
+longobardi2010trend
+- Plot visual inspection could reveal the existence of marked changes in the time series, which can be further investigated by statistical procedures. 
+- Onoz and Bayazit (2003) showed that the parametric t-test has less power than the non-parametric Mann–Kendall test when the probability distribution is skewed, but that, in practical applications, they can be used interchangeably, with identical results in most cases. 
+
+sharkey2014nonparametric
+- represents a logical course of action when performing changepoint analysis on data of no known distributional form, a common scenario that applies to a wide variety of real-world processes 
+- Changepoint detection methods can be further categorised into the parametric class, which incorporates distributional knowledge of the data into the detection scheme, and nonpara- metric class, which makes no such distributional assumptions regarding the data 
+- However, since many real-world processes do not exhibit well-defined behavour, alternative methods are required that do not make such restrictive assumptions (Hawkins and Deng, 2010). 
+- a change should be flagged as soon as possible in order to deal effectively with the consequences of such a change 
+- The need for nonparametric methods in sequential testing is vast as the assumption of a known distributional form is usually violated, particularly as the data is processed in real-time 
+- Because the precise control of the false alarm rate is
+essential in change detection problems, parametric tests based on normality may not be
+suitable in data sequences that are not normally distributed.
+- the nonparametric test is the preferred method when analysing data
+arising from a real-world process, as the assumption of normality is too restrictive, particularly in
+sequential testing
+
+
+liu2014statistical 
+- nothing endures but change
+
+

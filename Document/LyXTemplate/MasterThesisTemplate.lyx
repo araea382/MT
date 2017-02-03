@@ -338,11 +338,14 @@ Prof.
 \begin_layout Dedication
 
 \emph on
+\begin_inset Quotes eld
+\end_inset
+
 Nothing endures but change
-\emph default
- - 
-\emph on
-Heraclitus
+\begin_inset Quotes erd
+\end_inset
+
+ - Heraclitus
 \end_layout
 
 \begin_layout Standard

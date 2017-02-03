@@ -1,7 +1,9 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % increases link area for cross-references and autoname them
@@ -68,16 +70,16 @@ customHeadersFooters
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans lmss
-\font_typewriter lmtt
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
-
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -101,15 +103,24 @@ customHeadersFooters
 \pdf_quoted_options "pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 2
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \branch NoChildDocument
 \selected 0
@@ -138,7 +149,7 @@ customHeadersFooters
 \begin_body
 
 \begin_layout Left Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -203,7 +214,7 @@ Enable page headers and add the chapter to the header line.
 \end_layout
 
 \begin_layout Right Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -228,7 +239,7 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -257,7 +268,7 @@ thepage
 \end_layout
 
 \begin_layout Right Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -291,6 +302,35 @@ Software
 \end_layout
 
 \begin_layout Standard
+Both R and Python are powerful programming language for data analysis.
+ Python has been known as a general purpose language with an easy to understand
+ syntax.
+ It emphasizes on code readability and has a gentle learning curve.
+ R is developed by and for statistician.
+ It provides a huge number of essential packages in statistics, and even
+ starts to expand to different fields.
+ R also has a strong reputation for data visualization.
+ However, in terms of computation, R still cannot compete with Python which
+ is buit specifically for computer programming.
+\end_layout
+
+\begin_layout Standard
+With strengths and weaknesses between R and Python described earlier, R
+ is chosen to be used in this study.
+ It offers more implemented algorithms to solve the problem at hand.
+ Moreover, effective visualizion helps analyst and user to understand more
+ about their data especially for the complex one.
+ Visualizing data is useful in many ways such as uncover new patterns, identify
+ some factors, and get an overall trend.
+ R proves itself a good choice since it provides a great feature in creating
+ an interactive graphic and visualization.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 You may want to include an appendix to describe the software used in the
  thesis.
  You can also include CONCISE documentation of your own code.
@@ -299,6 +339,11 @@ You may want to include an appendix to describe the software used in the
  properties of objects.
  Ideally, you could post your code online (github is a popular place) and
  link to it from here.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

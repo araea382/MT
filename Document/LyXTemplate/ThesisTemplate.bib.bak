@@ -1,4 +1,4 @@
-% Encoding: windows-1252
+% Encoding: windows-1251
 
 @Article{matteson2014nonparametric,
   author    = {Matteson, David S and James, Nicholas A},
@@ -70,34 +70,57 @@
 	publisher={Springer}
 }
 
-
-@article{page1954continuous,
-	title={Continuous inspection schemes},
-	author={Page, ES},
-	journal={Biometrika},
-	volume={41},
-	number={1/2},
-	pages={100--115},
-	year={1954},
-	publisher={JSTOR}
+@Article{page1954continuous,
+  author    = {Page, ES},
+  title     = {Continuous inspection schemes},
+  journal   = {Biometrika},
+  year      = {1954},
+  volume    = {41},
+  number    = {1/2},
+  pages     = {100--115},
+  comment   = {example in background section},
+  publisher = {JSTOR},
 }
 
-@article{bolton2002statistical,
-	title={Statistical fraud detection: A review},
-	author={Bolton, Richard J and Hand, David J},
-	journal={Statistical science},
-	pages={235--249},
-	year={2002},
-	publisher={JSTOR}
+@Article{bolton2002statistical,
+  author    = {Bolton, Richard J and Hand, David J},
+  title     = {Statistical fraud detection: A review},
+  journal   = {Statistical science},
+  year      = {2002},
+  pages     = {235--249},
+  comment   = {example in background section},
+  publisher = {JSTOR},
 }
 
-@inproceedings{gu2013fast,
-	title={Fast Change Point Detection for electricity market analysis},
-	author={Gu, William and Choi, Jaesik and Gu, Ming and Simon, Horst and Wu, Kesheng},
-	booktitle={Big Data, 2013 IEEE International Conference on},
-	pages={50--57},
-	year={2013},
-	organization={IEEE}
+@InProceedings{gu2013fast,
+  author       = {Gu, William and Choi, Jaesik and Gu, Ming and Simon, Horst and Wu, Kesheng},
+  title        = {Fast Change Point Detection for electricity market analysis},
+  booktitle    = {Big Data, 2013 IEEE International Conference on},
+  year         = {2013},
+  pages        = {50--57},
+  organization = {IEEE},
+  comment      = {example in background section},
+}
+
+@Article{hawkins2010nonparametric,
+  author    = {Hawkins, Douglas M and Deng, Qiqi},
+  title     = {A nonparametric change-point control chart},
+  journal   = {Journal of Quality Technology},
+  year      = {2010},
+  volume    = {42},
+  number    = {2},
+  pages     = {165},
+  comment   = {example in background section},
+  publisher = {American Society for Quality},
+}
+
+@Article{sharkey2014nonparametric,
+  author  = {Sharkey, Paul and Killick, Rebecca},
+  title   = {Nonparametric methods for online changepoint detection},
+  journal = {??????????? ??????.--[????? ???????]: http://www. lancaster. ac. uk/pg/sharkeyp/PaulRT2. pdf--23 p. Reference},
+  year    = {2014},
+  volume  = {1},
+  pages   = {3},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
