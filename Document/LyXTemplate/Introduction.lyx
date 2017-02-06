@@ -456,7 +456,8 @@ False alarm
 status open
 
 \begin_layout Plain Layout
-discovering time point where property of time series is changed
+perhaps write something about the method in each procedure including citation
+ (expand the content....)
 \end_layout
 
 \end_inset
@@ -465,7 +466,16 @@ discovering time point where property of time series is changed
 \end_layout
 
 \begin_layout Standard
+discovering time point where property of time series is changed
+\end_layout
+
+\begin_layout Standard
 use as a tool to detect abrupt performance variations
+\end_layout
+
+\begin_layout Standard
+distinguish a short-term tick up or down from a true change in the underlying
+ signal
 \end_layout
 
 \begin_layout Section

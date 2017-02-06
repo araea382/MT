@@ -456,12 +456,25 @@ False alarm
 status open
 
 \begin_layout Plain Layout
-discovering time point where property of time series is changed
+perhaps write something
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+discovering time point where property of time series is changed
+\end_layout
+
+\begin_layout Standard
+use as a tool to detect abrupt performance variations
+\end_layout
+
+\begin_layout Standard
+distinguish a short-term tick up or down from a true change in the underlying
+ signal
 \end_layout
 
 \begin_layout Section
@@ -489,8 +502,8 @@ The main idea of this thesis is to reduce the laborer work to do visual
  is degradation, improvement or in a steady state.
  There is also a case when the changes in the test environment affect performanc
 e even though there is no change in the software package.
- The implemented algorithm should be able to detect when the test environment
- is altered.
+ The implemented algorithm should be able to also detect when the test environme
+nt is altered.
  
 \end_layout
 
@@ -512,7 +525,7 @@ The thesis is structured as follows: Chapter 2 provides detail and description
  of datasets used in the analysis.
  Chapter 3 presents methodology.
  Results from the analysis is shown in Chapter 4 along with tables and plots.
- Chapter 5 discuss about the outcome and the obtained results, and conclusion
+ Chapter 5 discusses about the outcome and the obtained results, and conclusion
  can be found in Chapter 6.
  
 \end_layout

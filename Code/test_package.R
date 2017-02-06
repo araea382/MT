@@ -55,7 +55,7 @@ ts.plot(Xcov, ylab = "Value", main = "Change in a Univariate Gaussian Sequence")
 data("ACGH", package = "ecp")
 acghData <- ACGH$data
 
-
+#----------------------------------------------------------------------#
 library(trend)
 data(maxau)
 s <- maxau[,"s"]; Q <- maxau[,"Q"]
@@ -69,4 +69,24 @@ plot(ts(nottem))
 smk.test(nottem)
 partial.mk.test(s,Q)
 partial.cor.trend.test(s,Q, "spearman")
+
+#----------------------------------------------------------------------#
+library(strucchange)
+fs <- breakpoints(g2_L16B_new_min$Normalize ~ 1)
+fs <- breakpoints(g2_L16B_filter_min$`TotCpu%` ~ 1)
+
+#----------------------------------------------------------------------#
+library(tsoutliers)
+dat.ts <- ts(g2_L16B_new_min$Normalize, frequency=1)
+outlier <- tso(dat.ts); outlier
+plot(outlier)
+# it corrects but we do not want to detect outlier
+
+dat.ts <- ts(g2_L16B_filter_min$`TotCpu%`, frequency=1)
+outlier <- tso(dat.ts); outlier
+plot(outlier)
+# strange
+
+#----------------------------------------------------------------------#
+
 

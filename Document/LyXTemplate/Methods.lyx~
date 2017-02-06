@@ -298,16 +298,25 @@ Methods (5-10 pages)
 \end_layout
 
 \begin_layout Standard
+ECP 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 Description of statistical and other methods used with references to the
  scientific literature.
 \end_layout
 
-\begin_layout Section
-Assessment of data quality
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Section
+Assessment of data quality
 \end_layout
 
 \begin_layout Section
