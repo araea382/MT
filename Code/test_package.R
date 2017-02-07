@@ -1,5 +1,4 @@
 library(ecp)
-library(cpm)
 
 set.seed(250)
 period1 <- rnorm(100)
@@ -69,6 +68,7 @@ plot(ts(nottem))
 smk.test(nottem)
 partial.mk.test(s,Q)
 partial.cor.trend.test(s,Q, "spearman")
+# No, we do not want to detect trend
 
 #----------------------------------------------------------------------#
 library(strucchange) # change in regression
@@ -96,16 +96,49 @@ plot(outlier)
 dat.ts <- ts(g2_L16B_filter_min$`TotCpu%`, frequency=1)
 outlier <- tso(dat.ts); outlier
 plot(outlier)
-# strange
+# strange # do not understand the graph ....
 
 #----------------------------------------------------------------------#
 library(changepoint)
-ansmeanvar=cpt.meanvar(g2_L16B_new_min$Normalize)
+ansmeanvar=cpt.meanvar(g2_L16B_new_min$Normalize) # mean and variance
 plot(ansmeanvar)
 print(ansmeanvar)
-
 
 #----------------------------------------------------------------------#
 library(partykit)
 data("treepipit", package = "coin")
+
+#----------------------------------------------------------------------#
+library(quantmod)
+p <- findPeaks(g2_L16B_new_min$Normalize)
+plot(g2_L16B_new_min$Normalize, type="l")
+points(p, g2_L16B_new_min$Normalize[p])
+
+p <- findPeaks(g2_L16B_filter_min$`TotCpu%`)
+plot(g2_L16B_filter_min$`TotCpu%`, type="l")
+points(p, g2_L16B_filter_min$`TotCpu%`[p])
+
+p2 <- find_peaks(g2_L16B_new_min$Normalize)
+plot(g2_L16B_new_min$Normalize, type="l")
+points(p2, g2_L16B_new_min$Normalize[p2])
+
+
+#----------------------------------------------------------------------#
+library(peakPick)
+peakhits <- peakpick(g2_L16B_new_min$Normalize, 100)
+plot(g2_L16B_new_min$Normalize, type="l")
+points((1:length(g2_L16B_new_min))[peakhits], g2_L16B_new_min$Normalize[peakhits], col="red")
+
+spikes <- detect.spikes(matrix(g2_L16B_new_min$Normalize), c(2,nrow(g2_L16B_new_min)-1), 1)
+
+
+#----------------------------------------------------------------------#
+source("C:/Users/EARAEAM/Desktop/MT/Code/peakdet.R")
+p <- peakdet(g2_L16B_new_min$Normalize, delta=0.5, c(1:nrow(g2_L16B_new_min))) # small delta more detect
+plot(g2_L16B_new_min$Normalize, type="l")
+points(p$maxtab[,1],p$maxtab[,2], col="red", pch=16)
+points(p$mintab[,1],p$mintab[,2], col="blue", pch=16)
+
+#----------------------------------------------------------------------#
+library(wmtsa)
 

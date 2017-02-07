@@ -777,7 +777,7 @@ axis(1, at=1:nrow(g2_L16B_new_avg), labels=g2_L16B_new_avg$SW)
 
 # use get_min()
 g2_L16B_new_min <- get_min(g2_L16B_new, "Normalize")
-Ediv1_new_min <- e.divisive(matrix(g2_L16B_new_min$Normalize), R=499, min.size=15, alpha=1) 
+Ediv1_new_min <- e.divisive(matrix(g2_L16B_new_min$Normalize), R=499, min.size=15, alpha=0.1) 
 Ediv1_new_min$k.hat 
 Ediv1_new_min$estimates
 
