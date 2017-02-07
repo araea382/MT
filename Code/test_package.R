@@ -71,9 +71,20 @@ partial.mk.test(s,Q)
 partial.cor.trend.test(s,Q, "spearman")
 
 #----------------------------------------------------------------------#
-library(strucchange)
+library(strucchange) # change in regression
 fs <- breakpoints(g2_L16B_new_min$Normalize ~ 1)
+
+g <- g2_L16B_new_min
+g$DuProdName <- as.factor(g$DuProdName)
+g$`Fdd/Tdd` <- as.factor(g$`Fdd/Tdd`)
+g$NumCells <- as.factor(g$NumCells)
+
+fs <- breakpoints(Normalize ~ `Fdd/Tdd` + NumCells + DuProdName, data=g)
+fm1 <- lm(g$Normalize ~ breakfactor(fs, breaks = 1))
+lines(ts(fitted(fm1), start =0), col = 4)
+
 fs <- breakpoints(g2_L16B_filter_min$`TotCpu%` ~ 1)
+
 
 #----------------------------------------------------------------------#
 library(tsoutliers)
@@ -88,5 +99,13 @@ plot(outlier)
 # strange
 
 #----------------------------------------------------------------------#
+library(changepoint)
+ansmeanvar=cpt.meanvar(g2_L16B_new_min$Normalize)
+plot(ansmeanvar)
+print(ansmeanvar)
 
+
+#----------------------------------------------------------------------#
+library(partykit)
+data("treepipit", package = "coin")
 

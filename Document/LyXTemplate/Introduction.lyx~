@@ -457,7 +457,24 @@ status open
 
 \begin_layout Plain Layout
 perhaps write something about the method in each procedure including citation
- (expand the text....)
+ (expand the content....)
+\end_layout
+
+\begin_layout Plain Layout
+para: CUSUM
+\end_layout
+
+\begin_layout Plain Layout
+nonpara: 
+\end_layout
+
+\begin_layout Plain Layout
+software development
+\end_layout
+
+\begin_layout Plain Layout
+meticulously inspecting what's coming out, looking and validating that requireme
+nts for products are satisfied
 \end_layout
 
 \end_inset
