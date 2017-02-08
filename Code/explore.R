@@ -8,7 +8,6 @@ library(ecp)
 library(ggplot2)
 library(dplyr)
 library(stringr)
-library(depmixS4)
 
 #----------------------------------------------------------------------#
 g2 <- fread("master-g2-17col.csv.txt")
