@@ -142,3 +142,75 @@ points(p$mintab[,1],p$mintab[,2], col="blue", pch=16)
 #----------------------------------------------------------------------#
 library(wmtsa)
 
+
+
+
+
+
+#----------------------------------------------------------------------#
+library(qcc)
+q <- qcc(g2_L16B_filter_min$`TotCpu%`, type="xbar.one")
+
+
+
+
+#----------------------------------------------------------------------#
+library(AnomalyDetection)
+data(raw_data)
+g <- g2_L16B_min[,c("SW","TotCpu%")]
+g$SW <- as.numeric(g$SW)
+g$SW <- as.POSIXlt(g$SW, origin="1960-10-01")
+res = AnomalyDetectionTs(g, max_anoms=0.02, direction='both', plot=TRUE)
+res$plot
+# need to change to POSIXlt or timestamp which is not make sense in this case
+
+res2 <- AnomalyDetectionVec(g2_L16B$`TotCpu%`, max_anoms=0.02, period=50, direction='both', plot=TRUE)
+res2$plot
+# can not get it to work
+
+#----------------------------------------------------------------------#
+library(depmixS4)
+library(quantmod)
+data(speed)
+
+EURUSD1d <- read.csv("C:/Users/EARAEAM/Downloads/EURUSD1d.csv")
+Date<-as.character(EURUSD1d[,1])
+DateTS<- as.POSIXlt(Date, format = "%Y.%m.%d %H:%M:%S") #create date and time objects
+TSData<-data.frame(EURUSD1d[,2:5],row.names=DateTS)
+TSData<-as.xts(TSData) #build our time series data set
+ATRindicator<-ATR(TSData[,2:4],n=14) #calculate the indicator
+ATR<-ATRindicator[,2] #grab just the ATR
+LogReturns <- log(EURUSD1d$Close) - log(EURUSD1d$Open) #calculate the logarithmic returns
+ModelData<-data.frame(LogReturns,ATR) #create the data frame for our HMM model
+ModelData<-ModelData[-c(1:14),] #remove the data where the indicators are being calculated
+colnames(ModelData)<-c("LogReturns","ATR") #name our columns
+
+set.seed(1)
+HMM<-depmix(list(LogReturns~1,ATR~1),data=ModelData,nstates=3,family=list(gaussian(),gaussian())) #We're setting the LogReturns and ATR as our response variables, using the data frame we just built, want to set 3 different regimes, and setting the response distributions to be gaussian.
+HMMfit<-fit(HMM, verbose = FALSE) #fit our model to the data set
+print(HMMfit) #we can compare the log Likelihood as well as the AIC and BIC values to help choose our model
+summary(HMMfit)
+
+HMMpost<-posterior(HMMfit) #find the posterior odds for each state over our data set
+head(HMMpost) #we can see that we now have the probability for each state for everyday as well as the highest probability class.
+
+
+DFIndicators <- data.frame(DateTS, LogReturns, ATR); 
+DFIndicatorsClean <- DFIndicators[-c(1:14), ]
+
+Plot1Data<-data.frame(DFIndicatorsClean, HMMpost$state)
+
+LogReturnsPlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,2]))+geom_line(color="darkblue")+labs(title="Log Returns",y="Log Returns",x="Date"); LogReturnsPlot
+ATRPlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,3]))+geom_line(color="darkgreen")+labs(title="ATR(14)",y="ATR(14)",x="Date"); ATRPlot
+RegimePlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,4]))+geom_line(color="red")+labs(title="Regime",y="Log Regime",x="Date"); RegimePlot
+
+# The probability of each regime separately
+Plot2Data<-data.frame("DateTS"=DFIndicatorsClean$DateTS, HMMpost)
+Regime1Plot<-ggplot(Plot2Data,aes(x=Plot2Data[,1],y=Plot2Data[,3]))+geom_line(color="purple")+labs(title="Regime 1",y="Probability",x="Date")
+Regime2Plot<-ggplot(Plot2Data,aes(x=Plot2Data[,1],y=Plot2Data[,4]))+geom_line(color="orange")+labs(title="Regime 2",y="Probability",x="Date")
+Regime3Plot<-ggplot(Plot2Data,aes(x=Plot2Data[,1],y=Plot2Data[,5]))+geom_line(color="darkblue")+labs(title="Regime 3",y="Probability",x="Date")
+
+# regime 3 tends to be times of high volatility and large magnitude moves, regime 2 is characterized by medium volatility, and regime 1 consists of low volatility.
+
+
+

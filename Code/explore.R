@@ -663,11 +663,15 @@ for(i in 1:length(nn_name_filter)){
 #----------------------------------------------------------------------#
 # try depmixS4
 .depmixs4 <- function(){
-temp <- get_average(g2_L16B_filter,`TotCpu%`)
-model <- depmix(`TotCpu%` ~ 1, data = g2_L16B_filter, nstates = 3)
-model <- depmix(value ~ 1, data = temp, nstates = 3)
-set.seed(1)
-fitted <- fit(model)
+library(depmixS4)
+temp <- get_average(g2_L16B_filter,"TotCpu%")
+temp2 <- get_min(g2_L16B_filter, "TotCpu%")
+
+model <- depmix(`TotCpu%` ~ 1, data=g2_L16B_filter, nstates=3)
+model2 <- depmix(`TotCpu%` ~ 1, data=temp2, nstates=3)
+
+set.seed(12345)
+fitted <- fit(model2)
 summary(fitted)
 print(fitted)
 # state 1 is the starting state for the process
@@ -677,7 +681,7 @@ head(prob)
 rowSums(head(prob)[,2:4]) # Check that probabilities sum to 1
 
 par(mfrow=c(2,1))
-ts.plot(matrix(temp$value))
+ts.plot(matrix(temp2$`TotCpu%`))
 plot(1:nrow(prob), prob[,1], type='l')
 
 dat <- temp
