@@ -314,8 +314,16 @@ Data description
 Dataset 1: The first generation
 \end_layout
 
+\begin_layout Standard
+Dataset 1 contains
+\end_layout
+
 \begin_layout Subsection
 Dataset 2: The second generation
+\end_layout
+
+\begin_layout Standard
+The second dataset includes
 \end_layout
 
 \begin_layout Standard
@@ -340,15 +348,27 @@ Figure legends below the graph
 \end_layout
 
 \begin_layout Section
-Raw data
+Data preprocessing
 \end_layout
 
 \begin_layout Standard
-This is an equation
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 \int\sin(x)dx=E_{\pi}(X)\label{eq:JustAnEquation}
 \end{equation}
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

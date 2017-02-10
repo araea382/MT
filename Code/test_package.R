@@ -171,6 +171,8 @@ res2$plot
 #----------------------------------------------------------------------#
 library(depmixS4)
 library(quantmod)
+library(ggplot2)
+library(gridExtra)
 data(speed)
 
 EURUSD1d <- read.csv("C:/Users/EARAEAM/Downloads/EURUSD1d.csv")
@@ -202,7 +204,7 @@ Plot1Data<-data.frame(DFIndicatorsClean, HMMpost$state)
 
 LogReturnsPlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,2]))+geom_line(color="darkblue")+labs(title="Log Returns",y="Log Returns",x="Date"); LogReturnsPlot
 ATRPlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,3]))+geom_line(color="darkgreen")+labs(title="ATR(14)",y="ATR(14)",x="Date"); ATRPlot
-RegimePlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,4]))+geom_line(color="red")+labs(title="Regime",y="Log Regime",x="Date"); RegimePlot
+RegimePlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,4]))+geom_line(color="red")+labs(title="Regime",y="Regime",x="Date"); RegimePlot
 
 # The probability of each regime separately
 Plot2Data<-data.frame("DateTS"=DFIndicatorsClean$DateTS, HMMpost)
@@ -212,5 +214,57 @@ Regime3Plot<-ggplot(Plot2Data,aes(x=Plot2Data[,1],y=Plot2Data[,5]))+geom_line(co
 
 # regime 3 tends to be times of high volatility and large magnitude moves, regime 2 is characterized by medium volatility, and regime 1 consists of low volatility.
 
+#----------------------#
+temp2 <- get_min(g2_L16B, "TotCpu%")
+model2 <- depmix(`TotCpu%` ~ 1, data=temp2, nstates=3, family=gaussian())
+
+set.seed(12345)
+fitted <- fit(model2)
+summary(fitted) 
+# state 1 is the starting state for the process
+
+prob <- posterior(fitted) # Compute probability of being in each state
+head(prob) # we can see that we now have the probability for each state for everyday as well as the highest probability class.
+# rowSums(head(prob)[,2:4]) # Check that probabilities sum to 1
+
+dat <- data.frame(temp2, prob$state)
+cpu <- ggplot(dat,aes(x=as.numeric(dat[,7]),y=dat[,14])) + geom_line(color="darkgreen") + labs(title="TotCpu%",y="TotCpu%",x="SW")
+regime <- ggplot(dat,aes(x=as.numeric(dat[,7]),y=dat[,18])) + geom_line(color="red") + labs(title="Regime",y="Regime",x="SW")
+grid.arrange(cpu, regime)
+
+# The probability of each regime separately
+dat2 <- data.frame(temp2, prob)
+regime1 <- ggplot(dat2,aes(x=as.numeric(dat2[,7]),y=dat2[,19])) + geom_line(color="purple") + labs(title="Regime 1",y="Probability",x="SW")
+regime2 <- ggplot(dat2,aes(x=as.numeric(dat2[,7]),y=dat2[,20])) + geom_line(color="orange") + labs(title="Regime 2",y="Probability",x="v")
+regime3 <- ggplot(dat2,aes(x=as.numeric(dat2[,7]),y=dat2[,21])) + geom_line(color="darkblue") + labs(title="Regime 3",y="Probability",x="SW")
+grid.arrange(regime1, regime2, regime3)
 
 
+#----------------------#
+
+#----------------------------------------------------------------------#
+library(quantmod)
+library(depmixS4)
+library(TTR)
+
+fred.tickers <-c("INDPRO")
+getSymbols(fred.tickers,src="FRED")
+
+indpro.1yr <-na.omit(ROC(INDPRO,12))
+indpro.1yr.df <-data.frame(indpro.1yr)
+
+model <- depmix(response=INDPRO ~ 1, 
+                family = gaussian(), 
+                nstates = 2, 
+                data = indpro.1yr.df ,
+                transition=~1)
+
+set.seed(1)
+model.fit <- fit(model, verbose = FALSE)
+model.prob <- posterior(model.fit)
+prob.rec <-model.prob[,2]
+prob.rec.dates <-xts(prob.rec,as.Date(index(indpro.1yr)),
+                     order.by=as.Date(index(indpro.1yr)))
+prob.rec.d <- data.frame(date=as.Date(index(indpro.1yr)), model.prob)
+
+ggplot(prob.rec.d,aes(x=prob.rec.d[,1],y=prob.rec.d[,2])) + geom_line(color="red")

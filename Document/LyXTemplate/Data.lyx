@@ -348,15 +348,23 @@ Figure legends below the graph
 \end_layout
 
 \begin_layout Section
-Raw data
+Data preprocessing
 \end_layout
 
 \begin_layout Standard
-This is an equation
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 \int\sin(x)dx=E_{\pi}(X)\label{eq:JustAnEquation}
 \end{equation}
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
