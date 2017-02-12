@@ -123,4 +123,62 @@
   pages   = {3},
 }
 
+@Article{luong2012hidden,
+  author  = {Luong, The Minh and Perduca, Vittorio and Nuel, Gregory},
+  title   = {Hidden Markov Model Applications in Change-Point Analysis},
+  journal = {arXiv preprint arXiv:1212.1778},
+  year    = {2012},
+}
+
+@Article{rabiner1986introduction,
+  author    = {Rabiner, Lawrence and Juang, B},
+  title     = {An introduction to hidden Markov models},
+  journal   = {ieee assp magazine},
+  year      = {1986},
+  volume    = {3},
+  number    = {1},
+  pages     = {4--16},
+  publisher = {IEEE},
+}
+
+@Article{ghahramani2001introduction,
+  author    = {Ghahramani, Zoubin},
+  title     = {An introduction to hidden Markov models and Bayesian networks},
+  journal   = {International journal of pattern recognition and artificial intelligence},
+  year      = {2001},
+  volume    = {15},
+  number    = {01},
+  pages     = {9--42},
+  publisher = {World Scientific},
+}
+
+@Article{srivastava2008credit,
+  author    = {Srivastava, Abhinav and Kundu, Amlan and Sural, Shamik and Majumdar, Arun},
+  title     = {Credit card fraud detection using hidden Markov model},
+  journal   = {IEEE Transactions on dependable and secure computing},
+  year      = {2008},
+  volume    = {5},
+  number    = {1},
+  pages     = {37--48},
+  publisher = {IEEE},
+}
+
+@Article{James2013,
+  author  = {James, Nicholas A and Matteson, David S},
+  title   = {ecp: An R package for nonparametric multiple change point analysis of multivariate data},
+  journal = {arXiv preprint arXiv:1309.3295},
+  year    = {2013},
+}
+
+@Article{rabiner1989tutorial,
+  author    = {Rabiner, Lawrence R},
+  title     = {A tutorial on hidden Markov models and selected applications in speech recognition},
+  journal   = {Proceedings of the IEEE},
+  year      = {1989},
+  volume    = {77},
+  number    = {2},
+  pages     = {257--286},
+  publisher = {Ieee},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

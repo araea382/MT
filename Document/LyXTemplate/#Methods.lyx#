@@ -113,8 +113,8 @@ customHeadersFooters
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -294,78 +294,145 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Data
-\end_layout
-
-\begin_layout Section
-Data sources
+Methods
 \end_layout
 
 \begin_layout Standard
-Data is collected by Ericsson.
+In this section, methods that are used for performing the change point detection
+/ anomaly detection in the thesis are explained.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Description of statistical and other methods used with references to the
+ scientific literature.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+ecp
+\end_layout
+
+\begin_layout Standard
+ecp is an extension package in R which mainly focus on computing nonparametric
+ test for multiple change point analysis.
+ It is applicable to both univariate and multivariate time series.
+ A fundamental idea for building alogrithms that can identify the change
+ point is based on either divisive or agglomerative procedure in hierrachical
+ clustering approach 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "james2013ecp"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+E-divisive algorithm recursively partitioned a time series.
+ An estimatation of the change point is computed at each iteration.
+ Permutation test is performed to find the statistical significance of an
+ estimated change point.
+\end_layout
+
+\begin_layout Standard
+E-agglomerative alogrithm trys to maximized a goodness of fit test after
+ merging segments in the iteration.
+ The estimated change point is defined by the iteration that maximized a
+ goodness of fit statistic.
+ It allows user to input an initial segmentation for the time series or
+ a prior knowledge of the possible change point in order to reduce the computati
+on time.
+\end_layout
+
+\begin_layout Section
+Hidden Markov model
+\end_layout
+
+\begin_layout Standard
+Hidden Markov model is a technique representing a probability distribution
+ over an observation sequence 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ghahramani2001introduction"
+
+\end_inset
+
+.
+ There are consitsts of two stochastic processes embedded in two levels
+ of hierarchy.
+ One process is an underlying stochastic process that is not observable
+ but it is possible to observe them through another stochastic process which
+ generated the sequence of observation 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rabiner1986introduction"
+
+\end_inset
+
+.
+ In addtion, the hidden state assumes to follow the Markov property in which
+ the future state depends only on the current state.
+ The name hidden Markov model is, thus, coming from these two defined properties.
+ A hidden Markov model is able to model more complex stochastic processes
+ and apply to various type of applications compared to the traditional Markov
+ model.
+ In general, the hidden state space of a standard hidden Markov model is
+ discrete while the observation can either be discrete or real-valued.
+ There are tranitions between states which contain a transition probability
+ called state transition matrix.
+ The observation probability or emission matrix is the observation occuring
+ in a given state
+\end_layout
+
+\begin_layout Standard
+A hidden Markov model can be characterized as follows 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rabiner1989tutorial"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+N is 
+\end_layout
+
+\begin_layout Standard
+A general structure of hidden Markov model can be drawn in graphically as
+ shown in figure 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+add figure
+\end_layout
+
+\end_inset
+
+, where 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ denote the hidden state sequence in the Markov process.
+ The arrows from one state to another state in the diagram implied the condition
+al dependency.
  
 \end_layout
 
-\begin_layout Section
-Data description
-\end_layout
-
-\begin_layout Subsection
-Dataset 1: The first generation
-\end_layout
-
 \begin_layout Standard
-Dataset 1 contains
-\end_layout
-
-\begin_layout Subsection
-Dataset 2: The second generation
-\end_layout
-
-\begin_layout Standard
-The second dataset includes
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Brief description of variables and cases in the given data
-\end_layout
-
-\begin_layout Plain Layout
-Table headings above the table
-\end_layout
-
-\begin_layout Plain Layout
-Figure legends below the graph
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Data preprocessing
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{equation}
-\int\sin(x)dx=E_{\pi}(X)\label{eq:JustAnEquation}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
+Hidden Markov model is denoted by 
+\begin_inset Formula $\lambda=(A,B,\pi)$
 \end_inset
 
 

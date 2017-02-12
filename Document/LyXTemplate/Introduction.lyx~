@@ -394,7 +394,7 @@ In this study, change point detection will be used to identify the changes
  software package perform.
  The performance of these software packages are evaluated by considering
  on the CPU utilization, a percent of the CPU's cycle that spent on each
- process, and some other metrics (e.g., memory usage, latency).
+ process, and some other performance metrics (e.g., memory usage, latency).
  CPU utilization is one of the main focus in the test run that need to be
  optimized for the released of upgrade software package.
 \end_layout
