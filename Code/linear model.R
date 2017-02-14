@@ -178,8 +178,8 @@ X_train <- as.matrix(subset(train, select=c(18:ncol(g_new))))
 y_test <- as.matrix(test$`TotCpu%`)
 X_test <- as.matrix(subset(test, select=c(18:ncol(g_new)))) 
 
-# y <- as.matrix(g_new$`TotCpu%`)
-# X <- as.matrix(subset(g_new, select=c(18:ncol(g_new)))) 
+y <- as.matrix(g_new$`TotCpu%`)
+X <- as.matrix(subset(g_new, select=c(18:ncol(g_new))))
 
 
 # g_new2 <- g_new
