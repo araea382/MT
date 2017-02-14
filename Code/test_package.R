@@ -168,3 +168,86 @@ res2 <- AnomalyDetectionVec(g2_L16B$`TotCpu%`, max_anoms=0.02, period=50, direct
 res2$plot
 # can not get it to work
 
+#----------------------------------------------------------------------#
+library(MSwM)
+data(example)
+mod=lm(y~x,example)
+summary(mod)
+mod.mswm=msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(parallel=F))
+summary(mod.mswm)
+
+plotDiag(mod.mswm, which=1)
+plotDiag(mod.mswm, which=2)
+plotDiag(mod.mswm, which=3)
+
+plotProb(mod.mswm,which=1)
+plotProb(mod.mswm,which=2)
+plotReg(mod.mswm,expl="x")
+
+data(traffic)
+model=glm(NDead~Temp+Prec,traffic,family="poisson")
+summary(model)
+
+m1=msmFit(model,k=2,sw=c(T,T,T),family="poisson",control=list(parallel=F))
+summary(m1)
+plotDiag(m1, which=1)
+plotDiag(m1, which=2)
+plotDiag(m1, which=3)
+
+plotProb(m1,which=2)
+plotReg(m1)
+
+#----------------------#
+g_filter <- extract_component(g2_L16B_filter_min)
+g_filter <- g_filter[-c(1:13,15:17,70,72)]
+colnames(g_filter)[1] <- "TotCpu"
+model1 <- lm(TotCpu ~ ., data=g_filter)
+
+model_mswm <- msmFit(model1, k=3, p=1, sw=rep(TRUE,56), control=list(parallel=F))
+summary(model_mswm)
+
+library(TSA)
+set.seed(12345)
+ar <- arima(g_filter$TotCpu, order=c(1,0,0))
+
+
+#----------------------------------------------------------------------#
+library(NHMSAR)
+data(meteo.data)
+data = array(meteo.data$temperature,c(31,41,1))
+k = 40
+T = dim(data)[1]
+N.samples = dim(data)[2]
+d = dim(data)[3]
+M = 2
+order = 2
+theta.init = init.theta.MSAR(data,M=M,order=order,label="HH")
+mod.hh = fit.MSAR(data,theta.init,verbose=TRUE,MaxIter=20)
+regimes.plot.MSAR(mod.hh,data,ylab="temperatures")
+#Y0 = array(data[1:2,sample(1:dim(data)[2],1),],c(2,1,1))
+#Y.sim = simule.nh.MSAR(mod.hh$theta,Y0 = Y0,T,N.samples = 1)
+
+# Fit Non Homogeneous MS-AR models
+theta.init = init.theta.MSAR(data,M=M,order=order,label="NH",nh.transitions="gauss")
+attributes(theta.init)
+mod.nh = fit.MSAR(array(data[2:T,,],c(T-1,N.samples,1)),theta.init,verbose=TRUE,MaxIter=50,
+covar.trans=array(data[1:(T-1),,],c(T-1,N.samples,1)))
+regimes.plot.MSAR(mod.nh,data,ex=40,ylab="temperature (deg. C)")
+
+
+data(PibDetteDemoc)
+T = length(unique(PibDetteDemoc$year))-1
+N.samples = length(unique(PibDetteDemoc$country))
+PIB = matrix(PibDetteDemoc$PIB,N.samples,T+1)
+Dette = matrix(PibDetteDemoc$Dette,N.samples,T+1)
+Democratie = matrix(PibDetteDemoc$Democratie,N.samples,T+1)
+d = 2
+Y = array(0,c(T,N.samples,2))
+for (k in 1:N.samples) {
+Y[,k,1] = diff(log(PIB[k,]))
+Y[,k,2] = diff(log(Dette[k,]))
+}
+Democ = Democratie[,2:(T+1)]
+theta.hh = init.theta.MSAR(Y,M=M,order=1,label="HH")
+res.hh = fit.MSAR(Y,theta.hh,verbose=TRUE,MaxIter=200)
+regime.hh = apply(res.hh$smoothedprob,c(1,2),which.max)

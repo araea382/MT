@@ -68,8 +68,10 @@ regime2 <- ggplot(dat2,aes(x=as.numeric(dat2[,7]),y=dat2[,22])) + geom_line(colo
 regime3 <- ggplot(dat2,aes(x=as.numeric(dat2[,7]),y=dat2[,23])) + geom_line(color="darkblue") + labs(title="Regime 3",y="Probability",x="SW")
 grid.arrange(regime1, regime2, regime3)
 
-
-#----------------------#
+layout(1:2)
+plot(temp2$`TotCpu%`, type='l', main='Regime Detection', xlab='', ylab='cpu')
+matplot(prob[,-1], type='l', main='Regime Posterior Probabilities', ylab='Probability')
+legend(x='bottomleft', c('Regime #1','Regime #2', 'Regime #3'), fill=1:3, bty='n')
 
 #----------------------------------------------------------------------#
 library(quantmod)

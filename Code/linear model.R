@@ -167,16 +167,16 @@ abline(v=Ediv_res$estimates[c(-1,-length(Ediv_res$estimates))], col="red", lty=2
 
 
 #----------------------#
-n=dim(g_new)[1]
-set.seed(12345)
-id=sample(1:n, floor(n*0.5))
-train=g_new[id,]
-test=g_new[-id,]
-
-y_train <- as.matrix(train$`TotCpu%`)
-X_train <- as.matrix(subset(train, select=c(18:ncol(g_new)))) 
-y_test <- as.matrix(test$`TotCpu%`)
-X_test <- as.matrix(subset(test, select=c(18:ncol(g_new)))) 
+# n=dim(g_new)[1]
+# set.seed(12345)
+# id=sample(1:n, floor(n*0.5))
+# train=g_new[id,]
+# test=g_new[-id,]
+# 
+# y_train <- as.matrix(train$`TotCpu%`)
+# X_train <- as.matrix(subset(train, select=c(18:ncol(g_new)))) 
+# y_test <- as.matrix(test$`TotCpu%`)
+# X_test <- as.matrix(subset(test, select=c(18:ncol(g_new)))) 
 
 y <- as.matrix(g_new$`TotCpu%`)
 X <- as.matrix(subset(g_new, select=c(18:ncol(g_new))))
@@ -212,7 +212,7 @@ lasso_cv <- cv.glmnet(X, y, alpha=1, family = "gaussian")
 plot(lasso_cv)
 penalty <- lasso_cv$lambda.min
 fit_lasso <- glmnet(X, y, alpha=1, lambda=penalty) 
-coef(fit_lasso) # 39 variables, highest coef is "PerBbLcgEvent"
+coef(fit_lasso) # 39 variables, highest coef is "PerBbLcgEvent" correlation with TotCpu% = 0.6519379
 
 # try with train and test set 
 lasso <- glmnet(X_train, y_train, alpha=1, family="gaussian") 
