@@ -336,11 +336,19 @@ key "james2013ecp"
 .
 \end_layout
 
+\begin_layout Subsection
+E-divisive
+\end_layout
+
 \begin_layout Standard
 E-divisive algorithm recursively partitioned a time series.
  An estimatation of the change point is computed at each iteration.
  Permutation test is performed to find the statistical significance of an
  estimated change point.
+\end_layout
+
+\begin_layout Subsection
+E-agglomerative
 \end_layout
 
 \begin_layout Standard
@@ -382,15 +390,37 @@ key "rabiner1986introduction"
  In addtion, the hidden state assumes to follow the Markov property in which
  the future state depends only on the current state.
  The name hidden Markov model is, thus, coming from these two defined properties.
- A hidden Markov model is able to model more complex stochastic processes
+ Together, the joint distributioncan be written as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(S_{1},...,S_{T},Y_{1},...,Y_{T})=P(S_{1})P(Y_{1}|S_{1})\prod_{t=2}^{T}P(S_{T}|S_{t-1})P(Y_{t}|S_{t})\label{eq:joint_distribution}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A hidden Markov model is able to model more complex stochastic processes
  and apply to various type of applications compared to the traditional Markov
  model.
  In general, the hidden state space of a standard hidden Markov model is
  discrete while the observation can either be discrete or real-valued.
- There are tranitions between states which contain a transition probability
- called state transition matrix.
- The observation probability or emission matrix is the observation occuring
- in a given state
+ There are transitions between states which contain a probability called
+ state transition matrix, 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ The observation probability matrix or emission matrix, 
+\begin_inset Formula $B$
+\end_inset
+
+, is the chance of observation occuring in a given state.
 \end_layout
 
 \begin_layout Standard
@@ -405,18 +435,70 @@ key "rabiner1989tutorial"
 \end_layout
 
 \begin_layout Enumerate
-N is 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of states in the model.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The state transition probability 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $A=\{a_{ij}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The observation
+\end_layout
+
+\begin_layout Enumerate
+The initial state 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\pi=\\pi$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 A general structure of hidden Markov model can be drawn in graphically as
- shown in figure 
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-add figure
-\end_layout
+ shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "hmm"
 
 \end_inset
 
@@ -431,11 +513,117 @@ al dependency.
 \end_layout
 
 \begin_layout Standard
-Hidden Markov model is denoted by 
-\begin_inset Formula $\lambda=(A,B,\pi)$
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/HMM diagram.PNG
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Hidden Markov model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "hmm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hidden Markov model is defined by 
+\begin_inset Formula $A,$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $B,$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ and 
+\begin_inset Formula $\pi$
+\end_inset
+
+ and is denoted by 
+\begin_inset Formula $\lambda=(A,B,\pi)$
+\end_inset
+
+ to represent the complete set of parameters.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+notation table
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Autoregressive Hidden Markov model
+\end_layout
+
+\begin_layout Standard
+This is an extension of the basic hidden Markov model whicch also has dependenci
+es at observation level.
+ It is a combination of autoregressive time series and hidden Markov model
+ which can also be known as Markov swiching autoregressive models.
+ The obsevations are drawn from 
 \end_layout
 
 \begin_layout Standard

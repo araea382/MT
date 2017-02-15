@@ -234,20 +234,33 @@ mod.nh = fit.MSAR(array(data[2:T,,],c(T-1,N.samples,1)),theta.init,verbose=TRUE,
 covar.trans=array(data[1:(T-1),,],c(T-1,N.samples,1)))
 regimes.plot.MSAR(mod.nh,data,ex=40,ylab="temperature (deg. C)")
 
+# Fit Non Homogeneous MS-AR models - univariate time series
+data(lynx)
+T = length(lynx)
+data = array(log10(lynx),c(T,1,1))
+theta.init = init.theta.MSAR(data,M=2,order=2,label="HH")
+mod.lynx.hh = fit.MSAR(data,theta.init,verbose=TRUE,MaxIter=200)
+regimes.plot.MSAR(mod.lynx.hh,data,ylab="Captures number")
+r <- regimes.plot.MSAR(mod.lynx.hh,data,ylab="Captures number")
 
-data(PibDetteDemoc)
-T = length(unique(PibDetteDemoc$year))-1
-N.samples = length(unique(PibDetteDemoc$country))
-PIB = matrix(PibDetteDemoc$PIB,N.samples,T+1)
-Dette = matrix(PibDetteDemoc$Dette,N.samples,T+1)
-Democratie = matrix(PibDetteDemoc$Democratie,N.samples,T+1)
-d = 2
-Y = array(0,c(T,N.samples,2))
-for (k in 1:N.samples) {
-Y[,k,1] = diff(log(PIB[k,]))
-Y[,k,2] = diff(log(Dette[k,]))
-}
-Democ = Democratie[,2:(T+1)]
-theta.hh = init.theta.MSAR(Y,M=M,order=1,label="HH")
-res.hh = fit.MSAR(Y,theta.hh,verbose=TRUE,MaxIter=200)
-regime.hh = apply(res.hh$smoothedprob,c(1,2),which.max)
+plot(log10(lynx), type="l")
+plot(mod.lynx.hh$smoothedprob[,1], type="l", lty="dashed", col="red", ylim=c(0,1))
+lines(mod.lynx.hh$smoothedprob[,2], lty="dotted", col="blue")
+
+dat <- as.data.frame(mod.lynx.hh$smoothedprob)
+dat$regime <- 0
+dat$regime <- apply(dat, 1, function(x){
+  if(x[1] > x[2]){
+    x[3] <- 1
+  }else{
+    x[x] <- 2
+  }
+})
+#----------------------#
+t <- nrow(g2_L16B_filter_min)
+dat <- array(g2_L16B_filter_min$`TotCpu%`, c(t,1,1))
+theta.init <- init.theta.MSAR(dat, M=3, order=1, label="HH")
+mod_hh <- fit.MSAR(dat, theta.init, verbose=TRUE, MaxIter=200)
+regimes.plot.MSAR(mod_hh, dat, ylab="Captures number")
+
+

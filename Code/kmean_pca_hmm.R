@@ -48,8 +48,8 @@ head(prob) # we can see that we now have the probability for each state for ever
 # rowSums(head(prob)[,2:4]) # Check that probabilities sum to 1
 
 dat <- data.frame(g_new$SW, g$cluster, prob$state)
-cpu <- ggplot(dat,aes(x=dat[,1],y=dat[,])) + geom_line(color="darkgreen") + labs(title="TotCpu%",y="TotCpu%",x="SW")
-regime <- ggplot(dat,aes(x=dat[,1],y=dat[,2])) + geom_line(color="red") + labs(title="Regime",y="Regime",x="SW")
+cpu <- ggplot(dat,aes(x=dat[,"g_new.SW"],y=dat[,"g.cluster"])) + geom_line(color="darkgreen") + labs(title="TotCpu%",y="TotCpu%",x="SW")
+regime <- ggplot(dat,aes(x=dat[,"g_new.SW"],y=dat[,"prob.state"])) + geom_line(color="red") + labs(title="Regime",y="Regime",x="SW")
 grid.arrange(cpu, regime)
 
 par(mfrow=c(2,1))
@@ -119,3 +119,20 @@ row.names(g[k$clust==clust[3],])
 # Fourth Cluster
 row.names(g[k$clust==clust[4],])
 
+#----------------------------------------------------------------------#
+# try new subset with selected components
+g_new2 <- subset(g_new, select=c("TotCpu%","RrcConnectionSetupComplete","X2HandoverRequest","Paging","S1InitialUeMessage","ReEstablishmentAttempt","PerBbUeEvent","ErabDrbRelease"))
+g_new2 <- cbind(SW=g_new$SW, g_new2)
+
+set.seed(12345)
+clust2 <- kmeans(g_new2[,-1], centers=5, nstart=10, iter.max=10)
+clust2$centers
+clust2$size
+ggplot(g_new2, aes(x=SW, y=`TotCpu%`, color=as.factor(clust2$cluster))) + geom_point()
+ggplot(g_new2, aes(x=seq_along(`TotCpu%`), y=`TotCpu%`,color=as.factor(clust2$cluster))) + geom_point()
+
+# predict cluster for new observation
+library(clue)
+test <- g_new2[1,-1]
+test <- subset(g, select=c("TotCpu%","RrcConnectionSetupComplete","X2HandoverRequest","Paging","S1InitialUeMessage","ReEstablishmentAttempt","PerBbUeEvent","ErabDrbRelease"))[256,]
+cl_predict(clust2, test)

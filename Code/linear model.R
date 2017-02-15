@@ -51,6 +51,7 @@ extract_component <- function(data){
   return(data)
 }
 
+g <- extract_component(g2)
 g_new <- extract_component(g2_L16B[,1:17])
 # total 187 variables (170 variables are added to data.frame)
 # run time is approx. 2 mins
@@ -120,6 +121,9 @@ temp2 <- subset(g_new, select=c(14,18:ncol(g_new)))
 mod2 <- lm(`TotCpu%`~., data=temp2)
 summary(mod2)
 
+mod3 <- lm(`TotCpu%`~., data=g_new2[,-1])
+summary(mod3)
+
 # stepwise regression (forward-backward)
 # step <- stepAIC(mod, direction="both")
 step$coefficients
@@ -129,7 +133,7 @@ plot(step$residuals, type="l")
 
 step2 <- stepAIC(mod2, direction="both")
 step2$coefficients
-length(step$coefficients) - 1 # 86 variables but different coeff than the first model
+length(step2$coefficients) - 1 # 88 variables but different coeff than the first model
 summary(step2)
 plot(step2$residuals, main="model step 2") # 49, 50, 52
 res <- step2$residuals
