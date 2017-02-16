@@ -362,7 +362,7 @@ on time.
 \end_layout
 
 \begin_layout Section
-Hidden Markov model
+Hidden Markov model (HMM)
 \end_layout
 
 \begin_layout Standard
@@ -402,55 +402,6 @@ P(S_{1},...,S_{T},Y_{1},...,Y_{T})=P(S_{1})P(Y_{1}|S_{1})\prod_{t=2}^{T}P(S_{T}|
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-A hidden Markov model is able to model more complex stochastic processes
- and apply to various type of applications compared to the traditional Markov
- model.
- In general, the hidden state space of a standard hidden Markov model is
- discrete while the observation can either be discrete or real-valued.
- There are transitions between states which contain a probability called
- state transition matrix, 
-\begin_inset Formula $A$
-\end_inset
-
-.
- The observation probability matrix or emission matrix, 
-\begin_inset Formula $B$
-\end_inset
-
-, is the chance of observation occuring in a given state.
-\end_layout
-
-\begin_layout Standard
-A hidden Markov model can be characterized as follows 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "rabiner1989tutorial"
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $N$
-\end_inset
-
- is the number of states in the model.
- 
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $M$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-transition
 \end_layout
 
 \begin_layout Standard
@@ -508,10 +459,273 @@ name "hmm"
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
+\begin_layout Standard
+A hidden Markov model is able to model more complex stochastic processes
+ and apply to various type of applications compared to the traditional Markov
+ model.
+ In general, the hidden state space of a standard hidden Markov model is
+ discrete while the observation can either be discrete or real-valued.
+ There are transitions between states which contain a transition probability
+ and observation probability which is a chance of observation occuring in
+ a given state.
+ A hidden Markov model usually assumes that the probability of transition
+ matrix and observation matrix are independent of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A hidden Markov model can be characterized as follows 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rabiner1989tutorial"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of states in the model.
+ The set of states is denoted by 
+\begin_inset Formula $S=\{S_{1},S_{2},...,S_{N}\}$
+\end_inset
+
+and the state at time instant 
+\begin_inset Formula $t$
+\end_inset
+
+ is denoted by 
+\begin_inset Formula $q_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $M$
+\end_inset
+
+ is the number of distinct observation symbols.
+ The observation can be written as 
+\begin_inset Formula $Y=\{Y_{1},Y_{2},...,Y_{N}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The state transition probability matrix
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ which describes the distribution for the next state given the current state.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ The matrix 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $A=\{a_{ij}\}$
+\end_inset
+
+ is 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+where 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $a_{ij}=P(q_{t+1}=S_{j}|q_{t}=S_{i}),$
+\end_inset
+
+ 
+\begin_inset Formula $1\leq i,j\leq N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The observation probability matrix, or emission matrix, which describes
+ the distribution for the output given the current state.
+ Number of possible observation isn't necessarily the same as the number
+ of possible states.
+ Therefore, the matrix 
+\begin_inset Formula $B=\{b_{j}(k)\}$
+\end_inset
+
+ is 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $N\times M$
+\end_inset
+
+ where
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $b_{j}(k)=P(Y_{k}|S_{t}),$
+\end_inset
+
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $1\leq i\leq N,1\leq k\leq M$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+When the probability distribution is continuous, it can be donoted by
+\begin_inset Newline newline
+\end_inset
+
+
+
+\begin_inset Formula $b_{j}(y)=f(y|\theta_{i})$
+\end_inset
+
+ where 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ is unknown parameter(s) of the distribution in state 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The initial state, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\pi=\{\pi_{i}\}$
+\end_inset
+
+, which describes the starting distribution over states.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\pi_{i}=P(q_{1}=S_{i}),$
+\end_inset
+
+ 
+
+\begin_inset Formula $1\leq i\leq N$
 \end_inset
 
 
@@ -575,15 +789,72 @@ notation table
 \end_layout
 
 \begin_layout Section
+Autoregressive (AR) model
+\end_layout
+
+\begin_layout Standard
+It is
+\end_layout
+
+\begin_layout Section
 Autoregressive Hidden Markov model
 \end_layout
 
 \begin_layout Standard
-This is an extension of the basic hidden Markov model whicch also has dependenci
-es at observation level.
- It is a combination of autoregressive time series and hidden Markov model
- which can also be known as Markov swiching autoregressive models.
- The obsevations are drawn from 
+This is an extension of the basic hidden Markov model which also has dependencie
+s at observation level.
+ Autoregressive hidden Markov model relaxes the conditional independent
+ assumption of the traditional one by allowing observation probability to
+ also depends on the past observation and the current state 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "shannon2009formulation"
+
+\end_inset
+
+.
+ It is a combination of autoregressive time series model and hidden Markov
+ model where obsevations are drawn from autoregression process.
+ This method is also known as Markov swiching autoregressive models.
+ 
+\end_layout
+
+\begin_layout Standard
+The observation sequence is an AR(p) process.
+ The order of autoregression to be 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(juang1985mixture)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+figure of diagram for ARHMM
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

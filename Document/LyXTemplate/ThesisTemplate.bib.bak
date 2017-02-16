@@ -163,13 +163,6 @@
   publisher = {IEEE},
 }
 
-@Article{James2013,
-  author  = {James, Nicholas A and Matteson, David S},
-  title   = {ecp: An R package for nonparametric multiple change point analysis of multivariate data},
-  journal = {arXiv preprint arXiv:1309.3295},
-  year    = {2013},
-}
-
 @Article{rabiner1989tutorial,
   author    = {Rabiner, Lawrence R},
   title     = {A tutorial on hidden Markov models and selected applications in speech recognition},
@@ -179,6 +172,13 @@
   number    = {2},
   pages     = {257--286},
   publisher = {Ieee},
+}
+
+@Article{shannon2009formulation,
+  author    = {Shannon, Matt and Byrne, William},
+  title     = {A formulation of the autoregressive HMM for speech synthesis},
+  year      = {2009},
+  publisher = {Department of Engineering, University of Cambridge},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

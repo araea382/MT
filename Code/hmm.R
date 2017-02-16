@@ -1,4 +1,3 @@
-#----------------------------------------------------------------------#
 library(depmixS4)
 library(quantmod)
 library(ggplot2)

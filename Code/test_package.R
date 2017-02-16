@@ -71,6 +71,57 @@ partial.cor.trend.test(s,Q, "spearman")
 # No, we do not want to detect trend
 
 #----------------------------------------------------------------------#
+# cpm package
+# g2 FILTER data L16B
+# batch detection
+resultsStudent <- detectChangePointBatch(g2_L16B_filter$`TotCpu%`, cpmType = "Student", alpha = 0.05)
+resultsMW <- detectChangePointBatch(g2_L16B_filter$`TotCpu%`, cpmType = "Mann-Whitney", alpha = 0.05)
+plot(g2_L16B_filter$`TotCpu%`, type = "l", xlab = "Observation", ylab = "x", bty = "l")
+if (resultsStudent$changeDetected)
+    abline(v = resultsStudent$changePoint, col="red", lty = 2) # student
+if (resultsMW$changeDetected)
+  abline(v = resultsMW$changePoint, col="blue", lty = 2) # mann-whitney
+  
+plot(resultsStudent$Ds, type = "l", xlab = "Observation", ylab = expression(D[t]), bty = "l")
+abline(h = resultsStudent$threshold, lty = 2)
+
+plot(resultsMW$Ds, type = "l", xlab = "Observation", ylab = expression(D[t]), bty = "l")
+abline(h = resultsMW$threshold, lty = 2)
+
+# sequential change detection
+resultsStudent <- detectChangePoint(g2_L16B_filter$`TotCpu%`, cpmType = "Student", ARL0 = 500)
+resultsMW <- detectChangePoint(g2_L16B_filter$`TotCpu%`, cpmType = "Mann-Whitney", ARL0 = 500)
+plot(g2_L16B_filter$`TotCpu%`, type = "l", bty = "l")
+if (resultsStudent$changeDetected)
+  abline(v = resultsStudent$detectionTime, col = "red") # student
+if (resultsMW$changeDetected)
+  abline(v = resultsMW$detectionTime, col = "blue") # mann-whitney
+
+# sequences containing multiple change points
+res <- processStream(g2_L16B_filter$`TotCpu%`, cpmType = "Mann-Whitney", ARL0 = 500, startup = 20)
+plot(g2_L16B_filter$`TotCpu%`, type = "l", xlab = "Observation", ylab = "", bty = "l")
+abline(v = res$detectionTimes) # change was detected
+abline(v = res$changePoints, lty = 2) # estimated change point locations
+
+
+#----------------------------------------------------------------------#
+# BreakoutDetection
+# EDM: E-divisive median
+library(BreakoutDetection)
+  
+data(Scribe)
+res = breakout(Scribe, min.size=24, method='multi', beta=.001, degree=1, plot=TRUE)
+res$plot
+plot(Scribe, type="l")
+  
+Ediv_scribe <- e.divisive(matrix(Scribe), R=499, alpha=1)
+ts.plot(matrix(Scribe))
+abline(v=Ediv_scribe$estimates[c(-1,-4)], col="red", lty=2)
+  
+res2 <- breakout(g2_L16B_new_min$Normalize, method="multi", plot=TRUE)
+res2$plot
+
+#----------------------------------------------------------------------#
 library(strucchange) # change in regression
 fs <- breakpoints(g2_L16B_new_min$Normalize ~ 1)
 

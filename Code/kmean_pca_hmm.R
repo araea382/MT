@@ -8,6 +8,7 @@ ggplot(g_new, aes(x=seq_along(`TotCpu%`), y=`TotCpu%`,color=as.factor(clust$clus
 
 
 # to select the K
+# http://www.learnbymarketing.com/tutorials/k-means-clustering-in-r-example/
 rng <- 2:20 #K from 2 to 20
 tries <- 100 #Run the K Means algorithm 100 times
 avg.totw.ss <- integer(length(rng)) #Set up an empty vector to hold all of points
