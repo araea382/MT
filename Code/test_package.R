@@ -1,3 +1,6 @@
+#----------------------------------------------------------------------#
+# Change point detection/ Anomaly detection
+#----------------------------------------------------------------------#
 library(ecp)
 
 set.seed(250)
@@ -155,9 +158,6 @@ ansmeanvar=cpt.meanvar(g2_L16B_new_min$Normalize) # mean and variance
 plot(ansmeanvar)
 print(ansmeanvar)
 
-#----------------------------------------------------------------------#
-library(partykit)
-data("treepipit", package = "coin")
 
 #----------------------------------------------------------------------#
 library(quantmod)
@@ -220,6 +220,81 @@ res2$plot
 # can not get it to work
 
 #----------------------------------------------------------------------#
+# Hidden markov model
+#----------------------------------------------------------------------#
+library(depmixS4)
+library(quantmod)
+library(ggplot2)
+library(gridExtra)
+data(speed)
+
+EURUSD1d <- read.csv("C:/Users/EARAEAM/Downloads/EURUSD1d.csv")
+Date<-as.character(EURUSD1d[,1])
+DateTS<- as.POSIXlt(Date, format = "%Y.%m.%d %H:%M:%S") #create date and time objects
+TSData<-data.frame(EURUSD1d[,2:5],row.names=DateTS)
+TSData<-as.xts(TSData) #build our time series data set
+ATRindicator<-ATR(TSData[,2:4],n=14) #calculate the indicator
+ATR<-ATRindicator[,2] #grab just the ATR
+LogReturns <- log(EURUSD1d$Close) - log(EURUSD1d$Open) #calculate the logarithmic returns
+ModelData<-data.frame(LogReturns,ATR) #create the data frame for our HMM model
+ModelData<-ModelData[-c(1:14),] #remove the data where the indicators are being calculated
+colnames(ModelData)<-c("LogReturns","ATR") #name our columns
+
+set.seed(1)
+HMM<-depmix(list(LogReturns~1,ATR~1),data=ModelData,nstates=3,family=list(gaussian(),gaussian())) #We're setting the LogReturns and ATR as our response variables, using the data frame we just built, want to set 3 different regimes, and setting the response distributions to be gaussian.
+HMMfit<-fit(HMM, verbose = FALSE) #fit our model to the data set
+print(HMMfit) #we can compare the log Likelihood as well as the AIC and BIC values to help choose our model
+summary(HMMfit)
+
+HMMpost<-posterior(HMMfit) #find the posterior odds for each state over our data set
+head(HMMpost) #we can see that we now have the probability for each state for everyday as well as the highest probability class.
+
+
+DFIndicators <- data.frame(DateTS, LogReturns, ATR); 
+DFIndicatorsClean <- DFIndicators[-c(1:14), ]
+
+Plot1Data<-data.frame(DFIndicatorsClean, HMMpost$state)
+
+LogReturnsPlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,2]))+geom_line(color="darkblue")+labs(title="Log Returns",y="Log Returns",x="Date"); LogReturnsPlot
+ATRPlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,3]))+geom_line(color="darkgreen")+labs(title="ATR(14)",y="ATR(14)",x="Date"); ATRPlot
+RegimePlot<-ggplot(Plot1Data,aes(x=Plot1Data[,1],y=Plot1Data[,4]))+geom_line(color="red")+labs(title="Regime",y="Regime",x="Date"); RegimePlot
+
+# The probability of each regime separately
+Plot2Data<-data.frame("DateTS"=DFIndicatorsClean$DateTS, HMMpost)
+Regime1Plot<-ggplot(Plot2Data,aes(x=Plot2Data[,1],y=Plot2Data[,3]))+geom_line(color="purple")+labs(title="Regime 1",y="Probability",x="Date")
+Regime2Plot<-ggplot(Plot2Data,aes(x=Plot2Data[,1],y=Plot2Data[,4]))+geom_line(color="orange")+labs(title="Regime 2",y="Probability",x="Date")
+Regime3Plot<-ggplot(Plot2Data,aes(x=Plot2Data[,1],y=Plot2Data[,5]))+geom_line(color="darkblue")+labs(title="Regime 3",y="Probability",x="Date")
+
+# regime 3 tends to be times of high volatility and large magnitude moves, regime 2 is characterized by medium volatility, and regime 1 consists of low volatility.
+
+#----------------------------------------------------------------------#
+library(TTR)
+fred.tickers <-c("INDPRO")
+getSymbols(fred.tickers,src="FRED")
+
+indpro.1yr <-na.omit(ROC(INDPRO,12))
+indpro.1yr.df <-data.frame(indpro.1yr)
+
+model <- depmix(response=INDPRO ~ 1, 
+                family = gaussian(), 
+                nstates = 2, 
+                data = indpro.1yr.df ,
+                transition=~1)
+
+set.seed(1)
+model.fit <- fit(model, verbose = FALSE)
+model.prob <- posterior(model.fit)
+prob.rec <-model.prob[,2]
+prob.rec.dates <-xts(prob.rec,as.Date(index(indpro.1yr)),
+                     order.by=as.Date(index(indpro.1yr)))
+prob.rec.d <- data.frame(date=as.Date(index(indpro.1yr)), model.prob)
+
+ggplot(prob.rec.d,aes(x=prob.rec.d[,1],y=prob.rec.d[,2])) + geom_line(color="red")
+
+
+#----------------------------------------------------------------------#
+# Autoregressive hidden markov model
+#----------------------------------------------------------------------#
 library(MSwM)
 data(example)
 mod=lm(y~x,example)
@@ -249,18 +324,79 @@ plotProb(m1,which=2)
 plotReg(m1)
 
 #----------------------#
-g_filter <- extract_component(g2_L16B_filter_min)
-g_filter <- g_filter[-c(1:13,15:17,70,72)]
-colnames(g_filter)[1] <- "TotCpu"
-model1 <- lm(TotCpu ~ ., data=g_filter)
+df1 <- g2_L16B_filter_min
+colnames(df1)[14] <- "TotCpu" # need to rename the variable
+mod1 <- lm(TotCpu~1, data=df1)
+summary(mod1)
 
-model_mswm <- msmFit(model1, k=3, p=1, sw=rep(TRUE,56), control=list(parallel=F))
+model_mswm <- msmFit(mod1, k=3, p=1, sw=rep(TRUE,3), control=list(parallel=F)) # variable + p + 1
 summary(model_mswm)
+
+plotDiag(model_mswm, which=1)
+plotDiag(model_mswm, which=2)
+plotDiag(model_mswm, which=3)
+
+plotProb(model_mswm, which=1)
+plotProb(model_mswm, which=2)
+plotProb(model_mswm, which=3)
+plotProb(model_mswm, which=4)
+
+plotReg(model_mswm, regime=1)
+plotReg(model_mswm, regime=2)
+plotReg(model_mswm, regime=3)
 
 library(TSA)
 set.seed(12345)
-ar <- arima(g_filter$TotCpu, order=c(1,0,0))
+ar <- arima(df1$TotCpu, order=c(1,0,0))
 
+#----------------------#
+g2_L16B_min_extract <- extract_component(g2_L16B_min)
+df2 <- g2_L16B_min_extract
+colnames(df2)[14] <- "TotCpu" # need to rename the variable
+mod2 <- lm(TotCpu~RrcConnectionSetupComplete+X2HandoverRequest, data=df2)
+summary(mod2)
+
+model_mswm2 <- msmFit(mod2, k=3, p=1, sw=rep(TRUE,5), control=list(parallel=F))
+summary(model_mswm2)
+
+plotDiag(model_mswm2, which=1)
+plotDiag(model_mswm2, which=2)
+plotDiag(model_mswm2, which=3)
+
+plotProb(model_mswm2, which=1)
+plotProb(model_mswm2, which=2)
+plotProb(model_mswm2, which=3)
+plotProb(model_mswm2, which=4)
+
+plotReg(model_mswm2, expl="RrcConnectionSetupComplete")
+plotReg(model_mswm2, regime=2)
+plotReg(model_mswm2, regime=3)
+
+#----------------------#
+y1 <- as.matrix(df2$TotCpu)
+X1 <- as.matrix(subset(df2, select=c(18:ncol(df2))))
+
+set.seed(12345)
+lasso_cv1 <- cv.glmnet(X1, y1, alpha=1, family = "gaussian")
+plot(lasso_cv1)
+penalty1 <- lasso_cv1$lambda.min
+fit_lasso1 <- glmnet(X1, y1, alpha=1, lambda=penalty1) 
+
+model_mswm3 <- msmFit(fit_lasso1, k=3, p=1, sw=rep(TRUE,105), control=list(parallel=F))
+summary(model_mswm3)
+
+plotDiag(model_mswm2, which=1)
+plotDiag(model_mswm2, which=2)
+plotDiag(model_mswm2, which=3)
+
+plotProb(model_mswm2, which=1)
+plotProb(model_mswm2, which=2)
+plotProb(model_mswm2, which=3)
+plotProb(model_mswm2, which=4)
+
+plotReg(model_mswm2, expl="RrcConnectionSetupComplete")
+plotReg(model_mswm2, regime=2)
+plotReg(model_mswm2, regime=3)
 
 #----------------------------------------------------------------------#
 library(NHMSAR)
@@ -270,8 +406,8 @@ k = 40
 T = dim(data)[1]
 N.samples = dim(data)[2]
 d = dim(data)[3]
-M = 2
-order = 2
+M = 3
+order = 1
 theta.init = init.theta.MSAR(data,M=M,order=order,label="HH")
 mod.hh = fit.MSAR(data,theta.init,verbose=TRUE,MaxIter=20)
 regimes.plot.MSAR(mod.hh,data,ylab="temperatures")
@@ -279,17 +415,17 @@ regimes.plot.MSAR(mod.hh,data,ylab="temperatures")
 #Y.sim = simule.nh.MSAR(mod.hh$theta,Y0 = Y0,T,N.samples = 1)
 
 # Fit Non Homogeneous MS-AR models
-theta.init = init.theta.MSAR(data,M=M,order=order,label="NH",nh.transitions="gauss")
-attributes(theta.init)
-mod.nh = fit.MSAR(array(data[2:T,,],c(T-1,N.samples,1)),theta.init,verbose=TRUE,MaxIter=50,
-covar.trans=array(data[1:(T-1),,],c(T-1,N.samples,1)))
-regimes.plot.MSAR(mod.nh,data,ex=40,ylab="temperature (deg. C)")
+# theta.init = init.theta.MSAR(data,M=M,order=order,label="NH",nh.transitions="gauss")
+# attributes(theta.init)
+# mod.nh = fit.MSAR(array(data[2:T,,],c(T-1,N.samples,1)),theta.init,verbose=TRUE,MaxIter=50,
+# covar.trans=array(data[1:(T-1),,],c(T-1,N.samples,1)))
+# regimes.plot.MSAR(mod.nh,data,ex=40,ylab="temperature (deg. C)")
 
 # Fit Non Homogeneous MS-AR models - univariate time series
 data(lynx)
 T = length(lynx)
 data = array(log10(lynx),c(T,1,1))
-theta.init = init.theta.MSAR(data,M=2,order=2,label="HH")
+theta.init = init.theta.MSAR(data,M=3,order=1,label="HH")
 mod.lynx.hh = fit.MSAR(data,theta.init,verbose=TRUE,MaxIter=200)
 regimes.plot.MSAR(mod.lynx.hh,data,ylab="Captures number")
 r <- regimes.plot.MSAR(mod.lynx.hh,data,ylab="Captures number")
@@ -307,11 +443,55 @@ dat$regime <- apply(dat, 1, function(x){
     x[x] <- 2
   }
 })
+
 #----------------------#
 t <- nrow(g2_L16B_filter_min)
 dat <- array(g2_L16B_filter_min$`TotCpu%`, c(t,1,1))
-theta.init <- init.theta.MSAR(dat, M=3, order=1, label="HH")
-mod_hh <- fit.MSAR(dat, theta.init, verbose=TRUE, MaxIter=200)
+theta_init <- init.theta.MSAR(dat, M=3, order=2, label="HH")
+mod_hh <- fit.MSAR(dat, theta_init, verbose=TRUE, MaxIter=200)
 regimes.plot.MSAR(mod_hh, dat, ylab="Captures number")
 
 
+#----------------------------------------------------------------------#
+# Decision tree
+#----------------------------------------------------------------------#
+library(partykit)
+data("treepipit", package = "coin")
+
+#----------------------------------------------------------------------#
+library(rpart)
+tree <- rpart(`TotCpu%`~., method="anova", data=temp2)
+
+printcp(tree) # display the results 
+plotcp(tree) # visualize cross-validation results 
+summary(tree) # detailed summary of splits
+
+plot(tree, uniform=TRUE)
+text(tree, use.n=TRUE, all=TRUE, cex=.6)
+
+#----------------------------------------------------------------------#
+# try with whole dataset
+library(randomForest)
+# random forest can't deal with column name that begin with number
+# add "X" in front of it
+temp3 <- temp2
+nn <- unlist(lapply(colnames(temp3), function(x){
+  if(substr(x,1,1) == "0"){
+    x <- paste0("X",x)
+  }else{
+    x <- x
+  }
+}))
+colnames(temp3) <- nn
+random_tree <- randomForest(`TotCpu%`~., data=temp3, importance=TRUE, proximity=TRUE)
+print(random_tree) # view results 
+var_imp <- importance(random_tree) # importance of each predictor
+var_imp[order(var_imp[,1], decreasing=TRUE),]
+varImpPlot(random_tree, sort=T, n.var=5)
+plot(random_tree)
+
+
+var.imp <- data.frame(importance(random_tree, type=2))
+# make row names as columns
+var.imp$Variables <- row.names(var.imp)
+var.imp[order(var.imp[,1],decreasing = T),]

@@ -56,31 +56,31 @@ get_average <- function(data, y){
 # still contain all columns
 .old_get_min <- function(){
 # not include in the get_train_test just in case not using it
-get_min <- function(data){
-  sw_name <- unique(data$SW)
-  subset <- lapply(sw_name, function(x) filter(data, SW == x))
-  sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]]$`TotCpu%`)))
-  sw <- data.frame(SW=sw_name, value=sw_min)
-  return(sw)
-}
-
-train_L16B_min <- get_min(train_L16B)
-test_L16B_min <- get_min(test_L16B)
-
-# select min TotCpu% for the same software package (sw)
-# still contain all columns
-get_min <- function(data, y){
-  sw_name <- unique(data$SW)
-  subset <- lapply(sw_name, function(x) filter(data, SW == x))
-  sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]][,y])))
-  subset_min <- data.frame()
-  for(i in 1:length(sw_name)){
-    s <- filter(data, SW == sw_name[i] & y == sw_min[i])
-    s <- s %>% distinct(SW, y, .keep_all = TRUE) # in case there are duplicate rows
-    subset_min <- bind_rows(subset_min, s)
-  }
-  return(subset_min)
-}
+# get_min <- function(data){
+#   sw_name <- unique(data$SW)
+#   subset <- lapply(sw_name, function(x) filter(data, SW == x))
+#   sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]]$`TotCpu%`)))
+#   sw <- data.frame(SW=sw_name, value=sw_min)
+#   return(sw)
+# }
+# 
+# train_L16B_min <- get_min(train_L16B)
+# test_L16B_min <- get_min(test_L16B)
+# 
+# # select min TotCpu% for the same software package (sw)
+# # still contain all columns
+# get_min <- function(data, y){
+#   sw_name <- unique(data$SW)
+#   subset <- lapply(sw_name, function(x) filter(data, SW == x))
+#   sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]][,y])))
+#   subset_min <- data.frame()
+#   for(i in 1:length(sw_name)){
+#     s <- filter(data, SW == sw_name[i] & y == sw_min[i])
+#     s <- s %>% distinct(SW, y, .keep_all = TRUE) # in case there are duplicate rows
+#     subset_min <- bind_rows(subset_min, s)
+#   }
+#   return(subset_min)
+# }
 }
 get_min <- function(data, y){
   require("lazyeval")
@@ -101,13 +101,34 @@ get_min <- function(data, y){
 }
 
 #----------------------------------------------------------------------#
+# select max TotCpu% for the same software package (sw) 
+# still contain all columns
+get_max <- function(data, y){
+  require("lazyeval")
+  sw_name <- unique(data$SW)
+  subset <- lapply(sw_name, function(x) filter(data, SW == x))
+  sw_max <- unlist(lapply(1:length(subset), function(x) max(subset[x][[1]][,y])))
+  subset_max <- data.frame()
+  for(i in 1:length(sw_name)){
+    filter_criteria <- interp(~y == x, .values=list(y=as.name(y), x=sw_max[i]))
+    s <- data %>% filter(SW == sw_name[i]) %>% filter_(filter_criteria)
+    if(nrow(s) > 1){ # in case there are duplicate rows
+      s <- s %>% distinct(SW, paste(y), .keep_all = TRUE)
+      s <- s[,-length(s)] # discard the generated new column
+    }
+    subset_max <- bind_rows(subset_max, s)
+  }
+  return(subset_max)
+}
+
+#----------------------------------------------------------------------#
 # sort by Release and SW column
 g2_sort <- g2[multi.mixedorder(Release, SW),] 
 g2_sort_filter <- g2_filter[multi.mixedorder(Release, SW),] 
 
 #----------------------------------------------------------------------#
 # extract components in EventsPerSec
-.old_extract <- functio(){
+.old_extract <- function(){
   # rrc <- apply(g2_L16B, 1, function(x){
   #   events <- as.character(x[17]) # get content from EventsPerSec column
   #   st <- unlist(strsplit(events, " "))
@@ -309,6 +330,19 @@ for(i in 5:length(level)){
 }
 
 }
+
+#----------------------------------------------------------------------#
+# apply function get to data g2 L16B
+# use get_average()
+g2_L16B_avg <- get_average(g2_L16B,"TotCpu%")
+g2_L16B_filter_avg <- get_average(g2_L16B_filter,"TotCpu%")
+
+# use get_min()
+g2_L16B_min <- get_min(g2_L16B,"TotCpu%")
+g2_L16B_filter_min <- get_min(g2_L16B_filter,"TotCpu%")
+
+# use get_max()
+g2_L16B_max <- get_max(g2_L16B,"TotCpu%")
 
 #----------------------------------------------------------------------#
 # divide train/test set (70/30)

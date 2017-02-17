@@ -683,7 +683,6 @@ When the probability distribution is continuous, it can be donoted by
 \end_inset
 
 
-
 \begin_inset Formula $b_{j}(y)=f(y|\theta_{i})$
 \end_inset
 
@@ -724,7 +723,6 @@ The initial state,
 \end_inset
 
  
-
 \begin_inset Formula $1\leq i\leq N$
 \end_inset
 
@@ -803,19 +801,25 @@ Autoregressive Hidden Markov model
 \begin_layout Standard
 This is an extension of the basic hidden Markov model which also has dependencie
 s at observation level.
- It is a combination of autoregressive time series and hidden Markov model
- which is also known as Markov swiching autoregressive models.
- The obsevations are drawn from autoregression process.
+ Autoregressive hidden Markov model relaxes the conditional independent
+ assumption of the traditional one by allowing observation probability to
+ also depends on the past observation and the current state 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "shannon2009formulation"
+
+\end_inset
+
+.
+ It is a combination of autoregressive time series model and hidden Markov
+ model where obsevations are drawn from autoregression process.
+ This method is also known as Markov swiching autoregressive models.
  
 \end_layout
 
 \begin_layout Standard
-It relaxes the assumption of traditional hidden Markov model that by allowing
- state to also depens
-\end_layout
-
-\begin_layout Standard
-The order of autoregression to be 
+The observation sequence is an AR(p) process.
+ The order of autoregression to be 
 \family roman
 \series medium
 \shape up
@@ -835,11 +839,18 @@ The order of autoregression to be
 \end_layout
 
 \begin_layout Standard
-(juang1985mixture)
+\begin_inset Formula 
+\[
+Y_{t}=-\sum_{i=1}^{p}\alpha_{i}Y_{t-i}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-(shannon2009formulation)
+(juang1985mixture)
 \end_layout
 
 \begin_layout Standard
@@ -853,6 +864,14 @@ figure of diagram for ARHMM
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The parameters of the model are
+\end_layout
+
+\begin_layout Section
+Clustering algorithm
 \end_layout
 
 \begin_layout Standard

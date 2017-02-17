@@ -61,9 +61,9 @@ plot(step$residuals, type="l")
 
 step2 <- stepAIC(mod2, direction="both")
 step2$coefficients
-length(step2$coefficients) - 1 # 88 variables but different coeff than the first model
+length(step2$coefficients) - 1 # 82 variables but different coeff than the first model
 summary(step2)
-plot(step2$residuals, main="model step 2") # 49, 50, 52
+plot(step2$residuals, main="model step 2")
 res <- step2$residuals
 
 # different coeff
@@ -140,7 +140,7 @@ lasso_cv <- cv.glmnet(X, y, alpha=1, family = "gaussian")
 plot(lasso_cv)
 penalty <- lasso_cv$lambda.min
 fit_lasso <- glmnet(X, y, alpha=1, lambda=penalty) 
-coef(fit_lasso) # 39 variables, highest coef is "PerBbLcgEvent" correlation with TotCpu% = 0.6519379
+coef(fit_lasso) # 38
 
 # try with train and test set 
 # lasso <- glmnet(X_train, y_train, alpha=1, family="gaussian") 

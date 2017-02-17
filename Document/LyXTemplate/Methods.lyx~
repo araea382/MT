@@ -683,7 +683,6 @@ When the probability distribution is continuous, it can be donoted by
 \end_inset
 
 
-
 \begin_inset Formula $b_{j}(y)=f(y|\theta_{i})$
 \end_inset
 
@@ -724,7 +723,6 @@ The initial state,
 \end_inset
 
  
-
 \begin_inset Formula $1\leq i\leq N$
 \end_inset
 
@@ -841,6 +839,17 @@ The observation sequence is an AR(p) process.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{t}=-\sum_{i=1}^{T}\alpha_{i}Y_{t-i}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 (juang1985mixture)
 \end_layout
 
@@ -855,6 +864,14 @@ figure of diagram for ARHMM
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The parameters of the model are
+\end_layout
+
+\begin_layout Section
+Clustering algorithm
 \end_layout
 
 \begin_layout Standard

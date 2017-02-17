@@ -1,4 +1,4 @@
-# ecp package
+library(ecp)
 .compare_time <- function(){
   t1 <- Sys.time()
   t2 <- Sys.time()
@@ -30,7 +30,6 @@ abline(v=Ediv2$estimates[c(-1,-length(Ediv2$estimates))], col="blue", lty=2)
 
 
 # use get_average()
-g2_L16B_avg <- get_average(g2_L16B,"TotCpu%")
 Ediv1_avg <- e.divisive(matrix(g2_L16B_avg$value), R=499, alpha=1) 
 Ediv1_avg$k.hat
 Ediv1_avg$estimates
@@ -40,7 +39,6 @@ abline(v=Ediv1_avg$estimates[c(-1,-length(Ediv1_avg$estimates))], col="red", lty
 axis(1, at=1:nrow(g2_L16B_avg), labels=g2_L16B_avg$SW)
 
 # use get_min()
-g2_L16B_min <- get_min(g2_L16B,"TotCpu%")
 Ediv1_min <- e.divisive(matrix(g2_L16B_min$`TotCpu%`), R=499, alpha=1) 
 Ediv1_min$k.hat # 3 clusters
 Ediv1_min$estimates
@@ -97,7 +95,6 @@ ts.plot(matrix(g2_L16B_filter$`TotCpu%`), main="E-divisive g2_L16B_filter, alpha
 abline(v=Ediv2_filter$estimates[c(-1,-length(Ediv2_filter$estimates))], col="blue", lty=2)
 
 # use get_average()
-g2_L16B_filter_avg <- get_average(g2_L16B_filter,"TotCpu%")
 Ediv1_filter_avg <- e.divisive(matrix(g2_L16B_filter_avg$value), R=499, alpha=1) 
 Ediv1_filter_avg$k.hat
 Ediv1_filter_avg$estimates
@@ -107,7 +104,6 @@ abline(v=Ediv1_filter_avg$estimates[c(-1,-length(Ediv1_filter_avg$estimates))], 
 axis(1, at=1:nrow(g2_L16B_filter_avg), labels=g2_L16B_filter_avg$SW)
 
 # use get_min()
-g2_L16B_filter_min <- get_min(g2_L16B_filter,"TotCpu%")
 Ediv1_filter_min <- e.divisive(matrix(g2_L16B_filter_min$`TotCpu%`), R=499, alpha=1) 
 Ediv1_filter_min$k.hat # 4 clusters
 Ediv1_filter_min$estimates
