@@ -1,9 +1,4 @@
 library(ecp)
-.compare_time <- function(){
-  t1 <- Sys.time()
-  t2 <- Sys.time()
-  print(t2 - t1)
-}
 
 # g2 data L16B
 # univariate: TotCpu%

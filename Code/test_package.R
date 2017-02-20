@@ -299,8 +299,16 @@ library(MSwM)
 data(example)
 mod=lm(y~x,example)
 summary(mod)
+acf(resid(mod))
 mod.mswm=msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(parallel=F))
 summary(mod.mswm)
+
+# data(energy)
+# model=lm(Price~Oil+Gas+Coal+EurDol+Ibex35+Demand,energy)
+# mod=msmFit(model,k=2,sw=rep(TRUE,8))
+# summary(mod)
+
+plot(msmResid(mod.mswm), type="l")
 
 plotDiag(mod.mswm, which=1)
 plotDiag(mod.mswm, which=2)
@@ -332,6 +340,9 @@ summary(mod1)
 model_mswm <- msmFit(mod1, k=3, p=1, sw=rep(TRUE,3), control=list(parallel=F)) # variable + p + 1
 summary(model_mswm)
 
+plot(msmResid(model_mswm), type="l")
+acf(msmResid(model_mswm))
+
 plotDiag(model_mswm, which=1)
 plotDiag(model_mswm, which=2)
 plotDiag(model_mswm, which=3)
@@ -348,9 +359,13 @@ plotReg(model_mswm, regime=3)
 library(TSA)
 set.seed(12345)
 ar <- arima(df1$TotCpu, order=c(1,0,0))
+ar$coef
 
 #----------------------#
+# one test case per SW
 g2_L16B_min_extract <- extract_component(g2_L16B_min)
+g2_L16B_max <- get_max(g2_L16B, "TotCpu%")
+g2_L16B_max_extract <- extract_component(g2_L16B_max)
 df2 <- g2_L16B_min_extract
 colnames(df2)[14] <- "TotCpu" # need to rename the variable
 mod2 <- lm(TotCpu~RrcConnectionSetupComplete+X2HandoverRequest, data=df2)
@@ -359,6 +374,9 @@ summary(mod2)
 model_mswm2 <- msmFit(mod2, k=3, p=1, sw=rep(TRUE,5), control=list(parallel=F))
 summary(model_mswm2)
 
+plot(msmResid(model_mswm2), type="l")
+acf(msmResid(model_mswm2))
+
 plotDiag(model_mswm2, which=1)
 plotDiag(model_mswm2, which=2)
 plotDiag(model_mswm2, which=3)
@@ -373,6 +391,7 @@ plotReg(model_mswm2, regime=2)
 plotReg(model_mswm2, regime=3)
 
 #----------------------#
+# can't use lasso from glmnet() to model in msmFit()
 y1 <- as.matrix(df2$TotCpu)
 X1 <- as.matrix(subset(df2, select=c(18:ncol(df2))))
 
@@ -381,33 +400,60 @@ lasso_cv1 <- cv.glmnet(X1, y1, alpha=1, family = "gaussian")
 plot(lasso_cv1)
 penalty1 <- lasso_cv1$lambda.min
 fit_lasso1 <- glmnet(X1, y1, alpha=1, lambda=penalty1) 
+coef(fit_lasso1)
 
-model_mswm3 <- msmFit(fit_lasso1, k=3, p=1, sw=rep(TRUE,105), control=list(parallel=F))
+# model_mswm3 <- msmFit(fit_lasso1, k=3, p=1, sw=rep(TRUE,106), control=list(parallel=F))
+# summary(model_mswm3)
+
+#----------------------#
+predictor <- c("ErabDrbAllocated","ErabDrbRelease","ErabReleaseInfo","PerBbRbEvent","PerBbUeEventTa","RrcConnectionReconfiguration","RrcUlInformationTransfer","ProcRrcUeCapabilityEnquiry","RrcUeCapabilityEnquiry")
+predictor <- c("RrcConnectionReconfiguration","RrcConnectionReconfigurationComplete","ErabDrbAllocated","ErabDrbRelease") # variable important from randomforest
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","S1InitialUeMessage")
+
+fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
+mod3 <- lm(fmla, data=df2)
+summary(mod3)
+
+df3 <- subset(df2, select=c(14,18:length(df2)))
+df3 <- add_x_name(df3)
+mod3 <- lm(TotCpu ~ ., data=df3)
+
+fmla <- as.formula(paste("`TotCpu%` ~ ", paste(predictor, collapse= "+")))
+mod3 <- lm(fmla, data=temp3)
+
+model_mswm3 <- msmFit(mod3, k=2, p=1, sw=rep(TRUE,length(mod3$coefficients)+2), control=list(parallel=F))
 summary(model_mswm3)
 
-plotDiag(model_mswm2, which=1)
-plotDiag(model_mswm2, which=2)
-plotDiag(model_mswm2, which=3)
+mod3 <- lm(`TotCpu`~., data=df3)
+step3 <- stepAIC(mod3, direction="both")
+model_mswm3 <- msmFit(step3, k=3, p=1, sw=rep(TRUE,length(step3$coefficients)+2), control=list(parallel=F))
+summary(model_mswm3)
 
-plotProb(model_mswm2, which=1)
-plotProb(model_mswm2, which=2)
-plotProb(model_mswm2, which=3)
-plotProb(model_mswm2, which=4)
+plot(msmResid(model_mswm3), type="l")
+acf(msmResid(model_mswm3))
 
-plotReg(model_mswm2, expl="RrcConnectionSetupComplete")
-plotReg(model_mswm2, regime=2)
-plotReg(model_mswm2, regime=3)
+plotDiag(model_mswm3, which=1)
+plotDiag(model_mswm3, which=2)
+plotDiag(model_mswm3, which=3)
 
+plotProb(model_mswm3, which=1)
+plotProb(model_mswm3, which=2)
+plotProb(model_mswm3, which=3)
+plotProb(model_mswm3, which=4)
+
+plotReg(model_mswm3, expl="RrcConnectionSetupComplete")
+plotReg(model_mswm3, regime=2)
+plotReg(model_mswm3, regime=3)
 #----------------------------------------------------------------------#
 library(NHMSAR)
 data(meteo.data)
-data = array(meteo.data$temperature,c(31,41,1))
+data = array(meteo.data$precipitation,c(31,41,1))
 k = 40
 T = dim(data)[1]
 N.samples = dim(data)[2]
 d = dim(data)[3]
-M = 3
-order = 1
+M = 2
+order = 2
 theta.init = init.theta.MSAR(data,M=M,order=order,label="HH")
 mod.hh = fit.MSAR(data,theta.init,verbose=TRUE,MaxIter=20)
 regimes.plot.MSAR(mod.hh,data,ylab="temperatures")
@@ -425,7 +471,7 @@ regimes.plot.MSAR(mod.hh,data,ylab="temperatures")
 data(lynx)
 T = length(lynx)
 data = array(log10(lynx),c(T,1,1))
-theta.init = init.theta.MSAR(data,M=3,order=1,label="HH")
+theta.init = init.theta.MSAR(data,M=2,order=2,label="HH")
 mod.lynx.hh = fit.MSAR(data,theta.init,verbose=TRUE,MaxIter=200)
 regimes.plot.MSAR(mod.lynx.hh,data,ylab="Captures number")
 r <- regimes.plot.MSAR(mod.lynx.hh,data,ylab="Captures number")
@@ -447,7 +493,14 @@ dat$regime <- apply(dat, 1, function(x){
 #----------------------#
 t <- nrow(g2_L16B_filter_min)
 dat <- array(g2_L16B_filter_min$`TotCpu%`, c(t,1,1))
-theta_init <- init.theta.MSAR(dat, M=3, order=2, label="HH")
+theta_init <- init.theta.MSAR(dat, M=3, order=1, label="HH")
+mod_hh <- fit.MSAR(dat, theta_init, verbose=TRUE, MaxIter=200)
+regimes.plot.MSAR(mod_hh, dat, ylab="Captures number")
+
+
+g2_L16B_filter_min_extract <- extract_component(g2_L16B_filter_min)
+dat <- array(c(g2_L16B_filter_min_extract$`TotCpu%`, g2_L16B_filter_min_extract$RrcConnectionSetupComplete), dim=c(t,2,1))
+theta_init <- init.theta.MSAR(dat, M=3, order=1, label="HH")
 mod_hh <- fit.MSAR(dat, theta_init, verbose=TRUE, MaxIter=200)
 regimes.plot.MSAR(mod_hh, dat, ylab="Captures number")
 
@@ -464,7 +517,7 @@ tree <- rpart(`TotCpu%`~., method="anova", data=temp2)
 
 printcp(tree) # display the results 
 plotcp(tree) # visualize cross-validation results 
-summary(tree) # detailed summary of splits
+# summary(tree) # detailed summary of splits
 
 plot(tree, uniform=TRUE)
 text(tree, use.n=TRUE, all=TRUE, cex=.6)
@@ -474,15 +527,19 @@ text(tree, use.n=TRUE, all=TRUE, cex=.6)
 library(randomForest)
 # random forest can't deal with column name that begin with number
 # add "X" in front of it
-temp3 <- temp2
-nn <- unlist(lapply(colnames(temp3), function(x){
-  if(substr(x,1,1) == "0"){
-    x <- paste0("X",x)
-  }else{
-    x <- x
-  }
-}))
-colnames(temp3) <- nn
+add_x_name <- function(data){
+  nn <- unlist(lapply(colnames(data), function(x){
+    if(substr(x,1,1) == "0"){
+      x <- paste0("X",x)
+    }else{
+      x <- x
+    }
+  }))
+  colnames(data) <- nn
+  return(data)
+}
+
+temp3 <- add_x_name(temp2)
 random_tree <- randomForest(`TotCpu%`~., data=temp3, importance=TRUE, proximity=TRUE)
 print(random_tree) # view results 
 var_imp <- importance(random_tree) # importance of each predictor

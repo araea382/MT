@@ -457,6 +457,17 @@ name "hmm"
 \end_inset
 
 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+*****Make new diagram....
+ this is only just testing how it works*****
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -791,7 +802,44 @@ Autoregressive (AR) model
 \end_layout
 
 \begin_layout Standard
-It is
+Autoregressive model is one type of time series model that uses for describing
+ the time-varying process.
+ It is flexible in handling various kind of time series pattern.
+ The name comes from how it performs a regression of the variable against
+ itself or on its own previous outputs.
+ Hence, an autoressive model of order 
+\begin_inset Formula $p$
+\end_inset
+
+ or AR(p) model can be written as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+Y_{t} & = & c+\alpha_{1}Y_{t-1}+\alpha_{2}Y_{t-2}+...+\alpha_{p}Y_{t-p}+\varepsilon_{t}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant and 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+is white noise with zero mean and variance
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $p=1$
+\end_inset
+
+, the model is called the first order autoression process or AR(1).
 \end_layout
 
 \begin_layout Section
@@ -819,30 +867,14 @@ key "shannon2009formulation"
 
 \begin_layout Standard
 The observation sequence is an AR(p) process.
- The order of autoregression to be 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $p$
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-Y_{t}=-\sum_{i=1}^{T}\alpha_{i}Y_{t-i}+\varepsilon_{t}
-\]
+\begin{equation}
+Y_{t}=-\sum_{i=1}^{p}\alpha_{i}Y_{t-i}+\varepsilon_{t}
+\end{equation}
 
 \end_inset
 
@@ -867,7 +899,7 @@ figure of diagram for ARHMM
 \end_layout
 
 \begin_layout Standard
-The parameters of the model are
+The parameters of the AR(p)-HMM model are
 \end_layout
 
 \begin_layout Section

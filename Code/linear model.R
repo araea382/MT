@@ -42,6 +42,7 @@ rownames(corr3) <- NULL
 corr4 <- corr3
 corr4 <- corr4[order(corr4$corr),]
 
+corr1 <- cor(temp2)
 #----------------------#
 # subset include test environment
 temp <- subset(g2_L16B_extract, select=c(3:5,14,18:ncol(g2_L16B_extract)))
@@ -51,6 +52,9 @@ summary(mod)
 temp2 <- subset(g2_L16B_extract, select=c(14,18:ncol(g2_L16B_extract)))
 mod2 <- lm(`TotCpu%`~., data=temp2)
 summary(mod2)
+
+library(car)
+vif(mod2) # collinearity
 
 # stepwise regression (forward-backward)
 # step <- stepAIC(mod, direction="both")
@@ -164,6 +168,19 @@ las <- cv.glmnet(mat, y, alpha=1, family = "gaussian")
 plot(las)
 penalty <- las$lambda.min
 fit_las <- glmnet(mat, y, alpha=1, lambda=penalty) 
-coef(fit_las) # 39 variables
+coef(fit_las)
 print(fit_las)
+
+#----------------------#
+# elastic net
+elastic <- glmnet(X, y, alpha=0.5, family="gaussian") 
+plot(elastic, xvar="lambda", label=TRUE)
+
+set.seed(12345)
+elastic_cv <- cv.glmnet(X, y, alpha=0.5, family = "gaussian")
+plot(elastic_cv)
+penalty <- elastic_cv$lambda.min
+fit_elastic <- glmnet(X, y, alpha=0.5, lambda=penalty) 
+coef(fit_elastic) # 38
+
 
