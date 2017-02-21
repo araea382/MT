@@ -363,15 +363,18 @@ ar$coef
 
 #----------------------#
 # one test case per SW
-g2_L16B_min_extract <- extract_component(g2_L16B_min)
-g2_L16B_max <- get_max(g2_L16B, "TotCpu%")
-g2_L16B_max_extract <- extract_component(g2_L16B_max)
-df2 <- g2_L16B_min_extract
+g2_L16B_min <- get_min(g2_L16B, "TotCpu%")
+# g2_L16B_min_extract <- extract_component(g2_L16B_min)
+# g2_L16B_max <- get_max(g2_L16B, "TotCpu%")
+# g2_L16B_max_extract <- extract_component(g2_L16B_max)
+df2 <- g2_L16B_min
 colnames(df2)[14] <- "TotCpu" # need to rename the variable
-mod2 <- lm(TotCpu~RrcConnectionSetupComplete+X2HandoverRequest, data=df2)
+
+mod2 <- lm(TotCpu~1, data=df2)
 summary(mod2)
 
-model_mswm2 <- msmFit(mod2, k=3, p=1, sw=rep(TRUE,5), control=list(parallel=F))
+set.seed(12345)
+model_mswm2 <- msmFit(mod2, k=3, p=1, sw=rep(TRUE,length(mod2$coefficients)+2), control=list(parallel=F))
 summary(model_mswm2)
 
 plot(msmResid(model_mswm2), type="l")
@@ -386,47 +389,15 @@ plotProb(model_mswm2, which=2)
 plotProb(model_mswm2, which=3)
 plotProb(model_mswm2, which=4)
 
-plotReg(model_mswm2, expl="RrcConnectionSetupComplete")
 plotReg(model_mswm2, regime=2)
 plotReg(model_mswm2, regime=3)
 
 #----------------------#
-# can't use lasso from glmnet() to model in msmFit()
-y1 <- as.matrix(df2$TotCpu)
-X1 <- as.matrix(subset(df2, select=c(18:ncol(df2))))
-
-set.seed(12345)
-lasso_cv1 <- cv.glmnet(X1, y1, alpha=1, family = "gaussian")
-plot(lasso_cv1)
-penalty1 <- lasso_cv1$lambda.min
-fit_lasso1 <- glmnet(X1, y1, alpha=1, lambda=penalty1) 
-coef(fit_lasso1)
-
-# model_mswm3 <- msmFit(fit_lasso1, k=3, p=1, sw=rep(TRUE,106), control=list(parallel=F))
-# summary(model_mswm3)
-
-#----------------------#
-predictor <- c("ErabDrbAllocated","ErabDrbRelease","ErabReleaseInfo","PerBbRbEvent","PerBbUeEventTa","RrcConnectionReconfiguration","RrcUlInformationTransfer","ProcRrcUeCapabilityEnquiry","RrcUeCapabilityEnquiry")
-predictor <- c("RrcConnectionReconfiguration","RrcConnectionReconfigurationComplete","ErabDrbAllocated","ErabDrbRelease") # variable important from randomforest
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","S1InitialUeMessage")
-
-fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
-mod3 <- lm(fmla, data=df2)
+mod3 <- lm(TotCpu~RrcConnectionSetupComplete+X2HandoverRequest, data=df2)
 summary(mod3)
 
-df3 <- subset(df2, select=c(14,18:length(df2)))
-df3 <- add_x_name(df3)
-mod3 <- lm(TotCpu ~ ., data=df3)
-
-fmla <- as.formula(paste("`TotCpu%` ~ ", paste(predictor, collapse= "+")))
-mod3 <- lm(fmla, data=temp3)
-
-model_mswm3 <- msmFit(mod3, k=2, p=1, sw=rep(TRUE,length(mod3$coefficients)+2), control=list(parallel=F))
-summary(model_mswm3)
-
-mod3 <- lm(`TotCpu`~., data=df3)
-step3 <- stepAIC(mod3, direction="both")
-model_mswm3 <- msmFit(step3, k=3, p=1, sw=rep(TRUE,length(step3$coefficients)+2), control=list(parallel=F))
+set.seed(12345)
+model_mswm3 <- msmFit(mod3, k=3, p=1, sw=rep(TRUE,5), control=list(parallel=F))
 summary(model_mswm3)
 
 plot(msmResid(model_mswm3), type="l")
@@ -444,6 +415,65 @@ plotProb(model_mswm3, which=4)
 plotReg(model_mswm3, expl="RrcConnectionSetupComplete")
 plotReg(model_mswm3, regime=2)
 plotReg(model_mswm3, regime=3)
+
+#----------------------#
+# can't use lasso from glmnet() to model in msmFit()
+y1 <- as.matrix(df2$TotCpu)
+X1 <- as.matrix(subset(df2, select=c(18:ncol(df2))))
+
+set.seed(12345)
+lasso_cv1 <- cv.glmnet(X1, y1, alpha=1, family = "gaussian")
+plot(lasso_cv1)
+penalty1 <- lasso_cv1$lambda.min
+fit_lasso1 <- glmnet(X1, y1, alpha=1, lambda=penalty1) 
+coef(fit_lasso1)
+
+# model_mswm3 <- msmFit(fit_lasso1, k=3, p=1, sw=rep(TRUE,106), control=list(parallel=F))
+# summary(model_mswm3)
+
+#----------------------#
+predictor <- c("ErabDrbAllocated","ErabDrbRelease","ErabReleaseInfo","PerBbRbEvent","PerBbUeEventTa","RrcConnectionReconfiguration","RrcUlInformationTransfer","ProcRrcUeCapabilityEnquiry","RrcUeCapabilityEnquiry") # varaible selection from fit_lasso1 # missing value where TRUE/FALSE needed
+predictor <- c("RrcConnectionReconfiguration","RrcConnectionReconfigurationComplete","ErabDrbAllocated","ErabDrbRelease") # variable important from randomforest
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","S1InitialUeMessage","PerBbUeEvent","ErabDrbRelease") # can't remember 
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","S1InitialUeMessage","ReEstablishmentAttempt") 
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","S1InitialUeMessage") 
+
+fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
+mod3 <- lm(fmla, data=df2)
+summary(mod3)
+
+# df3 <- subset(df2, select=c(14,18:length(df2)))
+# df3 <- add_x_name(df3)
+# mod3 <- lm(TotCpu ~ ., data=df3)
+
+# fmla <- as.formula(paste("`TotCpu%` ~ ", paste(predictor, collapse= "+")))
+# mod3 <- lm(fmla, data=temp3)
+
+set.seed(123)
+model_mswm3 <- msmFit(mod3, k=3, p=1, sw=rep(TRUE,length(mod3$coefficients)+2), control=list(parallel=F))
+summary(model_mswm3)
+
+# mod3 <- lm(`TotCpu`~., data=df3)
+# step3 <- stepAIC(mod3, direction="both")
+# model_mswm3 <- msmFit(step3, k=3, p=1, sw=rep(TRUE,length(step3$coefficients)+2), control=list(parallel=F))
+# summary(model_mswm3)
+
+plot(msmResid(model_mswm3), type="l")
+acf(msmResid(model_mswm3))
+
+plotDiag(model_mswm3, which=1)
+plotDiag(model_mswm3, which=2)
+plotDiag(model_mswm3, which=3)
+
+plotProb(model_mswm3, which=1)
+plotProb(model_mswm3, which=2)
+plotProb(model_mswm3, which=3)
+plotProb(model_mswm3, which=4)
+
+plotReg(model_mswm3, expl="RrcConnectionSetupComplete")
+plotReg(model_mswm3, regime=2)
+plotReg(model_mswm3, regime=3)
+
 #----------------------------------------------------------------------#
 library(NHMSAR)
 data(meteo.data)
@@ -523,7 +553,7 @@ plot(tree, uniform=TRUE)
 text(tree, use.n=TRUE, all=TRUE, cex=.6)
 
 #----------------------------------------------------------------------#
-# try with whole dataset
+# try with whole dataset of g2_L16B
 library(randomForest)
 # random forest can't deal with column name that begin with number
 # add "X" in front of it
@@ -540,6 +570,10 @@ add_x_name <- function(data){
 }
 
 temp3 <- add_x_name(temp2)
+dum1 <- subset(g2_extract, select=c(14,18:length(g2_extract)))
+dum1 <- add_x_name(dum1)
+
+set.seed(12345)
 random_tree <- randomForest(`TotCpu%`~., data=temp3, importance=TRUE, proximity=TRUE)
 print(random_tree) # view results 
 var_imp <- importance(random_tree) # importance of each predictor

@@ -181,4 +181,65 @@
   publisher = {Department of Engineering, University of Cambridge},
 }
 
+@Article{juang1985mixture,
+  author    = {Juang, Biing-Hwang and Rabiner, Lawrence},
+  title     = {Mixture autoregressive hidden Markov models for speech signals},
+  journal   = {IEEE Transactions on Acoustics, Speech, and Signal Processing},
+  year      = {1985},
+  volume    = {33},
+  number    = {6},
+  pages     = {1404--1413},
+  publisher = {IEEE},
+}
+
+@Article{ailliot2012markov,
+  author    = {Ailliot, Pierre and Monbet, Val{\'e}rie},
+  title     = {Markov-switching autoregressive models for wind time series},
+  journal   = {Environmental Modelling \& Software},
+  year      = {2012},
+  volume    = {30},
+  pages     = {92--101},
+  publisher = {Elsevier},
+}
+
+@Book{hamilton1994time,
+  title     = {Time series analysis},
+  publisher = {Princeton university press Princeton},
+  year      = {1994},
+  author    = {Hamilton, James Douglas},
+  volume    = {2},
+  comment   = {example in background section},
+}
+
+@Article{kim1998testing,
+  author    = {Kim, Chang-Jin and Nelson, Charles R and Startz, Richard},
+  title     = {Testing for mean reversion in heteroskedastic data based on Gibbs-sampling-augmented randomization},
+  journal   = {Journal of Empirical finance},
+  year      = {1998},
+  volume    = {5},
+  number    = {2},
+  pages     = {131--154},
+  comment   = {example in background section},
+  publisher = {Elsevier},
+}
+
+@Article{stanke2003gene,
+  author    = {Stanke, Mario and Waack, Stephan},
+  title     = {Gene prediction with a hidden Markov model and a new intron submodel},
+  journal   = {Bioinformatics},
+  year      = {2003},
+  volume    = {19},
+  number    = {suppl 2},
+  pages     = {ii215--ii225},
+  comment   = {example in background section},
+  publisher = {Oxford Univ Press},
+}
+
+@TechReport{weskamp2010change,
+  author      = {Weskamp, Paul and HOCHSTOTTER, MARKUS},
+  title       = {Change Point Analysis and Regime Switching Models},
+  institution = {Working paper. https://statistik. econ. kit. edu/download/Change\_Point\_Analysis. pdf},
+  year        = {2010},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

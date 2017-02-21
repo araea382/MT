@@ -201,19 +201,30 @@ extract_component <- function(data){
 # ********MAMUALLY manipulate data**********
 # discard test run which has strange components in EventsPerSec
 g2_extract <- extract_component(g2_sort)
-which(g_extract$`Active(anon):` != 0) # 557 561 1791 1798 1890 1895 1967
-g2_sort <- g2_sort[-which(g_extract$`Active(anon):` != 0),] # remove test run
+which(g2_extract$`Active(anon):` != 0) # 557 561 1791 1798 1890 1895 1967
+g2_sort <- g2_sort[-which(g2_extract$`Active(anon):` != 0),] # remove test run
 g2_extract <- extract_component(g2_sort) # extract again
 
+g2_extract_filter <- extract_component(g2_sort_filter)
+
 # subset for each Release
-g2_L16B <- g2_sort[which(Release == "L16B")]
-g2_L16B_filter <- g2_sort_filter[which(Release == "L16B")]
-g2_L16A <- g2_sort[which(Release == "L16A")]
-g2_L17A <- g2_sort[which(Release == "L17A")]
-g2_L17A_filter <- g2_sort_filter[which(Release == "L17A")]
+# g2_L16B <- g2_sort[which(Release == "L16B")]
+# g2_L16B_filter <- g2_sort_filter[which(Release == "L16B")]
+# g2_L16A <- g2_sort[which(Release == "L16A")]
+# g2_L17A <- g2_sort[which(Release == "L17A")]
+# g2_L17A_filter <- g2_sort_filter[which(Release == "L17A")]
+
+g2_L16B <- g2_extract[which(Release == "L16B")]
+g2_L16B_filter <- g2_extract_filter[which(Release == "L16B")]
+g2_L16A <- g2_extract[which(Release == "L16A")]
+g2_L17A <- g2_extract[which(Release == "L17A")]
+g2_L17A_filter <- g2_extract_filter[which(Release == "L17A")]
 
 # extract components
-g2_L16B_extract <- extract_component(g2_L16B) # 143 variables are added
+# g2_L16B_extract <- extract_component(g2_L16B) # 143 variables are added
+
+# components which are not appear in g2_filter
+setdiff(colnames(g2_extract), colnames(g2_extract_filter))
 
 #----------------------------------------------------------------------#
 .explore_R15G <- function(){

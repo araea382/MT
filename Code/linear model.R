@@ -1,37 +1,37 @@
 # Use data from explore.R
-# g2_L16B_extract
+# g2_L16B
 # convert DuProdName, Fdd/Tdd, NumCells to factor
-g2_L16B_extract$DuProdName <- factor(g2_L16B_extract$DuProdName)
-g2_L16B_extract$NumCells <- factor(g2_L16B_extract$NumCells)
-g2_L16B_extract$`Fdd/Tdd` <- factor(g2_L16B_extract$`Fdd/Tdd`)
+g2_L16B$DuProdName <- factor(g2_L16B$DuProdName)
+g2_L16B$NumCells <- factor(g2_L16B$NumCells)
+g2_L16B$`Fdd/Tdd` <- factor(g2_L16B$`Fdd/Tdd`)
 
-# var_x <- as.matrix(g2_L16B_extract[,3:5])
+# var_x <- as.matrix(g2_L16B[,3:5])
 # fit <- glmnet(var_x, y, alpha=1) 
 
 # fit linear regression
-fit_rrc <- lm(`TotCpu%` ~ RrcConnectionSetupComplete, data=g2_L16B_extract)
+fit_rrc <- lm(`TotCpu%` ~ RrcConnectionSetupComplete, data=g2_L16B)
 summary(fit_rrc)
 # significant: there is relationship between these two variables (56% of TotCpu% is due to the Rrc)
-cor(g2_L16B_extract$`TotCpu%`, g2_L16B_extract$RrcConnectionSetupComplete) # 0.7468125
+cor(g2_L16B$`TotCpu%`, g2_L16B$RrcConnectionSetupComplete) # 0.7468125
 
-fit_num <- lm(`TotCpu%` ~ factor(NumCells), data=g2_L16B_extract)
+fit_num <- lm(`TotCpu%` ~ factor(NumCells), data=g2_L16B)
 summary(fit_num)
-cor(g2_L16B_extract$`TotCpu%`, as.numeric(g2_L16B_extract$NumCells)) # 0.07137698
+cor(g2_L16B$`TotCpu%`, as.numeric(g2_L16B$NumCells)) # 0.07137698
 
-fit_dd <- lm(`TotCpu%` ~ factor(`Fdd/Tdd`), data=g2_L16B_extract)
+fit_dd <- lm(`TotCpu%` ~ factor(`Fdd/Tdd`), data=g2_L16B)
 summary(fit_dd)
-cor(g2_L16B_extract$`TotCpu%`, as.numeric(g2_L16B_extract$`Fdd/Tdd`)) # 0.05899498
+cor(g2_L16B$`TotCpu%`, as.numeric(g2_L16B$`Fdd/Tdd`)) # 0.05899498
 
-fit_du <- lm(`TotCpu%` ~ factor(DuProdName), data=g2_L16B_extract)
+fit_du <- lm(`TotCpu%` ~ factor(DuProdName), data=g2_L16B)
 summary(fit_du)
-cor(g2_L16B_extract$`TotCpu%`, as.numeric(g2_L16B_extract$DuProdName)) # 0.1748102
+cor(g2_L16B$`TotCpu%`, as.numeric(g2_L16B$DuProdName)) # 0.1748102
 
-fit <- lm(`TotCpu%` ~ RrcConnectionSetupComplete + factor(NumCells) + factor(`Fdd/Tdd`) + factor(DuProdName), data=g2_L16B_extract)
+fit <- lm(`TotCpu%` ~ RrcConnectionSetupComplete + factor(NumCells) + factor(`Fdd/Tdd`) + factor(DuProdName), data=g2_L16B)
 summary(fit)
 
 #----------------------#
-corr <- apply(subset(g2_L16B_extract, select=c(18:ncol(g2_L16B_extract))), 2, function(x){
-  cor(g2_L16B_extract$`TotCpu%`,x)
+corr <- apply(subset(g2_L16B, select=c(18:ncol(g2_L16B))), 2, function(x){
+  cor(g2_L16B$`TotCpu%`,x)
 }) # correlation between TotCpu% and each component in EverntsPerSec
 corr2 <- as.data.frame(corr)
 
@@ -42,22 +42,24 @@ rownames(corr3) <- NULL
 corr4 <- corr3
 corr4 <- corr4[order(corr4$corr),]
 
-corr1 <- cor(temp2)
+
 #----------------------#
 # subset include test environment
-temp <- subset(g2_L16B_extract, select=c(3:5,14,18:ncol(g2_L16B_extract)))
+temp <- subset(g2_L16B, select=c(3:5,14,18:ncol(g2_L16B)))
 mod <- lm(`TotCpu%`~., data=temp)
 summary(mod)
 
-temp2 <- subset(g2_L16B_extract, select=c(14,18:ncol(g2_L16B_extract)))
+temp2 <- subset(g2_L16B, select=c(14,18:ncol(g2_L16B)))
 mod2 <- lm(`TotCpu%`~., data=temp2)
 summary(mod2)
 
-library(car)
-vif(mod2) # collinearity
+corr1 <- cor(temp2)
+
+# library(car)
+# vif(mod2) # collinearity
 
 # stepwise regression (forward-backward)
-# step <- stepAIC(mod, direction="both")
+step <- stepAIC(mod, direction="both")
 step$coefficients
 length(step$coefficients) - 1 # 86 variables
 summary(step)
@@ -70,56 +72,56 @@ summary(step2)
 plot(step2$residuals, main="model step 2")
 res <- step2$residuals
 
-# different coeff
-r1 <- names(step$coefficients)
-r2 <- names(step2$coefficients)
-setdiff(r1,r2)
-setdiff(r2,r1)
-
-# cook's distance
-cook <- cooks.distance(step2)
-plot(cook)
-
-# Cook's D plot
-# identify D values > 4/(n-k-1) 
-cutoff <- 4/((nrow(g2_L16B_extract)-length(fit$coefficients)-2)) 
-plot(step2, which=4, cook.levels=cutoff) 
-# seem like obs. 643 and 1099 are considered as influential
-# cook's distance refers to how far, on average, predicted y-values will move if the observation is dropped from the data set.
-
-lev <- hat(model.matrix(step2))
-plot(lev)
-
-plot(g2_L16B_extract$`TotCpu%`, step2$residuals)
+# # different coeff
+# r1 <- names(step$coefficients)
+# r2 <- names(step2$coefficients)
+# setdiff(r1,r2)
+# setdiff(r2,r1)
+# 
+# # cook's distance
+# cook <- cooks.distance(step2)
+# plot(cook)
+# 
+# # Cook's D plot
+# # identify D values > 4/(n-k-1) 
+# cutoff <- 4/((nrow(g2_L16B)-length(fit$coefficients)-2)) 
+# plot(step2, which=4, cook.levels=cutoff) 
+# # seem like obs. 643 and 1099 are considered as influential
+# # cook's distance refers to how far, on average, predicted y-values will move if the observation is dropped from the data set.
+# 
+# lev <- hat(model.matrix(step2))
+# plot(lev)
+# 
+# plot(g2_L16B$`TotCpu%`, step2$residuals)
 
 #----------------------#
 # ecp with residuals
-Ediv_res <- e.divisive(matrix(res), R=499, alpha=1) 
-Ediv_res$k.hat 
-Ediv_res$estimates
-
-plot(res, main="E-divisive res, alpha=1", type="l")
-abline(v=Ediv_res$estimates[c(-1,-length(Ediv_res$estimates))], col="red", lty=2)
+# Ediv_res <- e.divisive(matrix(res), R=499, alpha=1) 
+# Ediv_res$k.hat 
+# Ediv_res$estimates
+# 
+# plot(res, main="E-divisive res, alpha=1", type="l")
+# abline(v=Ediv_res$estimates[c(-1,-length(Ediv_res$estimates))], col="red", lty=2)
 
 #----------------------#
-# n=dim(g2_L16B_extract)[1]
+# n=dim(g2_L16B)[1]
 # set.seed(12345)
 # id=sample(1:n, floor(n*0.5))
-# train=g2_L16B_extract[id,]
-# test=g2_L16B_extract[-id,]
+# train=g2_L16B[id,]
+# test=g2_L16B[-id,]
 # 
 # y_train <- as.matrix(train$`TotCpu%`)
-# X_train <- as.matrix(subset(train, select=c(18:ncol(g2_L16B_extract)))) 
+# X_train <- as.matrix(subset(train, select=c(18:ncol(g2_L16B)))) 
 # y_test <- as.matrix(test$`TotCpu%`)
-# X_test <- as.matrix(subset(test, select=c(18:ncol(g2_L16B_extract)))) 
+# X_test <- as.matrix(subset(test, select=c(18:ncol(g2_L16B)))) 
 
-y <- as.matrix(g2_L16B_extract$`TotCpu%`)
-X <- as.matrix(subset(g2_L16B_extract, select=c(18:ncol(g2_L16B_extract))))
+y <- as.matrix(g2_L16B$`TotCpu%`)
+X <- as.matrix(subset(g2_L16B, select=c(18:ncol(g2_L16B))))
 
-# g2_L16B_extract_2 <- g2_L16B_extract
-# valid_column_names <- make.names(names=names(g2_L16B_extract_2), unique=TRUE, allow_ = TRUE)
-# names(g2_L16B_extract_2) <- valid_column_names
-# X <- dplyr::select(g2_L16B_extract_2, DuProdName:NumCells, DownlinkNasTransport:SmcTimeout) # cannot use with the original column name
+# g2_L16B_2 <- g2_L16B
+# valid_column_names <- make.names(names=names(g2_L16B_2), unique=TRUE, allow_ = TRUE)
+# names(g2_L16B_2) <- valid_column_names
+# X <- dplyr::select(g2_L16B_2, DuProdName:NumCells, DownlinkNasTransport:SmcTimeout) # cannot use with the original column name
 
 #----------------------#
 # ridge and lasso can not enter factor directly. It needs to transform to dummy variables first
@@ -162,14 +164,14 @@ coef(fit_lasso) # 38
 # r <- y_test - pred
 # plot(r)
 
-# include test environment variables (factor)
-mat <- model.matrix(~., data=subset(g2_L16B_extract, select=c(3,4,5,18:ncol(g2_L16B_extract))))
-las <- cv.glmnet(mat, y, alpha=1, family = "gaussian")
-plot(las)
-penalty <- las$lambda.min
-fit_las <- glmnet(mat, y, alpha=1, lambda=penalty) 
-coef(fit_las)
-print(fit_las)
+# # include test environment variables (factor)
+# mat <- model.matrix(~., data=subset(g2_L16B, select=c(3,4,5,18:ncol(g2_L16B))))
+# las <- cv.glmnet(mat, y, alpha=1, family = "gaussian")
+# plot(las)
+# penalty <- las$lambda.min
+# fit_las <- glmnet(mat, y, alpha=1, lambda=penalty) 
+# coef(fit_las)
+# print(fit_las)
 
 #----------------------#
 # elastic net
@@ -184,3 +186,8 @@ fit_elastic <- glmnet(X, y, alpha=0.5, lambda=penalty)
 coef(fit_elastic) # 38
 
 
+#----------------------------------------------------------------------#
+#----------------------------------------------------------------------#
+#----------------------------------------------------------------------#
+y <- as.matrix(g2_extract$`TotCpu%`)
+X <- as.matrix(subset(g2_extract, select=c(18:ncol(g2_L16B))))

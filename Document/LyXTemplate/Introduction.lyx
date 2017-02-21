@@ -311,19 +311,31 @@ name "sec:Background"
 \end_layout
 
 \begin_layout Standard
-Change point detection is the method to detect abrupt changes in time series
- data when the time instant is unknown
+Change point analysis is the method to detect changes in time series data
+ when the time instant is unknown
 \begin_inset CommandInset citation
 LatexCommand citep
 key "basseville1993detection"
 
 \end_inset
 
+ and has a bottom line for discovering and estimating the time point where
+ the changes in time series occur.
+ Serveral terms such as break point or turning point is also used to denote
+ the respective events.
+ However, the commonly used term when the point in time series takes place
+ is change point and the term regime switch is for referring to the different
+ of regime after the occurence of change point 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "weskamp2010change"
+
+\end_inset
+
 .
  It has been studied over decades as it is a problem of interest in many
  applications in which the characteristics of data is collected over time.
- Change point detection can be utilized in medical condition monitoring
- 
+ Change point analysis can be utilized in medical condition monitoring 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "staudacher2005new"
@@ -383,14 +395,25 @@ key "gu2013fast"
 \end_inset
 
 .
+ The change should be flagged when it occured in order to properly deal
+ with such changes in time and reduce the consequences that could happen
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sharkey2014nonparametric"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-In this study, change point detection will be used to identify the changes
- in performance of Ericsson's system.
+In this study, change point analysis will be used to identify the changes
+ in performance of Ericsson's software product.
  Many test runs have been executed for testing the software packages in
  the simulation environment.
- Before launching product to customer, they need to test how well do the
+ Before launching product to customer, they need to test how well does the
  software package perform.
  The performance of these software packages are evaluated by considering
  on the CPU utilization, a percent of the CPU's cycle that spent on each
@@ -400,6 +423,70 @@ In this study, change point detection will be used to identify the changes
 \end_layout
 
 \begin_layout Standard
+Method which is now becoming more popular for addressing the change in time
+ series is a hidden Markov model.
+ It used a concept of Markov process where the system tries to model an
+ unobserved or hidden states.
+ A hidden Markov model is widely used in almost all current system in speech
+ recognition 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rabiner1989tutorial"
+
+\end_inset
+
+ and econometric 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hamilton1994time"
+
+\end_inset
+
+ where business cycle is modeled in switching process to uncover the the
+ state over expansions and recessions and the duration of each period.
+ It extensively applied in modelling a financial time series 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kim1998testing"
+
+\end_inset
+
+ in order to investigate how stock markets are doing in general (e.g., bull
+ or bear markets).
+ It is found to be important in climatology such as describing the state
+ in the wind speed time series 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ailliot2012markov"
+
+\end_inset
+
+ and in biology field 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "stanke2003gene"
+
+\end_inset
+
+ where the prediction of gene is being made.
+ A hidden Markov model for change point analysis will treat data as observations
+ and the underlying segmentation as states.
+ Hence, it is able to identify the switch in hidden states when change-point
+ is most likely to occur.
+ 
+\end_layout
+
+\begin_layout Standard
+Since observations depends on the previous one, autoregressive model is
+ also taken into account when modeling.
+ ARHMM/ Markov switching autoregressive model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 There are two approaches, parametric and nonparametric analysis, for detecting
  the change point in time series.
  Parametric analysis benefits from assuming some knowledge of data distribution
@@ -432,40 +519,10 @@ key "hawkins2010nonparametric"
 .
 \end_layout
 
-\begin_layout Standard
-Change point detection has a bottom line for discovering and estimating
- the time point where the changes in time series occur.
- The change should be flagged as soon as it occured in order to properly
- deal with such changes in time and reduce the consequences that could happen
- 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "sharkey2014nonparametric"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-False alarm
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
 \begin_layout Plain Layout
 perhaps write something about the method in each procedure including citation
- (expand the content....)
-\end_layout
-
-\begin_layout Plain Layout
-para: CUSUM
-\end_layout
-
-\begin_layout Plain Layout
-nonpara: 
+ (expand the content....) ex.
+ para: CUSUM
 \end_layout
 
 \begin_layout Plain Layout
@@ -483,18 +540,61 @@ statistical quality control: use of statistical methods in the monitoring
  
 \end_layout
 
+\begin_layout Plain Layout
+use as a tool to detect abrupt performance variations
+\end_layout
+
+\begin_layout Plain Layout
+distinguish a short-term tick up or down from a true change in the underlying
+ signal 
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-use as a tool to detect abrupt performance variations
+–
 \end_layout
 
 \begin_layout Standard
-distinguish a short-term tick up or down from a true change in the underlying
- signal 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Markov-switching models are widely applied in the social sciences.
+ For example, in economics, the growth rate of Gross Domestic Product is
+ modeled as a switching process to capture the asymmetrical behavior observed
+ over expansions and recessions (Hamilton 1989).
+\end_layout
+
+\begin_layout Plain Layout
+Other economic examples include modeling interest rates (Garcia and Perron
+ 1996) and exchange rates (Engel and Hamilton 1990).
+ In finance, Kim, Nelson, and Startz (1998) model monthly stock returns,
+ while Guidolin (2011b, 2011a) provide many applications of these models
+ to returns, portfolio choice, and asset pricing.
+\end_layout
+
+\begin_layout Plain Layout
+Markov-switching models are used for series that are believed to transition
+ over a finite set of unobserved states, allowing the process to evolve
+ differently in each state.
+ The transitions occur according to a Markov process.
+ The time of transition from one state to another and the duration between
+ changes in state is random.
+\end_layout
+
+\begin_layout Plain Layout
+For example, these models can be used to understand the process that governs
+ the time at which economic growth transitions between expansion and recession
+ and the duration of each period.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -512,14 +612,14 @@ name "sec:Objective"
 The main idea of this thesis is to reduce the laborer work to do visual
  inspection whenever they want to analyze the performance of update software
  package.
- With the rise of data generation and a large number of test runs, this
+ With the rise of data generation from a large number of test runs, this
  work becomes more difficult and perhaps inefficient to do it manually.
  This is when Machine learning, the algorithm that has an ability to learn
  from data, comes into focus.
  The main objectives for this thesis is to implement machine learning to
  analyze the performance of the system.
  The algorithm will help indicate whether the performance of software package
- is degradation, improvement or in a steady state.
+ is in a degradation, improvement or steady state.
  There is also a case when the changes in the test environment affect performanc
 e even though there is no change in the software package.
  The implemented algorithm should be able to also detect when the test environme
