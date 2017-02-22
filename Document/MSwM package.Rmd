@@ -1,0 +1,22 @@
+---
+title: "MSwM package"
+author: "xvc"
+date: "February 22, 2017"
+output: pdf_document
+---
+
+# Input
+
+Dependent variable
+Independent variables
+Number of states 
+Order of AR model
+
+
+# Output
+
+Parameter estimation
+
+
+# Modeling
+
