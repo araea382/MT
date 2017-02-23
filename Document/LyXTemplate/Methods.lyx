@@ -910,6 +910,10 @@ figure of diagram for ARHMM
 The parameters of the AR(p)-HMM model are
 \end_layout
 
+\begin_layout Section
+The Expectation-Maximization algorithm
+\end_layout
+
 \begin_layout Standard
 \begin_inset Branch NoChildDocument
 status collapsed

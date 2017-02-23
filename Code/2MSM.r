@@ -117,20 +117,20 @@ validMSM.lm=function(object){
 
 }
 
-validMSM.glm=function(object){
-	if(length(object@switch)!=ncol(object@Coef)){
-		stop("The length of sw has to be equal of the number of coefficients in the model\n")
-	}
-	switch(object@family$family,
-		poisson=return(invisible()),
-		binomial=return(invisible()),
-		gaussian=return(invisible()),
-		Gamma=return(invisible()),
-		stop("The family is not poisson, binomial, gaussian or Gamma!")
-	)
-	return(invisible())
-
-}
+# validMSM.glm=function(object){
+# 	if(length(object@switch)!=ncol(object@Coef)){
+# 		stop("The length of sw has to be equal of the number of coefficients in the model\n")
+# 	}
+# 	switch(object@family$family,
+# 		poisson=return(invisible()),
+# 		binomial=return(invisible()),
+# 		gaussian=return(invisible()),
+# 		Gamma=return(invisible()),
+# 		stop("The family is not poisson, binomial, gaussian or Gamma!")
+# 	)
+# 	return(invisible())
+# 
+# }
 
 
 
@@ -156,14 +156,14 @@ setClass(
 	contains="MSM.linear"
 )
 
-setClass(
-	Class= "MSM.glm",
-	representation=representation(           
-			family = "ANY",
-			Likelihood  = "function"
-	),
-	contains="MSM.linear"
-)
+# setClass(
+# 	Class= "MSM.glm",
+# 	representation=representation(           
+# 			family = "ANY",
+# 			Likelihood  = "function"
+# 	),
+# 	contains="MSM.linear"
+# )
 
 ####################################
 ##### Construction, get and set ####
@@ -377,26 +377,26 @@ setMethod(
 
 
 ##### Get
-setMethod(
-	f="[",
-	signature=c("MSM.glm","character","missing","missing"),
-	def = function(x,i,j,drop){
-		switch(EXP=i,
-			call = return(x@call),
-			model = return(x@model),
-			k = return(x@k),
-			switch = return(x@switch),
-			Coef = return(x@Coef),
-			seCoef = return(x@seCoef),
-			transMat = return(x@transMat),
-			iniProb = return(x@iniProb),
-			Fit = return(x@Fit),
-			states = return(x@Fit["states"]),
-			family = return(x@family),
-			stop("Error:",i,"is not a MSM slot")
-		)
-	}
-)
+# setMethod(
+# 	f="[",
+# 	signature=c("MSM.glm","character","missing","missing"),
+# 	def = function(x,i,j,drop){
+# 		switch(EXP=i,
+# 			call = return(x@call),
+# 			model = return(x@model),
+# 			k = return(x@k),
+# 			switch = return(x@switch),
+# 			Coef = return(x@Coef),
+# 			seCoef = return(x@seCoef),
+# 			transMat = return(x@transMat),
+# 			iniProb = return(x@iniProb),
+# 			Fit = return(x@Fit),
+# 			states = return(x@Fit["states"]),
+# 			family = return(x@family),
+# 			stop("Error:",i,"is not a MSM slot")
+# 		)
+# 	}
+# )
 
 
 ####################################
@@ -898,14 +898,14 @@ AIC.MSM.lm <-
 	np=object["k"]*sum(swi)+sum(!swi)
 	return(2*object["Fit"]["logLikel"]+k*np)
 }
-AIC.MSM.glm <-
-  
-  function(object, ..., k=2)
-{
-	swi=object@switch
-	np=object["k"]*sum(swi)+sum(!swi)
-	return(2*object["Fit"]["logLikel"]+k*np)
-}
+# AIC.MSM.glm <-
+#   
+#   function(object, ..., k=2)
+# {
+# 	swi=object@switch
+# 	np=object["k"]*sum(swi)+sum(!swi)
+# 	return(2*object["Fit"]["logLikel"]+k*np)
+# }
 
 AIC <-
   ## Return the object's value of the Bayesian Information Criterion
@@ -927,25 +927,25 @@ intervals.MSM.lm=function(object,level=0.95,...){
 		}
 	)
 }
-intervals.MSM.glm=function(object,level=0.95,...){
-	cat("\nAproximate intervals for the coefficients. Level=",level,"\n")
-	aux=names(object["Coef"])
-	lower=object["Coef"]-qnorm(1-(1-level)/2)*object["seCoef"]
-	upper=object["Coef"]+qnorm(1-(1-level)/2)*object["seCoef"]
-	a=apply(as.matrix(1:length(aux)),1,function(i){
-			cat(paste("\n",aux[i],": \n",sep=""))
-			#cat("---------\n")
-			intmat=cbind(lower[aux[i]],object["Coef"][aux[i]],upper[aux[i]])
-			dimnames(intmat)=list(c(paste("Regime ",1:object["k"],sep="")),c("Lower","Estimation","Upper"))
-			print(intmat)
-			#cat("---------\n")
-			cat("\n")
-		}
-	)
-}
-intervals <-
-  ## Return the object's value of the Bayesian Information Criterion
-  function(object,level=0.95,...) UseMethod("intervals")
+# intervals.MSM.glm=function(object,level=0.95,...){
+# 	cat("\nAproximate intervals for the coefficients. Level=",level,"\n")
+# 	aux=names(object["Coef"])
+# 	lower=object["Coef"]-qnorm(1-(1-level)/2)*object["seCoef"]
+# 	upper=object["Coef"]+qnorm(1-(1-level)/2)*object["seCoef"]
+# 	a=apply(as.matrix(1:length(aux)),1,function(i){
+# 			cat(paste("\n",aux[i],": \n",sep=""))
+# 			#cat("---------\n")
+# 			intmat=cbind(lower[aux[i]],object["Coef"][aux[i]],upper[aux[i]])
+# 			dimnames(intmat)=list(c(paste("Regime ",1:object["k"],sep="")),c("Lower","Estimation","Upper"))
+# 			print(intmat)
+# 			#cat("---------\n")
+# 			cat("\n")
+# 		}
+# 	)
+# }
+# intervals <-
+#   ## Return the object's value of the Bayesian Information Criterion
+#   function(object,level=0.95,...) UseMethod("intervals")
 
 
 #########

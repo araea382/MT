@@ -798,6 +798,14 @@ notation table
 \end_layout
 
 \begin_layout Section
+Markov regime switching model
+\end_layout
+
+\begin_layout Standard
+WHAT?????
+\end_layout
+
+\begin_layout Section
 Autoregressive (AR) model
 \end_layout
 
@@ -900,10 +908,6 @@ figure of diagram for ARHMM
 
 \begin_layout Standard
 The parameters of the AR(p)-HMM model are
-\end_layout
-
-\begin_layout Section
-Clustering algorithm
 \end_layout
 
 \begin_layout Standard

@@ -1,6 +1,5 @@
 ---
 title: "MSwM package"
-author: "xvc"
 date: "February 22, 2017"
 output: pdf_document
 ---
@@ -16,6 +15,9 @@ Order of AR model
 # Output
 
 Parameter estimation
+State assignation
+Probability assign in each state
+Evolition of state assignation with probabilities
 
 
 # Modeling
