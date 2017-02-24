@@ -309,14 +309,20 @@ summary(mod.mswm)
 # summary(mod)
 
 plot(msmResid(mod.mswm), type="l")
-
+plotDiag(mod.mswm)
 plotDiag(mod.mswm, which=1)
 plotDiag(mod.mswm, which=2)
 plotDiag(mod.mswm, which=3)
 
 plotProb(mod.mswm,which=1)
 plotProb(mod.mswm,which=2)
+plotProb(mod.mswm,which=3)
+
 plotReg(mod.mswm,expl="x")
+plotReg(mod.mswm,expl="x", regime=1) # same 
+plotReg(mod.mswm,expl="x", regime=2)
+plotReg(mod.mswm, regime=2)
+plotReg(mod.mswm)
 
 data(traffic)
 model=glm(NDead~Temp+Prec,traffic,family="poisson")
@@ -332,41 +338,40 @@ plotProb(m1,which=2)
 plotReg(m1)
 
 #----------------------#
-df1 <- g2_L16B_filter_min
-colnames(df1)[14] <- "TotCpu" # need to rename the variable
-mod1 <- lm(TotCpu~1, data=df1)
-summary(mod1)
-
-model_mswm <- msmFit(mod1, k=3, p=1, sw=rep(TRUE,3), control=list(parallel=F)) # variable + p + 1
-summary(model_mswm)
-
-plot(msmResid(model_mswm), type="l")
-acf(msmResid(model_mswm))
-
-plotDiag(model_mswm, which=1)
-plotDiag(model_mswm, which=2)
-plotDiag(model_mswm, which=3)
-
-plotProb(model_mswm, which=1)
-plotProb(model_mswm, which=2)
-plotProb(model_mswm, which=3)
-plotProb(model_mswm, which=4)
-
-plotReg(model_mswm, regime=1)
-plotReg(model_mswm, regime=2)
-plotReg(model_mswm, regime=3)
-
-library(TSA)
-set.seed(12345)
-ar <- arima(df1$TotCpu, order=c(1,0,0))
-ar$coef
+# g2 data filter
+# df1 <- g2_L16B_filter_min
+# colnames(df1)[14] <- "TotCpu" # need to rename the variable
+# mod1 <- lm(TotCpu~1, data=df1)
+# summary(mod1)
+# 
+# model_mswm <- msmFit(mod1, k=3, p=1, sw=rep(TRUE,3), control=list(trace=T,maxiter=500,parallel=F)) # variable + p + 1
+# summary(model_mswm)
+# 
+# plot(msmResid(model_mswm), type="l")
+# acf(msmResid(model_mswm))
+# 
+# plotDiag(model_mswm, which=1)
+# plotDiag(model_mswm, which=2)
+# plotDiag(model_mswm, which=3)
+# 
+# plotProb(model_mswm, which=1)
+# plotProb(model_mswm, which=2)
+# plotProb(model_mswm, which=3)
+# plotProb(model_mswm, which=4)
+# 
+# plotReg(model_mswm, regime=1)
+# plotReg(model_mswm, regime=2)
+# plotReg(model_mswm, regime=3)
+# 
+# library(TSA)
+# set.seed(12345)
+# ar <- arima(df1$TotCpu, order=c(1,0,0))
+# ar$coef
 
 #----------------------#
+# g2 L16B
 # one test case per SW
-g2_L16B_min <- get_min(g2_L16B, "TotCpu%")
-# g2_L16B_min_extract <- extract_component(g2_L16B_min)
-# g2_L16B_max <- get_max(g2_L16B, "TotCpu%")
-# g2_L16B_max_extract <- extract_component(g2_L16B_max)
+
 df2 <- g2_L16B_min
 colnames(df2)[14] <- "TotCpu" # need to rename the variable
 
@@ -374,7 +379,7 @@ mod2 <- lm(TotCpu~1, data=df2)
 summary(mod2)
 
 set.seed(12345)
-model_mswm2 <- msmFit(mod2, k=3, p=1, sw=rep(TRUE,length(mod2$coefficients)+2), control=list(parallel=F))
+model_mswm2 <- msmFit(mod2, k=3, p=1, sw=rep(TRUE,length(mod2$coefficients)+2), control=list(trace=T, maxiter=500, parallel=F))
 summary(model_mswm2)
 
 plot(msmResid(model_mswm2), type="l")

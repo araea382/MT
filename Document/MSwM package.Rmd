@@ -4,20 +4,34 @@ date: "February 22, 2017"
 output: pdf_document
 ---
 
-# Input
+The package for implementing Autoregressive Markov switching model 
 
-Dependent variable
-Independent variables
-Number of states 
-Order of AR model
+```{r, eval=FALSE}
+msmFit(object, k, sw, p, data, family, control)
+```
+
+- `object`: formula of class "lm"
+    - Dependent variable: $TotCpu$%
+    - Independent variables: $RrcConnectionSetupComplete$, $X2HandoverRequest$, $Paging$, ... (a subset of components in $EventsPerSec$)
+    
+- `k`: Number of states (regime)
+- `sw`: Swiching coefficient
+- `p`: Order of AR model
+- `control`: a list of control parameters
+
+```{r, eval=FALSE}
+model <- lm(`TotCpu%` ~ ., data)
+msmFit(model, k=3, sw=rep(TRUE,length(model$coefficients)+1+1), p=1, 
+       control=list(trace=TRUE, parallelization=FALSE))
+```
 
 
 # Output
 
-Parameter estimation
-State assignation
-Probability assign in each state
-Evolition of state assignation with probabilities
+- Parameter estimation
+- State assignation
+- Probability assign in each state
+- Evolition of state assignation with probabilities
 
 
 # Modeling

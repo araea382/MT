@@ -524,14 +524,6 @@ key "rabiner1989tutorial"
 \begin_inset Formula $S=\{S_{1},S_{2},...,S_{N}\}$
 \end_inset
 
-and the state at time instant 
-\begin_inset Formula $t$
-\end_inset
-
- is denoted by 
-\begin_inset Formula $q_{t}$
-\end_inset
-
 .
 \end_layout
 
@@ -610,7 +602,7 @@ where
 \end_inset
 
 
-\begin_inset Formula $a_{ij}=P(q_{t+1}=S_{j}|q_{t}=S_{i}),$
+\begin_inset Formula $a_{ij}=P(S_{t+1}=j|S_{t}=i),$
 \end_inset
 
  
@@ -730,7 +722,7 @@ The initial state,
 \end_inset
 
 
-\begin_inset Formula $\pi_{i}=P(q_{1}=S_{i}),$
+\begin_inset Formula $\pi_{i}=P(S_{1}=i),$
 \end_inset
 
  
@@ -784,25 +776,83 @@ Hidden Markov model is defined by
  to represent the complete set of parameters.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-notation table
+\begin_layout Section
+Markov regime switching model
 \end_layout
+
+\begin_layout Standard
+Markov switching model is used for time serires that are evolved over a
+ a finite state of unobersrved states.
+ It is a regime switching model where the shift between the regime is controlled
+ by latent variable that follows a hidden Markov chain.
+ The time of transition to different state and the duration in between is
+ random.
+ The process is given by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{t}=\mu_{S_{t}}+\varepsilon_{t}
+\end{equation}
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
-Markov regime switching model
+\begin_layout Standard
+where 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ is the observed value of the time series at time 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $t$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-WHAT?????
+\begin_inset Formula $\mu_{S_{t}}$
+\end_inset
+
+ is the intercept in state 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ follows a Normal distribution with mean zero and variance given by 
+\begin_inset Formula $\sigma_{S_{t}}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+since
+\end_layout
+
+\begin_layout Standard
+transition 
 \end_layout
 
 \begin_layout Section
@@ -838,7 +888,7 @@ where
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
-is white noise with zero mean and variance
+ is white noise with zero mean and variance
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
@@ -850,8 +900,21 @@ is white noise with zero mean and variance
 , the model is called the first order autoression process or AR(1).
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+find one citation for this method
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-Autoregressive Hidden Markov model/Markov switching autoregressive model
+Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
@@ -869,7 +932,6 @@ key "shannon2009formulation"
 .
  It is a combination of autoregressive time series model and hidden Markov
  model where obsevations are drawn from autoregression process.
- This method is also known as Markov swiching autoregressive models.
  
 \end_layout
 
@@ -890,7 +952,26 @@ Y_{t}=-\sum_{i=1}^{p}\alpha_{i}Y_{t-i}+\varepsilon_{t}
 \end_layout
 
 \begin_layout Standard
-(juang1985mixture)
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+Y_{t}=c_{S_{t}}+\alpha_{1}Y_{t-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -908,6 +989,10 @@ figure of diagram for ARHMM
 
 \begin_layout Standard
 The parameters of the AR(p)-HMM model are
+\end_layout
+
+\begin_layout Section
+Parameter Estimation: Filtered and smoothing probability
 \end_layout
 
 \begin_layout Section

@@ -236,10 +236,16 @@
 }
 
 @TechReport{weskamp2010change,
-  author      = {Weskamp, Paul and HOCHSTOTTER, MARKUS},
+  author      = {Weskamp, Paul and Hochstotter, Markus},
   title       = {Change Point Analysis and Regime Switching Models},
   institution = {Working paper. https://statistik. econ. kit. edu/download/Change\_Point\_Analysis. pdf},
   year        = {2010},
+}
+
+@Article{hamilton2005regime,
+  author = {Hamilton, James D},
+  title  = {Regime-Switching Models},
+  year   = {2005},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

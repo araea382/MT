@@ -323,9 +323,16 @@ key "basseville1993detection"
  the changes in time series occur.
  Serveral terms such as break point or turning point is also used to denote
  the respective events.
- However, the commonly used term is change point.
- Another term that can be used to address this detection is called the regime
- switch.
+ However, the commonly used term when the point in time series takes place
+ is change point and the term regime switch is for referring to the different
+ of regime after the occurence of change point 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "weskamp2010change"
+
+\end_inset
+
+.
  It has been studied over decades as it is a problem of interest in many
  applications in which the characteristics of data is collected over time.
  Change point analysis can be utilized in medical condition monitoring 
@@ -411,8 +418,7 @@ In this study, change point analysis will be used to identify the changes
  The performance of these software packages are evaluated by considering
  on the CPU utilization, a percent of the CPU's cycle that spent on each
  process, and some other performance metrics (e.g., memory usage, latency).
- CPU utilization is one of the main focus in the test run that need to be
- optimized for the released of upgrade software package.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -428,33 +434,15 @@ key "rabiner1989tutorial"
 
 \end_inset
 
- and econometric 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "hamilton1994time"
-
-\end_inset
-
- where business cycle is modeled in switching process to uncover the the
- state over expansions and recessions and the duration of each period.
- It extensively applied in modelling a financial time series 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "kim1998testing"
-
-\end_inset
-
- in order to investigate how stock markets are doing in general (e.g., bull
- or bear markets).
- It is found to be important in climatology such as describing the state
- in the wind speed time series 
+ and found to be important in climatology such as describing the state in
+ the wind speed time series 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ailliot2012markov"
 
 \end_inset
 
- and in biology field 
+ and in biology 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "stanke2003gene"
@@ -462,28 +450,47 @@ key "stanke2003gene"
 \end_inset
 
  where the prediction of gene is being made.
- A hidden Markov model for change point analysis will treat data as observations
- and the underlying segmentation as states.
+ It has been extensively applied in the field of economic and finance and
+ have a large literature about it.
+ For instance, business cycle is modeled as a switching process to uncover
+ the the state over expansions and recessions and the duration of each period
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hamilton1994time"
+
+\end_inset
+
+ and financial time series is modeled in order to investigate how stock
+ markets are doing in general i.e., bull or bear markets 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kim1998testing"
+
+\end_inset
+
+.
+ Markov regime switching model is what economist and people who study related
+ to this field always address when refering to hidden Markov model.
+ For change point analysis, a hidden Markov model will treat data as observation
+s and the underlying segmentation as states.
  Hence, it is able to identify the switch in hidden states when change-point
- is most likely to occur.
+ is most likely to occur 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "luong2012hidden"
+
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Standard
-Since observations depends on the previous one, autoregressive model is
- also taken into account when modeling.
- ARHMM/ Markov switching autoregressive model
-\end_layout
-
-\begin_layout Standard
-Especially in the last two decades statisticians have been concerned with
- this issue.
- There have been different terms to denote the respective events, like “break
- point” or “turning point”.
- Nevertheless, the most common terms were “change point” for the point in
- time where the change takes place and “regime switch” for the occurrence
- of a different regime after the change point.
- These are the terms referred to in the sequel.
+Since in this study observation depends on the previous one i.e., performance
+ of current software package depends on the past version of software package,
+ autoregressive model is taken into consideration when modeling.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -521,6 +528,11 @@ key "hawkins2010nonparametric"
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Plain Layout
+use nonparametric approach to get a heuristic idea 
 \end_layout
 
 \begin_layout Plain Layout
@@ -558,49 +570,6 @@ distinguish a short-term tick up or down from a true change in the underlying
 
 \end_layout
 
-\begin_layout Standard
-–
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Markov-switching models are widely applied in the social sciences.
- For example, in economics, the growth rate of Gross Domestic Product is
- modeled as a switching process to capture the asymmetrical behavior observed
- over expansions and recessions (Hamilton 1989).
-\end_layout
-
-\begin_layout Plain Layout
-Other economic examples include modeling interest rates (Garcia and Perron
- 1996) and exchange rates (Engel and Hamilton 1990).
- In finance, Kim, Nelson, and Startz (1998) model monthly stock returns,
- while Guidolin (2011b, 2011a) provide many applications of these models
- to returns, portfolio choice, and asset pricing.
-\end_layout
-
-\begin_layout Plain Layout
-Markov-switching models are used for series that are believed to transition
- over a finite set of unobserved states, allowing the process to evolve
- differently in each state.
- The transitions occur according to a Markov process.
- The time of transition from one state to another and the duration between
- changes in state is random.
-\end_layout
-
-\begin_layout Plain Layout
-For example, these models can be used to understand the process that governs
- the time at which economic growth transitions between expansion and recession
- and the duration of each period.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Objective 
 \begin_inset CommandInset label
@@ -628,7 +597,9 @@ The main idea of this thesis is to reduce the laborer work to do visual
 e even though there is no change in the software package.
  The implemented algorithm should be able to also detect when the test environme
 nt is altered.
- 
+ CPU utilization is the performance metric that will be looked upon as it
+ is one of the main focus in the test run that need to be optimized for
+ the released of upgrade software package.
 \end_layout
 
 \begin_layout Standard
