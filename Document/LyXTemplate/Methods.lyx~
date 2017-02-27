@@ -389,14 +389,14 @@ key "rabiner1986introduction"
 .
  In addtion, the hidden state assumes to follow the Markov property in which
  the future state depends only on the current state.
- The name hidden Markov model is, thus, coming from these two defined properties.
+ The name hidden Markov model is, thus, coming from these defined properties.
  Together, the joint distributioncan be written as 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-P(S_{1},...,S_{T},Y_{1},...,Y_{T})=P(S_{1})P(Y_{1}|S_{1})\prod_{t=2}^{T}P(S_{T}|S_{t-1})P(Y_{t}|S_{t})\label{eq:joint_distribution}
+P(S_{1},...,S_{T},Y_{1},...,Y_{T})=P(S_{1})P(Y_{1}|S_{1})\prod_{t=2}^{T}P(S_{t}|S_{t-1})P(Y_{t}|S_{t})\label{eq:joint_distribution}
 \end{equation}
 
 \end_inset
@@ -405,19 +405,51 @@ P(S_{1},...,S_{T},Y_{1},...,Y_{T})=P(S_{1})P(Y_{1}|S_{1})\prod_{t=2}^{T}P(S_{T}|
 \end_layout
 
 \begin_layout Standard
-A general structure of hidden Markov model can be drawn in graphically as
- shown in 
+A hidden Markov model is able to model more complex stochastic processes
+ and apply to various type of applications compared to the traditional Markov
+ model.
+ A general structure of hidden Markov model can be drawn in graphically
+ as shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "hmm"
 
 \end_inset
 
-, where 
-\begin_inset Formula $S_{i}$
+ where 
+\begin_inset Formula $S_{t}$
 \end_inset
 
- denote the hidden state sequence in the Markov process.
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ denote the hidden state sequence and observation sequence in the Markov
+ process, respectively.
  The arrows from one state to another state in the diagram implied the condition
 al dependency.
  
@@ -476,14 +508,69 @@ status open
 \end_layout
 
 \begin_layout Standard
-A hidden Markov model is able to model more complex stochastic processes
- and apply to various type of applications compared to the traditional Markov
- model.
+There are transitions between states which 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+describes the distribution for the next state given the current state,
+ 
+\begin_inset Formula $P(S_{t}|S_{t-1})$
+\end_inset
+
+
+, and
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ observation probability which describes the distribution for the output
+ given the current state or a chance of observation occuring in a given
+ state,
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $P(Y_{t}|S_{t})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
  In general, the hidden state space of a standard hidden Markov model is
- discrete while the observation can either be discrete or real-valued.
- There are transitions between states which contain a transition probability
- and observation probability which is a chance of observation occuring in
- a given state.
+ discrete while the observation value can either be discrete or real-valued.
  A hidden Markov model usually assumes that the probability of transition
  matrix and observation matrix are independent of 
 \family roman
@@ -502,57 +589,6 @@ A hidden Markov model is able to model more complex stochastic processes
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-A hidden Markov model can be characterized as follows 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "rabiner1989tutorial"
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $N$
-\end_inset
-
- is the number of states in the model.
- The set of states is denoted by 
-\begin_inset Formula $S=\{S_{1},S_{2},...,S_{N}\}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $M$
-\end_inset
-
- is the number of distinct observation symbols.
- The observation can be written as 
-\begin_inset Formula $Y=\{Y_{1},Y_{2},...,Y_{N}\}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-The state transition probability matrix
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- which describes the distribution for the next state given the current state.
 
 \family default
 \series default
@@ -565,7 +601,7 @@ The state transition probability matrix
 \uwave default
 \noun default
 \color inherit
- The matrix 
+ Since the whole process 
 \family roman
 \series medium
 \shape up
@@ -578,179 +614,7 @@ The state transition probability matrix
 \noun off
 \color none
 
-\begin_inset Formula $A=\{a_{ij}\}$
-\end_inset
-
- is 
-\begin_inset Formula $N\times N$
-\end_inset
-
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-where 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula $a_{ij}=P(S_{t+1}=j|S_{t}=i),$
-\end_inset
-
- 
-\begin_inset Formula $1\leq i,j\leq N$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-The observation probability matrix, or emission matrix, which describes
- the distribution for the output given the current state.
- Number of possible observation isn't necessarily the same as the number
- of possible states.
- Therefore, the matrix 
-\begin_inset Formula $B=\{b_{j}(k)\}$
-\end_inset
-
- is 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $N\times M$
-\end_inset
-
- where
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula $b_{j}(k)=P(Y_{k}|S_{t}),$
-\end_inset
-
- 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $1\leq i\leq N,1\leq k\leq M$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-When the probability distribution is continuous, it can be donoted by
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula $b_{j}(y)=f(y|\theta_{i})$
-\end_inset
-
- where 
-\begin_inset Formula $\theta_{i}$
-\end_inset
-
- is unknown parameter(s) of the distribution in state 
-\begin_inset Formula $i$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-The initial state, 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $\pi=\{\pi_{i}\}$
-\end_inset
-
-, which describes the starting distribution over states.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula $\pi_{i}=P(S_{1}=i),$
-\end_inset
-
- 
-\begin_inset Formula $1\leq i\leq N$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Hidden Markov model is defined by 
-\begin_inset Formula $A,$
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $B,$
+\begin_inset Formula $S_{t}$
 \end_inset
 
 
@@ -765,15 +629,23 @@ Hidden Markov model is defined by
 \uwave default
 \noun default
 \color inherit
- and 
-\begin_inset Formula $\pi$
+ is unobserved, the initial state
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, 
+\begin_inset Formula $P(S_{1})$
 \end_inset
 
- and is denoted by 
-\begin_inset Formula $\lambda=(A,B,\pi)$
-\end_inset
-
- to represent the complete set of parameters.
+, describes the starting distribution over states also needs to specify.
 \end_layout
 
 \begin_layout Section
@@ -793,7 +665,7 @@ Markov switching model is used for time serires that are evolved over a
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Y_{t}=\mu_{S_{t}}+\varepsilon_{t}
+Y_{t}=\mu_{S_{t}}+\varepsilon_{t}\label{eq:msm}
 \end{equation}
 
 \end_inset
@@ -848,14 +720,69 @@ where
 \end_layout
 
 \begin_layout Standard
-since
+Since Markov regime switching model assumes that 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ follows a stochastic process that satisfied Markov property, the evolution
+ of changing from state 
+\begin_inset Formula $S_{t}=i$
+\end_inset
+
+ to 
+\begin_inset Formula $S_{t}=i$
+\end_inset
+
+ is defined by the transition probabilities as follows
 \end_layout
 
 \begin_layout Standard
 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+p_{ij}=P(S_{t}=j|S_{t-1}=i,S_{t-2}=k,...,S_{1}=q)=P(S_{t}=j|S_{t-1}=i)
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+where 
+\begin_inset Formula $1\leqslant i,j\leqslant N$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{j=1}^{N}p_{ij}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:msm"
+
+\end_inset
+
+ is the simplest case for the switching model
+\end_layout
+
+\begin_layout Subsection
 Autoregressive (AR) model
 \end_layout
 
@@ -864,7 +791,14 @@ Autoregressive model is one type of time series model that uses for describing
  the time-varying process.
  It is flexible in handling various kind of time series pattern.
  The name comes from how it performs a regression of the variable against
- itself or on its own previous outputs.
+ itself or on its own previous outputs 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "cryer1986time"
+
+\end_inset
+
+.
  Hence, an autoressive model of order 
 \begin_inset Formula $p$
 \end_inset
@@ -875,7 +809,7 @@ Autoregressive model is one type of time series model that uses for describing
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Y_{t}=c+\alpha_{1}Y_{t-1}+\alpha_{2}Y_{t-2}+...+\alpha_{p}Y_{t-p}+\varepsilon_{t}
+Y_{t}=c+\phi_{1}Y_{t-1}+\phi_{2}Y_{t-2}+...+\phi_{p}Y_{t-p}+\varepsilon_{t}
 \end{equation}
 
 \end_inset
@@ -897,32 +831,19 @@ where
 \begin_inset Formula $p=1$
 \end_inset
 
-, the model is called the first order autoression process or AR(1).
+, the model is called the first order autoregression process or AR(1).
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-find one citation for this method
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
+\begin_layout Subsection
 Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
-This is an extension of the basic hidden Markov model which also has dependencie
-s at observation level.
- Autoregressive hidden Markov model relaxes the conditional independent
- assumption of the traditional one by allowing observation probability to
- also depends on the past observation and the current state 
+This is an extension of the basic Markov regime switching model (i.e., hidden
+ Markov model) which also has dependencies at observation level.
+ Then model relaxes the conditional independent assumption of the traditional
+ hidden Markov model by allowing observation probability to also depends
+ on the past observation and the current state 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "shannon2009formulation"
@@ -930,25 +851,8 @@ key "shannon2009formulation"
 \end_inset
 
 .
- It is a combination of autoregressive time series model and hidden Markov
- model where obsevations are drawn from autoregression process.
- 
-\end_layout
-
-\begin_layout Standard
-The observation sequence is an AR(p) process.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-Y_{t}=-\sum_{i=1}^{p}\alpha_{i}Y_{t-i}+\varepsilon_{t}
-\end{equation}
-
-\end_inset
-
-
+ The observations are drawn from autoregression process.
+ Thus, the first order Markov switching autoregressive model is 
 \end_layout
 
 \begin_layout Standard
@@ -965,9 +869,9 @@ Y_{t}=-\sum_{i=1}^{p}\alpha_{i}Y_{t-i}+\varepsilon_{t}
 \noun off
 \color none
 \begin_inset Formula 
-\[
-Y_{t}=c_{S_{t}}+\alpha_{1}Y_{t-1}+\varepsilon_{t}
-\]
+\begin{equation}
+Y_{t}=c_{S_{t}}+\phi_{1}Y_{t-1}+\varepsilon_{t}
+\end{equation}
 
 \end_inset
 
@@ -988,15 +892,81 @@ figure of diagram for ARHMM
 \end_layout
 
 \begin_layout Standard
-The parameters of the AR(p)-HMM model are
+The parameters of the Markov switching autoregressive model are 
 \end_layout
 
 \begin_layout Section
-Parameter Estimation: Filtered and smoothing probability
+Parameter Estimation
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+There are various ways to estimate parameters of Markov regime swiching
+ model.
+ E-M algorithm, segmental K-mean, Gibbs sampling 
+\end_layout
+
+\begin_layout Standard
+In this study, E-M algorithm will be focused on estimating 
+\end_layout
+
+\begin_layout Paragraph
+Filtered and smoothing probability
+\end_layout
+
+\begin_layout Paragraph
 The Expectation-Maximization algorithm
+\end_layout
+
+\begin_layout Standard
+the set of parameter is estimated by iterative two-step procedure.
+\end_layout
+
+\begin_layout Standard
+start with an arbitrary initial parameters
+\end_layout
+
+\begin_layout Standard
+repeat these two steps until the maximum value of the likelihood function
+ is obtained
+\end_layout
+
+\begin_layout Standard
+E-step
+\end_layout
+
+\begin_layout Standard
+filtering and smoothing
+\end_layout
+
+\begin_layout Standard
+calculate the expectation of 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ under the current estimation of the parameters
+\end_layout
+
+\begin_layout Standard
+M-step
+\end_layout
+
+\begin_layout Standard
+obtain new estimates parameters by estimating linear model for each state
+ conditioning on the values for 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citep
+key "janczura2012efficient"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

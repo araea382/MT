@@ -450,19 +450,23 @@ key "stanke2003gene"
 \end_inset
 
  where the prediction of gene is being made.
- It has been extensively applied in the field of economic and finance and
- have a large literature about it.
- For instance, business cycle is modeled as a switching process to uncover
- the the state over expansions and recessions and the duration of each period
- 
+ It has been extensively applied in the field of economics and finance and
+ recently have a large literature about it.
+ Markov regime switching model is the term which economist and people who
+ study related to this field always address when refering to hidden Markov
+ model.
+ For instance, business cycle can be seen as a hidden states with seasonal
+ changes and modeled as a switching process to uncover the state over expansions
+ and recessions and the duration of each period 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "hamilton1994time"
 
 \end_inset
 
- and financial time series is modeled in order to investigate how stock
- markets are doing in general i.e., bull or bear markets 
+.
+ Financial time series is modeled in order to investigate how stock markets
+ are doing in general i.e., bull or bear markets 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1998testing"
@@ -470,8 +474,6 @@ key "kim1998testing"
 \end_inset
 
 .
- Markov regime switching model is what economist and people who study related
- to this field always address when refering to hidden Markov model.
  For change point analysis, a hidden Markov model will treat data as observation
 s and the underlying segmentation as states.
  Hence, it is able to identify the switch in hidden states when change-point
@@ -487,10 +489,28 @@ key "luong2012hidden"
 \end_layout
 
 \begin_layout Standard
-Since in this study observation depends on the previous one i.e., performance
- of current software package depends on the past version of software package,
- autoregressive model is taken into consideration when modeling.
+In this study observation depends on the previous one i.e., performance of
+ current software package depends on the past version of software package,
+ autoregressive model is also taken into consideration when modeling.
  
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+change the word 
+\begin_inset Quotes eld
+\end_inset
+
+in this study
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -532,37 +552,17 @@ key "hawkins2010nonparametric"
 \end_layout
 
 \begin_layout Plain Layout
-use nonparametric approach to get a heuristic idea 
+In this study, nonparametric approach is used to get a heuristic idea of
+ the change point location
 \end_layout
 
 \begin_layout Plain Layout
-perhaps write something about the method in each procedure including citation
- (expand the content....) ex.
- para: CUSUM
-\end_layout
-
-\begin_layout Plain Layout
-software development
-\end_layout
-
-\begin_layout Plain Layout
-meticulously inspecting what's coming out, looking and validating that requireme
-nts for products are satisfied
-\end_layout
-
-\begin_layout Plain Layout
-statistical quality control: use of statistical methods in the monitoring
- and maintaining of the quality of products and services.
- 
-\end_layout
-
-\begin_layout Plain Layout
-use as a tool to detect abrupt performance variations
-\end_layout
-
-\begin_layout Plain Layout
-distinguish a short-term tick up or down from a true change in the underlying
- signal 
+software development / meticulously inspecting what's coming out, looking
+ and validating that requirements for products are satisfied / statistical
+ quality control: use of statistical methods in the monitoring and maintaining
+ of the quality of products and services / use as a tool to detect abrupt
+ performance variations / distinguish a short-term tick up or down from
+ a true change in the underlying signal 
 \end_layout
 
 \end_inset

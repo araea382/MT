@@ -356,6 +356,15 @@ g2_L16B_filter_min <- get_min(g2_L16B_filter,"TotCpu%")
 g2_L16B_max <- get_max(g2_L16B,"TotCpu%")
 
 #----------------------------------------------------------------------#
+# Divide train (80) test (20)
+# g2 data L16B
+train_num <- floor(nrow(g2_L16B_min) * 0.8)
+
+train_g2_L16B_min <- g2_L16B_min[1:train_num,]
+test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
+
+#----------------------------------------------------------------------#
+# *******OLD one********
 # divide train/test set (70/30)
 # g2 data L16B
 .split <- function(){

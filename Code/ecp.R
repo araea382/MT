@@ -230,3 +230,13 @@ abline(v=Ediv1_train_filter_avg$estimates[c(-1,-length(Ediv1_train_filter_avg$es
 ts.plot(train_L16B_filter_avg$value, main="E-divisive train_L16B_filter_avg, alpha=2")
 abline(v=Ediv2_train_filter_avg$estimates[c(-1,-length(Ediv2_train_filter_avg$estimates))], col="blue", lty=2)
 
+#----------------------------------------------------------------------#
+#----------------------------------------------------------------------#
+#----------------------------------------------------------------------#
+ediv_train <- e.divisive(matrix(train_g2_L16B_min$TotCpu), R=499, alpha=1.5)
+ediv_train$k.hat # 2 clusters
+ediv_train$estimates # 1 153 193
+
+plot(train_g2_L16B_min$TotCpu, main="E-divisive g2_L16B_min, alpha=1", type="l", xaxt="n")
+abline(v=ediv_train$estimates[c(-1,-length(ediv_train$estimates))], col="red", lty=2)
+axis(1, at=1:nrow(train_g2_L16B_min), labels=train_g2_L16B_min$SW)

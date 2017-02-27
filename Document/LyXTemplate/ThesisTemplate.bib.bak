@@ -248,4 +248,38 @@
   year   = {2005},
 }
 
+@Article{perlin2015ms_regress,
+  author = {Perlin, Marcelo},
+  title  = {MS\_Regress-the MATLAB package for Markov regime switching models},
+  year   = {2015},
+}
+
+@Book{cryer1986time,
+  title     = {Time series analysis},
+  publisher = {Springer},
+  year      = {1986},
+  author    = {Cryer, Jonathan D and Kellet, Natalie},
+  volume    = {101},
+}
+
+@Article{janczura2012efficient,
+  author    = {Janczura, Joanna and Weron, Rafa{\l}},
+  title     = {Efficient estimation of Markov regime-switching models: An application to electricity spot prices},
+  journal   = {AStA Advances in Statistical Analysis},
+  year      = {2012},
+  volume    = {96},
+  number    = {3},
+  pages     = {385--407},
+  publisher = {Springer},
+}
+
+@Article{kim1999state,
+  author    = {Kim, Chang-Jin and Nelson, Charles R and others},
+  title     = {State-space models with regime switching: classical and Gibbs-sampling approaches with applications},
+  journal   = {MIT Press Books},
+  year      = {1999},
+  volume    = {1},
+  publisher = {The MIT press},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

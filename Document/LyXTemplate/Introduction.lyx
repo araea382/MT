@@ -312,7 +312,7 @@ name "sec:Background"
 
 \begin_layout Standard
 Change point analysis is the method to detect changes in time series data
- when the time instant is unknown
+ when the time instant is unknown 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "basseville1993detection"
@@ -424,8 +424,17 @@ In this study, change point analysis will be used to identify the changes
 \begin_layout Standard
 Method which is now becoming more popular for addressing the change in time
  series is a hidden Markov model.
- It used a concept of Markov process where the system tries to model an
- unobserved or hidden states.
+ It used a concept of Markov process where the system treats data as observation
+s and tries to model an underlying segmentation as states.
+ Hence, it is able to identify the switch in hidden states when change-point
+ is most likely to occur 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "luong2012hidden"
+
+\end_inset
+
+.
  A hidden Markov model is widely used in almost all current system in speech
  recognition 
 \begin_inset CommandInset citation
@@ -451,18 +460,22 @@ key "stanke2003gene"
 
  where the prediction of gene is being made.
  It has been extensively applied in the field of economics and finance and
- have a large literature about it.
- For instance, business cycle is modeled as a switching process to uncover
- the the state over expansions and recessions and the duration of each period
- 
+ recently have a large literature about it.
+ Markov regime switching model is the term which economist and people who
+ study related to this field always address when refering to hidden Markov
+ model.
+ For instance, business cycle can be seen as a hidden states with seasonal
+ changes and modeled as a switching process to uncover the state over expansions
+ and recessions and the duration of each period 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "hamilton1994time"
 
 \end_inset
 
- and financial time series is modeled in order to investigate how stock
- markets are doing in general i.e., bull or bear markets 
+.
+ Financial time series is modeled in order to investigate how stock markets
+ are doing in general i.e., bull or bear markets 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1998testing"
@@ -470,26 +483,13 @@ key "kim1998testing"
 \end_inset
 
 .
- Markov regime switching model is what economist and people who study related
- to this field always address when refering to hidden Markov model.
- For change point analysis, a hidden Markov model will treat data as observation
-s and the underlying segmentation as states.
- Hence, it is able to identify the switch in hidden states when change-point
- is most likely to occur 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "luong2012hidden"
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
 In this study observation depends on the previous one i.e., performance of
  current software package depends on the past version of software package,
- autoregressive model is also taken into consideration when modeling.
+ autoregressive model is also taken into consideration when modeling the
+ Markov swiching model.
  
 \begin_inset Note Comment
 status open
