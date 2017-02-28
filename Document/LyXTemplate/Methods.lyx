@@ -362,21 +362,16 @@ on time.
 \end_layout
 
 \begin_layout Section
-Hidden Markov model (HMM)
+Markov regime switching model
 \end_layout
 
 \begin_layout Standard
-Hidden Markov model is a technique representing a probability distribution
- over an observation sequence 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "ghahramani2001introduction"
-
-\end_inset
-
-.
- There are consitsts of two stochastic processes embedded in two levels
- of hierarchy.
+Markov switching model is used for time serires that are evolved over a
+ a finite state of unobersrved states.
+ It is a regime switching model where the shift between the regime is controlled
+ by latent variable that follows a Markov cahin.
+ The model structure are consitsts of two stochastic processes embedded
+ in two levels of hierarchy.
  One process is an underlying stochastic process that is not observable
  but it is possible to observe them through another stochastic process which
  generated the sequence of observation 
@@ -387,36 +382,25 @@ key "rabiner1986introduction"
 \end_inset
 
 .
- In addtion, the hidden state assumes to follow the Markov property in which
- the future state depends only on the current state.
- The name hidden Markov model is, thus, coming from these defined properties.
- Together, the joint distributioncan be written as 
+ The time of transition to different state and the duration in between is
+ random.
+ In addtion, the state assumes to follow the Markov property in which the
+ future state depends only on the current state.
+ 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-P(S_{1},...,S_{T},Y_{1},...,Y_{T})=P(S_{1})P(Y_{1}|S_{1})\prod_{t=2}^{T}P(S_{t}|S_{t-1})P(Y_{t}|S_{t})\label{eq:joint_distribution}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A hidden Markov model is able to model more complex stochastic processes
- and apply to various type of applications compared to the traditional Markov
- model.
- A general structure of hidden Markov model can be drawn in graphically
- as shown in 
+A Markov regime swtiching model is able to model more complex stochastic
+ processes and describe changes in the dynamic behavior.
+ A general structure of the model can be drawn in graphically as shown in
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "hmm"
 
 \end_inset
 
- where 
+, where 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -448,8 +432,8 @@ reference "hmm"
 \uwave default
 \noun default
 \color inherit
- denote the hidden state sequence and observation sequence in the Markov
- process, respectively.
+ denote the state sequence and observation sequence in the Markov process,
+ respectively.
  The arrows from one state to another state in the diagram implied the condition
 al dependency.
  
@@ -476,7 +460,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Hidden Markov model
+Model structure
 \end_layout
 
 \end_inset
@@ -508,158 +492,14 @@ status open
 \end_layout
 
 \begin_layout Standard
-There are transitions between states which 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-describes the distribution for the next state given the current state,
- 
-\begin_inset Formula $P(S_{t}|S_{t-1})$
+The process is given by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hamilton1994time"
+
 \end_inset
 
 
-, and
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- observation probability which describes the distribution for the output
- given the current state or a chance of observation occuring in a given
- state,
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\begin_inset Formula $P(Y_{t}|S_{t})$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-.
- In general, the hidden state space of a standard hidden Markov model is
- discrete while the observation value can either be discrete or real-valued.
- A hidden Markov model usually assumes that the probability of transition
- matrix and observation matrix are independent of 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $t$
-\end_inset
-
-.
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- Since the whole process 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $S_{t}$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- is unobserved, the initial state
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-, 
-\begin_inset Formula $P(S_{1})$
-\end_inset
-
-, describes the starting distribution over states also needs to specify.
-\end_layout
-
-\begin_layout Section
-Markov regime switching model
-\end_layout
-
-\begin_layout Standard
-Markov switching model is used for time serires that are evolved over a
- a finite state of unobersrved states.
- It is a regime switching model where the shift between the regime is controlled
- by latent variable that follows a hidden Markov chain.
- The time of transition to different state and the duration in between is
- random.
- The process is given by 
 \end_layout
 
 \begin_layout Standard
@@ -782,6 +622,147 @@ reference "eq:msm"
  is the simplest case for the switching model
 \end_layout
 
+\begin_layout Standard
+There are transitions between states which 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+describes the distribution for the next state given the current state, 
+\begin_inset Formula $P(S_{t}|S_{t-1})$
+\end_inset
+
+, and
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ observation probability which describes the distribution for the output
+ given the current state or a chance of observation occuring in a given
+ state,
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $P(Y_{t}|S_{t})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ A hidden Markov model usually assumes that the probability of transition
+ matrix and observation matrix are independent of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $t$
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\end_layout
+
+\begin_layout Standard
+Since the whole process 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $S_{t}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is unobserved, the initial state
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, 
+\begin_inset Formula $P(S_{1})$
+\end_inset
+
+, describes the starting distribution over states also needs to specify.
+\end_layout
+
 \begin_layout Subsection
 Autoregressive (AR) model
 \end_layout
@@ -839,11 +820,11 @@ Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
-This is an extension of the basic Markov regime switching model (i.e., hidden
- Markov model) which also has dependencies at observation level.
- Then model relaxes the conditional independent assumption of the traditional
- hidden Markov model by allowing observation probability to also depends
- on the past observation and the current state 
+This is an extension of the basic Markov regime switching model which also
+ has dependencies at observation level.
+ The model relaxes the conditional independent assumption by allowing observatio
+n probability to also depends on the past observation and the current state
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "shannon2009formulation"

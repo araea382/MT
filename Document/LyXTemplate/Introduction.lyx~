@@ -312,7 +312,7 @@ name "sec:Background"
 
 \begin_layout Standard
 Change point analysis is the method to detect changes in time series data
- when the time instant is unknown
+ when the time instant is unknown 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "basseville1993detection"
@@ -422,8 +422,8 @@ In this study, change point analysis will be used to identify the changes
 \end_layout
 
 \begin_layout Standard
-Method which is now becoming more popular for addressing the change in time
- series is a hidden Markov model.
+Recently, method which is now becoming more popular for addressing the change
+ in time series is a hidden Markov model.
  It used a concept of Markov process where the system treats data as observation
 s and tries to model an underlying segmentation as states.
  Hence, it is able to identify the switch in hidden states when change-point
@@ -461,9 +461,8 @@ key "stanke2003gene"
  where the prediction of gene is being made.
  It has been extensively applied in the field of economics and finance and
  recently have a large literature about it.
- Markov regime switching model is the term which economist and people who
- study related to this field always address when refering to hidden Markov
- model.
+ Markov regime switching model is what which economist and people who study
+ related to this field always address when refering to hidden Markov model.
  For instance, business cycle can be seen as a hidden states with seasonal
  changes and modeled as a switching process to uncover the state over expansions
  and recessions and the duration of each period 
@@ -486,29 +485,17 @@ key "kim1998testing"
 \end_layout
 
 \begin_layout Standard
-In this study observation depends on the previous one i.e., performance of
- current software package depends on the past version of software package,
- autoregressive model is also taken into consideration when modeling the
- Markov swiching model.
+The term Markov regime switching model will be used throughout the thesis.
+ It take the behavior of shifting regime in time serires into account and
  
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-change the word 
-\begin_inset Quotes eld
-\end_inset
-
-in this study
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+Since observation depends on the previous one i.e., performance of current
+ software package depends on the past version of software package, autoregressiv
+e model is also taken into consideration when modeling the Markov regime
+ swiching model.
+ 
 \end_layout
 
 \begin_layout Standard

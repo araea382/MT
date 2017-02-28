@@ -375,136 +375,7 @@ key "ghahramani2001introduction"
 \end_inset
 
 .
- There are consitsts of two stochastic processes embedded in two levels
- of hierarchy.
- One process is an underlying stochastic process that is not observable
- but it is possible to observe them through another stochastic process which
- generated the sequence of observation 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "rabiner1986introduction"
-
-\end_inset
-
-.
- In addtion, the hidden state assumes to follow the Markov property in which
- the future state depends only on the current state.
- The name hidden Markov model is, thus, coming from these defined properties.
- Together, the joint distributioncan be written as 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-P(S_{1},...,S_{T},Y_{1},...,Y_{T})=P(S_{1})P(Y_{1}|S_{1})\prod_{t=2}^{T}P(S_{t}|S_{t-1})P(Y_{t}|S_{t})\label{eq:joint_distribution}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A hidden Markov model is able to model more complex stochastic processes
- and apply to various type of applications compared to the traditional Markov
- model.
- A general structure of hidden Markov model can be drawn in graphically
- as shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "hmm"
-
-\end_inset
-
- where 
-\begin_inset Formula $S_{t}$
-\end_inset
-
- and 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $Y_{t}$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- denote the hidden state sequence and observation sequence in the Markov
- process, respectively.
- The arrows from one state to another state in the diagram implied the condition
-al dependency.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/HMM diagram.PNG
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Hidden Markov model
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "hmm"
-
-\end_inset
-
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-*****Make new diagram....
- this is only just testing how it works*****
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -520,11 +391,9 @@ There are transitions between states which
 \uwave off
 \noun off
 \color none
-describes the distribution for the next state given the current state,
- 
+describes the distribution for the next state given the current state, 
 \begin_inset Formula $P(S_{t}|S_{t-1})$
 \end_inset
-
 
 , and
 \family default
@@ -656,10 +525,131 @@ Markov regime switching model
 Markov switching model is used for time serires that are evolved over a
  a finite state of unobersrved states.
  It is a regime switching model where the shift between the regime is controlled
- by latent variable that follows a hidden Markov chain.
+ by latent variable that follows a Markov cahin.
+ There are consitsts of two stochastic processes embedded in two levels
+ of hierarchy.
+ One process is an underlying stochastic process that is not observable
+ but it is possible to observe them through another stochastic process which
+ generated the sequence of observation 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rabiner1986introduction"
+
+\end_inset
+
+.
  The time of transition to different state and the duration in between is
  random.
- The process is given by 
+ In addtion, the state assumes to follow the Markov property in which the
+ future state depends only on the current state.
+ 
+\end_layout
+
+\begin_layout Standard
+A hidden Markov model is able to model more complex stochastic processes
+ and apply to various type of applications compared to the traditional Markov
+ model.
+ A general structure of the model can be drawn in graphically as shown in
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "hmm"
+
+\end_inset
+
+ where 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ denote the state sequence and observation sequence in the Markov process,
+ respectively.
+ The arrows from one state to another state in the diagram implied the condition
+al dependency.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/HMM diagram.PNG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model structure
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "hmm"
+
+\end_inset
+
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+*****Make new diagram....
+ this is only just testing how it works*****
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The process is given by 
 \end_layout
 
 \begin_layout Standard
@@ -841,9 +831,9 @@ Markov switching autoregressive model
 \begin_layout Standard
 This is an extension of the basic Markov regime switching model (i.e., hidden
  Markov model) which also has dependencies at observation level.
- Then model relaxes the conditional independent assumption of the traditional
- hidden Markov model by allowing observation probability to also depends
- on the past observation and the current state 
+ Then model relaxes the conditional independent assumption by allowing observati
+on probability to also depends on the past observation and the current state
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "shannon2009formulation"
@@ -902,7 +892,14 @@ Parameter Estimation
 \begin_layout Standard
 There are various ways to estimate parameters of Markov regime swiching
  model.
- E-M algorithm, segmental K-mean, Gibbs sampling 
+ E-M algorithm, segmental K-mean 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "juang1990segmental"
+
+\end_inset
+
+, Gibbs sampling 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1999state"

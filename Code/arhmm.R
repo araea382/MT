@@ -43,12 +43,15 @@ fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 mod <- lm(fmla, data=train_g2_L16B_min)
 summary(mod)
 
+# 3 states
 set.seed(12)
 model_mswm <- msmFit(mod, k=3, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(model_mswm)
 
 plot(msmResid(model_mswm), type="l")
 acf(msmResid(model_mswm))
+
+plot(model_mswm)
 
 plotDiag(model_mswm, which=1)
 plotDiag(model_mswm, which=2)
@@ -62,6 +65,31 @@ plotProb(model_mswm, which=4)
 plotReg(model_mswm, expl=predictor[1], regime=1)
 plotReg(model_mswm, expl=predictor[2], regime=1)
 plotReg(model_mswm, expl=predictor[3], regime=1)
+
+# it seems that scale or not scale is the same
+
+#----------------------#
+# 2 states
+set.seed(12)
+model_mswm2 <- msmFit(mod, k=2, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+summary(model_mswm2)
+
+plot(msmResid(model_mswm2), type="l")
+acf(msmResid(model_mswm2))
+
+plot(model_mswm2)
+
+plotDiag(model_mswm2, which=1)
+plotDiag(model_mswm2, which=2)
+plotDiag(model_mswm2, which=3)
+
+plotProb(model_mswm2, which=1)
+plotProb(model_mswm2, which=2)
+plotProb(model_mswm2, which=3)
+
+plotReg(model_mswm2, expl=predictor[1], regime=1)
+plotReg(model_mswm2, expl=predictor[2], regime=1)
+plotReg(model_mswm2, expl=predictor[3], regime=1)
 
 #----------------------#
 # # can't use lasso from glmnet() to model in msmFit()
@@ -126,3 +154,60 @@ summary(model_mswm3)
 # plotProb(model_mswm_filter, which=4)
 # 
 # plotReg(model_mswm_filter, expl=predictor[1], regime=1)
+
+#----------------------#
+# forecast
+# new_data <- test_g2_L16B_min
+dat <- example[-nrow(example),]
+newIndep <- example[nrow(example),]
+mod=lm(y~.,dat)
+summary(mod)
+
+mod.mswm=msmFit(mod,k=2,p=0,sw=c(T,T,T),control=list(trace=T,parallel=F))
+summary(mod.mswm)
+
+
+nPeriods <- 1
+newIndep <- as.matrix(newIndep)
+
+nr <- length(mod.mswm["model"]$model[,-1])
+S <- as.numeric(mod.mswm@switch)
+S <- S[-length(S)]
+k <- mod.mswm@k
+Coef <- mod.mswm@Coef
+nIndep <- ncol(mod.mswm["model"]$model[,-1,drop=F])
+n_S <- sum(S)
+n_nS <- nIndep - n_S # negative value ????
+
+newIndep_S <- matrix(data = 0 , nrow = 1, ncol = n_S)
+newIndep_nS < -matrix(data = 0, nrow = 1, ncol = n_nS)
+
+count_nS <- 0
+count_S <- 0
+
+for (i in 1:nIndep){
+  if(S[i]==1){
+    count_S <- count_S + 1
+    newIndep_S[,count_S] <- newIndep[,i]
+  }else{
+    count_nS<-count_nS + 1
+    newIndep_nS[,count_nS] <- newIndep[,i]
+  }
+}
+
+newFiltProb <- mod.mswm@transMat %*% (mod.mswm@Fit@filtProb[nr,]) # this is the filtered probabilities 
+# of t+1 conditional on the info in t
+
+condMean <- matrix(0,nPeriods,k) # conditional mean in all states
+
+for (i in 1:nPeriods){
+  for (j in 1:k){
+    condMean[i,j] <- newIndep_nS %*% Coeff$indep_nS + newIndep_S %*% (Coeff$indep_S[,j])
+  }
+}    
+
+newCondMean <- condMean %*% newFiltProb # the new conditional mean is the weighted average of the cond means in each state
+newCondStd <- Coeff$sigma %*% newFiltProb # same as cond mean
+
+forOut <- list(condMean=newCondMean, ncondStd=newCondStd)
+
