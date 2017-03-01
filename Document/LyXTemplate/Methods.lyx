@@ -883,25 +883,36 @@ Parameter Estimation
 \begin_layout Standard
 There are various ways to estimate parameters of Markov regime swiching
  model.
- E-M algorithm, segmental K-mean 
+ The methods which have been widely use are as follows: E-M algorithm 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hamilton1990analysis,kim1994dynamic"
+
+\end_inset
+
+ used the maximum likelihood criterion, segmental K-mean 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "juang1990segmental"
 
 \end_inset
 
-, Gibbs sampling 
+ used K-means algorithm and maximized the state-optimized likelihood criterion
+ and Gibbs sampling 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1999state"
 
 \end_inset
 
-
+a Markov chain Monte Carlo based on the Bayesian inference.
+ 
 \end_layout
 
 \begin_layout Standard
-In this study, E-M algorithm will be focused on estimating 
+In this study, E-M algorithm is a main method that will be used for estimating
+ parameters.
+ 
 \end_layout
 
 \begin_layout Paragraph

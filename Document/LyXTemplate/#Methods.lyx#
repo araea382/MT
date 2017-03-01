@@ -362,162 +362,6 @@ on time.
 \end_layout
 
 \begin_layout Section
-Hidden Markov model (HMM)
-\end_layout
-
-\begin_layout Standard
-Hidden Markov model is a technique representing a probability distribution
- over an observation sequence 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "ghahramani2001introduction"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-There are transitions between states which 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-describes the distribution for the next state given the current state, 
-\begin_inset Formula $P(S_{t}|S_{t-1})$
-\end_inset
-
-, and
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- observation probability which describes the distribution for the output
- given the current state or a chance of observation occuring in a given
- state,
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\begin_inset Formula $P(Y_{t}|S_{t})$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-.
- In general, the hidden state space of a standard hidden Markov model is
- discrete while the observation value can either be discrete or real-valued.
- A hidden Markov model usually assumes that the probability of transition
- matrix and observation matrix are independent of 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $t$
-\end_inset
-
-.
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- Since the whole process 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $S_{t}$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- is unobserved, the initial state
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-, 
-\begin_inset Formula $P(S_{1})$
-\end_inset
-
-, describes the starting distribution over states also needs to specify.
-\end_layout
-
-\begin_layout Section
 Markov regime switching model
 \end_layout
 
@@ -526,8 +370,8 @@ Markov switching model is used for time serires that are evolved over a
  a finite state of unobersrved states.
  It is a regime switching model where the shift between the regime is controlled
  by latent variable that follows a Markov cahin.
- There are consitsts of two stochastic processes embedded in two levels
- of hierarchy.
+ The model structure are consitsts of two stochastic processes embedded
+ in two levels of hierarchy.
  One process is an underlying stochastic process that is not observable
  but it is possible to observe them through another stochastic process which
  generated the sequence of observation 
@@ -546,9 +390,8 @@ key "rabiner1986introduction"
 \end_layout
 
 \begin_layout Standard
-A hidden Markov model is able to model more complex stochastic processes
- and apply to various type of applications compared to the traditional Markov
- model.
+A Markov regime swtiching model is able to model more complex stochastic
+ processes and describe changes in the dynamic behavior.
  A general structure of the model can be drawn in graphically as shown in
  
 \begin_inset CommandInset ref
@@ -557,7 +400,7 @@ reference "hmm"
 
 \end_inset
 
- where 
+, where 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -650,6 +493,13 @@ status open
 
 \begin_layout Standard
 The process is given by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hamilton1994time"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -772,6 +622,147 @@ reference "eq:msm"
  is the simplest case for the switching model
 \end_layout
 
+\begin_layout Standard
+There are transitions between states which 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+describes the distribution for the next state given the current state, 
+\begin_inset Formula $P(S_{t}|S_{t-1})$
+\end_inset
+
+, and
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ observation probability which describes the distribution for the output
+ given the current state or a chance of observation occuring in a given
+ state,
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $P(Y_{t}|S_{t})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ A hidden Markov model usually assumes that the probability of transition
+ matrix and observation matrix are independent of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $t$
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\end_layout
+
+\begin_layout Standard
+Since the whole process 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $S_{t}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is unobserved, the initial state
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, 
+\begin_inset Formula $P(S_{1})$
+\end_inset
+
+, describes the starting distribution over states also needs to specify.
+\end_layout
+
 \begin_layout Subsection
 Autoregressive (AR) model
 \end_layout
@@ -829,10 +820,10 @@ Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
-This is an extension of the basic Markov regime switching model (i.e., hidden
- Markov model) which also has dependencies at observation level.
- Then model relaxes the conditional independent assumption by allowing observati
-on probability to also depends on the past observation and the current state
+This is an extension of the basic Markov regime switching model which also
+ has dependencies at observation level.
+ The model relaxes the conditional independent assumption by allowing observatio
+n probability to also depends on the past observation and the current state
  
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -892,25 +883,36 @@ Parameter Estimation
 \begin_layout Standard
 There are various ways to estimate parameters of Markov regime swiching
  model.
- E-M algorithm, segmental K-mean 
+ The methods which have been widely use are as follows: E-M algorithm 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hamilton1990analysis,kim1994dynamic"
+
+\end_inset
+
+ used the maximum likelihood criterion, segmental K-mean 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "juang1990segmental"
 
 \end_inset
 
-, Gibbs sampling 
+ used K-means algorithm and maximized the state-optimized likelihood criterion
+ and Gibbs sampling 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1999state"
 
 \end_inset
 
-
+a Markov chain Monte Carlo based on the Bayesian inference.
+ 
 \end_layout
 
 \begin_layout Standard
-In this study, E-M algorithm will be focused on estimating 
+In this study, E-M algorithm is a main method that will be used for estimating
+ parameters.
+ 
 \end_layout
 
 \begin_layout Paragraph

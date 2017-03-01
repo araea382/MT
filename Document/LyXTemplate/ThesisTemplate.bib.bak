@@ -282,4 +282,26 @@
   publisher = {The MIT press},
 }
 
+@Article{juang1990segmental,
+  author    = {Juang, B-H and Rabiner, Lawrence R},
+  title     = {The segmental K-means algorithm for estimating parameters of hidden Markov models},
+  journal   = {IEEE Transactions on Acoustics, Speech, and Signal Processing},
+  year      = {1990},
+  volume    = {38},
+  number    = {9},
+  pages     = {1639--1641},
+  publisher = {IEEE},
+}
+
+@Article{hamilton1990analysis,
+  author    = {Hamilton, James D},
+  title     = {Analysis of time series subject to changes in regime},
+  journal   = {Journal of econometrics},
+  year      = {1990},
+  volume    = {45},
+  number    = {1-2},
+  pages     = {39--70},
+  publisher = {Elsevier},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

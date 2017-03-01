@@ -44,8 +44,30 @@ mod <- lm(fmla, data=train_g2_L16B_min)
 summary(mod)
 
 # 3 states
-set.seed(12)
-model_mswm <- msmFit(mod, k=3, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+# i <- 1
+# while(i < 100){
+#   set.seed(i)
+#   try(msmFit(mod, k=3, p=1, sw=c(TRUE,TRUE,FALSE,TRUE,TRUE,TRUE), control=list(trace=FALSE, maxiter=500, parallel=FALSE)))
+#   print(i)
+#   i <- i + 1
+# }
+
+g2_L16B_min_scale <- subset(g2_L16B_min, select=c("TotCpu%",predictor))
+g2_L16B_min_scale <- as.data.frame(scale(g2_L16B_min_scale))
+train_g2_L16B_min_scale <- g2_L16B_min[1:train_num,]
+
+colnames(train_g2_L16B_min_scale)[14] <- "TotCpu"
+
+mod2 <- lm(fmla, data=train_g2_L16B_min_scale)
+set.seed(10)
+model_mswm <- msmFit(mod2, k=3, p=1, sw=c(TRUE,TRUE,FALSE,TRUE,TRUE,TRUE), control=list(trace=FALSE, maxiter=500, parallel=FALSE))
+summary(model_mswm)
+
+
+
+
+set.seed(10)
+model_mswm <- msmFit(mod, k=3, p=1, sw=c(TRUE,TRUE,FALSE,FALSE,TRUE,TRUE), control=list(trace=FALSE, maxiter=500, parallel=FALSE))
 summary(model_mswm)
 
 plot(msmResid(model_mswm), type="l")
@@ -156,6 +178,10 @@ summary(model_mswm3)
 # plotReg(model_mswm_filter, expl=predictor[1], regime=1)
 
 #----------------------#
+
+# *********NOT FINISHED ************
+# FIXED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 # forecast
 # new_data <- test_g2_L16B_min
 dat <- example[-nrow(example),]

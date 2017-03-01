@@ -9,7 +9,7 @@ library(ggplot2)
 library(dplyr)
 library(stringr)
 library(glmnet)
-library(MASS)
+# library(MASS)
 
 #----------------------------------------------------------------------#
 g2 <- fread("master-g2-17col.csv.txt")

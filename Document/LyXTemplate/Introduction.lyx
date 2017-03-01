@@ -461,8 +461,9 @@ key "stanke2003gene"
  where the prediction of gene is being made.
  It has been extensively applied in the field of economics and finance and
  recently have a large literature about it.
- Markov regime switching model is what which economist and people who study
- related to this field always address when refering to hidden Markov model.
+ Markov regime switching model is what which econometrician and people who
+ study related to this field always address when refering to hidden Markov
+ model.
  For instance, business cycle can be seen as a hidden states with seasonal
  changes and modeled as a switching process to uncover the state over expansions
  and recessions and the duration of each period 
