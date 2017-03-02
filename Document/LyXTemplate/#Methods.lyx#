@@ -417,7 +417,7 @@ reference "hmm"
 \noun off
 \color none
 
-\begin_inset Formula $Y_{t}$
+\begin_inset Formula $y_{t}$
 \end_inset
 
 
@@ -505,7 +505,7 @@ key "hamilton1994time"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Y_{t}=\mu_{S_{t}}+\varepsilon_{t}\label{eq:msm}
+y=\mu_{S_{t}}+\varepsilon_{t}\label{eq:msm}
 \end{equation}
 
 \end_inset
@@ -515,7 +515,7 @@ Y_{t}=\mu_{S_{t}}+\varepsilon_{t}\label{eq:msm}
 
 \begin_layout Standard
 where 
-\begin_inset Formula $Y_{t}$
+\begin_inset Formula $y_{t}$
 \end_inset
 
  is the observed value of the time series at time 
@@ -560,7 +560,43 @@ where
 \end_layout
 
 \begin_layout Standard
-Since Markov regime switching model assumes that 
+\begin_inset Formula $S_{t}=i,$
+\end_inset
+
+ 
+\begin_inset Formula $1\leqslant i\leqslant N$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+There are transitions between states which 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+describes the distribution for the next state given the current state
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ Since Markov regime switching model assumes that 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -619,11 +655,11 @@ reference "eq:msm"
 
 \end_inset
 
- is the simplest case for the switching model
+ is the simplest case for the switching model.
 \end_layout
 
 \begin_layout Standard
-There are transitions between states which 
+
 \family roman
 \series medium
 \shape up
@@ -635,11 +671,23 @@ There are transitions between states which
 \uwave off
 \noun off
 \color none
-describes the distribution for the next state given the current state, 
-\begin_inset Formula $P(S_{t}|S_{t-1})$
-\end_inset
+\begin_inset Note Comment
+status open
 
-, and
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+and
 \family default
 \series default
 \shape default
@@ -666,7 +714,7 @@ describes the distribution for the next state given the current state,
 \noun off
 \color none
  
-\begin_inset Formula $P(Y_{t}|S_{t})$
+\begin_inset Formula $P(y_{t}|S_{t})$
 \end_inset
 
 
@@ -682,37 +730,12 @@ describes the distribution for the next state given the current state,
 \noun default
 \color inherit
 .
- A hidden Markov model usually assumes that the probability of transition
- matrix and observation matrix are independent of 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $t$
-\end_inset
-
-.
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -756,11 +779,18 @@ Since the whole process
 \uwave off
 \noun off
 \color none
-, 
-\begin_inset Formula $P(S_{1})$
+ describes the starting distribution over states also needs to specify.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\pi_{i}=P(S_{1}=i)
+\end{equation}
+
 \end_inset
 
-, describes the starting distribution over states also needs to specify.
+
 \end_layout
 
 \begin_layout Subsection
@@ -790,11 +820,30 @@ key "cryer1986time"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Y_{t}=c+\phi_{1}Y_{t-1}+\phi_{2}Y_{t-2}+...+\phi_{p}Y_{t-p}+\varepsilon_{t}
+y_{t}=c+\phi_{1}y_{t-1}+\phi_{2}y_{t-2}+...+\phi_{p}y_{t-p}+\varepsilon_{t}
 \end{equation}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+or
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{t}=c+\sum_{i=1}^{p}\phi_{i}y_{t-i}+\varepsilon_{t}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 where 
 \begin_inset Formula $c$
 \end_inset
@@ -851,9 +900,17 @@ key "shannon2009formulation"
 \color none
 \begin_inset Formula 
 \begin{equation}
-Y_{t}=c_{S_{t}}+\phi_{1}Y_{t-1}+\varepsilon_{t}
+y_{t}=c_{S_{t}}+\phi_{1}y_{t-1}+\varepsilon_{t}
 \end{equation}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\varepsilon_{t}\sim N(0,\sigma_{S_{t}}^{2})$
 \end_inset
 
 
@@ -870,10 +927,6 @@ figure of diagram for ARHMM
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-The parameters of the Markov switching autoregressive model are 
 \end_layout
 
 \begin_layout Section
@@ -897,7 +950,7 @@ key "juang1990segmental"
 
 \end_inset
 
- used K-means algorithm and maximized the state-optimized likelihood criterion
+ used K-means algorithm and maximized the state-optimized likelihood criterion,
  and Gibbs sampling 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -905,70 +958,253 @@ key "kim1999state"
 
 \end_inset
 
-a Markov chain Monte Carlo based on the Bayesian inference.
+that used a Markov chain Monte Carlo simulation method based on the Bayesian
+ inference.
+ In this thesis framework, E-M algorithm is used in estimating parameters
+ and is briefly described the general procedure.
  
 \end_layout
 
-\begin_layout Standard
-In this study, E-M algorithm is a main method that will be used for estimating
- parameters.
- 
-\end_layout
-
-\begin_layout Paragraph
-Filtered and smoothing probability
-\end_layout
-
-\begin_layout Paragraph
+\begin_layout Subsection
 The Expectation-Maximization algorithm
 \end_layout
 
 \begin_layout Standard
-the set of parameter is estimated by iterative two-step procedure.
+E-M algorithm is originally designed to deal with the incomplete or missing
+ values in data.
+ Nevertheless, it can potentially implement in Markov regime switching model
+ since the unobserved state 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ can be viewed as the missing values.
+ The set of parameter is estimated by iterative two-step procedure.
+ It starts with an arbitrary initial parameters and finds the expected values
+ of the state process given the observations.
+ Next, the new maximum likelihood from the derived parameter in previous
+ step is calculated.
+ These two steps are repeated until the maximum value of the likelihood
+ function is reached 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "janczura2012efficient"
+
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Standard
-start with an arbitrary initial parameters
-\end_layout
-
-\begin_layout Standard
-repeat these two steps until the maximum value of the likelihood function
- is obtained
-\end_layout
-
-\begin_layout Standard
+\begin_layout Paragraph
 E-step
 \end_layout
 
 \begin_layout Standard
-filtering and smoothing
-\end_layout
+Assume that 
+\begin_inset Formula $\theta^{(n)}$
+\end_inset
 
-\begin_layout Standard
-calculate the expectation of 
+ is the derived set of parameters in M-step from the previous iteration
+ and the available observations of time 
+\begin_inset Formula $t-1$
+\end_inset
+
+ is denoted as 
+\begin_inset Formula $\Omega_{t-1}=(y_{t},y_{t-1},...,y_{1})$
+\end_inset
+
+.
+ The general idea of this step is to calculate the expectation of 
 \begin_inset Formula $S_{t}$
 \end_inset
 
- under the current estimation of the parameters
+ under the current estimation of the parameters.
+ The obtained result is called smoothed inferences probability and is denoted
+ by
+\begin_inset Formula $P(S_{t}=j|\Omega_{T},\theta^{(n)})$
+\end_inset
+
+.
+ It consists of filtering and smoothing algorithm and the process is described
+ as follows 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kim1994dynamic"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Subparagraph
+Filtering
 \end_layout
 
 \begin_layout Standard
+Filtered probability is the probability of the non-observable Markov chain
+ being in a given state 
+\begin_inset Formula $j$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+, conditional on information up to time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ The algorithm starts from
+\begin_inset Formula $t=1$
+\end_inset
+
+ to 
+\begin_inset Formula $t=T$
+\end_inset
+
+.
+ The starting point for the first iteration where 
+\begin_inset Formula $t=1$
+\end_inset
+
+ is chosen as an arbitrary values.
+ The probabilites of each state given that the available observation is
+ up to time 
+\begin_inset Formula $t-1$
+\end_inset
+
+ is calculated:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(S_{t}=j|\Omega_{t-1},\theta^{(n)})=\sum_{i=1}^{N}p_{ji}^{(n)}P(S_{t-1}=i|\Omega_{t-1},\theta^{(n)})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, with the new observation at time 
+\begin_inset Formula $t$
+\end_inset
+
+, the probabilites of each state is updated by using Bayes' rule
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(S_{t}=j|\Omega_{t},\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})P(S_{t}=j|\Omega_{t-1},\theta^{(n)})}{\sum_{j=1}^{N}f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})P(S_{t}=j|\Omega_{t-1},\theta^{(n)})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})$
+\end_inset
+
+ is the likelihood function in each state for time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ It is computing iteratively until all the observation is reached i.e., 
+\begin_inset Formula $t=T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subparagraph
+Smoothing
+\end_layout
+
+\begin_layout Standard
+Smoothed probability is the probability of the non-obsevable Markov chain
+ being in state 
+\begin_inset Formula $j$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+, conditional on all available information.
+ The algorithm iterates over 
+\begin_inset Formula $t=T-1,T-2,...,1$
+\end_inset
+
+.
+ The starting value is obtained from the final iteration of the filtered
+ probabilites.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(S_{t}=j|\Omega_{T},\theta^{(n)})=\sum_{i=1}^{N}\frac{P(S_{t}=j|\Omega_{t},\theta^{(n)})P(S_{t+1}=j|\Omega_{T},\theta^{(n)})p_{ji}^{(n)}}{P(S_{t+1}=j|\Omega_{t},\theta^{(n)})}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Once the filtered probabilities are estimated, there is necessarily enough
+ information to calculate the log likelihood function.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\ln L(\theta)=\sum_{t=1}^{T}\ln(f(y_{t}|\Omega_{t-1},\theta^{(n)})=\sum_{t=1}^{T}\ln\sum_{j=1}^{N}((f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})P(S_{t}=j|\Omega_{t-1}))
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which is a weighted average of the likelihood function in each state.
+ The probability of state are considered as weights.
+\end_layout
+
+\begin_layout Paragraph
 M-step
 \end_layout
 
 \begin_layout Standard
-obtain new estimates parameters by estimating linear model for each state
- conditioning on the values for 
-\begin_inset Formula $S_{t}$
+The new estimates parameters, 
+\begin_inset Formula $\theta^{(n+1)}$
 \end_inset
 
-
+, which is more exact value of maximum likelihood estimates than the previous
+ one is obtained by finding the set of parameter that maximizes the expected
+ log likelihood function.
+ This new set of parameter is used in the next iteration of the E-step.
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand citep
-key "janczura2012efficient"
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Include the derivative of each coeff and transition matrix ?????????????
+\end_layout
 
 \end_inset
 
