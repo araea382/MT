@@ -1120,7 +1120,19 @@ fopt.lm=function(param, object=object){
 		)
 		long=object["k"]+(object["k"]-1)*object["k"]
 		mi=sum(!swi)
-	      hessian=sqrt(abs(diag(solve(res$Hessian))))
+		
+		# use Ginv(), the generalized inversed for singular matrix
+		# hessian=sqrt(abs(diag(solve(res$Hessian))))
+		# if(class(try(solve(res$Hessian), silent=TRUE))=="try-error"){
+		#   require(matlib)
+		#   hessian=sqrt(abs(diag(Ginv(res$Hessian))))
+		# }else{
+		#   hessian=sqrt(abs(diag(solve(res$Hessian))))
+		# }
+		
+		require(matlib)
+		hessian=sqrt(abs(diag(Ginv(res$Hessian))))
+		 
 		stdaux=object["Coef"]
 		stdaux[,which(swi)]=as.data.frame(matrix(hessian[-c(1:(long+mi))],nrow=object["k"],byrow=T))
 		stdaux[,which(!swi)]=as.data.frame(matrix(rep(hessian[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
