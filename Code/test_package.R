@@ -357,6 +357,46 @@ theta_init <- init.theta.MSAR(dat, M=3, order=1, label="HH")
 mod_hh <- fit.MSAR(dat, theta_init, verbose=TRUE, MaxIter=200)
 regimes.plot.MSAR(mod_hh, dat, ylab="Captures number")
 
+#----------------------------------------------------------------------#
+library(fMarkovSwitching)
+data(dep)
+data(indep)
+
+S<-c(1,0,0)
+k<-2
+distIn<-"Normal"
+
+myModel<-MS_Regress_Fit(dep,indep,S,k)	
+print(myModel)
+plot(myModel)	
+
+#----------------------#
+# forecast
+data(dep)
+dep=as.matrix(dep)
+indep=as.matrix(indep)
+
+# input arguments
+S=c(1,0,0)
+distrib<-"Normal"
+k<-2
+
+# new dep and indep (without last observation, which will be forecasted)
+dep=dep[-nrow(dep)]        
+myNewIndep=indep[-nrow(indep),]
+
+# Fit the model with ex ante data
+myModel<-MS_Regress_Fit(dep,myNewIndep,S,k,distrib)
+
+# new indep matrix is build as the last observations
+newIndep_For=as.matrix(t(indep[nrow(indep),])) 
+
+# forecast with MS_Regress_For
+myFor<-MS_Regress_For(myModel,newIndep_For)
+
+cat("\nForecast for conditional Mean in t+1= ",myFor$condMean,"\n")
+cat("Forecast for conditional Standard deviation (sigma) in t+1= ",myFor$condStd,"\n")
+
 
 #----------------------------------------------------------------------#
 # Decision tree
@@ -409,3 +449,6 @@ var.imp <- data.frame(importance(random_tree, type=2))
 # make row names as columns
 var.imp$Variables <- row.names(var.imp)
 var.imp[order(var.imp[,1],decreasing = T),]
+
+
+

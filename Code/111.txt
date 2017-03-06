@@ -1,0 +1,59 @@
+S <- c(1,1,1)
+
+***** Numerical Optimization for MS Model Converged *****
+
+Final log Likelihood: 2487.342 
+Number of parameters: 10 
+Distribution Assumption -> Normal 
+
+***** Final Parameters *****
+
+---> Non Switching Parameters <---
+
+There was no Non Switching Parameters. Skipping this result
+
+--->   Switching Parameters   <---
+
+  State 1
+      Model Standard Deviation: 0.0163
+      Std Error:                0.0006 (0.00)
+  State 2
+      Model Standard Deviation: 0.0287
+      Std Error:                0.0014 (0.00)
+
+  Switching Parameters for Indep  Column  1 
+
+  State  1
+     Value:      0.0003
+     Std error:  0.0007 (0.62)
+  State  2
+     Value:      0.0006
+     Std error:  0.0017 (0.73)
+
+  Switching Parameters for Indep  Column  2 
+
+  State  1
+     Value:      0.4998
+     Std error:  0.0324 (0.00)
+  State  2
+     Value:      0.4229
+     Std error:  0.0567 (0.00)
+
+  Switching Parameters for Indep  Column  3 
+
+  State  1
+     Value:      0.1261
+     Std error:  0.0451 (0.01)
+  State  2
+     Value:      0.2388
+     Std error:  0.0802 (0.00)
+
+---> Transition Probabilities Matrix <---
+
+      0.99   0.02   
+      0.01   0.98   
+
+---> Expected Duration of Regimes <---
+
+     Expected duration of Regime #1: 91.72 time periods
+     Expected duration of Regime #2: 49.22 time periods

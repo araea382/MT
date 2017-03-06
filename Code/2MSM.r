@@ -1118,7 +1118,10 @@ fopt.lm=function(param, object=object){
 			fun=fopt.lm,
 			object=object
 		)
-		long=object["k"]+(object["k"]-1)*object["k"]
+		
+		# non-switching variance will have only one value
+		# long=object["k"]+(object["k"]-1)*object["k"]
+		long=length(lstd)+(object["k"]-1)*object["k"]
 		mi=sum(!swi)
 		
 		# use Ginv(), the generalized inversed for singular matrix
@@ -1134,8 +1137,8 @@ fopt.lm=function(param, object=object){
 		hessian=sqrt(abs(diag(Ginv(res$Hessian))))
 		 
 		stdaux=object["Coef"]
-		stdaux[,which(swi)]=as.data.frame(matrix(hessian[-c(1:(long+mi))],nrow=object["k"],byrow=T))
-		stdaux[,which(!swi)]=as.data.frame(matrix(rep(hessian[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
+    stdaux[,which(swi)]=as.data.frame(matrix(hessian[-c(1:(long+mi))],nrow=object["k"],byrow=T))
+    stdaux[,which(!swi)]=as.data.frame(matrix(rep(hessian[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
 		object@seCoef=stdaux
 		return(object)  
 }

@@ -571,7 +571,15 @@ where
 \end_layout
 
 \begin_layout Standard
-There are transitions between states which 
+The Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:msm"
+
+\end_inset
+
+ is the simplest case for the switching model.
+ There are transitions between states which 
 \family roman
 \series medium
 \shape up
@@ -644,33 +652,20 @@ where
 \begin_inset Formula $\sum_{j=1}^{N}p_{ij}=1$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The Equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:msm"
-
+ and 
+\begin_inset Formula $p_{ij}\geq0$
 \end_inset
 
- is the simplest case for the switching model.
+ 
 \end_layout
 
 \begin_layout Standard
+These two properties ensure ergodicity (i.e., aperiodic and irreducible) that
+ any state will be reached eventually regardless of the initial state.
+ It is also necessary for assessing the consistency of the model.
+\end_layout
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
+\begin_layout Standard
 \begin_inset Note Comment
 status open
 
@@ -714,23 +709,10 @@ and
 \noun off
 \color none
  
-\begin_inset Formula $P(y_{t}|S_{t})$
+\begin_inset Formula $f(y_{t}|S_{t})$
 \end_inset
 
 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-.
- 
 \end_layout
 
 \end_inset
@@ -779,7 +761,7 @@ Since the whole process
 \uwave off
 \noun off
 \color none
- describes the starting distribution over states also needs to specify.
+ describes the starting distribution over states also needs to be specified.
 \end_layout
 
 \begin_layout Standard
@@ -900,7 +882,7 @@ key "shannon2009formulation"
 \color none
 \begin_inset Formula 
 \begin{equation}
-y_{t}=c_{S_{t}}+\phi_{1}y_{t-1}+\varepsilon_{t}
+y_{t}=\mu_{S_{t}}+\phi_{1}y_{t-1}+\varepsilon_{t}
 \end{equation}
 
 \end_inset
@@ -1108,7 +1090,7 @@ P(S_{t}=j|\Omega_{t},\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n
 
 \begin_layout Standard
 where 
-\begin_inset Formula $f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})$
+\begin_inset Formula $f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})=\frac{1}{\sqrt{2\pi\sigma_{S_{t}}^{2}}}exp\left\{ -\frac{(y_{t}-\mu_{S_{t}})^{2}}{2\sigma_{S_{t}}^{2}}\right\} $
 \end_inset
 
  is the likelihood function in each state for time 
@@ -1116,7 +1098,11 @@ where
 \end_inset
 
 .
- It is computing iteratively until all the observation is reached i.e., 
+ 
+\end_layout
+
+\begin_layout Standard
+It is computing iteratively until all the observation is reached i.e., 
 \begin_inset Formula $t=T$
 \end_inset
 
@@ -1164,7 +1150,7 @@ P(S_{t}=j|\Omega_{T},\theta^{(n)})=\sum_{i=1}^{N}\frac{P(S_{t}=j|\Omega_{t},\the
 \end_inset
 
 Once the filtered probabilities are estimated, there is necessarily enough
- information to calculate the log likelihood function.
+ information to calculate the full log likelihood function.
 \end_layout
 
 \begin_layout Standard

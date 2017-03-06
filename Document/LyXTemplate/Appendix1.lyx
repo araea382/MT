@@ -297,6 +297,10 @@ thepage
 Proofs of mathematical results
 \end_layout
 
+\begin_layout Standard
+from Method
+\end_layout
+
 \begin_layout Chapter
 Software
 \end_layout
@@ -324,6 +328,14 @@ With strengths and weaknesses between R and Python described earlier, R
  some factors, and get an overall trend.
  R proves itself a good choice since it provides a great feature in creating
  an interactive graphic and visualization.
+\end_layout
+
+\begin_layout Chapter
+MSwM Package
+\end_layout
+
+\begin_layout Standard
+generalized inverse for the singular matrix
 \end_layout
 
 \begin_layout Standard

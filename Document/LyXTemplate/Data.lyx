@@ -326,6 +326,96 @@ Dataset 2: The second generation
 The second dataset includes
 \end_layout
 
+\begin_layout Paragraph
+Metadata of test case
+\end_layout
+
+\begin_layout Itemize
+Timestamp: Date and time for the test case (yy-dd-mm hh:mm:ss) 
+\end_layout
+
+\begin_layout Itemize
+NodeName: IP address/ The name of base station
+\end_layout
+
+\begin_layout Itemize
+DuProdName: Product name
+\end_layout
+
+\begin_layout Itemize
+Fdd/Tdd: Different standard of LTE 4G Technology
+\end_layout
+
+\begin_layout Itemize
+NumCells: Number of cells in the Antenna 
+\end_layout
+
+\begin_layout Itemize
+Release: Software release 
+\end_layout
+
+\begin_layout Itemize
+SW: Software package for the software release 
+\end_layout
+
+\begin_layout Itemize
+LogFilePath: Path for the log file
+\end_layout
+
+\begin_layout Paragraph
+Observable memory
+\end_layout
+
+\begin_layout Itemize
+MemFreeKiB
+\end_layout
+
+\begin_layout Itemize
+SwapFreeKiB
+\end_layout
+
+\begin_layout Itemize
+BufferCacheKiB
+\end_layout
+
+\begin_layout Itemize
+PageCacheKiB
+\end_layout
+
+\begin_layout Itemize
+RealFreeKiB: True free memory
+\end_layout
+
+\begin_layout Paragraph
+CPU
+\end_layout
+
+\begin_layout Itemize
+TotCpu%: Total/average CPU usaged.
+ 
+\end_layout
+
+\begin_layout Itemize
+PerCpu%: CPU usaged of each CPU
+\end_layout
+
+\begin_layout Itemize
+PerThread%: It contains several value of software components.
+ 
+\end_layout
+
+\begin_layout Itemize
+EventsPerSec: Events/Traffic intensity
+\end_layout
+
+\begin_layout Standard
+The response variable 
+\end_layout
+
+\begin_layout Standard
+The unit is ...per second
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Comment
 status open
@@ -349,26 +439,6 @@ Figure legends below the graph
 
 \begin_layout Section
 Data preprocessing
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{equation}
-\int\sin(x)dx=E_{\pi}(X)\label{eq:JustAnEquation}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

@@ -22,6 +22,7 @@ data <- train_g2_L16B_min
 
 # run whole .MSM.lm.fit one time first before do this
 # also run other function as well
+set.seed(10)
 object <- ans
 
 
@@ -33,5 +34,26 @@ p=1
 sw=c(T,T,T,F)
 control=list(trace = T,  maxiter = 100, tol = 1e-8, maxiterInner=10, maxiterOuter=5, parallelization=F)
 
+set.seed(12)
 object <- mod2
 data <- example
+
+object <- ans
+
+
+
+
+
+dat <- data.frame(dep, indep)
+mod <- lm(dep~.-1, dat)
+
+k=2
+p=0
+sw=c(T,F,F,T)
+control=list(trace = T,  maxiter = 100, tol = 1e-8, maxiterInner=10, maxiterOuter=5, parallelization=F)
+
+set.seed(10)
+object <- mod
+data <- dat
+
+object <- ans

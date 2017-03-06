@@ -113,8 +113,8 @@ customHeadersFooters
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type authoryear
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -294,118 +294,44 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Data
-\end_layout
-
-\begin_layout Section
-Data sources
+Proofs of mathematical results
 \end_layout
 
 \begin_layout Standard
-Data is collected by Ericsson.
- 
+from Method
 \end_layout
 
-\begin_layout Section
-Data description
-\end_layout
-
-\begin_layout Subsection
-Dataset 1: The first generation
+\begin_layout Chapter
+Software
 \end_layout
 
 \begin_layout Standard
-Dataset 1 contains
-\end_layout
-
-\begin_layout Subsection
-Dataset 2: The second generation
+Both R and Python are powerful programming language for data analysis.
+ Python has been known as a general purpose language with an easy to understand
+ syntax.
+ It emphasizes on code readability and has a gentle learning curve.
+ R is developed by and for statistician.
+ It provides a huge number of essential packages in statistics, and even
+ starts to expand to different fields.
+ R also has a strong reputation for data visualization.
+ However, in terms of computation, R still cannot compete with Python which
+ is buit specifically for computer programming.
 \end_layout
 
 \begin_layout Standard
-The second dataset includes
+With strengths and weaknesses between R and Python described earlier, R
+ is chosen to be used in this study.
+ It offers more implemented algorithms to solve the problem at hand.
+ Moreover, effective visualizion helps analyst and user to understand more
+ about their data especially for the complex one.
+ Visualizing data is useful in many ways such as uncover new patterns, identify
+ some factors, and get an overall trend.
+ R proves itself a good choice since it provides a great feature in creating
+ an interactive graphic and visualization.
 \end_layout
 
-\begin_layout Paragraph
-Metadata of test case
-\end_layout
-
-\begin_layout Itemize
-Timestamp: Date and time for the test case (yy-dd-mm hh:mm:ss) 
-\end_layout
-
-\begin_layout Itemize
-NodeName: IP address/ The name of base station
-\end_layout
-
-\begin_layout Itemize
-DuProdName: Product name
-\end_layout
-
-\begin_layout Itemize
-Fdd/Tdd: Different standard of LTE 4G Technology
-\end_layout
-
-\begin_layout Itemize
-NumCells: Number of cells in the Antenna 
-\end_layout
-
-\begin_layout Itemize
-Release: Software release 
-\end_layout
-
-\begin_layout Itemize
-SW: Software package for the software release 
-\end_layout
-
-\begin_layout Itemize
-LogFilePath: Path for the log file
-\end_layout
-
-\begin_layout Paragraph
-Observable memory
-\end_layout
-
-\begin_layout Itemize
-MemFreeKiB
-\end_layout
-
-\begin_layout Itemize
-SwapFreeKiB
-\end_layout
-
-\begin_layout Itemize
-BufferCacheKiB
-\end_layout
-
-\begin_layout Itemize
-PageCacheKiB
-\end_layout
-
-\begin_layout Itemize
-RealFreeKiB: True free memory
-\end_layout
-
-\begin_layout Paragraph
-CPU
-\end_layout
-
-\begin_layout Itemize
-TotCpu%: Total/average CPU usaged.
- 
-\end_layout
-
-\begin_layout Itemize
-PerCpu%: CPU usaged of each CPU
-\end_layout
-
-\begin_layout Itemize
-PerThread%: It contains several value of software components.
- 
-\end_layout
-
-\begin_layout Itemize
-EventsPerSec: Events/Traffic intensity
+\begin_layout Chapter
+MSwM Package
 \end_layout
 
 \begin_layout Standard
@@ -413,24 +339,19 @@ EventsPerSec: Events/Traffic intensity
 status open
 
 \begin_layout Plain Layout
-Brief description of variables and cases in the given data
-\end_layout
-
-\begin_layout Plain Layout
-Table headings above the table
-\end_layout
-
-\begin_layout Plain Layout
-Figure legends below the graph
+You may want to include an appendix to describe the software used in the
+ thesis.
+ You can also include CONCISE documentation of your own code.
+ Do not include page up and down with code, but maybe a list of functions
+ and objects, and a short desciption of what each function does and the
+ properties of objects.
+ Ideally, you could post your code online (github is a popular place) and
+ link to it from here.
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Data preprocessing
 \end_layout
 
 \begin_layout Standard
@@ -440,8 +361,8 @@ status collapsed
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "thesisExample"
-options "alpha"
+bibfiles "biblio/Plasma"
+options "biblio/alpha"
 
 \end_inset
 

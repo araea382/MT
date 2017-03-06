@@ -59,7 +59,7 @@ summary(mod)
 
 
 set.seed(10)
-model_mswm <- msmFit(mod, k=3, p=1, sw=c(TRUE,TRUE,TRUE,TRUE,TRUE,FALSE), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+model_mswm <- msmFit(mod, k=3, p=1, sw=c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(model_mswm)
 
 plot(msmResid(model_mswm), type="l")
@@ -171,40 +171,72 @@ summary(model_mswm3)
 
 #----------------------#
 
+# plot (applied from plotProb) between regime and ecp 
+par(mfrow=c(3,1))
+ecp <- 153 # from ecp()
+for(i in 1:3){
+  z=model_mswm@model$model[1]	
+  y=model_mswm@Fit@smoProb[-1,i]
+  
+  par(las=1,yaxt="n")
+  plot(0,type="l",xlim=c(1,length(t(z))),ylim=c(min(z),max(z)),main=paste("Regime",i),xlab=paste(names(z),"vs. Smooth Probabilities"),ylab="")
+  val=cbind(which(diff(c(0,findInterval(y,0.5)))==1),which(diff(c(findInterval(y,0.5),0))==-1))
+  apply(val,1,function(el) rect(el[1],min(z),el[2],max(z),col="light grey",border=NA))
+  par(new=T,las=1,bty="o",yaxt="n")			
+  plot(ts(z),col=1,ylim=c(min(z),max(z)),xlab="",ylab="")
+  par(las=3,yaxt="s")
+  mtext(names(z),side=2,line=2.5,col=1)
+  
+  abline(v=ecp, lty="dashed", col="red") 
+}
+par(mfrow=c(1,1))
+
+#----------------------#
+
 # *********NOT FINISHED ************
 # FIXED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 # forecast
 # new_data <- test_g2_L16B_min
-dat <- example[-nrow(example),]
-newIndep <- example[nrow(example),]
-mod=lm(y~.,dat)
-summary(mod)
+library(fMarkovSwitching)
+data(dep)
+dep=as.matrix(dep)
+indep=as.matrix(indep)
 
-mod.mswm=msmFit(mod,k=2,p=0,sw=c(T,T,T),control=list(trace=T,parallel=F))
-summary(mod.mswm)
+S=c(1,0,0)
+distrib<-"Normal"
+k<-2
+
+dep=dep[-nrow(dep)]        
+myNewIndep=indep[-nrow(indep),]
+newIndep_For=as.matrix(t(indep[nrow(indep),])) 
+
+mod <- lm(dep~myNewIndep-1)
+mswm <- msmFit(mod,k=2,p=0,sw=c(T,F,F,T),control=list(trace=T,parallel=F))
 
 
 nPeriods <- 1
-newIndep <- as.matrix(newIndep)
+newIndep <- newIndep_For
+newIndep<-as.matrix(newIndep)
 
-nr <- length(mod.mswm["model"]$model[,-1])
-S <- as.numeric(mod.mswm@switch)
-S <- S[-length(S)]
-k <- mod.mswm@k
-Coef <- mod.mswm@Coef
-nIndep <- ncol(mod.mswm["model"]$model[,-1,drop=F])
-n_S <- sum(S)
-n_nS <- nIndep - n_S # negative value ????
+nr <- nrow(mswm["model"]$model[,-1])
+k <- mswm@k
+swi <- mswm["switch"][-length(mswm["switch"])]
+n_S <- sum(swi) # discard the variance
+nIndep <- ncol(as.matrix(mswm["model"]$model[,-1,drop=F]))
+n_nS <- nIndep - n_S 
+coeff <- as.matrix(mswm["Coef"])
+Coeff <- list(sigma=mswm@std, indep_nS=matrix(coeff[1,which(!swi)],nrow=sum(!swi)), 
+              indep_s=matrix(coeff[,which(swi)],nrow=sum(swi)), p=mswm@transMat)
 
 newIndep_S <- matrix(data = 0 , nrow = 1, ncol = n_S)
-newIndep_nS < -matrix(data = 0, nrow = 1, ncol = n_nS)
+newIndep_nS <- matrix(data = 0, nrow = 1, ncol = n_nS)
 
 count_nS <- 0
 count_S <- 0
 
 for (i in 1:nIndep){
-  if(S[i]==1){
+  if(swi[i]==1){
     count_S <- count_S + 1
     newIndep_S[,count_S] <- newIndep[,i]
   }else{
@@ -213,7 +245,7 @@ for (i in 1:nIndep){
   }
 }
 
-newFiltProb <- mod.mswm@transMat %*% (mod.mswm@Fit@filtProb[nr,]) # this is the filtered probabilities 
+newFiltProb <- mswm@transMat %*% (mswm@Fit@filtProb[nr,]) # this is the filtered probabilities 
 # of t+1 conditional on the info in t
 
 condMean <- matrix(0,nPeriods,k) # conditional mean in all states

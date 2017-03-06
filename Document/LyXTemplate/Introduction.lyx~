@@ -461,8 +461,9 @@ key "stanke2003gene"
  where the prediction of gene is being made.
  It has been extensively applied in the field of economics and finance and
  recently have a large literature about it.
- Markov regime switching model is what which economist and people who study
- related to this field always address when refering to hidden Markov model.
+ Markov regime switching model is what which econometrician and people who
+ study related to this field always address when refering to hidden Markov
+ model.
  For instance, business cycle can be seen as a hidden states with seasonal
  changes and modeled as a switching process to uncover the state over expansions
  and recessions and the duration of each period 
@@ -486,14 +487,21 @@ key "kim1998testing"
 
 \begin_layout Standard
 The term Markov regime switching model will be used throughout the thesis.
- It take the behavior of shifting regime in time serires into account and
+ Markov regime switching model is one of the most well-known non linear
+ time series models.
+ It takes the behavior of shifting regime in time serires into account and
+ models multiples structures.
+ Hence, it is able to capture complex dynamic patterns, identify the change
+ of location and regime in time series.
  
 \end_layout
 
 \begin_layout Standard
-Since observation depends on the previous one i.e., performance of current
- software package depends on the past version of software package, autoregressiv
-e model is also taken into consideration when modeling the Markov regime
+In this study, the historical behavior of the observation sequence is not
+ completely independent of each other (i.e., performance of current software
+ package depends on the previous version of software package).
+ Therefore, additional dependencies at observation level with a first-order
+ autoregression is taken into consideration when modeling the Markov regime
  swiching model.
  
 \end_layout
@@ -572,10 +580,9 @@ The main idea of this thesis is to reduce the laborer work to do visual
  package.
  With the rise of data generation from a large number of test runs, this
  work becomes more difficult and perhaps inefficient to do it manually.
- This is when Machine learning, the algorithm that has an ability to learn
- from data, comes into focus.
- The main objectives for this thesis is to implement machine learning to
- analyze the performance of the system.
+ The main objectives for this thesis is to implement machine learning, the
+ algorithm that has an ability to learn from data, to analyze the performance
+ of the system.
  The algorithm will help indicate whether the performance of software package
  is in a degradation, improvement or steady state.
  There is also a case when the changes in the test environment affect performanc
