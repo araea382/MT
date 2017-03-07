@@ -1,0 +1,14 @@
+Package: MSwM2
+Type: Package
+Title: Fitting Markov Switching Models
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Univariate Autoregressive Markov Switching Models for Linear and Generalized Models 
+    ****Modified some code*****
+License: GPL (>= 2.0)
+Depends: methods, nlme, graphics, parallel, matlib
+NeedsCompilation: no
+Repository: CRAN
+Encoding: UTF-8
+LazyData: true

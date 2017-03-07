@@ -1,20 +1,22 @@
-library(nlme)
-library(parallel)
+library(MSwM2)
 g2_L16B_min <- read.csv("g2_L16B_min.csv")
 
-train_num <- floor(nrow(g2_L16B_min) * 0.8) 
+colnames(g2_L16B_min)[14] <- "TotCpu" # need to rename the variable
+g2_L16B_min$DuProdName <- as.factor(g2_L16B_min$DuProdName)
+g2_L16B_min$Fdd.Tdd <- as.factor(g2_L16B_min$Fdd.Tdd)
+g2_L16B_min$NumCells <- as.factor(g2_L16B_min$NumCells)
+
+train_num <- floor(nrow(g2_L16B_min) * 0.8)
 train_g2_L16B_min <- g2_L16B_min[1:train_num,]
 test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
 
-colnames(train_g2_L16B_min)[14] <- "TotCpu" # need to rename the variable
-
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest") 
+predictor <- c("DuProdName","Fdd.Tdd","NumCells")
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 mod <- lm(fmla, data=train_g2_L16B_min)
 
 k=3
 p=1
-sw=c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE)
+sw=rep(T,length(mod$coefficients)+1+1)
 control=list(trace = T,  maxiter = 100, tol = 1e-8, maxiterInner=10, maxiterOuter=5, parallelization=F)
 
 object <- mod
@@ -22,7 +24,7 @@ data <- train_g2_L16B_min
 
 # run whole .MSM.lm.fit one time first before do this
 # also run other function as well
-set.seed(10)
+set.seed(12)
 object <- ans
 
 

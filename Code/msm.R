@@ -1,8 +1,9 @@
-library(MSwM)
+library(MSwM2)
 data(example)
 mod=lm(y~x,example)
 summary(mod)
-acf(resid(mod))
+# acf(resid(mod))
+
 mod.mswm=msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(trace=T,parallel=F))
 summary(mod.mswm)
 
@@ -200,6 +201,7 @@ par(mfrow=c(1,1))
 # new_data <- test_g2_L16B_min
 library(fMarkovSwitching)
 data(dep)
+data(indep)
 dep=as.matrix(dep)
 indep=as.matrix(indep)
 
@@ -211,6 +213,7 @@ dep=dep[-nrow(dep)]
 myNewIndep=indep[-nrow(indep),]
 newIndep_For=as.matrix(t(indep[nrow(indep),])) 
 
+set.seed(10)
 mod <- lm(dep~myNewIndep-1)
 mswm <- msmFit(mod,k=2,p=0,sw=c(T,F,F,T),control=list(trace=T,parallel=F))
 
@@ -227,7 +230,7 @@ nIndep <- ncol(as.matrix(mswm["model"]$model[,-1,drop=F]))
 n_nS <- nIndep - n_S 
 coeff <- as.matrix(mswm["Coef"])
 Coeff <- list(sigma=mswm@std, indep_nS=matrix(coeff[1,which(!swi)],nrow=sum(!swi)), 
-              indep_s=matrix(coeff[,which(swi)],nrow=sum(swi)), p=mswm@transMat)
+              indep_S=matrix(coeff[,which(swi)],nrow=sum(swi)), p=mswm@transMat)
 
 newIndep_S <- matrix(data = 0 , nrow = 1, ncol = n_S)
 newIndep_nS <- matrix(data = 0, nrow = 1, ncol = n_nS)
@@ -259,5 +262,5 @@ for (i in 1:nPeriods){
 newCondMean <- condMean %*% newFiltProb # the new conditional mean is the weighted average of the cond means in each state
 newCondStd <- Coeff$sigma %*% newFiltProb # same as cond mean
 
-forOut <- list(condMean=newCondMean, ncondStd=newCondStd)
+# forOut <- list(condMean=newCondMean, ncondStd=newCondStd)
 

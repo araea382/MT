@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "sapply(1:length(name_mod1),function(x){\n  if(name_mod1[x] == name_object[x]){\n    Coef[1,x] <- coef(mod1)[x]\n  }\n})\n\nfor(a in name_mod1){\n  for(b in name_object){\n    if(a == b){\n      Coef[,a] <- coef(mod1)[a]\n    }\n  }\n}\n\nCoef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))\nnames(Coef) <- names(coef(object))\n\nfor(i in 1:k){\n  data1=as.data.frame(object$model[ind==i,,drop=F])\n  mod1=update(object,formula=object$terms,data=data1)\n\n  for(a in names(coef(mod1))){\n    for(b in names(coef(object))){\n      if(a == b){\n        Coef[i,a] <- coef(mod1)[a]\n      }\n    }\n  }\n\n  std[i]=summary(mod1)$sigma\n}\n",
+    "created" : 1488901083925.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3264280106",
+    "id" : "F504EACB",
+    "lastKnownWriteTime" : 1488902865,
+    "last_content_update" : 1488902865761,
+    "path" : "C:/Users/EARAEAM/Desktop/MT/MSwM2/R/testing_code.R",
+    "project_path" : "R/testing_code.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
