@@ -243,6 +243,7 @@ setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame
 	}
 
 	Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+	names(Coef)=names(coef(object))
 	std=rep(0,k)
 
 	ind=sample(1:k,length(object$residuals),replace=T)
@@ -250,11 +251,20 @@ setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame
 	for(i in 1:k){
 		data1=as.data.frame(object$model[ind==i,,drop=F])
 		mod1=update(object,formula=object$terms,data=data1)
-		Coef[i,]=coef(mod1)
+		# Coef[i,]=coef(mod1)
+		for(a in names(coef(mod1))){
+		  for(b in names(coef(object))){
+		    if(a == b){
+		      Coef[i,a] <- coef(mod1)[a]
+		    }
+		  }
+		}
 		std[i]=summary(mod1)$sigma
 	}
 
-	names(Coef)=names(coef(object))
+	# move up
+	# names(Coef)=names(coef(object))
+
 	transMat=t(matrix(table(ind,c(ind[-1],NA))/rep(table(ind[-length(ind)]),k),ncol=k))
 	ans=new(Class="MSM.lm",
 		call=as.call(call),

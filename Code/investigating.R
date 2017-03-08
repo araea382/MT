@@ -10,7 +10,7 @@ train_num <- floor(nrow(g2_L16B_min) * 0.8)
 train_g2_L16B_min <- g2_L16B_min[1:train_num,]
 test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
 
-predictor <- c("DuProdName","Fdd.Tdd","NumCells")
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","ReEstablishmentAttempt") 
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 mod <- lm(fmla, data=train_g2_L16B_min)
 

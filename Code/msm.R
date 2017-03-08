@@ -1,11 +1,21 @@
+library(MSwM)
 library(MSwM2)
+
 data(example)
 mod=lm(y~x,example)
 summary(mod)
 # acf(resid(mod))
-
-mod.mswm=msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(trace=T,parallel=F))
+set.seed(12)
+mod.mswm=MSwM::msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(trace=F,parallel=F))
 summary(mod.mswm)
+
+set.seed(12)
+mod.mswm2=MSwM2::msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(trace=F,parallel=F))
+summary(mod.mswm2)
+
+set.seed(12)
+mod_mswm <- MSwM2::msmFit(mod,k=3,p=1,sw=rep(T,length(mod$coefficients)+1+1),control=list(trace=F,parallel=F))
+summary(mod_mswm)
 
 # data(energy)
 # model=lm(Price~Oil+Gas+Coal+EurDol+Ibex35+Demand,energy)
@@ -125,6 +135,7 @@ plotReg(model_mswm2, expl=predictor[3], regime=1)
 # predictor <- c("RrcConnectionReconfiguration","RrcConnectionReconfigurationComplete","ErabDrbAllocated","ErabDrbRelease") # variable important from randomforest
 # predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","S1InitialUeMessage","PerBbUeEvent","ErabDrbRelease") # can't remember 
 # predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","S1InitialUeMessage","ReEstablishmentAttempt") 
+# S1InitialUeMessage too correlated with RrcConnectionSetupComplete (cor=1)
 
 # df3 <- subset(df2, select=c(14,18:length(df2)))
 # df3 <- add_x_name(df3)
