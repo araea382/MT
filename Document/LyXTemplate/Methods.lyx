@@ -1204,6 +1204,14 @@ Include the derivative of each coeff and transition matrix ?????????????
 
 \end_layout
 
+\begin_layout Section
+Model Selection
+\end_layout
+
+\begin_layout Standard
+AIC or BIC
+\end_layout
+
 \begin_layout Standard
 \begin_inset Branch NoChildDocument
 status collapsed

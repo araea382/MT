@@ -242,26 +242,40 @@ setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame
 
 	}
 
-	Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+	# Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+  ####
+  Coef=data.frame(matrix(0,nrow=k,ncol=length(coef(object))))
 	names(Coef)=names(coef(object))
+	#### 
 	std=rep(0,k)
-
-	ind=sample(1:k,length(object$residuals),replace=T)
-
-	for(i in 1:k){
-		data1=as.data.frame(object$model[ind==i,,drop=F])
-		mod1=update(object,formula=object$terms,data=data1)
-		# Coef[i,]=coef(mod1)
-		for(a in names(coef(mod1))){
-		  for(b in names(coef(object))){
-		    if(a == b){
-		      Coef[i,a] <- coef(mod1)[a]
-		    }
-		  }
-		}
-		std[i]=summary(mod1)$sigma
+	
+	# resample and fit model again if one of the coefficient is not estimate (NA)
+	####
+	j <- 0
+	while(j < 50){
+  	ind=sample(1:k,length(object$residuals),replace=T)
+  	for(i in 1:k){
+  		data1=as.data.frame(object$model[ind==i,,drop=F])
+  		mod1=update(object,formula=object$terms,data=data1)
+  		# Coef[i,]=coef(mod1)
+  		
+  		# insert coefficient in the right position
+  		for(a in names(coef(mod1))){
+  		  for(b in names(coef(object))){
+  		    if(a == b){
+  		      Coef[i,a] <- coef(mod1)[a]
+  		    }
+  		  }
+  		}
+  		std[i]=summary(mod1)$sigma
+  	}
+    if(anyNA(Coef)){
+      j <- j + 1
+    }else{
+      break
+    }
 	}
-
+	####
 	# move up
 	# names(Coef)=names(coef(object))
 
@@ -970,7 +984,17 @@ intervals <-
 	nr=length(model$model[,1])
 	terms=model.matrix(model)
 
-	CondMean=as.matrix(terms)%*%t(as.matrix(Coef))
+	# CondMean=as.matrix(terms)%*%t(as.matrix(Coef))
+	####
+	cond_mean <- function(terms, Coef, i){
+	  ind <- which(is.na(Coef[i,,drop=F]), arr.ind=TRUE)[,2] # get the index of the NA value
+	  Coef1 <- Coef[i,-ind,drop=F]
+	  terms_test <- terms[,-ind]
+	  condmean <- as.matrix(terms_test) %*% t(as.matrix(Coef1))
+	  return(condmean)
+	}
+	CondMean <- sapply(1:k, function(x) cond_mean(terms, Coef, x))
+	####
 	error= as.matrix(model$model[,1,drop=F])%*%matrix(rep(1,k),nrow=1)-CondMean
 	Likel=t(dnorm(t(error),0,std))
 
@@ -1095,18 +1119,19 @@ fopt.lm=function(param, object=object){
 	return(msmFilter(object)@logLikel)
 }
 
-# fopt.glm=function(param, object=object){
-# 	long=(object["k"]-1)*object["k"]
-# 	mprob=matrix(logitinv(c(param[1:long])),ncol=object["k"],byrow=T)
-# 	object@transMat<-matrix(c(mprob,1-apply(mprob,2, function(x) sum(x))),nrow=object["k"],byrow=T)
-# 	swi=object["switch"]
-# 	mi=sum(!swi)
-# 	aux=object["Coef"]
-# 	aux[,which(swi)]=as.data.frame(matrix(param[-c(1:(long+mi))],nrow=object["k"],byrow=T))
-# 	aux[,which(!swi)]=as.data.frame(matrix(rep(param[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
-# 	object@Coef=aux
-# 	return(msmFilter(object)@logLikel)
-# }
+
+fopt.glm=function(param, object=object){
+	long=(object["k"]-1)*object["k"]
+	mprob=matrix(logitinv(c(param[1:long])),ncol=object["k"],byrow=T)
+	object@transMat<-matrix(c(mprob,1-apply(mprob,2, function(x) sum(x))),nrow=object["k"],byrow=T)
+	swi=object["switch"]
+	mi=sum(!swi)
+	aux=object["Coef"]
+	aux[,which(swi)]=as.data.frame(matrix(param[-c(1:(long+mi))],nrow=object["k"],byrow=T))
+	aux[,which(!swi)]=as.data.frame(matrix(rep(param[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
+	object@Coef=aux
+	return(msmFilter(object)@logLikel)
+}
 
 
 .MSM.lm.hessian=function(object){
@@ -1126,20 +1151,17 @@ fopt.lm=function(param, object=object){
 			object=object
 		)
 
-		# non-switching variance will have only one value
 		# long=object["k"]+(object["k"]-1)*object["k"]
+		####
 		long=length(lstd)+(object["k"]-1)*object["k"]
+		####
 		mi=sum(!swi)
 
 		# use Ginv(), the generalized inversed for singular matrix
 		# hessian=sqrt(abs(diag(solve(res$Hessian))))
-		# if(class(try(solve(res$Hessian), silent=TRUE))=="try-error"){
-		#   hessian=sqrt(abs(diag(Ginv(res$Hessian))))
-		# }else{
-		#   hessian=sqrt(abs(diag(solve(res$Hessian))))
-		# }
-
+		####
 		hessian=sqrt(abs(diag(Ginv(res$Hessian))))
+		####
 
 		stdaux=object["Coef"]
     stdaux[,which(swi)]=as.data.frame(matrix(hessian[-c(1:(long+mi))],nrow=object["k"],byrow=T))

@@ -1098,7 +1098,11 @@ where
 \end_inset
 
 .
- It is computing iteratively until all the observation is reached i.e., 
+ 
+\end_layout
+
+\begin_layout Standard
+It is computing iteratively until all the observation is reached i.e., 
 \begin_inset Formula $t=T$
 \end_inset
 

@@ -10,7 +10,12 @@ train_num <- floor(nrow(g2_L16B_min) * 0.8)
 train_g2_L16B_min <- g2_L16B_min[1:train_num,]
 test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
 
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","ReEstablishmentAttempt") 
+
+##-------------------------------------------------------------------------------------##
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
+predictor <- c("DuProdName","Fdd.Tdd","NumCells")
+predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
+
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 mod <- lm(fmla, data=train_g2_L16B_min)
 
@@ -18,9 +23,9 @@ k=3
 p=1
 sw=rep(T,length(mod$coefficients)+1+1)
 control=list(trace = T,  maxiter = 100, tol = 1e-8, maxiterInner=10, maxiterOuter=5, parallelization=F)
+data <- train_g2_L16B_min
 
 object <- mod
-data <- train_g2_L16B_min
 
 # run whole .MSM.lm.fit one time first before do this
 # also run other function as well
