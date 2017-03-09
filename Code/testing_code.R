@@ -12,6 +12,8 @@ for(a in name_mod1){
   }
 }
 
+
+####
 Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
 names(Coef) <- names(coef(object))
 
