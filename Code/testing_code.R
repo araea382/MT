@@ -31,7 +31,6 @@ Coef
 ### .MSM.lm.msmFit
 ### probably
 # for relevel the reference of the factor level
-
 reref <- function(data, var){
   require(dplyr)
   require(lazyeval)
@@ -49,6 +48,26 @@ train_g2_L16B_min$DuProdName <- reref(train_g2_L16B_min, "DuProdName")
 train_g2_L16B_min$Fdd.Tdd <- reref(train_g2_L16B_min, "Fdd.Tdd")
 
 train_g2_L16B_min$NumCells <- relevel(train_g2_L16B_min$NumCells, maxlev)
+
+##-----------------------##
+reref <- function(data, var){
+  # require(dplyr)
+  # require(lazyeval)
+  # count <- sapply(levels(data[,var]), function(value){
+  #   filter_criteria <- interp(~y == x, .values=list(y=as.name(var), x=value))
+  #   nrow(data %>% filter_(filter_criteria))
+  # })
+  count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
+  ind <- which.max(count)
+  maxlev <- levels(data[,var])[ind]
+  return(relevel(data[,var], maxlev))
+}
+
+
+for(i in names(mod$contrasts)){
+  object$model[,i] <- reref(object$model, i)
+}
+
 
 
 ##-------------------------------------------------------------------------------------##
@@ -85,3 +104,45 @@ cond_mean <- function(terms, Coef, i){
 condmean <- sapply(1:k, function(x) cond_mean(terms, Coef, x))
 
 
+##-------------------------------------------------------------------------------------##
+### .MSM.lm.msmFit
+### probably
+# subset contains all factor levels
+
+# categorical variable which has two factor levels
+categ2 <- unlist(sapply(1:length(mod$contrasts), function(x){
+  if(length(mod$xlevels[[x]]) == 2){
+    names(mod$xlevels[x])
+  }
+}))
+
+# count the second level of each variable
+count <- c()
+for(i in categ2){
+  cnt <- list(sapply(levels(object$model[,i]), function(x) length(which(object$model[,i] == x))))
+  count <- c(count,cnt)
+}
+names(count) <- categ2
+var_name <- categ2[round(which.min(unlist(count))/2)]
+
+# sub <- sapply(levels(object$model[,i]), function(x) nrow(subset(object$model, i == x)))
+# sub <- lapply(levels(object$model$DuProdName), function(x) filter(object$model, DuProdName == x))
+# cnt <- as.data.frame(count(object$model, DuProdName))
+
+# get index for each subset from min variable
+# indx <- c()
+# for(i in 1:2){
+#   ind <- sample(rep(1:k,length.out=sub[i]))
+#   indx <- c(indx,ind)
+# }
+
+min_var <- count[[var_name]][2]
+ind <- sample(rep(1:k, length.out=min_var))
+ind <- c(sample(rep(1:k, length.out=(length(object$residuals)-min_var))),ind)
+temp <- object$model[order(object$model[,var_name]),]
+
+for(i in 1:k){
+  data1=as.data.frame(temp[ind==i,,drop=F])
+  
+
+}

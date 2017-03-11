@@ -208,6 +208,67 @@ msmControl <- function(trace = F,  maxiter = 100, tol = 1e-8, maxiterInner=10, m
 }
 setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame","ANY","ANY"),definition=.MSM.formula.msmFit)
 
+####
+# Add: 
+###
+MSM.lm.categorical <- function(object,k){
+  # relevel the reference of the factor level
+  reref <- function(data, var){
+    count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
+    ind <- which.max(count)
+    maxlev <- levels(data[,var])[ind]
+    return(relevel(data[,var], maxlev))
+  }
+  
+  # if there are categorical independent variables
+  for(i in names(object$contrasts)){
+    object$model[,i] <- reref(object$model, i)
+  }
+  
+  ####################FIX##########################
+  object=update(formula=object$terms,data=data.frame(object$model,Ar),object)
+  
+  # categorical variable which has two factor levels
+  factor2 <- unlist(sapply(1:length(object$contrasts), function(x){
+    if(length(object$xlevels[[x]]) == 2){
+      names(object$xlevels[x])
+    }
+  }))
+  
+  # count the second level of each variable
+  count <- c()
+  for(i in factor2){
+    cnt <- list(sapply(levels(object$model[,i]), function(x) length(which(object$model[,i] == x))))
+    count <- c(count,cnt)
+  }
+  names(count) <- factor2
+  var_name <- factor2[round(which.min(unlist(count))/2)]
+
+  min_var <- count[[var_name]][2]
+  ind <- sample(rep(1:k, length.out=min_var))
+  ind <- c(sample(rep(1:k, length.out=(length(object$residuals)-min_var))),ind)
+  temp <- object$model[order(object$model[,var_name]),]
+  
+  Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+  std=rep(0,k)
+  
+  for(i in 1:k){
+    data1=as.data.frame(temp[ind==i,,drop=F])
+    mod1=update(object,formula=object$terms,data=data1)
+    # insert coefficient in the right position
+    for(a in names(coef(mod1))){
+      for(b in names(coef(object))){
+        if(a == b){
+          Coef[i,a] <- coef(mod1)[a]
+        }
+      }
+    }
+    std[i]=summary(mod1)$sigma
+  }
+  ans <- list(Coef=Coef, std=std)
+  return(ans)
+}
+
 
 .MSM.lm.msmFit= function(object,k,sw,p,data,family,control){
 	if(!missing(data)){
@@ -239,46 +300,38 @@ setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame
 		colnames(Ar)=paste(names(object$model)[1],"_",1:p,sep="")
 		aux=paste(colnames(Ar),collapse="+")
 		object=update(formula=as.formula(paste("~.+",aux,sep="")),data=data.frame(object$model,Ar),object)
-
 	}
-
-	# Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+  
   ####
-  Coef=data.frame(matrix(0,nrow=k,ncol=length(coef(object))))
-	names(Coef)=names(coef(object))
-	#### 
-	std=rep(0,k)
-	
-	# resample and fit model again if one of the coefficient is not estimate (NA)
-	####
-	j <- 0
-	while(j < 50){
-  	ind=sample(1:k,length(object$residuals),replace=T)
-  	for(i in 1:k){
-  		data1=as.data.frame(object$model[ind==i,,drop=F])
-  		mod1=update(object,formula=object$terms,data=data1)
-  		# Coef[i,]=coef(mod1)
-  		
-  		# insert coefficient in the right position
-  		for(a in names(coef(mod1))){
-  		  for(b in names(coef(object))){
-  		    if(a == b){
-  		      Coef[i,a] <- coef(mod1)[a]
-  		    }
-  		  }
-  		}
-  		std[i]=summary(mod1)$sigma
-  	}
-    if(anyNA(Coef)){
-      j <- j + 1
-    }else{
-      break
+  # Add: for categorical variables
+  ###
+  if(!is.null(object$contrasts)){
+    result <- MSM.lm.categorical(object,k)
+    Coef <- result$Coef  
+    std <- result$std
+  }else{
+    Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+    names(Coef)=names(coef(object))
+    std=rep(0,k)
+    
+    ####
+    # Add: resample and fit model again if one of the coefficient is not estimated (NA)
+    ####
+    j <- 0
+    while(j < 50){
+      ind=sample(1:k,length(object$residuals),replace=T)
+      for(i in 1:k){
+        data1=as.data.frame(object$model[ind==i,,drop=F])
+        mod1=update(object,formula=object$terms,data=data1)
+        Coef[i,]=coef(mod1)
+        std[i]=summary(mod1)$sigma
+      }
+      if(anyNA(Coef)){
+        j <- j + 1
+      }else break
     }
-	}
-	####
-	# move up
-	# names(Coef)=names(coef(object))
-
+  }
+  
 	transMat=t(matrix(table(ind,c(ind[-1],NA))/rep(table(ind[-length(ind)]),k),ncol=k))
 	ans=new(Class="MSM.lm",
 		call=as.call(call),
@@ -330,7 +383,6 @@ setMethod(f="msmFit",signature=c("lm","numeric","logical","ANY","missing","missi
 		object=update(formula=as.formula(paste("~.+",aux,sep="")),data=data.frame(object$model,Ar),object)
 
 	}
-
 
 	Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
 	ind=findInterval(object$residuals,quantile(object$residuals,(1:(k-1))/k))+1
@@ -889,25 +941,25 @@ setMethod(f="msmResid",signature=c("MSM.lm","missing"),definition=.MSM.lm.sma.ms
 }
 setMethod(f="msmResid",signature=c("MSM.lm","ANY"),definition=.MSM.lm.larg.msmResid)
 
-# .MSM.glm.sma.msmResid=function(object,regime){
-# 	res=object["Fit"]["error"]/sqrt(object@family$variance(object["Fit"]@CondMean))
-# 	return(apply(res*object["Fit"]["smoProb"][-1,],1,sum))
-# }
-# setMethod(f="msmResid",signature=c("MSM.glm","missing"),definition=.MSM.glm.sma.msmResid)
-#
-# .MSM.glm.larg.msmResid=function(object,regime){
-# 	if(regime[length(regime)]=="all"){
-# 		aux=c(1:object["k"])
-# 		res=apply(as.matrix(aux),1,function(i) object["Fit"]["error"][,i]/sqrt(object@family$variance(object["Fit"]@CondMean[,i])))
-# 		dimnames(res)[[2]]=paste("Regime ",1:object["k"],sep="")
-# 		return(res)
-# 	}else{
-# 		if(any(regime > object["k"])|any(regime < 1)) stop("You must to write a correct regime.")
-# 		aux=regime
-# 		return(object["Fit"]["error"][,regime]/sqrt(object@family$variance(object["Fit"]@CondMean[,regime])))
-# 		}
-# }
-# setMethod(f="msmResid",signature=c("MSM.glm","ANY"),definition=.MSM.glm.larg.msmResid)
+.MSM.glm.sma.msmResid=function(object,regime){
+	res=object["Fit"]["error"]/sqrt(object@family$variance(object["Fit"]@CondMean))
+	return(apply(res*object["Fit"]["smoProb"][-1,],1,sum))
+}
+setMethod(f="msmResid",signature=c("MSM.glm","missing"),definition=.MSM.glm.sma.msmResid)
+
+.MSM.glm.larg.msmResid=function(object,regime){
+	if(regime[length(regime)]=="all"){
+		aux=c(1:object["k"])
+		res=apply(as.matrix(aux),1,function(i) object["Fit"]["error"][,i]/sqrt(object@family$variance(object["Fit"]@CondMean[,i])))
+		dimnames(res)[[2]]=paste("Regime ",1:object["k"],sep="")
+		return(res)
+	}else{
+		if(any(regime > object["k"])|any(regime < 1)) stop("You must to write a correct regime.")
+		aux=regime
+		return(object["Fit"]["error"][,regime]/sqrt(object@family$variance(object["Fit"]@CondMean[,regime])))
+		}
+}
+setMethod(f="msmResid",signature=c("MSM.glm","ANY"),definition=.MSM.glm.larg.msmResid)
 
 
 AIC.MSM.lm <-
@@ -983,8 +1035,7 @@ intervals <-
 	# Calculation of some preliminar variables
 	nr=length(model$model[,1])
 	terms=model.matrix(model)
-
-	# CondMean=as.matrix(terms)%*%t(as.matrix(Coef))
+  
 	####
 	cond_mean <- function(terms, Coef, i){
 	  ind <- which(is.na(Coef[i,,drop=F]), arr.ind=TRUE)[,2] # get the index of the NA value
@@ -993,7 +1044,12 @@ intervals <-
 	  condmean <- as.matrix(terms_test) %*% t(as.matrix(Coef1))
 	  return(condmean)
 	}
-	CondMean <- sapply(1:k, function(x) cond_mean(terms, Coef, x))
+	
+	if(anyNA(Coef)){
+  	CondMean <- sapply(1:k, function(x) cond_mean(terms, Coef, x))
+	}else{
+	  CondMean=as.matrix(terms)%*%t(as.matrix(Coef))
+	}
 	####
 	error= as.matrix(model$model[,1,drop=F])%*%matrix(rep(1,k),nrow=1)-CondMean
 	Likel=t(dnorm(t(error),0,std))
@@ -1151,17 +1207,20 @@ fopt.glm=function(param, object=object){
 			object=object
 		)
 
+		
+		####
+		# Add: non-switching variance is 1 not k
+		###
 		# long=object["k"]+(object["k"]-1)*object["k"]
-		####
 		long=length(lstd)+(object["k"]-1)*object["k"]
-		####
 		mi=sum(!swi)
 
-		# use Ginv(), the generalized inversed for singular matrix
+		####
+		# Add: use Ginv(), the generalized inversed for singular matrix
+		###
 		# hessian=sqrt(abs(diag(solve(res$Hessian))))
-		####
 		hessian=sqrt(abs(diag(Ginv(res$Hessian))))
-		####
+
 
 		stdaux=object["Coef"]
     stdaux[,which(swi)]=as.data.frame(matrix(hessian[-c(1:(long+mi))],nrow=object["k"],byrow=T))
@@ -1246,7 +1305,7 @@ setMethod(f="maximEM",signature=c("MSM.glm","data.frame"),definition=.MSM.glm.ma
 		object=msmSmooth(object)
 
 		if (control$trace) cat(" Inner Iter.",it," logLikel=",object["Fit"]["logLikel"],"\n")
-		if ((max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLikel"]))) < control$tol)& (max(abs(object["Coef"] - oldcoef))/(0.1 + max(abs(object["Coef"]))) < control$tol)) break
+		if ((max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLikel"]))) < control$tol)& (max(abs(object["Coef"] - oldcoef),na.rm=TRUE)/(0.1 + max(abs(object["Coef"]))) < control$tol)) break
 	}
 	return(object)
 }
