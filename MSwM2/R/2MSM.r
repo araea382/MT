@@ -209,25 +209,9 @@ msmControl <- function(trace = F,  maxiter = 100, tol = 1e-8, maxiterInner=10, m
 setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame","ANY","ANY"),definition=.MSM.formula.msmFit)
 
 ####
-# Add: 
+# Add: for categorical variables
 ###
 MSM.lm.categorical <- function(object,k){
-  # relevel the reference of the factor level
-  reref <- function(data, var){
-    count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
-    ind <- which.max(count)
-    maxlev <- levels(data[,var])[ind]
-    return(relevel(data[,var], maxlev))
-  }
-  
-  # if there are categorical independent variables
-  for(i in names(object$contrasts)){
-    object$model[,i] <- reref(object$model, i)
-  }
-  
-  ####################FIX##########################
-  object=update(formula=object$terms,data=data.frame(object$model,Ar),object)
-  
   # categorical variable which has two factor levels
   factor2 <- unlist(sapply(1:length(object$contrasts), function(x){
     if(length(object$xlevels[[x]]) == 2){
@@ -242,7 +226,7 @@ MSM.lm.categorical <- function(object,k){
     count <- c(count,cnt)
   }
   names(count) <- factor2
-  var_name <- factor2[round(which.min(unlist(count))/2)]
+  var_name <- factor2[ceiling(which.min(unlist(count))/2)]
 
   min_var <- count[[var_name]][2]
   ind <- sample(rep(1:k, length.out=min_var))
@@ -250,6 +234,7 @@ MSM.lm.categorical <- function(object,k){
   temp <- object$model[order(object$model[,var_name]),]
   
   Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+  names(Coef)=names(coef(object))
   std=rep(0,k)
   
   for(i in 1:k){
@@ -287,8 +272,22 @@ MSM.lm.categorical <- function(object,k){
 	if(missing(p)) p=0
 	if (missing(control)) control=list()
    	control  <- do.call(msmControl, control)
-
-
+  
+  ####
+  # Add: relevel the reference of the factor level (before adding AR coefficient)
+  ###
+  reref <- function(data, var){
+    count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
+	  ind <- which.max(count)
+    maxlev <- levels(data[,var])[ind]
+    return(relevel(data[,var], maxlev))
+  }
+  
+  for(i in names(object$contrasts)){
+    object$model[,i] <- reref(object$model, i)
+  }
+  object <- update(object, data=data.frame(object$model))
+  
 	if(p>0){
 		var=object$model[,1]
 		Ar=apply(as.matrix(1:p),1,function(el){
@@ -303,7 +302,7 @@ MSM.lm.categorical <- function(object,k){
 	}
   
   ####
-  # Add: for categorical variables
+  # Add: check for categorical variables then apply the function
   ###
   if(!is.null(object$contrasts)){
     result <- MSM.lm.categorical(object,k)

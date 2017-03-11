@@ -67,25 +67,36 @@ reref <- function(data, var){
 for(i in names(mod$contrasts)){
   object$model[,i] <- reref(object$model, i)
 }
+object <- update(object, data=data.frame(object$model))
 
+# another way: change real data
+for(i in names(object$contrasts)){
+  data[,i]<- reref(object$model, i)
+}
+object=update(object,data=data)
+
+data$NumCells <- relevel(data$NumCells, ref="12")
+mod2 <- lm(fmla, data=data)
+mod2
+update(mod)
 
 
 ##-------------------------------------------------------------------------------------##
 # see the sample of each regime
+# c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
+ind <- c(1,2,3,1,2,1,1,2,1,1,3,3,2,3,3,3,3,2,3,1,1,1,1,1,2,1,2,3,2,2,3,3,2,2,1,3,3,3,2,3,2,2,2,3,3,3,3,1,1,1,1,3,2,2,1,3,3,1,1,2,3,2,3,1,1,1,1,2,2,2,3,2,3,1,3,1,3,2,3,3,2,1,2,1,2,2,1,3,2,2,3,1,3,1,2,2,3,1,2,2,1,1,2,3,2,2,3,2,3,1,3,1,3,1,3,3,3,3,1,2,1,1,3,3,1,3,3,2,2,1,3,1,1,1,3,3,2,2,1,2,3,2,3,3,2,1,2,1,2,1,2,3,3,1,3,1,1,2,2,3,3,3,1,2,3,1,1,3,1,1,1,2,1,1,1,2,3,1,1,2,1,3,1,1,3,1,1,1,1,1,1)
+
 i=1
 data1=as.data.frame(object$model[ind==i,,drop=F])
 mod1=update(object,formula=object$terms,data=data1)
-
 
 i=2
 data2=as.data.frame(object$model[ind==i,,drop=F])
 mod2=update(object,formula=object$terms,data=data2)
 
-
 i=3
 data3=as.data.frame(object$model[ind==i,,drop=F])
 mod3=update(object,formula=object$terms,data=data3)
-
 
 summary(mod1)
 summary(mod2)
@@ -143,6 +154,36 @@ temp <- object$model[order(object$model[,var_name]),]
 
 for(i in 1:k){
   data1=as.data.frame(temp[ind==i,,drop=F])
-  
-
 }
+
+##-------------------------------------------------------------------------------------##
+# test whether data can sort before update lm()
+X <- c(1,8,2,4,1,5)
+y <- c(2,10,6,9,8,4)
+indx <- c(1,1,2,1,2,2)
+mod <- lm(y~X)
+coef(mod)
+
+data1=as.data.frame(mod$model[indx==i,,drop=F])
+mod1=update(mod,formula=mod$terms,data=data1)
+coef(mod1)
+
+data2=as.data.frame(mod$model[indx==i,,drop=F])
+mod2=update(mod,formula=mod$terms,data=data2)
+coef(mod2)
+
+set.seed(12345)
+df1 <- data1[sample(nrow(data1)),]
+m1=update(mod,formula=mod$terms,data=df1)
+coef(m1)
+
+set.seed(12345)
+df2 <- data2[sample(nrow(data2)),]
+m2=update(mod,formula=mod$terms,data=df2)
+coef(m2)
+
+# Okkk it's the same! yeahh
+
+##-------------------------------------------------------------------------------------##
+
+

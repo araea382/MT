@@ -16,6 +16,8 @@ predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1Se
 predictor <- c("DuProdName","Fdd.Tdd","NumCells")
 predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
 predictor <- c("DuProdName","Fdd.Tdd","NumCells","Paging")
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","ReEstablishmentAttempt")
+
 
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 mod <- lm(fmla, data=train_g2_L16B_min)
