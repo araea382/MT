@@ -460,10 +460,7 @@ key "stanke2003gene"
 
  where the prediction of gene is being made.
  It has been extensively applied in the field of economics and finance and
- recently have a large literature about it.
- Markov regime switching model is what which econometrician and people who
- study related to this field always address when refering to hidden Markov
- model.
+ have a large literature about it.
  For instance, business cycle can be seen as a hidden states with seasonal
  changes and modeled as a switching process to uncover the state over expansions
  and recessions and the duration of each period 
@@ -483,6 +480,8 @@ key "kim1998testing"
 \end_inset
 
 .
+ Markov regime switching model is what econometrician and people who study
+ related to this field always address when refering to hidden Markov model.
 \end_layout
 
 \begin_layout Standard
@@ -493,11 +492,7 @@ The term Markov regime switching model will be used throughout the thesis.
  models multiples structures.
  Hence, it is able to capture complex dynamic patterns, identify the change
  of location and regime in time series.
- 
-\end_layout
-
-\begin_layout Standard
-In this study, the historical behavior of the observation sequence is not
+ The historical behavior of the observation sequence in this study is not
  completely independent of each other (i.e., performance of current software
  package depends on the previous version of software package).
  Therefore, additional dependencies at observation level with a first-order
@@ -545,8 +540,8 @@ key "hawkins2010nonparametric"
 \end_layout
 
 \begin_layout Plain Layout
-In this study, nonparametric approach is used to get a heuristic idea of
- the change point location
+Nonparametric approach is used to get a heuristic idea of the change point
+ location
 \end_layout
 
 \begin_layout Plain Layout
@@ -578,8 +573,8 @@ name "sec:Objective"
 The main idea of this thesis is to reduce the laborer work to do visual
  inspection whenever they want to analyze the performance of update software
  package.
- With the rise of data generation from a large number of test runs, this
- work becomes more difficult and perhaps inefficient to do it manually.
+ With the rise of data generation coming from a large number of test runs,
+ this work becomes more difficult and perhaps inefficient to do it manually.
  The main objectives for this thesis is to implement machine learning, the
  algorithm that has an ability to learn from data, to analyze the performance
  of the system.
@@ -589,9 +584,9 @@ The main idea of this thesis is to reduce the laborer work to do visual
 e even though there is no change in the software package.
  The implemented algorithm should be able to also detect when the test environme
 nt is altered.
- CPU utilization is the performance metric that will be looked upon as it
- is one of the main focus in the test run that need to be optimized for
- the released of upgrade software package.
+ CPU utilization is the performance metric that will be looked upon in this
+ thesis as it is one of the main focus in the test run that need to be optimized
+ for the released of upgrade software package.
 \end_layout
 
 \begin_layout Standard

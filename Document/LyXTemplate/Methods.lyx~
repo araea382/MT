@@ -396,7 +396,7 @@ A Markov regime swtiching model is able to model more complex stochastic
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "hmm"
+reference "msm"
 
 \end_inset
 
@@ -449,7 +449,16 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/HMM diagram.PNG
+	filename picture/msm.png
+	lyxscale 50
+	scale 80
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "msm"
 
 \end_inset
 
@@ -461,24 +470,6 @@ status open
 
 \begin_layout Plain Layout
 Model structure
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "hmm"
-
-\end_inset
-
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-*****Make new diagram....
- this is only just testing how it works*****
 \end_layout
 
 \end_inset
@@ -899,11 +890,52 @@ where
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+The structure of model is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "msm-ar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-figure of diagram for ARHMM
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/msm-ar.png
+	lyxscale 50
+	scale 80
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "msm-ar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model structure of Markov switching AR(1)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1202,6 +1234,14 @@ Include the derivative of each coeff and transition matrix ?????????????
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Model Selection
+\end_layout
+
+\begin_layout Standard
+AIC or BIC
 \end_layout
 
 \begin_layout Standard

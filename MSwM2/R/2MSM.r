@@ -250,7 +250,7 @@ MSM.lm.categorical <- function(object,k){
     }
     std[i]=summary(mod1)$sigma
   }
-  ans <- list(Coef=Coef, std=std)
+  ans <- list(Coef=Coef, std=std, index=ind)
   return(ans)
 }
 
@@ -308,6 +308,7 @@ MSM.lm.categorical <- function(object,k){
     result <- MSM.lm.categorical(object,k)
     Coef <- result$Coef  
     std <- result$std
+    ind <- result$index
   }else{
     Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
     names(Coef)=names(coef(object))
