@@ -1037,6 +1037,8 @@ intervals <-
 	terms=model.matrix(model)
   
 	####
+	# Add: CondMean for categorical variables
+	###
 	cond_mean <- function(terms, Coef, i){
 	  ind <- which(is.na(Coef[i,,drop=F]), arr.ind=TRUE)[,2] # get the index of the NA value
 	  Coef1 <- Coef[i,-ind,drop=F]

@@ -185,5 +185,21 @@ coef(m2)
 # Okkk it's the same! yeahh
 
 ##-------------------------------------------------------------------------------------##
+# not gonna include ...? 
+# state prediction
+test <- test_g2_L16B_min[1,]
+
+# get last value of TotCpu
+ar <- ans@model$model[nr,1]
+
+# select only dependent and independent variables and include previous TotCpu
+predictor <- colnames(ans@model$model)[-1]
+predictor <- predictor[-(length(predictor)-p)]
 
 
+var=object$model[,1]
+Ar=apply(as.matrix(1:p),1,function(el){
+  length(var)=length(var)-el
+  var=c(rep(NA,el),var)
+  return(var)
+})

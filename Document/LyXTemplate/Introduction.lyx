@@ -321,12 +321,12 @@ key "basseville1993detection"
 
  and has a bottom line for discovering and estimating the time point where
  the changes in time series occur.
- Serveral terms such as break point or turning point is also used to denote
+ Serveral terms such as breakpoint or turning point is also used to denote
  the respective events.
  However, the commonly used term when the point in time series takes place
  is 
 \emph on
-change point
+change-point
 \emph default
  and the term 
 \emph on

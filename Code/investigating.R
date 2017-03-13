@@ -1,4 +1,8 @@
 library(MSwM2)
+
+library(nlme)
+library(parallel)
+library(matlib)
 g2_L16B_min <- read.csv("g2_L16B_min.csv")
 
 colnames(g2_L16B_min)[14] <- "TotCpu" # need to rename the variable
@@ -12,14 +16,15 @@ test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
 
 
 ##-------------------------------------------------------------------------------------##
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
-predictor <- c("DuProdName","Fdd.Tdd","NumCells")
-predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
-predictor <- c("DuProdName","Fdd.Tdd","NumCells","Paging")
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","ReEstablishmentAttempt")
+X <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
+X <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
+X <- c("DuProdName","Fdd.Tdd","NumCells")
+X <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
+X <- c("DuProdName","Fdd.Tdd","NumCells","Paging")
+# X <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","ReEstablishmentAttempt")
 
 
-fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
+fmla <- as.formula(paste("TotCpu ~ ", paste(X, collapse= "+")))
 mod <- lm(fmla, data=train_g2_L16B_min)
 
 k=3

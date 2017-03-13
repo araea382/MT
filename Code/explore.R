@@ -356,6 +356,16 @@ g2_L16B_filter_min <- get_min(g2_L16B_filter,"TotCpu%")
 g2_L16B_max <- get_max(g2_L16B,"TotCpu%")
 
 #----------------------------------------------------------------------#
+# apply function get to data g2 L17A
+# use get_min()
+g2_L17A_min <- get_min(g2_L17A,"TotCpu%")
+
+#----------------------------------------------------------------------#
+# apply function get to data g2 L16A
+# use get_min()
+g2_L16A_min <- get_min(g2_L16A,"TotCpu%")
+
+#----------------------------------------------------------------------#
 # Divide train (80) test (20)
 # g2 data L16B
 train_num <- floor(nrow(g2_L16B_min) * 0.8)

@@ -367,7 +367,7 @@ Markov regime switching model
 
 \begin_layout Standard
 Markov switching model is used for time serires that are evolved over a
- a finite state of unobersrved states.
+ a finite state of unobserved states.
  It is a regime switching model where the shift between the regime is controlled
  by latent variable that follows a Markov cahin.
  The model structure are consitsts of two stochastic processes embedded
@@ -1197,8 +1197,34 @@ Once the filtered probabilities are estimated, there is necessarily enough
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+t-1 or t ???????????
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 which is a weighted average of the likelihood function in each state.
  The probability of state are considered as weights.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Clarify more in detail for each equation ???????????
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph

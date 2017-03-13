@@ -324,8 +324,16 @@ key "basseville1993detection"
  Serveral terms such as break point or turning point is also used to denote
  the respective events.
  However, the commonly used term when the point in time series takes place
- is change point and the term regime switch is for referring to the different
- of regime after the occurence of change point 
+ is 
+\emph on
+change point
+\emph default
+ and the term 
+\emph on
+regime switch
+\emph default
+ is for referring to the different of regime after the occurence of change
+ point 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "weskamp2010change"
