@@ -185,21 +185,39 @@ coef(m2)
 # Okkk it's the same! yeahh
 
 ##-------------------------------------------------------------------------------------##
-# not gonna include ...? 
+# not gonna include in the package...? 
 # state prediction
 test <- test_g2_L16B_min[1,]
 
-# get last value of TotCpu
-ar <- ans@model$model[nr,1]
+p <- ans@p
+model <- ans["model"]
+Coef <- ans["Coef"]
+std <- ans["std"]
+P <- ans["transMat"]
+fProb <- ans["Fit"]["filtProb"]
+nr <- length(model$model[,1])
 
-# select only dependent and independent variables and include previous TotCpu
-predictor <- colnames(ans@model$model)[-1]
-predictor <- predictor[-(length(predictor)-p)]
+if(p > 0){
+    ar <- t(model$model[nr:(nr-p+1),1,drop=F]) # lag p
+    colnames(ar) <- paste(names(model$model)[1],"_",1:p,sep="") # insert name
+}
 
+var <- colnames(model$model) # all variables name
+var <- var[1:(length(var)-p)] # discard AR term (if any)
+test <- subset(test, select=var) # subset (dependent and independent variables)
+test <- cbind(test, ar) # include back AR term
 
-var=object$model[,1]
-Ar=apply(as.matrix(1:p),1,function(el){
-  length(var)=length(var)-el
-  var=c(rep(NA,el),var)
-  return(var)
-})
+terms <- model.matrix(as.formula(paste(colnames(test)[1], " ~ ", paste(colnames(test)[-1], collapse= "+"))), data=test)
+CondMean <- as.matrix(terms) %*% t(as.matrix(Coef))
+error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
+Likel <- t(dnorm(t(error),0,std))
+
+#####
+fProb[nr+1,]= (P %*% t(fProb[nr,,drop=F])) * t(Likel[1,,drop=F])
+margLik[nr+1,1] = sum(fProb[nr+1,])
+fProb[nr+1,] = fProb[nr+1,] / margLik[nr+1,1]
+
+fProb[i,] = (P %*% t(fProb[i-1,,drop=F])) * t(Likel[i,,drop=F])
+margLik[i,1] = sum(fProb[i,])
+fProb[i,] = fProb[i,] / margLik[i,1]
+
