@@ -298,7 +298,15 @@ Results
 \end_layout
 
 \begin_layout Standard
-Using MSwM package in R
+The most relevant results of the analysis is shown in this chapter.
+ It is organized as follows.
+ 
+\end_layout
+
+\begin_layout Standard
+Based on the use of MSwM package in R.
+ This is an univariate autoregressive Markov switching models for linear
+ and generalized Models.
 \end_layout
 
 \begin_layout Standard
@@ -306,7 +314,7 @@ Modified to own need
 \end_layout
 
 \begin_layout Standard
-State 3
+Defined three states
 \end_layout
 
 \begin_layout Standard

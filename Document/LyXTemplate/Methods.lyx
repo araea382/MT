@@ -298,8 +298,11 @@ Methods
 \end_layout
 
 \begin_layout Standard
-In this section, methods that are used for performing the change point detection
-/ anomaly detection in the thesis are explained.
+In this chapter, methods that are used for performing the change point analysis
+ in the thesis are explained.
+ The illustration of the simple Markov regime swiching model feature is
+ shown and more general model specifications namely Markov switching autoregress
+ive model is discussed.
 \end_layout
 
 \begin_layout Standard
@@ -334,6 +337,7 @@ key "james2013ecp"
 \end_inset
 
 .
+ It uses an energy 
 \end_layout
 
 \begin_layout Subsection
@@ -366,10 +370,10 @@ Markov regime switching model
 \end_layout
 
 \begin_layout Standard
-Markov switching model is used for time serires that are evolved over a
- a finite state of unobserved states.
- It is a regime switching model where the shift between the regime is controlled
- by latent variable that follows a Markov cahin.
+Markov regime switching model is used for time serires that are evolved
+ over unobserved distinct states or regimes.
+ It is a regime switching model where the shifting back and forth between
+ the regimes is controlled by latent Markov chain.
  The model structure are consitsts of two stochastic processes embedded
  in two levels of hierarchy.
  One process is an underlying stochastic process that is not observable
@@ -451,7 +455,7 @@ status open
 \begin_inset Graphics
 	filename picture/msm.png
 	lyxscale 50
-	scale 80
+	scale 70
 
 \end_inset
 
@@ -496,7 +500,7 @@ key "hamilton1994time"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y=\mu_{S_{t}}+\varepsilon_{t}\label{eq:msm}
+y_{t}=X_{t}'\beta_{S_{t}}+\varepsilon_{t}\label{eq:msm}
 \end{equation}
 
 \end_inset
@@ -529,14 +533,45 @@ where
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\mu_{S_{t}}$
+\begin_inset Formula $X_{t}$
 \end_inset
 
- is the intercept in state 
+ is the predictor variables of the time series at time 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\beta_{S_{t}}$
+\end_inset
+
+ is the coefficient in state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
- and
+, where 
+\begin_inset Formula $S_{t}=i,$
+\end_inset
+
+ 
+\begin_inset Formula $1\leqslant i\leqslant k$
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -548,17 +583,6 @@ where
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $S_{t}=i,$
-\end_inset
-
- 
-\begin_inset Formula $1\leqslant i\leqslant N$
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Standard
@@ -605,7 +629,7 @@ describes the distribution for the next state given the current state
 \end_inset
 
  to 
-\begin_inset Formula $S_{t}=i$
+\begin_inset Formula $S_{t}=j$
 \end_inset
 
  is defined by the transition probabilities as follows
@@ -639,7 +663,12 @@ where
 \begin_inset Formula $1\leqslant i,j\leqslant N$
 \end_inset
 
- and 
+ .
+ 
+\end_layout
+
+\begin_layout Standard
+It is also assumed that 
 \begin_inset Formula $\sum_{j=1}^{N}p_{ij}=1$
 \end_inset
 
@@ -647,64 +676,54 @@ where
 \begin_inset Formula $p_{ij}\geq0$
 \end_inset
 
- 
+ .
+ These two properties ensure ergodicity of Markov chain (i.e., aperiodic and
+ irreducible) that any state will be reached eventually regardless of the
+ initial state.
+ They are also necessary for assessing the consistency of the model.
 \end_layout
 
 \begin_layout Standard
-These two properties ensure ergodicity (i.e., aperiodic and irreducible) that
- any state will be reached eventually regardless of the initial state.
- It is also necessary for assessing the consistency of the model.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-and
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- observation probability which describes the distribution for the output
- given the current state or a chance of observation occuring in a given
- state,
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
+To aid understanding and simplicity, the baseline model assuming two states
  
-\begin_inset Formula $f(y_{t}|S_{t})$
+\begin_inset Formula $(k=2)$
 \end_inset
 
+ that is 
+\begin_inset Formula $S_{t}=1$
+\end_inset
 
+ or 
+\begin_inset Formula $2$
+\end_inset
+
+ is discussed.
+ The transition matrix 
 \end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\mathbf{P}=\left[\begin{array}{cc}
+P(S_{t}=1|S_{t-1}=1) & P(S_{t}=1|S_{t-1}=2)\\
+P(S_{t}=2|S_{t-1}=1) & P(S_{t}=2|S_{t-1}=2)
+\end{array}\right]=\left[\begin{array}{cc}
+p_{11} & p_{12}\\
+p_{21} & p_{22}
+\end{array}\right]
+\]
 
 \end_inset
 
@@ -766,7 +785,75 @@ Since the whole process
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+COEFFICIENT !!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+and
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ observation probability which describes the distribution for the output
+ given the current state or a chance of observation occuring in a given
+ state,
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $f(y_{t}|S_{t})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Autoregressive (AR) model
 \end_layout
 
@@ -780,6 +867,11 @@ Autoregressive model is one type of time series model that uses for describing
 LatexCommand citep
 key "cryer1986time"
 
+\end_inset
+
+.
+ The number of autoregressive lags is denoted by 
+\begin_inset Formula $p$
 \end_inset
 
 .
@@ -821,11 +913,15 @@ where
 \begin_inset Formula $c$
 \end_inset
 
- is a constant and 
+ is a constant,
+\begin_inset Formula $\phi_{i}$
+\end_inset
+
+ is the autoregression coefficients and 
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
- is white noise with zero mean and variance
+ is Gaussian white noise with zero mean and variance
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
@@ -837,7 +933,7 @@ where
 , the model is called the first order autoregression process or AR(1).
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Markov switching autoregressive model
 \end_layout
 
@@ -873,7 +969,7 @@ key "shannon2009formulation"
 \color none
 \begin_inset Formula 
 \begin{equation}
-y_{t}=\mu_{S_{t}}+\phi_{1}y_{t-1}+\varepsilon_{t}
+y_{t}=X_{t}'\beta_{S_{t}}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{t}
 \end{equation}
 
 \end_inset
@@ -883,6 +979,18 @@ y_{t}=\mu_{S_{t}}+\phi_{1}y_{t-1}+\varepsilon_{t}
 
 \begin_layout Standard
 where 
+\begin_inset Formula $\phi_{1,S_{t}}$
+\end_inset
+
+ is the autoregression coefficient of observed value at time 
+\begin_inset Formula $t-1$
+\end_inset
+
+ in state 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ and 
 \begin_inset Formula $\varepsilon_{t}\sim N(0,\sigma_{S_{t}}^{2})$
 \end_inset
 
@@ -890,14 +998,17 @@ where
 \end_layout
 
 \begin_layout Standard
-The structure of model is shown in 
+The structure of the model is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "msm-ar"
 
 \end_inset
 
-
+.
+ It can be clearly seen that observation is, now, not independent from one
+ another.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -912,7 +1023,7 @@ status open
 \begin_inset Graphics
 	filename picture/msm-ar.png
 	lyxscale 50
-	scale 80
+	scale 70
 
 \end_inset
 
@@ -936,6 +1047,46 @@ Model structure of Markov switching AR(1)
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ can not be directly observed, but only infer through the observed 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+.
+ To fully describe the probability, the set of parameters for the Markov
+ switching autoregressive model are 
+\begin_inset Formula $\theta=\{\beta_{S_{t}},\phi_{1,S_{t}},\sigma_{S_{t}}^{2},\pi_{S_{t}},p\}$
+\end_inset
+
+where 
+\begin_inset Formula $S_{t}=i,$
+\end_inset
+
+ 
+\begin_inset Formula $1\leqslant i\leqslant k$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+is p correct...??
 \end_layout
 
 \end_inset
@@ -985,7 +1136,14 @@ The Expectation-Maximization algorithm
 
 \begin_layout Standard
 E-M algorithm is originally designed to deal with the incomplete or missing
- values in data.
+ values in data 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dempster1977maximum"
+
+\end_inset
+
+.
  Nevertheless, it can potentially implement in Markov regime switching model
  since the unobserved state 
 \begin_inset Formula $S_{t}$
@@ -1197,19 +1355,6 @@ Once the filtered probabilities are estimated, there is necessarily enough
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-t-1 or t ???????????
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 which is a weighted average of the likelihood function in each state.
  The probability of state are considered as weights.
 \end_layout
@@ -1272,6 +1417,23 @@ AIC or BIC
 
 \begin_layout Section
 State-space prediction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Change-point score: Plausibility of changes that have happened
+\end_layout
+
+\begin_layout Plain Layout
+Metrics (True positive rate/ False positive rate/ Detection delay)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -304,4 +304,15 @@
   publisher = {Elsevier},
 }
 
+@Article{kim1994dynamic,
+  author    = {Kim, Chang-Jin},
+  title     = {Dynamic linear models with Markov-switching},
+  journal   = {Journal of Econometrics},
+  year      = {1994},
+  volume    = {60},
+  number    = {1-2},
+  pages     = {1--22},
+  publisher = {Elsevier},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
