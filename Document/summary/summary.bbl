@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+
+\bibitem{hamilton1989new}
+James~D Hamilton.
+\newblock A new approach to the economic analysis of nonstationary time series
+  and the business cycle.
+\newblock {\em Econometrica: Journal of the Econometric Society}, pages
+  357--384, 1989.
+
+\bibitem{rabiner1989tutorial}
+Lawrence~R Rabiner.
+\newblock A tutorial on hidden markov models and selected applications in
+  speech recognition.
+\newblock {\em Proceedings of the IEEE}, 77(2):257--286, 1989.
+
+\bibitem{gill2004your}
+Jeff Gill and Gary King.
+\newblock What to do when your hessian is not invertible: Alternatives to model
+  respecification in nonlinear estimation.
+\newblock {\em Sociological methods \& research}, 33(1):54--87, 2004.
+
+\end{thebibliography}

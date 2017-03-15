@@ -298,7 +298,7 @@ Methods
 \end_layout
 
 \begin_layout Standard
-In this section, methods that are used for performing the change point analysis
+In this chapter, methods that are used for performing the change point analysis
  in the thesis are explained.
  The illustration of the simple Markov regime swiching model feature is
  shown and more general model specifications namely Markov switching autoregress
@@ -455,7 +455,7 @@ status open
 \begin_inset Graphics
 	filename picture/msm.png
 	lyxscale 50
-	scale 80
+	scale 70
 
 \end_inset
 
@@ -490,7 +490,7 @@ Model structure
 The process is given by 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "hamilton1994time"
+key "hamilton1989new"
 
 \end_inset
 
@@ -583,6 +583,19 @@ where
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $t=1,2,...,t_{0},t_{0}+1,t_{0}+2,...,T$
+\end_inset
+
+ where 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ is a know change point.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -698,7 +711,7 @@ To aid understanding and simplicity, the baseline model assuming two states
 \end_inset
 
  is discussed.
- The transition matrix 
+ The transition probabilties in matrix notation is given by
 \end_layout
 
 \begin_layout Standard
@@ -791,6 +804,28 @@ status open
 
 \begin_layout Plain Layout
 COEFFICIENT !!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The model with only two regimes can be represented as follows
+\end_layout
+
+\begin_layout Plain Layout
+The unobserved regime variable 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ is governed by a first order Markov chain with constant transtition probabiliti
+es given by
 \end_layout
 
 \end_inset
@@ -1023,7 +1058,7 @@ status open
 \begin_inset Graphics
 	filename picture/msm-ar.png
 	lyxscale 50
-	scale 80
+	scale 70
 
 \end_inset
 

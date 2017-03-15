@@ -508,7 +508,7 @@ The term Markov regime switching model will be used throughout the thesis.
  package depends on the performance evaluated from the past version of software
  package).
  Therefore, additional dependencies at observation level with the first
- order autoregression is taken into consideration when modeling the Markov
+ order autoregression is taken into consideration when modelling the Markov
  regime swiching model.
  
 \end_layout

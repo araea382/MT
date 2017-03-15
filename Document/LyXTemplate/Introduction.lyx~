@@ -606,12 +606,12 @@ To summarize, this thesis aims to:
 \end_layout
 
 \begin_layout Itemize
-Detect the degradation, improvement or steady state in CPU Utilization
+Detect the degradation, improvement or steady state in CPU utilization
 \end_layout
 
 \begin_layout Itemize
 Detect whether there is some changes in test environment that impact on
- CPU Utilization
+ CPU utilization
 \end_layout
 
 \begin_layout Standard

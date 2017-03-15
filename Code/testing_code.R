@@ -195,6 +195,7 @@ Coef <- ans["Coef"]
 std <- ans["std"]
 P <- ans["transMat"]
 fProb <- ans["Fit"]["filtProb"]
+margLik <- ans["Fit"]["margLik"]
 nr <- length(model$model[,1])
 
 if(p > 0){
@@ -213,11 +214,18 @@ error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
 Likel <- t(dnorm(t(error),0,std))
 
 #####
-fProb[nr+1,]= (P %*% t(fProb[nr,,drop=F])) * t(Likel[1,,drop=F])
-margLik[nr+1,1] = sum(fProb[nr+1,])
-fProb[nr+1,] = fProb[nr+1,] / margLik[nr+1,1]
+# add to originak right away
+fProb <- rbind(fProb, t(P %*% t(fProb[nr,,drop=F])) * Likel[1,,drop=F]) 
+margLik <- rbind(margLik, sum(fProb[nr+1,]))
+fProb[nr+1,] <- fProb[nr+1,] / margLik[nr+1,1] # filtered prob of t+1 conditional on the info in t+1
 
-fProb[i,] = (P %*% t(fProb[i-1,,drop=F])) * t(Likel[i,,drop=F])
-margLik[i,1] = sum(fProb[i,])
-fProb[i,] = fProb[i,] / margLik[i,1]
+# add to orginial later
+fProb_new <- t(P %*% t(fProb[nr,,drop=F])) * Likel[1,,drop=F]
+margLik_new <- sum(fProb_new)
+fProb <- rbind(fProb, (fProb_new / margLik_new)) # filtered prob of t+1 conditional on the info in t+1
+margLik <- rbind(margLik, margLik_new)
+
+# include CondMean, error, Likel back to the original one...?
+# maybe not... seem like there is only fProb that use the previous one
+
 

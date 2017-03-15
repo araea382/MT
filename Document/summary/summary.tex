@@ -1,0 +1,25 @@
+\documentclass[]{article}
+
+%opening
+\title{Apply Machine Learning to Performance Trend Analysis}
+\author{Araya Eamrurksiri}
+
+\begin{document}
+\date{}
+\maketitle
+
+% summary of what has been done so far
+Markov regime switching model is implemented for addressing the thesis' problem - we are interested to discover and estimate the change points and regime shift in time series when the time instant is unknown. This model is one of the most well-known non linear time series models. It is first introduced by Hamilton \cite{hamilton1989new} and is extensively implemented in economics and finance field. It takes the behavior of shifting regime in time series into account and models multiples structures that can explain this characteristic in different states at different time. The shift between state or regime comes from the switching mechanism which is assumed to follow an unobserved Markov chain. Thus, the model is able to capture complex dynamic patterns, identify the switch in states when change-point is most likely to occur. In speech recognition, such processes are described as hidden Markov models \cite{rabiner1989tutorial}. Given the historical behavior of the observation sequence in this study, it is noticed that observed value is not completely independent of each other (i.e., performance of current software package depends on the performance evaluated from the past version of software package). Therefore, additional dependencies at observation level with the first order autoregression is taken into consideration when modelling. It is simply called Markov switching autoregressive model.
+
+The MSwM \footnote{https://cran.r-project.org/web/packages/MSwM/index.html} package developed by Josep A. Sanchez-Espigares is available on CRAN. It performs an univariate autoregressive Markov switching models for linear and generalized models. The package used expectation-maximization (EM) algorithm to fit Markov switching model. Source code and functions used for fitting the model in this package have been studied and reviewed in detail. Even though most of the coding has been done in the package, further implementation for algorithm is still needed in order to properly deal with the problem at hand. Moreover, some modifications are also made in the function to handle errors and warnings produced from fitting the model. For instance, in some situations when fitting linear regression, Hessian will not be invertible if there is a multicollinearity. Consequently, the standard error of the estimated coefficients for the model can not be computed. This issue is solved by using generalized inverse procedure to address singularity \cite{gill2004your}. Furthermore, one slight mistake which is found in the code after taking an examination is now being corrected.
+
+
+NA as coefficients
+
+categorical variables 
+ 
+
+\bibliographystyle{unsrt}
+\bibliography{ref}
+
+\end{document}
