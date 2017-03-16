@@ -319,9 +319,9 @@ key "basseville1993detection"
 
 \end_inset
 
- and has a bottom line for discovering and estimating the time point where
- the changes in time series occur.
- Serveral terms such as breakpoint or turning point is also used to denote
+ and it has a bottom line for discovering and estimating the time point
+ where the changes in time series occur.
+ Serveral terms such as breakpoint or turning point are also used to denote
  the respective events.
  However, the commonly used term when the point in time series takes place
  is 
@@ -332,8 +332,8 @@ change-point
 \emph on
 regime switch
 \emph default
- is for referring to the different of regime after the occurence of change
- point 
+ refers to the different of regimes after the occurence of change point
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "weskamp2010change"
@@ -342,7 +342,7 @@ key "weskamp2010change"
 
 .
  It has been studied over decades as it is a problem of interest in many
- applications in which the characteristics of data is collected over time.
+ applications in which the characteristic of data is collected over time.
  Change point analysis can be utilized in medical condition monitoring 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -351,7 +351,7 @@ key "staudacher2005new"
 \end_inset
 
 , to evaluate the sleep of patients based on their hearth rate variability.
- It can be found in crimate analysis 
+ It is applied in crimate analysis 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "reeves2007review,beaulieu2012change"
@@ -359,36 +359,20 @@ key "reeves2007review,beaulieu2012change"
 \end_inset
 
 , where temperature or climate variations is detected.
- This has been arised since the greenhouse gas emission rapidly increases
- for several decades and the effects from global warming 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "aminikhanghahi2016survey"
-
-\end_inset
-
-.
- Applications are extensively implemented in the field of quality control
- 
+ It gradually becomes important over the past few decades due to the effects
+ of global warming and a huge growth in the greenhouse gas emissions.
+ Applications can be found in the field of quality control 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "page1954continuous"
 
 \end_inset
 
-in which the industrial process is monitored over a continuous period and
- should be able to identify when something went wrong (i.e., defective products,
- machine breakdowns).
- Methods are also useful in signal processing to detect the significant
- change in the streaming data 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "basseville1993detection"
-
-\end_inset
-
-, identify fraud as soon as it is commited when fraud prevention is failed
- 
+in which the quality of industrial product is of interest.
+ Since it is a continuous production process, if something goes wrong at
+ some point of the process (i.e., defective products, machine breakdowns),
+ it can lead to a large amount of quality worsens.
+ Method is used to identify fraud transaction once it is commited 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "bolton2002statistical"
@@ -403,9 +387,18 @@ key "gu2013fast"
 \end_inset
 
 .
- The change should be flagged when it occured in order to properly deal
- with such changes in time and reduce the consequences that could happen
- 
+ Signal processing also benefits from the change point analysis by detecting
+ significant changes in the streaming data 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "basseville1993detection"
+
+\end_inset
+
+.
+ The change should be flagged as soon as it occurs in order to be properly
+ dealt with such changes in time and reduced any consequences that could
+ have happened 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sharkey2014nonparametric"
@@ -421,8 +414,8 @@ In this study, change point analysis will be used to identify the changes
  in performance of Ericsson's software product.
  Many test runs have been executed for testing the software packages in
  the simulation environment.
- Before launching product to customer, they need to test how well does the
- software package perform.
+ Before launching product to customer, company needs to test and determine
+ how a software package performs in general.
  The performance of these software packages are evaluated by considering
  on the CPU utilization, a percent of the CPU's cycle that spent on each
  process, and some other performance metrics (e.g., memory usage, latency).
@@ -430,9 +423,9 @@ In this study, change point analysis will be used to identify the changes
 \end_layout
 
 \begin_layout Standard
-Recently, method which is now becoming more popular for addressing the change
- in time series is a hidden Markov model.
- It used a concept of Markov process where the system treats data as observation
+Recently, method which is now becoming more popular for addressing such
+ changes in time series is a hidden Markov model.
+ It uses a concept of Markov process where the system treats data as observation
 s and tries to model an underlying segmentation as states.
  Hence, it is able to identify the switch in hidden states when change-point
  is most likely to occur 
@@ -443,7 +436,7 @@ key "luong2012hidden"
 \end_inset
 
 .
- A hidden Markov model is widely used in almost all current system in speech
+ A hidden Markov model is widely used in almost all current systems in speech
  recognition 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -468,10 +461,13 @@ key "stanke2003gene"
 
  where the prediction of gene is being made.
  It has been extensively applied in the field of economics and finance and
- have a large literature about it.
+ has a large literature.
  For instance, business cycle can be seen as hidden states with seasonal
- changes and modeled as a switching process to uncover the state over expansions
- and recessions and also the duration of each period 
+ changes.
+ It is modelled as a switching process to uncover the state over expansions
+ and recessions.
+ Model can also be used to understand the transition between the economic
+ state and the duration of each period 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "hamilton1994time"
@@ -479,7 +475,7 @@ key "hamilton1994time"
 \end_inset
 
 .
- Financial time series is modeled in order to investigate how stock markets
+ Financial time series is modelled in order to investigate how stock markets
  are doing in general i.e., bull or bear markets 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -489,7 +485,8 @@ key "kim1998testing"
 
 .
  Markov regime switching model is what econometrician and people who study
- related to this field always address when refering to hidden Markov model.
+ related to this field always address to when refer to the hidden Markov
+ model.
 \end_layout
 
 \begin_layout Standard
@@ -497,20 +494,26 @@ The term Markov regime switching model will be used throughout the thesis.
  Markov regime switching model is one of the most well-known non linear
  time series models.
  It takes the behavior of shifting regime in time series into account and
- models multiples structures that can explain this characteristic in different
+ models multiple structures that can explain this characteristic in different
  states at different time.
  The shift between state or regime comes from the switching mechanism which
  is assumed to follow an unobserved Markov chain.
  Thus, the model is able to capture complex dynamic patterns, identify the
  change of location and regime switch in time series.
- The historical behavior of the observation sequence in this study is not
- completely independent of each other (i.e., performance of current software
- package depends on the performance evaluated from the past version of software
- package).
+ 
+\end_layout
+
+\begin_layout Standard
+Each software package in the testing system is viewd as a time point in
+ time series and the performance of software package is an observe value.
+ According to the behavior of observation sequence in this study, it is
+ found that observation is not completely independent of each other (i.e.,
+ performance of current software package depends on the performance evaluated
+ from the past version of software package).
  Therefore, additional dependencies at observation level with the first
  order autoregression is taken into consideration when modelling the Markov
  regime swiching model.
- 
+ It is simply called Markov switching autoregressive model.
 \end_layout
 
 \begin_layout Standard
@@ -586,19 +589,20 @@ The main idea of this thesis is to reduce the laborer work to do visual
  inspection whenever they want to analyze the performance of update software
  package.
  With the rise of data generation coming from a large number of test runs,
- this work becomes more difficult and perhaps inefficient to do it manually.
- The main objectives for this thesis is to implement machine learning, the
+ this work becomes much more difficult and perhaps inefficient to do it
+ manually.
+ The main objective for this thesis is to implement machine learning, the
  algorithm that has an ability to learn from data, to analyze the performance
- of the system.
+ of the software package.
  The algorithm will help indicate whether the performance of software package
  is in a degradation, improvement or steady state.
- There is also a case when the changes in the test environment affect performanc
-e even though there is no change in the software package.
+ There is also a case when changes in the test environment affect performance
+ even though there is no change in the software package.
  The implemented algorithm should be able to also detect when the test environme
 nt is altered.
- CPU utilization is the performance metric that will be looked upon in this
- thesis as it is one of the main focus in the test run that need to be optimized
- for the released of upgrade software package.
+ CPU utilization is focused in this thesis.
+ It is one of the essential factor that needs to be optimized when considering
+ releasing an upgrade software package.
 \end_layout
 
 \begin_layout Standard

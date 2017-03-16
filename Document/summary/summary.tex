@@ -13,11 +13,7 @@ Markov regime switching model is implemented for addressing the thesis' problem 
 
 The MSwM \footnote{https://cran.r-project.org/web/packages/MSwM/index.html} package developed by Josep A. Sanchez-Espigares is available on CRAN. It performs an univariate autoregressive Markov switching models for linear and generalized models. The package used expectation-maximization (EM) algorithm to fit Markov switching model. Source code and functions used for fitting the model in this package have been studied and reviewed in detail. Even though most of the coding has been done in the package, further implementation for algorithm is still needed in order to properly deal with the problem at hand. Moreover, some modifications are also made in the function to handle errors and warnings produced from fitting the model. For instance, in some situations when fitting linear regression, Hessian will not be invertible if there is a multicollinearity. Consequently, the standard error of the estimated coefficients for the model can not be computed. This issue is solved by using generalized inverse procedure to address singularity \cite{gill2004your}. Furthermore, one slight mistake which is found in the code after taking an examination is now being corrected.
 
-
-NA as coefficients
-
-categorical variables 
- 
+Another error that has been dealt with is when coefficients are NAs. This is mostly happened when fitting with categorical variables.
 
 \bibliographystyle{unsrt}
 \bibliography{ref}

@@ -582,11 +582,7 @@ where
 \begin_inset Formula $\sigma_{S_{t}}^{2}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-and 
+ and 
 \begin_inset Formula $t=1,2,...,t_{0},t_{0}+1,t_{0}+2,...,T$
 \end_inset
 
@@ -594,8 +590,18 @@ and
 \begin_inset Formula $t_{0}$
 \end_inset
 
- is a know change point.
+ is a known change point.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LOOK at weskam2010change
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -607,6 +613,20 @@ reference "eq:msm"
 \end_inset
 
  is the simplest case for the switching model.
+ To aid understanding and simplicity, the baseline model assuming two states
+ 
+\begin_inset Formula $(k=2)$
+\end_inset
+
+ that is 
+\begin_inset Formula $S_{t}=1$
+\end_inset
+
+ or 
+\begin_inset Formula $2$
+\end_inset
+
+ is discussed.
  There are transitions between states which 
 \family roman
 \series medium
@@ -681,37 +701,8 @@ where
 \end_layout
 
 \begin_layout Standard
-It is also assumed that 
-\begin_inset Formula $\sum_{j=1}^{N}p_{ij}=1$
-\end_inset
-
- and 
-\begin_inset Formula $p_{ij}\geq0$
-\end_inset
-
- .
- These two properties ensure ergodicity of Markov chain (i.e., aperiodic and
- irreducible) that any state will be reached eventually regardless of the
- initial state.
- They are also necessary for assessing the consistency of the model.
-\end_layout
-
-\begin_layout Standard
-To aid understanding and simplicity, the baseline model assuming two states
- 
-\begin_inset Formula $(k=2)$
-\end_inset
-
- that is 
-\begin_inset Formula $S_{t}=1$
-\end_inset
-
- or 
-\begin_inset Formula $2$
-\end_inset
-
- is discussed.
- The transition probabilties in matrix notation is given by
+The transition probabilties in matrix notation with two-state Markov chain
+ is given by
 \end_layout
 
 \begin_layout Standard
@@ -741,6 +732,22 @@ p_{21} & p_{22}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+It is also assumed that 
+\begin_inset Formula $\sum_{j=1}^{N}p_{ij}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{ij}\geq0$
+\end_inset
+
+ .
+ These two properties ensure ergodicity of Markov chain (i.e., aperiodic and
+ irreducible) that any state will be reached eventually regardless of the
+ initial state.
+ They are also necessary for assessing the consistency of the model.
 \end_layout
 
 \begin_layout Standard
@@ -952,7 +959,7 @@ where
 \begin_inset Formula $\phi_{i}$
 \end_inset
 
- is the autoregression coefficients and 
+ are the coefficients in autoregression and 
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
@@ -1158,7 +1165,7 @@ key "kim1999state"
 
 \end_inset
 
-that used a Markov chain Monte Carlo simulation method based on the Bayesian
+ used a Markov chain Monte Carlo simulation method based on the Bayesian
  inference.
  In this thesis framework, E-M algorithm is used in estimating parameters
  and is briefly described the general procedure.
@@ -1216,7 +1223,7 @@ Assume that
 \end_inset
 
  is denoted as 
-\begin_inset Formula $\Omega_{t-1}=(y_{t},y_{t-1},...,y_{1})$
+\begin_inset Formula $\Omega_{t-1}=(y_{1},y_{2},...,y_{t-1})$
 \end_inset
 
 .
@@ -1339,7 +1346,7 @@ Smoothing
 \end_layout
 
 \begin_layout Standard
-Smoothed probability is the probability of the non-obsevable Markov chain
+Smoothed probability is the probability of the non-observable Markov chain
  being in state 
 \begin_inset Formula $j$
 \end_inset
@@ -1391,7 +1398,7 @@ Once the filtered probabilities are estimated, there is necessarily enough
 
 \begin_layout Standard
 which is a weighted average of the likelihood function in each state.
- The probability of state are considered as weights.
+ The probabilities of states are considered as weights.
 \end_layout
 
 \begin_layout Standard
@@ -1447,7 +1454,7 @@ Model Selection
 \end_layout
 
 \begin_layout Standard
-AIC or BIC
+Akaike's Information Criterion (AIC) or Bayesian Information Criterion (BIC)
 \end_layout
 
 \begin_layout Section
