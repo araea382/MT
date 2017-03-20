@@ -311,16 +311,16 @@ name "sec:Background"
 \end_layout
 
 \begin_layout Standard
-Change point analysis is the method to detect changes in time series data
- when the time instant is unknown 
+Change point analysis is a method to detect changes in time series data
+ when time instant is unknown 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "basseville1993detection"
 
 \end_inset
 
- and it has a bottom line for discovering and estimating the time point
- where the changes in time series occur.
+ and has a bottom line for discovering and estimating the time point where
+ the changes in time series occur.
  Serveral terms such as breakpoint or turning point are also used to denote
  the respective events.
  However, the commonly used term when the point in time series takes place
@@ -372,14 +372,15 @@ in which the quality of industrial product is of interest.
  Since it is a continuous production process, if something goes wrong at
  some point of the process (i.e., defective products, machine breakdowns),
  it can lead to a large amount of quality worsens.
- Method is used to identify fraud transaction once it is commited 
+ Method is also used for identifying fraud transaction once it is commited
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "bolton2002statistical"
 
 \end_inset
 
-, and detect anomalies in the market price 
+, and detecting anomalies in the market price 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "gu2013fast"
@@ -475,8 +476,8 @@ key "hamilton1994time"
 \end_inset
 
 .
- Financial time series is modelled in order to investigate how stock markets
- are doing in general i.e., bull or bear markets 
+ Financial time series is modelled in order to investigate how stock market
+ is doing in general i.e., bull or bear market 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1998testing"
