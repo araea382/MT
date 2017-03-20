@@ -17,9 +17,9 @@ test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
 
 ##-------------------------------------------------------------------------------------##
 predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
+# predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
 predictor <- c("DuProdName","Fdd.Tdd","NumCells")
-predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
+predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest")
 predictor <- c("DuProdName","Fdd.Tdd","NumCells","Paging")
 # predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","ReEstablishmentAttempt")
 

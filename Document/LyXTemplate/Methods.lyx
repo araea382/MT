@@ -559,7 +559,7 @@ where
 \begin_inset Formula $\beta_{S_{t}}$
 \end_inset
 
- is the coefficient in state 
+ is the coefficients in state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -590,18 +590,7 @@ where
 \begin_inset Formula $t_{0}$
 \end_inset
 
- is a known change point.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LOOK at weskam2010change
-\end_layout
-
-\end_inset
-
-
+ is a known change point
 \end_layout
 
 \begin_layout Standard
@@ -652,12 +641,12 @@ describes the distribution for the next state given the current state
 \noun default
 \color inherit
 .
- Since Markov regime switching model assumes that 
+ Markov regime switching model assumes that 
 \begin_inset Formula $S_{t}$
 \end_inset
 
- follows a stochastic process that satisfied Markov property, the evolution
- of changing from state 
+ follows a stochastic process that satisfied Markov property.
+ Hence, the evolution of changing from state 
 \begin_inset Formula $S_{t}=i$
 \end_inset
 
@@ -1101,17 +1090,16 @@ As
 \begin_inset Formula $S_{t}$
 \end_inset
 
- can not be directly observed, but only infer through the observed 
+ can not be directly observed but only infer through the observed 
 \begin_inset Formula $y_{t}$
 \end_inset
 
-.
- To fully describe the probability, the set of parameters for the Markov
+, to fully describe the probability, the set of parameters for the Markov
  switching autoregressive model are 
 \begin_inset Formula $\theta=\{\beta_{S_{t}},\phi_{1,S_{t}},\sigma_{S_{t}}^{2},\pi_{S_{t}},p\}$
 \end_inset
 
-where 
+ where 
 \begin_inset Formula $S_{t}=i,$
 \end_inset
 
@@ -1121,19 +1109,6 @@ where
 
 .
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-is p correct...??
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -1234,7 +1209,7 @@ Assume that
  under the current estimation of the parameters.
  The obtained result is called smoothed inferences probability and is denoted
  by
-\begin_inset Formula $P(S_{t}=j|\Omega_{T},\theta^{(n)})$
+\begin_inset Formula $P(S_{t}=j|\Omega_{T};\theta)$
 \end_inset
 
 .
@@ -1293,12 +1268,59 @@ Filtered probability is the probability of the non-observable Markov chain
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-P(S_{t}=j|\Omega_{t-1},\theta^{(n)})=\sum_{i=1}^{N}p_{ji}^{(n)}P(S_{t-1}=i|\Omega_{t-1},\theta^{(n)})
+P(S_{t}=j|\Omega_{t-1};\theta^{(n)})=\sum_{i=1}^{N}p_{ij}^{(n)}P(S_{t-1}=i|\Omega_{t-1};\theta^{(n)})
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+and the conditional densities of 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ given 
+\begin_inset Formula $\Omega_{t-1}$
+\end_inset
+
+ are
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+f(y_{t}|\Omega_{t-1};\theta^{(n)})=\sum_{j=1}^{N}f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n)})P(S_{t}=j|\Omega_{t-1};\theta^{(n)})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $f(y_{t}|S_{t}=j,\Omega_{t-1};\theta)=\frac{1}{\sqrt{2\pi\sigma_{S_{t}}^{2}}}exp\left\{ -\frac{(y_{t}-\beta_{S_{t}})^{2}}{2\sigma_{S_{t}}^{2}}\right\} $
+\end_inset
+
+ is the likelihood function in each state for time 
+\begin_inset Formula $t$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1312,7 +1334,7 @@ Then, with the new observation at time
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-P(S_{t}=j|\Omega_{t},\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})P(S_{t}=j|\Omega_{t-1},\theta^{(n)})}{\sum_{j=1}^{N}f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})P(S_{t}=j|\Omega_{t-1},\theta^{(n)})}
+P(S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n)})P(S_{t}=j|\Omega_{t-1};\theta^{(n)})}{f(y_{t}|\Omega_{t-1};\theta^{(n)})}
 \end{equation}
 
 \end_inset
@@ -1321,24 +1343,90 @@ P(S_{t}=j|\Omega_{t},\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n
 \end_layout
 
 \begin_layout Standard
-where 
-\begin_inset Formula $f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})=\frac{1}{\sqrt{2\pi\sigma_{S_{t}}^{2}}}exp\left\{ -\frac{(y_{t}-\mu_{S_{t}})^{2}}{2\sigma_{S_{t}}^{2}}\right\} $
-\end_inset
-
- is the likelihood function in each state for time 
-\begin_inset Formula $t$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
 It is computing iteratively until all the observation is reached i.e., 
 \begin_inset Formula $t=T$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The joint conditional density function of 
+\begin_inset Formula $y_{t},$
+\end_inset
+
+
+\begin_inset Formula $S_{t-1}$
+\end_inset
+
+and 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ given 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Omega_{\ensuremath{t-1}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ are
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+f(y_{t},S_{t-1}=i,S_{t}=j|\Omega_{t-1};\theta^{(n)})=f(y_{t}|S_{t-1}=i,S_{t=}j,\Omega_{t-1};\theta^{(n)})P(S_{t-1}=i,S_{t}=j|\Omega_{t-1};\theta^{(n)})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+P(S_{t-1}=i,S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t},S_{t-1}=i,S_{t}=j|\Omega_{t-1};\theta^{(n)})}{f(y_{t}|\Omega_{t-1};\theta^{(n)})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subparagraph
@@ -1366,9 +1454,45 @@ Smoothed probability is the probability of the non-observable Markov chain
 \end_layout
 
 \begin_layout Standard
+By nothing that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+P(S_{t}=j|S_{t+1}=i,\Omega_{T};\theta^{(n)}) & \thickapprox P(S_{t}=j|S_{t+1}=i,\Omega_{t};\theta^{(n)})\nonumber \\
+ & =\frac{P(S_{t}=j,S_{t+1}=i|\Omega_{t};\theta^{(n)})}{P(S_{t+1}=i|\Omega_{t};\theta^{(n)})}\nonumber \\
+ & =\frac{P(S_{t}=j|\Omega_{t};\theta^{(n)})p_{ij}^{(n)}}{P(S_{t+1}=i|\Omega_{t};\theta^{(n)})}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-P(S_{t}=j|\Omega_{T},\theta^{(n)})=\sum_{i=1}^{N}\frac{P(S_{t}=j|\Omega_{t},\theta^{(n)})P(S_{t+1}=j|\Omega_{T},\theta^{(n)})p_{ji}^{(n)}}{P(S_{t+1}=j|\Omega_{t},\theta^{(n)})}
+P(S_{t}=j|\Omega_{T};\theta^{(n)})=\sum_{i=1}^{N}P(S_{t}=j,S_{t+1}=i|\Omega_{T};\theta^{(n)})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, the smoothed probabilities can be expressed as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(S_{t}=j|\Omega_{T};\theta^{(n)})=\sum_{i=1}^{N}\frac{P(S_{t+1}=i|\Omega_{T};\theta^{(n)})P(S_{t}=j|\Omega_{t};\theta^{(n)})p_{ij}^{(n)}}{P(S_{t+1}=i|\Omega_{t};\theta^{(n)})}
 \end{equation}
 
 \end_inset
@@ -1382,13 +1506,13 @@ P(S_{t}=j|\Omega_{T},\theta^{(n)})=\sum_{i=1}^{N}\frac{P(S_{t}=j|\Omega_{t},\the
 \end_inset
 
 Once the filtered probabilities are estimated, there is necessarily enough
- information to calculate the full log likelihood function.
+ information to calculate the full log-likelihood function.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\ln L(\theta)=\sum_{t=1}^{T}\ln(f(y_{t}|\Omega_{t-1},\theta^{(n)})=\sum_{t=1}^{T}\ln\sum_{j=1}^{N}((f(y_{t}|S_{t}=j,\Omega_{t-1},\theta^{(n)})P(S_{t}=j|\Omega_{t-1}))\label{eq:loglik}
+\ln L(\theta)=\sum_{t=1}^{T}\ln(f(y_{t}|\Omega_{t-1};\theta^{(n)})=\sum_{t=1}^{T}\ln\sum_{j=1}^{N}((f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n)})P(S_{t}=j|\Omega_{t-1}))\label{eq:loglik}
 \end{equation}
 
 \end_inset
@@ -1401,19 +1525,6 @@ which is a weighted average of the likelihood function in each state.
  The probabilities of states are considered as weights.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Clarify more in detail for each equation ???????????
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Paragraph
 M-step
 \end_layout
@@ -1424,7 +1535,7 @@ The new estimates parameters,
 \end_inset
 
 , which is more exact value of maximum likelihood estimates than the previous
- one is obtained by finding the set of parameter that maximizes the Equation
+ one, is obtained by finding the set of parameter that maximizes the Equation
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1434,19 +1545,21 @@ reference "eq:loglik"
 
 .
  This new set of parameter is used in the next iteration of the E-step.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Include the derivative of each coeff and transition matrix ?????????????
-\end_layout
-
+ The estimated model parameters are derived by taking the partial derivative
+ of the log-likelihood function with respect to the specific parameters
+ and then setting it to zero.
+ In practice, the process is similar to the standard Maximum likelihood
+ estimation except that it has to be weighted by the smoothed probabilities
+ since each observartion 
+\begin_inset Formula $y_{t}$
 \end_inset
 
+ carries probability of coming from any of the 
+\begin_inset Formula $k$
+\end_inset
 
+ state.
+ 
 \end_layout
 
 \begin_layout Section

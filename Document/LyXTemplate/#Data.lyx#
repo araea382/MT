@@ -302,14 +302,21 @@ Data sources
 \end_layout
 
 \begin_layout Standard
-The dataset used in this thesis is provided by Ericsson.
- 
+The dataset used in this thesis is provided by Ericsson site in Linköping,
+ Sweden.
+ Ericsson founded by Lars Magnus Ericsson since 1876 is one of the world’s
+ leading in telecommunication industry.
+ It provides services, software product and infrasturcture related to informatio
+n and communications technology (ICT).
+ Its head quater is located in Stockholm, Sweden.
+ Ericsson continuously expands its service and product beyond telecoms sector
+ such as mobile broadbrand, cloud services, transportation and network design.
 \end_layout
 
 \begin_layout Standard
-It is extracted from the log file produced by the test case.
+Data is extracted from the log file produced by the test case.
  Each observation represents a test case.
- There are different type of test cases running in the simulation system.
+ There are different types of test case running in the simulation system.
  
 \end_layout
 
@@ -343,7 +350,7 @@ Dataset 2: The second generation
 \end_layout
 
 \begin_layout Standard
-This is the second generation (G2) product.
+It is the second generation (G2) product.
  The dataset has in total 2,xxx observations.
 \end_layout
 
@@ -428,13 +435,10 @@ PerThread%: It contains several value of software components.
 EventsPerSec: Events/Traffic intensity
 \end_layout
 
-\begin_layout Subsubsection
-Data usage
-\end_layout
-
+\begin_deeper
 \begin_layout Standard
-EventsPerSec variable consists of several components which has no fixed
- number of components and can be various values.
+It consists of several components which has no fixed number of components
+ and can be various values.
  In other words, different test case has different number of components
  and values.
  This is because different test cases involve additional procedure compared
@@ -447,29 +451,43 @@ EventsPerSec variable consists of several components which has no fixed
  components.
  This might due to the problem with the tool, problem with the node or different
  test case.
- Therefore, they filtered test case which has value of RrcConnectionSetupComplet
-e around 165 because they will know for sure that they are from the same
- test case.
- It is also easier for them to visualize performance.
- 2In unfiltered data, there are several values of RrcConnectionSetupComplete
- and it is suspected that value of this component along with others has
- an impact on CPU utilization
+ There are several values and it is suspected that value of component has
+ an impact on CPU utilization.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Probably have to rewrite it again....
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 The response variable is the TotCpu%
 \end_layout
 
 \begin_layout Standard
-The predictor variables: RrcConnectionSetupComplete
+The predictor variables: RrcConnectionSetupComplete, Paging and X2HandoverReques
+t
 \end_layout
 
 \begin_layout Standard
-test environment: DuProdName, Fdd/Tdd and NumCells
+Test environment: DuProdName, Fdd/Tdd and NumCells
 \end_layout
 
 \begin_layout Standard
-The unit is ...per second
+The unit for each components is per second
+\end_layout
+
+\begin_layout Standard
+tdhd
 \end_layout
 
 \begin_layout Standard

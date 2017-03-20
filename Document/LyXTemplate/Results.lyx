@@ -305,8 +305,10 @@ The most relevant results of the analysis is shown in this chapter.
 
 \begin_layout Standard
 Based on the use of MSwM package in R.
- This is an univariate autoregressive Markov switching models for linear
- and generalized Models.
+ It performs an univariate autoregressive Markov switching models for linear
+ and generalized models.
+ The package used expectation-maximization (EM) algorithm to fit Markov
+ switching model.
 \end_layout
 
 \begin_layout Standard
