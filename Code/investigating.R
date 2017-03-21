@@ -10,7 +10,7 @@ g2_L16B_min$DuProdName <- as.factor(g2_L16B_min$DuProdName)
 g2_L16B_min$Fdd.Tdd <- as.factor(g2_L16B_min$Fdd.Tdd)
 g2_L16B_min$NumCells <- as.factor(g2_L16B_min$NumCells)
 
-train_num <- floor(nrow(g2_L16B_min) * 0.8)
+train_num <- floor(nrow(g2_L16B_min) * 0.9)
 train_g2_L16B_min <- g2_L16B_min[1:train_num,]
 test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
 

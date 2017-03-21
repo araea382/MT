@@ -189,7 +189,9 @@ coef(m2)
 # state prediction function
 #### NOT DONE ####
 
-.MSM.lm.predict <- function(object, newdata){
+newdata <- test_g2_L16B_min[1,]
+
+.MSM.lm.predict=function(object, newdata){
   p <- object@p
   model <- object["model"]
   Coef <- object["Coef"]
@@ -209,16 +211,25 @@ coef(m2)
   test <- subset(newdata, select=var) # subset (dependent and independent variables)
   test <- cbind(test, ar) # include back AR term
   
+  # use reref() to relevel the reference of the factor level 
+  for(i in names(model$contrasts)){
+      test[,i] <- reref(test, i)
+  }
+  
   terms <- model.matrix(as.formula(paste(colnames(test)[1], " ~ ", paste(colnames(test)[-1], collapse= "+"))), data=test)
   CondMean <- as.matrix(terms) %*% t(as.matrix(Coef))
   error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
   Likel <- t(dnorm(t(error),0,std))
   
+  # add to original right away
+  fProb <- rbind(fProb, t(P %*% t(fProb[nr,,drop=F])) * Likel[1,,drop=F]) 
+  margLik <- rbind(margLik, sum(fProb[nr+1,]))
+  fProb[nr+1,] <- fProb[nr+1,] / margLik[nr+1,1] # filtered prob of t+1 conditional on the info in t+1
+  
+  result <- which.max(fProb[nr+1,])
+  return(result)
 }
-
-test <- test_g2_L16B_min[1,]
-
-
+setMethod(f="predict",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.predict)
 
 
 #####

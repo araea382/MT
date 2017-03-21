@@ -13,7 +13,8 @@ exportMethods(
     "plotDiag",
     "plotProb",
     "plotReg",
-    "summary"
+    "summary",
+    "predict"
 )
 
 exportClasses(

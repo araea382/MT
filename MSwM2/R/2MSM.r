@@ -218,8 +218,8 @@ MSM.lm.categorical <- function(object,k){
       names(object$xlevels[x])
     }
   }))
-  
-  # count the second level of each variable
+
+  # count the number of occurrence for each level in the variable
   count <- c()
   for(i in factor2){
     cnt <- list(sapply(levels(object$model[,i]), function(x) length(which(object$model[,i] == x))))
@@ -232,11 +232,11 @@ MSM.lm.categorical <- function(object,k){
   ind <- sample(rep(1:k, length.out=min_var))
   ind <- c(sample(rep(1:k, length.out=(length(object$residuals)-min_var))),ind)
   temp <- object$model[order(object$model[,var_name]),]
-  
+
   Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
   names(Coef)=names(coef(object))
   std=rep(0,k)
-  
+
   for(i in 1:k){
     data1=as.data.frame(temp[ind==i,,drop=F])
     mod1=update(object,formula=object$terms,data=data1)
@@ -254,6 +254,15 @@ MSM.lm.categorical <- function(object,k){
   return(ans)
 }
 
+####
+# Add: relevel the reference of the factor level
+###
+reref <- function(data, var){
+    count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
+    ind <- which.max(count)
+    maxlev <- levels(data[,var])[ind]
+    return(relevel(data[,var], maxlev))
+}
 
 .MSM.lm.msmFit= function(object,k,sw,p,data,family,control){
 	if(!missing(data)){
@@ -272,22 +281,15 @@ MSM.lm.categorical <- function(object,k){
 	if(missing(p)) p=0
 	if (missing(control)) control=list()
    	control  <- do.call(msmControl, control)
-  
-  ####
-  # Add: relevel the reference of the factor level (before adding AR coefficient)
+
   ###
-  reref <- function(data, var){
-    count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
-	  ind <- which.max(count)
-    maxlev <- levels(data[,var])[ind]
-    return(relevel(data[,var], maxlev))
-  }
-  
+  # Add: use reref() and update model
+  ###
   for(i in names(object$contrasts)){
     object$model[,i] <- reref(object$model, i)
   }
   object <- update(object, data=data.frame(object$model))
-  
+
 	if(p>0){
 		var=object$model[,1]
 		Ar=apply(as.matrix(1:p),1,function(el){
@@ -300,20 +302,20 @@ MSM.lm.categorical <- function(object,k){
 		aux=paste(colnames(Ar),collapse="+")
 		object=update(formula=as.formula(paste("~.+",aux,sep="")),data=data.frame(object$model,Ar),object)
 	}
-  
+
   ####
   # Add: check for categorical variables then apply the function
   ###
   if(!is.null(object$contrasts)){
     result <- MSM.lm.categorical(object,k)
-    Coef <- result$Coef  
+    Coef <- result$Coef
     std <- result$std
     ind <- result$index
   }else{
     Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
     names(Coef)=names(coef(object))
     std=rep(0,k)
-    
+
     ####
     # Add: resample and fit model again if one of the coefficient is not estimated (NA)
     ####
@@ -331,7 +333,7 @@ MSM.lm.categorical <- function(object,k){
       }else break
     }
   }
-  
+
 	transMat=t(matrix(table(ind,c(ind[-1],NA))/rep(table(ind[-length(ind)]),k),ncol=k))
 	ans=new(Class="MSM.lm",
 		call=as.call(call),
@@ -1035,7 +1037,7 @@ intervals <-
 	# Calculation of some preliminar variables
 	nr=length(model$model[,1])
 	terms=model.matrix(model)
-  
+
 	####
 	# Add: CondMean for categorical variables
 	###
@@ -1046,7 +1048,7 @@ intervals <-
 	  condmean <- as.matrix(terms_test) %*% t(as.matrix(Coef1))
 	  return(condmean)
 	}
-	
+
 	if(anyNA(Coef)){
   	CondMean <- sapply(1:k, function(x) cond_mean(terms, Coef, x))
 	}else{
@@ -1209,7 +1211,7 @@ fopt.glm=function(param, object=object){
 			object=object
 		)
 
-		
+
 		####
 		# Add: non-switching variance is 1 not k
 		###
@@ -1396,3 +1398,44 @@ setMethod(f="iteraEM",signature=c("MSM.linear","data.frame","ANY"),definition=.M
 setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
 
 
+##########
+##### predict
+.MSM.lm.predict=function(object, newdata){
+  p <- object@p
+  model <- object["model"]
+  Coef <- object["Coef"]
+  std <- object["std"]
+  P <- object["transMat"]
+  fProb <- object["Fit"]["filtProb"]
+  margLik <- object["Fit"]["margLik"]
+  nr <- length(model$model[,1])
+
+  if(p > 0){
+    ar <- t(model$model[nr:(nr-p+1),1,drop=F]) # lag p
+    colnames(ar) <- paste(names(model$model)[1],"_",1:p,sep="") # insert name
+  }
+
+  var <- colnames(model$model) # all variables name
+  var <- var[1:(length(var)-p)] # discard AR term (if any)
+  test <- subset(newdata, select=var) # subset (dependent and independent variables)
+  test <- cbind(test, ar) # include back AR term
+
+  # use reref() to relevel the reference of the factor level
+  for(i in names(model$contrasts)){
+    test[,i] <- reref(test, i)
+  }
+
+  terms <- model.matrix(as.formula(paste(colnames(test)[1], " ~ ", paste(colnames(test)[-1], collapse= "+"))), data=test)
+  CondMean <- as.matrix(terms) %*% t(as.matrix(Coef))
+  error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
+  Likel <- t(dnorm(t(error),0,std))
+
+  # add to original right away
+  fProb <- rbind(fProb, t(P %*% t(fProb[nr,,drop=F])) * Likel[1,,drop=F])
+  margLik <- rbind(margLik, sum(fProb[nr+1,]))
+  fProb[nr+1,] <- fProb[nr+1,] / margLik[nr+1,1] # filtered prob of t+1 conditional on the info in t+1
+
+  result <- which.max(fProb[nr+1,])
+  return(result)
+}
+setMethod(f="predict",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.predict)

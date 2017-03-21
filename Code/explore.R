@@ -4,10 +4,11 @@ setwd("C:/Users/EARAEAM/Documents/Thesis/Data")
 
 library(data.table)
 library(gtools) # for sorting RW column
-library(ecp)
-library(ggplot2)
 library(dplyr)
 library(stringr)
+library(ggplot2)
+
+library(ecp)
 library(glmnet)
 # library(MASS)
 
@@ -52,7 +53,7 @@ get_average <- function(data, y){
 }
 
 #----------------------------------------------------------------------#
-# select min TotCpu for the same software package (sw) 
+# select min TotCpu for the same software package (sw)
 # still contain all columns
 .old_get_min <- function(){
 # not include in the get_train_test just in case not using it
@@ -63,10 +64,10 @@ get_average <- function(data, y){
 #   sw <- data.frame(SW=sw_name, value=sw_min)
 #   return(sw)
 # }
-# 
+#
 # train_L16B_min <- get_min(train_L16B)
 # test_L16B_min <- get_min(test_L16B)
-# 
+#
 # # select min TotCpu for the same software package (sw)
 # # still contain all columns
 # get_min <- function(data, y){
@@ -85,6 +86,7 @@ get_average <- function(data, y){
 get_min <- function(data, y){
   require("lazyeval")
   sw_name <- unique(data$SW)
+  if(isTRUE(length(sw_name) <1)){stop("No data for this value")}
   subset <- lapply(sw_name, function(x) dplyr::filter(data, SW == x))
   sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]][,y])))
   subset_min <- data.frame()
@@ -101,7 +103,7 @@ get_min <- function(data, y){
 }
 
 #----------------------------------------------------------------------#
-# select max TotCpu for the same software package (sw) 
+# select max TotCpu for the same software package (sw)
 # still contain all columns
 get_max <- function(data, y){
   require("lazyeval")
@@ -123,8 +125,8 @@ get_max <- function(data, y){
 
 #----------------------------------------------------------------------#
 # sort by Release and SW column
-g2_sort <- g2[multi.mixedorder(Release, SW),] 
-g2_sort_filter <- g2_filter[multi.mixedorder(Release, SW),] 
+g2_sort <- g2[multi.mixedorder(Release, SW),]
+g2_sort_filter <- g2_filter[multi.mixedorder(Release, SW),]
 
 #----------------------------------------------------------------------#
 # extract components in EventsPerSec
@@ -139,7 +141,7 @@ g2_sort_filter <- g2_filter[multi.mixedorder(Release, SW),]
   #     as.numeric(str_replace(value, "RrcConnectionSetupComplete=", "")) # replace name with blank in order to get only value
   #   }
   # })
-  
+
   # for(j in 1:nrow(data)){
   #   events <- as.character(data[j,17])
   #   st <- unlist(strsplit(events, " "))
@@ -156,7 +158,7 @@ g2_sort_filter <- g2_filter[multi.mixedorder(Release, SW),]
   #     }
   #   }
   # }
-  
+
   # tab <- apply(g2_L16B[1:2,1:17], 1, function(x){
   # events <- as.character(x[17])
   # st <- unlist(strsplit(events, " "))
@@ -174,7 +176,7 @@ g2_sort_filter <- g2_filter[multi.mixedorder(Release, SW),]
   #   }
   # })
   # still cannot do it with apply or whatever their family are
-  
+
 }
 extract_component <- function(data){
   for(j in 1:nrow(data)){
@@ -209,8 +211,8 @@ g2_extract_filter <- extract_component(g2_sort_filter)
 
 #----------------------------------------------------------------------#
 # rename variable
-colnames(g2_extract)[which(colnames(g2_extract)=="TotCpu%")] <- "TotCpu" 
-colnames(g2_extract)[which(colnames(g2_extract)=="Fdd/Tdd")] <- "Fdd.Tdd" 
+colnames(g2_extract)[which(colnames(g2_extract)=="TotCpu%")] <- "TotCpu"
+colnames(g2_extract)[which(colnames(g2_extract)=="Fdd/Tdd")] <- "Fdd.Tdd"
 
 #----------------------------------------------------------------------#
 # subset for each Release
@@ -227,16 +229,18 @@ colnames(g2_extract)[which(colnames(g2_extract)=="Fdd/Tdd")] <- "Fdd.Tdd"
 # g2_L17A_filter <- g2_extract_filter[which(Release == "L17A")]
 
 get_subset <- function(data, release){
-  data1 <- data[which(Release == release)]
-  
+  data <- data[which(Release == release)]
+  data1 <- get_min(data, "TotCpu")
+
   # DuProdName, Fdd/Tdd, NumCells to factor
   data1$DuProdName <- as.factor(data1$DuProdName)
   data1$Fdd.Tdd <- as.factor(data1$Fdd.Tdd)
   data1$NumCells <- as.factor(data1$NumCells)
-  
+
   # change SW from character to factor and set the factor levels to be the same as in factor labels
   level <- unique(data1$SW)
   data1$SW <- factor(data1$SW, levels=level)
+
   return(data1)
 }
 
@@ -305,7 +309,7 @@ g2_green_R12AK <- g2_green[which(SW == "R12AK")]
   tt <- filter(t, eNB == "kienb2064")
   # cpu3 (?)
   tt2 <- filter(t, eNB == "kienb1058")
-  
+
   # Average CPU Utilization %, LmMonitor, DUS41, L17A
   # Average CPU Utilization, LmCell/LmCentral, DUS41, L17A
 }
@@ -317,14 +321,14 @@ g2_green_R12AK <- g2_green[which(SW == "R12AK")]
 g2_sort_time <- g2[order(Timestamp),]
 
 # sort all three
-g2_sort_all <- g2[multi.mixedorder(Timestamp, Release, SW),] 
+g2_sort_all <- g2[multi.mixedorder(Timestamp, Release, SW),]
 }
 
 #----------------------------------------------------------------------#
 # # change SW from character to factor and set the factor levels to be the same as in factor labels
 # level <- unique(g2_L16B$SW)
 # g2_L16B$SW <- factor(g2_L16B$SW, levels=level)
-# 
+#
 # level_filter <- unique(g2_L16B_filter$SW)
 # g2_L16B_filter$SW <- factor(g2_L16B_filter$SW, levels=level_filter)
 
@@ -398,11 +402,11 @@ for(i in 5:length(level)){
 # # use get_average()
 # g2_L16B_avg <- get_average(g2_L16B,"TotCpu")
 # g2_L16B_filter_avg <- get_average(g2_L16B_filter,"TotCpu")
-# 
+#
 # # use get_min()
 # g2_L16B_min <- get_min(g2_L16B,"TotCpu")
 # g2_L16B_filter_min <- get_min(g2_L16B_filter,"TotCpu")
-# 
+#
 # # use get_max()
 # g2_L16B_max <- get_max(g2_L16B,"TotCpu")
 
@@ -460,7 +464,7 @@ length(unique(train$SW)) # 154
 length(unique(test$SW)) # 98
 # there are 56 software package which only has one test run
 
-# an attempt to divide train/test by using dplyr 
+# an attempt to divide train/test by using dplyr
 # train <- sample_n(g2_L16B_subset[[2]], round(nrow(g2_L16B_subset[[2]])*0.7))
 # test <- g2_L16B_subset[[2]][which()]
 }
@@ -483,17 +487,17 @@ divide <- function(subset,x){
 get_train_test <- function(data){
   sw_name <- unique(data$SW)
   subset <- lapply(sw_name, function(x) filter(data, SW == x))
-  
+
   train <- data.table()
   test <- data.table()
   subset2 <- lapply(1:length(subset), function(x) divide(subset,x))
-  
+
   # combine all train and test from different subset together
   for(i in 1:length(subset2)){
     train <- rbind(train, subset2[[i]]$train)
     test <- rbind(test, subset2[[i]]$test)
   }
-  
+
   result <- list("train"=train, "test"=test)
   return(result)
 }
@@ -600,12 +604,12 @@ ggplot(data=g2_L16B, aes(SW, Normalize)) + geom_boxplot()
 # g2_L16B$Normalize[c(425, 981, 1099, 1232)]
 
 # discard Normalize = 0
-g2_L16B_new <- filter(g2_L16B, Normalize != 0) # 93 obs that has value eqaul to 0 
+g2_L16B_new <- filter(g2_L16B, Normalize != 0) # 93 obs that has value eqaul to 0
 ggplot(data=g2_L16B_new, aes(SW, Normalize)) + geom_point()
 
-Ediv1_new <- e.divisive(matrix(g2_L16B_new$Normalize), R=499, alpha=1) 
+Ediv1_new <- e.divisive(matrix(g2_L16B_new$Normalize), R=499, alpha=1)
 Ediv1_new$k.hat # 11 clusters
-Ediv1_new$estimates 
+Ediv1_new$estimates
 
 ts.plot(matrix(g2_L16B_new$Normalize), main="E-divisive g2_L16B_new, alpha=1")
 abline(v=Ediv1_new$estimates[c(-1,-length(Ediv1_new$estimates))], col="red", lty=2)
@@ -618,7 +622,7 @@ plot(density(g2_L16B_new_avg$value))
 
 Ediv1_new_avg <- e.divisive(matrix(g2_L16B_new_avg$value), R=499, alpha=0.1) # it cann't detect the peak if use other value
 Ediv1_new_avg$k.hat
-Ediv1_new_avg$estimates 
+Ediv1_new_avg$estimates
 
 ts.plot(g2_L16B_new_avg$value, main="E-divisive g2_L16B_new_avg, alpha=1")
 abline(v=Ediv1_new_avg$estimates[c(-1,-length(Ediv1_new_avg$estimates))], col="red", lty=2)
@@ -629,8 +633,8 @@ axis(1, at=1:nrow(g2_L16B_new_avg), labels=g2_L16B_new_avg$SW)
 
 # use get_min()
 g2_L16B_new_min <- get_min(g2_L16B_new, "Normalize")
-Ediv1_new_min <- e.divisive(matrix(g2_L16B_new_min$Normalize), R=499, min.size=15, alpha=0.1) 
-Ediv1_new_min$k.hat 
+Ediv1_new_min <- e.divisive(matrix(g2_L16B_new_min$Normalize), R=499, min.size=15, alpha=0.1)
+Ediv1_new_min$k.hat
 Ediv1_new_min$estimates
 
 plot(g2_L16B_new_min$Normalize, main="E-divisive g2_L16B_new_min, alpha=1", type="l", xaxt="n")
