@@ -368,7 +368,7 @@ key "page1954continuous"
 
 \end_inset
 
-in which the quality of industrial product is of interest.
+ in which the quality of industrial product is of interest.
  Since it is a continuous production process, if something goes wrong at
  some point of the process (i.e., defective products, machine breakdowns),
  it can lead to a large amount of quality worsens.
@@ -413,7 +413,7 @@ key "sharkey2014nonparametric"
 \begin_layout Standard
 In this study, change point analysis will be used to identify the changes
  in performance of Ericsson's software product.
- Many test runs have been executed for testing the software packages in
+ Many test cases have been executed for testing the software packages in
  the simulation environment.
  Before launching product to customer, company needs to test and determine
  how a software package performs in general.
@@ -589,7 +589,7 @@ name "sec:Objective"
 The main idea of this thesis is to reduce the laborer work to do visual
  inspection whenever they want to analyze the performance of update software
  package.
- With the rise of data generation coming from a large number of test runs,
+ With the rise of data generation coming from a large number of test cases,
  this work becomes much more difficult and perhaps inefficient to do it
  manually.
  The main objective for this thesis is to implement machine learning, the

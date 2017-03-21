@@ -298,6 +298,20 @@ Methods
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Description of statistical and other methods used with references to the
+ scientific literature.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In this chapter, methods that are used for performing the change point analysis
  in the thesis are explained.
  The illustration of the simple Markov regime swiching model feature is
@@ -306,12 +320,19 @@ ive model is discussed.
 \end_layout
 
 \begin_layout Standard
+Parametric analysis
+\end_layout
+
+\begin_layout Standard
+Non-parametric analysis
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
-Description of statistical and other methods used with references to the
- scientific literature.
+more about this 
 \end_layout
 
 \end_inset
@@ -337,7 +358,20 @@ key "james2013ecp"
 \end_inset
 
 .
- It uses an energy 
+ It uses an energy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+more about this as well
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1094,17 +1128,9 @@ As
 \begin_inset Formula $y_{t}$
 \end_inset
 
-, to fully describe the probability, the set of parameters for the Markov
- switching autoregressive model are 
-\begin_inset Formula $\theta=\{\beta_{S_{t}},\phi_{1,S_{t}},\sigma_{S_{t}}^{2},\pi_{S_{t}},p\}$
-\end_inset
-
- where 
-\begin_inset Formula $S_{t}=i,$
-\end_inset
-
- 
-\begin_inset Formula $1\leqslant i\leqslant k$
+, to fully describe the probability for the case of two states, the set
+ of parameters for the Markov switching autoregressive model are 
+\begin_inset Formula $\theta=\{\beta_{1},\beta_{2},\phi_{1,1},\phi_{1,2},\sigma_{1}^{2},\sigma_{2}^{2},\pi_{1},\pi_{2},p_{11},p_{22}\}$
 \end_inset
 
 .
@@ -1544,35 +1570,22 @@ reference "eq:loglik"
 \end_inset
 
 .
+ This new set of parameter is used in the next iteration of the E-step.
  The estimated model parameters are derived by taking the partial derivative
  of the log-likelihood function with respect to the specific parameters
  and then setting it to zero.
- Since each obsevartion comes from different state, it has to be weighted
- by the smoothed probabilities.
- This new set of parameter is used in the next iteration of the E-step.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Include the derivative of each coeff and transition matrix ?????????????
-\end_layout
-
+ In practice, the process is similar to the standard Maximum likelihood
+ estimation except that it has to be weighted by the smoothed probabilities
+ since each observartion 
+\begin_inset Formula $y_{t}$
 \end_inset
 
+ carries probability of coming from any of the 
+\begin_inset Formula $k$
+\end_inset
 
-\end_layout
-
-\begin_layout Section
-Model Selection
-\end_layout
-
-\begin_layout Standard
-It is a task of selecting the most suitable model for a given set of data
- based on the quality of model which can be evaluated by Akaike's Information
- Criterion (AIC) or Bayesian Information Criterion (BIC).
+ state.
+ 
 \end_layout
 
 \begin_layout Section

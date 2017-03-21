@@ -297,6 +297,27 @@ thepage
 Data
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Brief description of variables and cases in the given data
+\end_layout
+
+\begin_layout Plain Layout
+Table headings above the table
+\end_layout
+
+\begin_layout Plain Layout
+Figure legends below the graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Data sources
 \end_layout
@@ -483,28 +504,11 @@ Test environment: DuProdName, Fdd/Tdd and NumCells
 \end_layout
 
 \begin_layout Standard
-The unit for each components is per second
+have an impact to the CPU utilization
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Brief description of variables and cases in the given data
-\end_layout
-
-\begin_layout Plain Layout
-Table headings above the table
-\end_layout
-
-\begin_layout Plain Layout
-Figure legends below the graph
-\end_layout
-
-\end_inset
-
-
+The unit for each components is per second
 \end_layout
 
 \begin_layout Section
@@ -512,8 +516,24 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
-ignore the incomplete test case such as component in EventsPerSec is missing
- or the value in some variables is n/a.
+Sometime test case is not being executed properly.
+ It is either no traffic was generated during the test case or that data
+ was not logged.
+ If the EventsPerSec field is missing or has no value in it, the test case
+ is being treated as incomplete and all the data related to that particular
+ test case is ignored.
+\end_layout
+
+\begin_layout Standard
+Data transformation
+\end_layout
+
+\begin_layout Standard
+extract component in EventsPerSec
+\end_layout
+
+\begin_layout Standard
+rename variable
 \end_layout
 
 \begin_layout Standard

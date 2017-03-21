@@ -185,36 +185,44 @@ coef(m2)
 # Okkk it's the same! yeahh
 
 ##-------------------------------------------------------------------------------------##
-# not gonna include in the package...? 
-# state prediction
-test <- test_g2_L16B_min[1,]
+# include in the package...? 
+# state prediction function
+#### NOT DONE ####
 
-p <- ans@p
-model <- ans["model"]
-Coef <- ans["Coef"]
-std <- ans["std"]
-P <- ans["transMat"]
-fProb <- ans["Fit"]["filtProb"]
-margLik <- ans["Fit"]["margLik"]
-nr <- length(model$model[,1])
-
-if(p > 0){
+.MSM.lm.predict <- function(object, newdata){
+  p <- object@p
+  model <- object["model"]
+  Coef <- object["Coef"]
+  std <- object["std"]
+  P <- object["transMat"]
+  fProb <- object["Fit"]["filtProb"]
+  margLik <- object["Fit"]["margLik"]
+  nr <- length(model$model[,1])
+  
+  if(p > 0){
     ar <- t(model$model[nr:(nr-p+1),1,drop=F]) # lag p
     colnames(ar) <- paste(names(model$model)[1],"_",1:p,sep="") # insert name
+  }
+  
+  var <- colnames(model$model) # all variables name
+  var <- var[1:(length(var)-p)] # discard AR term (if any)
+  test <- subset(newdata, select=var) # subset (dependent and independent variables)
+  test <- cbind(test, ar) # include back AR term
+  
+  terms <- model.matrix(as.formula(paste(colnames(test)[1], " ~ ", paste(colnames(test)[-1], collapse= "+"))), data=test)
+  CondMean <- as.matrix(terms) %*% t(as.matrix(Coef))
+  error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
+  Likel <- t(dnorm(t(error),0,std))
+  
 }
 
-var <- colnames(model$model) # all variables name
-var <- var[1:(length(var)-p)] # discard AR term (if any)
-test <- subset(test, select=var) # subset (dependent and independent variables)
-test <- cbind(test, ar) # include back AR term
+test <- test_g2_L16B_min[1,]
 
-terms <- model.matrix(as.formula(paste(colnames(test)[1], " ~ ", paste(colnames(test)[-1], collapse= "+"))), data=test)
-CondMean <- as.matrix(terms) %*% t(as.matrix(Coef))
-error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
-Likel <- t(dnorm(t(error),0,std))
+
+
 
 #####
-# add to originak right away
+# add to original right away
 fProb <- rbind(fProb, t(P %*% t(fProb[nr,,drop=F])) * Likel[1,,drop=F]) 
 margLik <- rbind(margLik, sum(fProb[nr+1,]))
 fProb[nr+1,] <- fProb[nr+1,] / margLik[nr+1,1] # filtered prob of t+1 conditional on the info in t+1

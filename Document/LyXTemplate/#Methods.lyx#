@@ -1095,16 +1095,8 @@ As
 \end_inset
 
 , to fully describe the probability, the set of parameters for the Markov
- switching autoregressive model are 
-\begin_inset Formula $\theta=\{\beta_{S_{t}},\phi_{1,S_{t}},\sigma_{S_{t}}^{2},\pi_{S_{t}},p\}$
-\end_inset
-
- where 
-\begin_inset Formula $S_{t}=i,$
-\end_inset
-
- 
-\begin_inset Formula $1\leqslant i\leqslant k$
+ switching autoregressive model with two states are 
+\begin_inset Formula $\theta=\{\beta_{1},\phi_{1,S_{t}},\sigma_{S_{t}}^{2},\pi_{S_{t}},p\}$
 \end_inset
 
 .
@@ -1549,12 +1541,12 @@ reference "eq:loglik"
  of the log-likelihood function with respect to the specific parameters
  and then setting it to zero.
  In practice, the process is similar to the standard Maximum likelihood
- estimation except that it has to be weighted by the smoothed probabilities.
- Since each observartion 
+ estimation except that it has to be weighted by the smoothed probabilities
+ since each observartion 
 \begin_inset Formula $y_{t}$
 \end_inset
 
- carries probability of coming from any 
+ carries probability of coming from any of the 
 \begin_inset Formula $k$
 \end_inset
 

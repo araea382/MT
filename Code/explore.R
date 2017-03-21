@@ -41,7 +41,7 @@ multi.mixedorder <- function(..., na.last = TRUE, decreasing = FALSE){
 }
 
 #----------------------------------------------------------------------#
-# average TotCpu% for the same software package (sw)
+# average TotCpu for the same software package (sw)
 # not include in the get_train_test just in case not using it
 get_average <- function(data, y){
   sw_name <- unique(data$SW)
@@ -52,14 +52,14 @@ get_average <- function(data, y){
 }
 
 #----------------------------------------------------------------------#
-# select min TotCpu% for the same software package (sw) 
+# select min TotCpu for the same software package (sw) 
 # still contain all columns
 .old_get_min <- function(){
 # not include in the get_train_test just in case not using it
 # get_min <- function(data){
 #   sw_name <- unique(data$SW)
 #   subset <- lapply(sw_name, function(x) filter(data, SW == x))
-#   sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]]$`TotCpu%`)))
+#   sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]]$`TotCpu`)))
 #   sw <- data.frame(SW=sw_name, value=sw_min)
 #   return(sw)
 # }
@@ -67,7 +67,7 @@ get_average <- function(data, y){
 # train_L16B_min <- get_min(train_L16B)
 # test_L16B_min <- get_min(test_L16B)
 # 
-# # select min TotCpu% for the same software package (sw)
+# # select min TotCpu for the same software package (sw)
 # # still contain all columns
 # get_min <- function(data, y){
 #   sw_name <- unique(data$SW)
@@ -85,7 +85,7 @@ get_average <- function(data, y){
 get_min <- function(data, y){
   require("lazyeval")
   sw_name <- unique(data$SW)
-  subset <- lapply(sw_name, function(x) filter(data, SW == x))
+  subset <- lapply(sw_name, function(x) dplyr::filter(data, SW == x))
   sw_min <- unlist(lapply(1:length(subset), function(x) min(subset[x][[1]][,y])))
   subset_min <- data.frame()
   for(i in 1:length(sw_name)){
@@ -101,7 +101,7 @@ get_min <- function(data, y){
 }
 
 #----------------------------------------------------------------------#
-# select max TotCpu% for the same software package (sw) 
+# select max TotCpu for the same software package (sw) 
 # still contain all columns
 get_max <- function(data, y){
   require("lazyeval")
@@ -207,6 +207,12 @@ g2_extract <- extract_component(g2_sort) # extract again
 
 g2_extract_filter <- extract_component(g2_sort_filter)
 
+#----------------------------------------------------------------------#
+# rename variable
+colnames(g2_extract)[which(colnames(g2_extract)=="TotCpu%")] <- "TotCpu" 
+colnames(g2_extract)[which(colnames(g2_extract)=="Fdd/Tdd")] <- "Fdd.Tdd" 
+
+#----------------------------------------------------------------------#
 # subset for each Release
 # g2_L16B <- g2_sort[which(Release == "L16B")]
 # g2_L16B_filter <- g2_sort_filter[which(Release == "L16B")]
@@ -214,17 +220,62 @@ g2_extract_filter <- extract_component(g2_sort_filter)
 # g2_L17A <- g2_sort[which(Release == "L17A")]
 # g2_L17A_filter <- g2_sort_filter[which(Release == "L17A")]
 
-g2_L16B <- g2_extract[which(Release == "L16B")]
-g2_L16B_filter <- g2_extract_filter[which(Release == "L16B")]
-g2_L16A <- g2_extract[which(Release == "L16A")]
-g2_L17A <- g2_extract[which(Release == "L17A")]
-g2_L17A_filter <- g2_extract_filter[which(Release == "L17A")]
+# g2_L16B <- g2_extract[which(Release == "L16B")]
+# g2_L16B_filter <- g2_extract_filter[which(Release == "L16B")]
+# g2_L16A <- g2_extract[which(Release == "L16A")]
+# g2_L17A <- g2_extract[which(Release == "L17A")]
+# g2_L17A_filter <- g2_extract_filter[which(Release == "L17A")]
+
+get_subset <- function(data, release){
+  data1 <- data[which(Release == release)]
+  
+  # DuProdName, Fdd/Tdd, NumCells to factor
+  data1$DuProdName <- as.factor(data1$DuProdName)
+  data1$Fdd.Tdd <- as.factor(data1$Fdd.Tdd)
+  data1$NumCells <- as.factor(data1$NumCells)
+  
+  # change SW from character to factor and set the factor levels to be the same as in factor labels
+  level <- unique(data1$SW)
+  data1$SW <- factor(data1$SW, levels=level)
+  return(data1)
+}
+
+g2_L16A <- get_subset(g2_extract, "L16A")
+g2_L16B <- get_subset(g2_extract, "L16B")
+g2_L17A <- get_subset(g2_extract, "L17A")
+g2_L17B <- get_subset(g2_extract, "L17B")
+
 
 # extract components
 # g2_L16B_extract <- extract_component(g2_L16B) # 143 variables are added
 
 # components which are not appear in g2_filter
-setdiff(colnames(g2_extract), colnames(g2_extract_filter))
+# setdiff(colnames(g2_extract), colnames(g2_extract_filter))
+
+#----------------------------------------------------------------------#
+# use get_min() for each subset
+g2_L16A_min <- get_min(g2_L16A,"TotCpu")
+g2_L16B_min <- get_min(g2_L16B,"TotCpu")
+g2_L17A_min <- get_min(g2_L17A,"TotCpu")
+
+#----------------------------------------------------------------------#
+# Divide train (90) test (10) for each dataset
+train_test <- function(data, num){
+  train_num <- floor(nrow(data) * num)
+  train <- data[1:train_num,]
+  test <- data[-c(1:train_num),]
+  return(list(train=train,test=test))
+}
+
+num <- 0.9
+train_g2_L16A_min <- train_test(g2_L16A_min, num)$train
+test_g2_L16A_min <- train_test(g2_L16A_min, num)$test
+
+train_g2_L16B_min <- train_test(g2_L16B_min, num)$train
+test_g2_L16B_min <- train_test(g2_L16B_min, num)$test
+
+train_g2_L17A_min <- train_test(g2_L17A_min, num)$train
+test_g2_L17A_min <- train_test(g2_L17A_min, num)$test
 
 #----------------------------------------------------------------------#
 .explore_R15G <- function(){
@@ -270,22 +321,22 @@ g2_sort_all <- g2[multi.mixedorder(Timestamp, Release, SW),]
 }
 
 #----------------------------------------------------------------------#
-# change SW from character to factor and set the factor levels to be the same as in factor labels
-level <- unique(g2_L16B$SW)
-g2_L16B$SW <- factor(g2_L16B$SW, levels=level)
+# # change SW from character to factor and set the factor levels to be the same as in factor labels
+# level <- unique(g2_L16B$SW)
+# g2_L16B$SW <- factor(g2_L16B$SW, levels=level)
+# 
+# level_filter <- unique(g2_L16B_filter$SW)
+# g2_L16B_filter$SW <- factor(g2_L16B_filter$SW, levels=level_filter)
 
-level_filter <- unique(g2_L16B_filter$SW)
-g2_L16B_filter$SW <- factor(g2_L16B_filter$SW, levels=level_filter)
+# plot TotCpu vs SW
+plot(g2_L16B$SW, g2_L16B$`TotCpu`, xlab="", main="Average CPU Utilisation g2_L16B")
+ggplot(data=g2_L16B, aes(SW, `TotCpu`)) + geom_point()
+ggplot(data=g2_L16B, aes(SW, `TotCpu`)) + geom_boxplot()
+plot(density(g2_L16B_filter$`TotCpu`))
 
-# plot TotCpu% vs SW
-plot(g2_L16B$SW, g2_L16B$`TotCpu%`, xlab="", main="Average CPU Utilisation g2_L16B")
-ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_point()
-ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_boxplot()
-plot(density(g2_L16B_filter$`TotCpu%`))
-
-plot(g2_L16B_filter$SW, g2_L16B_filter$`TotCpu%`, xlab="", main="Average CPU Utilisation g2_L16B_filter") # compare with platypus
-ggplot(data=g2_L16B_filter, aes(SW, `TotCpu%`, group=1)) + geom_point(stat="summary") + stat_summary(geom="line")
-ggplot(data=g2_L16B_filter, aes(SW, `TotCpu%`)) + geom_boxplot() # getting the same result as in plot
+plot(g2_L16B_filter$SW, g2_L16B_filter$`TotCpu`, xlab="", main="Average CPU Utilisation g2_L16B_filter") # compare with platypus
+ggplot(data=g2_L16B_filter, aes(SW, `TotCpu`, group=1)) + geom_point(stat="summary") + stat_summary(geom="line")
+ggplot(data=g2_L16B_filter, aes(SW, `TotCpu`)) + geom_boxplot() # getting the same result as in plot
 
 #----------------------------------------------------------------------#
 # t-test for g2 data L16B
@@ -296,12 +347,12 @@ for(i in 1:length(level)){
   tr[[i]] <- subset(g2_L16B, SW==level[i])
 }
 
-t.test(tr[[2]]$`TotCpu%`,tr[[3]]$`TotCpu%`) # try t-test for one pair
+t.test(tr[[2]]$`TotCpu`,tr[[3]]$`TotCpu`) # try t-test for one pair
 
 # apply t-test by considering on one SW
 t <- lapply(2:length(level), function(i){
   if(nrow(tr[[i-1]]) > 1 & nrow(tr[[i]]) > 1){
-    t.test(tr[[i-1]]$`TotCpu%`, tr[[i]]$`TotCpu%`)
+    t.test(tr[[i-1]]$`TotCpu`, tr[[i]]$`TotCpu`)
   } else "Only one observation in subset"
 })
 
@@ -312,8 +363,8 @@ tr_no <- apply(1:length(level), function(i){
 tr_no <- data.frame(unlist(tr_no))
 
 t[1:10] # investigate for first ten SW (no.2 is significant)
-ggplot(data=g2_L16B[1:sum(tr_no[1:10,]),], aes(SW, `TotCpu%`)) + geom_point()
-ggplot(data=g2_L16B[1:sum(tr_no[1:10,]),], aes(SW, `TotCpu%`)) + geom_boxplot()
+ggplot(data=g2_L16B[1:sum(tr_no[1:10,]),], aes(SW, `TotCpu`)) + geom_point()
+ggplot(data=g2_L16B[1:sum(tr_no[1:10,]),], aes(SW, `TotCpu`)) + geom_boxplot()
 
 sig <- c()
 for(i in 1:(length(level)-1)){
@@ -327,12 +378,12 @@ for(i in 1:(length(level)-1)){
 
 sig
 length(sig) # 26 significant points
-ggplot(data=g2_L16B, aes(SW, `TotCpu%`)) + geom_point() + geom_vline(xintercept=sig, linetype="dashed", color="red")
+ggplot(data=g2_L16B, aes(SW, `TotCpu`)) + geom_point() + geom_vline(xintercept=sig, linetype="dashed", color="red")
 
 
 # 5 SW
 t <- lapply(2:length(level), function(i){
-  t.test(tr[[i-1]]$`TotCpu%`, tr[[i]]$`TotCpu%`)
+  t.test(tr[[i-1]]$`TotCpu`, tr[[i]]$`TotCpu`)
 })
 
 tr2 <- list()
@@ -343,35 +394,17 @@ for(i in 5:length(level)){
 }
 
 #----------------------------------------------------------------------#
-# apply function get to data g2 L16B
-# use get_average()
-g2_L16B_avg <- get_average(g2_L16B,"TotCpu%")
-g2_L16B_filter_avg <- get_average(g2_L16B_filter,"TotCpu%")
-
-# use get_min()
-g2_L16B_min <- get_min(g2_L16B,"TotCpu%")
-g2_L16B_filter_min <- get_min(g2_L16B_filter,"TotCpu%")
-
-# use get_max()
-g2_L16B_max <- get_max(g2_L16B,"TotCpu%")
-
-#----------------------------------------------------------------------#
-# apply function get to data g2 L17A
-# use get_min()
-g2_L17A_min <- get_min(g2_L17A,"TotCpu%")
-
-#----------------------------------------------------------------------#
-# apply function get to data g2 L16A
-# use get_min()
-g2_L16A_min <- get_min(g2_L16A,"TotCpu%")
-
-#----------------------------------------------------------------------#
-# Divide train (80) test (20)
-# g2 data L16B
-train_num <- floor(nrow(g2_L16B_min) * 0.8)
-
-train_g2_L16B_min <- g2_L16B_min[1:train_num,]
-test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
+# # apply function get to data g2 L16B
+# # use get_average()
+# g2_L16B_avg <- get_average(g2_L16B,"TotCpu")
+# g2_L16B_filter_avg <- get_average(g2_L16B_filter,"TotCpu")
+# 
+# # use get_min()
+# g2_L16B_min <- get_min(g2_L16B,"TotCpu")
+# g2_L16B_filter_min <- get_min(g2_L16B_filter,"TotCpu")
+# 
+# # use get_max()
+# g2_L16B_max <- get_max(g2_L16B,"TotCpu")
 
 #----------------------------------------------------------------------#
 # *******OLD one********
@@ -470,8 +503,8 @@ test <- data.table()
 train_L16B <- get_train_test(g2_L16B)$train
 test_L16B <- get_train_test(g2_L16B)$test
 
-ggplot(data=train_L16B , aes(SW, `TotCpu%`)) + geom_boxplot()
-ggplot(data=test_L16B, aes(SW, `TotCpu%`)) + geom_boxplot()
+ggplot(data=train_L16B , aes(SW, `TotCpu`)) + geom_boxplot()
+ggplot(data=test_L16B, aes(SW, `TotCpu`)) + geom_boxplot()
 
 #----------------------------------------------------------------------#
 # plot different NodeName and SW (like in platypus but this one use mean instead of min)
@@ -480,13 +513,13 @@ nn_name <- unique(g2_L16B$NodeName)
 sw_name <- unique(g2_L16B$SW)
 g2_L16B_nn <- lapply(unique(g2_L16B$NodeName), function(x) filter(g2_L16B, NodeName == x))
 
-range <- seq(min(g2_L16B$`TotCpu%`),max(g2_L16B$`TotCpu%`),length.out=length(sw_name)) # in order to make the plot
+range <- seq(min(g2_L16B$`TotCpu`),max(g2_L16B$`TotCpu`),length.out=length(sw_name)) # in order to make the plot
 
 plot(as.numeric(sw_name), range, type="n", xaxt="n", xlab="SW", ylab="CPU") # make blank plot
 axis(1, at=1:length(sw_name), labels=sw_name)
 
 for(i in 1:length(nn_name)){
-  nn_subset <- get_average(g2_L16B_nn[[i]], "TotCpu%")
+  nn_subset <- get_average(g2_L16B_nn[[i]], "TotCpu")
   points(as.numeric(nn_subset$SW), nn_subset$value, col=i, type="o")
 }
 
@@ -497,9 +530,9 @@ nn_name_filter <- unique(g2_L16B_filter$NodeName)
 sw_name_filter <- unique(g2_L16B_filter$SW)
 g2_L16B_nn_filter <- lapply(unique(g2_L16B_filter$NodeName), function(x) filter(g2_L16B_filter, NodeName == x))
 
-a <- get_average(g2_L16B_nn_filter[[1]],"TotCpu%")
+a <- get_average(g2_L16B_nn_filter[[1]],"TotCpu")
 
-range <- seq(min(g2_L16B_filter$`TotCpu%`),max(g2_L16B_filter$`TotCpu%`),length.out=length(sw_name_filter))
+range <- seq(min(g2_L16B_filter$`TotCpu`),max(g2_L16B_filter$`TotCpu`),length.out=length(sw_name_filter))
 
 plot(as.numeric(sw_name_filter), range, type="n", ylim=c(50,300), xaxt="n", xlab="SW", ylab="CPU")
 axis(1, at=1:length(sw_name_filter), labels=sw_name_filter)
@@ -507,7 +540,7 @@ axis(1, at=1:length(sw_name_filter), labels=sw_name_filter)
 # text(1:length(sw_name_filter), par("usr")[3]-0.2, labels=sw_name_filter, cex=0.5, srt=45, pos=2, xpd=TRUE)
 
 for(i in 1:length(nn_name_filter)){
-  nn_subset_filter <- get_average(g2_L16B_nn_filter[[i]],"TotCpu%")
+  nn_subset_filter <- get_average(g2_L16B_nn_filter[[i]],"TotCpu")
   points(as.numeric(nn_subset_filter$SW), nn_subset_filter$value, col=i, type="o") # same as in platypus
 }
 }
@@ -546,7 +579,7 @@ rrc <- apply(g2_L16B, 1, function(x){
 rrc <- unlist(rrc) # vector
 
 g2_L16B$RrcConnectionSetupComplete <- rrc
-g2_L16B$Normalize <- g2_L16B$RrcConnectionSetupComplete / g2_L16B$`TotCpu%`
+g2_L16B$Normalize <- g2_L16B$RrcConnectionSetupComplete / g2_L16B$`TotCpu`
 }
 
 #----------------------#

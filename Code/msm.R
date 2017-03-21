@@ -1,21 +1,12 @@
-library(MSwM)
 library(MSwM2)
 
 data(example)
 mod=lm(y~x,example)
 summary(mod)
-# acf(resid(mod))
-set.seed(12)
-mod.mswm=MSwM::msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(trace=F,parallel=F))
-summary(mod.mswm)
 
-set.seed(12)
+set.seed(1)
 mod.mswm2=MSwM2::msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(trace=F,parallel=F))
 summary(mod.mswm2)
-
-set.seed(12)
-mod_mswm <- MSwM2::msmFit(mod,k=3,p=1,sw=rep(T,length(mod$coefficients)+1+1),control=list(trace=F,parallel=F))
-summary(mod_mswm)
 
 # data(energy)
 # model=lm(Price~Oil+Gas+Coal+EurDol+Ibex35+Demand,energy)
@@ -42,14 +33,10 @@ plotReg(mod.mswm)
 #----------------------#
 # g2 L16B
 # one test case per SW
-# divide train (80) test (20)
-train_num <- floor(nrow(g2_L16B_min) * 0.8) 
-train_g2_L16B_min <- g2_L16B_min[1:train_num,]
-test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
-
-colnames(train_g2_L16B_min)[14] <- "TotCpu" # need to rename the variable
-
+# 3 states
+# switching in all coefficients
 predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest") 
+predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest")
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 mod <- lm(fmla, data=train_g2_L16B_min)
 summary(mod)
@@ -65,12 +52,10 @@ summary(mod)
 # set.seed(10)
 # model_mswm <- msmFit(mod2, k=3, p=1, sw=c(TRUE,TRUE,FALSE,TRUE,TRUE,TRUE), control=list(trace=FALSE, maxiter=500, parallel=FALSE))
 # summary(model_mswm)
+# it seems that scale or not scale is the same
 
-
-
-
-set.seed(10)
-model_mswm <- msmFit(mod, k=3, p=1, sw=c(TRUE,TRUE,TRUE,TRUE,TRUE,TRUE), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+set.seed(1)
+model_mswm <- MSwM2::msmFit(mod, k=3, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(model_mswm)
 
 plot(msmResid(model_mswm), type="l")
@@ -87,34 +72,22 @@ plotProb(model_mswm, which=2)
 plotProb(model_mswm, which=3)
 plotProb(model_mswm, which=4)
 
-plotReg(model_mswm, expl=predictor[1], regime=1)
-plotReg(model_mswm, expl=predictor[2], regime=1)
-plotReg(model_mswm, expl=predictor[3], regime=1)
+# can't use with the categorical variables
+# plotReg(model_mswm, expl=predictor[1], regime=1)
+# plotReg(model_mswm, expl=predictor[2], regime=1)
+# plotReg(model_mswm, expl=predictor[3], regime=1)
 
-# it seems that scale or not scale is the same
+plotReg(model_mswm, expl=predictor[4], regime=1)
+plotReg(model_mswm, expl=predictor[4], regime=2)
+plotReg(model_mswm, expl=predictor[4], regime=3)
 
-#----------------------#
-# 2 states
-set.seed(12)
-model_mswm2 <- msmFit(mod, k=2, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-summary(model_mswm2)
+plotReg(model_mswm, expl=predictor[5], regime=1)
+plotReg(model_mswm, expl=predictor[5], regime=2)
+plotReg(model_mswm, expl=predictor[5], regime=3)
 
-plot(msmResid(model_mswm2), type="l")
-acf(msmResid(model_mswm2))
-
-plot(model_mswm2)
-
-plotDiag(model_mswm2, which=1)
-plotDiag(model_mswm2, which=2)
-plotDiag(model_mswm2, which=3)
-
-plotProb(model_mswm2, which=1)
-plotProb(model_mswm2, which=2)
-plotProb(model_mswm2, which=3)
-
-plotReg(model_mswm2, expl=predictor[1], regime=1)
-plotReg(model_mswm2, expl=predictor[2], regime=1)
-plotReg(model_mswm2, expl=predictor[3], regime=1)
+plotReg(model_mswm, expl=predictor[6], regime=1)
+plotReg(model_mswm, expl=predictor[6], regime=2)
+plotReg(model_mswm, expl=predictor[6], regime=3)
 
 #----------------------#
 # # can't use lasso from glmnet() to model in msmFit()
@@ -140,10 +113,10 @@ plotReg(model_mswm2, expl=predictor[3], regime=1)
 # df3 <- subset(df2, select=c(14,18:length(df2)))
 # df3 <- add_x_name(df3)
 # mod3 <- lm(TotCpu ~ ., data=df3)
-
-set.seed(123)
-model_mswm3 <- msmFit(mod3, k=3, p=1, sw=rep(TRUE,length(mod3$coefficients)+2), control=list(parallel=F))
-summary(model_mswm3)
+# 
+# set.seed(123)
+# model_mswm3 <- msmFit(mod3, k=3, p=1, sw=rep(TRUE,length(mod3$coefficients)+2), control=list(parallel=F))
+# summary(model_mswm3)
 
 # mod3 <- lm(`TotCpu`~., data=df3)
 # step3 <- stepAIC(mod3, direction="both")
@@ -151,7 +124,6 @@ summary(model_mswm3)
 # summary(model_mswm3)
 
 #----------------------#
-# 
 # # g2 filter L16B
 # # one test case per SW
 # # divide train (80) test (20)
@@ -182,7 +154,6 @@ summary(model_mswm3)
 # plotReg(model_mswm_filter, expl=predictor[1], regime=1)
 
 #----------------------#
-
 # plot (applied from plotProb) between regime and ecp 
 par(mfrow=c(3,1))
 ecp <- 153 # from ecp()
@@ -204,11 +175,7 @@ for(i in 1:3){
 par(mfrow=c(1,1))
 
 #----------------------#
-
-# *********NOT FINISHED ************
-# FIXED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-# forecast
+# forecast from fMarkovSwitching package
 # new_data <- test_g2_L16B_min
 library(fMarkovSwitching)
 data(dep)
@@ -273,5 +240,8 @@ for (i in 1:nPeriods){
 newCondMean <- condMean %*% newFiltProb # the new conditional mean is the weighted average of the cond means in each state
 newCondStd <- Coeff$sigma %*% newFiltProb # same as cond mean
 
-# forOut <- list(condMean=newCondMean, ncondStd=newCondStd)
+#----------------------#
+
+
+
 

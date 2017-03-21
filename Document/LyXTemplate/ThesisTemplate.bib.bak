@@ -324,4 +324,21 @@
   publisher = {JSTOR},
 }
 
+@Article{hamilton1989new,
+  author    = {Hamilton, James D},
+  title     = {A new approach to the economic analysis of nonstationary time series and the business cycle},
+  journal   = {Econometrica: Journal of the Econometric Society},
+  year      = {1989},
+  pages     = {357--384},
+  publisher = {JSTOR},
+}
+
+@Manual{MSwM,
+  title  = {{MSwM}: Fitting Markov Switching Models},
+  author = {Josep A. Sanchez-Espigares, Alberto Lopez-Moreno},
+  year   = {2014},
+  note   = {R package version 1.2},
+  url    = {http://CRAN.R-project.org/package=MSwM},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
