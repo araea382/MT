@@ -297,6 +297,27 @@ thepage
 Data
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Brief description of variables and cases in the given data
+\end_layout
+
+\begin_layout Plain Layout
+Table headings above the table
+\end_layout
+
+\begin_layout Plain Layout
+Figure legends below the graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Data sources
 \end_layout
@@ -314,39 +335,14 @@ n and communications technology (ICT).
 \end_layout
 
 \begin_layout Standard
-Data is extracted from the log file produced by the test case.
- Each observation represents a test case.
- There are different types of test case running in the simulation system.
+Data is extracted from log file produced by the test case.
+ There are different types of test case executing in the simulation system.
+ Each test case is viewed as an observation in the dataset.
  
 \end_layout
 
 \begin_layout Section
 Data description
-\end_layout
-
-\begin_layout Subsection
-Dataset 1: The first generation
-\end_layout
-
-\begin_layout Standard
-Dataset 1 contains
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Do I still have to do this????
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Dataset 2: The second generation
 \end_layout
 
 \begin_layout Standard
@@ -363,7 +359,7 @@ Timestamp: Date and time for the test case (yy-dd-mm hh:mm:ss)
 \end_layout
 
 \begin_layout Itemize
-NodeName: IP address/ The name of base station
+NodeName: IP address or the name of base station
 \end_layout
 
 \begin_layout Itemize
@@ -371,7 +367,9 @@ DuProdName: Product name
 \end_layout
 
 \begin_layout Itemize
-Fdd/Tdd: Different standard of LTE 4G Technology
+Fdd/Tdd: Different standard of LTE 4G Technology.
+ Fdd and Tdd stand for frequency division duplex and time division duplex,
+ respectively.
 \end_layout
 
 \begin_layout Itemize
@@ -387,7 +385,7 @@ SW: Software package for the software release
 \end_layout
 
 \begin_layout Itemize
-LogFilePath: Path for the log file
+LogFilePath: Path for log file produced by test case
 \end_layout
 
 \begin_layout Paragraph
@@ -419,7 +417,9 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: Total or average CPU usaged
+TotCpu%: Total or average CPU usaged.
+ This value represents the performance of the test case in terms of CPU
+ utilization.
 \end_layout
 
 \begin_layout Itemize
@@ -432,20 +432,19 @@ PerThread%: It contains several value of software components.
 \end_layout
 
 \begin_layout Itemize
-EventsPerSec: Events/Traffic intensity
+EventsPerSec: Events or traffic intensity
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-It consists of several components which has no fixed number of components
- and can be various values.
+This field contains several components that are used for defining test case.
+ There is no fixed number of components in this field.
+ The componeand can be various values.
  In other words, different test case has different number of components
  and values.
  This is because different test cases involve additional procedure compared
  to others.
  There are many different test cases executed.
- The components in EventsPerSec column are the information that used for
- defining the test case.
  Even though different test cases are executed in the same product ID (Release)
  and software package ID (SW), they can still have different values in the
  components.
@@ -460,7 +459,7 @@ It consists of several components which has no fixed number of components
 status open
 
 \begin_layout Plain Layout
-Probably have to rewrite it again....
+Rewrite it again....!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 \end_layout
 
 \end_inset
@@ -470,45 +469,22 @@ Probably have to rewrite it again....
 
 \end_deeper
 \begin_layout Standard
-The response variable is the TotCpu%
+The response variable is TotCpu%.
+ The predictor variables are RrcConnectionSetupComplete, Paging, X2HandoverReque
+st, DuProdName, Fdd/Tdd and NumCells.
 \end_layout
 
 \begin_layout Standard
-The predictor variables: RrcConnectionSetupComplete, Paging and X2HandoverReques
-t
+The first three variables are components in the EventsPerSec field while
+ the last three variables are considered as test environment.
 \end_layout
 
 \begin_layout Standard
-Test environment: DuProdName, Fdd/Tdd and NumCells
+have an impact on the CPU utilization.
 \end_layout
 
 \begin_layout Standard
-The unit for each components is per second
-\end_layout
-
-\begin_layout Standard
-tdhd
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Brief description of variables and cases in the given data
-\end_layout
-
-\begin_layout Plain Layout
-Table headings above the table
-\end_layout
-
-\begin_layout Plain Layout
-Figure legends below the graph
-\end_layout
-
-\end_inset
-
-
+The unit for each components in the EventsPerSec is per second.
 \end_layout
 
 \begin_layout Section
@@ -516,8 +492,28 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
-ignore the incomplete test case such as component in EventsPerSec is missing
- or the value in some variables is n/a.
+Sometime test case is not being executed properly.
+ It is either no traffic was generated during the test case or that data
+ was not logged.
+ If the EventsPerSec field is missing or has no value in it, the test case
+ is being treated as incomplete and all the data related to that particular
+ test case is ignored.
+\end_layout
+
+\begin_layout Standard
+In some fields, they store multiple values separated by a tab character.
+ Therefore, in order to get these values for further analysis, they need
+ to be extracted.
+ This process had been done for the EventsPerSec field to extract components
+ which characterize the test case.
+\end_layout
+
+\begin_layout Standard
+Each software release consists of several software packages and numerous
+ test cases are executed in one software package.
+ For futher analysis, In each software package, test case which has a minimum
+ value of the total CPU usaged, TotCpu%, is selected to represent the performanc
+e of this software package.
 \end_layout
 
 \begin_layout Standard

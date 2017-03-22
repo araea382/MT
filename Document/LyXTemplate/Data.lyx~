@@ -335,9 +335,9 @@ n and communications technology (ICT).
 \end_layout
 
 \begin_layout Standard
-Data is extracted from the log file produced by the test case.
- Each observation represents a test case.
- There are different types of test case running in the simulation system.
+Data is extracted from log file produced by the test case.
+ There are different types of test case executing in the simulation system.
+ Each test case is viewed as an observation in the dataset.
  
 \end_layout
 
@@ -359,7 +359,7 @@ Timestamp: Date and time for the test case (yy-dd-mm hh:mm:ss)
 \end_layout
 
 \begin_layout Itemize
-NodeName: IP address/ The name of base station
+NodeName: IP address or the name of base station
 \end_layout
 
 \begin_layout Itemize
@@ -367,7 +367,9 @@ DuProdName: Product name
 \end_layout
 
 \begin_layout Itemize
-Fdd/Tdd: Different standard of LTE 4G Technology
+Fdd/Tdd: Different standard of LTE 4G Technology.
+ Fdd and Tdd stand for frequency division duplex and time division duplex,
+ respectively.
 \end_layout
 
 \begin_layout Itemize
@@ -383,7 +385,7 @@ SW: Software package for the software release
 \end_layout
 
 \begin_layout Itemize
-LogFilePath: Path for the log file
+LogFilePath: Path for log file produced by test case
 \end_layout
 
 \begin_layout Paragraph
@@ -415,7 +417,9 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: Total or average CPU usaged
+TotCpu%: Total or average CPU usaged.
+ This value represents the performance of the test case in terms of CPU
+ utilization.
 \end_layout
 
 \begin_layout Itemize
@@ -428,7 +432,7 @@ PerThread%: It contains several value of software components.
 \end_layout
 
 \begin_layout Itemize
-EventsPerSec: Events/Traffic intensity
+EventsPerSec: Events or traffic intensity
 \end_layout
 
 \begin_deeper
@@ -466,16 +470,14 @@ Rewrite it again....!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 \end_deeper
 \begin_layout Standard
-The response variable is the TotCpu%
+The response variable is TotCpu%.
+ The predictor variables are RrcConnectionSetupComplete, Paging, X2HandoverReque
+st, DuProdName, Fdd/Tdd and NumCells.
 \end_layout
 
 \begin_layout Standard
-The predictor variables: RrcConnectionSetupComplete, Paging and X2HandoverReques
-t
-\end_layout
-
-\begin_layout Standard
-Test environment: DuProdName, Fdd/Tdd and NumCells
+The first three variables are components in the EventsPerSec field while
+ the last three variables are considered as test environment.
 \end_layout
 
 \begin_layout Standard
@@ -483,17 +485,11 @@ have an impact to the CPU utilization
 \end_layout
 
 \begin_layout Standard
-The unit for each components is per second
+The unit for each components in the EventsPerSec is per second.
 \end_layout
 
 \begin_layout Section
 Data preprocessing
-\end_layout
-
-\begin_layout Standard
-In some fields, they store multiple values in one column.
- Each value in the column is separated from the next by a tab character.
- 
 \end_layout
 
 \begin_layout Standard
@@ -505,12 +501,20 @@ Sometime test case is not being executed properly.
  test case is ignored.
 \end_layout
 
-\begin_layout Subsection
-Data transformation
+\begin_layout Standard
+In some fields, they store multiple values separated by a tab character.
+ Therefore, in order to get these values for further analysis, they need
+ to be extracted.
+ This process had been done for the EventsPerSec field to extract components
+ which characterize the test case.
 \end_layout
 
 \begin_layout Standard
-extract component in EventsPerSec
+Each software release consists of several software packages and numerous
+ test cases are executed in one software package.
+ For futher analysis, In each software package, test case which has a minimum
+ value of the total CPU usaged, TotCpu%, is selected to represent the performanc
+e of this software package.
 \end_layout
 
 \begin_layout Standard
