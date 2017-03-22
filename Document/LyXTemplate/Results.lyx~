@@ -362,18 +362,25 @@ key "mswm"
  and generalized models.
  The package used expectation-maximization (EM) algorithm to fit Markov
  switching model.
- Some modifications had been made to the package .
+ Some modifications had been made to the package and is described in more
+ detail in 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+appendix
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 Each dataset is divided into two subsets.
  Ninety percent of the dataset is used for training the model and the remaining
  ten percent is left out for testing.
- 
-\end_layout
-
-\begin_layout Standard
-Assuming there are three states 
+ Assuming there are three states 
 \begin_inset Formula $(k=3)$
 \end_inset
 

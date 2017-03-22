@@ -3,16 +3,16 @@ library(MSwM2)
 library(nlme)
 library(parallel)
 library(matlib)
-g2_L16B_min <- read.csv("g2_L16B_min.csv")
+g2_L16B <- read.csv("g2_L16B.csv")
 
-colnames(g2_L16B_min)[14] <- "TotCpu" # need to rename the variable
-g2_L16B_min$DuProdName <- as.factor(g2_L16B_min$DuProdName)
-g2_L16B_min$Fdd.Tdd <- as.factor(g2_L16B_min$Fdd.Tdd)
-g2_L16B_min$NumCells <- as.factor(g2_L16B_min$NumCells)
+colnames(g2_L16B)[14] <- "TotCpu" # need to rename the variable
+g2_L16B$DuProdName <- as.factor(g2_L16B$DuProdName)
+g2_L16B$Fdd.Tdd <- as.factor(g2_L16B$Fdd.Tdd)
+g2_L16B$NumCells <- as.factor(g2_L16B$NumCells)
 
-train_num <- floor(nrow(g2_L16B_min) * 0.9)
-train_g2_L16B_min <- g2_L16B_min[1:train_num,]
-test_g2_L16B_min <- g2_L16B_min[-c(1:train_num),]
+train_num <- floor(nrow(g2_L16B) * 0.9)
+train_g2_L16B <- g2_L16B[1:train_num,]
+test_g2_L16B <- g2_L16B[-c(1:train_num),]
 
 
 ##-------------------------------------------------------------------------------------##
@@ -20,18 +20,18 @@ predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
 # predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
 predictor <- c("DuProdName","Fdd.Tdd","NumCells")
 predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest")
-predictor <- c("DuProdName","Fdd.Tdd","NumCells","Paging")
+# predictor <- c("DuProdName","Fdd.Tdd","NumCells","Paging")
 # predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","ReEstablishmentAttempt")
 
 
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
-mod <- lm(fmla, data=train_g2_L16B_min)
+mod <- lm(fmla, data=train_g2_L16B)
 
 k=3
 p=1
-sw=rep(T,length(mod$coefficients)+1+1)
+sw=rep(T,length(mod$coefficients)+p+1)
 control=list(trace = T,  maxiter = 500, tol = 1e-8, maxiterInner=10, maxiterOuter=5, parallelization=F)
-data <- train_g2_L16B_min
+data <- train_g2_L16B
 
 object <- mod
 

@@ -257,10 +257,10 @@ g2_L17B <- get_subset(g2_extract, "L17B")
 # setdiff(colnames(g2_extract), colnames(g2_extract_filter))
 
 #----------------------------------------------------------------------#
-# use get_min() for each subset
-g2_L16A_min <- get_min(g2_L16A,"TotCpu")
-g2_L16B_min <- get_min(g2_L16B,"TotCpu")
-g2_L17A_min <- get_min(g2_L17A,"TotCpu")
+# # use get_min() for each subset
+# g2_L16A_min <- get_min(g2_L16A,"TotCpu")
+# g2_L16B_min <- get_min(g2_L16B,"TotCpu")
+# g2_L17A_min <- get_min(g2_L17A,"TotCpu")
 
 #----------------------------------------------------------------------#
 # Divide train (90) test (10) for each dataset
@@ -272,14 +272,14 @@ train_test <- function(data, num){
 }
 
 num <- 0.9
-train_g2_L16A_min <- train_test(g2_L16A_min, num)$train
-test_g2_L16A_min <- train_test(g2_L16A_min, num)$test
+train_g2_L16A <- train_test(g2_L16A, num)$train
+test_g2_L16A <- train_test(g2_L16A, num)$test
 
-train_g2_L16B_min <- train_test(g2_L16B_min, num)$train
-test_g2_L16B_min <- train_test(g2_L16B_min, num)$test
+train_g2_L16B <- train_test(g2_L16B, num)$train
+test_g2_L16B <- train_test(g2_L16B, num)$test
 
-train_g2_L17A_min <- train_test(g2_L17A_min, num)$train
-test_g2_L17A_min <- train_test(g2_L17A_min, num)$test
+train_g2_L17A <- train_test(g2_L17A, num)$train
+test_g2_L17A <- train_test(g2_L17A, num)$test
 
 #----------------------------------------------------------------------#
 .explore_R15G <- function(){

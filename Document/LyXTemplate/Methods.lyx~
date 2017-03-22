@@ -1120,21 +1120,36 @@ Model structure of Markov switching AR(1)
 \end_layout
 
 \begin_layout Standard
-As 
-\begin_inset Formula $S_{t}$
+Assuming two states 
+\begin_inset Formula $S_{t}=1$
 \end_inset
 
- can not be directly observed but only infer through the observed 
+ or 2, the set of parameters for the Markov switching autoregressive model
+ that are necessary for describing the probability governing 
 \begin_inset Formula $y_{t}$
 \end_inset
 
-, to fully describe the probability for the case of two states, the set
- of parameters for the Markov switching autoregressive model are 
+ are 
 \begin_inset Formula $\theta=\{\beta_{1},\beta_{2},\phi_{1,1},\phi_{1,2},\sigma_{1}^{2},\sigma_{2}^{2},\pi_{1},\pi_{2},p_{11},p_{22}\}$
 \end_inset
 
 .
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Assuming that we do not observe st directly, but only infer its operation
+ through the observed behavior of yt, the parameters necessary to fully
+ describe the probability law governing yt are 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1586,10 +1601,6 @@ reference "eq:loglik"
 
  state.
  
-\end_layout
-
-\begin_layout Section
-State-space prediction
 \end_layout
 
 \begin_layout Standard

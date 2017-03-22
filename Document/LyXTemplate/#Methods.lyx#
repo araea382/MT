@@ -298,6 +298,20 @@ Methods
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Description of statistical and other methods used with references to the
+ scientific literature.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In this chapter, methods that are used for performing the change point analysis
  in the thesis are explained.
  The illustration of the simple Markov regime swiching model feature is
@@ -306,12 +320,19 @@ ive model is discussed.
 \end_layout
 
 \begin_layout Standard
+Parametric analysis
+\end_layout
+
+\begin_layout Standard
+Non-parametric analysis
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
-Description of statistical and other methods used with references to the
- scientific literature.
+more about this 
 \end_layout
 
 \end_inset
@@ -337,7 +358,20 @@ key "james2013ecp"
 \end_inset
 
 .
- It uses an energy 
+ It uses an energy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+more about this as well
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1086,21 +1120,32 @@ Model structure of Markov switching AR(1)
 \end_layout
 
 \begin_layout Standard
-As 
-\begin_inset Formula $S_{t}$
+Assuming two states 
+\begin_inset Formula $S_{t}=1$
 \end_inset
 
- can not be directly observed but only infer through the observed 
-\begin_inset Formula $y_{t}$
-\end_inset
-
-, to fully describe the probability, the set of parameters for the Markov
- switching autoregressive model with two states are 
-\begin_inset Formula $\theta=\{\beta_{1},\phi_{1,S_{t}},\sigma_{S_{t}}^{2},\pi_{S_{t}},p\}$
+ or 2, the set of parameters for the Markov switching autoregressive model
+ that are neccessary to fully describe the probability are 
+\begin_inset Formula $\theta=\{\beta_{1},\beta_{2},\phi_{1,1},\phi_{1,2},\sigma_{1}^{2},\sigma_{2}^{2},\pi_{1},\pi_{2},p_{11},p_{22}\}$
 \end_inset
 
 .
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Assuming that we do not observe st directly, but only infer its operation
+ through the observed behavior of yt, the parameters necessary to fully
+ describe the probability law governing yt are 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1552,20 +1597,6 @@ reference "eq:loglik"
 
  state.
  
-\end_layout
-
-\begin_layout Section
-Model Selection
-\end_layout
-
-\begin_layout Standard
-It is a task of selecting the most suitable model for a given set of data
- based on the quality of model which can be evaluated by Akaike's Information
- Criterion (AIC) or Bayesian Information Criterion (BIC).
-\end_layout
-
-\begin_layout Section
-State-space prediction
 \end_layout
 
 \begin_layout Standard

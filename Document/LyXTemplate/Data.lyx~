@@ -345,31 +345,6 @@ Data is extracted from the log file produced by the test case.
 Data description
 \end_layout
 
-\begin_layout Subsection
-Dataset 1: The first generation
-\end_layout
-
-\begin_layout Standard
-Dataset 1 contains
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Do I still have to do this????
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Dataset 2: The second generation
-\end_layout
-
 \begin_layout Standard
 It is the second generation (G2) product.
  The dataset has in total 2,xxx observations.
@@ -516,12 +491,26 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
+In some fields, they store multiple values in one column.
+ Each value in the column is separated from the next by a tab character.
+ 
+\end_layout
+
+\begin_layout Standard
 Sometime test case is not being executed properly.
  It is either no traffic was generated during the test case or that data
  was not logged.
  If the EventsPerSec field is missing or has no value in it, the test case
  is being treated as incomplete and all the data related to that particular
  test case is ignored.
+\end_layout
+
+\begin_layout Subsection
+Data transformation
+\end_layout
+
+\begin_layout Standard
+extract component in EventsPerSec
 \end_layout
 
 \begin_layout Standard

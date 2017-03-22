@@ -38,17 +38,17 @@ plotReg(mod.mswm)
 predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
 predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest")
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
-mod <- lm(fmla, data=train_g2_L16B_min)
+mod <- lm(fmla, data=train_g2_L16B)
 summary(mod)
 
 # # scale
-# g2_L16B_min_scale <- subset(g2_L16B_min, select=c("TotCpu%",predictor))
-# g2_L16B_min_scale <- as.data.frame(scale(g2_L16B_min_scale))
-# train_g2_L16B_min_scale <- g2_L16B_min_scale[1:train_num,]
+# g2_L16B_scale <- subset(g2_L16B, select=c("TotCpu%",predictor))
+# g2_L16B_scale <- as.data.frame(scale(g2_L16B_scale))
+# train_g2_L16B_scale <- g2_L16B_scale[1:train_num,]
 #
-# colnames(train_g2_L16B_min_scale)[1] <- "TotCpu"
+# colnames(train_g2_L16B_scale)[1] <- "TotCpu"
 #
-# mod2 <- lm(fmla, data=train_g2_L16B_min_scale)
+# mod2 <- lm(fmla, data=train_g2_L16B_scale)
 # set.seed(10)
 # model_mswm <- msmFit(mod2, k=3, p=1, sw=c(TRUE,TRUE,FALSE,TRUE,TRUE,TRUE), control=list(trace=FALSE, maxiter=500, parallel=FALSE))
 # summary(model_mswm)
@@ -90,7 +90,7 @@ plotReg(model_mswm, expl=predictor[6], regime=2)
 plotReg(model_mswm, expl=predictor[6], regime=3)
 
 # predict
-newdata <- test_g2_L16B_min[1,]
+newdata <- test_g2_L16B[1,]
 predict(model_mswm, newdata)
 
 #----------------------#
@@ -180,7 +180,7 @@ par(mfrow=c(1,1))
 
 #----------------------#
 # forecast from fMarkovSwitching package
-# new_data <- test_g2_L16B_min
+# new_data <- test_g2_L16B
 library(fMarkovSwitching)
 data(dep)
 data(indep)

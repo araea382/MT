@@ -260,8 +260,8 @@ MSM.lm.categorical <- function(object,k){
 reref <- function(data, var){
     count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
     ind <- which.max(count)
-    maxlev <- levels(data[,var])[ind]
-    return(relevel(data[,var], maxlev))
+    ref_level <- levels(data[,var])[ind]
+    return(relevel(data[,var], ref_level))
 }
 
 .MSM.lm.msmFit= function(object,k,sw,p,data,family,control){
@@ -1402,6 +1402,7 @@ setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
 ##### predict
 .MSM.lm.predict=function(object, newdata){
   p <- object@p
+  k <- object["k"]
   model <- object["model"]
   Coef <- object["Coef"]
   std <- object["std"]
@@ -1409,33 +1410,46 @@ setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
   fProb <- object["Fit"]["filtProb"]
   margLik <- object["Fit"]["margLik"]
   nr <- length(model$model[,1])
-
+  
+  var_name <- colnames(model$model) # all variables name
+  var_name <- var_name[1:(length(var_name)-p)] # discard AR term (if any)
+  test <- subset(newdata, select=var_name) # subset (dependent and independent variables)
+  
   if(p > 0){
-    ar <- t(model$model[nr:(nr-p+1),1,drop=F]) # lag p
+    ar <- t(model$model[nr:(nr-p+1),1,drop=F]) # lag p from training data
+    var <- test[,1]
+    if(length(var) > 1){
+      ar <- apply(as.matrix(1:p),1,function(el){
+        length(var)=length(var)-el
+        var=c(rep(ar[el:1]),var)
+        return(var)
+      })}
     colnames(ar) <- paste(names(model$model)[1],"_",1:p,sep="") # insert name
   }
-
-  var <- colnames(model$model) # all variables name
-  var <- var[1:(length(var)-p)] # discard AR term (if any)
-  test <- subset(newdata, select=var) # subset (dependent and independent variables)
+  
   test <- cbind(test, ar) # include back AR term
-
-  # use reref() to relevel the reference of the factor level
-  for(i in names(model$contrasts)){
-    test[,i] <- reref(test, i)
+  
+  # relevel the reference of the factor level to be the same as in the training model
+  for(i in names(model$xlevels)){
+    ref_level <- model$xlevels[[i]][1] # 
+    test[,i] <- relevel(test[,i], ref_level)
   }
-
+  
   terms <- model.matrix(as.formula(paste(colnames(test)[1], " ~ ", paste(colnames(test)[-1], collapse= "+"))), data=test)
   CondMean <- as.matrix(terms) %*% t(as.matrix(Coef))
   error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
   Likel <- t(dnorm(t(error),0,std))
-
-  # add to original right away
-  fProb <- rbind(fProb, t(P %*% t(fProb[nr,,drop=F])) * Likel[1,,drop=F])
-  margLik <- rbind(margLik, sum(fProb[nr+1,]))
-  fProb[nr+1,] <- fProb[nr+1,] / margLik[nr+1,1] # filtered prob of t+1 conditional on the info in t+1
-
-  result <- which.max(fProb[nr+1,])
-  return(result)
+  
+  st <- c()
+  for(i in 1:nrow(test)){
+    fProb_new <- t(P %*% t(fProb[nr-1+i,,drop=F])) * (Likel[i,,drop=F])
+    margLik_new <- sum(fProb_new)
+    fProb_new <- (fProb_new / margLik_new)
+    fProb <- rbind(fProb, fProb_new) # filtered prob of t+1 conditional on the info in t+1
+    margLik <- rbind(margLik, margLik_new)
+    st <- c(st, which.max(fProb_new))
+  }
+  names(st) <- seq(nrow(test))
+  return(st)
 }
 setMethod(f="predict",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.predict)
