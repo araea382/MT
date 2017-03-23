@@ -195,7 +195,7 @@ extract_component <- function(data){
       }
     }
   }
-  data[is.na(data)] <- 0 # replace NA with 0 # should it be 0 or NA...?
+  data[is.na(data)] <- 0 # replace NA with 0
   return(data)
 }
 

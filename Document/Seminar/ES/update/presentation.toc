@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Markov regime swiching model}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Markov autoregression switching model}{6}{0}{1}
+\beamer@sectionintoc {2}{What has been done?}{7}{0}{2}
+\beamer@sectionintoc {3}{Next step}{8}{0}{3}

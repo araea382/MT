@@ -323,8 +323,7 @@ Data sources
 \end_layout
 
 \begin_layout Standard
-The dataset used in this thesis is provided by Ericsson site in Linköping,
- Sweden.
+Dataset used in this thesis is provided by Ericsson site in Linköping, Sweden.
  Ericsson founded by Lars Magnus Ericsson since 1876 is one of the world’s
  leading in telecommunication industry.
  It provides services, software product and infrasturcture related to informatio
@@ -335,8 +334,9 @@ n and communications technology (ICT).
 \end_layout
 
 \begin_layout Standard
-Data is extracted from log file produced by the test case.
- There are different types of test case executing in the simulation system.
+the dataset is collected on 20 January 2017 and is extracted from log file
+ produced by the test case.
+ There are different types of test cases executing in the simulation system.
  Each test case is viewed as an observation in the dataset.
  
 \end_layout
@@ -346,8 +346,8 @@ Data description
 \end_layout
 
 \begin_layout Standard
-It is the second generation (G2) product.
- The dataset has in total 2,xxx observations.
+This is the dataset for the second generation (G2) product.
+ It has in total 2,xxx observations from the collected date.
 \end_layout
 
 \begin_layout Paragraph
@@ -427,8 +427,7 @@ PerCpu%: CPU usaged of each CPU
 \end_layout
 
 \begin_layout Itemize
-PerThread%: It contains several value of software components.
- 
+PerThread%
 \end_layout
 
 \begin_layout Itemize
@@ -437,54 +436,384 @@ EventsPerSec: Events or traffic intensity
 
 \begin_deeper
 \begin_layout Standard
-This field contains several components that are used for defining test case.
- There is no fixed number of components in this field.
- The components and its value are varied.
- In other words, different test case has different number of components
- and values.
- This is because different test cases involve additional procedure compared
- to others.
- There are many different test cases executed.
- Even though different test cases are executed in the same product ID (Release)
- and software package ID (SW), they can still have different values in the
- components.
- This might due to the problem with the tool, problem with the node or different
- test case.
- There are several values and it is suspected that value of component has
- an impact on CPU utilization.
+Since there are many different types of test cases executed, this field
+ contains several components used when defining the test case.
+ Apparently there is no fixed number of components in this field as different
+ test cases involve additional procedure compared to other test cases.
+ Components and their values in EventsPerSec are also varied depending on
+ which types of test cases are being executed.
+ They are the main factors which have an impact on CPU utilization.
+ The unit for each component in the EventsPerSec is its event per second.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Not all variables in the dataset are chosen to be used for futher analysis.
+ There are in total 6 variables used as predictors and one response variable
+ as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "data"
+
+\end_inset
+
+.
+ The first three predictor variables are components which can be found in
+ the EventsPerSec field while the last three variables are considered as
+ test environment.
+ These are all variables which appear to have a high contribution to the
+ CPU utilization.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Float table
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Rewrite it again....!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Description of the selected variables 
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "data"
 
 \end_inset
 
 
 \end_layout
 
-\end_deeper
-\begin_layout Standard
-The response variable is TotCpu%.
- The predictor variables are RrcConnectionSetupComplete, Paging, X2HandoverReque
-st, DuProdName, Fdd/Tdd and NumCells.
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variable
 \end_layout
 
-\begin_layout Standard
-The first three variables are components in the EventsPerSec field while
- the last three variables are considered as test environment.
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name
 \end_layout
 
-\begin_layout Standard
-have an impact on the CPU utilization.
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type
 \end_layout
 
-\begin_layout Standard
-The unit for each components in the EventsPerSec is per second.
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Response 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TotCpu%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Continuous
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Percentage
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Predictor 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RrcConnectionSetupComplete
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Continuous
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Paging
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Continuous
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X2HandoverRequest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Continuous
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DuProdName
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Categorical
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fdd/Tdd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Binary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NumCells
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Categorical
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -493,27 +822,30 @@ Data preprocessing
 
 \begin_layout Standard
 Sometime test case is not being executed properly.
- It is either no traffic was generated during the test case or that data
- was not logged.
+ It is either no traffic is generated during the test case or that data
+ is not logged.
  If the EventsPerSec field is missing or has no value in it, the test case
  is being treated as incomplete and all the data related to that particular
  test case is ignored.
+ This also applied for other cases when any fields in the dataset is not
+ fully complete.
 \end_layout
 
 \begin_layout Standard
-In some fields, they store multiple values separated by a tab character.
- Therefore, in order to get these values for further analysis, they need
- to be extracted.
- This process had been done for the EventsPerSec field to extract components
- which characterize the test case.
+Some fields in the dataset store multiple values and these values are separated
+ by a tab character.
+ They need to be extracted in order to use in further analysis.
+ This process had been done for the EventsPerSec field to get its components
+ and values which characterize the test case.
 \end_layout
 
 \begin_layout Standard
 Each software release consists of several software packages and numerous
  test cases are executed in one software package.
- For futher analysis, In each software package, test case which has a minimum
- value of the total CPU usaged, TotCpu%, is selected to represent the performanc
-e of this software package.
+ Since software package is seen as a time point in time series, it is rather
+ difficult to graph all results from every executed test cases.
+ Hence, test case which has a minimum value of the total CPU usaged, TotCpu%,
+ is selected to represent the performance of specific software package.
 \end_layout
 
 \begin_layout Standard

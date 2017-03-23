@@ -1125,7 +1125,11 @@ Assuming two states
 \end_inset
 
  or 2, the set of parameters for the Markov switching autoregressive model
- that are neccessary to fully describe the probability are 
+ that are necessary for describing the law of probability governs 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ are 
 \begin_inset Formula $\theta=\{\beta_{1},\beta_{2},\phi_{1,1},\phi_{1,2},\sigma_{1}^{2},\sigma_{2}^{2},\pi_{1},\pi_{2},p_{11},p_{22}\}$
 \end_inset
 
@@ -1204,10 +1208,10 @@ key "dempster1977maximum"
 \end_inset
 
  can be viewed as the missing values.
- The set of parameter is estimated by iterative two-step procedure.
+ The set of parameters is estimated by iterative two-step procedure.
  It starts with an arbitrary initial parameters and finds the expected values
  of the state process given the observations.
- Next, the new maximum likelihood from the derived parameter in previous
+ Next, the new maximum likelihood from the derived parameters in previous
  step is calculated.
  These two steps are repeated until the maximum value of the likelihood
  function is reached 
@@ -1567,7 +1571,7 @@ M-step
 \end_layout
 
 \begin_layout Standard
-The new estimates parameters, 
+The new estimated parameters, 
 \begin_inset Formula $\theta^{(n+1)}$
 \end_inset
 

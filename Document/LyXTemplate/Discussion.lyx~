@@ -294,13 +294,41 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Discussion (3-5 pages)
+Discussion
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 Critical assessment of the results obtained and the adequacy of the methods
  used.
  Discussion of the scientific context of the obtained results.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+estimate simple models 
+\end_layout
+
+\begin_layout Standard
+number of parameters grows exponentially
+\end_layout
+
+\begin_layout Standard
+solution is probablu a local maximum 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "perlin2015ms_regress"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
