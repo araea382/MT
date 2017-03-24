@@ -311,29 +311,33 @@ name "sec:Background"
 \end_layout
 
 \begin_layout Standard
-Change point analysis is a method to detect changes in time series data
- when time instant is unknown 
+Structural changes are often seen in time series data.
+ This observable behavior is highly appealing to statistical modelers who
+ want to develop a model which is well explained.
+ A method to detect changes in time series data when a time instant is unknown
+ is called change point analysis 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "basseville1993detection"
 
 \end_inset
 
- and has a bottom line for discovering and estimating the time point where
- the changes in time series occur.
- Serveral terms such as breakpoint or turning point are also used to denote
- the respective events.
- However, the commonly used term when the point in time series takes place
- is 
+.
+ It has a bottom line for discovering the time point where the changes in
+ time series occur.
+ Change point analysis can be referred to different kinds of name such as
+ breakpoint and turning point.
+ However, 
 \emph on
 change-point
 \emph default
- and the term 
+ is the commonly used term when the point in time series takes place.
+ Another important term which will be used in this thesis is 
 \emph on
 regime switch
 \emph default
- refers to the different of regimes after the occurence of change point
- 
+ which refers to the different of regimes after the occurrence of change
+ point 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "weskamp2010change"
@@ -341,17 +345,19 @@ key "weskamp2010change"
 \end_inset
 
 .
- It has been studied over decades as it is a problem of interest in many
- applications in which the characteristic of data is collected over time.
- Change point analysis can be utilized in medical condition monitoring 
+ Change point analysis has been studied over decades as it is a problem
+ of interest in many applications which the characteristic of data is collected
+ over time.
+ For instance, it can be utilized in medical condition monitoring 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "staudacher2005new"
 
 \end_inset
 
-, to evaluate the sleep of patients based on their hearth rate variability.
- It is applied in crimate analysis 
+in order to evaluate the sleep quality of patients based on their heart
+ rate condition.
+ Another example is the application in climate analysis 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "reeves2007review,beaulieu2012change"
@@ -359,20 +365,21 @@ key "reeves2007review,beaulieu2012change"
 \end_inset
 
 , where temperature or climate variations is detected.
- It gradually becomes important over the past few decades due to the effects
- of global warming and a huge growth in the greenhouse gas emissions.
- Applications can be found in the field of quality control 
+ This method gradually becomes important over the past few decades due to
+ the effects of the global warming and the increases in greenhouse gas emissions.
+ Change point analysis can also be found in the field of quality control
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "page1954continuous"
 
 \end_inset
 
- in which the quality of industrial product is of interest.
- Since it is a continuous production process, if something goes wrong at
- some point of the process (i.e., defective products, machine breakdowns),
- it can lead to a large amount of quality worsens.
- Method is also used for identifying fraud transaction once it is commited
+ in industrial production.
+ Since it is a continuous production process, in mass production process,
+ if the product controlled value is not monitored and exceed the tolerant
+ undetected, it could lead to the lost of a whole production lot.
+ Other applications of change point analysis are identifying fraud transaction
  
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -380,26 +387,23 @@ key "bolton2002statistical"
 
 \end_inset
 
-, and detecting anomalies in the market price 
+, detecting anomalies in the market price 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "gu2013fast"
 
 \end_inset
 
-.
- Signal processing also benefits from the change point analysis by detecting
- significant changes in the streaming data 
+ and detecting signal processing 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "basseville1993detection"
 
 \end_inset
 
-.
+ in streaming data as well.
  The change should be flagged as soon as it occurs in order to be properly
- dealt with such changes in time and reduced any consequences that could
- have happened 
+ dealt with such changes in time and reduced any possible consequences 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sharkey2014nonparametric"
@@ -411,25 +415,28 @@ key "sharkey2014nonparametric"
 \end_layout
 
 \begin_layout Standard
-In this study, change point analysis will be used to identify the changes
- in performance of Ericsson's software product.
- Many test runs have been executed for testing the software packages in
- the simulation environment.
- Before launching product to customer, company needs to test and determine
- how a software package performs in general.
- The performance of these software packages are evaluated by considering
- on the CPU utilization, a percent of the CPU's cycle that spent on each
- process, and some other performance metrics (e.g., memory usage, latency).
+In this study, change point analysis will be used to identify changes in
+ performance of Ericsson's software products.
+ Many test cases have been executed for testing software packages in a simulatio
+n environment.
+ Before launching the software products to its customers, the company needs
+ to test and determine how is software package performs.
+ The performance of these software packages is evaluated by considering
+ on CPU utilizations (percentages of CPU's cycle spent on each process),
+ memory usage and latency.
  
 \end_layout
 
 \begin_layout Standard
-Recently, method which is now becoming more popular for addressing such
- changes in time series is a hidden Markov model.
- It uses a concept of Markov process where the system treats data as observation
-s and tries to model an underlying segmentation as states.
- Hence, it is able to identify the switch in hidden states when change-point
- is most likely to occur 
+Recently, a method called hidden Markov model or Markov regime switching
+ model is widely used for discovering a change point in time series.
+ Both terms are acceptable but being called differently regarding to the
+ different fields of study.
+ Markov regime switching model uses a concept of Markov process to model
+ an underlying segmentation as different states and then specify a distinct
+ change of location.
+ Hence, the method is able to identify a switch in time series when change
+ point occurs 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "luong2012hidden"
@@ -437,8 +444,8 @@ key "luong2012hidden"
 \end_inset
 
 .
- A hidden Markov model is widely used in almost all current systems in speech
- recognition 
+ This method is generally used in almost all current systems in speech recogniti
+on 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rabiner1989tutorial"
@@ -461,23 +468,24 @@ key "stanke2003gene"
 \end_inset
 
  where the prediction of gene is being made.
- It has been extensively applied in the field of economics and finance and
- has a large literature.
- For instance, business cycle can be seen as hidden states with seasonal
+ Markov regime switching model has been extensively applied in the field
+ of economics and finance and has a large literature.
+ For example, business cycle can be seen as hidden states with seasonal
  changes.
- It is modelled as a switching process to uncover the state over expansions
- and recessions.
- Model can also be used to understand the transition between the economic
- state and the duration of each period 
+ The growth rate of gross domestic product (GDP) is modeled as a switching
+ process to uncover the business cycle over expansions and recessions.
+ The fitting model can also be used to understand the process where there
+ is a transition between the economic state and the duration of each period
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "hamilton1994time"
+key "hamilton1989new"
 
 \end_inset
 
 .
- Financial time series is modelled in order to investigate how stock market
- is doing in general i.e., bull or bear market 
+ In finance data, time series of returns is modeled in order to investigate
+ stock market situation i.e., bull or bear market 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1998testing"
@@ -485,35 +493,32 @@ key "kim1998testing"
 \end_inset
 
 .
- Markov regime switching model is what econometrician and people who study
- related to this field always address to when refer to the hidden Markov
- model.
+ 
 \end_layout
 
 \begin_layout Standard
-The term Markov regime switching model will be used throughout the thesis.
- Markov regime switching model is one of the most well-known non linear
- time series models.
+Markov regime switching model is one of the most well-known non linear time
+ series models.
  It takes the behavior of shifting regime in time series into account and
  models multiple structures that can explain this characteristic in different
  states at different time.
  The shift between state or regime comes from the switching mechanism which
  is assumed to follow an unobserved Markov chain.
- Thus, the model is able to capture complex dynamic patterns, identify the
- change of location and regime switch in time series.
+ Thus, the model is able to capture more complex dynamic patterns, identify
+ the change of location and regime switch in time series.
  
 \end_layout
 
 \begin_layout Standard
-Each software package in the testing system is viewd as a time point in
- time series and the performance of software package is an observe value.
+Each software package in the system is viewed as a time point in time series
+ and the performance of software package is treated as an observe value.
  According to the behavior of observation sequence in this study, it is
  found that observation is not completely independent of each other (i.e.,
- performance of current software package depends on the performance evaluated
- from the past version of software package).
+ performance of current software package depends on the performance from
+ the past version of software package).
  Therefore, additional dependencies at observation level with the first
- order autoregression is taken into consideration when modelling the Markov
- regime swiching model.
+ order autoregression is taken into consideration when modeling the Markov
+ regime switching model.
  It is simply called Markov switching autoregressive model.
 \end_layout
 
@@ -533,7 +538,7 @@ There are two approaches, parametric and nonparametric analysis, for detecting
  One study found that if data belong to some known distribution families,
  parametric test statistics outperform nonparametric test.
  However, it is not properly performing well in detecting change point for
- unkown underlying distribution 
+ unknown underlying distribution 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sharkey2014nonparametric"
@@ -586,10 +591,9 @@ name "sec:Objective"
 \end_layout
 
 \begin_layout Standard
-The main idea of this thesis is to reduce the laborer work to do visual
- inspection whenever they want to analyze the performance of update software
- package.
- With the rise of data generation coming from a large number of test runs,
+The main idea of this thesis is to reduce laborer work to do visual inspection
+ whenever they want to analyze the performance of update software package.
+ With the rise of data generation coming from a large number of test cases,
  this work becomes much more difficult and perhaps inefficient to do it
  manually.
  The main objective for this thesis is to implement machine learning, the
@@ -615,8 +619,8 @@ Detect the degradation, improvement or steady state in CPU utilization
 \end_layout
 
 \begin_layout Itemize
-Detect whether there is some changes in test environment that impact on
- CPU utilization
+Detect whether there is some changes in test environment that have an impact
+ on CPU utilization
 \end_layout
 
 \begin_layout Standard

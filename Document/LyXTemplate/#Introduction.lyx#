@@ -336,8 +336,8 @@ change-point
 \emph on
 regime switch
 \emph default
- which refers to persistent changes in time series structure after the occurrenc
-e of change point 
+ which refers to persistent changes or different of regimes after the occurrence
+ of change point 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "weskamp2010change"
