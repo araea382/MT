@@ -312,11 +312,11 @@ Description of statistical and other methods used with references to the
 \end_layout
 
 \begin_layout Standard
-In this chapter, methods that are used for performing the change point analysis
- in the thesis are explained.
- The illustration of the simple Markov regime swiching model feature is
- shown and more general model specifications namely Markov switching autoregress
-ive model is discussed.
+In this chapter, methods used for performing the change point analysis in
+ this thesis are explained.
+ The illustration of the simple Markov swiching model feature is shown and
+ more general model specifications namely Markov switching autoregressive
+ model is discussed.
 \end_layout
 
 \begin_layout Standard
@@ -341,71 +341,12 @@ more about this
 \end_layout
 
 \begin_layout Section
-ecp
+Markov switching model
 \end_layout
 
 \begin_layout Standard
-ecp is an extension package in R which mainly focus on computing nonparametric
- test for multiple change point analysis.
- It is applicable to both univariate and multivariate time series.
- A fundamental idea for building alogrithms that can identify the change
- point is based on either divisive or agglomerative procedure in hierrachical
- clustering approach 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "james2013ecp"
-
-\end_inset
-
-.
- It uses an energy
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-more about this as well
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-E-divisive
-\end_layout
-
-\begin_layout Standard
-E-divisive algorithm recursively partitioned a time series.
- An estimatation of the change point is computed at each iteration.
- Permutation test is performed to find the statistical significance of an
- estimated change point.
-\end_layout
-
-\begin_layout Subsection
-E-agglomerative
-\end_layout
-
-\begin_layout Standard
-E-agglomerative alogrithm trys to maximized a goodness of fit test after
- merging segments in the iteration.
- The estimated change point is defined by the iteration that maximized a
- goodness of fit statistic.
- It allows user to input an initial segmentation for the time series or
- a prior knowledge of the possible change point in order to reduce the computati
-on time.
-\end_layout
-
-\begin_layout Section
-Markov regime switching model
-\end_layout
-
-\begin_layout Standard
-Markov regime switching model is used for time serires that are evolved
- over unobserved distinct states or regimes.
+Markov switching model is used for time serires that are evolved over unobserved
+ distinct states or regimes.
  It is a regime switching model where the shifting back and forth between
  the regimes is controlled by latent Markov chain.
  The model structure are consitsts of two stochastic processes embedded
@@ -428,8 +369,8 @@ key "rabiner1986introduction"
 \end_layout
 
 \begin_layout Standard
-A Markov regime swtiching model is able to model more complex stochastic
- processes and describe changes in the dynamic behavior.
+A Markov swtiching model is able to model more complex stochastic processes
+ and describe changes in the dynamic behavior.
  A general structure of the model can be drawn in graphically as shown in
  
 \begin_inset CommandInset ref
@@ -570,7 +511,7 @@ where
 \begin_inset Formula $X_{t}$
 \end_inset
 
- is the predictor variables of the time series at time 
+ are the predictor variables of the time series at time 
 \family roman
 \series medium
 \shape up
@@ -593,7 +534,7 @@ where
 \begin_inset Formula $\beta_{S_{t}}$
 \end_inset
 
- is the coefficients in state 
+ are the coefficients in state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -675,7 +616,7 @@ describes the distribution for the next state given the current state
 \noun default
 \color inherit
 .
- Markov regime switching model assumes that 
+ Markov switching model assumes that 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -706,7 +647,7 @@ describes the distribution for the next state given the current state
 \color none
 \begin_inset Formula 
 \begin{equation}
-p_{ij}=P(S_{t}=j|S_{t-1}=i,S_{t-2}=k,...,S_{1}=q)=P(S_{t}=j|S_{t-1}=i)
+p_{ij}=P(S_{t}=j|S_{t-1}=i,S_{t-2}=l,...,S_{1}=q)=P(S_{t}=j|S_{t-1}=i)
 \end{equation}
 
 \end_inset
@@ -716,7 +657,7 @@ p_{ij}=P(S_{t}=j|S_{t-1}=i,S_{t-2}=k,...,S_{1}=q)=P(S_{t}=j|S_{t-1}=i)
 
 \begin_layout Standard
 where 
-\begin_inset Formula $1\leqslant i,j\leqslant N$
+\begin_inset Formula $1\leqslant i,j\leqslant k$
 \end_inset
 
  .
@@ -814,27 +755,19 @@ Since the whole process
 \uwave off
 \noun off
 \color none
- describes the starting distribution over states also needs to be specified.
+ or the steady state probabilities of 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+, which describes the starting distribution over states, also needs to be
+ specified.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\pi_{i}=P(S_{1}=i)
+\pi_{j}=P(S_{0}=j)
 \end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-COEFFICIENT !!
-\end_layout
 
 \end_inset
 
@@ -1003,8 +936,8 @@ Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
-This is an extension of the basic Markov regime switching model which also
- has dependencies at observation level.
+This is an extension of the basic Markov switching model which also has
+ dependencies at observation level.
  The model relaxes the conditional independent assumption by allowing observatio
 n probability to also depends on the past observation and the current state
  
@@ -1157,8 +1090,7 @@ Parameter Estimation
 \end_layout
 
 \begin_layout Standard
-There are various ways to estimate parameters of Markov regime swiching
- model.
+There are various ways to estimate parameters of Markov swiching model.
  The methods which have been widely use are as follows: E-M algorithm 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1202,8 +1134,8 @@ key "dempster1977maximum"
 \end_inset
 
 .
- Nevertheless, it can potentially implement in Markov regime switching model
- since the unobserved state 
+ Nevertheless, it can potentially implement in Markov switching model since
+ the unobserved state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -1618,6 +1550,65 @@ Metrics (True positive rate/ False positive rate/ Detection delay)
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+ecp
+\end_layout
+
+\begin_layout Standard
+ecp is an extension package in R which mainly focus on computing nonparametric
+ test for multiple change point analysis.
+ It is applicable to both univariate and multivariate time series.
+ A fundamental idea for building alogrithms that can identify the change
+ point is based on either divisive or agglomerative procedure in hierrachical
+ clustering approach 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "james2013ecp"
+
+\end_inset
+
+.
+ It uses an energy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+more about this as well
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+E-divisive
+\end_layout
+
+\begin_layout Standard
+E-divisive algorithm recursively partitioned a time series.
+ An estimatation of the change point is computed at each iteration.
+ Permutation test is performed to find the statistical significance of an
+ estimated change point.
+\end_layout
+
+\begin_layout Subsection
+E-agglomerative
+\end_layout
+
+\begin_layout Standard
+E-agglomerative alogrithm trys to maximized a goodness of fit test after
+ merging segments in the iteration.
+ The estimated change point is defined by the iteration that maximized a
+ goodness of fit statistic.
+ It allows user to input an initial segmentation for the time series or
+ a prior knowledge of the possible change point in order to reduce the computati
+on time.
 \end_layout
 
 \begin_layout Standard
