@@ -1,6 +1,6 @@
 \beamer@sectionintoc {1}{Recall: Thesis objectives}{3}{0}{1}
 \beamer@sectionintoc {2}{Data preprocessing}{4}{0}{2}
-\beamer@sectionintoc {3}{Markov regime switching model}{5}{0}{3}
+\beamer@sectionintoc {3}{Markov switching model}{5}{0}{3}
 \beamer@subsectionintoc {3}{1}{Markov switching autoregressive model}{8}{0}{3}
 \beamer@sectionintoc {4}{Model estimation}{10}{0}{4}
 \beamer@subsectionintoc {4}{1}{E-M algorithm}{11}{0}{4}

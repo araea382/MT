@@ -127,10 +127,13 @@
 \section{Data preprocessing}
 \begin{frame}
 \frametitle{Data preprocessing}
+One software product $\Rightarrow$ many software packages
+
+One software package $\Rightarrow$ many different types of test cases
+
 \begin{itemize}
-	\item Discard incomplete observation
-	\item Multiple values separated by a tab character are stored together in some columns.
-	
+	\item Discard incomplete test case 
+	\item Multiple values separated by a tab character are stored together in column $\Rightarrow$ split a tab-separated values to columns
 \end{itemize}
 
 \begin{figure}
@@ -142,7 +145,7 @@
 
 
 %------------------------------------------------
-\section{Markov regime switching model} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\section{Markov switching model} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 \begin{frame}
 	\frametitle{Markov switching model, \cite{p1}}
 	\begin{itemize}
@@ -237,13 +240,21 @@ $$y_{t} = {X_{t}}' \beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}$$
 \frametitle{Model estimation}
 Model parameters
 
-$$\theta = (\beta_{S_{t}}, \phi_{1,S_{t}},\sigma_{S_{t}}, \pi_{S_{t}}, p)$$
+$$\theta = (\beta_{S_{t}}, \phi_{1,S_{t}},\sigma^{2}_{S_{t}}, \pi_{S_{t}}, p_{ij})$$
 
 where,
 
 $\pi_{S_{t}}$ is initial probabilities in state $S_{t}$
 
-$p$ is transition probabilities
+$p_{ij}$ is transition probabilities, $p_{ij}=P(S_{t}=j|S_{t-1}=i) \quad 1\leqslant i,j\leqslant k $
+
+and $S_{t}$ is non-observable variable
+
+\vspace{5mm}
+
+Model Likelihood
+
+$$L(\theta;y_{t}) = f(y_{t}|\theta) = \sum_{t=1}^{T}\sum_{S_{t}=1}^{k} f(y_{t}|S_{t};\theta)P(S_{t})$$
 
 \end{frame}
 
@@ -253,8 +264,8 @@ $p$ is transition probabilities
 \frametitle{Model estimation}	
 E-M algorithm 
 \begin{itemize}
-	\item Expectation step: Calculate the expectation of $S_{t}$ under the current estimation of the parameters
-	\item Maximization step: Obtain new estimated parameters by maximizing likelihood
+	\item Expectation step: Calculate the expectation of $S_{t}$ given the observation under the current estimated parameters
+	\item Maximization step: Obtain new estimates of the parameters by maximizing likelihood 
 	\item Repeat until converged
 \end{itemize}
 
@@ -266,7 +277,7 @@ E-M algorithm
 \frametitle{What has been done?}
 Study and review source code  in the R package in detail
 \begin{itemize}
-	\item MSwM: An univariate autoregressive Markov switching model for linear and generalized model
+	\item MSwM: An univariate autoregressive Markov switching model for linear and generalized model \cite{p3}
 \end{itemize}
 \end{frame}
 
@@ -275,24 +286,26 @@ Study and review source code  in the R package in detail
 \frametitle{What has been done?}
 Implement and modify code in the package
 \begin{itemize}
-	\item Small typo in the code
-	\item Invertible Hessian \cite{p2}
-	\item Categorical variables
+	\item Small typo in the code when computing residual variance
+	\item Solve noninvertible Hessian using generalized inverse procedure \cite{p2}
+	\item Extension for categorical predictor variables
 	\item NAs coefficients
 \end{itemize}
-
-
 \end{frame}
 
 %------------------------------------------------
 \begin{frame}
 \frametitle{What has been done?}
-Result of fitting Markov switching autoregressive model
+Results of fitting Markov switching autoregressive model
 \begin{itemize}
 	\item Estimated parameters in each state
-	\item State assignment
-	\item Probability assignment in each state
-	\item Graphs show periods where the observation is in the specific regime
+	\item For each observation,
+	
+	$\Rightarrow$ State assignment
+	
+	$\Rightarrow$ Probability assignment in each state
+	
+	\item Graphs show periods where the observation is in the specific state
 \end{itemize}
 
 \end{frame}
@@ -325,6 +338,11 @@ Result of fitting Markov switching autoregressive model
 		Alternatives to model respecification in nonlinear estimation
 		\newblock \emph{Sociological
 			methods \& research}, 33(1):54-87.
+	\end{thebibliography}
+	\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+		\bibitem[Sanchez-Espigares, 2014]{p3} Josep A. Sanchez-Espigares and Alberto Lopez-Moreno (2014)
+		\newblock MSwM: Fitting Markov Switching Models
+		\newblock \emph{CRAN R}.
 	\end{thebibliography}
 }
 \end{frame}
