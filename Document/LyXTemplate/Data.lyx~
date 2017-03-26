@@ -326,18 +326,19 @@ Data sources
 Dataset used in this thesis is provided by Ericsson site in Linköping, Sweden.
  Ericsson founded by Lars Magnus Ericsson since 1876 is one of the world’s
  leading in telecommunication industry.
- It provides services, software product and infrasturcture related to informatio
-n and communications technology (ICT).
- Its head quater is located in Stockholm, Sweden.
- Ericsson continuously expands its service and product beyond telecoms sector
- such as mobile broadbrand, cloud services, transportation and network design.
+ It provides services, software products and infrastructure related to informati
+on and communications technology (ICT).
+ Its head quarter is located in Stockholm, Sweden.
+ Ericsson continuously expands its services and products beyond telecoms
+ sector such as mobile broadband, cloud services, transportation and network
+ design.
 \end_layout
 
 \begin_layout Standard
 the dataset is collected on 20 January 2017 and is extracted from log file
- produced by the test case.
- There are different types of test cases executing in the simulation system.
- Each test case is viewed as an observation in the dataset.
+ produced by test cases.
+ There are different types of test cases executing in the simulation system
+ and each test case is seen as an observation in the dataset.
  
 \end_layout
 
@@ -346,8 +347,8 @@ Data description
 \end_layout
 
 \begin_layout Standard
-This is the dataset for the second generation (G2) product.
- It has in total 2,xxx observations from the collected date.
+This is the dataset for the second generation (G2) product which contain
+ 2,xxx test cases.
 \end_layout
 
 \begin_layout Paragraph
@@ -393,19 +394,19 @@ Observable memory
 \end_layout
 
 \begin_layout Itemize
-MemFreeKiB
+MemFreeKiB:
 \end_layout
 
 \begin_layout Itemize
-SwapFreeKiB
+SwapFreeKiB:
 \end_layout
 
 \begin_layout Itemize
-BufferCacheKiB
+BufferCacheKiB:
 \end_layout
 
 \begin_layout Itemize
-PageCacheKiB
+PageCacheKiB:
 \end_layout
 
 \begin_layout Itemize
@@ -417,17 +418,17 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: Total or average CPU usaged.
+TotCpu%: Total or average CPU usage.
  This value represents the performance of the test case in terms of CPU
  utilization.
 \end_layout
 
 \begin_layout Itemize
-PerCpu%: CPU usaged of each CPU
+PerCpu%: CPU usage of each CPU
 \end_layout
 
 \begin_layout Itemize
-PerThread%
+PerThread%:
 \end_layout
 
 \begin_layout Itemize
@@ -436,33 +437,33 @@ EventsPerSec: Events or traffic intensity
 
 \begin_deeper
 \begin_layout Standard
-Since there are many different types of test cases executed, this field
- contains several components used when defining the test case.
- Apparently there is no fixed number of components in this field as different
+This field contains several components that can be used when defining the
+ test case.
+ Apparently, there is no fixed number of components in this field as different
  test cases involve additional procedure compared to other test cases.
- Components and their values in EventsPerSec are also varied depending on
- which types of test cases are being executed.
- They are the main factors which have an impact on CPU utilization.
+ The components along with their values in EventsPerSec are also varied
+ depending on which types of test cases are being executed.
+ These components and their values are the main factor which have an impact
+ on the CPU utilization.
  The unit for each component in the EventsPerSec is its event per second.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Not all variables in the dataset are chosen to be used for futher analysis.
- There are in total six variables used as predictors and one response variable
- as shown in 
+Some variables in the dataset are chosen to be used for further analysis.
+ There are in total one response variable and six predictor variables.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "data"
 
 \end_inset
 
-.
- The first three predictor variables are components which can be found in
- the EventsPerSec field while the last three variables are considered as
- test environment.
- These are all variables which appear to have a high contribution to the
- CPU utilization.
+ shows the name of variables and their description of type and unit.
+ The first three predictor variables are components of the test case which
+ can be found in the EventsPerSec field while the last three variables are
+ considered as the test environment.
+ These variables appear to have a high contribution to the CPU utilization.
 \end_layout
 
 \begin_layout Standard
@@ -608,7 +609,7 @@ Continuous
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Per second
 \end_layout
 
 \end_inset
@@ -646,7 +647,7 @@ Continuous
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Per second
 \end_layout
 
 \end_inset
@@ -684,7 +685,7 @@ Continuous
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Per second
 \end_layout
 
 \end_inset
@@ -821,31 +822,74 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
-Sometime test case is not being executed properly.
+The dataset is sorted by the version of the software package which is named
+ alphabetically.
+ Even though the dataset has a timestamp when the test case is run, the
+ timestamp variable is unsuitable to represent itself as time point in time
+ series.
+ The software package is an important variable and more of an interest to
+ this analysis.
+ It is, therefore, used as the point in time in the time series.
+\end_layout
+
+\begin_layout Standard
+Each software release consists of several software packages.
+ Also, numerous test cases are executed in one software package.
+ It appears to be rather difficult to plot all results from every executed
+ test cases in each software package.
+ Hence, the test case which has a lowest value of the CPU utilization (or
+ minimum value of TotCpu%) is selected to represent the performance of a
+ specific software package.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The reason for choosing the minimum value is because 
+\end_layout
+
+\begin_layout Plain Layout
+tried not to manipulate data and 
+\end_layout
+
+\begin_layout Plain Layout
+remain the data as it is
+\end_layout
+
+\begin_layout Plain Layout
+Even though average value appear to be a good 
+\end_layout
+
+\begin_layout Plain Layout
+Another main reason for not using average value of the CPU utilization is
+ because each test case has its own component in EventsPerSec.
+ also component in EventsPerSec
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sometime a test case is not being executed properly.
  It is either no traffic is generated during the test case or that data
  is not logged.
  If the EventsPerSec field is missing or has no value in it, the test case
  is being treated as incomplete and all the data related to that particular
  test case is ignored.
- This also applied for other cases when any fields in the dataset is not
- fully complete.
+ This also applied for other cases when any fields in the dataset is missing.
 \end_layout
 
 \begin_layout Standard
-Some fields in the dataset store multiple values and these values are separated
- by a tab character.
- They need to be extracted in order to use in further analysis.
- This process had been done for the EventsPerSec field to get its components
+Some fields in the dataset store multiple values separated by a tab character.
+ These tab-separated values are split to columns in order to use for later
+ analysis.
+ This process is done for the EventsPerSec field in order to get its components
  and values which characterize the test case.
-\end_layout
-
-\begin_layout Standard
-Each software release consists of several software packages and numerous
- test cases are executed in one software package.
- Since software package is seen as a time point in time series, it is rather
- difficult to graph all results from every executed test cases.
- Hence, test case which has a minimum value of the total CPU usaged, TotCpu%,
- is selected to represent the performance of specific software package.
 \end_layout
 
 \begin_layout Standard

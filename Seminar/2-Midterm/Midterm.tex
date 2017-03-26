@@ -215,41 +215,42 @@ $$y_{t} = {X_{t}}' \beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}$$
 \end{frame}
 
 %------------------------------------------------
-\section{Model estimation}
+\subsection{Model estimation}
 \begin{frame}
 \frametitle{Model estimation}
-Model parameters
+%Model parameters
 
-$$\theta = (\beta_{S_{t}}, \phi_{1,S_{t}},\sigma^{2}_{S_{t}}, \pi_{S_{t}}, p_{ij})$$
+%$$\theta = (\beta_{S_{t}}, \phi_{1,S_{t}},\sigma^{2}_{S_{t}}, \pi_{S_{t}}, p_{ij})$$
 
-where,
+%where,
 
-$\pi_{S_{t}}$ is initial probabilities in state $S_{t}$
+%$\pi_{S_{t}}$ is initial probabilities in state $S_{t}$
 
-$p_{ij}$ is transition probabilities, $p_{ij}=P(S_{t}=j|S_{t-1}=i) \quad 1\leqslant i,j\leqslant k $
+%$p_{ij}$ is transition probabilities, $p_{ij}=P(S_{t}=j|S_{t-1}=i) \quad 1\leqslant i,j\leqslant k $
 
-and $S_{t}$ is non-observable variable
+%and $S_{t}$ is a non-observable variable
 
-\vspace{5mm}
+%\vspace{5mm}
 
 Model Likelihood
 
-$$L(\theta;y_{t}) = f(y_{t}|\theta) = \sum_{t=1}^{T}\sum_{S_{t}=1}^{k} f(y_{t}|S_{t};\theta)P(S_{t})$$
+$$L(\theta;y_{t}) = f(y_{t}|\theta) = \sum_{t=1}^{T}\sum_{j=1}^{k} f(y_{t}|S_{t}=j;\theta)P(S_{t}=j)$$
+
+and $S_{t}$ is non-observable variable
 
 \end{frame}
 
 %------------------------------------------------
-\subsection{E-M algorithm}
-\begin{frame}
-\frametitle{Model estimation}	
-E-M algorithm 
-\begin{itemize}
-	\item Expectation step: Calculate the expectation of $S_{t}$ given the observation under the current estimated parameters
-	\item Maximization step: Obtain new estimates of the parameters by maximizing likelihood 
-	\item Repeat until converged
-\end{itemize}
+%\begin{frame}
+%\frametitle{Model estimation}	
+%E-M algorithm 
+%\begin{itemize}
+	%\item Expectation step: Calculate the expectation of $S_{t}$ given the observation under the current estimated parameters
+	%\item Maximization step: Obtain new estimates of the parameters by maximizing likelihood 
+	%\item Repeat until converged
+%\end{itemize}
 
-\end{frame}
+%\end{frame}
 
 %------------------------------------------------
 \section{What has been done?}
@@ -297,13 +298,12 @@ Implement and modify code in the package
 	\item Solve non-invertible Hessian using generalized inverse procedure \cite{p2}
 	\item Extension for categorical predictor variables
 	\item Deal with NA coefficients
-	
-	$\Rightarrow$ Mostly occurs when predictor variables are categorical
-	
-	$\Rightarrow$ Initial coefficients with random subsets
-	
-	$\Rightarrow$ A single value or incomplete levels of variable
-	
+	\begin{itemize}
+		\item Initial coefficients with random subsets
+		\item A single value or incomplete levels of variable
+		\item Matrix multiplication to compute conditional means $\Rightarrow$ NAs
+	\end{itemize}
+	Solution: Remove variables with NAs coefficient before performing matrix multiplication
 	
 \end{itemize}
 \end{frame}
@@ -315,10 +315,10 @@ Results of fitting Markov switching autoregressive model
 \begin{itemize}
 	\item Estimated parameters in each state
 	\item For each observation,
-	
-	$\Rightarrow$ State assignment
-	
-	$\Rightarrow$ Probability assignment in each state
+	\begin{itemize}
+		\item State assignment
+		\item Probability assignment in each state
+	\end{itemize}
 	
 	\item Graphs show periods where the observation is in the specific state
 \end{itemize}

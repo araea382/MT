@@ -314,22 +314,22 @@ Description of statistical and other methods used with references to the
 \begin_layout Standard
 In this chapter, methods used for performing the change point analysis in
  this thesis are explained.
- The illustration of the simple Markov swiching model feature is shown and
- more general model specifications namely Markov switching autoregressive
- model is discussed.
-\end_layout
-
-\begin_layout Standard
-Parametric analysis
-\end_layout
-
-\begin_layout Standard
-Non-parametric analysis
+ The illustration of the simple Markov switching model feature is shown
+ here and more general model specifications namely Markov switching autoregressi
+ve model is discussed.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
 status open
+
+\begin_layout Plain Layout
+Parametric analysis
+\end_layout
+
+\begin_layout Plain Layout
+Non-parametric analysis
+\end_layout
 
 \begin_layout Plain Layout
 more about this 
@@ -345,12 +345,12 @@ Markov switching model
 \end_layout
 
 \begin_layout Standard
-Markov switching model is used for time serires that are evolved over unobserved
+Markov switching model is used for time series that are evolved over unobserved
  distinct states or regimes.
- It is a regime switching model where the shifting back and forth between
- the regimes is controlled by latent Markov chain.
- The model structure are consitsts of two stochastic processes embedded
- in two levels of hierarchy.
+ This is a regime switching model where the shifting back and forth between
+ the regimes is controlled by a latent Markov chain.
+ The model structure consists of two stochastic processes embedded in two
+ levels of hierarchy.
  One process is an underlying stochastic process that is not observable
  but it is possible to observe them through another stochastic process which
  generated the sequence of observation 
@@ -363,13 +363,13 @@ key "rabiner1986introduction"
 .
  The time of transition to different state and the duration in between is
  random.
- In addtion, the state assumes to follow the Markov property in which the
- future state depends only on the current state.
+ In addition, the state assumes to follow the Markov property that the future
+ state depends only on the current state.
  
 \end_layout
 
 \begin_layout Standard
-A Markov swtiching model is able to model more complex stochastic processes
+A Markov switching model is able to model more complex stochastic processes
  and describe changes in the dynamic behavior.
  A general structure of the model can be drawn in graphically as shown in
  
@@ -565,7 +565,7 @@ where
 \begin_inset Formula $t_{0}$
 \end_inset
 
- is a known change point
+ is a known change point.
 \end_layout
 
 \begin_layout Standard
@@ -576,7 +576,7 @@ reference "eq:msm"
 
 \end_inset
 
- is the simplest case for the switching model.
+ is the simplest form for the switching model.
  To aid understanding and simplicity, the baseline model assuming two states
  
 \begin_inset Formula $(k=2)$
@@ -603,7 +603,7 @@ reference "eq:msm"
 \uwave off
 \noun off
 \color none
-describes the distribution for the next state given the current state
+describe the distribution for the next state given the current state
 \family default
 \series default
 \shape default
@@ -629,7 +629,7 @@ describes the distribution for the next state given the current state
 \begin_inset Formula $S_{t}=j$
 \end_inset
 
- is defined by the transition probabilities as follows
+ is defined by the transition probabilities as follow
 \end_layout
 
 \begin_layout Standard
@@ -665,8 +665,8 @@ where
 \end_layout
 
 \begin_layout Standard
-The transition probabilties in matrix notation with two-state Markov chain
- is given by
+The transition probabilities in a matrix notation with two-state Markov
+ chain is given by
 \end_layout
 
 \begin_layout Standard
@@ -755,11 +755,7 @@ Since the whole process
 \uwave off
 \noun off
 \color none
- or the steady state probabilities of 
-\begin_inset Formula $S_{t}$
-\end_inset
-
-, which describes the starting distribution over states, also needs to be
+ which describes the starting distribution over states also needs to be
  specified.
 \end_layout
 
@@ -787,8 +783,8 @@ The unobserved regime variable
 \begin_inset Formula $S_{t}$
 \end_inset
 
- is governed by a first order Markov chain with constant transtition probabiliti
-es given by
+ is governed by a first order Markov chain with constant transition probabilitie
+s given by
 \end_layout
 
 \end_inset
@@ -826,7 +822,7 @@ and
 \noun default
 \color inherit
  observation probability which describes the distribution for the output
- given the current state or a chance of observation occuring in a given
+ given the current state or a chance of observation occurring in a given
  state,
 \family roman
 \series medium
@@ -858,9 +854,9 @@ Autoregressive (AR) model
 \begin_layout Standard
 Autoregressive model is one type of time series model that uses for describing
  the time-varying process.
- It is flexible in handling various kind of time series pattern.
- The name comes from how it performs a regression of the variable against
- itself or on its own previous outputs 
+ The model is flexible in handling various kinds of time series patterns.
+ The name autoregressive comes from how the model performs a regression
+ of the variable against its own previous outputs 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "cryer1986time"
@@ -873,7 +869,7 @@ key "cryer1986time"
 \end_inset
 
 .
- Hence, an autoressive model of order 
+ Hence, an autoregressive model of order 
 \begin_inset Formula $p$
 \end_inset
 
@@ -911,24 +907,25 @@ where
 \begin_inset Formula $c$
 \end_inset
 
- is a constant,
+ is a constant, 
 \begin_inset Formula $\phi_{i}$
 \end_inset
 
- are the coefficients in autoregression and 
+ are coefficients in the autoregression and 
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
- is Gaussian white noise with zero mean and variance
+ is Gaussian white noise with zero mean and variance 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
 .
  If 
-\begin_inset Formula $p=1$
+\begin_inset Formula $p$
 \end_inset
 
-, the model is called the first order autoregression process or AR(1).
+ is equal to one, the model is called the first order autoregression process
+ or AR(1).
 \end_layout
 
 \begin_layout Section
@@ -936,11 +933,11 @@ Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
-This is an extension of the basic Markov switching model which also has
- dependencies at observation level.
- The model relaxes the conditional independent assumption by allowing observatio
-n probability to also depends on the past observation and the current state
- 
+This model is an extension of the basic Markov switching model which has
+ dependencies at the observation level.
+ Markov switching autoregressive model relaxes the conditional independent
+ assumption by allowing an observation to also depends on a past observation
+ and a current state 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "shannon2009formulation"
@@ -948,8 +945,8 @@ key "shannon2009formulation"
 \end_inset
 
 .
- The observations are drawn from autoregression process.
- Thus, the first order Markov switching autoregressive model is 
+ The observations are drawn from autoregression process and the first order
+ Markov switching autoregressive model is 
 \end_layout
 
 \begin_layout Standard
@@ -992,7 +989,7 @@ where
 \begin_inset Formula $\varepsilon_{t}\sim N(0,\sigma_{S_{t}}^{2})$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -1090,15 +1087,15 @@ Parameter Estimation
 \end_layout
 
 \begin_layout Standard
-There are various ways to estimate parameters of Markov swiching model.
- The methods which have been widely use are as follows: E-M algorithm 
+There are various ways to estimate parameters of Markov switching model.
+ Methods which have been widely use are as follow: E-M algorithm 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "hamilton1990analysis,kim1994dynamic"
 
 \end_inset
 
- used the maximum likelihood criterion, segmental K-mean 
+ used the maximum likelihood criterion, Segmental K-mean 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "juang1990segmental"
@@ -1116,7 +1113,7 @@ key "kim1999state"
  used a Markov chain Monte Carlo simulation method based on the Bayesian
  inference.
  In this thesis framework, E-M algorithm is used in estimating parameters
- and is briefly described the general procedure.
+ and is briefly described a general procedure.
  
 \end_layout
 
@@ -1156,7 +1153,7 @@ key "janczura2012efficient"
 .
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 E-step
 \end_layout
 
@@ -1186,8 +1183,8 @@ Assume that
 \end_inset
 
 .
- It consists of filtering and smoothing algorithm and the process is described
- as follows 
+ The E-step consists of filtering and smoothing algorithm and the process
+ is described as follow 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1994dynamic"
@@ -1197,7 +1194,7 @@ key "kim1994dynamic"
 :
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Paragraph
 Filtering
 \end_layout
 
@@ -1216,7 +1213,7 @@ Filtered probability is the probability of the non-observable Markov chain
 \end_inset
 
 .
- The algorithm starts from
+ The algorithm starts from 
 \begin_inset Formula $t=1$
 \end_inset
 
@@ -1229,13 +1226,13 @@ Filtered probability is the probability of the non-observable Markov chain
 \begin_inset Formula $t=1$
 \end_inset
 
- is chosen as an arbitrary values.
- The probabilites of each state given that the available observation is
+ is chosen as arbitrary values.
+ The probabilities of each state given that the available observation is
  up to time 
 \begin_inset Formula $t-1$
 \end_inset
 
- is calculated:
+ is calculated.
 \end_layout
 
 \begin_layout Standard
@@ -1301,7 +1298,7 @@ Then, with the new observation at time
 \begin_inset Formula $t$
 \end_inset
 
-, the probabilites of each state is updated by using Bayes' rule
+, the probabilities of each state are updated by using Bayes' rule
 \end_layout
 
 \begin_layout Standard
@@ -1402,7 +1399,7 @@ P(S_{t-1}=i,S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t},S_{t-1}=i,S_{t}=j|\Om
 
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Paragraph
 Smoothing
 \end_layout
 
@@ -1423,7 +1420,7 @@ Smoothed probability is the probability of the non-observable Markov chain
 
 .
  The starting value is obtained from the final iteration of the filtered
- probabilites.
+ probabilities.
 \end_layout
 
 \begin_layout Standard
@@ -1494,21 +1491,20 @@ Once the filtered probabilities are estimated, there is necessarily enough
 \end_layout
 
 \begin_layout Standard
-which is a weighted average of the likelihood function in each state.
+This is simply a weighted average of the likelihood function in each state.
  The probabilities of states are considered as weights.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 M-step
 \end_layout
 
 \begin_layout Standard
-The new estimated parameters, 
+The new estimated model parameters 
 \begin_inset Formula $\theta^{(n+1)}$
 \end_inset
 
-, which is more exact value of maximum likelihood estimates than the previous
- one, is obtained by finding the set of parameter that maximizes the Equation
+ is obtained by finding the set of parameters that maximizes the Equation
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1517,13 +1513,15 @@ reference "eq:loglik"
 \end_inset
 
 .
- This new set of parameter is used in the next iteration of the E-step.
- The estimated model parameters are derived by taking the partial derivative
- of the log-likelihood function with respect to the specific parameters
- and then setting it to zero.
- In practice, the process is similar to the standard Maximum likelihood
- estimation except that it has to be weighted by the smoothed probabilities
- since each observartion 
+ This new set of parameters is more exact value of the maximum likelihood
+ estimates than the previous one.
+ It serves as the set of parameters in the next iteration of the E-step.
+ The estimated parameters are derived by taking the partial derivative of
+ the log-likelihood function with respect to the specific parameter and
+ then setting it to zero.
+ Generally, this process is similar to the standard maximum likelihood estimatio
+n except that it has to be weighted by the smoothed probabilities since
+ each observation 
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -1535,33 +1533,16 @@ reference "eq:loglik"
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Change-point score: Plausibility of changes that have happened
-\end_layout
-
-\begin_layout Plain Layout
-Metrics (True positive rate/ False positive rate/ Detection delay)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 ecp
 \end_layout
 
 \begin_layout Standard
-ecp is an extension package in R which mainly focus on computing nonparametric
- test for multiple change point analysis.
- It is applicable to both univariate and multivariate time series.
- A fundamental idea for building alogrithms that can identify the change
- point is based on either divisive or agglomerative procedure in hierrachical
+ecp is an extension package in R which mainly focus on computing the nonparametr
+ic test for multiple change point analysis.
+ This method is applicable to both univariate and multivariate time series.
+ A fundamental idea for building algorithms that can identify the change
+ point is based on either divisive or agglomerative procedure in hierarchical
  clustering approach 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1570,7 +1551,7 @@ key "james2013ecp"
 \end_inset
 
 .
- It uses an energy
+ It uses an energy function.
 \end_layout
 
 \begin_layout Standard
@@ -1578,7 +1559,7 @@ key "james2013ecp"
 status open
 
 \begin_layout Plain Layout
-more about this as well
+more about this
 \end_layout
 
 \end_inset
@@ -1591,8 +1572,8 @@ E-divisive
 \end_layout
 
 \begin_layout Standard
-E-divisive algorithm recursively partitioned a time series.
- An estimatation of the change point is computed at each iteration.
+E-divisive algorithm recursively partitions a time series.
+ An estimation of the change point is computed at each iteration.
  Permutation test is performed to find the statistical significance of an
  estimated change point.
 \end_layout
@@ -1602,13 +1583,13 @@ E-agglomerative
 \end_layout
 
 \begin_layout Standard
-E-agglomerative alogrithm trys to maximized a goodness of fit test after
+E-agglomerative algorithm tries to maximized a goodness of fit test after
  merging segments in the iteration.
  The estimated change point is defined by the iteration that maximized a
  goodness of fit statistic.
- It allows user to input an initial segmentation for the time series or
- a prior knowledge of the possible change point in order to reduce the computati
-on time.
+ This algorithm allows user to input an initial segmentation for the time
+ series or a prior knowledge of the possible change point in order to reduce
+ the computation time.
 \end_layout
 
 \begin_layout Standard

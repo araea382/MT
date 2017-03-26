@@ -420,7 +420,7 @@ In this study, change point analysis will be used to identify changes in
  Many test cases have been executed for testing software packages in a simulatio
 n environment.
  Before launching the software products to its customers, the company needs
- to test and determine how is software package performs.
+ to test and determine how each software package performs.
  The performance of these software packages is evaluated by considering
  on CPU utilizations (percentages of CPU's cycle spent on each process),
  memory usage and latency.

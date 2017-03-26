@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.18)  26 MAR 2017 10:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.18)  26 MAR 2017 15:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -937,7 +937,7 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 
 ] [3
 
-] <graph3.png, id=150, 435.87843pt x 210.7875pt>
+] <graph3.png, id=144, 435.87843pt x 210.7875pt>
 File: graph3.png Graphic file (type png)
 
 <use graph3.png>
@@ -962,7 +962,7 @@ line 163.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) <msm.png, id=184, 479.7925pt x 168.63pt>
+) <msm.png, id=177, 479.7925pt x 168.63pt>
 File: msm.png Graphic file (type png)
  <use msm.png>
 Package pdftex.def Info: msm.png used on input line 163.
@@ -977,7 +977,7 @@ Package pdftex.def Info: msm.png used on input line 184.
 (pdftex.def)             Requested size: 171.14764pt x 60.15353pt.
  [6
 
-] <inde.png, id=242, 315.42844pt x 196.48407pt>
+] <inde.png, id=235, 315.42844pt x 196.48407pt>
 File: inde.png Graphic file (type png)
  <use inde.png>
 Package pdftex.def Info: inde.png used on input line 201.
@@ -985,7 +985,7 @@ Package pdftex.def Info: inde.png used on input line 201.
 
 [7
 
- <./inde.png>] <msm-ar.png, id=272, 477.785pt x 162.6075pt>
+ <./inde.png>] <msm-ar.png, id=266, 477.785pt x 162.6075pt>
 File: msm-ar.png Graphic file (type png)
  <use msm-ar.png>
 Package pdftex.def Info: msm-ar.png used on input line 215.
@@ -995,29 +995,27 @@ Package pdftex.def Info: msm-ar.png used on input line 215.
 
  <./msm-ar.png>] [9
 
-] [10
-
-] <table4.png, id=351, 421.575pt x 164.86594pt>
+] <table4.png, id=319, 421.575pt x 164.86594pt>
 File: table4.png Graphic file (type png)
 
 <use table4.png>
-Package pdftex.def Info: table4.png used on input line 279.
+Package pdftex.def Info: table4.png used on input line 280.
 (pdftex.def)             Requested size: 188.26346pt x 73.62546pt.
 
-Overfull \vbox (10.56435pt too high) detected at line 279
+Overfull \vbox (10.56435pt too high) detected at line 280
  []
 
-[11
+[10
 
- <./table4.png>] [12
+ <./table4.png>] [11
+
+] [12
 
 ] [13
 
 ] [14
 
 ] [15
-
-] [16
 
  </usr/local/texlive/2015/texmf-dist/tex/latex/beamer/art/beamericonarticle.pdf
 >]
@@ -1036,7 +1034,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 365.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
 Package rerunfilecheck Info: File `Midterm.out' has not changed.
-(rerunfilecheck)             Checksum: 1488CDE7E8927256851A46BB56F5A79D;415.
+(rerunfilecheck)             Checksum: BF567094F29124CAB7CA9122A509D2B9;366.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1045,11 +1043,11 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 365.
  ) 
 Here is how much of TeX's memory you used:
- 16927 strings out of 493089
- 327343 string characters out of 6134842
- 390758 words of memory out of 5000000
- 19958 multiletter control sequences out of 15000+600000
- 11877 words of font info for 43 fonts, out of 8000000 for 9000
+ 16962 strings out of 493089
+ 328386 string characters out of 6134842
+ 389755 words of memory out of 5000000
+ 19994 multiletter control sequences out of 15000+600000
+ 15066 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,62p,387b,600s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -1064,12 +1062,11 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on Midterm.pdf (16 pages, 228536 bytes).
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Midterm.pdf (15 pages, 218454 bytes).
 PDF statistics:
- 580 PDF objects out of 1000 (max. 8388607)
- 517 compressed objects within 6 object streams
- 43 named destinations out of 1000 (max. 500000)
- 154 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 545 PDF objects out of 1000 (max. 8388607)
+ 484 compressed objects within 5 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 152 words of extra memory for PDF output out of 10000 (max. 10000000)
 
