@@ -432,7 +432,7 @@ Recently, a method called hidden Markov model or Markov switching model
  is widely used for discovering a change point in time series.
  Both terms are acceptable but being called differently regarding to the
  different fields of study.
- Markov switching model uses a concept of Markov process to model an underlying
+ Markov switching model uses a concept of Markov chain to model an underlying
  segmentation as different states and then specify a distinct change of
  location.
  Hence, the method is able to identify a switch in time series when change
@@ -499,32 +499,30 @@ key "kim1998testing"
 \begin_layout Standard
 Markov switching model is one of the most well-known non linear time series
  models.
- This method can be implemented to model various time series data with dynamic
- behavior.
+ This model can be applied to various time series data with dynamic behavior.
  The structural changes or regime shifts in data mean that constant parameter
  in time series model might be insufficient to capture these behaviors and
  describe their evolution.
  Markov switching model takes the presence of shifting regime in time series
  into account and models multiple structures that can explain these characterist
 ics in different states at different time.
- The shift between state or regime comes from the switching mechanism which
- is assumed to follow an unobserved Markov chain.
- Thus, the model is able to capture more complex dynamic patterns, identify
- the change of location and regime switch in time series.
+ The shift between states or regimes comes from the switching mechanism
+ which is assumed to follow an unobserved Markov chain.
+ Thus, the model is able to capture more complex dynamic patterns and also
+ identify the change of locations and regime switch in time series.
  
 \end_layout
 
 \begin_layout Standard
 Each software package in the system is viewed as a time point in time series
- and the performance of software package is treated as an observe value.
- According to the behavior of observation sequence in this study, it is
- found that observation is not completely independent of each other (i.e.,
- performance of current software package depends on the performance from
- the past version of software package).
- Therefore, additional dependencies at observation level with the first
- order autoregression is taken into consideration when modeling the Markov
- switching model.
- It is simply called Markov switching autoregressive model.
+ and the performance of each software package is treated as an observed
+ value.
+ In this study, the observed value is not completely independent of each
+ other i.e., the performance of the current software package depends on the
+ performance from the prior version of the software package.
+ Therefore, additional dependencies, with the first order autoregression,
+ is taken into consideration when modeling the Markov switching model and
+ becomes Markov switching autoregressive model.
 \end_layout
 
 \begin_layout Standard
@@ -610,23 +608,21 @@ name "sec:Objective"
 \end_layout
 
 \begin_layout Standard
-The main idea of this thesis is to reduce laborer work to do visual inspection
- whenever they want to analyze the performance of update software package.
- With the rise of data generation coming from a large number of test cases,
- this work becomes much more difficult and perhaps inefficient to do it
- manually.
- The main objective for this thesis is to implement machine learning, the
- algorithm that has an ability to learn from data, to analyze the performance
- of the software package.
- The algorithm will help indicate whether the performance of software package
- is in a degradation, improvement or steady state.
- There is also a case when changes in the test environment affect performance
- even though there is no change in the software package.
- The implemented algorithm should be able to also detect when the test environme
+The core idea of this thesis is to reduce workload of manual inspection
+ when the performance analysis of an update software package is required.
+ With an increase amout of generated data from numerous test cases, the
+ inspection becomes tedious and inefficient to be done manually.
+ The main objective of this thesis is to implement machine learning, an
+ algorithm that has an ability to learn from data, in order to analyze the
+ performance of the software package.
+ The algorithm will help indicate whether the performance of the software
+ package is in a degrading, improving or steady state.
+ There is also worth to mention that the performance of a particular software
+ package can vary on different test environment.
+ The implemented algorithm should also be able to detect when the test environme
 nt is altered.
- CPU utilization is focused in this thesis.
- It is one of the essential factor that needs to be optimized when considering
- releasing an upgrade software package.
+ This thesis only focuses on CPU utilization which is one of the three essential
+ factors for evaluating the performance of the upgrade software package.
 \end_layout
 
 \begin_layout Standard
@@ -634,21 +630,23 @@ To summarize, this thesis aims to:
 \end_layout
 
 \begin_layout Itemize
-Detect the degradation, improvement or steady state in CPU utilization
+Detect the state of the CPU utilization (degrading, improving or steady
+ state)
 \end_layout
 
 \begin_layout Itemize
-Detect whether there is some changes in test environment that have an impact
- on CPU utilization
+Detect whether there is any change in the test environment that effects
+ the CPU utilization
 \end_layout
 
 \begin_layout Standard
-The thesis is structured as follows: Chapter 2 provides detail and description
+The thesis is structured as follow: Chapter 2 provides details and descriptions
  of datasets used in the analysis.
  Chapter 3 presents methodology.
- Results from the analysis is shown in Chapter 4 along with tables and plots.
- Chapter 5 discusses about the outcome and the obtained results, and conclusion
- can be found in Chapter 6.
+ Results from the analysis along with tables and plotsare shown in Chapter
+ 4.
+ Chapter 5 discusses the outcomes and the obtained results.
+ Lastly, Chapter 6 contains conclusion.
  
 \end_layout
 

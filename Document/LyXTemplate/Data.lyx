@@ -449,7 +449,7 @@ Since there are many different types of test cases executed, this field
 \end_deeper
 \begin_layout Standard
 Not all variables in the dataset are chosen to be used for futher analysis.
- There are in total 6 variables used as predictors and one response variable
+ There are in total six variables used as predictors and one response variable
  as shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -832,9 +832,9 @@ Sometime test case is not being executed properly.
 \end_layout
 
 \begin_layout Standard
-Some fields in the dataset store multiple values and these values are separated
- by a tab character.
- They need to be extracted in order to use in further analysis.
+Some fields in the dataset store multiple values separated by a tab character.
+ These tab-separated values are split to columns in order to use for later
+ analysis.
  This process had been done for the EventsPerSec field to get its components
  and values which characterize the test case.
 \end_layout

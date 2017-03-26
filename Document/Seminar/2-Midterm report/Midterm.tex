@@ -118,33 +118,13 @@
 \begin{frame}
 \frametitle{Objectives}
 \begin{itemize}
-	\item Detect the degradation, improvement or steady state in \texttt{CPU utilization}
-	\item Detect whether there is some changes in test environment that have an impact on \texttt{CPU utilization}
+	\item Detect the state of the \texttt{CPU utilization} (degrading, improving or steady state)
+	\item Detect whether there is any change in the test environment that effects the \texttt{CPU utilization}
 \end{itemize}
 \end{frame}
 
 %------------------------------------------------
-\section{Data preprocessing}
-\begin{frame}
-\frametitle{Data preprocessing}
-One software product $\Rightarrow$ many software packages
 
-One software package $\Rightarrow$ many different types of test cases
-
-\begin{itemize}
-	\item Discard incomplete test case 
-	\item Multiple values separated by a tab character are stored together in column $\Rightarrow$ split a tab-separated values to columns
-\end{itemize}
-
-\begin{figure}
-	\includegraphics[width=0.6\linewidth]{table4}
-	\caption{Data example}
-\end{figure}
-
-\end{frame}
-
-
-%------------------------------------------------
 \section{Markov switching model} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 \begin{frame}
 	\frametitle{Markov switching model, \cite{p1}}
@@ -192,7 +172,7 @@ $$y_{t} = {X_{t}}'\beta_{S_{t}} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(
 
 \begin{itemize}
 	\item $y_{t}$ is \texttt{CPU utilization}
-	\item$X_{t}$ are some components which have an impact on the \texttt{CPU utilization} and test environment
+	\item$X_{t}$ are components which have an impact on the \texttt{CPU utilization}
 	\item Assume there are three states ($k=3$): normal, good, bad
 \end{itemize}
 
@@ -273,11 +253,38 @@ E-M algorithm
 
 %------------------------------------------------
 \section{What has been done?}
+
+\begin{frame}
+\frametitle{What has been done?}
+One software product $\Rightarrow$ many software packages
+	
+One software package $\Rightarrow$ many different types of test cases
+
+\vspace{3mm}
+
+Data preprocessing 
+
+\begin{itemize}
+	\item Select a test case which has a minimum value of \texttt{CPU utilization} for each software package
+	\item Multiple values separated by a tab character are stored together in column $\Rightarrow$ split a tab-separated values to columns
+	\item Remove incomplete test cases 
+	
+\end{itemize}
+	
+\begin{figure}
+	\includegraphics[width=0.55\linewidth]{table4}
+	\caption{Data example}
+\end{figure}
+
+\end{frame}
+
+
+%------------------------------------------------
 \begin{frame}
 \frametitle{What has been done?}
 Study and review source code  in the R package in detail
 \begin{itemize}
-	\item MSwM: An univariate autoregressive Markov switching model for linear and generalized model \cite{p3}
+	\item MSwM: An univariate autoregressive Markov switching model for linear and generalized model by using the EM algorithm \cite{p3}
 \end{itemize}
 \end{frame}
 
@@ -287,9 +294,17 @@ Study and review source code  in the R package in detail
 Implement and modify code in the package
 \begin{itemize}
 	\item Small typo in the code when computing residual variance
-	\item Solve noninvertible Hessian using generalized inverse procedure \cite{p2}
+	\item Solve non-invertible Hessian using generalized inverse procedure \cite{p2}
 	\item Extension for categorical predictor variables
-	\item NAs coefficients
+	\item Deal with NA coefficients
+	
+	$\Rightarrow$ Mostly occurs when predictor variables are categorical
+	
+	$\Rightarrow$ Initial coefficients with random subsets
+	
+	$\Rightarrow$ A single value or incomplete levels of variable
+	
+	
 \end{itemize}
 \end{frame}
 

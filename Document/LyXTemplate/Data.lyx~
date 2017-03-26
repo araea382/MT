@@ -449,7 +449,7 @@ Since there are many different types of test cases executed, this field
 \end_deeper
 \begin_layout Standard
 Not all variables in the dataset are chosen to be used for futher analysis.
- There are in total 6 variables used as predictors and one response variable
+ There are in total six variables used as predictors and one response variable
  as shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -481,16 +481,6 @@ Description of the selected variables
 \end_inset
 
 
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Perhaps change table name
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "data"
@@ -504,8 +494,9 @@ name "data"
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="3">
+<lyxtabular version="3" rows="8" columns="4">
 <features tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -533,6 +524,15 @@ Name
 
 \begin_layout Plain Layout
 Type
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unit
 \end_layout
 
 \end_inset
@@ -566,6 +566,15 @@ Continuous
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Percentage
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
@@ -591,6 +600,15 @@ RrcConnectionSetupComplete
 
 \begin_layout Plain Layout
 Continuous
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -624,6 +642,15 @@ Continuous
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
@@ -649,6 +676,15 @@ X2HandoverRequest
 
 \begin_layout Plain Layout
 Continuous
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -682,6 +718,15 @@ Categorical
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" leftline="true" rightline="true" usebox="none">
@@ -711,6 +756,15 @@ Binary
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -736,6 +790,15 @@ NumCells
 
 \begin_layout Plain Layout
 Categorical
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
