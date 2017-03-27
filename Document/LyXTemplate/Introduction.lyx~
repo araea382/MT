@@ -420,9 +420,9 @@ In this study, change point analysis will be used to identify changes in
  Many test cases have been executed for testing software packages in a simulatio
 n environment.
  Before launching the software products to its customers, the company needs
- to test and determine how is software package performs.
+ to test and determine how each software package performs.
  The performance of these software packages is evaluated by considering
- on CPU utilizations (percentages of CPU's cycle spent on each process),
+ on CPU utilization (percentages of CPU's cycle spent on each process),
  memory usage and latency.
  
 \end_layout
@@ -610,7 +610,7 @@ name "sec:Objective"
 \begin_layout Standard
 The core idea of this thesis is to reduce workload of manual inspection
  when the performance analysis of an update software package is required.
- With an increase amout of generated data from numerous test cases, the
+ With an increase amount of generated data from numerous test cases, the
  inspection becomes tedious and inefficient to be done manually.
  The main objective of this thesis is to implement machine learning, an
  algorithm that has an ability to learn from data, in order to analyze the
@@ -643,7 +643,7 @@ Detect whether there is any change in the test environment that effects
 The thesis is structured as follow: Chapter 2 provides details and descriptions
  of datasets used in the analysis.
  Chapter 3 presents methodology.
- Results from the analysis along with tables and plotsare shown in Chapter
+ Results from the analysis along with tables and plots are shown in Chapter
  4.
  Chapter 5 discusses the outcomes and the obtained results.
  Lastly, Chapter 6 contains conclusion.

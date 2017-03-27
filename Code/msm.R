@@ -31,15 +31,10 @@ plotReg(mod.mswm, regime=2)
 plotReg(mod.mswm)
 
 #----------------------#
-# g2 L16B
 # one test case per SW
-# 3 states
-# switching in all coefficients
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
-predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest")
+# predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","DuProdName","Fdd.Tdd","NumCells")
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
-mod <- lm(fmla, data=train_g2_L16B)
-summary(mod)
 
 # # scale
 # g2_L16B_scale <- subset(g2_L16B, select=c("TotCpu%",predictor))
@@ -53,6 +48,13 @@ summary(mod)
 # model_mswm <- msmFit(mod2, k=3, p=1, sw=c(TRUE,TRUE,FALSE,TRUE,TRUE,TRUE), control=list(trace=FALSE, maxiter=500, parallel=FALSE))
 # summary(model_mswm)
 # it seems that scale or not scale is the same
+
+#----------------------#
+# g2 L16B
+# 3 states
+# switching in all coefficients
+mod <- lm(fmla, data=train_g2_L16B)
+summary(mod)
 
 set.seed(1)
 model_mswm <- MSwM2::msmFit(mod, k=3, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
@@ -179,70 +181,70 @@ for(i in 1:3){
 par(mfrow=c(1,1))
 
 #----------------------#
-# forecast from fMarkovSwitching package
-# new_data <- test_g2_L16B
-library(fMarkovSwitching)
-data(dep)
-data(indep)
-dep=as.matrix(dep)
-indep=as.matrix(indep)
-
-S=c(1,0,0)
-distrib<-"Normal"
-k<-2
-
-dep=dep[-nrow(dep)]
-myNewIndep=indep[-nrow(indep),]
-newIndep_For=as.matrix(t(indep[nrow(indep),]))
-
-set.seed(10)
-mod <- lm(dep~myNewIndep-1)
-mswm <- msmFit(mod,k=2,p=0,sw=c(T,F,F,T),control=list(trace=T,parallel=F))
-
-
-nPeriods <- 1
-newIndep <- newIndep_For
-newIndep<-as.matrix(newIndep)
-
-nr <- nrow(mswm["model"]$model[,-1])
-k <- mswm@k
-swi <- mswm["switch"][-length(mswm["switch"])]
-n_S <- sum(swi) # discard the variance
-nIndep <- ncol(as.matrix(mswm["model"]$model[,-1,drop=F]))
-n_nS <- nIndep - n_S
-coeff <- as.matrix(mswm["Coef"])
-Coeff <- list(sigma=mswm@std, indep_nS=matrix(coeff[1,which(!swi)],nrow=sum(!swi)),
-              indep_S=matrix(coeff[,which(swi)],nrow=sum(swi)), p=mswm@transMat)
-
-newIndep_S <- matrix(data = 0 , nrow = 1, ncol = n_S)
-newIndep_nS <- matrix(data = 0, nrow = 1, ncol = n_nS)
-
-count_nS <- 0
-count_S <- 0
-
-for (i in 1:nIndep){
-  if(swi[i]==1){
-    count_S <- count_S + 1
-    newIndep_S[,count_S] <- newIndep[,i]
-  }else{
-    count_nS<-count_nS + 1
-    newIndep_nS[,count_nS] <- newIndep[,i]
-  }
-}
-
-newFiltProb <- mswm@transMat %*% (mswm@Fit@filtProb[nr,]) # this is the filtered probabilities
-# of t+1 conditional on the info in t
-
-condMean <- matrix(0,nPeriods,k) # conditional mean in all states
-
-for (i in 1:nPeriods){
-  for (j in 1:k){
-    condMean[i,j] <- newIndep_nS %*% Coeff$indep_nS + newIndep_S %*% (Coeff$indep_S[,j])
-  }
-}
-
-newCondMean <- condMean %*% newFiltProb # the new conditional mean is the weighted average of the cond means in each state
-newCondStd <- Coeff$sigma %*% newFiltProb # same as cond mean
+# # forecast from fMarkovSwitching package
+# # new_data <- test_g2_L16B
+# library(fMarkovSwitching)
+# data(dep)
+# data(indep)
+# dep=as.matrix(dep)
+# indep=as.matrix(indep)
+# 
+# S=c(1,0,0)
+# distrib<-"Normal"
+# k<-2
+# 
+# dep=dep[-nrow(dep)]
+# myNewIndep=indep[-nrow(indep),]
+# newIndep_For=as.matrix(t(indep[nrow(indep),]))
+# 
+# set.seed(10)
+# mod <- lm(dep~myNewIndep-1)
+# mswm <- msmFit(mod,k=2,p=0,sw=c(T,F,F,T),control=list(trace=T,parallel=F))
+# 
+# 
+# nPeriods <- 1
+# newIndep <- newIndep_For
+# newIndep<-as.matrix(newIndep)
+# 
+# nr <- nrow(mswm["model"]$model[,-1])
+# k <- mswm@k
+# swi <- mswm["switch"][-length(mswm["switch"])]
+# n_S <- sum(swi) # discard the variance
+# nIndep <- ncol(as.matrix(mswm["model"]$model[,-1,drop=F]))
+# n_nS <- nIndep - n_S
+# coeff <- as.matrix(mswm["Coef"])
+# Coeff <- list(sigma=mswm@std, indep_nS=matrix(coeff[1,which(!swi)],nrow=sum(!swi)),
+#               indep_S=matrix(coeff[,which(swi)],nrow=sum(swi)), p=mswm@transMat)
+# 
+# newIndep_S <- matrix(data = 0 , nrow = 1, ncol = n_S)
+# newIndep_nS <- matrix(data = 0, nrow = 1, ncol = n_nS)
+# 
+# count_nS <- 0
+# count_S <- 0
+# 
+# for (i in 1:nIndep){
+#   if(swi[i]==1){
+#     count_S <- count_S + 1
+#     newIndep_S[,count_S] <- newIndep[,i]
+#   }else{
+#     count_nS<-count_nS + 1
+#     newIndep_nS[,count_nS] <- newIndep[,i]
+#   }
+# }
+# 
+# newFiltProb <- mswm@transMat %*% (mswm@Fit@filtProb[nr,]) # this is the filtered probabilities
+# # of t+1 conditional on the info in t
+# 
+# condMean <- matrix(0,nPeriods,k) # conditional mean in all states
+# 
+# for (i in 1:nPeriods){
+#   for (j in 1:k){
+#     condMean[i,j] <- newIndep_nS %*% Coeff$indep_nS + newIndep_S %*% (Coeff$indep_S[,j])
+#   }
+# }
+# 
+# newCondMean <- condMean %*% newFiltProb # the new conditional mean is the weighted average of the cond means in each state
+# newCondStd <- Coeff$sigma %*% newFiltProb # same as cond mean
 
 #----------------------#
 

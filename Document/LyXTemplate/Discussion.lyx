@@ -321,7 +321,7 @@ number of parameters grows exponentially
 \end_layout
 
 \begin_layout Standard
-solution is probablu a local maximum 
+solution is probably a local maximum 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "perlin2015ms_regress"
@@ -333,6 +333,10 @@ key "perlin2015ms_regress"
 
 \begin_layout Standard
 assume that NodeName which executed test case is indifferent.
+\end_layout
+
+\begin_layout Standard
+No link between missingness of observation and state
 \end_layout
 
 \begin_layout Standard

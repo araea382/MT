@@ -924,7 +924,8 @@ where
 \begin_inset Formula $p$
 \end_inset
 
- is, the model is called the first order autoregression process or AR(1).
+ is equal to one, the model is called the first order autoregression process
+ or AR(1).
 \end_layout
 
 \begin_layout Section
@@ -932,11 +933,11 @@ Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
-This is an extension of the basic Markov switching model which also has
- dependencies at observation level.
- The model relaxes the conditional independent assumption by allowing observatio
-n probability to also depends on the past observation and the current state
- 
+This model is an extension of the basic Markov switching model which has
+ dependencies at the observation level.
+ Markov switching autoregressive model relaxes the conditional independent
+ assumption by allowing an observation to also depends on a past observation
+ and a current state 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "shannon2009formulation"
@@ -944,8 +945,8 @@ key "shannon2009formulation"
 \end_inset
 
 .
- The observations are drawn from autoregression process.
- Thus, the first order Markov switching autoregressive model is 
+ The observations are drawn from autoregression process and the first order
+ Markov switching autoregressive model is 
 \end_layout
 
 \begin_layout Standard
@@ -985,10 +986,14 @@ where
 \end_inset
 
  and 
-\begin_inset Formula $\varepsilon_{t}\sim N(0,\sigma_{S_{t}}^{2})$
+\begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
+ follows a Normal distribution with mean zero and variance given by 
+\begin_inset Formula $\sigma_{S_{t}}^{2}$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Standard
@@ -1087,14 +1092,14 @@ Parameter Estimation
 
 \begin_layout Standard
 There are various ways to estimate parameters of Markov switching model.
- The methods which have been widely use are as follows: E-M algorithm 
+ Methods which have been widely use are as follow: E-M algorithm 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "hamilton1990analysis,kim1994dynamic"
 
 \end_inset
 
- used the maximum likelihood criterion, segmental K-mean 
+ used the maximum likelihood criterion, Segmental K-mean 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "juang1990segmental"
@@ -1112,7 +1117,7 @@ key "kim1999state"
  used a Markov chain Monte Carlo simulation method based on the Bayesian
  inference.
  In this thesis framework, E-M algorithm is used in estimating parameters
- and is briefly described the general procedure.
+ and is briefly described a general procedure.
  
 \end_layout
 
@@ -1152,7 +1157,7 @@ key "janczura2012efficient"
 .
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 E-step
 \end_layout
 
@@ -1182,8 +1187,8 @@ Assume that
 \end_inset
 
 .
- It consists of filtering and smoothing algorithm and the process is described
- as follows 
+ The E-step consists of filtering and smoothing algorithm and the process
+ is described as follow 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1994dynamic"
@@ -1193,7 +1198,7 @@ key "kim1994dynamic"
 :
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Paragraph
 Filtering
 \end_layout
 
@@ -1212,7 +1217,7 @@ Filtered probability is the probability of the non-observable Markov chain
 \end_inset
 
 .
- The algorithm starts from
+ The algorithm starts from 
 \begin_inset Formula $t=1$
 \end_inset
 
@@ -1225,13 +1230,13 @@ Filtered probability is the probability of the non-observable Markov chain
 \begin_inset Formula $t=1$
 \end_inset
 
- is chosen as an arbitrary values.
+ is chosen as arbitrary values.
  The probabilities of each state given that the available observation is
  up to time 
 \begin_inset Formula $t-1$
 \end_inset
 
- is calculated:
+ is calculated.
 \end_layout
 
 \begin_layout Standard
@@ -1297,7 +1302,7 @@ Then, with the new observation at time
 \begin_inset Formula $t$
 \end_inset
 
-, the probabilities of each state is updated by using Bayes' rule
+, the probabilities of each state are updated by using Bayes' rule
 \end_layout
 
 \begin_layout Standard
@@ -1398,7 +1403,7 @@ P(S_{t-1}=i,S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t},S_{t-1}=i,S_{t}=j|\Om
 
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Paragraph
 Smoothing
 \end_layout
 
@@ -1490,21 +1495,20 @@ Once the filtered probabilities are estimated, there is necessarily enough
 \end_layout
 
 \begin_layout Standard
-which is a weighted average of the likelihood function in each state.
+This is simply a weighted average of the likelihood function in each state.
  The probabilities of states are considered as weights.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 M-step
 \end_layout
 
 \begin_layout Standard
-The new estimated parameters, 
+The new estimated model parameters 
 \begin_inset Formula $\theta^{(n+1)}$
 \end_inset
 
-, which is more exact value of maximum likelihood estimates than the previous
- one, is obtained by finding the set of parameter that maximizes the Equation
+ is obtained by finding the set of parameters that maximizes the Equation
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1513,13 +1517,15 @@ reference "eq:loglik"
 \end_inset
 
 .
- This new set of parameter is used in the next iteration of the E-step.
- The estimated model parameters are derived by taking the partial derivative
- of the log-likelihood function with respect to the specific parameters
- and then setting it to zero.
- In practice, the process is similar to the standard Maximum likelihood
- estimation except that it has to be weighted by the smoothed probabilities
- since each observation 
+ This new set of parameters is more exact value of the maximum likelihood
+ estimates than the previous one.
+ It serves as the set of parameters in the next iteration of the E-step.
+ The estimated parameters are derived by taking the partial derivative of
+ the log-likelihood function with respect to the specific parameter and
+ then setting it to zero.
+ Generally, this process is similar to the standard maximum likelihood estimatio
+n except that it has to be weighted by the smoothed probabilities since
+ each observation 
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -1531,16 +1537,55 @@ reference "eq:loglik"
  
 \end_layout
 
+\begin_layout Section
+Model selection
+\end_layout
+
+\begin_layout Standard
+Model selection is a task of selecting the most suitable model for a given
+ set of data based on the quality of model.
+ In this thesis, the Bayesian Information Criterion (BIC) proved to be useful
+ in selecting among a finite set of models.
+\end_layout
+
+\begin_layout Standard
+The Bayesian Information Criterion (BIC): It is rather popular in the applied
+ literature
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-2\ln(L(\hat{\theta}))+m\cdot\ln(T)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $T$
+\end_inset
+
+ is the number of observation, 
+\begin_inset Formula $m$
+\end_inset
+
+ is the number of parameters to be estimated in the model
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
-Change-point score: Plausibility of changes that have happened
-\end_layout
-
-\begin_layout Plain Layout
-Metrics (True positive rate/ False positive rate/ Detection delay)
+Another information criteria which is popular is the Akaike's Information
+ Criterion (AIC).
+ It is consistent and ...
+ However, the AIC is known to select large models in a small samples.
+ The data in this analysis is rather small
 \end_layout
 
 \end_inset
@@ -1553,9 +1598,9 @@ ecp
 \end_layout
 
 \begin_layout Standard
-ecp is an extension package in R which mainly focus on computing nonparametric
- test for multiple change point analysis.
- It is applicable to both univariate and multivariate time series.
+ecp is an extension package in R which mainly focus on computing the non-paramet
+ric test for multiple change point analysis.
+ This method is applicable to both univariate and multivariate time series.
  A fundamental idea for building algorithms that can identify the change
  point is based on either divisive or agglomerative procedure in hierarchical
  clustering approach 
@@ -1566,7 +1611,7 @@ key "james2013ecp"
 \end_inset
 
 .
- It uses an energy
+ It uses an energy function.
 \end_layout
 
 \begin_layout Standard
@@ -1574,7 +1619,7 @@ key "james2013ecp"
 status open
 
 \begin_layout Plain Layout
-more about this as well
+more about this
 \end_layout
 
 \end_inset
@@ -1587,7 +1632,7 @@ E-divisive
 \end_layout
 
 \begin_layout Standard
-E-divisive algorithm recursively partitioned a time series.
+E-divisive algorithm recursively partitions a time series.
  An estimation of the change point is computed at each iteration.
  Permutation test is performed to find the statistical significance of an
  estimated change point.
@@ -1602,9 +1647,9 @@ E-agglomerative algorithm tries to maximized a goodness of fit test after
  merging segments in the iteration.
  The estimated change point is defined by the iteration that maximized a
  goodness of fit statistic.
- It allows user to input an initial segmentation for the time series or
- a prior knowledge of the possible change point in order to reduce the computati
-on time.
+ This algorithm allows user to input an initial segmentation for the time
+ series or a prior knowledge of the possible change point in order to reduce
+ the computation time.
 \end_layout
 
 \begin_layout Standard

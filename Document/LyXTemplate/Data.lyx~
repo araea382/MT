@@ -817,8 +817,25 @@ Categorical
 
 \end_layout
 
+\begin_layout Standard
+There are three software releases.
+\end_layout
+
 \begin_layout Section
 Data preprocessing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+dataset or data
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -837,9 +854,24 @@ Each software release consists of several software packages.
  Also, numerous test cases are executed in one software package.
  It appears to be rather difficult to plot all results from every executed
  test cases in each software package.
- Hence, the test case which has a lowest value of the CPU utilization (or
- minimum value of TotCpu%) is selected to represent the performance of a
- specific software package.
+ Hence, the test case which has the lowest value of the CPU utilization
+ (or minimum value of TotCpu%) is selected to represent the performance
+ of a specific software package.
+ 
+\end_layout
+
+\begin_layout Standard
+Although taking average of the multiple runs for test cases in the software
+ package appears to be a good approach, it lacks a several ...
+ and does not yield the best outcome in this case.
+ The first reason is that manipulating data can easily be misleading.
+ Therefore, it is settled to remain the data as it is and always visualize
+ the data exactly as it is recorded.
+ Another important reason for not using the average value of the CPU utilization
+ is because the essential information in the test case is lost.
+ Each test case has its own components in EventsPerSec that used for identifying
+ the test case.
+ These components is lost when averaging over the CPU utilization.
  
 \end_layout
 
@@ -848,25 +880,17 @@ Each software release consists of several software packages.
 status open
 
 \begin_layout Plain Layout
-The reason for choosing the minimum value is because 
+(after saying select min) 
 \end_layout
 
 \begin_layout Plain Layout
-tried not to manipulate data and 
+The reason for choosing the minimum value of the CPU utilization is because
+ 
 \end_layout
 
 \begin_layout Plain Layout
-remain the data as it is
-\end_layout
-
-\begin_layout Plain Layout
-Even though average value appear to be a good 
-\end_layout
-
-\begin_layout Plain Layout
-Another main reason for not using average value of the CPU utilization is
- because each test case has its own component in EventsPerSec.
- also component in EventsPerSec
+tried to be optimistic...
+ ?
 \end_layout
 
 \end_inset
@@ -875,7 +899,7 @@ Another main reason for not using average value of the CPU utilization is
 \end_layout
 
 \begin_layout Standard
-Sometime a test case is not being executed properly.
+Test cases are not always being executed properly.
  It is either no traffic is generated during the test case or that data
  is not logged.
  If the EventsPerSec field is missing or has no value in it, the test case

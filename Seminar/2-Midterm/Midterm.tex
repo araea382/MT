@@ -118,8 +118,11 @@
 \begin{frame}
 \frametitle{Objectives}
 \begin{itemize}
-	\item Detect the state of the \texttt{CPU utilization} (degrading, improving or steady state)
-	\item Detect whether there is any change in the test environment that effects the \texttt{CPU utilization}
+	\setlength\itemsep{1em}
+	\begin{large}
+		\item Detect the state of the \texttt{CPU utilization} (degrading, improving or steady state)
+		\item Detect whether there is any change in the test environment that effects the \texttt{CPU utilization}
+	\end{large}
 \end{itemize}
 \end{frame}
 
@@ -129,6 +132,7 @@
 \begin{frame}
 	\frametitle{Markov switching model, \cite{p1}}
 	\begin{itemize}
+		\setlength\itemsep{1em}
 		\item A technique uses for describing the evolution of the process at different period of time
 		\item Model involves multiple structures that can characterize the time series behaviors in different states
 		\item The switching mechanism between the states is assumed to be an unobserved Markov chain - \footnotesize{a stochastic process which contains the probability of transition from one state to any other state}
@@ -149,8 +153,10 @@ Assuming that $S_{t}$ denote an unobservable state variable
 $$y_{t} = {X_{t}}'\beta_{S_{t}} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0,\sigma^{2}_{S_{t}})$$
 
 $y_{t}$ is the observed value of time series at time $t$ 
+\vspace{1mm}
 
 $X_{t}$ are the predictor variables of time series at time $t$ 
+\vspace{1mm}
 
 $\beta_{S_{t}}$ are the coefficients in state $S_{t}$, where $S_{t}=1,2,...,k$
 
@@ -171,7 +177,7 @@ Given dataset,
 $$y_{t} = {X_{t}}'\beta_{S_{t}} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0,\sigma^{2}_{S_{t}})$$
 
 \begin{itemize}
-	\item $y_{t}$ is \texttt{CPU utilization}
+	\item $y_{t}$ is the \texttt{CPU utilization}
 	\item$X_{t}$ are components which have an impact on the \texttt{CPU utilization}
 	\item Assume there are three states ($k=3$): normal, good, bad
 \end{itemize}
@@ -191,9 +197,9 @@ $$y_{t} = {X_{t}}'\beta_{S_{t}} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(
 
 Autoregressive model
 
-$$y_{t} = c + \sum_{i=1}^{p}\phi_{p}y_{t-i} + \varepsilon_{t}$$
+$$y_{t} = c + \sum_{i=1}^{p}\phi_{p}y_{t-i} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0,\sigma^{2})$$
 
-where $c$ is constant, $\phi_{p}$ are parameters and $\varepsilon_{t}$ is white noise
+where $c$ is constant and $\phi_{p}$ are parameters
 
 \begin{figure}
 	\includegraphics[width=0.6\linewidth]{inde}
@@ -232,11 +238,18 @@ $$y_{t} = {X_{t}}' \beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}$$
 
 %\vspace{5mm}
 
-Model Likelihood
-
-$$L(\theta;y_{t}) = f(y_{t}|\theta) = \sum_{t=1}^{T}\sum_{j=1}^{k} f(y_{t}|S_{t}=j;\theta)P(S_{t}=j)$$
-
-and $S_{t}$ is non-observable variable
+\begin{large}
+	Model Likelihood
+	
+	$$L(\theta;y_{t}) = f(y_{t}|\theta) = \sum_{t=1}^{T}\sum_{j=1}^{k} f(y_{t}|S_{t}=j;\theta)P(S_{t}=j)$$
+	
+	\vspace{1em}
+	
+	and $S_{t}$ is non-observable variable
+	\vspace{1em}
+	
+	A weighted average of the likelihood function in each state where weights are given by state's probabilities.
+\end{large}
 
 \end{frame}
 
@@ -268,7 +281,7 @@ Data preprocessing
 \begin{itemize}
 	\item Select a test case which has a minimum value of \texttt{CPU utilization} for each software package
 	\item Multiple values separated by a tab character are stored together in column $\Rightarrow$ split a tab-separated values to columns
-	\item Remove incomplete test cases 
+	\item Remove incomplete test cases which are not executed properly 
 	
 \end{itemize}
 	
@@ -283,9 +296,33 @@ Data preprocessing
 %------------------------------------------------
 \begin{frame}
 \frametitle{What has been done?}
-Study and review source code  in the R package in detail
+\begin{large}
+	Study and review source code  in the R package in detail
+	\begin{itemize}
+		\item MSwM: An univariate autoregressive Markov switching model for linear and generalized model by using the E-M algorithm \cite{p3}
+	\end{itemize}
+\end{large}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{What has been done?}
+Implement and modify code in the package
 \begin{itemize}
-	\item MSwM: An univariate autoregressive Markov switching model for linear and generalized model by using the EM algorithm \cite{p3}
+	\setlength\itemsep{1em}
+	\item Small typo in the code when computing residual variance
+	\item Solve non-invertible Hessian using generalized inverse procedure \cite{p2}
+	\item Extension for categorical predictor variables
+	\item Deal with NAs coefficients
+	%\begin{itemize}
+	%	\setlength\itemsep{5pt}
+	%	\item Initial coefficients with random subsets
+	%	\item A single value or incomplete levels of variable
+	%	\item Matrix multiplication to compute conditional means $\Rightarrow$ NAs
+	%\end{itemize}
+	%Solution: Remove variables with NAs coefficient before %performing matrix multiplication
+	
 \end{itemize}
 \end{frame}
 
@@ -294,17 +331,29 @@ Study and review source code  in the R package in detail
 \frametitle{What has been done?}
 Implement and modify code in the package
 \begin{itemize}
-	\item Small typo in the code when computing residual variance
-	\item Solve non-invertible Hessian using generalized inverse procedure \cite{p2}
-	\item Extension for categorical predictor variables
-	\item Deal with NA coefficients
-	\begin{itemize}
-		\item Initial coefficients with random subsets
-		\item A single value or incomplete levels of variable
-		\item Matrix multiplication to compute conditional means $\Rightarrow$ NAs
-	\end{itemize}
-	Solution: Remove variables with NAs coefficient before performing matrix multiplication
+	\item Deal with NAs coefficients
 	
+	A function first initial coefficients with random subsets
+	
+	\begin{itemize}	
+		\item Continuous variable: contains same value in all observations
+		
+		\vspace{2pt}
+		
+		\textit{Solution:} Reshuffle data
+		
+		\vspace{5pt}
+		
+		\item Categorical variable: not contain all levels of variable
+		
+		\vspace{2pt}
+		
+		The function uses matrix multiplication to compute conditional means $\Rightarrow$ NAs
+		
+		\vspace{2pt}
+		
+		\textit{Solution:} Remove variables with NAs coefficient before performing matrix multiplication
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -313,10 +362,13 @@ Implement and modify code in the package
 \frametitle{What has been done?}
 Results of fitting Markov switching autoregressive model
 \begin{itemize}
+	\setlength\itemsep{1em}
 	\item Estimated parameters in each state
 	\item For each observation,
 	\begin{itemize}
 		\item State assignment
+		\vspace{5pt}
+		
 		\item Probability assignment in each state
 	\end{itemize}
 	
@@ -330,6 +382,7 @@ Results of fitting Markov switching autoregressive model
 \begin{frame}
 \frametitle{Next step}
 \begin{itemize}
+	\setlength\itemsep{1em}
 	\item Model selection: Compare several models (e.g., number of states, number of parameters which have switching effects)
 	\item State prediction: Find the most probable state for the new observation
 	\item Making a state inference

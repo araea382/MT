@@ -316,16 +316,52 @@ This section shall contain the most important tables and graphs showing
 \begin_layout Standard
 The most relevant results of the analysis is shown and organized in this
  chapter as follows.
- As a first step, each software release is discussed.
- Secondly, the model selection is performed to get the most suitable model
- for the given dataset.
- Finally, the prediction of state for the new coming observation is performed.
  
+\end_layout
+
+\begin_layout Standard
+As a first step, perform Markov switching autoregressive model with each
+ software release with two or three states.
+ 
+\end_layout
+
+\begin_layout Standard
+Secondly, the model selection is performed to get the most suitable model
+ for the given dataset.
+ The evaluation is done based on the Bayesian Information Criterion (BIC).
+ 
+\end_layout
+
+\begin_layout Standard
+Secondly, after the number of state is decided, perform model selection
+ to find which parameter has a switching effect.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, the prediction of state for the new coming observation is performed.
+ (actual and simulation)
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
-find new word...
+find new word for 
+\begin_inset Quotes eld
+\end_inset
+
+perform
+\begin_inset Quotes erd
+\end_inset
+
+...
+ already used too much
+\end_layout
+
+\begin_layout Plain Layout
+probably have to change step and sentence itself
 \end_layout
 
 \end_inset
@@ -334,23 +370,8 @@ find new word...
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Model selection is a task of selecting the most suitable model for a given
- set of data based on the quality of model which can be evaluated by Akaike's
- Information Criterion (AIC) or Bayesian Information Criterion (BIC).
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Algorithms used in fitting the Markov autoregression swiching model is mainly
- based on the use of MSwM package in R 
+The algorithm used in fitting the Markov switching autoregressive model
+ is mainly based on the MSwM package in R 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "mswm"
@@ -358,12 +379,12 @@ key "mswm"
 \end_inset
 
 .
- It performs an univariate autoregressive Markov switching models for linear
- and generalized models.
- The package used expectation-maximization (EM) algorithm to fit Markov
- switching model.
- Some modifications had been made to the package and is described in more
- detail in 
+ This package performs an univariate autoregressive Markov switching models
+ for linear and generalized models.
+ The package implemented expectation-maximization (E-M) algorithm to fit
+ Markov switching model.
+ Further implementations and some modifications had been made to the package
+ and are described in more details in 
 \begin_inset Note Note
 status open
 
@@ -393,6 +414,10 @@ Assuming there are three states
 \end_layout
 
 \begin_layout Standard
+Assuming there are two states
+\end_layout
+
+\begin_layout Standard
 residual analysis
 \end_layout
 
@@ -401,23 +426,44 @@ plot of filtered and smoothed probabilities with regimes specifications
 \end_layout
 
 \begin_layout Standard
-Three and two states
+set.seed(1) for reproducible results
 \end_layout
 
 \begin_layout Section
+Number of states
+\end_layout
+
+\begin_layout Standard
+Performing Markov switching autoregressive model in each software release.
+ The estimation is made under the assumptions of two or three states.
+\end_layout
+
+\begin_layout Standard
 Release L16A 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 Release L16B
 \end_layout
 
 \begin_layout Standard
+Release L17A 
+\end_layout
 
+\begin_layout Standard
+A four-state is tested but the results is rather poor compare to the rest
+\end_layout
+
+\begin_layout Standard
+can not really make an inference
 \end_layout
 
 \begin_layout Section
-Release L17A 
+Number of parameters
+\end_layout
+
+\begin_layout Standard
+switching and non-switching parameters
 \end_layout
 
 \begin_layout Standard

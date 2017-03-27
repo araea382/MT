@@ -16,22 +16,22 @@ test_g2_L16B <- g2_L16B[-c(1:train_num),]
 
 
 ##-------------------------------------------------------------------------------------##
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
+# predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
 # predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Srb1SetupReject")
-predictor <- c("DuProdName","Fdd.Tdd","NumCells")
-predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest")
+# predictor <- c("DuProdName","Fdd.Tdd","NumCells")
+# predictor <- c("DuProdName","Fdd.Tdd","NumCells","RrcConnectionSetupComplete","Paging","X2HandoverRequest")
 # predictor <- c("DuProdName","Fdd.Tdd","NumCells","Paging")
 # predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","ReEstablishmentAttempt")
 
-
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","DuProdName","Fdd.Tdd","NumCells")
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
-mod <- lm(fmla, data=train_g2_L16B)
+mod <- lm(fmla, data=train_g2_L16A)
 
 k=3
 p=1
 sw=rep(T,length(mod$coefficients)+p+1)
 control=list(trace = T,  maxiter = 500, tol = 1e-8, maxiterInner=10, maxiterOuter=5, parallelization=F)
-data <- train_g2_L16B
+data <- train_g2_L16A
 
 object <- mod
 

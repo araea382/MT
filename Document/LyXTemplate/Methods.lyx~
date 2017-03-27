@@ -986,7 +986,11 @@ where
 \end_inset
 
  and 
-\begin_inset Formula $\varepsilon_{t}\sim N(0,\sigma_{S_{t}}^{2})$
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ follows a Normal distribution with mean zero and variance given by 
+\begin_inset Formula $\sigma_{S_{t}}^{2}$
 \end_inset
 
 .
@@ -1534,12 +1538,92 @@ n except that it has to be weighted by the smoothed probabilities since
 \end_layout
 
 \begin_layout Section
+Model selection
+\end_layout
+
+\begin_layout Standard
+Model selection is a task of selecting the most suitable model for a given
+ set of data based on the quality of model.
+ In this thesis framework, the Bayesian Information Criterion (BIC) proved
+ to be useful in selecting among a finite set of models and widely employed
+ in the applied literature.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-2\ln(L(\hat{\theta}))+m\cdot\ln(T)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $L(\hat{\theta})$
+\end_inset
+
+ represents the maximized value of the likelihood function,
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ is the number of observation and 
+\begin_inset Formula $m$
+\end_inset
+
+ is the number of parameters to be estimated in the model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Another information criteria which is popular is the Akaike's Information
+ Criterion (AIC).
+ It is consistent and ...
+ However, the AIC is known to select large models in a small samples.
+ The data in this analysis is rather small
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 ecp
 \end_layout
 
 \begin_layout Standard
-ecp is an extension package in R which mainly focus on computing the nonparametr
-ic test for multiple change point analysis.
+ecp is an extension package in R which mainly focus on computing the non-paramet
+ric test for multiple change point analysis.
  This method is applicable to both univariate and multivariate time series.
  A fundamental idea for building algorithms that can identify the change
  point is based on either divisive or agglomerative procedure in hierarchical
@@ -1559,7 +1643,7 @@ key "james2013ecp"
 status open
 
 \begin_layout Plain Layout
-more about this as well
+more about this
 \end_layout
 
 \end_inset

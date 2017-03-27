@@ -1309,7 +1309,8 @@ setMethod(f="maximEM",signature=c("MSM.glm","data.frame"),definition=.MSM.glm.ma
 		object=msmSmooth(object)
 
 		if (control$trace) cat(" Inner Iter.",it," logLikel=",object["Fit"]["logLikel"],"\n")
-		if ((max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLikel"]))) < control$tol)& (max(abs(object["Coef"] - oldcoef),na.rm=TRUE)/(0.1 + max(abs(object["Coef"]))) < control$tol)) break
+		if ( (max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLikel"]))) < control$tol) 
+		    & (max(abs(object["Coef"] - oldcoef),na.rm=TRUE)/(0.1 + max(abs(object["Coef"]),na.rm=TRUE)) < control$tol) ) break
 	}
 	return(object)
 }
