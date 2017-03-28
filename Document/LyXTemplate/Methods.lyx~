@@ -1544,9 +1544,10 @@ Model selection
 \begin_layout Standard
 Model selection is a task of selecting the most suitable model for a given
  set of data based on the quality of model.
- In this thesis framework, the Bayesian Information Criterion (BIC) proved
- to be useful in selecting among a finite set of models and widely employed
- in the applied literature.
+ In this thesis framework, the Bayesian Information Criterion (BIC) is widely
+ employed in the applied literature and proved to be useful in selecting
+ the model among a finite set of models.
+ BIC is defined as
 \end_layout
 
 \begin_layout Standard
@@ -1593,7 +1594,7 @@ where
 \begin_inset Formula $T$
 \end_inset
 
- is the number of observation and 
+ is the number of observations and 
 \begin_inset Formula $m$
 \end_inset
 

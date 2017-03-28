@@ -1,3 +1,4 @@
+\beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{Recall: Thesis objectives}{3}{0}{1}
 \beamer@sectionintoc {2}{Markov switching model}{4}{0}{2}
 \beamer@subsectionintoc {2}{1}{Markov switching autoregressive model}{7}{0}{2}

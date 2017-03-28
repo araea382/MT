@@ -370,7 +370,7 @@ probably have to change step and sentence itself
 \end_layout
 
 \begin_layout Standard
-The algorithm used in fitting the Markov switching autoregressive model
+The algorithm used for fitting the Markov switching autoregressive model
  is mainly based on the MSwM package in R 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -405,24 +405,24 @@ Each dataset is divided into two subsets.
 \end_layout
 
 \begin_layout Standard
-Assuming there are three states 
-\begin_inset Formula $(k=3)$
-\end_inset
+\begin_inset Note Comment
+status open
 
- which is normal, good and bad in the software package.
- 
-\end_layout
-
-\begin_layout Standard
-Assuming there are two states
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 residual analysis
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+model selection
+\end_layout
+
+\begin_layout Plain Layout
 plot of filtered and smoothed probabilities with regimes specifications
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

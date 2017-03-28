@@ -826,6 +826,19 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+dataset or data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The dataset is sorted by the version of the software package which is named
  alphabetically.
  Even though the dataset has a timestamp when the test case is run, the
@@ -837,58 +850,7 @@ The dataset is sorted by the version of the software package which is named
 \end_layout
 
 \begin_layout Standard
-Each software release consists of several software packages.
- Also, numerous test cases are executed in one software package.
- It appears to be rather difficult to plot all results from every executed
- test cases in each software package.
- Hence, the test case which has a lowest value of the CPU utilization (or
- minimum value of TotCpu%) is selected to represent the performance of a
- specific software package.
- 
-\end_layout
-
-\begin_layout Standard
-Although taking average of the multiple runs for test cases in the software
- package appears to be a good approach, it lacks ...
- and does not yield the best in this case.
-\end_layout
-
-\begin_layout Standard
-The first reason is that manipulating data can easily be misleading.
- Therefore, it is settled to remain the data as it is and always visualize
- the data exactly as it is recorded.
- Another important reason for not using the average value of the CPU utilization
- is because the essential information are removed.
- each test case has its own components in EventsPerSec.
- These components are used for identifying the test cases.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-(after saying select min) 
-\end_layout
-
-\begin_layout Plain Layout
-The reason for choosing the minimum value of the CPU utilization is because
- 
-\end_layout
-
-\begin_layout Plain Layout
-tried to be optimistic...
- ? ('' = 3=)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sometime a test case is not being executed properly.
+Test cases are not always being executed properly.
  It is either no traffic is generated during the test case or that data
  is not logged.
  If the EventsPerSec field is missing or has no value in it, the test case
@@ -903,6 +865,53 @@ Some fields in the dataset store multiple values separated by a tab character.
  analysis.
  This process is done for the EventsPerSec field in order to get its components
  and values which characterize the test case.
+\end_layout
+
+\begin_layout Standard
+Each software release consists of several software packages.
+ Also, numerous test cases are executed in one software package.
+ Since the software pacakge acts as a time unit in the time series, it appears
+ to be rather difficult to plot all results from every executed test case
+ for each software package.
+ Hence, the test case which has the lowest value of the CPU utilization
+ (or minimum value of TotCpu%) is selected to represent the performance
+ of a specific software package.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The reason for choosing the minimum value of the CPU utilization is because
+ 
+\end_layout
+
+\begin_layout Plain Layout
+tried to be optimistic...
+ ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although taking an average of the multiple runs for test cases in the software
+ package appears to be a good approach, it does not yield the best outcome
+ in this case.
+ The first reason is that manipulating data can easily be misleading.
+ It is, therefore, settled to remain the data as it is and always visualize
+ the data exactly as it is recorded.
+ Another important reason for not using the average value of the CPU utilization
+ is because the essential information in the test case will be lost.
+ Each test case has its own components in EventsPerSec field that used for
+ identifying the test case.
+ The details of these components are absent when averaging over the CPU
+ utilization of test cases in the software package.
+ 
 \end_layout
 
 \begin_layout Standard
