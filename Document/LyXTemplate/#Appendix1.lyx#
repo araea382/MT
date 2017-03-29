@@ -113,8 +113,8 @@ customHeadersFooters
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type authoryear
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -294,11 +294,52 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Conclusions 
+Proofs of mathematical results
 \end_layout
 
 \begin_layout Standard
-It can be concluded that
+from Method
+\end_layout
+
+\begin_layout Chapter
+Software
+\end_layout
+
+\begin_layout Standard
+Both R and Python are powerful programming language for data analysis.
+ Python has been known as a general purpose language with an easy to understand
+ syntax.
+ It emphasizes on code readability and has a gentle learning curve.
+ R is developed by and for statistician.
+ It provides a huge number of essential packages in statistics, and even
+ starts to expand to different fields.
+ R also has a strong reputation for data visualization.
+ However, in terms of computation, R still cannot compete with Python which
+ is buit specifically for computer programming.
+\end_layout
+
+\begin_layout Standard
+With strengths and weaknesses between R and Python described earlier, R
+ is chosen to be used in this study.
+ It offers more implemented algorithms to solve the problem at hand.
+ Moreover, effective visualizion helps analyst and user to understand more
+ about their data especially for the complex one.
+ Visualizing data is useful in many ways such as uncover new patterns, identify
+ some factors, and get an overall trend.
+ R proves itself a good choice since it provides a great feature in creating
+ an interactive graphic and visualization.
+\end_layout
+
+\begin_layout Chapter
+MSwM Package
+\end_layout
+
+\begin_layout Standard
+generalized inverse for the singular matrix
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -308,8 +349,8 @@ status collapsed
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "thesisExample"
-options "alpha"
+bibfiles "biblio/Plasma"
+options "biblio/alpha"
 
 \end_inset
 

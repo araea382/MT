@@ -977,7 +977,7 @@ where
 \begin_inset Formula $\phi_{1,S_{t}}$
 \end_inset
 
- is the autoregression coefficient of observed value at time 
+ is the autoregression coefficient of the observed value at time 
 \begin_inset Formula $t-1$
 \end_inset
 
@@ -1636,12 +1636,17 @@ key "james2013ecp"
 \end_inset
 
 .
- It uses an energy function.
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
 status open
+
+\begin_layout Plain Layout
+It uses an energy function.
+ 
+\end_layout
 
 \begin_layout Plain Layout
 more about this

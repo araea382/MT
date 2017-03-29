@@ -1636,12 +1636,17 @@ key "james2013ecp"
 \end_inset
 
 .
- It uses an energy function.
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
 status open
+
+\begin_layout Plain Layout
+It uses an energy function.
+ 
+\end_layout
 
 \begin_layout Plain Layout
 more about this
@@ -1668,7 +1673,7 @@ E-agglomerative
 \end_layout
 
 \begin_layout Standard
-E-agglomerative algorithm tries to maximized a goodness of fit test after
+E-agglomerative algorithm tries to maximize a goodness of fit test after
  merging segments in the iteration.
  The estimated change point is defined by the iteration that maximized a
  goodness of fit statistic.

@@ -265,4 +265,31 @@ margLik <- rbind(margLik, margLik_new)
 # should I update fProb, margLik into the training model...??????????????????
 
 
+##-------------------------------------------------------------------------------------##
+### .MSM.lm.msmFit
+# remove variable which has NA coefficient for the first time fitting the model
+if(anyNA(object$coefficients)){
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

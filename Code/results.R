@@ -82,8 +82,13 @@ plotReg(mswm_L16B_2, expl=predictor[6], regime=3)
 # 3 states
 # switching in all coefficients
 ########################################
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","DuProdName","Fdd.Tdd","NumCells")
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Fdd.Tdd","NumCells")
+fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
+
 mod_L16A <- lm(fmla, data=train_g2_L16A)
 summary(mod_L16A)
+alias(mod_L16A)
 
 set.seed(1)
 mswm_L16A_3 <- MSwM2::msmFit(mod_L16A, k=3, p=1, sw=rep(TRUE,length(mod_L16A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
@@ -111,6 +116,39 @@ plotReg(mswm_L16A_3, expl=predictor[2], regime=3)
 plotReg(mswm_L16A_3, expl=predictor[3], regime=1)
 plotReg(mswm_L16A_3, expl=predictor[3], regime=2)
 plotReg(mswm_L16A_3, expl=predictor[3], regime=3)
+
+
+########################################
+# g2 L16A
+# 2 states
+# switching in all coefficients
+########################################
+set.seed(1)
+mswm_L16A_2 <- MSwM2::msmFit(mod_L16A, k=2, p=1, sw=rep(TRUE,length(mod_L16A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+summary(mswm_L16A_2)
+
+plot(mswm_L16A_2)
+
+plotDiag(mswm_L16A_2, which=1)
+plotDiag(mswm_L16A_2, which=2)
+plotDiag(mswm_L16A_2, which=3)
+
+plotProb(mswm_L16A_2, which=1)
+plotProb(mswm_L16A_2, which=2)
+plotProb(mswm_L16A_2, which=3)
+plotProb(mswm_L16A_2, which=4)
+
+plotReg(mswm_L16A_2, expl=predictor[1], regime=1)
+plotReg(mswm_L16A_2, expl=predictor[1], regime=2)
+plotReg(mswm_L16A_2, expl=predictor[1], regime=3)
+
+plotReg(mswm_L16A_2, expl=predictor[2], regime=1)
+plotReg(mswm_L16A_2, expl=predictor[2], regime=2)
+plotReg(mswm_L16A_2, expl=predictor[2], regime=3)
+
+plotReg(mswm_L16A_2, expl=predictor[3], regime=1)
+plotReg(mswm_L16A_2, expl=predictor[3], regime=2)
+plotReg(mswm_L16A_2, expl=predictor[3], regime=3)
 
 
 ########################################
@@ -147,3 +185,37 @@ plotReg(mswm_L17A_3, expl=predictor[2], regime=3)
 plotReg(mswm_L17A_3, expl=predictor[3], regime=1)
 plotReg(mswm_L17A_3, expl=predictor[3], regime=2)
 plotReg(mswm_L17A_3, expl=predictor[3], regime=3)
+
+
+########################################
+# g2 L17A
+# 2 states
+# switching in all coefficients
+########################################
+set.seed(1)
+mswm_L17A_2 <- MSwM2::msmFit(mod_L17A, k=2, p=1, sw=rep(TRUE,length(mod_L17A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+summary(mswm_L17A_2)
+
+plot(mswm_L17A_2)
+
+plotDiag(mswm_L17A_2, which=1)
+plotDiag(mswm_L17A_2, which=2)
+plotDiag(mswm_L17A_2, which=3)
+
+plotProb(mswm_L17A_2, which=1)
+plotProb(mswm_L17A_2, which=2)
+plotProb(mswm_L17A_2, which=3)
+plotProb(mswm_L17A_2, which=4)
+
+plotReg(mswm_L17A_2, expl=predictor[1], regime=1)
+plotReg(mswm_L17A_2, expl=predictor[1], regime=2)
+plotReg(mswm_L17A_2, expl=predictor[1], regime=3)
+
+plotReg(mswm_L17A_2, expl=predictor[2], regime=1)
+plotReg(mswm_L17A_2, expl=predictor[2], regime=2)
+plotReg(mswm_L17A_2, expl=predictor[2], regime=3)
+
+plotReg(mswm_L17A_2, expl=predictor[3], regime=1)
+plotReg(mswm_L17A_2, expl=predictor[3], regime=2)
+plotReg(mswm_L17A_2, expl=predictor[3], regime=3)
+

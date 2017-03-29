@@ -315,27 +315,32 @@ This section shall contain the most important tables and graphs showing
 
 \begin_layout Standard
 The most relevant results of the analysis is shown and organized in this
- chapter as follows.
+ chapter as follow.
  
 \end_layout
 
 \begin_layout Standard
 As a first step, perform Markov switching autoregressive model with each
- software release.
+ software release with two or three states.
  
 \end_layout
 
 \begin_layout Standard
 Secondly, the model selection is performed to get the most suitable model
  for the given dataset.
- The evaluation is done based on the Akaike's Information Criterion (AIC)
- or the Bayesian Information Criterion (BIC).
+ The evaluation is done based on the Bayesian Information Criterion (BIC).
+ 
+\end_layout
+
+\begin_layout Standard
+Secondly, after the number of state is decided, perform model selection
+ to find which parameter has a switching effect.
  
 \end_layout
 
 \begin_layout Standard
 Finally, the prediction of state for the new coming observation is performed.
- 
+ (actual and simulation)
 \end_layout
 
 \begin_layout Standard
@@ -365,7 +370,7 @@ probably have to change step and sentence itself
 \end_layout
 
 \begin_layout Standard
-The algorithm used in fitting the Markov switching autoregressive model
+The algorithm used for fitting the Markov switching autoregressive model
  is mainly based on the MSwM package in R 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -400,20 +405,24 @@ Each dataset is divided into two subsets.
 \end_layout
 
 \begin_layout Standard
-Assuming there are three states 
-\begin_inset Formula $(k=3)$
-\end_inset
+\begin_inset Note Comment
+status open
 
- which is normal, good and bad in the software package.
- 
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 residual analysis
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+model selection
+\end_layout
+
+\begin_layout Plain Layout
 plot of filtered and smoothed probabilities with regimes specifications
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -421,18 +430,23 @@ set.seed(1) for reproducible results
 \end_layout
 
 \begin_layout Section
-State
+Number of states
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+Performing Markov switching autoregressive model in each software release.
+ The estimation is made under the assumptions of two or three states.
+\end_layout
+
+\begin_layout Standard
 Release L16A 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 Release L16B
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 Release L17A 
 \end_layout
 
@@ -442,6 +456,29 @@ A four-state is tested but the results is rather poor compare to the rest
 
 \begin_layout Standard
 can not really make an inference
+\end_layout
+
+\begin_layout Section
+Number of parameters
+\end_layout
+
+\begin_layout Standard
+switching and non-switching parameters
+\end_layout
+
+\begin_layout Section
+Residual analysis
+\end_layout
+
+\begin_layout Standard
+The results of the selected Markov switching autoregressive model for each
+ software release are analyzed to see how well the time series data fits
+ the assumption of normally distributed residuals.
+\end_layout
+
+\begin_layout Standard
+Plot of residuals against fitted values, a Normal Q-Q plot, ACF/PACF of
+ residuals and ACF/PACF of square residuals.
 \end_layout
 
 \begin_layout Standard

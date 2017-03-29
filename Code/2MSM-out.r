@@ -10,7 +10,7 @@ logit=function(p) log(p/(1-p))
 ########
 #####Class definition
 setClass("MSM.fitted",
-	representation(           
+	representation(
 		CondMean	= "matrix",
 		error		= "matrix",
 		Likel		= "matrix",
@@ -117,29 +117,27 @@ validMSM.lm=function(object){
 
 }
 
-# validMSM.glm=function(object){
-# 	if(length(object@switch)!=ncol(object@Coef)){
-# 		stop("The length of sw has to be equal of the number of coefficients in the model\n")
-# 	}
-# 	switch(object@family$family,
-# 		poisson=return(invisible()),
-# 		binomial=return(invisible()),
-# 		gaussian=return(invisible()),
-# 		Gamma=return(invisible()),
-# 		stop("The family is not poisson, binomial, gaussian or Gamma!")
-# 	)
-# 	return(invisible())
-# 
-# }
+validMSM.glm=function(object){
+	if(length(object@switch)!=ncol(object@Coef)){
+		stop("The length of sw has to be equal of the number of coefficients in the model\n")
+	}
+	switch(object@family$family,
+		poisson=return(invisible()),
+		binomial=return(invisible()),
+		gaussian=return(invisible()),
+		Gamma=return(invisible()),
+		stop("The family is not poisson, binomial, gaussian or Gamma!")
+	)
+	return(invisible())
 
-
+}
 
 
 ########
 #####Class definition
 setClass(
 	Class= "MSM.linear",
-	representation=representation(           
+	representation=representation(
 			model  		= "lm",
 			Coef  		= "data.frame",
 			seCoef 		= "data.frame",
@@ -150,20 +148,20 @@ setClass(
 )
 setClass(
 	Class= "MSM.lm",
-	representation=representation(           
+	representation=representation(
 			std = "numeric"
 	),
 	contains="MSM.linear"
 )
 
-# setClass(
-# 	Class= "MSM.glm",
-# 	representation=representation(           
-# 			family = "ANY",
-# 			Likelihood  = "function"
-# 	),
-# 	contains="MSM.linear"
-# )
+setClass(
+	Class= "MSM.glm",
+	representation=representation(
+			family = "ANY",
+			Likelihood  = "function"
+	),
+	contains="MSM.linear"
+)
 
 ####################################
 ##### Construction, get and set ####
@@ -188,11 +186,11 @@ msmControl <- function(trace = F,  maxiter = 100, tol = 1e-8, maxiterInner=10, m
 .MSM.formula.msmFit = function(object,k,sw,p,data,family,control){
 	call=match.call()
 	if (missing(family)) {
-		model=lm(object,data) 
+		model=lm(object,data)
 	}else{
-		model=glm(object,data,family=family) 
+		model=glm(object,data,family=family)
 	}
-	if(missing(p)) p=0 
+	if(missing(p)) p=0
 	data=list(call)
 	if(missing(family)&missing(control)){
 		msmFit(model,k,sw,p)
@@ -210,6 +208,61 @@ msmControl <- function(trace = F,  maxiter = 100, tol = 1e-8, maxiterInner=10, m
 }
 setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame","ANY","ANY"),definition=.MSM.formula.msmFit)
 
+####
+# Add: for categorical variables
+###
+MSM.lm.categorical <- function(object,k){
+  # categorical variable which has two factor levels
+  factor2 <- unlist(sapply(1:length(object$contrasts), function(x){
+    if(length(object$xlevels[[x]]) == 2){
+      names(object$xlevels[x])
+    }
+  }))
+
+  # count the number of occurrence for each level in the variable
+  count <- c()
+  for(i in factor2){
+    cnt <- list(sapply(levels(object$model[,i]), function(x) length(which(object$model[,i] == x))))
+    count <- c(count,cnt)
+  }
+  names(count) <- factor2
+  var_name <- factor2[ceiling(which.min(unlist(count))/2)]
+
+  min_var <- count[[var_name]][2]
+  ind <- sample(rep(1:k, length.out=min_var))
+  ind <- c(sample(rep(1:k, length.out=(length(object$residuals)-min_var))),ind)
+  temp <- object$model[order(object$model[,var_name]),]
+
+  Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+  names(Coef)=names(coef(object))
+  std=rep(0,k)
+
+  for(i in 1:k){
+    data1=as.data.frame(temp[ind==i,,drop=F])
+    mod1=update(object,formula=object$terms,data=data1)
+    # insert coefficient in the right position
+    for(a in names(coef(mod1))){
+      for(b in names(coef(object))){
+        if(a == b){
+          Coef[i,a] <- coef(mod1)[a]
+        }
+      }
+    }
+    std[i]=summary(mod1)$sigma
+  }
+  ans <- list(Coef=Coef, std=std, index=ind)
+  return(ans)
+}
+
+####
+# Add: relevel the reference of the factor level
+###
+reref <- function(data, var){
+    count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
+    ind <- which.max(count)
+    ref_level <- levels(data[,var])[ind]
+    return(relevel(data[,var], ref_level))
+}
 
 .MSM.lm.msmFit= function(object,k,sw,p,data,family,control){
 	if(!missing(data)){
@@ -225,42 +278,67 @@ setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame
 	}else{
 		call=match.call()
 	}
-	if(missing(p)) p=0 
+	if(missing(p)) p=0
 	if (missing(control)) control=list()
    	control  <- do.call(msmControl, control)
 
-	
+  ###
+  # Add: use reref() and update model
+  ###
+  for(i in names(object$contrasts)){
+    object$model[,i] <- reref(object$model, i)
+  }
+  object <- update(object, data=data.frame(object$model))
+
 	if(p>0){
 		var=object$model[,1]
 		Ar=apply(as.matrix(1:p),1,function(el){
 				length(var)=length(var)-el
 				var=c(rep(NA,el),var)
-				return(var)	
+				return(var)
 			}
 		)
 		colnames(Ar)=paste(names(object$model)[1],"_",1:p,sep="")
 		aux=paste(colnames(Ar),collapse="+")
 		object=update(formula=as.formula(paste("~.+",aux,sep="")),data=data.frame(object$model,Ar),object)
-	
 	}
 
-	
-	
-	Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
-	std=rep(0,k)
+  ####
+  # Add: check for categorical variables then apply the function
+  ###
+  if(!is.null(object$contrasts)){
+    result <- MSM.lm.categorical(object,k)
+    Coef <- result$Coef
+    std <- result$std
+    ind <- result$index
+  }else{
+    Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+    names(Coef)=names(coef(object))
+    std=rep(0,k)
 
-	ind=sample(1:k,length(object$residuals),replace=T)
+    ####
+    # Add: resample and fit model again if one of the coefficient is not estimated (NA)
+    ####
+    j <- 0
+    while(j < 50){
+      ind=sample(1:k,length(object$residuals),replace=T)
+      for(i in 1:k){
+        data1=as.data.frame(object$model[ind==i,,drop=F])
+        #nr <- length(object$residuals)
+        #data1 <- object$model[sample(nr,(nr/k)), ]
+        mod1=update(object,formula=object$terms,data=data1)
+        Coef[i,]=coef(mod1)
+        std[i]=summary(mod1)$sigma
+      }
+      if(anyNA(Coef)){
+        j <- j + 1
+      }else break
+    }
+  }
 
-	for(i in 1:k){
-		data1=as.data.frame(object$model[ind==i,,drop=F])
-		mod1=update(object,formula=object$terms,data=data1)
-		Coef[i,]=coef(mod1)
-		std[i]=summary(mod1)$sigma
-	}
-
-	names(Coef)=names(coef(object))
-	transMat=t(matrix(table(ind,c(ind[-1],NA))/rep(table(ind[-length(ind)]),k),ncol=k))
-	ans=new(Class="MSM.lm",
+	#transMat=t(matrix(table(ind,c(ind[-1],NA))/rep(table(ind[-length(ind)]),k),ncol=k))
+  transMat=t(matrix(rep(1/k),ncol=k,nrow=k))
+  ans=new(Class="MSM.lm",
 		call=as.call(call),
 		model=object,
 		k=k,
@@ -279,78 +357,77 @@ setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame
 setMethod(f="msmFit",signature=c("lm","numeric","logical","ANY","missing","missing","ANY"),definition=.MSM.lm.msmFit)
 
 
-# .MSM.glm.msmFit = function(object,k,sw,p,data,family,control){
-# 	if(!missing(data)){
-# 		if(is.list(data)){
-# 			if(class(data[[1]])=="call"){
-# 				call=data[[1]]
-# 			}else{
-# 				call=match.call()
-# 			}
-# 		}else{
-# 			call=match.call()
-# 		}
-# 	}else{
-# 		call=match.call()
-# 	}
-# 	if(missing(p)) p=0 
-# 	if (missing(control)) control=list()
-#    	control  <- do.call(msmControl, control)
-# 	
-# 	if(p>0){
-# 		var=object$model[,1]
-# 		Ar=apply(as.matrix(1:p),1,function(el){
-# 				length(var)=length(var)-el
-# 				var=c(rep(NA,el),var)
-# 				return(var)	
-# 			}
-# 		)
-# 		colnames(Ar)=paste(names(object$model)[1],"_",1:p,sep="")
-# 		aux=paste(colnames(Ar),collapse="+")
-# 		object=update(formula=as.formula(paste("~.+",aux,sep="")),data=data.frame(object$model,Ar),object)
-# 	
-# 	}	
-# 	
-# 	
-# 	Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
-# 	ind=findInterval(object$residuals,quantile(object$residuals,(1:(k-1))/k))+1
-# 	for(i in 1:k){
-# 		data1=object$model[ind==i,,drop=F]
-# 		mod1=update(object,data=data1)
-# 		Coef[i,]=coef(mod1)
-# 	}
-# 	names(Coef)=names(coef(object))
-# 
-# 	transMat=t(matrix(table(ind,c(ind[-1],NA))/rep(table(ind[-length(ind)]),k),ncol=k))
-# 
-# 
-# 	Likelihood = switch(object$family$family,
-# 			poisson=function(x,mu) dpois(x,lambda=mu),
-# 			binomial=function(x,mu) dbinom(x,prob=mu,size=1),
-# 			gaussian=function(x,mu) dnorm(x,mean=mu,sd=1),
-# 			Gamma=function(x,mu) dgamma(x,shape=mu,rate=1),
-# 			"error"
-# 	)
-# 
-# 	ans=new(Class="MSM.glm",
-# 		call=as.call(call),
-# 		model=object,
-# 		k=k,
-# 		switch=sw,
-# 		p=p,
-# 		Coef=Coef,
-# 		transMat=transMat,
-# 		iniProb= rep(1/k,k),
-# 
-# 		family=object$family,
-# 		Likelihood=Likelihood
-# 	)
-# 	validMSM.linear(ans)
-# 	validMSM.glm(ans)
-# 	ans=em(ans,control)
-# 	return(ans)
-# }
-# setMethod(f="msmFit",signature=c("glm","numeric","logical","ANY","missing","ANY","ANY"),definition=.MSM.glm.msmFit)
+.MSM.glm.msmFit = function(object,k,sw,p,data,family,control){
+	if(!missing(data)){
+		if(is.list(data)){
+			if(class(data[[1]])=="call"){
+				call=data[[1]]
+			}else{
+				call=match.call()
+			}
+		}else{
+			call=match.call()
+		}
+	}else{
+		call=match.call()
+	}
+	if(missing(p)) p=0
+	if (missing(control)) control=list()
+   	control  <- do.call(msmControl, control)
+
+	if(p>0){
+		var=object$model[,1]
+		Ar=apply(as.matrix(1:p),1,function(el){
+				length(var)=length(var)-el
+				var=c(rep(NA,el),var)
+				return(var)
+			}
+		)
+		colnames(Ar)=paste(names(object$model)[1],"_",1:p,sep="")
+		aux=paste(colnames(Ar),collapse="+")
+		object=update(formula=as.formula(paste("~.+",aux,sep="")),data=data.frame(object$model,Ar),object)
+
+	}
+
+	Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+	ind=findInterval(object$residuals,quantile(object$residuals,(1:(k-1))/k))+1
+	for(i in 1:k){
+		data1=object$model[ind==i,,drop=F]
+		mod1=update(object,data=data1)
+		Coef[i,]=coef(mod1)
+	}
+	names(Coef)=names(coef(object))
+
+	transMat=t(matrix(table(ind,c(ind[-1],NA))/rep(table(ind[-length(ind)]),k),ncol=k))
+
+
+	Likelihood = switch(object$family$family,
+			poisson=function(x,mu) dpois(x,lambda=mu),
+			binomial=function(x,mu) dbinom(x,prob=mu,size=1),
+			gaussian=function(x,mu) dnorm(x,mean=mu,sd=1),
+			Gamma=function(x,mu) dgamma(x,shape=mu,rate=1),
+			"error"
+	)
+
+	ans=new(Class="MSM.glm",
+		call=as.call(call),
+		model=object,
+		k=k,
+		switch=sw,
+		p=p,
+		Coef=Coef,
+		transMat=transMat,
+		iniProb= rep(1/k,k),
+
+		family=object$family,
+		Likelihood=Likelihood
+	)
+	validMSM.linear(ans)
+	validMSM.glm(ans)
+	ans=em(ans,control)
+	return(ans)
+}
+setMethod(f="msmFit",signature=c("glm","numeric","logical","ANY","missing","ANY","ANY"),definition=.MSM.glm.msmFit)
 
 
 ##### Get
@@ -377,26 +454,26 @@ setMethod(
 
 
 ##### Get
-# setMethod(
-# 	f="[",
-# 	signature=c("MSM.glm","character","missing","missing"),
-# 	def = function(x,i,j,drop){
-# 		switch(EXP=i,
-# 			call = return(x@call),
-# 			model = return(x@model),
-# 			k = return(x@k),
-# 			switch = return(x@switch),
-# 			Coef = return(x@Coef),
-# 			seCoef = return(x@seCoef),
-# 			transMat = return(x@transMat),
-# 			iniProb = return(x@iniProb),
-# 			Fit = return(x@Fit),
-# 			states = return(x@Fit["states"]),
-# 			family = return(x@family),
-# 			stop("Error:",i,"is not a MSM slot")
-# 		)
-# 	}
-# )
+setMethod(
+	f="[",
+	signature=c("MSM.glm","character","missing","missing"),
+	def = function(x,i,j,drop){
+		switch(EXP=i,
+			call = return(x@call),
+			model = return(x@model),
+			k = return(x@k),
+			switch = return(x@switch),
+			Coef = return(x@Coef),
+			seCoef = return(x@seCoef),
+			transMat = return(x@transMat),
+			iniProb = return(x@iniProb),
+			Fit = return(x@Fit),
+			states = return(x@Fit["states"]),
+			family = return(x@family),
+			stop("Error:",i,"is not a MSM slot")
+		)
+	}
+)
 
 
 ####################################
@@ -415,8 +492,8 @@ setMethod(
 	AIC=2*object["Fit"]["logLikel"]+2*np
 	BIC=2*object["Fit"]["logLikel"]+2*np*log(nrow(object@model$model))
 	cat("\n")
-	print(data.frame(AIC = AIC, BIC = BIC, logLik = -object["Fit"]["logLikel"], 
-        row.names = " "))	
+	print(data.frame(AIC = AIC, BIC = BIC, logLik = -object["Fit"]["logLikel"],
+        row.names = " "))
 	sw=apply(as.matrix(object@switch),1,function(x){
 			if(x){
 				return("(S)")
@@ -428,7 +505,7 @@ setMethod(
 	tau=as.matrix(cbind(object["Coef"],object["std"]))
 	dimnames(tau)=list(c(paste(rep("Model",object["k"]),as.character(c(1:object["k"])))),c(paste(c(names(object["Coef"]),"Std"),sw,sep="")))
 	cat("\nCoefficients:\n")
-   	print(tau)		
+   	print(tau)
 	cat("\nTransition probabilities:\n")
 	pro=object["transMat"]
 	dimnames(pro)=rep(list(paste("Regime",1:object["k"])),2)
@@ -438,34 +515,34 @@ setMethod(
 setMethod(f="show",signature="MSM.lm",definition=.MSM.lm.show)
 
 
-# .MSM.glm.show=function(object){
-# 	cat("Markov Switching Model\n")
-# 	cat("\nCall: ")
-# 	print(object["call"])
-# 	swi=object@switch
-# 	np=object["k"]*sum(swi)+sum(!swi)
-# 	AIC=2*object["Fit"]["logLikel"]+2*np
-# 	BIC=2*object["Fit"]["logLikel"]+2*np*log(nrow(object@model$model))
-# 	cat("\n")
-# 	print(data.frame(AIC = AIC, BIC = BIC, logLik = -object["Fit"]["logLikel"], 
-#         row.names = " "))	
-# 
-# 	sw=apply(as.matrix(object@switch),1,function(x){
-# 			if(x){
-# 				return("(S)")
-# 			}else{
-# 				return("")
-# 			}
-# 		}
-# 	)
-# 	tau=as.matrix(object["Coef"])
-# 	dimnames(tau)=list(c(paste(rep("Model",object["k"]),as.character(c(1:object["k"])))),c(paste(names(object["Coef"]),sw,sep="")))
-# 	print(tau)		
-# 	cat("\nTransition probabilities:\n")
-# 	print(object["transMat"])
-# 	return(invisible())
-# }
-# setMethod(f="show",signature="MSM.glm",definition=.MSM.glm.show)
+.MSM.glm.show=function(object){
+	cat("Markov Switching Model\n")
+	cat("\nCall: ")
+	print(object["call"])
+	swi=object@switch
+	np=object["k"]*sum(swi)+sum(!swi)
+	AIC=2*object["Fit"]["logLikel"]+2*np
+	BIC=2*object["Fit"]["logLikel"]+2*np*log(nrow(object@model$model))
+	cat("\n")
+	print(data.frame(AIC = AIC, BIC = BIC, logLik = -object["Fit"]["logLikel"],
+        row.names = " "))
+
+	sw=apply(as.matrix(object@switch),1,function(x){
+			if(x){
+				return("(S)")
+			}else{
+				return("")
+			}
+		}
+	)
+	tau=as.matrix(object["Coef"])
+	dimnames(tau)=list(c(paste(rep("Model",object["k"]),as.character(c(1:object["k"])))),c(paste(names(object["Coef"]),sw,sep="")))
+	print(tau)
+	cat("\nTransition probabilities:\n")
+	print(object["transMat"])
+	return(invisible())
+}
+setMethod(f="show",signature="MSM.glm",definition=.MSM.glm.show)
 
 
 
@@ -481,8 +558,8 @@ setMethod(f="show",signature="MSM.lm",definition=.MSM.lm.show)
 	AIC=2*object["Fit"]["logLikel"]+2*np
 	BIC=2*object["Fit"]["logLikel"]+2*np*log(nrow(object@model$model))
 	cat("\n")
-	print(data.frame(AIC = AIC, BIC = BIC, logLik = -object["Fit"]["logLikel"], 
-        row.names = " "))	
+	print(data.frame(AIC = AIC, BIC = BIC, logLik = -object["Fit"]["logLikel"],
+        row.names = " "))
 	sw=apply(as.matrix(swi),1,function(x){
 			if(x){
 				return("(S)")
@@ -501,7 +578,7 @@ setMethod(f="show",signature="MSM.lm",definition=.MSM.lm.show)
 			nval=round(est/se,digits=digits)
 			coefs=cbind(est,se,nval,apply(abs(nval),2,function(el) 2*(1-pnorm(abs(el)))))
 			dimnames(coefs) <- list(paste(names(object["Coef"]),sw,sep=""), c("Estimate", "Std. Error", "t value", "Pr(>|t|)"))
-			printCoefmat(coefs)				
+			printCoefmat(coefs)
 			f=object["Fit"]@CondMean[,i]
 			r=object["Fit"]@error[,i]
 			w=object["Fit"]@smoProb[-1,i]
@@ -523,58 +600,58 @@ setMethod(f="show",signature="MSM.lm",definition=.MSM.lm.show)
 		        names(resd) <- c("Min", "Q1", "Med", "Q3", "Max")
     			}
  			cat("\n\nStandardized Residuals:\n")
-			print(resd)		
-	}		
+			print(resd)
+	}
 	cat("\nTransition probabilities:\n")
 	pro=object["transMat"]
 	dimnames(pro)=rep(list(paste("Regime",1:object["k"])),2)
 	print(pro)
-	
+
 	return(invisible())
 }
 setMethod(f="summary",signature="MSM.lm",definition=.MSM.lm.summary)
 
-# .MSM.glm.summary=function(object){
-# 	cat("Markov Switching Model\n")
-# 	cat("\nCall: ")
-# 	print(object["call"])
-# 	swi=object@switch
-# 	np=object["k"]*sum(swi)+sum(!swi)
-# 	AIC=2*object["Fit"]["logLikel"]+2*np
-# 	BIC=2*object["Fit"]["logLikel"]+2*np*log(nrow(object@model$model))
-# 	cat("\n")
-# 	print(data.frame(AIC = AIC, BIC = BIC, logLik = -object["Fit"]["logLikel"], 
-#         row.names = " "))	
-# 	sw=apply(as.matrix(object@switch),1,function(x){
-# 			if(x){
-# 				return("(S)")
-# 			}else{
-# 				return("")
-# 			}
-# 		}
-# 	)
-# 	digits=max(3, getOption("digits") - 3)
-# 		cat("\nCoefficients:\n")
-# 		for(i in 1:object["k"]){
-# 			cat("\nRegime",i,"\n")
-# 			cat("---------\n")
-# 			est=t(round(object["Coef"][i,],digits=digits))
-# 			se=t(round(object["seCoef"][i,],digits=digits))
-# 			nval=round(est/se,digits=digits)
-# 			coefs=cbind(est,se,nval,apply(abs(nval),2,function(el) 2*(1-pnorm(abs(el)))))
-# 			dimnames(coefs) <- list(paste(names(object["Coef"]),sw,sep=""), c("Estimate", "Std. Error", "t value", "Pr(>|t|)"))
-# 			printCoefmat(coefs)				
-# 
-# 
-# 	}		
-# 	cat("\nTransition probabilities:\n")
-# 	pro=object["transMat"]
-# 	dimnames(pro)=rep(list(paste("Regime",1:object["k"])),2)
-# 	print(pro)
-# 	
-# 	return(invisible())
-# }
-# setMethod(f="summary",signature="MSM.glm",definition=.MSM.glm.summary)
+.MSM.glm.summary=function(object){
+	cat("Markov Switching Model\n")
+	cat("\nCall: ")
+	print(object["call"])
+	swi=object@switch
+	np=object["k"]*sum(swi)+sum(!swi)
+	AIC=2*object["Fit"]["logLikel"]+2*np
+	BIC=2*object["Fit"]["logLikel"]+2*np*log(nrow(object@model$model))
+	cat("\n")
+	print(data.frame(AIC = AIC, BIC = BIC, logLik = -object["Fit"]["logLikel"],
+        row.names = " "))
+	sw=apply(as.matrix(object@switch),1,function(x){
+			if(x){
+				return("(S)")
+			}else{
+				return("")
+			}
+		}
+	)
+	digits=max(3, getOption("digits") - 3)
+		cat("\nCoefficients:\n")
+		for(i in 1:object["k"]){
+			cat("\nRegime",i,"\n")
+			cat("---------\n")
+			est=t(round(object["Coef"][i,],digits=digits))
+			se=t(round(object["seCoef"][i,],digits=digits))
+			nval=round(est/se,digits=digits)
+			coefs=cbind(est,se,nval,apply(abs(nval),2,function(el) 2*(1-pnorm(abs(el)))))
+			dimnames(coefs) <- list(paste(names(object["Coef"]),sw,sep=""), c("Estimate", "Std. Error", "t value", "Pr(>|t|)"))
+			printCoefmat(coefs)
+
+
+	}
+	cat("\nTransition probabilities:\n")
+	pro=object["transMat"]
+	dimnames(pro)=rep(list(paste("Regime",1:object["k"])),2)
+	print(pro)
+
+	return(invisible())
+}
+setMethod(f="summary",signature="MSM.glm",definition=.MSM.glm.summary)
 
 
 
@@ -636,8 +713,8 @@ setMethod(f="plot",signature=c("MSM.linear","missing"),definition=.MSM.plot)
 	)
 	aux2[1,1]=T
 	cont=1
-	if(any(which==1)){	
-		for (i in 1:x["k"]){		
+	if(any(which==1)){
+		for (i in 1:x["k"]){
 			if(aux2[i,1]){
 				if(i>1){
 					if(cont<length(aux1)){
@@ -666,10 +743,10 @@ setMethod(f="plot",signature=c("MSM.linear","missing"),definition=.MSM.plot)
 			mtext("Filtered Probabilities",side=4,line=2.5)
 		}
 	}
-	
-	if(any(which>1)){	
+
+	if(any(which>1)){
 		aux=which[which>1]-1
-		z=x["model"]$model[1]	
+		z=x["model"]$model[1]
 		apply(as.matrix(1:length(aux)),1,function(i){
 				a=layout(matrix(c(1,1,1,2),ncol=1,nrow=4),TRUE)
 				y=x["Fit"]["smoProb"][-1,aux[i]]
@@ -678,12 +755,12 @@ setMethod(f="plot",signature=c("MSM.linear","missing"),definition=.MSM.plot)
 				plot(0,type="l",xlim=c(1,length(t(z))),ylim=c(min(z),max(z)),main=paste("Regime",aux[i]),xlab=paste(names(z),"vs. Smooth Probabilities"),ylab="")
 				val=cbind(which(diff(c(0,findInterval(y,0.5)))==1),which(diff(c(findInterval(y,0.5),0))==-1))
 				apply(val,1,function(el) rect(el[1],min(z),el[2],max(z),col="light grey",border=NA))
-				par(new=T,las=1,bty="o",yaxt="n")			
+				par(new=T,las=1,bty="o",yaxt="n")
 				plot(ts(z),col=1,ylim=c(min(z),max(z)),xlab="",ylab="")
 				par(las=3,yaxt="s")
 				mtext(names(z),side=2,line=2.5,col=1)
 				axis(side=4)
-				barplot(x["Fit"]["smoProb"][-1,aux[i]],ylim=c(0,1))	
+				barplot(x["Fit"]["smoProb"][-1,aux[i]],ylim=c(0,1))
 			}
 		)
 	}
@@ -785,7 +862,7 @@ setMethod(f="plotReg",signature=c("MSM.linear","character","ANY"),definition=.MS
 		}
 	}
 	residPooled=apply(x["Fit"]["error"]*x["Fit"]["smoProb"][-1,],1,sum)
-	if(any(which==1)){	
+	if(any(which==1)){
 		ts.plot(residPooled,main="Pooled residuals")
 		abline(h=0)
 		abline(h=c(-3*sd(residPooled),3*sd(residPooled)),lty=3,col=4)
@@ -832,7 +909,7 @@ setMethod(f="plotDiag",signature=c("MSM.linear","missing","ANY"),definition=.MSM
 				qqnorm(x["Fit"]["error"][,i],main=paste("Normal Q-Q Plot Regime ",i,sep=""))
 				qqline(x["Fit"]["error"][,i],col=2,lwd=2)
 			}
-			if(any(which==3)){			
+			if(any(which==3)){
 				par(mfrow=c(2,2))
 				acf(x["Fit"]["error"][,i],ylim=c(-1,1),main=paste("ACF of Residuals. Reg: ",i,sep=""))
 				pacf(x["Fit"]["error"][,i],ylim=c(-1,1),main=paste("PACF of Residuals. Reg: ",i,sep=""))
@@ -860,7 +937,7 @@ setMethod(f="msmResid",signature=c("MSM.lm","missing"),definition=.MSM.lm.sma.ms
 		aux=c(1:object["k"])
 		res=apply(as.matrix(aux),1,function(i) object["Fit"]["error"][,i])
 		dimnames(res)[[2]]=paste("Regime ",1:object["k"],sep="")
-		return(res)		
+		return(res)
 	}else{
 		if(any(regime > object["k"])|any(regime < 1)) stop("You must to write a correct regime.")
 		aux=regime
@@ -869,43 +946,44 @@ setMethod(f="msmResid",signature=c("MSM.lm","missing"),definition=.MSM.lm.sma.ms
 }
 setMethod(f="msmResid",signature=c("MSM.lm","ANY"),definition=.MSM.lm.larg.msmResid)
 
-# .MSM.glm.sma.msmResid=function(object,regime){
-# 	res=object["Fit"]["error"]/sqrt(object@family$variance(object["Fit"]@CondMean))
-# 	return(apply(res*object["Fit"]["smoProb"][-1,],1,sum))
-# }
-# setMethod(f="msmResid",signature=c("MSM.glm","missing"),definition=.MSM.glm.sma.msmResid)
-# 
-# .MSM.glm.larg.msmResid=function(object,regime){
-# 	if(regime[length(regime)]=="all"){
-# 		aux=c(1:object["k"])
-# 		res=apply(as.matrix(aux),1,function(i) object["Fit"]["error"][,i]/sqrt(object@family$variance(object["Fit"]@CondMean[,i])))
-# 		dimnames(res)[[2]]=paste("Regime ",1:object["k"],sep="")
-# 		return(res)		
-# 	}else{
-# 		if(any(regime > object["k"])|any(regime < 1)) stop("You must to write a correct regime.")
-# 		aux=regime
-# 		return(object["Fit"]["error"][,regime]/sqrt(object@family$variance(object["Fit"]@CondMean[,regime])))
-# 		}
-# }
-# setMethod(f="msmResid",signature=c("MSM.glm","ANY"),definition=.MSM.glm.larg.msmResid)
+.MSM.glm.sma.msmResid=function(object,regime){
+	res=object["Fit"]["error"]/sqrt(object@family$variance(object["Fit"]@CondMean))
+	return(apply(res*object["Fit"]["smoProb"][-1,],1,sum))
+}
+setMethod(f="msmResid",signature=c("MSM.glm","missing"),definition=.MSM.glm.sma.msmResid)
+
+.MSM.glm.larg.msmResid=function(object,regime){
+	if(regime[length(regime)]=="all"){
+		aux=c(1:object["k"])
+		res=apply(as.matrix(aux),1,function(i) object["Fit"]["error"][,i]/sqrt(object@family$variance(object["Fit"]@CondMean[,i])))
+		dimnames(res)[[2]]=paste("Regime ",1:object["k"],sep="")
+		return(res)
+	}else{
+		if(any(regime > object["k"])|any(regime < 1)) stop("You must to write a correct regime.")
+		aux=regime
+		return(object["Fit"]["error"][,regime]/sqrt(object@family$variance(object["Fit"]@CondMean[,regime])))
+		}
+}
+setMethod(f="msmResid",signature=c("MSM.glm","ANY"),definition=.MSM.glm.larg.msmResid)
 
 
 AIC.MSM.lm <-
-  
+
+  function(object, ..., k=2)
+{
+	swi=object@switch
+	np=object["k"]*sum(swi)+sum(!swi)
+	return(2*object["Fit"]["logLikel"]+k*np)
+  }
+
+AIC.MSM.glm <-
+
   function(object, ..., k=2)
 {
 	swi=object@switch
 	np=object["k"]*sum(swi)+sum(!swi)
 	return(2*object["Fit"]["logLikel"]+k*np)
 }
-# AIC.MSM.glm <-
-#   
-#   function(object, ..., k=2)
-# {
-# 	swi=object@switch
-# 	np=object["k"]*sum(swi)+sum(!swi)
-# 	return(2*object["Fit"]["logLikel"]+k*np)
-# }
 
 AIC <-
   ## Return the object's value of the Bayesian Information Criterion
@@ -927,25 +1005,25 @@ intervals.MSM.lm=function(object,level=0.95,...){
 		}
 	)
 }
-# intervals.MSM.glm=function(object,level=0.95,...){
-# 	cat("\nAproximate intervals for the coefficients. Level=",level,"\n")
-# 	aux=names(object["Coef"])
-# 	lower=object["Coef"]-qnorm(1-(1-level)/2)*object["seCoef"]
-# 	upper=object["Coef"]+qnorm(1-(1-level)/2)*object["seCoef"]
-# 	a=apply(as.matrix(1:length(aux)),1,function(i){
-# 			cat(paste("\n",aux[i],": \n",sep=""))
-# 			#cat("---------\n")
-# 			intmat=cbind(lower[aux[i]],object["Coef"][aux[i]],upper[aux[i]])
-# 			dimnames(intmat)=list(c(paste("Regime ",1:object["k"],sep="")),c("Lower","Estimation","Upper"))
-# 			print(intmat)
-# 			#cat("---------\n")
-# 			cat("\n")
-# 		}
-# 	)
-# }
-# intervals <-
-#   ## Return the object's value of the Bayesian Information Criterion
-#   function(object,level=0.95,...) UseMethod("intervals")
+intervals.MSM.glm=function(object,level=0.95,...){
+	cat("\nAproximate intervals for the coefficients. Level=",level,"\n")
+	aux=names(object["Coef"])
+	lower=object["Coef"]-qnorm(1-(1-level)/2)*object["seCoef"]
+	upper=object["Coef"]+qnorm(1-(1-level)/2)*object["seCoef"]
+	a=apply(as.matrix(1:length(aux)),1,function(i){
+			cat(paste("\n",aux[i],": \n",sep=""))
+			#cat("---------\n")
+			intmat=cbind(lower[aux[i]],object["Coef"][aux[i]],upper[aux[i]])
+			dimnames(intmat)=list(c(paste("Regime ",1:object["k"],sep="")),c("Lower","Estimation","Upper"))
+			print(intmat)
+			#cat("---------\n")
+			cat("\n")
+		}
+	)
+}
+intervals <-
+  ## Return the object's value of the Bayesian Information Criterion
+  function(object,level=0.95,...) UseMethod("intervals")
 
 
 #########
@@ -954,7 +1032,7 @@ intervals.MSM.lm=function(object,level=0.95,...){
 .MSM.lm.msmFilter= function(object){
 	model=object["model"]
 	k=object["k"]
-	
+
 	Coef=object["Coef"]
 	std=object["std"]
 	P=object["transMat"]
@@ -963,14 +1041,30 @@ intervals.MSM.lm=function(object,level=0.95,...){
 	nr=length(model$model[,1])
 	terms=model.matrix(model)
 
-	CondMean=as.matrix(terms)%*%t(as.matrix(Coef))
+	####
+	# Add: CondMean for categorical variables
+	###
+	cond_mean <- function(terms, Coef, i){
+	  ind <- which(is.na(Coef[i,,drop=F]), arr.ind=TRUE)[,2] # get the index of the NA value
+	  Coef1 <- Coef[i,-ind,drop=F]
+	  terms_test <- terms[,-ind]
+	  condmean <- as.matrix(terms_test) %*% t(as.matrix(Coef1))
+	  return(condmean)
+	}
+
+	if(anyNA(Coef)){
+  	CondMean <- sapply(1:k, function(x) cond_mean(terms, Coef, x))
+	}else{
+	  CondMean=as.matrix(terms)%*%t(as.matrix(Coef))
+	}
+	####
 	error= as.matrix(model$model[,1,drop=F])%*%matrix(rep(1,k),nrow=1)-CondMean
 	Likel=t(dnorm(t(error),0,std))
 
 	###Filtered Probabilities ####
 	fProb=matrix(data=0,nrow=nr,ncol=k)
 	margLik=matrix(data=0,nrow=nr,ncol=1)
-		
+
 	fProb[1,]= (P%*%matrix(object["iniProb"],ncol=1))*t(Likel[1,,drop=F])
 	margLik[1,1] = sum(fProb[1,])
 	fProb[1,] = fProb[1,] / margLik[1,1]
@@ -983,7 +1077,7 @@ intervals.MSM.lm=function(object,level=0.95,...){
 		fProb[i,] = fProb[i,]/margLik[i,1]
 	}
 
-	# Negative sum of log Likelihood 
+	# Negative sum of log Likelihood
 	loglik=-sum(log(margLik[1:nr]))
 
 	# Passing up to output structure
@@ -992,51 +1086,51 @@ intervals.MSM.lm=function(object,level=0.95,...){
 }
 setMethod(f="msmFilter",signature=c("MSM.lm"),definition=.MSM.lm.msmFilter)
 
-# .MSM.glm.msmFilter=function(object){
-# 	model=object["model"]
-# 	k=object["k"]
-# 	family=model$family
-# 
-# 	Coef=object["Coef"]
-# 	P=object["transMat"]
-# 
-# 	# Calculation of some preliminar variables
-# 	nr=length(model$model[,1])
-# 
-# 	terms=model.matrix(model)
-# 	
-# 	CondMean=family$linkinv(as.matrix(terms)%*%t(as.matrix(Coef)))
-# 	error= as.matrix(model$model[,1,drop=F])%*%matrix(rep(1,k),nrow=1)-CondMean
-# 
-# 	Likel=object@Likelihood(as.matrix(model$model[,1,drop=F])%*%matrix(rep(1,k),nrow=1),mu=CondMean)
-# 
-# 	###Filtered Probabilities ####
-# 	fProb=matrix(data=0,nrow=nr,ncol=k)
-# 	margLik=matrix(data=0,nrow=nr,ncol=1)
-# 	
-# 	margLik[1,1]=sum ((P%*%matrix(object["iniProb"],ncol=1)) * t(Likel[1,,drop=F]))
-# 	fProb[1,]= ((P%*%matrix(object["iniProb"],ncol=1))*t(Likel[1,,drop=F]))/margLik[1,1]
-# 	for (i in 2:nr){
-# 		# Mixtura de funcions
-# 		# MS filter margLikuation
-# 		margLik[i,1]=sum ((P%*%t(fProb[i-1,,drop=F])) * t(Likel[i,,drop=F]))
-# 		# MS filter Filter margLikuation for probabilities
-# 		fProb[i,]= ((P%*%t(fProb[i-1,,drop=F])*t(Likel[i,,drop=F]))/margLik[i,1])
-# 	}
-# 
-# 	# Negative sum of log Likelihood for fmincon (fmincon minimzes the function)
-# 	loglik=-sum(log(margLik[1:nr]))
-# 
-# 	# Passing up to output structure
-# 	ans=new(Class="MSM.fitted",CondMean=CondMean,error=error, Likel=Likel,margLik=margLik, filtProb=fProb, logLikel=loglik )
-# 	return(ans)
-# }
-# setMethod(f="msmFilter",signature=c("MSM.glm"),definition=.MSM.glm.msmFilter)
+.MSM.glm.msmFilter=function(object){
+	model=object["model"]
+	k=object["k"]
+	family=model$family
+
+	Coef=object["Coef"]
+	P=object["transMat"]
+
+	# Calculation of some preliminar variables
+	nr=length(model$model[,1])
+
+	terms=model.matrix(model)
+
+	CondMean=family$linkinv(as.matrix(terms)%*%t(as.matrix(Coef)))
+	error= as.matrix(model$model[,1,drop=F])%*%matrix(rep(1,k),nrow=1)-CondMean
+
+	Likel=object@Likelihood(as.matrix(model$model[,1,drop=F])%*%matrix(rep(1,k),nrow=1),mu=CondMean)
+
+	###Filtered Probabilities ####
+	fProb=matrix(data=0,nrow=nr,ncol=k)
+	margLik=matrix(data=0,nrow=nr,ncol=1)
+
+	margLik[1,1]=sum ((P%*%matrix(object["iniProb"],ncol=1)) * t(Likel[1,,drop=F]))
+	fProb[1,]= ((P%*%matrix(object["iniProb"],ncol=1))*t(Likel[1,,drop=F]))/margLik[1,1]
+	for (i in 2:nr){
+		# Mixtura de funcions
+		# MS filter margLikuation
+		margLik[i,1]=sum ((P%*%t(fProb[i-1,,drop=F])) * t(Likel[i,,drop=F]))
+		# MS filter Filter margLikuation for probabilities
+		fProb[i,]= ((P%*%t(fProb[i-1,,drop=F])*t(Likel[i,,drop=F]))/margLik[i,1])
+	}
+
+	# Negative sum of log Likelihood for fmincon (fmincon minimzes the function)
+	loglik=-sum(log(margLik[1:nr]))
+
+	# Passing up to output structure
+	ans=new(Class="MSM.fitted",CondMean=CondMean,error=error, Likel=Likel,margLik=margLik, filtProb=fProb, logLikel=loglik )
+	return(ans)
+}
+setMethod(f="msmFilter",signature=c("MSM.glm"),definition=.MSM.glm.msmFilter)
 
 #########
 #### msmsmooth
 
-.MSM.msmSmooth=function(object){		
+.MSM.msmSmooth=function(object){
 	object@Fit=msmFilter(object)
 	nr=length(object["model"]$model[,1])
 	fProb=object["Fit"]["filtProb"]
@@ -1088,18 +1182,19 @@ fopt.lm=function(param, object=object){
 	return(msmFilter(object)@logLikel)
 }
 
-# fopt.glm=function(param, object=object){
-# 	long=(object["k"]-1)*object["k"]
-# 	mprob=matrix(logitinv(c(param[1:long])),ncol=object["k"],byrow=T)
-# 	object@transMat<-matrix(c(mprob,1-apply(mprob,2, function(x) sum(x))),nrow=object["k"],byrow=T)
-# 	swi=object["switch"]	
-# 	mi=sum(!swi)
-# 	aux=object["Coef"]
-# 	aux[,which(swi)]=as.data.frame(matrix(param[-c(1:(long+mi))],nrow=object["k"],byrow=T))
-# 	aux[,which(!swi)]=as.data.frame(matrix(rep(param[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
-# 	object@Coef=aux
-# 	return(msmFilter(object)@logLikel)
-# }
+
+fopt.glm=function(param, object=object){
+	long=(object["k"]-1)*object["k"]
+	mprob=matrix(logitinv(c(param[1:long])),ncol=object["k"],byrow=T)
+	object@transMat<-matrix(c(mprob,1-apply(mprob,2, function(x) sum(x))),nrow=object["k"],byrow=T)
+	swi=object["switch"]
+	mi=sum(!swi)
+	aux=object["Coef"]
+	aux[,which(swi)]=as.data.frame(matrix(param[-c(1:(long+mi))],nrow=object["k"],byrow=T))
+	aux[,which(!swi)]=as.data.frame(matrix(rep(param[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
+	object@Coef=aux
+	return(msmFilter(object)@logLikel)
+}
 
 
 .MSM.lm.hessian=function(object){
@@ -1107,64 +1202,62 @@ fopt.lm=function(param, object=object){
 			lstd=log(object["std"][1])
 		} else {
 			lstd=log(object["std"])
-	 	} 
+	 	}
 		swi=object["switch"][-length(object["switch"])]
    		param=c(lstd,
 		logit(matrix(object["transMat"][1:object["k"]-1,],nrow=1,byrow=T)),
-		object["Coef"][1,!swi], 
+		object["Coef"][1,!swi],
 		matrix(t(as.matrix(object["Coef"])[,swi]),nrow=1))
 		res=fdHess(
 			pars=param,
 			fun=fopt.lm,
 			object=object
 		)
-		
-		# non-switching variance will have only one value
+
+
+		####
+		# Add: non-switching variance is 1 not k
+		###
 		# long=object["k"]+(object["k"]-1)*object["k"]
 		long=length(lstd)+(object["k"]-1)*object["k"]
 		mi=sum(!swi)
-		
-		# use Ginv(), the generalized inversed for singular matrix
+
+		####
+		# Add: use Ginv(), the generalized inversed for singular matrix
+		###
 		# hessian=sqrt(abs(diag(solve(res$Hessian))))
-		# if(class(try(solve(res$Hessian), silent=TRUE))=="try-error"){
-		#   require(matlib)
-		#   hessian=sqrt(abs(diag(Ginv(res$Hessian))))
-		# }else{
-		#   hessian=sqrt(abs(diag(solve(res$Hessian))))
-		# }
-		
-		require(matlib)
 		hessian=sqrt(abs(diag(Ginv(res$Hessian))))
-		 
+
+
 		stdaux=object["Coef"]
     stdaux[,which(swi)]=as.data.frame(matrix(hessian[-c(1:(long+mi))],nrow=object["k"],byrow=T))
     stdaux[,which(!swi)]=as.data.frame(matrix(rep(hessian[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
 		object@seCoef=stdaux
-		return(object)  
+		return(object)
 }
 setMethod(f="hessian",signature=c("MSM.lm"),definition=.MSM.lm.hessian)
 
 
-# .MSM.glm.hessian=function(object){
-#     		param=c(
-# 		logit(matrix(object["transMat"][1:object["k"]-1,],nrow=1,byrow=T)),
-# 		as.matrix(object["Coef"])[1,!object["switch"]], 
-# 		matrix(t(as.matrix(object["Coef"])[,object["switch"]]),nrow=1))
-# 		res=fdHess(
-# 			pars=param,
-# 			fun=fopt.glm,
-# 			object=object
-# 		)
-# 		long=(object["k"]-1)*object["k"]
-# 		mi=sum(!object["switch"])
-# 	      hessian=sqrt(abs(diag(solve(res$Hessian))))
-# 		stdaux=object["Coef"]
-# 		stdaux[,which(object["switch"])]=as.data.frame(matrix(hessian[-c(1:(long+mi))],nrow=object["k"],byrow=T))
-# 		stdaux[,which(!object["switch"])]=as.data.frame(matrix(rep(hessian[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
-# 		object@seCoef=stdaux
-# 		return(object)  
-# }
-# setMethod(f="hessian",signature=c("MSM.glm"),definition=.MSM.glm.hessian)
+.MSM.glm.hessian=function(object){
+    		param=c(
+		logit(matrix(object["transMat"][1:object["k"]-1,],nrow=1,byrow=T)),
+		as.matrix(object["Coef"])[1,!object["switch"]],
+		matrix(t(as.matrix(object["Coef"])[,object["switch"]]),nrow=1))
+		res=fdHess(
+			pars=param,
+			fun=fopt.glm,
+			object=object
+		)
+		long=(object["k"]-1)*object["k"]
+		mi=sum(!object["switch"])
+	      hessian=sqrt(abs(diag(solve(res$Hessian))))
+		stdaux=object["Coef"]
+		stdaux[,which(object["switch"])]=as.data.frame(matrix(hessian[-c(1:(long+mi))],nrow=object["k"],byrow=T))
+		stdaux[,which(!object["switch"])]=as.data.frame(matrix(rep(hessian[long+(1:mi)],object["k"]),nrow=object["k"],byrow=T))
+		object@seCoef=stdaux
+		return(object)
+}
+setMethod(f="hessian",signature=c("MSM.glm"),definition=.MSM.glm.hessian)
 
 .MSM.lm.maximEM=function(object,dades){
  	k=object["k"]
@@ -1172,7 +1265,7 @@ setMethod(f="hessian",signature=c("MSM.lm"),definition=.MSM.lm.hessian)
 	co=object["Coef"]
 	w=object["Fit"]["smoProb"][-1,]
 
-	modaux=lm(y~.-1,dades,weights=c(t(w)))	
+	modaux=lm(y~.-1,dades,weights=c(t(w)))
 	object@Coef=as.data.frame(matrix(rep(coef(modaux),rep(ifelse(swi,1,k),ifelse(swi,k,1))),nrow=k))
 	if (tail(object["switch"],1)==T){
 		object@std=sqrt(apply(w*matrix(resid(modaux),ncol=k,byrow=T)^2,2,sum)/apply(w,2,sum))
@@ -1186,20 +1279,20 @@ setMethod(f="hessian",signature=c("MSM.lm"),definition=.MSM.lm.hessian)
 
 setMethod(f="maximEM",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.maximEM)
 
-# .MSM.glm.maximEM=function(object,dades){
-#  	k=object["k"]
-# 	sw=object["switch"]
-# 	co=object["Coef"]
-# 	w=object["Fit"]["smoProb"][-1,]
-# 
-# 	modaux=glm(y~.-1,dades,weights=c(t(w)),family=object["model"]$family)	
-# 	
-# 	object@Coef=as.data.frame(matrix(rep(coef(modaux),rep(ifelse(sw,1,k),ifelse(sw,k,1))),nrow=k))
-# 	names(object@Coef)=names(co)
-# 	return(object)
-# 
-# }
-# setMethod(f="maximEM",signature=c("MSM.glm","data.frame"),definition=.MSM.glm.maximEM)
+.MSM.glm.maximEM=function(object,dades){
+ 	k=object["k"]
+	sw=object["switch"]
+	co=object["Coef"]
+	w=object["Fit"]["smoProb"][-1,]
+
+	modaux=glm(y~.-1,dades,weights=c(t(w)),family=object["model"]$family)
+
+	object@Coef=as.data.frame(matrix(rep(coef(modaux),rep(ifelse(sw,1,k),ifelse(sw,k,1))),nrow=k))
+	names(object@Coef)=names(co)
+	return(object)
+
+}
+setMethod(f="maximEM",signature=c("MSM.glm","data.frame"),definition=.MSM.glm.maximEM)
 
 
 .MSM.linear.iteraEM=function(object,dades,control){
@@ -1219,7 +1312,8 @@ setMethod(f="maximEM",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.maxi
 		object=msmSmooth(object)
 
 		if (control$trace) cat(" Inner Iter.",it," logLikel=",object["Fit"]["logLikel"],"\n")
-		if ((max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLikel"]))) < control$tol)& (max(abs(object["Coef"] - oldcoef))/(0.1 + max(abs(object["Coef"]))) < control$tol)) break
+		if ( (max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLikel"]))) < control$tol)
+		    & (max(abs(object["Coef"] - oldcoef),na.rm=TRUE)/(0.1 + max(abs(object["Coef"]),na.rm=TRUE)) < control$tol) ) break
 	}
 	return(object)
 }
@@ -1229,11 +1323,11 @@ setMethod(f="iteraEM",signature=c("MSM.linear","data.frame","ANY"),definition=.M
 
 ####em
 .MSM.em=function(object,control){
-	
+
   		k=object["k"]
 		swi=object["switch"]
 		co=object["Coef"]
-		
+
 		constX=function(el,swit){
 			if(swit){ mat=diag(1,k) }else{ mat=rep(1,k)}
 			kronecker(el,mat)
@@ -1242,24 +1336,24 @@ setMethod(f="iteraEM",signature=c("MSM.linear","data.frame","ANY"),definition=.M
 		X=NULL
 		for(i in 1:ncol(Xini)){ X=cbind(X,constX(Xini[,i,drop=F],swi[i])) }
 		y=kronecker(as.matrix(object["model"]$model[,1,drop=F]),rep(1,k))
-		dades=data.frame(y=y,X)		
-		
+		dades=data.frame(y=y,X)
+
 		mprob=object@transMat[-1,,drop=F]
 		object@transMat=matrix(c(1-apply(mprob,2, function(x) sum(x)),mprob),nrow=object["k"],byrow=T)
 		object@transMat[object@transMat<0]=0
 		object@transMat[object@transMat>1]=1
 		object=msmSmooth(object)
-		
+
 		maxiterInner=control$maxiterInner
 		maxiterOuter=control$maxiterOuter
 		parallelization=control$parallelization
-      
+
   	if(parallelization){
   		    mc=detectCores(logical = TRUE)
   		    cl <- makeCluster(mc)
   		    #clusterExport(cl,c("dades","object","control","maxiterInner"))
   	}
-	
+
 		paralel=function(id){
 			x<-object
 			smoTransMat=lapply(vector("list",nrow(x@Fit@filtProb)),function(el){
@@ -1267,7 +1361,7 @@ setMethod(f="iteraEM",signature=c("MSM.linear","data.frame","ANY"),definition=.M
 			   	 	matrix(ma/sum(ma),ncol=k)
 				})
 			smoTransMatrob=rbind(t(sapply(smoTransMat,function(el)apply(el,1,sum))),runif(k))
-			
+
 			x@Fit@smoTransMat<-smoTransMat
 			x@Fit@smoProb=smoTransMatrob
 			x=iteraEM(x,dades,control=list(maxiter=maxiterInner,tol=control$tol,trace=control$trace,parallelization=control$parallelization))
@@ -1280,9 +1374,9 @@ setMethod(f="iteraEM",signature=c("MSM.linear","data.frame","ANY"),definition=.M
   		  } else {
   		    paralRes=lapply(c(1:maxiterOuter),paralel)
   		  }
-        
-				
-		
+
+
+
 		Minim=paralRes[[1]][["Minim"]]
 		inismoTransMat=paralRes[[1]][["inismoTransMat"]]
 		inismoTransMatrob=paralRes[[1]][["inismoTransMatrob"]]
@@ -1296,15 +1390,70 @@ setMethod(f="iteraEM",signature=c("MSM.linear","data.frame","ANY"),definition=.M
 			i=i+1
 		}
 
-		if (control$trace) cat("Initial Value:",Minim,"\n")	
+		if (control$trace) cat("Initial Value:",Minim,"\n")
   		object@Fit@smoTransMat=inismoTransMat
   		object@Fit@smoProb=inismoTransMatrob
 		object=iteraEM(object,dades,control)
 		if (control$trace) cat("Calculating standard errors...\n")
 		object=hessian(object)
 		return(object)
-	
+
 }
 setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
 
 
+##########
+##### predict
+.MSM.lm.predict=function(object, newdata){
+  p <- object@p
+  k <- object["k"]
+  model <- object["model"]
+  Coef <- object["Coef"]
+  std <- object["std"]
+  P <- object["transMat"]
+  fProb <- object["Fit"]["filtProb"]
+  margLik <- object["Fit"]["margLik"]
+  nr <- length(model$model[,1])
+
+  var_name <- colnames(model$model) # all variables name
+  var_name <- var_name[1:(length(var_name)-p)] # discard AR term (if any)
+  test <- subset(newdata, select=var_name) # subset (dependent and independent variables)
+
+  if(p > 0){
+    ar <- t(model$model[nr:(nr-p+1),1,drop=F]) # lag p from training data
+    var <- test[,1]
+    if(length(var) > 1){
+      ar <- apply(as.matrix(1:p),1,function(el){
+        length(var)=length(var)-el
+        var=c(rep(ar[el:1]),var)
+        return(var)
+      })}
+    colnames(ar) <- paste(names(model$model)[1],"_",1:p,sep="") # insert name
+  }
+
+  test <- cbind(test, ar) # include back AR term
+
+  # relevel the reference of the factor level to be the same as in the training model
+  for(i in names(model$xlevels)){
+    ref_level <- model$xlevels[[i]][1] #
+    test[,i] <- relevel(test[,i], ref_level)
+  }
+
+  terms <- model.matrix(as.formula(paste(colnames(test)[1], " ~ ", paste(colnames(test)[-1], collapse= "+"))), data=test)
+  CondMean <- as.matrix(terms) %*% t(as.matrix(Coef))
+  error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
+  Likel <- t(dnorm(t(error),0,std))
+
+  st <- c()
+  for(i in 1:nrow(test)){
+    fProb_new <- t(P %*% t(fProb[nr-1+i,,drop=F])) * (Likel[i,,drop=F])
+    margLik_new <- sum(fProb_new)
+    fProb_new <- (fProb_new / margLik_new)
+    fProb <- rbind(fProb, fProb_new) # filtered prob of t+1 conditional on the info in t+1
+    margLik <- rbind(margLik, margLik_new)
+    st <- c(st, which.max(fProb_new))
+  }
+  names(st) <- seq(nrow(test))
+  return(st)
+}
+setMethod(f="predict",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.predict)

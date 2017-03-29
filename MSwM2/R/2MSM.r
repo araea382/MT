@@ -211,48 +211,48 @@ setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame
 ####
 # Add: for categorical variables
 ###
-MSM.lm.categorical <- function(object,k){
-  # categorical variable which has two factor levels
-  factor2 <- unlist(sapply(1:length(object$contrasts), function(x){
-    if(length(object$xlevels[[x]]) == 2){
-      names(object$xlevels[x])
-    }
-  }))
-
-  # count the number of occurrence for each level in the variable
-  count <- c()
-  for(i in factor2){
-    cnt <- list(sapply(levels(object$model[,i]), function(x) length(which(object$model[,i] == x))))
-    count <- c(count,cnt)
-  }
-  names(count) <- factor2
-  var_name <- factor2[ceiling(which.min(unlist(count))/2)]
-
-  min_var <- count[[var_name]][2]
-  ind <- sample(rep(1:k, length.out=min_var))
-  ind <- c(sample(rep(1:k, length.out=(length(object$residuals)-min_var))),ind)
-  temp <- object$model[order(object$model[,var_name]),]
-
-  Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
-  names(Coef)=names(coef(object))
-  std=rep(0,k)
-
-  for(i in 1:k){
-    data1=as.data.frame(temp[ind==i,,drop=F])
-    mod1=update(object,formula=object$terms,data=data1)
-    # insert coefficient in the right position
-    for(a in names(coef(mod1))){
-      for(b in names(coef(object))){
-        if(a == b){
-          Coef[i,a] <- coef(mod1)[a]
-        }
-      }
-    }
-    std[i]=summary(mod1)$sigma
-  }
-  ans <- list(Coef=Coef, std=std, index=ind)
-  return(ans)
-}
+# MSM.lm.categorical <- function(object,k){
+#   # categorical variable which has two factor levels
+#   factor2 <- unlist(sapply(1:length(object$contrasts), function(x){
+#     if(length(object$xlevels[[x]]) == 2){
+#       names(object$xlevels[x])
+#     }
+#   }))
+# 
+#   # count the number of occurrence for each level in the variable
+#   count <- c()
+#   for(i in factor2){
+#     cnt <- list(sapply(levels(object$model[,i]), function(x) length(which(object$model[,i] == x))))
+#     count <- c(count,cnt)
+#   }
+#   names(count) <- factor2
+#   var_name <- factor2[ceiling(which.min(unlist(count))/2)]
+# 
+#   min_var <- count[[var_name]][2]
+#   ind <- sample(rep(1:k, length.out=min_var))
+#   ind <- c(sample(rep(1:k, length.out=(length(object$residuals)-min_var))),ind)
+#   temp <- object$model[order(object$model[,var_name]),]
+# 
+#   Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+#   names(Coef)=names(coef(object))
+#   std=rep(0,k)
+# 
+#   for(i in 1:k){
+#     data1=as.data.frame(temp[ind==i,,drop=F])
+#     mod1=update(object,formula=object$terms,data=data1)
+#     # insert coefficient in the right position
+#     for(a in names(coef(mod1))){
+#       for(b in names(coef(object))){
+#         if(a == b){
+#           Coef[i,a] <- coef(mod1)[a]
+#         }
+#       }
+#     }
+#     std[i]=summary(mod1)$sigma
+#   }
+#   ans <- list(Coef=Coef, std=std, index=ind)
+#   return(ans)
+# }
 
 ####
 # Add: relevel the reference of the factor level
@@ -306,35 +306,30 @@ reref <- function(data, var){
   ####
   # Add: check for categorical variables then apply the function
   ###
-  if(!is.null(object$contrasts)){
-    result <- MSM.lm.categorical(object,k)
-    Coef <- result$Coef
-    std <- result$std
-    ind <- result$index
-  }else{
+  # if(!is.null(object$contrasts)){
+  #   result <- MSM.lm.categorical(object,k)
+  #   Coef <- result$Coef
+  #   std <- result$std
+  #   ind <- result$index
+  # }else{
     Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
     names(Coef)=names(coef(object))
     std=rep(0,k)
 
     ####
-    # Add: resample and fit model again if one of the coefficient is not estimated (NA)
+    # Add: use the whole data set to get the initial coefficients
     ####
-    j <- 0
-    while(j < 50){
-      ind=sample(1:k,length(object$residuals),replace=T)
-      for(i in 1:k){
-        data1=as.data.frame(object$model[ind==i,,drop=F])
-        mod1=update(object,formula=object$terms,data=data1)
-        Coef[i,]=coef(mod1)
-        std[i]=summary(mod1)$sigma
-      }
-      if(anyNA(Coef)){
-        j <- j + 1
-      }else break
+    for(i in 1:k){
+      mod1=update(object,formula=object$terms,data=object$model)
+      Coef[i,]=coef(mod1)
+      std[i]=summary(mod1)$sigma
     }
-  }
+  # }
 
-	transMat=t(matrix(table(ind,c(ind[-1],NA))/rep(table(ind[-length(ind)]),k),ncol=k))
+  ####
+  # Add: initialize transition matrix
+  ###
+	transMat=t(matrix(rep(1/k),ncol=k,nrow=k))
 	ans=new(Class="MSM.lm",
 		call=as.call(call),
 		model=object,
@@ -1309,7 +1304,7 @@ setMethod(f="maximEM",signature=c("MSM.glm","data.frame"),definition=.MSM.glm.ma
 		object=msmSmooth(object)
 
 		if (control$trace) cat(" Inner Iter.",it," logLikel=",object["Fit"]["logLikel"],"\n")
-		if ( (max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLikel"]))) < control$tol) 
+		if ( (max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLikel"]))) < control$tol)
 		    & (max(abs(object["Coef"] - oldcoef),na.rm=TRUE)/(0.1 + max(abs(object["Coef"]),na.rm=TRUE)) < control$tol) ) break
 	}
 	return(object)
@@ -1411,11 +1406,11 @@ setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
   fProb <- object["Fit"]["filtProb"]
   margLik <- object["Fit"]["margLik"]
   nr <- length(model$model[,1])
-  
+
   var_name <- colnames(model$model) # all variables name
   var_name <- var_name[1:(length(var_name)-p)] # discard AR term (if any)
   test <- subset(newdata, select=var_name) # subset (dependent and independent variables)
-  
+
   if(p > 0){
     ar <- t(model$model[nr:(nr-p+1),1,drop=F]) # lag p from training data
     var <- test[,1]
@@ -1427,20 +1422,20 @@ setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
       })}
     colnames(ar) <- paste(names(model$model)[1],"_",1:p,sep="") # insert name
   }
-  
+
   test <- cbind(test, ar) # include back AR term
-  
+
   # relevel the reference of the factor level to be the same as in the training model
   for(i in names(model$xlevels)){
-    ref_level <- model$xlevels[[i]][1] # 
+    ref_level <- model$xlevels[[i]][1] #
     test[,i] <- relevel(test[,i], ref_level)
   }
-  
+
   terms <- model.matrix(as.formula(paste(colnames(test)[1], " ~ ", paste(colnames(test)[-1], collapse= "+"))), data=test)
   CondMean <- as.matrix(terms) %*% t(as.matrix(Coef))
   error <- as.matrix(test[,1,drop=F]) %*% matrix(rep(1,k),nrow=1) - CondMean
   Likel <- t(dnorm(t(error),0,std))
-  
+
   st <- c()
   for(i in 1:nrow(test)){
     fProb_new <- t(P %*% t(fProb[nr-1+i,,drop=F])) * (Likel[i,,drop=F])

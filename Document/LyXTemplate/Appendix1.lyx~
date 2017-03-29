@@ -294,14 +294,6 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Proofs of mathematical results
-\end_layout
-
-\begin_layout Standard
-from Method
-\end_layout
-
-\begin_layout Chapter
 Software
 \end_layout
 
@@ -315,23 +307,36 @@ Both R and Python are powerful programming language for data analysis.
  starts to expand to different fields.
  R also has a strong reputation for data visualization.
  However, in terms of computation, R still cannot compete with Python which
- is buit specifically for computer programming.
+ is built specifically for computer programming.
 \end_layout
 
 \begin_layout Standard
 With strengths and weaknesses between R and Python described earlier, R
  is chosen to be used in this study.
  It offers more implemented algorithms to solve the problem at hand.
- Moreover, effective visualizion helps analyst and user to understand more
- about their data especially for the complex one.
+ Moreover, effective visualization helps analyst and user to understand
+ more about their data especially for the complex one.
  Visualizing data is useful in many ways such as uncover new patterns, identify
  some factors, and get an overall trend.
  R proves itself a good choice since it provides a great feature in creating
  an interactive graphic and visualization.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Rewrite
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
-MSwM Package
+MSwM2 Package
 \end_layout
 
 \begin_layout Standard
@@ -343,10 +348,89 @@ You may want to include an appendix to describe the software used in the
  thesis.
  You can also include CONCISE documentation of your own code.
  Do not include page up and down with code, but maybe a list of functions
- and objects, and a short desciption of what each function does and the
+ and objects, and a short description of what each function does and the
  properties of objects.
  Ideally, you could post your code online (github is a popular place) and
  link to it from here.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The algorithm used for fitting the Markov switching autoregressive model
+ is mainly based on the MSwM package in R 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "mswm"
+
+\end_inset
+
+.
+ This package performs an univariate autoregressive Markov switching models
+ for linear and generalized models.
+ The package implemented expectation-maximization (E-M) algorithm to fit
+ Markov switching model.
+ Further implementations and some modifications had been made to the package
+ and are described in more details here.
+\end_layout
+
+\begin_layout Standard
+when setting variance to have a non-switching effect, the function generates
+ a warning.
+ It proved that there is a minor mistake in the code.
+ 
+\end_layout
+
+\begin_layout Standard
+Furthermore, the package uses a Hessian (the matrix of second order partial
+ derivatives with respect to parameters) for numerical optimization.
+ In some cases, Hessian matrix will not be invertible as the matrix is singulari
+ty.
+ Consequently, the function can not compute standard error of estimated
+ parameters.
+ This non-invertible Hessian is solved by using generalized inverse (or
+ pseudoinverse) procedure.
+ 
+\end_layout
+
+\begin_layout Standard
+Apparently, the package does not work well with categorical predictor variables.
+ Hence, a further implementation in the code for handling with categorical
+ variables is done.
+ Another error in the package occurs when any initial coefficients from
+ the model are NAs.
+ 
+\end_layout
+
+\begin_layout Standard
+A function will first randomly divide data into different subsets and separately
+ fit the model to get initial coefficients in each state.
+ Sometime a variable in a subset will have the same value in all observations.
+ Then, NA coefficient is generated because of singularity.
+ The solution is to reshuffle data and fit the model until there is no NA
+ as coefficient.
+ For a categorical variable, it is rather difficult for every subset to
+ contain all levels of variable.
+ As a result, the model generates an NA coefficient for that particular
+ variable.
+ It is worth noting that the function computes conditional means for each
+ state by multiplying data with coefficient matrix.
+ Therefore, if NAs exist in the coefficient matrix, these conditional means
+ will also become NAs.
+ This issue is resolved by first removing any variables which have NAs coefficie
+nt from the coefficient matrix and later on performing matrix multiplication.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Rewrite the NAs coefficients problem
 \end_layout
 
 \end_inset
