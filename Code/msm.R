@@ -31,6 +31,12 @@ plotReg(mod.mswm, regime=2)
 plotReg(mod.mswm)
 
 #----------------------#
+data("traffic")
+model=glm(NDead~Temp+Prec,traffic,family="poisson")
+m1=msmFit(model,k=2,sw=c(T,T,T),family="poisson",control=list(parallel=F))
+
+
+#----------------------#
 # one test case per SW
 # predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
 predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","DuProdName","Fdd.Tdd","NumCells")

@@ -298,7 +298,7 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
@@ -341,10 +341,6 @@ No link between missingness of observation and state
 
 \begin_layout Standard
 small dataset 
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard

@@ -108,6 +108,7 @@ get_min <- function(data, y){
 get_max <- function(data, y){
   require("lazyeval")
   sw_name <- unique(data$SW)
+  if(isTRUE(length(sw_name) <1)){stop("No data for this value")}
   subset <- lapply(sw_name, function(x) filter(data, SW == x))
   sw_max <- unlist(lapply(1:length(subset), function(x) max(subset[x][[1]][,y])))
   subset_max <- data.frame()
@@ -280,6 +281,11 @@ test_g2_L16B <- train_test(g2_L16B, num)$test
 
 train_g2_L17A <- train_test(g2_L17A, num)$train
 test_g2_L17A <- train_test(g2_L17A, num)$test
+
+# density function for TotCpu
+plot(density(train_g2_L16B$TotCpu))
+plot(density(train_g2_L16A$TotCpu))
+plot(density(train_g2_L17A$TotCpu))
 
 #----------------------------------------------------------------------#
 .explore_R15G <- function(){

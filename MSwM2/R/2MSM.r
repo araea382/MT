@@ -208,54 +208,9 @@ msmControl <- function(trace = F,  maxiter = 100, tol = 1e-8, maxiterInner=10, m
 }
 setMethod(f="msmFit",signature=c("formula","numeric","logical","ANY","data.frame","ANY","ANY"),definition=.MSM.formula.msmFit)
 
-####
-# Add: for categorical variables
-###
-# MSM.lm.categorical <- function(object,k){
-#   # categorical variable which has two factor levels
-#   factor2 <- unlist(sapply(1:length(object$contrasts), function(x){
-#     if(length(object$xlevels[[x]]) == 2){
-#       names(object$xlevels[x])
-#     }
-#   }))
-# 
-#   # count the number of occurrence for each level in the variable
-#   count <- c()
-#   for(i in factor2){
-#     cnt <- list(sapply(levels(object$model[,i]), function(x) length(which(object$model[,i] == x))))
-#     count <- c(count,cnt)
-#   }
-#   names(count) <- factor2
-#   var_name <- factor2[ceiling(which.min(unlist(count))/2)]
-# 
-#   min_var <- count[[var_name]][2]
-#   ind <- sample(rep(1:k, length.out=min_var))
-#   ind <- c(sample(rep(1:k, length.out=(length(object$residuals)-min_var))),ind)
-#   temp <- object$model[order(object$model[,var_name]),]
-# 
-#   Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
-#   names(Coef)=names(coef(object))
-#   std=rep(0,k)
-# 
-#   for(i in 1:k){
-#     data1=as.data.frame(temp[ind==i,,drop=F])
-#     mod1=update(object,formula=object$terms,data=data1)
-#     # insert coefficient in the right position
-#     for(a in names(coef(mod1))){
-#       for(b in names(coef(object))){
-#         if(a == b){
-#           Coef[i,a] <- coef(mod1)[a]
-#         }
-#       }
-#     }
-#     std[i]=summary(mod1)$sigma
-#   }
-#   ans <- list(Coef=Coef, std=std, index=ind)
-#   return(ans)
-# }
 
 ####
-# Add: relevel the reference of the factor level
+# Add: relevel the reference of the factor level in each categorical variable
 ###
 reref <- function(data, var){
     count <- sapply(levels(data[,var]), function(x) length(which(data[,var] == x)))
@@ -303,33 +258,22 @@ reref <- function(data, var){
 		object=update(formula=as.formula(paste("~.+",aux,sep="")),data=data.frame(object$model,Ar),object)
 	}
 
-  ####
-  # Add: check for categorical variables then apply the function
-  ###
-  # if(!is.null(object$contrasts)){
-  #   result <- MSM.lm.categorical(object,k)
-  #   Coef <- result$Coef
-  #   std <- result$std
-  #   ind <- result$index
-  # }else{
-    Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
-    names(Coef)=names(coef(object))
-    std=rep(0,k)
-
-    ####
-    # Add: use the whole data set to get the initial coefficients
-    ####
-    for(i in 1:k){
-      mod1=update(object,formula=object$terms,data=object$model)
-      Coef[i,]=coef(mod1)
-      std[i]=summary(mod1)$sigma
-    }
-  # }
+  Coef=data.frame(matrix(NA,nrow=k,ncol=length(coef(object))))
+  names(Coef)=names(coef(object))
+  std=rep(0,k)
 
   ####
-  # Add: initialize transition matrix
-  ###
-	transMat=t(matrix(rep(1/k),ncol=k,nrow=k))
+  # Add: no need to divide data 
+  #      use the whole data to get the initial coefficients
+  ####
+  for(i in 1:k){
+    mod1=update(object,formula=object$terms,data=object$model)
+    Coef[i,]=coef(mod1)
+    std[i]=summary(mod1)$sigma
+  }
+
+  ind = sample(1:k, length(object$residuals), replace = T)
+  transMat = t(matrix(table(ind, c(ind[-1], NA))/rep(table(ind[-length(ind)]), k), ncol = k))
 	ans=new(Class="MSM.lm",
 		call=as.call(call),
 		model=object,

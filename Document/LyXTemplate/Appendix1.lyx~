@@ -113,8 +113,8 @@ customHeadersFooters
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -327,7 +327,7 @@ With strengths and weaknesses between R and Python described earlier, R
 status open
 
 \begin_layout Plain Layout
-Rewrite
+Rewrite!!!!!!!!!!
 \end_layout
 
 \end_inset
@@ -340,7 +340,7 @@ MSwM2 Package
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
@@ -378,6 +378,10 @@ key "mswm"
 \end_layout
 
 \begin_layout Standard
+warnings and errors
+\end_layout
+
+\begin_layout Standard
 when setting variance to have a non-switching effect, the function generates
  a warning.
  It proved that there is a minor mistake in the code.
@@ -385,14 +389,21 @@ when setting variance to have a non-switching effect, the function generates
 \end_layout
 
 \begin_layout Standard
-Furthermore, the package uses a Hessian (the matrix of second order partial
- derivatives with respect to parameters) for numerical optimization.
+Furthermore, the package uses a Hessian, the matrix of second order partial
+ derivatives with respect to parameters, for numerical optimization.
  In some cases, Hessian matrix will not be invertible as the matrix is singulari
 ty.
  Consequently, the function can not compute standard error of estimated
  parameters.
  This non-invertible Hessian is solved by using generalized inverse (or
- pseudoinverse) procedure.
+ pseudoinverse) procedure 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "gill2004your"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -400,14 +411,27 @@ ty.
 Apparently, the package does not work well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
- Another error in the package occurs when any initial coefficients from
- the model are NAs.
  
 \end_layout
 
 \begin_layout Standard
-A function will first randomly divide data into different subsets and separately
- fit the model to get initial coefficients in each state.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+reference level to be the highest occurrence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Another error in the package occurs when any initial coefficients from the
+ model are NAs.
+ A function will first randomly divide data into different subsets and separatel
+y fit the model to get initial coefficients in each state.
  Sometime a variable in a subset will have the same value in all observations.
  Then, NA coefficient is generated because of singularity.
  The solution is to reshuffle data and fit the model until there is no NA

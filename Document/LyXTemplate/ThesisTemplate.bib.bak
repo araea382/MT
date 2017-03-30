@@ -333,7 +333,7 @@
   publisher = {JSTOR},
 }
 
-@Manual{MSwM,
+@Manual{mswm,
   title  = {{MSwM}: Fitting Markov Switching Models},
   author = {Josep A. Sanchez-Espigares, Alberto Lopez-Moreno},
   year   = {2014},

@@ -298,7 +298,7 @@ Data
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
@@ -815,6 +815,31 @@ Categorical
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Three software release 
+\end_layout
+
+\begin_layout Plain Layout
+L16A –> 64 test cases
+\end_layout
+
+\begin_layout Plain Layout
+L16B –> 241 test cases
+\end_layout
+
+\begin_layout Plain Layout
+L17A –>144 test cases
 \end_layout
 
 \end_inset

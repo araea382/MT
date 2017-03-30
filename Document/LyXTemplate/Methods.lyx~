@@ -977,7 +977,7 @@ where
 \begin_inset Formula $\phi_{1,S_{t}}$
 \end_inset
 
- is the autoregression coefficient of observed value at time 
+ is the autoregression coefficient of the observed value at time 
 \begin_inset Formula $t-1$
 \end_inset
 

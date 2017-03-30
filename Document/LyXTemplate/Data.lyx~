@@ -298,7 +298,7 @@ Data
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
@@ -323,7 +323,7 @@ Data sources
 \end_layout
 
 \begin_layout Standard
-Dataset used in this thesis is provided by Ericsson site in Linköping, Sweden.
+Data used in this thesis is provided by Ericsson site in Linköping, Sweden.
  Ericsson founded by Lars Magnus Ericsson since 1876 is one of the world’s
  leading in telecommunication industry.
  It provides services, software products and infrastructure related to informati
@@ -335,11 +335,11 @@ on and communications technology (ICT).
 \end_layout
 
 \begin_layout Standard
-The dataset is collected on 20 January 2017 and is extracted from log file
+The data is collected on 20 January 2017 and is extracted from log file
  produced by test cases.
  There are different types of test cases which are being executed in the
  simulation system.
- Each test case is viewed as an observation in the dataset.
+ Each test case is viewed as an observation in the data.
  
 \end_layout
 
@@ -348,9 +348,9 @@ Data description
 \end_layout
 
 \begin_layout Standard
-This is the dataset for the second generation (G2) product which contain
- 2,xxx test cases.
- Following are the variables in the dataset:
+This is the data for the second generation (G2) product which contain 2,xxx
+ test cases.
+ Following are the variables in the data:
 \end_layout
 
 \begin_layout Paragraph
@@ -454,7 +454,7 @@ This variable contains several components that can be used when defining
 
 \end_deeper
 \begin_layout Standard
-Some variables in the dataset are chosen to be used for further analysis.
+Some variables in the data are chosen to be used for further analysis.
  There are in total one response variable and six predictor variables.
  
 \begin_inset CommandInset ref

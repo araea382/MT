@@ -298,7 +298,7 @@ Results
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
@@ -370,47 +370,8 @@ probably have to change step and sentence itself
 \end_layout
 
 \begin_layout Standard
-The algorithm used for fitting the Markov switching autoregressive model
- is mainly based on the MSwM package in R 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "mswm"
-
-\end_inset
-
-.
- This package performs an univariate autoregressive Markov switching models
- for linear and generalized models.
- The package implemented expectation-maximization (E-M) algorithm to fit
- Markov switching model.
- Further implementations and some modifications had been made to the package
- and are described in more details in 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-appendix
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Each dataset is divided into two subsets.
- Ninety percent of the dataset is used for training the model and the remaining
- ten percent is left out for testing.
- 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Comment
 status open
-
-\begin_layout Plain Layout
-residual analysis
-\end_layout
 
 \begin_layout Plain Layout
 model selection
@@ -420,13 +381,51 @@ model selection
 plot of filtered and smoothed probabilities with regimes specifications
 \end_layout
 
+\begin_layout Plain Layout
+—––
+\end_layout
+
+\begin_layout Plain Layout
+some words model validation (using residual analysis- if the residuals appear
+ to behave randomly, it suggests that the model fits the data well.)
+\end_layout
+
+\begin_layout Plain Layout
+Different types of plots of the residuals from a fitted model provide informatio
+n on the adequacy of different aspects of the model.
+\end_layout
+
+\begin_layout Enumerate
+sufficiency of the functional part of the model: scatter plots of residuals
+ versus predictors 
+\end_layout
+
+\begin_layout Enumerate
+non-constant variation across the data: scatter plots of residuals versus
+ predictors; for data collected over time, also plots of residuals against
+ time 
+\end_layout
+
+\begin_layout Enumerate
+drift in the errors (data collected over time): run charts of the response
+ and errors versus time 
+\end_layout
+
+\begin_layout Enumerate
+independence of errors: lag plot 
+\end_layout
+
+\begin_layout Enumerate
+normality of errors: histogram and normal probability plot
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-set.seed(1) for reproducible results
+set.seed(1) for reproducible result
 \end_layout
 
 \begin_layout Section
@@ -434,12 +433,36 @@ Number of states
 \end_layout
 
 \begin_layout Standard
-Performing Markov switching autoregressive model in each software release.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+parameters all have switching effects (state-dependent variance parameters)
+\end_layout
+
+\begin_layout Plain Layout
+REASON: (easier to compare...what else?)
+\end_layout
+
+\begin_layout Plain Layout
+high and low volatility
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Performing Markov switching autoregressive model in each dataset with all
+ switching parameters.
  The estimation is made under the assumptions of two or three states.
 \end_layout
 
 \begin_layout Standard
-Release L16A 
+The dataset for software release L16A –> singularity –> should drop the
+ variable from the regression unless there is more data–> DuProdName not
+ include in the model
 \end_layout
 
 \begin_layout Standard
@@ -448,6 +471,200 @@ Release L16B
 
 \begin_layout Standard
 Release L17A 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Software release
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AIC BIC
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+k=2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+k=3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L16A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+342.8614 439.6726
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+272.465 417.6819
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L16B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1571.198 1763.507
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1508.797 1797.259
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L17A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1034.98 1189.061
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+967.9531 1199.075
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When defining three states, it gives more interpretable rather than two
+ states
+\end_layout
+
+\begin_layout Standard
+take a risk aversion when deciding which number of states is more desirable
+ 
 \end_layout
 
 \begin_layout Standard
@@ -466,6 +683,18 @@ Number of parameters
 switching and non-switching parameters
 \end_layout
 
+\begin_layout Standard
+Release L16A 
+\end_layout
+
+\begin_layout Standard
+Release L16B
+\end_layout
+
+\begin_layout Standard
+Release L17A 
+\end_layout
+
 \begin_layout Section
 Residual analysis
 \end_layout
@@ -479,6 +708,19 @@ The results of the selected Markov switching autoregressive model for each
 \begin_layout Standard
 Plot of residuals against fitted values, a Normal Q-Q plot, ACF/PACF of
  residuals and ACF/PACF of square residuals.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+It doesn't seem to look good anymore
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
