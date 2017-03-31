@@ -335,12 +335,37 @@ on and communications technology (ICT).
 \end_layout
 
 \begin_layout Standard
-The data is collected on 20 January 2017 and is extracted from log file
- produced by test cases.
- There are different types of test cases which are being executed in the
- simulation system.
- Each test case is viewed as an observation in the data.
+LTE architecture ****high level****
+\end_layout
+
+\begin_layout Standard
+Ericsson makes a global software release in roughly 6-month cycles or two
+ major releases per year.
+ Each of these releases contains a bundle of features and functionality
+ that is intended for all our customers.
+ It labeled with 
+\emph on
+L
+\emph default
+ followed by a number related to the year of release and a letter either
  
+\emph on
+A
+\emph default
+ or 
+\emph on
+B
+\emph default
+ which generally correspond to to 
+\begin_inset Formula $1^{st}$
+\end_inset
+
+ and 
+\begin_inset Formula $2^{nd}$
+\end_inset
+
+ half of that year.
+ For each software release, a code integration track is started and 
 \end_layout
 
 \begin_layout Section
@@ -350,6 +375,11 @@ Data description
 \begin_layout Standard
 This is the data for the second generation (G2) product which contain 2,xxx
  test cases.
+ The data is collected on 20 January 2017 and is extracted from log file
+ produced by test cases.
+ There are different types of test cases which are being executed in the
+ simulation system.
+ Each test case is viewed as an observation in the data.
  Following are the variables in the data:
 \end_layout
 
@@ -385,7 +415,7 @@ Release: Software release
 \end_layout
 
 \begin_layout Itemize
-SW: Software package for the software release 
+SW: Software package
 \end_layout
 
 \begin_layout Itemize
@@ -397,23 +427,23 @@ Observable memory
 \end_layout
 
 \begin_layout Itemize
-MemFreeKiB:
+MemFreeKiB
 \end_layout
 
 \begin_layout Itemize
-SwapFreeKiB:
+SwapFreeKiB
 \end_layout
 
 \begin_layout Itemize
-BufferCacheKiB:
+BufferCacheKiB
 \end_layout
 
 \begin_layout Itemize
-PageCacheKiB:
+PageCacheKiB
 \end_layout
 
 \begin_layout Itemize
-RealFreeKiB: True free memory
+RealFreeKiB
 \end_layout
 
 \begin_layout Paragraph
@@ -421,17 +451,16 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: Total or average CPU usage.
- This value represents the performance of the test case in terms of CPU
- utilization.
+TotCpu%: This value represents the performance of the test case in terms
+ of CPU utilization.
 \end_layout
 
 \begin_layout Itemize
-PerCpu%: CPU usage of each CPU
+PerCpu%
 \end_layout
 
 \begin_layout Itemize
-PerThread%:
+PerThread%
 \end_layout
 
 \begin_layout Itemize
@@ -453,6 +482,35 @@ This variable contains several components that can be used when defining
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Three software release 
+\end_layout
+
+\begin_layout Plain Layout
+L16A –> 64 test cases
+\end_layout
+
+\begin_layout Plain Layout
+L16B –> 241 test cases
+\end_layout
+
+\begin_layout Plain Layout
+L17A –>144 test cases
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+release
+\end_layout
+
 \begin_layout Standard
 Some variables in the data are chosen to be used for further analysis.
  There are in total one response variable and six predictor variables.
@@ -815,31 +873,6 @@ Categorical
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Three software release 
-\end_layout
-
-\begin_layout Plain Layout
-L16A –> 64 test cases
-\end_layout
-
-\begin_layout Plain Layout
-L16B –> 241 test cases
-\end_layout
-
-\begin_layout Plain Layout
-L17A –>144 test cases
 \end_layout
 
 \end_inset

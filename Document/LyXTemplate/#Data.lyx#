@@ -298,7 +298,7 @@ Data
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
@@ -323,7 +323,7 @@ Data sources
 \end_layout
 
 \begin_layout Standard
-Dataset used in this thesis is provided by Ericsson site in Linköping, Sweden.
+Data used in this thesis is provided by Ericsson site in Linköping, Sweden.
  Ericsson founded by Lars Magnus Ericsson since 1876 is one of the world’s
  leading in telecommunication industry.
  It provides services, software products and infrastructure related to informati
@@ -335,10 +335,49 @@ on and communications technology (ICT).
 \end_layout
 
 \begin_layout Standard
-the dataset is collected on 20 January 2017 and is extracted from log file
+LTE architecture ****high level****
+\end_layout
+
+\begin_layout Standard
+Ericsson makes a global software release in roughly 6-month cycles or two
+ major releases per year.
+ Each of these releases contains a bundle of features and functionality
+ that is intended for all our customers.
+ It labeled with 
+\emph on
+L
+\emph default
+ followed by a number related to the year of release and a letter either
+ 
+\emph on
+A
+\emph default
+ or 
+\emph on
+B
+\emph default
+ which generally correspond to to 
+\begin_inset Formula $1^{st}$
+\end_inset
+
+ and 
+\begin_inset Formula $ $
+\end_inset
+
+ half of that year.
+ 
+\end_layout
+
+\begin_layout Standard
+Software package
+\end_layout
+
+\begin_layout Standard
+The data is collected on 20 January 2017 and is extracted from log file
  produced by test cases.
- There are different types of test cases executing in the simulation system
- and each test case is seen as an observation in the dataset.
+ There are different types of test cases which are being executed in the
+ simulation system.
+ Each test case is viewed as an observation in the data.
  
 \end_layout
 
@@ -347,8 +386,9 @@ Data description
 \end_layout
 
 \begin_layout Standard
-This is the dataset for the second generation (G2) product which contain
- 2,xxx test cases.
+This is the data for the second generation (G2) product which contain 2,xxx
+ test cases.
+ Following are the variables in the data:
 \end_layout
 
 \begin_layout Paragraph
@@ -356,7 +396,8 @@ Metadata of test case
 \end_layout
 
 \begin_layout Itemize
-Timestamp: Date and time for the test case (yy-dd-mm hh:mm:ss) 
+Timestamp: Date and time when a test case is being executed (yy-dd-mm hh:mm:ss)
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -382,11 +423,11 @@ Release: Software release
 \end_layout
 
 \begin_layout Itemize
-SW: Software package for the software release 
+SW: Software package
 \end_layout
 
 \begin_layout Itemize
-LogFilePath: Path for log file produced by test case
+LogFilePath: Path for log file produced by a test case
 \end_layout
 
 \begin_layout Paragraph
@@ -394,23 +435,23 @@ Observable memory
 \end_layout
 
 \begin_layout Itemize
-MemFreeKiB:
+MemFreeKiB
 \end_layout
 
 \begin_layout Itemize
-SwapFreeKiB:
+SwapFreeKiB
 \end_layout
 
 \begin_layout Itemize
-BufferCacheKiB:
+BufferCacheKiB
 \end_layout
 
 \begin_layout Itemize
-PageCacheKiB:
+PageCacheKiB
 \end_layout
 
 \begin_layout Itemize
-RealFreeKiB: True free memory
+RealFreeKiB
 \end_layout
 
 \begin_layout Paragraph
@@ -424,11 +465,11 @@ TotCpu%: Total or average CPU usage.
 \end_layout
 
 \begin_layout Itemize
-PerCpu%: CPU usage of each CPU
+PerCpu%
 \end_layout
 
 \begin_layout Itemize
-PerThread%:
+PerThread%
 \end_layout
 
 \begin_layout Itemize
@@ -437,20 +478,50 @@ EventsPerSec: Events or traffic intensity
 
 \begin_deeper
 \begin_layout Standard
-This field contains several components that can be used when defining the
- test case.
- Apparently, there is no fixed number of components in this field as different
- test cases involve additional procedure compared to other test cases.
- The components along with their values in EventsPerSec are also varied
+This variable contains several components that can be used when defining
+ the test case.
+ Apparently, there is no fixed number of components in this variable as
+ different test cases involve additional procedure compared to other test
+ cases.
+ The components along with their values in EventsPerSec field are also varied
  depending on which types of test cases are being executed.
  These components and their values are the main factor which have an impact
  on the CPU utilization.
- The unit for each component in the EventsPerSec is its event per second.
+ The unit for each component is its event per second.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Some variables in the dataset are chosen to be used for further analysis.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Three software release 
+\end_layout
+
+\begin_layout Plain Layout
+L16A –> 64 test cases
+\end_layout
+
+\begin_layout Plain Layout
+L16B –> 241 test cases
+\end_layout
+
+\begin_layout Plain Layout
+L17A –>144 test cases
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+release
+\end_layout
+
+\begin_layout Standard
+Some variables in the data are chosen to be used for further analysis.
  There are in total one response variable and six predictor variables.
  
 \begin_inset CommandInset ref
@@ -459,7 +530,8 @@ reference "data"
 
 \end_inset
 
- shows the name of variables and their description of type and unit.
+ shows the name of variables and their description followed by the type
+ and unit measure.
  The first three predictor variables are components of the test case which
  can be found in the EventsPerSec field while the last three variables are
  considered as the test environment.
@@ -817,10 +889,6 @@ Categorical
 
 \end_layout
 
-\begin_layout Standard
-There are three software releases.
-\end_layout
-
 \begin_layout Section
 Data preprocessing
 \end_layout
@@ -839,14 +907,28 @@ dataset or data
 \end_layout
 
 \begin_layout Standard
-The dataset is sorted by the version of the software package which is named
+The data is split into three dataset according to the software release.
+ The dataset is sorted by the version of the software package which is named
  alphabetically.
  Even though the dataset has a timestamp when the test case is run, the
- timestamp variable is unsuitable to represent itself as time point in time
- series.
+ timestamp is unsuitable to represent itself as a time point in time series.
  The software package is an important variable and more of an interest to
  this analysis.
- It is, therefore, used as the point in time in the time series.
+ It is, therefore, seen as the data points indexed in time order in the
+ time series.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Why is it unsuitable? give one reason
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -860,19 +942,20 @@ Test cases are not always being executed properly.
 \end_layout
 
 \begin_layout Standard
-Some fields in the dataset store multiple values separated by a tab character.
+There are some columns in the dataset that store multiple values separated
+ by a tab character.
  These tab-separated values are split to columns in order to use for later
  analysis.
- This process is done for the EventsPerSec field in order to get its components
- and values which characterize the test case.
+ This process is done for the EventsPerSec variable in order to get its
+ components and values which characterized the test case.
 \end_layout
 
 \begin_layout Standard
 Each software release consists of several software packages.
  Also, numerous test cases are executed in one software package.
- Since the software pacakge acts as a time unit in the time series, it appears
- to be rather difficult to plot all results from every executed test case
- for each software package.
+ Since the software package acts as a point in time in the time series,
+ it appears to be rather difficult to visualize all results from every executed
+ test case for each software package.
  Hence, the test case which has the lowest value of the CPU utilization
  (or minimum value of TotCpu%) is selected to represent the performance
  of a specific software package.
@@ -911,6 +994,14 @@ Although taking an average of the multiple runs for test cases in the software
  identifying the test case.
  The details of these components are absent when averaging over the CPU
  utilization of test cases in the software package.
+ 
+\end_layout
+
+\begin_layout Standard
+Lastly, each dataset with particular software release is divided into two
+ subsets.
+ Ninety percent of the dataset is used for training the model and the remaining
+ ten percent is left out for testing.
  
 \end_layout
 
