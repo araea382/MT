@@ -552,12 +552,6 @@ key "sharkey2014nonparametric"
  
 \end_layout
 
-\begin_layout Plain Layout
-In this study, non-parametric approach is used to get a heuristic an idea
- of the change point location and compare it with the result from parametric
- approach.
-\end_layout
-
 \end_inset
 
 
@@ -621,8 +615,9 @@ The core idea of this thesis is to reduce workload of manual inspection
  package can vary on different test environment.
  The implemented algorithm should also be able to detect when the test environme
 nt is altered.
- This thesis only focuses on CPU utilization which is one of the three essential
- factors for evaluating the performance of the upgrade software package.
+ This thesis only focuses on a CPU utilization which is one of the three
+ essential factors for evaluating the performance of the upgrade software
+ package.
 \end_layout
 
 \begin_layout Standard

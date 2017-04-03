@@ -324,8 +324,18 @@ Data sources
 
 \begin_layout Standard
 Data used in this thesis is provided by Ericsson site in Linköping, Sweden.
- Ericsson founded by Lars Magnus Ericsson since 1876 is one of the world’s
- leading in telecommunication industry.
+ Ericsson
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.ericsson.com/
+\end_layout
+
+\end_inset
+
+ founded by Lars Magnus Ericsson since 1876 is one of the world’s leading
+ in telecommunication industry.
  It provides services, software products and infrastructure related to informati
 on and communications technology (ICT).
  Its head quarter is located in Stockholm, Sweden.
@@ -335,7 +345,116 @@ on and communications technology (ICT).
 \end_layout
 
 \begin_layout Standard
-LTE architecture ****high level****
+LTE, widely known as 4G, is the Long-Term Evolution of the 3G network 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dahlman20134g"
+
+\end_inset
+
+.
+ The high-level network architecture of LTE is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lte"
+
+\end_inset
+
+.
+ The E-UTRAN, an official standard name for the radio access network of
+ LTE, is the entire network.
+ It handles the radio communication between the User Equipment, 
+\emph on
+UE
+\emph default
+, or mobile device and the evolved base stations called 
+\emph on
+eNB
+\emph default
+.
+ Each 
+\emph on
+eNB
+\emph default
+ is a base station which controls the mobiles in one or more cells.
+ Several base stations are connected to a Mobility Management Entity, 
+\emph on
+MME
+\emph default
+, which handles the high-level operation of the mobile for different 
+\emph on
+UEs
+\emph default
+.
+ 
+\emph on
+MME
+\emph default
+ establishes the connection and runs security application to ensure that
+ the 
+\emph on
+UE
+\emph default
+ is allowed on the network.
+ In LTE mobile network, multiple UEs connect to a single base station.
+ A new 
+\emph on
+UE
+\emph default
+ performs a cell search procedure by searching for an available base station
+ when it first connects to the network.
+ The 
+\emph on
+UE
+\emph default
+ sends information about itself to establish a link between the 
+\emph on
+UE
+\emph default
+ and the base station.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/LTE.PNG
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+LTE architecture overview
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lte"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -356,29 +475,183 @@ A
 \emph on
 B
 \emph default
- which generally correspond to to 
+ which generally correspond to 
 \begin_inset Formula $1^{st}$
 \end_inset
 
  and 
-\begin_inset Formula $ $
+\begin_inset Formula $2^{nd}$
 \end_inset
 
  half of that year.
+ For each software release, a code integration track is started.
+ This track becomes the main track or the focal branch for all code deliveries.
+ There are hundreds of team producing code and code is committed to this
+ track continuously.
+ In order to create a structure for this contribution, daily software package
+ is built.
+ Every day a new software package is built which can be seen as a snapshot
+ or marker in the continuous delivery timeline.
+ This software package is then run through various automated test loops
+ to ensure there are no faults in the system.
+ The software packages are named 
+\emph on
+R
+\emph default
+ followed by one or more numbers, which is then followed by one or more
+ letters.
  
+\emph on
+R
+\emph default
+ stands for Release-state.
+ To summarize, each software package is a snapshot in the code integration
+ timeline.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "release"
+
+\end_inset
+
+ presents 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/Release.PNG
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Software release 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "release"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are thousands of automated tests performed.
+ Each test belongs to a particular 
+\emph on
+suite
+\emph default
+ of tests, which belongs to a particular quality assurance (QA) area.
+ For this thesis framework, one suite of test cases that test the signaling
+ capacity within QA Capacity is focused.
+ The QA Capacity has the responsibility of testing and tracking test cases
+ related to LTE node capacity.
+ Each one of these test cases has a well-defined 
+\emph on
+traffic model
+\emph default
+ it tries to execute.
+ Traffic model in this context means certain intensity (per second) of procedure
+s, which can be seen as stimuli in the LTE node.
+ The LTE node then increments one or more counters for each one of these
+ procedures or stimuli it detects.
+ These counter are called local events and they are represented by EventsPerSec.
+ During the execution of these QA Capacity, signaling capacity, test cases,
+ a logging loop is started.
+ The logging loop collects a bunch of metric.
+ Once the logging loop is finished, it is written to a log file.
+ Then, there are cron jobs that crawl through this infrastructure once a
+ day to find latest logs and do a post-processing.
+ The final output of these are either the CSV data or JSON encoded charts.
+ The flowchart of this process is illustrated in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sw"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Capture new screenshot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/SW.PNG
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
 Software package
 \end_layout
 
-\begin_layout Standard
-The data is collected on 20 January 2017 and is extracted from log file
- produced by test cases.
- There are different types of test cases which are being executed in the
- simulation system.
- Each test case is viewed as an observation in the data.
- 
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sw"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -388,6 +661,11 @@ Data description
 \begin_layout Standard
 This is the data for the second generation (G2) product which contain 2,xxx
  test cases.
+ The data is collected on 20 January 2017 and is extracted from log file
+ produced by test cases.
+ There are different types of test cases which are being executed in the
+ simulation system.
+ Each test case is viewed as an observation in the data.
  Following are the variables in the data:
 \end_layout
 
@@ -459,9 +737,8 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: Total or average CPU usage.
- This value represents the performance of the test case in terms of CPU
- utilization.
+TotCpu%: This value represents the performance of the test case in terms
+ of CPU utilization.
 \end_layout
 
 \begin_layout Itemize
@@ -473,53 +750,24 @@ PerThread%
 \end_layout
 
 \begin_layout Itemize
-EventsPerSec: Events or traffic intensity
+EventsPerSec: Event intensity 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-This variable contains several components that can be used when defining
+This variable contains several local events that can be used when defining
  the test case.
- Apparently, there is no fixed number of components in this variable as
+ Apparently, there is no fixed number of local events in this variable as
  different test cases involve additional procedure compared to other test
  cases.
- The components along with their values in EventsPerSec field are also varied
- depending on which types of test cases are being executed.
- These components and their values are the main factor which have an impact
- on the CPU utilization.
- The unit for each component is its event per second.
+ The local events along with their values are also varied depending on which
+ types of test cases are being executed.
+ Event intensities are the main factor which have an impact on the CPU utilizati
+on.
+ 
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Three software release 
-\end_layout
-
-\begin_layout Plain Layout
-L16A –> 64 test cases
-\end_layout
-
-\begin_layout Plain Layout
-L16B –> 241 test cases
-\end_layout
-
-\begin_layout Plain Layout
-L17A –>144 test cases
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-release
-\end_layout
-
 \begin_layout Standard
 Some variables in the data are chosen to be used for further analysis.
  There are in total one response variable and six predictor variables.
@@ -532,7 +780,7 @@ reference "data"
 
  shows the name of variables and their description followed by the type
  and unit measure.
- The first three predictor variables are components of the test case which
+ The first three predictor variables are local events of the test case which
  can be found in the EventsPerSec field while the last three variables are
  considered as the test environment.
  These variables appear to have a high contribution to the CPU utilization.
@@ -894,20 +1142,8 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-dataset or data
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The data is split into three dataset according to the software release.
+The data consists of three software releases – L16A, L16B and L17A – and
+ it is split into a dataset according to the software release.
  The dataset is sorted by the version of the software package which is named
  alphabetically.
  Even though the dataset has a timestamp when the test case is run, the
@@ -947,7 +1183,7 @@ There are some columns in the dataset that store multiple values separated
  These tab-separated values are split to columns in order to use for later
  analysis.
  This process is done for the EventsPerSec variable in order to get its
- components and values which characterized the test case.
+ local events and values which characterized the test case.
 \end_layout
 
 \begin_layout Standard
@@ -990,11 +1226,16 @@ Although taking an average of the multiple runs for test cases in the software
  the data exactly as it is recorded.
  Another important reason for not using the average value of the CPU utilization
  is because the essential information in the test case will be lost.
- Each test case has its own components in EventsPerSec field that used for
- identifying the test case.
- The details of these components are absent when averaging over the CPU
+ Each test case has its own local events in EventsPerSec field that used
+ for identifying the test case.
+ The details of these local events are absent when averaging over the CPU
  utilization of test cases in the software package.
  
+\end_layout
+
+\begin_layout Standard
+After performing all the step describing above, the dataset of L16A, L16B
+ and L17A  consists of 64, 241, and 144 test cases, respectively.
 \end_layout
 
 \begin_layout Standard

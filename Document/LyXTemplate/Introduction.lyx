@@ -552,12 +552,6 @@ key "sharkey2014nonparametric"
  
 \end_layout
 
-\begin_layout Plain Layout
-In this study, non-parametric approach is used to get a heuristic an idea
- of the change point location and compare it with the result from parametric
- approach.
-\end_layout
-
 \end_inset
 
 
@@ -566,21 +560,6 @@ In this study, non-parametric approach is used to get a heuristic an idea
 \begin_layout Standard
 \begin_inset Note Comment
 status open
-
-\begin_layout Plain Layout
-Applying non-parametric procedure to the real-world process gives a real
- advantage to the analysis since data collected from application, in general,
- do not always have a well-defined structure and prefer such analysis that
- is not too restricted 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "hawkins2010nonparametric"
-
-\end_inset
-
-.
- 
-\end_layout
 
 \begin_layout Plain Layout
 software development / meticulously inspecting what's coming out, looking
