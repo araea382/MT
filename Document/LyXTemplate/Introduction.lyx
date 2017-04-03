@@ -526,38 +526,6 @@ Each software package in the system is viewed as a time point in time series
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-There are two approaches, parametric and non-parametric analysis, for detecting
- the change point in time series.
- Parametric analysis benefits from assuming some knowledge of data distribution
- and integrates it to the detection scheme.
- On the other hand, non-parametric analysis is more flexible in which there
- is no assumption made about the distribution.
- It can, therefore, apply to a wider range of application and capturing
- various kinds of changes.
- One study found that if data belong to some known distribution families,
- parametric test statistics outperform non-parametric test.
- However, it is not properly performing well in detecting change point for
- unknown underlying distribution 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "sharkey2014nonparametric"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Comment
 status open
 
@@ -627,20 +595,6 @@ The thesis is structured as follow: Chapter 2 provides details and descriptions
  4.
  Chapter 5 discusses the outcomes and the obtained results.
  Lastly, Chapter 6 contains conclusion.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Related work ???????????????????????
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

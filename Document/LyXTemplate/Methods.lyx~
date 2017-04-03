@@ -1642,17 +1642,17 @@ Non-parametric analysis
 
 \begin_layout Standard
 There are two approaches, parametric and non-parametric analysis, for detecting
- the change point in time series.
- Parametric analysis benefits from assuming some knowledge of data distribution
- and integrates it to the detection scheme.
- On the other hand, non-parametric analysis is more flexible in which there
+ the change point in the time series.
+ The parametric analysis benefits from assuming some knowledge of data distribut
+ion and integrates it to the detection scheme.
+ On the other hand, the non-parametric analysis is more flexible that there
  is no assumption made about the distribution.
- It can, therefore, apply to a wider range of application and capturing
- various kinds of changes.
- One study found that if data belong to some known distribution families,
- parametric test statistics outperform non-parametric test.
- However, it is not properly performing well in detecting change point for
- unknown underlying distribution 
+ It can, therefore, apply to a wider range of application and capture various
+ kinds of changes.
+ One study found that if data belongs to some known distribution families,
+ parametric test statistics outperform the non-parametric test.
+ However, the parametric test is not properly performing well in detecting
+ change point for unknown underlying distribution 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sharkey2014nonparametric"
@@ -1660,10 +1660,10 @@ key "sharkey2014nonparametric"
 \end_inset
 
 .
- Applying non-parametric procedure to the real-world process gives a real
- advantage to the analysis since data collected from application, in general,
- do not always have a well-defined structure and prefer such analysis that
- is not too restricted 
+ Applying the non-parametric analysis to the real-world process gives a
+ real advantage to the analysis since data collected from application, in
+ general, do not always have a well-defined structure and prefer such analysis
+ that is not too restricted 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "hawkins2010nonparametric"
@@ -1675,8 +1675,8 @@ key "hawkins2010nonparametric"
 \end_layout
 
 \begin_layout Standard
-In this study, non-parametric analysis is implemented in order to get a
- heuristic idea of the change point location.
+In this study, the non-parametric analysis is implemented in order to get
+ a heuristic idea of the change point location.
  The obtained result is also used for comparing with the result from Markov
  switching autoregressive model.
 \end_layout
@@ -1711,35 +1711,27 @@ key "james2013ecp"
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-It uses an energy function.
- 
-\end_layout
-
-\begin_layout Plain Layout
-more about this
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 E-divisive
 \end_layout
 
 \begin_layout Standard
-E-divisive algorithm performs divisive clustering in order to estimate the
- multiple change points.
- The algorithm recursively partitions a time series.
- An estimation of the change point is computed at each iteration.
- Permutation test is performed to find the statistical significance of an
- estimated change point.
+The E-divisive algorithm performs a divisive clustering in order to estimate
+ the multiple change points.
+ The algorithm recursively partitions a time series and estimates a single
+ change point in each iteration.
+ Consequently, the new change point is located at each iteration and it
+ divides the time series into different segments.
+ The algorithm also used a permutation test to compute the statistical significa
+nce of an estimated change point.
+ More details about the estimation is described on 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "matteson2014nonparametric"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1747,13 +1739,16 @@ E-agglomerative
 \end_layout
 
 \begin_layout Standard
-E-agglomerative algorithm tries to maximize a goodness of fit test after
- merging segments in the iteration.
+The E-agglomerative algorithm performs an agglomerative clustering in favor
+ of estimating the multiple change points.
+ The algorithm tries to maximize a goodness of fit test after merging segments
+ in the iteration.
  The estimated change point is defined by the iteration that maximized a
  goodness of fit statistic.
- This algorithm allows user to input an initial segmentation for the time
+ This algorithm allows users to input an initial segmentation for the time
  series or a prior knowledge of the possible change point in order to reduce
  the computation time.
+ 
 \end_layout
 
 \begin_layout Standard

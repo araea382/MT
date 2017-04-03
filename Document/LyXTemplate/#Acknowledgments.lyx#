@@ -94,21 +94,43 @@ Acknowledgments
 \end_layout
 
 \begin_layout Standard
-My warmest appreciation goes to A for his constant wise guidance.
+My warmest appreciation goes to the following people:
+\end_layout
+
+\begin_layout Itemize
+Professor Krzysztof Bartoszek for his constant wise guidance and good support
+ in every stage of the thesis project.
+\end_layout
+
+\begin_layout Itemize
+Ericsson for giving me an opportunity to work with them and providing the
+ data for this thesis.
+ In particular, Armin Catovic and Jonas Eriksson for defining and interesting
+ problem as well as advising me in various matters.
+ 
+\end_layout
+
+\begin_layout Itemize
+Linköping university for granting me a scholarship and giving me to be a
+ part of Master's program in Statistics and Data Mining.
+\end_layout
+
+\begin_layout Itemize
+My family, friends and boyfriend for their continuous support and encouragement.
 \end_layout
 
 \begin_layout Standard
-my special thanks
-\end_layout
+\begin_inset Note Comment
+status open
 
-\begin_layout Standard
-I would like to thank Ericsson for giving me an opportunity to work with
- them and 
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 This thesis would not have been possible without their continuous support
  and encouragement.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

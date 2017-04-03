@@ -396,7 +396,11 @@ MME
 UE
 \emph default
  is allowed on the network.
- In LTE mobile network, multiple UEs connect to a single base station.
+ In LTE mobile network, multiple 
+\emph on
+UE
+\emph default
+s connect to a single base station.
  A new 
 \emph on
 UE
@@ -514,7 +518,8 @@ reference "release"
 
 \end_inset
 
- presents 
+ presents the relationship between software release and software package.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -540,7 +545,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Software release 
+Example of one software release that begins a code integration track.
+ Several software packages are launched in the timeline.
 \end_layout
 
 \end_inset
@@ -599,19 +605,6 @@ reference "sw"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Capture new screenshot
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -634,7 +627,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Software package
+Example of one software package.
+ First, QA Capacity automated test suites is started.
+ For each test suite, a logging loop is started and a log is produced for
+ each test case.
+ The log file is fed to post-processing tools and the data output is obtained.
 \end_layout
 
 \end_inset
@@ -659,6 +656,20 @@ Data description
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+no.
+ observations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 This is the data for the second generation (G2) product which contain 2,xxx
  test cases.
  The data is collected on 20 January 2017 and is extracted from log file
@@ -679,7 +690,7 @@ Timestamp: Date and time when a test case is being executed (yy-dd-mm hh:mm:ss)
 \end_layout
 
 \begin_layout Itemize
-NodeName: IP address or the name of base station
+NodeName: IP address or the name of a base station
 \end_layout
 
 \begin_layout Itemize
@@ -762,9 +773,82 @@ This variable contains several local events that can be used when defining
  cases.
  The local events along with their values are also varied depending on which
  types of test cases are being executed.
- Event intensities are the main factor which have an impact on the CPU utilizati
-on.
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+List of local events in a test cas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="12cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EventsPerSec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ErabDrbRelease=166.11 ErabSetupInfo=166.19 PerBbUeEventTa=167.98 PerBbUetrCellEvent
+=12.00 ProcInitialCtxtSetup=166.20 RrcConnSetupAttempt=166.21 RrcConnectionRelease=
+166.11 S1InitialUeMessage=166.20 UplinkNasTransport=32.06
+\end_layout
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -778,11 +862,10 @@ reference "data"
 
 \end_inset
 
- shows the name of variables and their description followed by the type
- and unit measure.
+ shows the name of variables and their description.
  The first three predictor variables are local events of the test case which
- can be found in the EventsPerSec field while the last three variables are
- considered as the test environment.
+ can be found in the EventsPerSec while the last three variables are considered
+ as the test environment.
  These variables appear to have a high contribution to the CPU utilization.
 \end_layout
 
@@ -796,7 +879,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Description of the selected variables 
+List of the selected variables followed by the type and the unit measure
+ 
 \end_layout
 
 \end_inset
@@ -1195,6 +1279,18 @@ Each software release consists of several software packages.
  Hence, the test case which has the lowest value of the CPU utilization
  (or minimum value of TotCpu%) is selected to represent the performance
  of a specific software package.
+ Although taking an average of the multiple runs for test cases in the software
+ package appears to be a good approach, it does not yield the best outcome
+ in this case.
+ The first reason is that manipulating data can easily be misleading.
+ It is, therefore, settled to remain the data as it is and always visualize
+ the data exactly as it is recorded.
+ Another important reason for not using the average value of the CPU utilization
+ is because the essential information in the test case will be lost.
+ Each test case has its own local events in EventsPerSec field that used
+ for identifying the test case.
+ The details of these local events are absent when averaging over the CPU
+ utilization of test cases in the software package.
  
 \end_layout
 
@@ -1218,28 +1314,9 @@ tried to be optimistic...
 \end_layout
 
 \begin_layout Standard
-Although taking an average of the multiple runs for test cases in the software
- package appears to be a good approach, it does not yield the best outcome
- in this case.
- The first reason is that manipulating data can easily be misleading.
- It is, therefore, settled to remain the data as it is and always visualize
- the data exactly as it is recorded.
- Another important reason for not using the average value of the CPU utilization
- is because the essential information in the test case will be lost.
- Each test case has its own local events in EventsPerSec field that used
- for identifying the test case.
- The details of these local events are absent when averaging over the CPU
- utilization of test cases in the software package.
- 
-\end_layout
-
-\begin_layout Standard
-After performing all the step describing above, the dataset of L16A, L16B
- and L17A  consists of 64, 241, and 144 test cases, respectively.
-\end_layout
-
-\begin_layout Standard
-Lastly, each dataset with particular software release is divided into two
+After performing all the steps describing above, the dataset of L16A, L16B
+ and L17A consist of 64, 241, and 144 test cases, respectively.
+ Lastly, each dataset with particular software release is divided into two
  subsets.
  Ninety percent of the dataset is used for training the model and the remaining
  ten percent is left out for testing.

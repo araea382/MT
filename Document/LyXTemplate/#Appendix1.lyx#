@@ -113,8 +113,8 @@ customHeadersFooters
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -336,11 +336,11 @@ Rewrite!!!!!!!!!!
 \end_layout
 
 \begin_layout Chapter
-MSwM2 Package
+MSwM Package
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
@@ -369,12 +369,19 @@ key "mswm"
 \end_inset
 
 .
- This package performs an univariate autoregressive Markov switching models
+ This package performs an univariate autoregressive Markov switching model
  for linear and generalized models.
- The package implemented expectation-maximization (E-M) algorithm to fit
- Markov switching model.
- Further implementations and some modifications had been made to the package
- and are described in more details here.
+ The package implemented the Expectation-Maximization (E-M) algorithm to
+ fit the Markov switching model.
+ 
+\end_layout
+
+\begin_layout Standard
+Code is further implemented in order to properly deal with the problem and
+ the given data.
+ Some modifications have been made in the function to handle errors and
+ warnings produced when fitting the model.
+ These are described in more details here.
 \end_layout
 
 \begin_layout Standard
@@ -385,14 +392,21 @@ when setting variance to have a non-switching effect, the function generates
 \end_layout
 
 \begin_layout Standard
-Furthermore, the package uses a Hessian (the matrix of second order partial
- derivatives with respect to parameters) for numerical optimization.
+Furthermore, the package uses a Hessian, the matrix of second order partial
+ derivatives with respect to parameters, for numerical optimization.
  In some cases, Hessian matrix will not be invertible as the matrix is singulari
 ty.
  Consequently, the function can not compute standard error of estimated
  parameters.
  This non-invertible Hessian is solved by using generalized inverse (or
- pseudoinverse) procedure.
+ pseudoinverse) procedure 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "gill2004your"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -401,6 +415,19 @@ Apparently, the package does not work well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+reference level to be the highest occurrence
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -436,6 +463,10 @@ Rewrite the NAs coefficients problem
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+In the original code 
 \end_layout
 
 \begin_layout Standard

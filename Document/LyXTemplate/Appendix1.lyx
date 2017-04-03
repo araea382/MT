@@ -336,7 +336,7 @@ Rewrite!!!!!!!!!!
 \end_layout
 
 \begin_layout Chapter
-MSwM2 Package
+MSwM Package
 \end_layout
 
 \begin_layout Standard
@@ -369,16 +369,11 @@ key "mswm"
 \end_inset
 
 .
- This package performs an univariate autoregressive Markov switching models
+ This package performs an univariate autoregressive Markov switching model
  for linear and generalized models.
- The package implemented expectation-maximization (E-M) algorithm to fit
- Markov switching model.
+ The package implemented the Expectation-Maximization (E-M) algorithm to
+ fit the Markov switching model.
  
-\end_layout
-
-\begin_layout Standard
-Further implementations and some modifications had been made to the package
- and are described in more details here.
 \end_layout
 
 \begin_layout Standard
@@ -386,6 +381,7 @@ Code is further implemented in order to properly deal with the problem and
  the given data.
  Some modifications have been made in the function to handle errors and
  warnings produced when fitting the model.
+ These are described in more details here.
 \end_layout
 
 \begin_layout Standard
@@ -467,6 +463,10 @@ Rewrite the NAs coefficients problem
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+In the original code 
 \end_layout
 
 \begin_layout Standard
