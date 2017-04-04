@@ -734,8 +734,7 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: This value represents the performance of the test case in terms
- of CPU utilization.
+TotCpu%: Performance of a test case in terms of CPU utilization
 \end_layout
 
 \begin_layout Itemize

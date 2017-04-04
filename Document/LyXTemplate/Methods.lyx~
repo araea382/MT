@@ -64,6 +64,8 @@
 \master MasterThesisTemplate.lyx
 \begin_modules
 customHeadersFooters
+theorems-ams
+theorems-sec
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -314,34 +316,367 @@ Description of statistical and other methods used with references to the
 \begin_layout Standard
 In this chapter, methods used for performing the change point analysis in
  this thesis are explained.
- The illustration of the simple Markov switching model feature is shown
- here and more general model specifications namely Markov switching autoregressi
-ve model is discussed.
+ It first starts by providing general details about Markov chains.
+ Later on, the simple Markov switching model feature and more general model
+ specifications namely Markov switching autoregressive model are discussed.
+ Next two sections are devoted to some techniques for estimating the values
+ of parameters and selecting a model.
+ Finally, a non-parametric analysis is described.
+\end_layout
+
+\begin_layout Section
+Markov chains
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Markov-chains"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Model selection and non-parametric analysis
+A Markov chain is a random process which has a property that given on the
+ current value, the future is independent of the past.
+ A random process 
+\begin_inset Formula $X$
+\end_inset
+
+ contains random variables
+\begin_inset Formula $X_{t}:\:t\in T$
+\end_inset
+
+ indexed by a set of 
+\begin_inset Formula $T$
+\end_inset
+
+ where 
+\begin_inset Formula $T=\{0,1,2,...\}$
+\end_inset
+
+ is called a discrete-time process and 
+\begin_inset Formula $T=[0,\infty)$
+\end_inset
+
+ is called a continuous-time process.
+ Let 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be a sequence which has values from a state space 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ The process begins from one of these states and moves to another state.
+ The move between state is called a step.
+ The process is described here 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "grimmett2001probability"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+If a process 
+\begin_inset Formula $X$
+\end_inset
+
+ satisfies the Markov property, the process 
+\begin_inset Formula $X$
+\end_inset
+
+ is a Markov chain
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+P(X_{t}=s|X_{0}=x_{0},X_{1}=x_{1},...,X_{t-1}=x_{t-1})=P(X_{t}=s|X_{t-1}=x_{t-1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+where 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+ and 
+\begin_inset Formula $s,x_{0},...,x_{t-1}\in S$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+If 
+\begin_inset Formula $X_{t}=i$
+\end_inset
+
+ then it is said that the chain is being in state 
+\begin_inset Formula $i$
+\end_inset
+
+ or the chain is in the 
+\begin_inset Formula $i$
+\end_inset
+
+th state at the 
+\begin_inset Formula $t$
+\end_inset
+
+th step.
+\end_layout
+
+\begin_layout Standard
+There are transitions between states which 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+describe the distribution for the next state given the current state
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ This evolution of changing from 
+\begin_inset Formula $X_{t}=i$
+\end_inset
+
+ to 
+\begin_inset Formula $X_{t}=j$
+\end_inset
+
+ is defined by the transition probabilities 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+as 
+\begin_inset Formula $P(X_{t}=j|X_{t-1}=i)$
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ Markov chains are frequently assumed that these probabilities depend only
+ on 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ and do not depend on 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The chain is time-homogeneous if
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+P(X_{t+1}=j|X_{t}=i)=P(X_{1}=j|X_{0}=i)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+for all 
+\begin_inset Formula $t,i,j$
+\end_inset
+
+.
+ The probability of the transition is independent of 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Then, the transition matrix 
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+ is the matrix of transition probabilities
+\end_layout
+
+\begin_layout Definition
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+p_{ij}=P(X_{t}=j|X_{t-1}=i)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+The transition matrix 
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+ is a stochastic matrix that
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Each of the entries is a non-negative real number or 
+\begin_inset Formula $p_{ij}\ge0$
+\end_inset
+
+ for all 
+\begin_inset Formula $i,j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The sum of each column equal to one or 
+\begin_inset Formula $\sum_{i}p_{ij}=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+A chain is called irreducible if all states are eventually reached from
+ any state.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-Parametric analysis
-\end_layout
 
-\begin_layout Plain Layout
-Non-parametric analysis
-\end_layout
-
-\begin_layout Plain Layout
-more about this 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Definition
+A state 
+\begin_inset Formula $i$
+\end_inset
+
+ has the period 
+\begin_inset Formula $d(i)$
+\end_inset
+
+ and is defined as 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+d(i)=gcd{n:\:p_{ii}(n)>0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+where 
+\begin_inset Formula $gcd$
+\end_inset
+
+ is the greatest common divisor.
+ If 
+\begin_inset Formula $d(i)=1$
+\end_inset
+
+, then the state is said to be aperiodic.
+ Otherwise, the state is said to be periodic.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+A chain is called an ergodic Markov chain if it is possible to go from every
+ state to every other state with positive probability (not necessarily in
+ one step).
 \end_layout
 
 \begin_layout Section
@@ -484,10 +819,6 @@ y_{t}=X_{t}'\beta_{S_{t}}+\varepsilon_{t}\label{eq:msm}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 where 
 \begin_inset Formula $y_{t}$
 \end_inset
@@ -595,81 +926,7 @@ reference "eq:msm"
 \end_inset
 
  is discussed.
- There are transitions between states which 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-describe the distribution for the next state given the current state
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-.
- Markov switching model assumes that 
-\begin_inset Formula $S_{t}$
-\end_inset
-
- follows a stochastic process that satisfied Markov property.
- Hence, the evolution of changing from state 
-\begin_inset Formula $S_{t}=i$
-\end_inset
-
- to 
-\begin_inset Formula $S_{t}=j$
-\end_inset
-
- is defined by the transition probabilities as follow
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula 
-\begin{equation}
-p_{ij}=P(S_{t}=j|S_{t-1}=i,S_{t-2}=l,...,S_{1}=q)=P(S_{t}=j|S_{t-1}=i)
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $1\leqslant i,j\leqslant k$
-\end_inset
-
- .
- 
-\end_layout
-
-\begin_layout Standard
-The transition probabilities in a matrix notation with two-state Markov
+ The transition probabilities in a matrix notation with two-state Markov
  chain is given by
 \end_layout
 
@@ -700,22 +957,6 @@ p_{21} & p_{22}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-It is also assumed that 
-\begin_inset Formula $\sum_{j=1}^{N}p_{ij}=1$
-\end_inset
-
- and 
-\begin_inset Formula $p_{ij}\geq0$
-\end_inset
-
- .
- These two properties ensure ergodicity of Markov chain (i.e., aperiodic and
- irreducible) that any state will be reached eventually regardless of the
- initial state.
- They are also necessary for assessing the consistency of the model.
 \end_layout
 
 \begin_layout Standard
@@ -765,17 +1006,13 @@ Since the whole process
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \pi_{j}=P(S_{0}=j)
-\end{equation}
+\]
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Markov chain
 \end_layout
 
 \begin_layout Standard
@@ -793,61 +1030,6 @@ The unobserved regime variable
 
  is governed by a first order Markov chain with constant transition probabilitie
 s given by
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-and
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- observation probability which describes the distribution for the output
- given the current state or a chance of observation occurring in a given
- state,
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\begin_inset Formula $f(y_{t}|S_{t})$
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -877,40 +1059,40 @@ key "cryer1986time"
 \end_inset
 
 .
- Hence, an autoregressive model of order 
+ 
+\end_layout
+
+\begin_layout Definition
+An autoregressive model of order 
 \begin_inset Formula $p$
 \end_inset
 
  or AR(p) model can be written as 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Definition
 \begin_inset Formula 
-\begin{equation}
+\[
 y_{t}=c+\phi_{1}y_{t-1}+\phi_{2}y_{t-2}+...+\phi_{p}y_{t-p}+\varepsilon_{t}
-\end{equation}
+\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 or
 \end_layout
 
-\begin_layout Standard
+\begin_layout Definition
 \begin_inset Formula 
-\begin{equation}
+\[
 y_{t}=c+\sum_{i=1}^{p}\phi_{i}y_{t-i}+\varepsilon_{t}
-\end{equation}
+\]
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Definition
 where 
 \begin_inset Formula $c$
 \end_inset
@@ -928,7 +1110,10 @@ where
 \end_inset
 
 .
- If 
+\end_layout
+
+\begin_layout Standard
+If 
 \begin_inset Formula $p$
 \end_inset
 
@@ -941,8 +1126,8 @@ Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
-This model is an extension of the basic Markov switching model which has
- dependencies at the observation level.
+This model is an extension of the basic Markov switching model where observation
+s are drawn from autoregression process.
  Markov switching autoregressive model relaxes the conditional independent
  assumption by allowing an observation to also depends on a past observation
  and a current state 
@@ -953,11 +1138,14 @@ key "shannon2009formulation"
 \end_inset
 
 .
- The observations are drawn from autoregression process and the first order
- Markov switching autoregressive model is 
+ 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Definition
+The first order Markov switching autoregressive model is 
+\end_layout
+
+\begin_layout Definition
 
 \family roman
 \series medium
@@ -971,16 +1159,16 @@ key "shannon2009formulation"
 \noun off
 \color none
 \begin_inset Formula 
-\begin{equation}
+\[
 y_{t}=X_{t}'\beta_{S_{t}}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{t}
-\end{equation}
+\]
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Definition
 where 
 \begin_inset Formula $\phi_{1,S_{t}}$
 \end_inset
@@ -1013,8 +1201,8 @@ reference "msm-ar"
 \end_inset
 
 .
- It can be clearly seen that observation is, now, not independent from one
- another.
+ It can be clearly seen that there is a dependency at the observation level
+ and the observation is not independent from one another.
  
 \end_layout
 
@@ -1066,8 +1254,12 @@ Assuming two states
 \begin_inset Formula $S_{t}=1$
 \end_inset
 
- or 2, the set of parameters for the Markov switching autoregressive model
- that are necessary for describing the law of probability governs 
+ or 
+\begin_inset Formula $2$
+\end_inset
+
+, the set of parameters for the Markov switching autoregressive model that
+ are necessary for describing the law of probability governs 
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -1100,7 +1292,7 @@ Parameter Estimation
 
 \begin_layout Standard
 There are various ways to estimate parameters of Markov switching model.
- Methods which have been widely use are as follow: E-M algorithm 
+ Methods which have been widely used are as follow: E-M algorithm 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "hamilton1990analysis,kim1994dynamic"

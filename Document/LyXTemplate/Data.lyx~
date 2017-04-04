@@ -656,21 +656,7 @@ Data description
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-no.
- observations
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This is the data for the second generation (G2) product which contain 2,xxx
+This is the data for the second generation (G2) product which contain 2,781
  test cases.
  The data is collected on 20 January 2017 and is extracted from log file
  produced by test cases.
@@ -748,8 +734,7 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: This value represents the performance of the test case in terms
- of CPU utilization.
+TotCpu%: Performance of a test case in terms of CPU utilization
 \end_layout
 
 \begin_layout Itemize
