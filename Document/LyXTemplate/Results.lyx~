@@ -316,30 +316,15 @@ This section shall contain the most important tables and graphs showing
 \begin_layout Standard
 The most relevant results of the analysis is shown and organized in this
  chapter as follow.
- 
+ As a first step, The number of states for the model is decided.
+ Then, performing a model selection for the given dataset in order to find
+ which parameter has a switching effect.
+ Residual analysis and compare with the non-parametric analysis.
+ Lastly, Simulated data
 \end_layout
 
 \begin_layout Standard
-As a first step, perform Markov switching autoregressive model with each
- software release with two or three states.
- 
-\end_layout
-
-\begin_layout Standard
-Secondly, the model selection is performed to get the most suitable model
- for the given dataset.
- The evaluation is done based on the Bayesian Information Criterion (BIC).
- 
-\end_layout
-
-\begin_layout Standard
-Secondly, after the number of state is decided, perform model selection
- to find which parameter has a switching effect.
- 
-\end_layout
-
-\begin_layout Standard
-Finally, the prediction of state for the new coming observation is performed.
+Finally, the prediction of the state for the new coming observation is performed.
  (actual and simulation)
 \end_layout
 
@@ -348,20 +333,7 @@ Finally, the prediction of state for the new coming observation is performed.
 status open
 
 \begin_layout Plain Layout
-find new word for 
-\begin_inset Quotes eld
-\end_inset
-
-perform
-\begin_inset Quotes erd
-\end_inset
-
-...
- already used too much
-\end_layout
-
-\begin_layout Plain Layout
-probably have to change step and sentence itself
+plot of filtered and smoothed probabilities with regimes specifications
 \end_layout
 
 \end_inset
@@ -374,20 +346,12 @@ probably have to change step and sentence itself
 status open
 
 \begin_layout Plain Layout
-model selection
+model validation 
 \end_layout
 
 \begin_layout Plain Layout
-plot of filtered and smoothed probabilities with regimes specifications
-\end_layout
-
-\begin_layout Plain Layout
-—––
-\end_layout
-
-\begin_layout Plain Layout
-some words model validation (using residual analysis- if the residuals appear
- to behave randomly, it suggests that the model fits the data well.)
+(using residual analysis- if the residuals appear to behave randomly, it
+ suggests that the model fits the data well.)
 \end_layout
 
 \begin_layout Plain Layout
@@ -428,6 +392,19 @@ normality of errors: histogram and normal probability plot
 set.seed(1) for reproducible result
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+DELETE the section afterwards
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Number of states
 \end_layout
@@ -444,29 +421,72 @@ parameters all have switching effects (state-dependent variance parameters)
 REASON: (easier to compare...what else?)
 \end_layout
 
+\begin_layout Plain Layout
+high and low volatility
+\end_layout
+
+\begin_layout Plain Layout
+very fluctuate
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Performing Markov switching autoregressive model in each dataset with all
- switching parameters.
- The estimation is made under the assumptions of two or three states.
+To estimate the set of necessary parameters, the R package called MSwM is
+ used.
+ More details on the package can be found in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:MSwM-Package"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-The dataset for software release L16A –> singularity –> should drop the
- variable from the regression unless there is more data–> DuProdName not
- include in the model
+Markov switching autoregressive model is performed for each dataset with
+ every parameter in the model have switching effects i.e., all the parameters
+ can be different in different periods.
+ The estimation is made under the assumptions of two or three states 
+\begin_inset Formula $S_{t}\in S$
+\end_inset
+
+ where 
+\begin_inset Formula $S={1,2,..,k}$
+\end_inset
+
+ and 
+\begin_inset Formula $k=2$
+\end_inset
+
+ or 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ The normality assumption applies to the distribution of residuals during
+ the estimation as well.
 \end_layout
 
 \begin_layout Standard
-Release L16B
-\end_layout
+A standard linear regression model is fitted to the dataset first before
+ performing the Markov switching autoregressive model.
+ One coefficient in the dataset of software release L16A is not defined
+ as it proved to have singularities.
+ Hence, DuProdName variable is dropped from the regression model.
+ The BIC values from fitting Markov switching autoregressive model are shown
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "state-bic"
 
-\begin_layout Standard
-Release L17A 
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -476,10 +496,27 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "state-bic"
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+BIC values
+\end_layout
 
+\end_inset
+
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+CHANGE name
 \end_layout
 
 \end_inset
@@ -510,7 +547,7 @@ Software release
 \begin_inset Text
 
 \begin_layout Plain Layout
-AIC BIC
+BIC
 \end_layout
 
 \end_inset
@@ -539,7 +576,10 @@ AIC BIC
 \begin_inset Text
 
 \begin_layout Plain Layout
-k=2
+\begin_inset Formula $k=2$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -548,7 +588,10 @@ k=2
 \begin_inset Text
 
 \begin_layout Plain Layout
-k=3
+\begin_inset Formula $k=3$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -568,7 +611,7 @@ L16A
 \begin_inset Text
 
 \begin_layout Plain Layout
-342.8614 439.6726
+439.677
 \end_layout
 
 \end_inset
@@ -577,7 +620,7 @@ L16A
 \begin_inset Text
 
 \begin_layout Plain Layout
-272.465 417.6819
+417.682
 \end_layout
 
 \end_inset
@@ -597,7 +640,7 @@ L16B
 \begin_inset Text
 
 \begin_layout Plain Layout
-1571.198 1763.507
+1,763.507
 \end_layout
 
 \end_inset
@@ -606,7 +649,7 @@ L16B
 \begin_inset Text
 
 \begin_layout Plain Layout
-1508.797 1797.259
+1,797.259
 \end_layout
 
 \end_inset
@@ -626,7 +669,7 @@ L17A
 \begin_inset Text
 
 \begin_layout Plain Layout
-1034.98 1189.061
+1,189.061
 \end_layout
 
 \end_inset
@@ -635,7 +678,7 @@ L17A
 \begin_inset Text
 
 \begin_layout Plain Layout
-967.9531 1199.075
+1,199.075
 \end_layout
 
 \end_inset
@@ -654,8 +697,25 @@ L17A
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+PLOT
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 When defining three states, it gives more interpretable rather than two
  states
+\end_layout
+
+\begin_layout Standard
+even though BIC for two states is lower 
 \end_layout
 
 \begin_layout Standard
@@ -717,6 +777,62 @@ It doesn't seem to look good anymore
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Non-parametric analysis
+\end_layout
+
+\begin_layout Standard
+results from ecp
+\end_layout
+
+\begin_layout Section
+Simulation
+\end_layout
+
+\begin_layout Standard
+test the implementation function of the prediction
+\end_layout
+
+\begin_layout Standard
+Simulated data to 
+\end_layout
+
+\begin_layout Standard
+presence of three different regimes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=\begin{cases}
+\begin{array}{c}
+10+0.6X1_{t}-0.9X2_{t}+0.5Y_{t-1}+\varepsilon_{t}^{(1)}\\
+2+0.8X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(2)}\\
+-12+0.7X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(3)}
+\end{array} & \begin{array}{c}
+\varepsilon_{t}^{(1)}\sim N(0,1)\\
+\varepsilon_{t}^{(2)}\sim N(2,0.5)\\
+\varepsilon_{t}^{(3)}\sim N(1,1)
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Normal
+\end_layout
+
+\begin_layout Standard
+Bad
+\end_layout
+
+\begin_layout Standard
+Good
 \end_layout
 
 \begin_layout Standard

@@ -320,7 +320,7 @@ In this chapter, methods used for performing the change point analysis in
  Later on, the simple Markov switching model feature and more general model
  specifications namely Markov switching autoregressive model are discussed.
  Next two sections are devoted to some techniques for estimating the values
- of parameters and selecting a model.
+ of parameters and selecting a suitable model for the datasets.
  Finally, a non-parametric analysis is described.
 \end_layout
 
@@ -1809,23 +1809,6 @@ where
  One benefit from using BIC is that this criterion heavily penalizes model
  complexity as it takes into account the number of parameters in the model.
  BIC attempts to reduce the risk of over-fitting.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Another information criteria which is popular is the Akaike's Information
- Criterion (AIC).
- It is consistent and ...
- However, the AIC is known to select large models in a small samples.
- The data in this analysis is rather small
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section

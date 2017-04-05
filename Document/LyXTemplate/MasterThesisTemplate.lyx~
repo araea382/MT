@@ -65,6 +65,8 @@
 \use_default_options true
 \begin_modules
 customHeadersFooters
+theorems-ams
+theorems-sec
 \end_modules
 \maintain_unincluded_children false
 \language english

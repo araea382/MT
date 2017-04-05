@@ -1,11 +1,11 @@
 library(MSwM2)
 
 data(example)
-mod=lm(y~x,example)
-summary(mod)
+model=lm(y~x,example)
+summary(model)
 
 set.seed(1)
-mod.mswm2=MSwM2::msmFit(mod,k=2,p=1,sw=c(T,T,T,T),control=list(trace=F,parallel=F))
+mod.mswm2=MSwM2::msmFit(model,k=2,p=1,sw=c(T,T,T,T),control=list(trace=F,parallel=F))
 summary(mod.mswm2)
 
 # data(energy)
@@ -194,24 +194,24 @@ par(mfrow=c(1,1))
 # data(indep)
 # dep=as.matrix(dep)
 # indep=as.matrix(indep)
-# 
+#
 # S=c(1,0,0)
 # distrib<-"Normal"
 # k<-2
-# 
+#
 # dep=dep[-nrow(dep)]
 # myNewIndep=indep[-nrow(indep),]
 # newIndep_For=as.matrix(t(indep[nrow(indep),]))
-# 
+#
 # set.seed(10)
 # mod <- lm(dep~myNewIndep-1)
 # mswm <- msmFit(mod,k=2,p=0,sw=c(T,F,F,T),control=list(trace=T,parallel=F))
-# 
-# 
+#
+#
 # nPeriods <- 1
 # newIndep <- newIndep_For
 # newIndep<-as.matrix(newIndep)
-# 
+#
 # nr <- nrow(mswm["model"]$model[,-1])
 # k <- mswm@k
 # swi <- mswm["switch"][-length(mswm["switch"])]
@@ -221,13 +221,13 @@ par(mfrow=c(1,1))
 # coeff <- as.matrix(mswm["Coef"])
 # Coeff <- list(sigma=mswm@std, indep_nS=matrix(coeff[1,which(!swi)],nrow=sum(!swi)),
 #               indep_S=matrix(coeff[,which(swi)],nrow=sum(swi)), p=mswm@transMat)
-# 
+#
 # newIndep_S <- matrix(data = 0 , nrow = 1, ncol = n_S)
 # newIndep_nS <- matrix(data = 0, nrow = 1, ncol = n_nS)
-# 
+#
 # count_nS <- 0
 # count_S <- 0
-# 
+#
 # for (i in 1:nIndep){
 #   if(swi[i]==1){
 #     count_S <- count_S + 1
@@ -237,18 +237,18 @@ par(mfrow=c(1,1))
 #     newIndep_nS[,count_nS] <- newIndep[,i]
 #   }
 # }
-# 
+#
 # newFiltProb <- mswm@transMat %*% (mswm@Fit@filtProb[nr,]) # this is the filtered probabilities
 # # of t+1 conditional on the info in t
-# 
+#
 # condMean <- matrix(0,nPeriods,k) # conditional mean in all states
-# 
+#
 # for (i in 1:nPeriods){
 #   for (j in 1:k){
 #     condMean[i,j] <- newIndep_nS %*% Coeff$indep_nS + newIndep_S %*% (Coeff$indep_S[,j])
 #   }
 # }
-# 
+#
 # newCondMean <- condMean %*% newFiltProb # the new conditional mean is the weighted average of the cond means in each state
 # newCondStd <- Coeff$sigma %*% newFiltProb # same as cond mean
 

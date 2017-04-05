@@ -313,15 +313,8 @@ Critical assessment of the results obtained and the adequacy of the methods
 \end_layout
 
 \begin_layout Standard
-estimate simple models 
-\end_layout
-
-\begin_layout Standard
-number of parameters grows exponentially
-\end_layout
-
-\begin_layout Standard
-solution is probably a local maximum 
+estimate simple models –> number of parameters grows exponentially –> solution
+ is probably a local maximum 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "perlin2015ms_regress"
@@ -336,11 +329,17 @@ assume that NodeName which executed test case is indifferent.
 \end_layout
 
 \begin_layout Standard
-No link between missingness of observation and state
+small dataset 
 \end_layout
 
 \begin_layout Standard
-small dataset 
+should drop the variable from the regression model unless there is more
+ data
+\end_layout
+
+\begin_layout Standard
+A four-state is tested but the results is rather poor compare to the rest
+ –> can not really make an inference
 \end_layout
 
 \begin_layout Standard

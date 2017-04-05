@@ -337,6 +337,13 @@ Rewrite!!!!!!!!!!
 
 \begin_layout Chapter
 MSwM Package
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:MSwM-Package"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -467,6 +474,10 @@ Rewrite the NAs coefficients problem
 
 \begin_layout Standard
 In the original code 
+\end_layout
+
+\begin_layout Standard
+Implement prediction function
 \end_layout
 
 \begin_layout Standard

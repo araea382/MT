@@ -86,6 +86,41 @@ mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=T
 summary(mswm_L16B_2)
 
 ###############
+# g2 L16B
+# 4 states
+###############
+set.seed(1)
+mswm_L16B_4 <- MSwM2::msmFit(mod_L16B, k=4, p=1, sw=rep(TRUE,length(mod_L16B$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+summary(mswm_L16B_4)
+# 1433.622 1818.238 -672.811
+
+plot(mswm_L16B_4)
+
+plotDiag(mswm_L16B_4, which=1)
+plotDiag(mswm_L16B_4, which=2)
+plotDiag(mswm_L16B_4, which=3)
+
+plotProb(mswm_L16B_4, which=1)
+plotProb(mswm_L16B_4, which=2)
+plotProb(mswm_L16B_4, which=3)
+
+plotReg(mswm_L16B_4, expl=predictor[4], regime=1)
+plotReg(mswm_L16B_4, expl=predictor[4], regime=2)
+
+plotReg(mswm_L16B_4, expl=predictor[5], regime=1)
+plotReg(mswm_L16B_4, expl=predictor[5], regime=2)
+
+plotReg(mswm_L16B_4, expl=predictor[6], regime=1)
+plotReg(mswm_L16B_4, expl=predictor[6], regime=2)
+
+# change the swiching parameter
+switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
+switch[c(3,4,5,6,11)] <- FALSE; switch
+set.seed(1)
+mswm_L16B_4 <- MSwM2::msmFit(mod_L16B, k=4, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+summary(mswm_L16B_4)
+
+###############
 # g2 L16A
 # 3 states
 ###############

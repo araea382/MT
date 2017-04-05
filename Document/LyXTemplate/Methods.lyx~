@@ -320,7 +320,7 @@ In this chapter, methods used for performing the change point analysis in
  Later on, the simple Markov switching model feature and more general model
  specifications namely Markov switching autoregressive model are discussed.
  Next two sections are devoted to some techniques for estimating the values
- of parameters and selecting a model.
+ of parameters and selecting a suitable model for the datasets.
  Finally, a non-parametric analysis is described.
 \end_layout
 
@@ -370,7 +370,7 @@ A Markov chain is a random process which has a property that given on the
 .
  The process begins from one of these states and moves to another state.
  The move between state is called a step.
- The process is described here 
+ The process of Markov chains is described here 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "grimmett2001probability"

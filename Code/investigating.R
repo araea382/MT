@@ -37,7 +37,7 @@ object <- mod
 
 # run whole .MSM.lm.fit one time first before do this
 # also run other function as well
-set.seed(12)
+set.seed(1)
 object <- ans
 
 

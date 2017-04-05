@@ -466,6 +466,14 @@ Rewrite the NAs coefficients problem
 \end_layout
 
 \begin_layout Standard
+In the original code 
+\end_layout
+
+\begin_layout Standard
+Implement prediction function
+\end_layout
+
+\begin_layout Standard
 \begin_inset Branch NoChildDocument
 status collapsed
 
