@@ -320,12 +320,13 @@ The most relevant results of the analysis is shown and organized in this
  Then, performing a model selection for the given dataset in order to find
  which parameter has a switching effect.
  Residual analysis and compare with the non-parametric analysis.
- Lastly, Simulated data
+ Lastly, the prediction of the state for the new observation is performed
+ in each dataset.
+ 
 \end_layout
 
 \begin_layout Standard
-Finally, the prediction of the state for the new coming observation is performed.
- (actual and simulation)
+Simulated data
 \end_layout
 
 \begin_layout Standard
@@ -406,7 +407,7 @@ DELETE the section afterwards
 \end_layout
 
 \begin_layout Section
-Number of states
+States
 \end_layout
 
 \begin_layout Standard
@@ -516,7 +517,7 @@ BIC values
 status open
 
 \begin_layout Plain Layout
-CHANGE name
+CHANGE table name
 \end_layout
 
 \end_inset
@@ -710,45 +711,63 @@ PLOT
 \end_layout
 
 \begin_layout Standard
-When defining three states, it gives more interpretable rather than two
- states
-\end_layout
-
-\begin_layout Standard
-even though BIC for two states is lower 
-\end_layout
-
-\begin_layout Standard
-take a risk aversion when deciding which number of states is more desirable
+For software release L16A, the three-state Markov switching autoregressive
+ model gives better fit in comparison to the two-state model as it has lower
+ BIC value.
+ Markov switching autoregressive model with two states for other two software
+ releases, L16B and L17A, seems to yield a better result in favor of lower
+ BICs.
+ Nevertheless, outputs from function along with plots provide more interpretable
+ result when defining the model with three states.
  
 \end_layout
 
 \begin_layout Standard
-A four-state is tested but the results is rather poor compare to the rest
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Include reasons here or at the discussion?????
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-can not really make an inference
+smoothed inference probabilities mostly to show how the regimes are identified
 \end_layout
 
 \begin_layout Section
-Number of parameters
+Switching parameters
 \end_layout
 
 \begin_layout Standard
-switching and non-switching parameters
+The fitting models earlier do not take into account state-independent parameters.
+ It is assumed that all parameters are differ in different states.
+ Apparently, this is not always the case and not all parameters are state-depend
+ent i.e., each parameter has either a switching or non-switching effect.
 \end_layout
 
 \begin_layout Standard
-Release L16A 
+Hypothesis is that
 \end_layout
 
 \begin_layout Standard
-Release L16B
+L16A 
 \end_layout
 
 \begin_layout Standard
-Release L17A 
+L16B
+\end_layout
+
+\begin_layout Standard
+L17A 
+\end_layout
+
+\begin_layout Standard
+In other words/To clarify
 \end_layout
 
 \begin_layout Section
@@ -784,7 +803,24 @@ Non-parametric analysis
 \end_layout
 
 \begin_layout Standard
-results from ecp
+As the non-parametric analysis 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+PLOT with ecp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+State prediction
 \end_layout
 
 \begin_layout Section

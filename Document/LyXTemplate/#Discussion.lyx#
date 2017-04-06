@@ -313,19 +313,6 @@ Critical assessment of the results obtained and the adequacy of the methods
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Suggestion for a better result –> future
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 estimate simple models –> number of parameters grows exponentially –> solution
  is probably a local maximum 
 \begin_inset CommandInset citation
@@ -361,11 +348,10 @@ A four-state is tested but the results is rather poor compare to the rest
 \end_layout
 
 \begin_layout Standard
-A thorough search of the relevant literature yielded that this might be
- the first time that Markov switching model is applied on the data to deal
- with ....
+To my knowledge, this might be the first time that Markov switching model
+ is applied on the data to deal with .
  In previous work, it is mostly mentioned that this model is used for predicting
- ....
+ other atmospheric variables.
  
 \end_layout
 
