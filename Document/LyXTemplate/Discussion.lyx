@@ -366,11 +366,26 @@ A thorough search of the relevant literature yielded that this might be
  with ....
  In previous work, it is mostly mentioned that this model is used for predicting
  ....
- 
+ finance and signal (financial modeling)
 \end_layout
 
 \begin_layout Standard
 Inference about each state
+\end_layout
+
+\begin_layout Standard
+non-parametric analysis is able to detect any type of distributional change
+ within a time series
+\end_layout
+
+\begin_layout Standard
+One benefit from using non-parametric analysis is that it does not require
+ a prior assumption of the data distribution.
+ In this thesis framework, it is used for 
+\end_layout
+
+\begin_layout Standard
+E-divisive high computation 
 \end_layout
 
 \begin_layout Standard

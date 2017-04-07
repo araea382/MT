@@ -518,7 +518,7 @@ reference "release"
 
 \end_inset
 
- presents the relationship between software release and software package.
+ presents the relation between software release and software package.
  
 \end_layout
 
@@ -656,26 +656,12 @@ Data description
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-no.
- observations
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This is the data for the second generation (G2) product which contain 2,xxx
+This is the data for the second generation (G2) product which contain 2,781
  test cases.
  The data is collected on 20 January 2017 and is extracted from log file
  produced by test cases.
  There are different types of test cases which are being executed in the
- simulation system.
+ automated test suites.
  Each test case is viewed as an observation in the data.
  Following are the variables in the data:
 \end_layout
@@ -748,8 +734,7 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: This value represents the performance of the test case in terms
- of CPU utilization.
+TotCpu%: Performance of a test case in terms of CPU utilization
 \end_layout
 
 \begin_layout Itemize
@@ -773,6 +758,14 @@ This variable contains several local events that can be used when defining
  cases.
  The local events along with their values are also varied depending on which
  types of test cases are being executed.
+ An example of the local events in test cases is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eventspersec"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -785,8 +778,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of local events in a test cas
+List of local events in test cases
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eventspersec"
 
 \end_inset
 
@@ -797,11 +797,21 @@ List of local events in a test cas
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="1">
+<lyxtabular version="3" rows="4" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="12cm">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="11cm">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test case
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -812,7 +822,16 @@ EventsPerSec
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -830,6 +849,40 @@ ErabDrbRelease=166.11 ErabSetupInfo=166.19 PerBbUeEventTa=167.98 PerBbUetrCellEv
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ErabDrbAllocated=641.30 EventS1InitialUeMessage=142.20 McRrcConnectionRequest=142.9
+9 McX2HandoverRequest=98.70 Paging=1399.94 PerBbLcgEvent=26.14
+\end_layout
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout

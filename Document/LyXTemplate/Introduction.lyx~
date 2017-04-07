@@ -348,39 +348,63 @@ key "weskamp2010change"
  Change point analysis has been studied over decades as it is a problem
  of interest in many applications which the characteristic of data is collected
  over time.
- For instance, it can be utilized in medical condition monitoring 
+ The change should be flagged as soon as it occurs in order to be properly
+ dealt with such changes in time and reduced any possible consequences 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sharkey2014nonparametric"
+
+\end_inset
+
+.
+ Here are some examples.
+\end_layout
+
+\begin_layout Itemize
+Medical condition monitoring: Evaluate the sleep quality of patients based
+ on their heart rate condition 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "staudacher2005new"
 
 \end_inset
 
-in order to evaluate the sleep quality of patients based on their heart
- rate condition.
- Another example is the application in climate analysis 
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Climate analysis: The temperature or climate variations is detected.
+ This method gradually becomes important over the past few decades due to
+ the effects of the global warming and the increases in greenhouse gas emissions
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "reeves2007review,beaulieu2012change"
 
 \end_inset
 
-, where temperature or climate variations is detected.
- This method gradually becomes important over the past few decades due to
- the effects of the global warming and the increases in greenhouse gas emissions.
- Change point analysis can also be found in the field of quality control
+.
  
+\end_layout
+
+\begin_layout Itemize
+Quality control: Since industrial production is a continuous production
+ process, in mass production process, if the product controlled value is
+ not monitored and exceed the tolerant undetected, it could lead to the
+ lost of a whole production lot 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "page1954continuous"
 
 \end_inset
 
- in industrial production.
- Since it is a continuous production process, in mass production process,
- if the product controlled value is not monitored and exceed the tolerant
- undetected, it could lead to the lost of a whole production lot.
- Other applications of change point analysis are identifying fraud transaction
+.
  
+\end_layout
+
+\begin_layout Itemize
+Other applications: Identifying fraud transaction 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "bolton2002statistical"
@@ -402,15 +426,6 @@ key "basseville1993detection"
 \end_inset
 
  in streaming data as well.
- The change should be flagged as soon as it occurs in order to be properly
- dealt with such changes in time and reduced any possible consequences 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "sharkey2014nonparametric"
-
-\end_inset
-
-.
  
 \end_layout
 
@@ -526,21 +541,24 @@ Each software package in the system is viewed as a time point in time series
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-software development / meticulously inspecting what's coming out, looking
- and validating that requirements for products are satisfied / statistical
- quality control: use of statistical methods in the monitoring and maintaining
- of the quality of products and services / use as a tool to detect abrupt
- performance variations / distinguish a short-term tick up or down from
- a true change in the underlying signal 
-\end_layout
+There are two approaches, a parametric and a non-parametric analysis, for
+ detecting the change point in the time series.
+ The parametric analysis benefits from assuming some knowledge of data distribut
+ion and integrates it to the detection scheme.
+ On the other hand, the non-parametric analysis is more flexible that there
+ is no assumption made about the distribution.
+ It can, therefore, apply to a wider range of application and capture various
+ kinds of changes 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sharkey2014nonparametric"
 
 \end_inset
 
-
+.
+ In this study, the non-parametric analysis using hierarchical estimation
+ techniques is also used for identifying the change in time.
+ 
 \end_layout
 
 \begin_layout Section

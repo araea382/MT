@@ -49,11 +49,11 @@ plotReg(mswm_L16B_3, expl=predictor[3], regime=3)
 
 #--------------------------------#
 # change the swiching parameter
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-switch[c(5,6)] <- FALSE; switch
-set.seed(1)
-mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=1000, parallel=FALSE))
-summary(mswm_L16B_3)
+# switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
+# switch[c(5,6)] <- FALSE; switch
+# set.seed(1)
+# mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=1000, parallel=FALSE))
+# summary(mswm_L16B_3)
 
 #--------------------------------#
 # smoothed prob plot
@@ -97,11 +97,11 @@ plotReg(mswm_L16B_2, expl=predictor[6], regime=2)
 
 #--------------------------------#
 # change the swiching parameter
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-switch[c(3,4,5,6,11)] <- FALSE; switch
-set.seed(1)
-mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-summary(mswm_L16B_2)
+# switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
+# switch[c(3,4,5,6,11)] <- FALSE; switch
+# set.seed(1)
+# mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+# summary(mswm_L16B_2)
 
 #--------------------------------#
 # smoothed prob plot
@@ -337,9 +337,10 @@ ggplot(data=L17A_2, aes(x=index, y=value, colour=variable)) + geom_line() +
 # g2 L16B
 ###############
 library(ecp)
-Ediv_L16B <- e.divisive(matrix(train_g2_L16B$TotCpu), R=499, alpha=1)
-Ediv_L16B$k.hat # 2 clusters
-Ediv_L16B$estimates # 153
+set.seed(1)
+Ediv_L16B <- e.divisive(matrix(train_g2_L16B$TotCpu), R=499, min.size=5)
+Ediv_L16B$k.hat
+Ediv_L16B$estimates
 out <- Ediv_L16B$estimates[c(-1,-length(Ediv_L16B$estimates))]
 
 dat <- data.frame(index=seq(1,nrow(train_g2_L16B)), TotCpu=train_g2_L16B$TotCpu)
@@ -352,8 +353,8 @@ ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() +
 # ecp
 # g2 L16A
 ###############
-Ediv_L16A <- e.divisive(matrix(train_g2_L16A$TotCpu), R=499, alpha=1)
-Ediv_L16A$k.hat # 1 cluster
+Ediv_L16A <- e.divisive(matrix(train_g2_L16A$TotCpu), R=499, min.size=5)
+Ediv_L16A$k.hat
 Ediv_L16A$estimates
 out <- Ediv_L16A$estimates[c(-1,-length(Ediv_L16A$estimates))]
 
@@ -361,16 +362,16 @@ dat <- data.frame(index=seq(1,nrow(train_g2_L16A)), TotCpu=train_g2_L16A$TotCpu)
 ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() +
   geom_vline(xintercept=out, colour="red", linetype="dashed") +
   ggtitle("E-divisive L16A") + theme_bw()
-# cannot detect anything
 
 
 ###############
 # ecp
 # g2 L17A
 ###############
-Ediv_L17A <- e.divisive(matrix(train_g2_L17A$TotCpu), R=499, alpha=1)
-Ediv_L17A$k.hat # 2 clusters
-Ediv_L17A$estimates # 75
+set.seed(1)
+Ediv_L17A <- e.divisive(matrix(train_g2_L17A$TotCpu), R=499, min.size=5)
+Ediv_L17A$k.hat
+Ediv_L17A$estimates
 out <- Ediv_L17A$estimates[c(-1,-length(Ediv_L17A$estimates))]
 
 dat <- data.frame(index=seq(1,nrow(train_g2_L17A)), TotCpu=train_g2_L17A$TotCpu)

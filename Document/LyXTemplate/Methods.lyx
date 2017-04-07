@@ -774,13 +774,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "msm"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -789,6 +782,13 @@ name "msm"
 \begin_layout Plain Layout
 Model structure
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "msm"
 
 \end_inset
 
@@ -1241,13 +1241,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "msm-ar"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -1256,6 +1249,13 @@ name "msm-ar"
 \begin_layout Plain Layout
 Model structure of Markov switching AR(1)
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "msm-ar"
 
 \end_inset
 
@@ -1834,16 +1834,8 @@ Non-parametric analysis
 \end_layout
 
 \begin_layout Standard
-There are two approaches, parametric and non-parametric analysis, for detecting
- the change point in the time series.
- The parametric analysis benefits from assuming some knowledge of data distribut
-ion and integrates it to the detection scheme.
- On the other hand, the non-parametric analysis is more flexible that there
- is no assumption made about the distribution.
- It can, therefore, apply to a wider range of application and capture various
- kinds of changes.
- One study found that if data belongs to some known distribution families,
- parametric test statistics outperform the non-parametric test.
+Parametric test statistics outperform the non-parametric test if data belongs
+ to some known distribution families.
  However, the parametric test is not properly performing well in detecting
  change point for unknown underlying distribution 
 \begin_inset CommandInset citation
@@ -1864,22 +1856,22 @@ key "hawkins2010nonparametric"
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-In this study, the non-parametric analysis is implemented in order to get
- a heuristic idea of the change point location.
+ For this reason, the non-parametric analysis is implemented in order to
+ get a heuristic idea of the change point location in this thesis framework.
  The obtained result is also used for comparing with the result from Markov
  switching autoregressive model.
 \end_layout
 
-\begin_layout Subsection
-ecp
+\begin_layout Subsubsection*
+E-divisive
 \end_layout
 
 \begin_layout Standard
+The 
+\emph on
 ecp
+\emph default
+
 \begin_inset Foot
 status open
 
@@ -1889,10 +1881,11 @@ https://cran.r-project.org/web/packages/ecp/index.html
 
 \end_inset
 
- is an extension package in R which mainly focus on computing the non-parametric
- test for multiple change point analysis.
- This method is applicable to both univariate and multivariate time series.
- A fundamental idea for the algorithms is based on the hierarchical clustering
+ is an extension package in R which mainly focuses on computing the non-parametr
+ic test for multiple change point analysis.
+ This change point method is applicable to both univariate and multivariate
+ time series.
+ A fundamental idea for the method is based on the hierarchical clustering
  approach 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1904,14 +1897,15 @@ key "james2013ecp"
  
 \end_layout
 
-\begin_layout Subsubsection*
-E-divisive
-\end_layout
-
 \begin_layout Standard
-The E-divisive algorithm performs a divisive clustering in order to estimate
- the multiple change points.
- The algorithm recursively partitions a time series and estimates a single
+The E-divisive method is an algorithm in the 
+\emph on
+ecp
+\emph default
+ package.
+ This alogrithm performs a divisive clustering in order to estimate the
+ multiple change points.
+ The E-divisive recursively partitions a time series and estimates a single
  change point in each iteration.
  Consequently, the new change point is located at each iteration and it
  divides the time series into different segments.

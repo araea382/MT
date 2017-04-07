@@ -758,6 +758,14 @@ This variable contains several local events that can be used when defining
  cases.
  The local events along with their values are also varied depending on which
  types of test cases are being executed.
+ An example of the local events in test cases is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eventspersec"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -770,8 +778,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of local events in a test case
+List of local events in the test cases separated by a tab character
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eventspersec"
 
 \end_inset
 
@@ -782,11 +797,21 @@ List of local events in a test case
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="1">
+<lyxtabular version="3" rows="4" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="12cm">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="11cm">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test case
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -797,7 +822,16 @@ EventsPerSec
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -815,6 +849,40 @@ ErabDrbRelease=166.11 ErabSetupInfo=166.19 PerBbUeEventTa=167.98 PerBbUetrCellEv
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ErabDrbAllocated=641.30 EventS1InitialUeMessage=142.20 McRrcConnectionRequest=142.9
+9 McX2HandoverRequest=98.70 Paging=1399.94 PerBbLcgEvent=26.14
+\end_layout
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+...
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1247,12 +1315,19 @@ Test cases are not always being executed properly.
 \end_layout
 
 \begin_layout Standard
-There are some columns in the dataset that store multiple values separated
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eventspersec"
+
+\end_inset
+
+, it can be seen that EventsPerSec variable store multiple values separated
  by a tab character.
  These tab-separated values are split to columns in order to use for later
  analysis.
- This process is done for the EventsPerSec variable in order to get its
- local events and values which characterized the test case.
+ This process is done in order to get its local events and values which
+ characterized the test case.
 \end_layout
 
 \begin_layout Standard
@@ -1299,8 +1374,9 @@ tried to be optimistic...
 \end_layout
 
 \begin_layout Standard
-After performing all the steps describing above, the dataset of L16A, L16B
- and L17A consist of 64, 241, and 144 test cases, respectively.
+After performing all the steps describing above, the dataset of software
+ release L16A, L16B and L17A consist of 64, 241, and 144 test cases, respectivel
+y.
  Lastly, each dataset with particular software release is divided into two
  subsets.
  Ninety percent of the dataset is used for training the model and the remaining

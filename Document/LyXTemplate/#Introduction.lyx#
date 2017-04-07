@@ -541,21 +541,24 @@ Each software package in the system is viewed as a time point in time series
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-software development / meticulously inspecting what's coming out, looking
- and validating that requirements for products are satisfied / statistical
- quality control: use of statistical methods in the monitoring and maintaining
- of the quality of products and services / use as a tool to detect abrupt
- performance variations / distinguish a short-term tick up or down from
- a true change in the underlying signal 
-\end_layout
+There are two approaches, a parametric and a non-parametric analysis, for
+ detecting the change point in the time series.
+ The parametric analysis benefits from assuming some knowledge of data distribut
+ion and integrates it to the detection scheme.
+ On the other hand, the non-parametric analysis is more flexible that there
+ is no assumption made about the distribution.
+ It can, therefore, apply to a wider range of application and capture various
+ kinds of changes 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sharkey2014nonparametric"
 
 \end_inset
 
-
+.
+ In this study, the non-parametric analysis using hierarchical estimation
+ techniques is also used for identifying the change in time.
+ 
 \end_layout
 
 \begin_layout Section
