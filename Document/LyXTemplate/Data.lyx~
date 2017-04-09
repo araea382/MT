@@ -336,8 +336,8 @@ https://www.ericsson.com/
 
  founded by Lars Magnus Ericsson since 1876 is one of the world’s leading
  in telecommunication industry.
- It provides services, software products and infrastructure related to informati
-on and communications technology (ICT).
+ The company provides services, software products and infrastructure related
+ to information and communications technology (ICT).
  Its head quarter is located in Stockholm, Sweden.
  Ericsson continuously expands its services and products beyond telecoms
  sector such as mobile broadband, cloud services, transportation and network
@@ -345,14 +345,7 @@ on and communications technology (ICT).
 \end_layout
 
 \begin_layout Standard
-LTE, widely known as 4G, is the Long-Term Evolution of the 3G network 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "dahlman20134g"
-
-\end_inset
-
-.
+LTE, widely known as 4G, is the Long-Term Evolution of the 3G network.
  The high-level network architecture of LTE is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -360,62 +353,29 @@ reference "lte"
 
 \end_inset
 
+ and is described as follows 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dahlman20134g"
+
+\end_inset
+
 .
  The E-UTRAN, an official standard name for the radio access network of
  LTE, is the entire network.
- It handles the radio communication between the User Equipment, 
-\emph on
-UE
-\emph default
-, or mobile device and the evolved base stations called 
-\emph on
-eNB
-\emph default
-.
- Each 
-\emph on
-eNB
-\emph default
- is a base station which controls the mobiles in one or more cells.
- Several base stations are connected to a Mobility Management Entity, 
-\emph on
-MME
-\emph default
-, which handles the high-level operation of the mobile for different 
-\emph on
-UEs
-\emph default
-.
- 
-\emph on
-MME
-\emph default
- establishes the connection and runs security application to ensure that
- the 
-\emph on
-UE
-\emph default
- is allowed on the network.
- In LTE mobile network, multiple 
-\emph on
-UE
-\emph default
-s connect to a single base station.
- A new 
-\emph on
-UE
-\emph default
- performs a cell search procedure by searching for an available base station
- when it first connects to the network.
- The 
-\emph on
-UE
-\emph default
- sends information about itself to establish a link between the 
-\emph on
-UE
-\emph default
- and the base station.
+ It handles the radio communication between the User Equipment, UE, or mobile
+ device and the evolved base stations called eNB.
+ Each eNB is a base station which controls and manages radio communications
+ with multiple devices in one or more cells.
+ Several base stations are connected to a Mobility Management Entity, MME,
+ which handles the high-level operation of the mobile for different UEs.
+ MME establishes a connection and runs a security application to ensure
+ that the UE is allowed on the network.
+ In LTE mobile network, multiple UEs connect to a single base station.
+ A new UE performs a cell search procedure by searching for an available
+ eNB when it first connects to the network.
+ Then, the UE sends information about itself to establish a link between
+ the UE and the eNB.
  
 \end_layout
 
@@ -430,6 +390,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/LTE.PNG
+	lyxscale 60
 	scale 80
 
 \end_inset
@@ -465,8 +426,8 @@ name "lte"
 Ericsson makes a global software release in roughly 6-month cycles or two
  major releases per year.
  Each of these releases contains a bundle of features and functionality
- that is intended for all our customers.
- It labeled with 
+ that is intended for all the customers.
+ The software release is labeled with 
 \emph on
 L
 \emph default
@@ -495,9 +456,9 @@ B
  In order to create a structure for this contribution, daily software package
  is built.
  Every day a new software package is built which can be seen as a snapshot
- or marker in the continuous delivery timeline.
+ or a marker in the continuous delivery timeline.
  This software package is then run through various automated test loops
- to ensure there are no faults in the system.
+ to ensure that there are no faults in the system.
  The software packages are named 
 \emph on
 R
@@ -533,6 +494,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/Release.PNG
+	lyxscale 50
 	scale 70
 
 \end_inset
@@ -568,28 +530,27 @@ name "release"
 
 \begin_layout Standard
 There are thousands of automated tests performed.
- Each test belongs to a particular 
-\emph on
-suite
-\emph default
- of tests, which belongs to a particular quality assurance (QA) area.
+ Each test belongs to a particular suite of tests, which belongs to a particular
+ quality assurance (QA) area.
  For this thesis framework, one suite of test cases that test the signaling
  capacity within QA Capacity is focused.
  The QA Capacity has the responsibility of testing and tracking test cases
  related to LTE node capacity.
- Each one of these test cases has a well-defined 
-\emph on
-traffic model
-\emph default
- it tries to execute.
- Traffic model in this context means certain intensity (per second) of procedure
-s, which can be seen as stimuli in the LTE node.
+ Each one of these test cases has a well-defined traffic model it tries
+ to execute.
+ The traffic model in this context means certain intensity (per second)
+ of procedures, which can be seen as stimuli in the LTE node.
  The LTE node then increments one or more counters for each one of these
  procedures or stimuli it detects.
  These counter are called local events and they are represented by EventsPerSec.
- During the execution of these QA Capacity, signaling capacity, test cases,
- a logging loop is started.
- The logging loop collects a bunch of metric.
+ 
+\end_layout
+
+\begin_layout Standard
+A logging loop is started during the execution of these test cases of QA
+ Capacity – signaling capacity.
+ The logging loop collects a bunch of metrics, and a subset of these metrics
+ is what this thesis is currently studied with.
  Once the logging loop is finished, it is written to a log file.
  Then, there are cron jobs that crawl through this infrastructure once a
  day to find latest logs and do a post-processing.
@@ -615,6 +576,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/SW.PNG
+	lyxscale 50
 	scale 70
 
 \end_inset
@@ -778,7 +740,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Some list of local events in the test cases
+List of local events in the test cases separated by a tab character
 \end_layout
 
 \end_inset
@@ -1287,7 +1249,7 @@ The data consists of three software releases – L16A, L16B and L17A – and
  timestamp is unsuitable to represent itself as a time point in time series.
  The software package is an important variable and more of an interest to
  this analysis.
- It is, therefore, seen as the data points indexed in time order in the
+ Therefore, it is viewed as the data points indexed in time order in the
  time series.
 \end_layout
 
@@ -1324,10 +1286,9 @@ reference "eventspersec"
 
 , it can be seen that EventsPerSec variable store multiple values separated
  by a tab character.
- These tab-separated values are split to columns in order to use for later
- analysis.
- This process is done in order to get its local events and values which
- characterized the test case.
+ These tab-separated values in the field are split to columns.
+ The process is done in order to get its local events and values which character
+ized the test case and later on used for fitting the Markov switching model.
 \end_layout
 
 \begin_layout Standard
@@ -1350,7 +1311,7 @@ Each software release consists of several software packages.
  Each test case has its own local events in EventsPerSec field that used
  for identifying the test case.
  The details of these local events are absent when averaging over the CPU
- utilization of test cases in the software package.
+ utilization of the test cases in the software package.
  
 \end_layout
 

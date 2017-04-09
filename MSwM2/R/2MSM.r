@@ -1371,7 +1371,7 @@ setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
 
   # relevel the reference of the factor level to be the same as in the training model
   for(i in names(model$xlevels)){
-    ref_level <- model$xlevels[[i]][1] #
+    ref_level <- model$xlevels[[i]][1]
     test[,i] <- relevel(test[,i], ref_level)
   }
 

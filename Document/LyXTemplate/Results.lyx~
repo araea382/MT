@@ -809,9 +809,10 @@ Non-parametric analysis
 
 \begin_layout Standard
 The E-divisive procedure is applied to all three datasets.
- The algorithm reports that one cluster is found for the dataset of the
- software release L16A.
- There are five clusters found in both datasets of the software release.
+ The method reports that one cluster is found for the dataset of the software
+ release L16A.
+ There are five clusters found in both datasets of the software release
+ L16B and L17A.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -821,7 +822,7 @@ reference "ediv"
 
  shows places in the time series data where the E-divisive algorithm is
  able to detect the significant changes.
- Software release L16A has none
+ 
 \end_layout
 
 \begin_layout Standard
@@ -951,7 +952,8 @@ L17A
 \end_layout
 
 \begin_layout Standard
-The CPU utilization for each dataset is plotted and shown in 
+The CPU utilization for each dataset along with its estimated change points
+ in the time series is plotted and shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ediv_L16A"
@@ -986,7 +988,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/ediv_L16A.png
-	scale 45
+	lyxscale 30
+	scale 40
 
 \end_inset
 
@@ -1036,7 +1039,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/ediv_L16B.png
-	scale 45
+	lyxscale 30
+	scale 40
 
 \end_inset
 
@@ -1082,7 +1086,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/ediv_L17A.png
-	scale 45
+	lyxscale 30
+	scale 40
 
 \end_inset
 
@@ -1117,6 +1122,10 @@ name "ediv_L17A"
 
 \end_layout
 
+\begin_layout Standard
+compare with results from Markov switching autoregressive model.
+\end_layout
+
 \begin_layout Section
 State prediction
 \end_layout
@@ -1136,6 +1145,18 @@ reference "chap:MSwM-Package"
 
 \begin_layout Standard
 Results
+\end_layout
+
+\begin_layout Standard
+L16A
+\end_layout
+
+\begin_layout Standard
+L16B
+\end_layout
+
+\begin_layout Standard
+L17A
 \end_layout
 
 \begin_layout Section
@@ -1175,10 +1196,17 @@ y=\begin{cases}
 \begin_layout Standard
 The data contains 500 observations which has a presence of three different
  states – Normal, Bad and Good.
- Markov switching autoregressive model is fitted with 80% of the observations
- and the remaining is used as a test set.
- Then, use the training model to predict the state of the test set.
- 
+ Markov switching model is fitted with 80% of the observations and the remaining
+ is used as a test set.
+ The period where observations in the data belong to one of the state is
+ shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sim_state"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1192,7 +1220,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/sim_state.png
-	scale 60
+	lyxscale 30
+	scale 50
 
 \end_inset
 
@@ -1200,7 +1229,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+The period in the time series when data is in each state 
 \end_layout
 
 \end_inset
@@ -1221,17 +1250,20 @@ name "sim_state"
 \end_layout
 
 \begin_layout Standard
+Then, using the training model to predict the state of each observation
+ in the test set and the result is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "confusion"
 
 \end_inset
 
- presents a confusion matrix for the
-\end_layout
-
-\begin_layout Standard
-The accuracy is 0.96 and the misclassification rate is 0.04.
+.
+ There are two observations from the Bad state which are wrongly classified
+ to the Normal state.
+ Moreover, another two observations from the Good state are classified to
+ the Normal state.
+ The overall accuracy is 0.96 and the misclassification rate is 0.04.
 \end_layout
 
 \begin_layout Standard
@@ -1244,7 +1276,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Confusion matrix
+Confusion matrix for applying the Markov switching model to fit with the
+ test set 
 \end_layout
 
 \end_inset

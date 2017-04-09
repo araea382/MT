@@ -677,6 +677,14 @@ status open
 A chain is called an ergodic Markov chain if it is possible to go from every
  state to every other state with positive probability (not necessarily in
  one step).
+ These condition are known as irreducible and aperiodic 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "manning2008introduction"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -903,7 +911,7 @@ reference "eq:msm"
 
 \end_inset
 
- is the simplest form for the switching model where there are
+ is the simplest form for the switching model where there are 
 \begin_inset Formula $k-1$
 \end_inset
 
@@ -1526,7 +1534,7 @@ Then, with the new observation at time
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-P(S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n)})P(S_{t}=j|\Omega_{t-1};\theta^{(n)})}{f(y_{t}|\Omega_{t-1};\theta^{(n)})}
+P(S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n)})P(S_{t}=j|\Omega_{t-1};\theta^{(n)})}{f(y_{t}|\Omega_{t-1};\theta^{(n)})}\label{eq:fProb}
 \end{equation}
 
 \end_inset

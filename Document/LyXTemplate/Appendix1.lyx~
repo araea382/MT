@@ -337,6 +337,13 @@ Rewrite!!!!!!!!!!
 
 \begin_layout Chapter
 MSwM Package
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:MSwM-Package"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -377,27 +384,34 @@ key "mswm"
 \end_layout
 
 \begin_layout Standard
-Code is further implemented in order to properly deal with the problem and
- the given data.
- Some modifications have been made in the function to handle errors and
- warnings produced when fitting the model.
+Code is further implemented and some modifications are made in the function
+ to handle warnings and errors produced when fitting the model.
  These are described in more details here.
 \end_layout
 
+\begin_layout Paragraph*
+Non-switching effect
+\end_layout
+
 \begin_layout Standard
-when setting variance to have a non-switching effect, the function generates
+When setting variance to have a non-switching effect, the function generates
  a warning.
  It proved that there is a minor mistake in the code.
  
 \end_layout
 
+\begin_layout Paragraph
+Non-invertible Hessian
+\end_layout
+
 \begin_layout Standard
-Furthermore, the package uses a Hessian, the matrix of second order partial
- derivatives with respect to parameters, for numerical optimization.
- In some cases, Hessian matrix will not be invertible as the matrix is singulari
-ty.
+The package uses a Hessian, the matrix of second order partial derivatives
+ with respect to parameters, for numerical optimization.
+ In some cases, Hessian matrix will not be invertible as the matrix is singular.
  Consequently, the function can not compute standard error of estimated
  parameters.
+ It is assumed that the singularity is coming from numerics issue i.e., the
+ matrix is not singular but computationally it is.
  This non-invertible Hessian is solved by using generalized inverse (or
  pseudoinverse) procedure 
 \begin_inset CommandInset citation
@@ -410,8 +424,43 @@ key "gill2004your"
  
 \end_layout
 
+\begin_layout Paragraph*
+NAs coefficients
+\end_layout
+
 \begin_layout Standard
-Apparently, the package does not work well with categorical predictor variables.
+When performing the Markov switching model, the function in the package
+ first randomly divides the data into different subsets and separately fit
+ the model to get initial coefficients in each state.
+ 
+\end_layout
+
+\begin_layout Standard
+Due to the randomness, sometime a variable in a subset will have the same
+ value in all observations.
+ Then, NA coefficient is generated for this specific variable because of
+ singularity.
+ 
+\end_layout
+
+\begin_layout Standard
+For a categorical variable, it is rather difficult for every subset to contain
+ all levels of variable.
+ As a result, the model generates an NA coefficient for that particular
+ variable.
+ It is worth noting that the function computes conditional means for each
+ state by multiplying data with coefficient matrix.
+ Therefore, if NAs exist in the coefficient matrix, these conditional means
+ will also become NAs.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Categorical variable
+\end_layout
+
+\begin_layout Standard
+The package does not work well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
  
@@ -430,47 +479,27 @@ reference level to be the highest occurrence
 
 \end_layout
 
-\begin_layout Standard
-Another error in the package occurs when any initial coefficients from the
- model are NAs.
- A function will first randomly divide data into different subsets and separatel
-y fit the model to get initial coefficients in each state.
- Sometime a variable in a subset will have the same value in all observations.
- Then, NA coefficient is generated because of singularity.
- The solution is to reshuffle data and fit the model until there is no NA
- as coefficient.
- For a categorical variable, it is rather difficult for every subset to
- contain all levels of variable.
- As a result, the model generates an NA coefficient for that particular
- variable.
- It is worth noting that the function computes conditional means for each
- state by multiplying data with coefficient matrix.
- Therefore, if NAs exist in the coefficient matrix, these conditional means
- will also become NAs.
- This issue is resolved by first removing any variables which have NAs coefficie
-nt from the coefficient matrix and later on performing matrix multiplication.
- 
+\begin_layout Paragraph
+Predict function
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Rewrite the NAs coefficients problem
+The implementation for the prediction is.
 \end_layout
+
+\begin_layout Standard
+use the training model to fit with the new set of data
+\end_layout
+
+\begin_layout Standard
+compute filtered probability 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fProb"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-In the original code 
-\end_layout
-
-\begin_layout Standard
-Implement prediction function
 \end_layout
 
 \begin_layout Standard

@@ -336,7 +336,6 @@ ggplot(data=L17A_2, aes(x=index, y=value, colour=variable)) + geom_line() +
 # ecp
 # g2 L16B
 ###############
-library(ecp)
 set.seed(1)
 Ediv_L16B <- e.divisive(matrix(train_g2_L16B$TotCpu), R=499, min.size=5)
 Ediv_L16B$k.hat
