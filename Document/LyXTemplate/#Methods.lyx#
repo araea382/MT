@@ -342,7 +342,7 @@ A Markov chain is a random process which has a property that given on the
 \begin_inset Formula $X$
 \end_inset
 
- contains random variables
+ contains random variables 
 \begin_inset Formula $X_{t}:\:t\in T$
 \end_inset
 
@@ -469,7 +469,7 @@ describe the distribution for the next state given the current state
 \begin_inset Formula $X_{t}=j$
 \end_inset
 
- is defined by the transition probabilities 
+ is defined by the transition probability 
 \family roman
 \series medium
 \shape up
@@ -677,6 +677,14 @@ status open
 A chain is called an ergodic Markov chain if it is possible to go from every
  state to every other state with positive probability (not necessarily in
  one step).
+ These two conditions are known as irreducibility and aperiodicity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "manning2008introduction"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -684,8 +692,8 @@ Markov switching model
 \end_layout
 
 \begin_layout Standard
-Markov switching model is used for time series that are evolved over unobserved
- distinct states or regimes.
+A Markov switching model is used for time series that are evolved over unobserve
+d distinct states or regimes.
  This is a regime switching model where the shifting back and forth between
  the regimes is controlled by a latent Markov chain.
  The model structure consists of two stochastic processes embedded in two
@@ -708,8 +716,8 @@ key "rabiner1986introduction"
 \end_layout
 
 \begin_layout Standard
-A Markov switching model is able to model more complex stochastic processes
- and describe changes in the dynamic behavior.
+The Markov switching model is able to model more complex stochastic processes
+ and describes changes in the dynamic behavior.
  A general structure of the model can be drawn in graphically as shown in
  
 \begin_inset CommandInset ref
@@ -774,13 +782,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "msm"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -789,6 +790,13 @@ name "msm"
 \begin_layout Plain Layout
 Model structure
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "msm"
 
 \end_inset
 
@@ -903,7 +911,7 @@ reference "eq:msm"
 
 \end_inset
 
- is the simplest form for the switching model where there are
+ is the simplest form for the switching model where there are 
 \begin_inset Formula $k-1$
 \end_inset
 
@@ -1060,8 +1068,8 @@ Autoregressive (AR) model
 \end_layout
 
 \begin_layout Standard
-Autoregressive model is one type of time series model that uses for describing
- the time-varying process.
+An autoregressive model is one type of time series model that uses for describin
+g the time-varying process.
  The model is flexible in handling various kinds of time series patterns.
  The name autoregressive comes from how the model performs a regression
  of the variable against its own previous outputs 
@@ -1119,7 +1127,7 @@ where
 \begin_inset Formula $\phi_{i}$
 \end_inset
 
- are coefficients in the autoregression and 
+ are the coefficients in the autoregression and 
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
@@ -1135,8 +1143,8 @@ If
 \begin_inset Formula $p$
 \end_inset
 
- is equal to one, the model is called the first order autoregression process
- or AR(1).
+ is equal to one, the model AR(1) is called the first order autoregression
+ process.
 \end_layout
 
 \begin_layout Section
@@ -1241,13 +1249,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "msm-ar"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -1256,6 +1257,13 @@ name "msm-ar"
 \begin_layout Plain Layout
 Model structure of Markov switching AR(1)
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "msm-ar"
 
 \end_inset
 
@@ -1360,8 +1368,8 @@ key "dempster1977maximum"
 
  can be viewed as the missing values.
  The set of parameters is estimated by iterative two-step procedure.
- It starts with an arbitrary initial parameters and finds the expected values
- of the state process given the observations.
+ The algorithm starts with an arbitrary initial parameters and finds the
+ expected values of the state process given the observations.
  Next, the new maximum likelihood from the derived parameters in previous
  step is calculated.
  These two steps are repeated until the maximum value of the likelihood
@@ -1400,13 +1408,13 @@ Assume that
 
  under the current estimation of the parameters.
  The obtained result is called smoothed inferences probability and is denoted
- by
+ by 
 \begin_inset Formula $P(S_{t}=j|\Omega_{T};\theta)$
 \end_inset
 
 .
  The E-step consists of filtering and smoothing algorithm and the process
- is described as follow 
+ is described as follows 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1994dynamic"
@@ -1444,7 +1452,7 @@ Filtered probability is the probability of the non-observable Markov chain
 \end_inset
 
 .
- The starting point for the first iteration where 
+ The starting points for the first iteration where 
 \begin_inset Formula $t=1$
 \end_inset
 
@@ -1512,7 +1520,8 @@ where
 \begin_inset Formula $t$
 \end_inset
 
- and simply the Gaussian probability density function.
+.
+ Thi is simply the Gaussian probability density function.
 \end_layout
 
 \begin_layout Standard
@@ -1526,7 +1535,7 @@ Then, with the new observation at time
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-P(S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n)})P(S_{t}=j|\Omega_{t-1};\theta^{(n)})}{f(y_{t}|\Omega_{t-1};\theta^{(n)})}
+P(S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n)})P(S_{t}=j|\Omega_{t-1};\theta^{(n)})}{f(y_{t}|\Omega_{t-1};\theta^{(n)})}\label{eq:fProb}
 \end{equation}
 
 \end_inset
@@ -1641,7 +1650,7 @@ Smoothed probability is the probability of the non-observable Markov chain
 \end_inset
 
 .
- The starting value is obtained from the final iteration of the filtered
+ The starting values are obtained from the final iteration of the filtered
  probabilities.
 \end_layout
 
@@ -1761,7 +1770,7 @@ Model selection
 
 \begin_layout Standard
 Model selection is a task of selecting the most suitable model for a given
- set of data based on the quality of model.
+ set of data based on the quality of the model.
  In this thesis framework, the Bayesian Information Criterion (BIC) is widely
  employed in the applied literature and proved to be useful in selecting
  the model among a finite set of models.
@@ -1834,10 +1843,10 @@ Non-parametric analysis
 \end_layout
 
 \begin_layout Standard
-One study found that if data belongs to some known distribution families,
- parametric test statistics outperform the non-parametric test.
+The parametric test statistics outperform the non-parametric test if data
+ belongs to some known distribution families.
  However, the parametric test is not properly performing well in detecting
- change point for unknown underlying distribution 
+ change point for an unknown underlying distribution 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sharkey2014nonparametric"
@@ -1857,8 +1866,9 @@ key "hawkins2010nonparametric"
 
 .
  For this reason, the non-parametric analysis is implemented in order to
- get a heuristic idea of the change point location in this study.
- 
+ get a heuristic idea of the change point location in this thesis framework.
+ The obtained result is also used for comparing with the result from Markov
+ switching autoregressive model.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1880,8 +1890,8 @@ https://cran.r-project.org/web/packages/ecp/index.html
 
 \end_inset
 
- is an extension package in R which mainly focus on computing the non-parametric
- test for multiple change point analysis.
+ is an extension package in R which mainly focuses on computing the non-parametr
+ic test for multiple change point analysis.
  This change point method is applicable to both univariate and multivariate
  time series.
  A fundamental idea for the method is based on the hierarchical clustering
@@ -1901,9 +1911,10 @@ The E-divisive method is an algorithm in the
 \emph on
 ecp
 \emph default
- package in R.This method performs a divisive clustering in order to estimate
- the multiple change points.
- The algorithm recursively partitions a time series and estimates a single
+ package.
+ This alogrithm performs a divisive clustering in order to estimate the
+ multiple change points.
+ The E-divisive recursively partitions a time series and estimates a single
  change point in each iteration.
  Consequently, the new change point is located at each iteration and it
  divides the time series into different segments.

@@ -443,7 +443,7 @@ A
 \emph on
 B
 \emph default
- which generally correspond to 
+ which generally corresponds to 
 \begin_inset Formula $1^{st}$
 \end_inset
 
@@ -452,13 +452,13 @@ B
 \end_inset
 
  half of that year.
- Ericsson opens up a track for each software release and start a code integratio
-n track.
+ Ericsson opens up a track for each software release and begins a code integrati
+on track.
  This track becomes the main track of the work or the focal branch for all
  code deliveries.
- There are hundreds of team producing code and code is committed to this
+ There are hundreds of teams producing code and code is committed to this
  track continuously.
- In order to create a structure for this contribution, daily 
+ In order to create a structure for this contribution, a daily 
 \emph on
 software package
 \emph default
@@ -478,7 +478,7 @@ R
 R
 \emph default
  stands for Release-state.
- To summarize, each software package is a snapshot in the code integration
+ To summarize, each software package is the snapshot in the code integration
  timeline.
  
 \begin_inset CommandInset ref
@@ -550,7 +550,7 @@ There are thousands of automated tests performed.
  of procedures, which can be seen as stimuli in the LTE node.
  The LTE node then increments one or more counters for each one of these
  procedures or stimuli it detects.
- These counter are called local events and they are represented by EventsPerSec.
+ These counters are called local events and they are represented by EventsPerSec.
  
 \end_layout
 
@@ -598,7 +598,7 @@ status open
 
 \begin_layout Plain Layout
 Example of one software package.
- First, QA Capacity automated test suites is started.
+ First, the QA Capacity automated test suites is started.
  For each test suite, a logging loop is started and a log is produced for
  each test case.
  The log file is fed to post-processing tools and the data output is obtained.
@@ -875,6 +875,117 @@ ErabDrbAllocated=641.30 EventS1InitialUeMessage=142.20 McRrcConnectionRequest=14
 \end_layout
 
 \end_deeper
+\begin_layout Section
+Data preprocessing
+\end_layout
+
+\begin_layout Standard
+The data consists of three software releases – L16A, L16B and L17A – and
+ it is split into a dataset according to the software release.
+ The dataset is sorted by the version of the software package which is named
+ alphabetically.
+ Even though the dataset has a timestamp when the test case is run, the
+ timestamp is unsuitable to represent itself as a time point in time series.
+ The software package is an important variable and more of an interest to
+ this analysis.
+ Therefore, it is viewed as the data points indexed in time order in the
+ time series.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Why is it unsuitable? give one reason
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Test cases are not always being executed properly.
+ It is either no traffic is generated during the test case or that data
+ is not logged.
+ If the EventsPerSec field is missing or has no value in it, the test case
+ is being treated as incomplete and all the data related to that particular
+ test case is ignored.
+ This also applied for other cases when any fields in the dataset is missing.
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eventspersec"
+
+\end_inset
+
+, it can be seen that EventsPerSec variable stores multiple values separated
+ by a tab character.
+ These tab-separated values in the field are split to columns.
+ The process is done in order to get its local events and values which character
+ized the test case.
+ These are later on used as predictor variables for fitting the Markov switching
+ model.
+\end_layout
+
+\begin_layout Standard
+Each software release consists of several software packages.
+ Also, numerous test cases are executed in one software package.
+ Since the software package acts as a point in time in the time series,
+ it appears to be rather difficult to visualize all results from every executed
+ test case for each software package.
+ Hence, the test case which has the lowest value of the CPU utilization
+ (or minimum value of TotCpu%) is selected to represent the performance
+ of a specific software package.
+ Although taking an average of the multiple runs for test cases in the software
+ package appears to be a good approach, it does not yield the best outcome
+ in this case.
+ The first reason is that manipulating data can easily be misleading.
+ It is, therefore, settled to remain the data as it is and always visualize
+ the data exactly as it is recorded.
+ Another important reason for not using the average value of the CPU utilization
+ is because the essential information in the test case will be lost.
+ Each test case has its own local events in EventsPerSec field that used
+ for identifying the test case.
+ The details of these local events are absent when averaging over the CPU
+ utilization of the test cases in the software package.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The reason for choosing the minimum value of the CPU utilization is because
+ 
+\end_layout
+
+\begin_layout Plain Layout
+tried to be optimistic...
+ ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After performing all the steps describing above, the dataset of software
+ release L16A, L16B and L17A consist of 64, 241, and 144 test cases, respectivel
+y.
+ Lastly, each dataset with particular software release is divided into two
+ subsets.
+ Ninety percent of the dataset is used for training the model and the remaining
+ ten percent is left out for testing.
+ 
+\end_layout
+
 \begin_layout Standard
 Some variables in the data are chosen to be used for further analysis.
  There are in total one response variable and six predictor variables.
@@ -1242,115 +1353,6 @@ Categorical
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Data preprocessing
-\end_layout
-
-\begin_layout Standard
-The data consists of three software releases – L16A, L16B and L17A – and
- it is split into a dataset according to the software release.
- The dataset is sorted by the version of the software package which is named
- alphabetically.
- Even though the dataset has a timestamp when the test case is run, the
- timestamp is unsuitable to represent itself as a time point in time series.
- The software package is an important variable and more of an interest to
- this analysis.
- Therefore, it is viewed as the data points indexed in time order in the
- time series.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Why is it unsuitable? give one reason
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Test cases are not always being executed properly.
- It is either no traffic is generated during the test case or that data
- is not logged.
- If the EventsPerSec field is missing or has no value in it, the test case
- is being treated as incomplete and all the data related to that particular
- test case is ignored.
- This also applied for other cases when any fields in the dataset is missing.
-\end_layout
-
-\begin_layout Standard
-In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eventspersec"
-
-\end_inset
-
-, it can be seen that EventsPerSec variable store multiple values separated
- by a tab character.
- These tab-separated values in the field are split to columns.
- The process is done in order to get its local events and values which character
-ized the test case and later on used for fitting the Markov switching model.
-\end_layout
-
-\begin_layout Standard
-Each software release consists of several software packages.
- Also, numerous test cases are executed in one software package.
- Since the software package acts as a point in time in the time series,
- it appears to be rather difficult to visualize all results from every executed
- test case for each software package.
- Hence, the test case which has the lowest value of the CPU utilization
- (or minimum value of TotCpu%) is selected to represent the performance
- of a specific software package.
- Although taking an average of the multiple runs for test cases in the software
- package appears to be a good approach, it does not yield the best outcome
- in this case.
- The first reason is that manipulating data can easily be misleading.
- It is, therefore, settled to remain the data as it is and always visualize
- the data exactly as it is recorded.
- Another important reason for not using the average value of the CPU utilization
- is because the essential information in the test case will be lost.
- Each test case has its own local events in EventsPerSec field that used
- for identifying the test case.
- The details of these local events are absent when averaging over the CPU
- utilization of the test cases in the software package.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-The reason for choosing the minimum value of the CPU utilization is because
- 
-\end_layout
-
-\begin_layout Plain Layout
-tried to be optimistic...
- ?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-After performing all the steps describing above, the dataset of software
- release L16A, L16B and L17A consist of 64, 241, and 144 test cases, respectivel
-y.
- Lastly, each dataset with particular software release is divided into two
- subsets.
- Ninety percent of the dataset is used for training the model and the remaining
- ten percent is left out for testing.
- 
 \end_layout
 
 \begin_layout Standard

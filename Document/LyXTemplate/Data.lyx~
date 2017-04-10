@@ -423,8 +423,11 @@ name "lte"
 \end_layout
 
 \begin_layout Standard
-Ericsson makes a global software release in roughly 6-month cycles or two
- major releases per year.
+Ericsson makes a global 
+\emph on
+software release
+\emph default
+ in roughly 6-month cycles or two major releases per year.
  Each of these releases contains a bundle of features and functionality
  that is intended for all the customers.
  The software release is labeled with 
@@ -440,7 +443,7 @@ A
 \emph on
 B
 \emph default
- which generally correspond to 
+ which generally corresponds to 
 \begin_inset Formula $1^{st}$
 \end_inset
 
@@ -449,11 +452,16 @@ B
 \end_inset
 
  half of that year.
- For each software release, a code integration track is started.
- This track becomes the main track or the focal branch for all code deliveries.
- There are hundreds of team producing code and code is committed to this
+ Ericsson opens up a track for each software release and begins a code integrati
+on track.
+ This track becomes the main track of the work or the focal branch for all
+ code deliveries.
+ There are hundreds of teams producing code and code is committed to this
  track continuously.
- In order to create a structure for this contribution, daily software package
+ In order to create a structure for this contribution, a daily 
+\emph on
+software package
+\emph default
  is built.
  Every day a new software package is built which can be seen as a snapshot
  or a marker in the continuous delivery timeline.
@@ -470,7 +478,7 @@ R
 R
 \emph default
  stands for Release-state.
- To summarize, each software package is a snapshot in the code integration
+ To summarize, each software package is the snapshot in the code integration
  timeline.
  
 \begin_inset CommandInset ref
@@ -542,7 +550,7 @@ There are thousands of automated tests performed.
  of procedures, which can be seen as stimuli in the LTE node.
  The LTE node then increments one or more counters for each one of these
  procedures or stimuli it detects.
- These counter are called local events and they are represented by EventsPerSec.
+ These counters are called local events and they are represented by EventsPerSec.
  
 \end_layout
 
@@ -590,7 +598,7 @@ status open
 
 \begin_layout Plain Layout
 Example of one software package.
- First, QA Capacity automated test suites is started.
+ First, the QA Capacity automated test suites is started.
  For each test suite, a logging loop is started and a log is produced for
  each test case.
  The log file is fed to post-processing tools and the data output is obtained.
@@ -1284,7 +1292,7 @@ reference "eventspersec"
 
 \end_inset
 
-, it can be seen that EventsPerSec variable store multiple values separated
+, it can be seen that EventsPerSec variable stores multiple values separated
  by a tab character.
  These tab-separated values in the field are split to columns.
  The process is done in order to get its local events and values which character
