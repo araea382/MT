@@ -697,6 +697,10 @@ setMethod(f="plot",signature=c("MSM.linear","missing"),definition=.MSM.plot)
 				mtext(names(z),side=2,line=2.5,col=1)
 				axis(side=4)
 				barplot(x["Fit"]["smoProb"][-1,aux[i]],ylim=c(0,1))
+				###
+				# Add: line
+				###
+				abline(h=0.5, col="red", lty="dashed")
 			}
 		)
 	}

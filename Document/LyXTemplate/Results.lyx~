@@ -390,10 +390,6 @@ normality of errors: histogram and normal probability plot
 \end_layout
 
 \begin_layout Standard
-set.seed(1) for reproducible result
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -415,19 +411,7 @@ States
 status open
 
 \begin_layout Plain Layout
-parameters all have switching effects (state-dependent variance parameters)
-\end_layout
-
-\begin_layout Plain Layout
 REASON: (easier to compare...what else?)
-\end_layout
-
-\begin_layout Plain Layout
-high and low volatility
-\end_layout
-
-\begin_layout Plain Layout
-very fluctuate
 \end_layout
 
 \end_inset
@@ -436,8 +420,11 @@ very fluctuate
 \end_layout
 
 \begin_layout Standard
-To estimate the set of necessary parameters, the R package called MSwM is
- used.
+To estimate the set of necessary parameters, the 
+\emph on
+MSwM
+\emph default
+ package in R is used.
  More details on the package can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -450,8 +437,8 @@ reference "chap:MSwM-Package"
 
 \begin_layout Standard
 Markov switching autoregressive model is performed for each dataset with
- every parameter in the model have switching effects i.e., all the parameters
- can be different in different periods.
+ every parameter in the model has switching effects i.e., the parameters can
+ take on different values in different periods.
  The estimation is made under the assumptions of two or three states 
 \begin_inset Formula $S_{t}\in S$
 \end_inset
@@ -469,6 +456,9 @@ Markov switching autoregressive model is performed for each dataset with
 \end_inset
 
 .
+ This comes from a hypothesis that the state of the CPU utilization might
+ have two states (Normal and Bad, Normal and Good, Bad and Good) or three
+ states (Normal, Bad, and Good).
  The normality assumption applies to the distribution of residuals during
  the estimation as well.
 \end_layout
@@ -477,7 +467,7 @@ Markov switching autoregressive model is performed for each dataset with
 A standard linear regression model is fitted to the dataset first before
  performing the Markov switching autoregressive model.
  One coefficient in the dataset of software release L16A is not defined
- as it proved to have singularities.
+ because of singularity.
  Hence, DuProdName variable is dropped from the regression model.
  The BIC values from fitting Markov switching autoregressive model are shown
  in 
@@ -500,7 +490,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-BIC values
+BICs for each dataset of software release
 \end_layout
 
 \end_inset
@@ -509,16 +499,6 @@ BIC values
 \begin_inset CommandInset label
 LatexCommand label
 name "state-bic"
-
-\end_inset
-
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-CHANGE table name
-\end_layout
 
 \end_inset
 
@@ -698,11 +678,211 @@ L17A
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-PLOT
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16A_2_smo.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The smoothed probabilities for software release L16A with two-state model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16A_3_smo.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The smoothed probabilities for software release L16A with three-state model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16B_2_smo.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The smoothed probabilities for software release L16B with two-state model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16B_3_smo.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The smoothed probabilities for software release L16B with three-state model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L17A_2_smo.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The smoothed probabilities for software release L17A with three-state model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L17A_3_smo.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The smoothed probabilities for software release L17A with three-state model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -744,19 +924,14 @@ Switching parameters
 \end_layout
 
 \begin_layout Standard
-The fitting models earlier do not take into account state-independent parameters.
- It is assumed that all the parameters of the model are differed in each
- state.
- Apparently, this is not always the case as each parameter can have either
- a switching or non-switching effect.
-\end_layout
-
-\begin_layout Standard
-From the given data, 
-\end_layout
-
-\begin_layout Standard
-Hypothesis is that
+The fitting Markov switching models earlier do not take into account state-indep
+endent parameters – in other words, all the parameters of the model are
+ differed in each state.
+ Apparently, each parameter can have either a switching or non-switching
+ effect.
+ The hypothesis is that the local events have switching effects while the
+ parameters in test environment have non-switching effects.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -769,10 +944,6 @@ L16B
 
 \begin_layout Standard
 L17A 
-\end_layout
-
-\begin_layout Standard
-In other words/To clarify
 \end_layout
 
 \begin_layout Section
@@ -788,6 +959,18 @@ The results of the selected Markov switching autoregressive model for each
 \begin_layout Standard
 Plot of residuals against fitted values, a Normal Q-Q plot, ACF/PACF of
  residuals and ACF/PACF of square residuals.
+\end_layout
+
+\begin_layout Standard
+L16A 
+\end_layout
+
+\begin_layout Standard
+L16B
+\end_layout
+
+\begin_layout Standard
+L17A 
 \end_layout
 
 \begin_layout Standard
@@ -1002,7 +1185,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization for the sofware release L16A.
+The CPU utilization for the software release L16A.
  The red dashed vertical lines indicate the locations of estimated change
  points.
  
@@ -1052,7 +1235,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization for the sofware release L16B.
+The CPU utilization for the software release L16B.
  The red dashed vertical lines indicate the locations of estimated change
  points.
  
@@ -1099,7 +1282,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization for the sofware release L17A.
+The CPU utilization for the software release L17A.
  The red dashed vertical lines indicate the locations of estimated change
  points.
  
@@ -1132,7 +1315,14 @@ State prediction
 
 \begin_layout Standard
 A function to predict the most probable state for the new observation is
- implemented in this analysis.
+ implemented in this analysis (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:MSwM-Package"
+
+\end_inset
+
+).
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1165,7 +1355,7 @@ Simulation
 
 \begin_layout Standard
 Since there is no annotation for the state of the CPU utilization in the
- data, an accuracy can not be computed after applying a prediction.
+ data, an accuracy can not be computed after making a state prediction.
  One possible solution to test and verify how well the implemented predict
  function performs is to use the simulation technique.
  Therefore, a data consists of two predictor variables and one response

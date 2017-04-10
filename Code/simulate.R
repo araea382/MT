@@ -123,6 +123,9 @@ y[ind_good] <- y3[ind_good]
 points(y, type="l", col="green")
 plot(y, type="l")
 
+ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+  ggtitle("Simulated data")+ theme_bw()
+
 simu_data <- data.frame(x1,x2,y)
 
 ind <- 500*0.8

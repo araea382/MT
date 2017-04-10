@@ -308,31 +308,15 @@ Both R and Python are powerful programming language for data analysis.
  R also has a strong reputation for data visualization.
  However, in terms of computation, R still cannot compete with Python which
  is built specifically for computer programming.
-\end_layout
-
-\begin_layout Standard
-With strengths and weaknesses between R and Python described earlier, R
+ With strengths and weaknesses between R and Python described earlier, R
  is chosen to be used in this study.
- It offers more implemented algorithms to solve the problem at hand.
+ R offers more implemented algorithms to solve the problem at hand.
  Moreover, effective visualization helps analyst and user to understand
  more about their data especially for the complex one.
  Visualizing data is useful in many ways such as uncover new patterns, identify
  some factors, and get an overall trend.
  R proves itself a good choice since it provides a great feature in creating
  an interactive graphic and visualization.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Rewrite!!!!!!!!!!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Chapter
@@ -425,44 +409,21 @@ key "gill2004your"
 \end_layout
 
 \begin_layout Paragraph*
-NAs coefficients
-\end_layout
-
-\begin_layout Standard
-When performing the Markov switching model, the function in the package
- first randomly divides the data into different subsets and separately fit
- the model to get initial coefficients in each state.
- 
-\end_layout
-
-\begin_layout Standard
-Due to the randomness, sometime a variable in a subset will have the same
- value in all observations.
- Then, NA coefficient is generated for this specific variable because of
- singularity.
- 
-\end_layout
-
-\begin_layout Standard
-For a categorical variable, it is rather difficult for every subset to contain
- all levels of variable.
- As a result, the model generates an NA coefficient for that particular
- variable.
- It is worth noting that the function computes conditional means for each
- state by multiplying data with coefficient matrix.
- Therefore, if NAs exist in the coefficient matrix, these conditional means
- will also become NAs.
- 
-\end_layout
-
-\begin_layout Standard
 Categorical variable
 \end_layout
 
 \begin_layout Standard
-The package does not work well with categorical predictor variables.
+The package does not work properly well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
+ 
+\end_layout
+
+\begin_layout Standard
+Factors are used to represent the categorical variables in R.
+ Most of the time, the order of the factor does not matter.
+ However, sometimes the order of the factor is of interest in the analysis
+ and needs to be specified for comparing or meaningful interpretation.
  
 \end_layout
 
@@ -479,18 +440,81 @@ reference level to be the highest occurrence
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Error is occurred when any initial coefficients from the model are NAs.
- 
+\begin_layout Paragraph*
+NA coefficients
 \end_layout
 
+\begin_layout Standard
+When performing the Markov switching model, the function in the package
+ first randomly divides the data into different subsets and separately fit
+ the model to get initial coefficients in each state.
+ These coefficients are later used for further analysis e.g., computing condition
+ means, error and likelihood for each state.
+\end_layout
+
+\begin_layout Standard
+It is worth noting that the function computes conditional means for each
+ state by using matrix multiplication 
+\begin_inset Formula $\ensuremath{\hat{y}=X\hat{\beta}}$
+\end_inset
+
+.
+ Therefore, if NAs exist in the coefficient matrix, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\beta}$
 \end_inset
 
 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, these conditional means will also become NAs.
+ 
+\end_layout
+
+\begin_layout Standard
+Due to the randomness in partitioning the data, sometimes a variable in
+ a subset will have the same value in all observations.
+ Then, NA coefficient is generated for this specific variable because of
+ singularity.
+ This NA coefficient issue occurs more frequently with a categorical variable
+ as each categorical variable has its own number of levels.
+ It is rather difficult for every subset to contain all levels of the variable
+ especially if the variable contains several number of levels or many states
+ are specified.
+ For this reason, the missing level of the variable in any subset will have
+ an NA coefficient.
+ 
+\end_layout
+
+\begin_layout Standard
+One approach to resolve this issue is by removing the process of partitioning
+ the data in the beginning and fitting the model with the whole data to
+ get the initial coefficients instead.
+ The parameters in each state will then have the same coefficient values.
+ It proved that dividing data into subsets is only a method to get the starting
+ values for coefficients in each state and does not have much effect for
+ the algorithm.
+ 
 \end_layout
 
 \begin_layout Paragraph
@@ -498,22 +522,20 @@ Predict function
 \end_layout
 
 \begin_layout Standard
-The implementation for the prediction is.
-\end_layout
-
-\begin_layout Standard
-use the training model to fit with the new set of data
-\end_layout
-
-\begin_layout Standard
-compute filtered probability 
+The implementation for the model prediction is added in the package.
+ This function predicts the most probable state that a new observation will
+ belong to.
+ The input of the predict function is the training model and the new set
+ of data.
+ The function computes the filtered probability or the Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:fProb"
 
 \end_inset
 
-
+.
+ The highest probability is the output 
 \end_layout
 
 \begin_layout Standard
