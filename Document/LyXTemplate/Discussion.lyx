@@ -326,6 +326,15 @@ Suggestion for a better result –> future
 \end_layout
 
 \begin_layout Standard
+A thorough search of the relevant literature yielded that this might be
+ the first time that Markov switching model is applied on the data to deal
+ with ....
+ In previous work, it is mostly mentioned that this model is used for predicting
+ ....
+ finance and signal (financial modeling)
+\end_layout
+
+\begin_layout Standard
 estimate simple models –> number of parameters grows exponentially –> solution
  is probably a local maximum 
 \begin_inset CommandInset citation
@@ -358,15 +367,6 @@ take a risk aversion when deciding which number of states is more desirable
 \begin_layout Standard
 A four-state is tested but the results is rather poor compare to the rest
  –> can not really make an inference
-\end_layout
-
-\begin_layout Standard
-A thorough search of the relevant literature yielded that this might be
- the first time that Markov switching model is applied on the data to deal
- with ....
- In previous work, it is mostly mentioned that this model is used for predicting
- ....
- finance and signal (financial modeling)
 \end_layout
 
 \begin_layout Standard

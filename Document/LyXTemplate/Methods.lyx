@@ -321,7 +321,8 @@ In this chapter, methods used for performing the change point analysis in
  specifications namely Markov switching autoregressive model are discussed.
  Next two sections are devoted to some techniques for estimating the values
  of parameters and selecting a suitable model for the datasets.
- Finally, a non-parametric analysis is described.
+ Another change point method in a non-parametric approach is described.
+ Finally, a simulation technique is explained.
 \end_layout
 
 \begin_layout Section
@@ -370,18 +371,18 @@ A Markov chain is a random process which has a property that given on the
 .
  The process begins from one of these states and moves to another state.
  The move between state is called a step.
- The process of Markov chains is described here 
+ The process of Markov chains is described here.
+\end_layout
+
+\begin_layout Definition
 \begin_inset CommandInset citation
 LatexCommand citep
+after "p.214"
 key "grimmett2001probability"
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Definition
-If a process 
+ If a process 
 \begin_inset Formula $X$
 \end_inset
 
@@ -389,7 +390,7 @@ If a process
 \begin_inset Formula $X$
 \end_inset
 
- is a Markov chain
+ is a first order Markov chain
 \end_layout
 
 \begin_layout Definition
@@ -515,7 +516,14 @@ as
 \end_layout
 
 \begin_layout Definition
-The chain is time-homogeneous if
+\begin_inset CommandInset citation
+LatexCommand citep
+after "p.214"
+key "grimmett2001probability"
+
+\end_inset
+
+ The chain is time-homogeneous if
 \end_layout
 
 \begin_layout Definition
@@ -571,7 +579,14 @@ p_{ij}=P(X_{t}=j|X_{t-1}=i)
 \end_layout
 
 \begin_layout Theorem*
-The transition matrix 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "p.215"
+key "grimmett2001probability"
+
+\end_inset
+
+ The transition matrix 
 \begin_inset Formula $\mathbf{P}$
 \end_inset
 
@@ -604,9 +619,61 @@ The sum of each column equal to one or
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Definition
-A chain is called irreducible if all states are eventually reached from
- any state.
+\begin_inset CommandInset citation
+LatexCommand citep
+after "p.222"
+key "grimmett2001probability"
+
+\end_inset
+
+ The mean recurrence time of a state 
+\begin_inset Formula $i$
+\end_inset
+
+ is defined as
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+\mu_{i}=E(T_{i}|X=0=i)=\sum_{n}n\cdot f_{ii}(n)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+State 
+\begin_inset Formula $i$
+\end_inset
+
+ is positive recurrent or non-null persistent if 
+\begin_inset Formula $\mu_{i}$
+\end_inset
+
+ is finite.
+ Otherwise, the state 
+\begin_inset Formula $i$
+\end_inset
+
+ is null persistent.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -623,7 +690,14 @@ status open
 \end_layout
 
 \begin_layout Definition
-A state 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "p.222"
+key "grimmett2001probability"
+
+\end_inset
+
+ A state 
 \begin_inset Formula $i$
 \end_inset
 
@@ -674,17 +748,53 @@ status open
 \end_layout
 
 \begin_layout Definition
-A chain is called an ergodic Markov chain if it is possible to go from every
- state to every other state with positive probability (not necessarily in
- one step).
- These two conditions are known as irreducibility and aperiodicity 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "manning2008introduction"
+after "p.222"
+key "grimmett2001probability"
 
 \end_inset
 
-.
+ A state is called ergodic if it is non-null persistent and aperiodic.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+A chain is called irreducible if all states are eventually reached from
+ any state.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+If there is a state space finite, an irreducible Markov chain is the same
+ thing as ergodic Markov chain.
+ It is possible to go from every state to every other state with positive
+ probability.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1912,7 +2022,7 @@ The E-divisive method is an algorithm in the
 ecp
 \emph default
  package.
- This alogrithm performs a divisive clustering in order to estimate the
+ This algorithm performs a divisive clustering in order to estimate the
  multiple change points.
  The E-divisive recursively partitions a time series and estimates a single
  change point in each iteration.
@@ -1949,6 +2059,166 @@ The E-agglomerative algorithm performs an agglomerative clustering in favor
  series or a prior knowledge of the possible change point in order to reduce
  the computation time.
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Simulation 
+\end_layout
+
+\begin_layout Standard
+Since there is no annotation for the state of the CPU utilization in the
+ data, an accuracy can not be computed after making a state prediction.
+ One possible solution to test and verify how well the implemented predict
+ function performs is to use the simulation technique.
+ Therefore, a data consists of two predictor variables and one response
+ variable with the known state is simulated.
+ The actual models for each state are 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=\begin{cases}
+\begin{array}{c}
+10+0.6X1_{t}-0.9X2_{t}+0.5Y_{t-1}+\varepsilon_{t}^{(1)}\\
+2+0.8X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(2)}\\
+-12+0.7X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(3)}
+\end{array} & \begin{array}{c}
+\varepsilon_{t}^{(1)}\sim N(0,1)\\
+\varepsilon_{t}^{(2)}\sim N(2,0.5)\\
+\varepsilon_{t}^{(3)}\sim N(1,1)
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The data contains 500 observations which has a presence of three different
+ states – Normal, Bad and Good.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sim_data"
+
+\end_inset
+
+ presents a plot of 
+\begin_inset Formula $y$
+\end_inset
+
+ over a period of time and the period where observations in the data belong
+ to one of the state is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sim_state"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/sim_data.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulated data.
+ The 
+\begin_inset Formula $y$
+\end_inset
+
+ variable is the response variable
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sim_data"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/sim_state.png
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The period in the time series when data is in each state 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sim_state"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+COMBINE PLOT
 \end_layout
 
 \end_inset

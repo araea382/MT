@@ -318,75 +318,14 @@ The most relevant results of the analysis is shown and organized in this
  chapter as follow.
  As a first step, The number of states for the model is decided.
  Then, performing a model selection for the given dataset in order to find
- which parameter has a switching effect.
- Residual analysis and compare with the non-parametric analysis.
- Lastly, the prediction of the state for the new observation is performed
- in each dataset.
+ which model is the most appropriate one and which parameter should have
+ a switching effect in the model.
+ Residual analysis is performed in the later section to validate the models.
+ Next, the results of the non-parametric analysis are also presented.
+ The last two sections report the results of predicting the state for the
+ new observation in each dataset and verification the use of predict function
+ in simulated data.
  
-\end_layout
-
-\begin_layout Standard
-Simulated data
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-plot of filtered and smoothed probabilities with regimes specifications
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-model validation 
-\end_layout
-
-\begin_layout Plain Layout
-(using residual analysis- if the residuals appear to behave randomly, it
- suggests that the model fits the data well.)
-\end_layout
-
-\begin_layout Plain Layout
-Different types of plots of the residuals from a fitted model provide informatio
-n on the adequacy of different aspects of the model.
-\end_layout
-
-\begin_layout Enumerate
-sufficiency of the functional part of the model: scatter plots of residuals
- versus predictors 
-\end_layout
-
-\begin_layout Enumerate
-non-constant variation across the data: scatter plots of residuals versus
- predictors; for data collected over time, also plots of residuals against
- time 
-\end_layout
-
-\begin_layout Enumerate
-drift in the errors (data collected over time): run charts of the response
- and errors versus time 
-\end_layout
-
-\begin_layout Enumerate
-independence of errors: lag plot 
-\end_layout
-
-\begin_layout Enumerate
-normality of errors: histogram and normal probability plot
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -394,7 +333,7 @@ normality of errors: histogram and normal probability plot
 status open
 
 \begin_layout Plain Layout
-DELETE the section afterwards
+DELETE the section afterwards...?????
 \end_layout
 
 \end_inset
@@ -678,6 +617,39 @@ L17A
 \end_layout
 
 \begin_layout Standard
+For software release L16A, the BIC value suggests that the three-state Markov
+ switching autoregressive model gives better fit in comparison to the two-state
+ model.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_2_smo"
+
+\end_inset
+
+ presents that the state 1 appears to have a more extensive period of time
+ before switching to state 2.
+ On the other hands, it can be seen in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_3_smo"
+
+\end_inset
+
+ that there are more switching between state.
+ One noticeable thing is that most of the state 2 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_2_smo"
+
+\end_inset
+
+ now becomes the state 1.
+ Moreover, the state 1 which has a long duration are now switching back
+ and forth between states.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -699,6 +671,13 @@ status open
 \begin_layout Plain Layout
 The smoothed probabilities for software release L16A with two-state model
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16A_2_smo"
 
 \end_inset
 
@@ -736,11 +715,62 @@ The smoothed probabilities for software release L16A with three-state model
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "L16A_3_smo"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Markov switching autoregressive models with two states for the remaining
+ two software releases, L16B and L17A, yield a better result in favor of
+ lower BICs.
+ 
+\end_layout
+
+\begin_layout Standard
+The duration of being in the state 2 is longer compares to the duration
+ in the state 1 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_2_smo"
+
+\end_inset
+
+.
+ The state 1 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_2_smo"
+
+\end_inset
+
+ or 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_3_smo"
+
+\end_inset
+
+ is pretty much in the same period.
+ Apparently, there are more switching between states in the three-state
+ model especially in the beginning, middle and almost the end of the period.
+ The state 3 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_3_smo"
+
+\end_inset
+
+ appears to have a long duration rather than any other states in the model.
 \end_layout
 
 \begin_layout Standard
@@ -768,6 +798,13 @@ status open
 \begin_layout Plain Layout
 The smoothed probabilities for software release L16B with two-state model
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_2_smo"
 
 \end_inset
 
@@ -808,6 +845,13 @@ The smoothed probabilities for software release L16B with three-state model
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_3_smo"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -816,14 +860,44 @@ The smoothed probabilities for software release L16B with three-state model
 \end_layout
 
 \begin_layout Standard
+There is quite a lot of switch between state in the two-state model of software
+ release L17A.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_2_smo"
+
+\end_inset
+
+, when the Markov chain is in state 1, it stays there quite some time before
+ leaving the state.
+ However, the chain has a short duration being in state 2 and quickly switch
+ back to the state 1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_3_smo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+switch between the state 1 and the state 2 
+\end_layout
+
+\begin_layout Standard
+stay in the state 2 rather long until the end of the time period.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \noindent
@@ -845,9 +919,12 @@ The smoothed probabilities for software release L17A with three-state model
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "L17A_2_smo"
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
@@ -879,9 +956,12 @@ The smoothed probabilities for software release L17A with three-state model
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "L17A_3_smo"
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
@@ -891,15 +971,11 @@ The smoothed probabilities for software release L17A with three-state model
 \end_layout
 
 \begin_layout Standard
-For software release L16A, the three-state Markov switching autoregressive
- model gives better fit in comparison to the two-state model as it has lower
- BIC value.
- Markov switching autoregressive model with two states for other two software
- releases, L16B and L17A, seems to yield a better result in favor of lower
- BICs.
- Nevertheless, outputs from function along with plots provide more interpretable
- result when defining the model with three states.
- 
+Outputs from function along with plots provide more interpretable result
+ when defining the model with three states in software release L16B and
+ L17A despite the slightly higher value in BIC.
+ In regards to this, the three-state models for each software release are
+ further analyzed throughout the thesis.
 \end_layout
 
 \begin_layout Standard
@@ -907,16 +983,12 @@ For software release L16A, the three-state Markov switching autoregressive
 status open
 
 \begin_layout Plain Layout
-Include reasons here or at the discussion?????
+smoothed inference probabilities mostly to show how the regimes are identified
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-smoothed inference probabilities mostly to show how the regimes are identified
 \end_layout
 
 \begin_layout Section
@@ -930,7 +1002,7 @@ endent parameters – in other words, all the parameters of the model are
  Apparently, each parameter can have either a switching or non-switching
  effect.
  The hypothesis is that the local events have switching effects while the
- parameters considering as the test environment have non-switching effects.
+ parameters considered as the test environment have non-switching effects.
  
 \end_layout
 
@@ -979,6 +1051,53 @@ status open
 
 \begin_layout Plain Layout
 It doesn't seem to look good anymore
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+model validation 
+\end_layout
+
+\begin_layout Plain Layout
+(using residual analysis- if the residuals appear to behave randomly, it
+ suggests that the model fits the data well.)
+\end_layout
+
+\begin_layout Plain Layout
+Different types of plots of the residuals from a fitted model provide informatio
+n on the adequacy of different aspects of the model.
+\end_layout
+
+\begin_layout Enumerate
+sufficiency of the functional part of the model: scatter plots of residuals
+ versus predictors 
+\end_layout
+
+\begin_layout Enumerate
+non-constant variation across the data: scatter plots of residuals versus
+ predictors; for data collected over time, also plots of residuals against
+ time 
+\end_layout
+
+\begin_layout Enumerate
+drift in the errors (data collected over time): run charts of the response
+ and errors versus time 
+\end_layout
+
+\begin_layout Enumerate
+independence of errors: lag plot 
+\end_layout
+
+\begin_layout Enumerate
+normality of errors: histogram and normal probability plot
 \end_layout
 
 \end_inset
@@ -1354,92 +1473,8 @@ Simulation
 \end_layout
 
 \begin_layout Standard
-Since there is no annotation for the state of the CPU utilization in the
- data, an accuracy can not be computed after making a state prediction.
- One possible solution to test and verify how well the implemented predict
- function performs is to use the simulation technique.
- Therefore, a data consists of two predictor variables and one response
- variable with the known state is simulated.
- The actual models for each state are 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-y=\begin{cases}
-\begin{array}{c}
-10+0.6X1_{t}-0.9X2_{t}+0.5Y_{t-1}+\varepsilon_{t}^{(1)}\\
-2+0.8X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(2)}\\
--12+0.7X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(3)}
-\end{array} & \begin{array}{c}
-\varepsilon_{t}^{(1)}\sim N(0,1)\\
-\varepsilon_{t}^{(2)}\sim N(2,0.5)\\
-\varepsilon_{t}^{(3)}\sim N(1,1)
-\end{array}\end{cases}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The data contains 500 observations which has a presence of three different
- states – Normal, Bad and Good.
- The period where observations in the data belong to one of the state is
- shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sim_state"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/sim_state.png
-	lyxscale 30
-	scale 50
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The period in the time series when data is in each state 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sim_state"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Markov switching model is fitted with 80% of the observations and the remaining
- is used as a test set.
+Markov switching model is fitted with eighty percent of the observations
+ and the remaining is used as a test set.
  Then, using the training model to predict the state of each observation
  in the test set and the result is shown in 
 \begin_inset CommandInset ref
@@ -1454,6 +1489,7 @@ reference "confusion"
  Moreover, another two observations from the Good state are classified to
  the Normal state.
  The overall accuracy is 0.96 and the misclassification rate is 0.04.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1733,6 +1769,22 @@ Good
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One can see that the model is able to predict the Bad and Good state correctly.
+ The model and it has accuracy equals to 0.88.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Accuracy each class
 \end_layout
 
 \end_inset

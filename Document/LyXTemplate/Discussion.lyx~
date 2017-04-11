@@ -379,6 +379,12 @@ non-parametric analysis is able to detect any type of distributional change
 \end_layout
 
 \begin_layout Standard
+One benefit from using non-parametric analysis is that it does not require
+ a prior assumption of the data distribution.
+ In this thesis framework, it is used for 
+\end_layout
+
+\begin_layout Standard
 E-divisive high computation 
 \end_layout
 

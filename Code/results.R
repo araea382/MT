@@ -79,6 +79,23 @@ ggplot(data=L16B_3, aes(x=index, y=value, colour=variable)) + geom_line() +
   theme_bw() + theme(legend.title = element_blank())
 
 
+gen <- function(object,data){
+  state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
+  state <- factor(state)
+  index=seq(1,nrow(data))
+  xmin=index-0.5
+  xmax=index+0.5
+  y=data$TotCpu
+  ans <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
+  return(ans)
+}
+
+state_L16B_3 <- gen(mswm_L16B_3, train_g2_L16B)
+ggplot(data=state_L16B_3, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L16B_3, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L16B") + theme_bw()
+
 ###############
 # g2 L16B
 # 2 states
@@ -134,6 +151,12 @@ ggplot(data=L16B_2, aes(x=index, y=value, colour=variable)) + geom_line() +
   ylab("Smoothed Probabilities") + ggtitle("L16B") +
   theme_bw() + theme(legend.title = element_blank())
 
+
+state_L16B_2 <- gen(mswm_L16B_2, train_g2_L16B)
+ggplot(data=state_L16B_2, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L16B_2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L16B") + theme_bw()
 
 ###############
 # g2 L16B
@@ -222,6 +245,11 @@ ggplot(data=L16A_3, aes(x=index, y=value, colour=variable)) + geom_line() +
   ylab("Smoothed Probabilities") + ggtitle("L16A") +
   theme_bw() + theme(legend.title = element_blank())
 
+state_L16A_3 <- gen(mswm_L16A_3, train_g2_L16A)
+ggplot(data=state_L16A_3, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L16A_3, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L16A") + theme_bw()
 
 ###############
 # g2 L16A
@@ -263,8 +291,13 @@ ggplot(data=L16A_2, aes(x=index, y=value, colour=variable)) + geom_line() +
   theme_bw() + theme(legend.title = element_blank())
 
 
-###
+state_L16A_2 <- gen(mswm_L16A_2, train_g2_L16A)
+ggplot(data=state_L16A_2, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L16A_2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L16A") + theme_bw()
 
+###
 normalized <-function(x){
   ans <- (x-min(x))/(max(x)-min(x))
   return(ans)
@@ -322,6 +355,11 @@ ggplot(data=L17A_3, aes(x=index, y=value, colour=variable)) + geom_line() +
   ylab("Smoothed Probabilities") + ggtitle("L17A") +
   theme_bw() + theme(legend.title = element_blank())
 
+state_L17A_3 <- gen(mswm_L17A_3, train_g2_L17A)
+g1 <- ggplot(data=state_L17A_3, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L17A_3, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L17A") + theme_bw()
 
 ###############
 # g2 L17A
@@ -363,7 +401,11 @@ ggplot(data=L17A_2, aes(x=index, y=value, colour=variable)) + geom_line() +
   ylab("Smoothed Probabilities") + ggtitle("L17A") +
   theme_bw() + theme(legend.title = element_blank())
 
-
+state_L17A_2 <- gen(mswm_L17A_2, train_g2_L17A)
+g2 <- ggplot(data=state_L17A_2, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L17A_2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L17A") + theme_bw()
 
 ###############
 # ecp
@@ -417,46 +459,61 @@ ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() +
 ###############
 # TRY out something
 ###############
-state_L16B_3 <- sapply(1:nrow(train_g2_L16B), function(x) which.max(mswm_L16B_3@Fit@smoProb[x,]))
+# col <- c("light pink","light blue","light green")
+# apply(as.matrix(1:k),1,function(i){
+#   
+#   y=x["Fit"]["smoProb"][-1,i]
+#   val=cbind(which(diff(c(0,findInterval(y,0.5)))==1),which(diff(c(findInterval(y,0.5),0))==-1))
+#   apply(val,1,function(el) rect(el[1],min(z),el[2],max(z),col=col[i],border=NA))
+#   
+# }
+# )
+# par(new=T,las=1,bty="o",yaxt="n")
+# plot(ts(z),col=1,ylim=c(min(z),max(z)),xlab="",ylab="")
+# par(las=1,yaxt="n")
+# par(las=3,yaxt="s")
+# mtext(names(z),side=2,line=2.5,col=1)
+# axis(side=4)
 
+
+# normal plot
 x <- mswm_L16B_3
 z=x["model"]$model[1]
-plot(0,type="l",xlim=c(1,length(t(z))),ylim=c(min(z),max(z)),xlab=paste(names(z),"vs. Smooth Probabilities"),ylab="")
-
-col <- c("light pink","light blue","light green")
-apply(as.matrix(1:k),1,function(i){
-  
-  y=x["Fit"]["smoProb"][-1,i]
-  val=cbind(which(diff(c(0,findInterval(y,0.5)))==1),which(diff(c(findInterval(y,0.5),0))==-1))
-  apply(val,1,function(el) rect(el[1],min(z),el[2],max(z),col=col[i],border=NA))
-  
-}
-)
-par(new=T,las=1,bty="o",yaxt="n")
-plot(ts(z),col=1,ylim=c(min(z),max(z)),xlab="",ylab="")
-par(las=1,yaxt="n")
-par(las=3,yaxt="s")
-mtext(names(z),side=2,line=2.5,col=1)
-axis(side=4)
-
-col <- c("light pink","light blue","light green")
-state_L16B_3 <- sapply(1:nrow(train_g2_L16B), function(x) which.max(mswm_L16B_3@Fit@smoProb[x,]))
+state <- sapply(1:nrow(train_g2_L16B), function(x) which.max(mswm_L16B_3@Fit@smoProb[x,]))
+state <- factor(state)
 index=seq(1,nrow(train_g2_L16B))
 bf=index-0.5
 af=index+0.5
-state_L16B_3 <- data.frame(index,bf,af,state_L16B_3,y=train_g2_L16B$TotCpu)
-
+state_L16B_3 <- data.frame(index,bf,af,state,y=train_g2_L16B$TotCpu)
+col <- c("light pink","light blue","light green")
 plot(0,type="l",xlim=c(1,length(t(z))),ylim=c(min(z),max(z)),xlab=paste(names(z),"vs. Smooth Probabilities"),ylab="")
 apply(state_L16B_3,1,function(el) rect(el[2],min(z),el[3],max(z),col=col[el[4]],border=NA))
 par(new=T,las=1,bty="o",yaxt="n")
 plot(ts(z))
 
-col <- c("red","blue","green")
 
-add_state <- function(x){
-  annotate("rect", xmin=state_L16B_3[x,2], xmax=state_L16B_3[x,3], ymin=min(z), ymax=max(z), alpha=0.2, fill=col[state_L16B_3[x,4]])
-}
 
-ln <- lapply(1:nrow(state_L16B_3),add_state)
-ggplot(state_L16B_3, aes(x=index, y=y)) + geom_line() + theme_bw() + ln
+state <- sapply(1:nrow(train_g2_L16B), function(x) which.max(mswm_L16B_3@Fit@smoProb[x,]))
+state <- factor(state)
+index=seq(1,nrow(train_g2_L16B))
+xmin=index-0.5
+xmax=index+0.5
+y=train_g2_L16B$TotCpu
+state_L16B_3 <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
+
+# ggplot2 with annotation
+# col <- c("red","green","blue")
+# add_state <- function(x){
+#   annotate("rect", xmin=state_L16B_3[x,2], xmax=state_L16B_3[x,3], ymin=min(z), ymax=max(z), alpha=0.2, fill=col[state_L16B_3[x,4]])
+# }
+# 
+# ln <- lapply(1:nrow(state_L16B_3),add_state)
+# ggplot(state_L16B_3, aes(x=index, y=y)) + geom_line() + 
+#   ylab("TotCpu") + theme_bw() + ln + scale_colour_manual(name="",values=c("red"="red","green"="green","blue"="blue"),labels=c("State 1", "State 2", "State 3"))
+
+
+ggplot(data=state_L16B_3, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L16B_3, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L16B") + theme_bw()
 
