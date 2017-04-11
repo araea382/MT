@@ -75,7 +75,7 @@ colnames(L16B_3) <- c("index","State 1","State 2","State 3")
 
 L16B_3 <- melt(L16B_3, id="index")
 ggplot(data=L16B_3, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("L16B") +
+  ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   theme_bw() + theme(legend.title = element_blank())
 
 
@@ -148,7 +148,7 @@ colnames(L16B_2) <- c("index","State 1","State 2")
 
 L16B_2 <- melt(L16B_2, id="index")
 ggplot(data=L16B_2, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("L16B") +
+  ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   theme_bw() + theme(legend.title = element_blank())
 
 
@@ -242,7 +242,7 @@ colnames(L16A_3) <- c("index","State 1","State 2","State 3")
 
 L16A_3 <- melt(L16A_3, id="index")
 ggplot(data=L16A_3, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("L16A") +
+  ylab("Smoothed Probabilities") + ggtitle("L16A") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   theme_bw() + theme(legend.title = element_blank())
 
 state_L16A_3 <- gen(mswm_L16A_3, train_g2_L16A)
@@ -287,7 +287,7 @@ colnames(L16A_2) <- c("index","State 1","State 2")
 
 L16A_2 <- melt(L16A_2, id="index")
 ggplot(data=L16A_2, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("L16A") +
+  ylab("Smoothed Probabilities") + ggtitle("L16A") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   theme_bw() + theme(legend.title = element_blank())
 
 
@@ -352,7 +352,7 @@ colnames(L17A_3) <- c("index","State 1","State 2","State 3")
 
 L17A_3 <- melt(L17A_3, id="index")
 ggplot(data=L17A_3, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("L17A") +
+  ylab("Smoothed Probabilities") + ggtitle("L17A") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   theme_bw() + theme(legend.title = element_blank())
 
 state_L17A_3 <- gen(mswm_L17A_3, train_g2_L17A)
@@ -398,7 +398,7 @@ colnames(L17A_2) <- c("index","State 1","State 2")
 
 L17A_2 <- melt(L17A_2, id="index")
 ggplot(data=L17A_2, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("L17A") +
+  ylab("Smoothed Probabilities") + ggtitle("L17A") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   theme_bw() + theme(legend.title = element_blank())
 
 state_L17A_2 <- gen(mswm_L17A_2, train_g2_L17A)
@@ -418,7 +418,7 @@ Ediv_L16B$estimates
 out <- Ediv_L16B$estimates[c(-1,-length(Ediv_L16B$estimates))]
 
 dat <- data.frame(index=seq(1,nrow(train_g2_L16B)), TotCpu=train_g2_L16B$TotCpu)
-ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() +
+ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   geom_vline(xintercept=out, colour="red", linetype="dashed") +
   ggtitle("E-divisive L16B") + theme_bw()
 

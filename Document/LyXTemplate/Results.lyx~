@@ -372,10 +372,7 @@ reference "chap:MSwM-Package"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Markov switching autoregressive model is performed for each dataset with
+ Markov switching autoregressive model is performed for each dataset with
  every parameter in the model has switching effects i.e., the parameters can
  take on different values in different periods.
  The estimation is made under the assumptions of two or three states 
@@ -627,26 +624,31 @@ reference "L16A_2_smo"
 
 \end_inset
 
- presents that the state 1 appears to have a more extensive period of time
- before switching to state 2.
- On the other hands, it can be seen in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "L16A_3_smo"
-
-\end_inset
-
- that there are more switching between state.
- One noticeable thing is that most of the state 2 in 
+ presents that the Markov chain remains in State 1 for an extensive period
+ of time before it switches to State 2.
+ When the chain is in State 2, it stays there only a short time and then
+ immediately moves back to State 1.
+ There are a few switches between these two states in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16A_2_smo"
 
 \end_inset
 
- now becomes the state 1.
- Moreover, the state 1 which has a long duration are now switching back
- and forth between states.
+.
+ On the other hands, it can be seen that there are more switching between
+ states in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_3_smo"
+
+\end_inset
+
+.
+ One noticeable thing is that State 2 in the two-state model seems to be
+ defined as State 1 in the three-state model.
+ Moreover, State 1 which has a long duration in the two-state model is now
+ containing a lot of switching between states in the three-state model.
 \end_layout
 
 \begin_layout Standard
@@ -661,7 +663,7 @@ status open
 \begin_inset Graphics
 	filename picture/L16A_2_smo.png
 	lyxscale 50
-	scale 50
+	scale 35
 
 \end_inset
 
@@ -699,9 +701,9 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/L16A_3_smo.png
+	filename picture/L16A_3_smo1.png
 	lyxscale 50
-	scale 50
+	scale 35
 
 \end_inset
 
@@ -730,47 +732,43 @@ name "L16A_3_smo"
 \end_layout
 
 \begin_layout Standard
-Markov switching autoregressive models with two states for the remaining
- two software releases, L16B and L17A, yield a better result in favor of
+According to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "state-bic"
+
+\end_inset
+
+, the Markov switching autoregressive models with two states for the remaining
+ two software releases, L16B and L17A, yield better results in favor of
  lower BICs.
  
 \end_layout
 
 \begin_layout Standard
-The duration of being in the state 2 is longer compares to the duration
- in the state 1 in 
+In 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_2_smo"
 
 \end_inset
 
-.
- The state 1 in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "L16B_2_smo"
-
-\end_inset
-
- or 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "L16B_3_smo"
-
-\end_inset
-
- is pretty much in the same period.
- Apparently, there are more switching between states in the three-state
- model especially in the beginning, middle and almost the end of the period.
- The state 3 in 
+, the Markov chain has several periods that switch back and forth between
+ the two states.
+ The duration of being in State 2 is longer compares to the duration of
+ staying in State 1.
+ It can be seen that in the middle periods, the chain stays in State 2 for
+ quite some time before turning to State 1.
+ Apparently, there are more switches between states in the three-state model
+ especially in the beginning, middle and the end of the period.
+ State 3 in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_3_smo"
 
 \end_inset
 
- appears to have a long duration rather than any other states in the model.
+ appears to remain in its own state longer than any other states.
 \end_layout
 
 \begin_layout Standard
@@ -785,7 +783,7 @@ status open
 \begin_inset Graphics
 	filename picture/L16B_2_smo.png
 	lyxscale 50
-	scale 50
+	scale 35
 
 \end_inset
 
@@ -828,7 +826,7 @@ status open
 \begin_inset Graphics
 	filename picture/L16B_3_smo.png
 	lyxscale 50
-	scale 50
+	scale 35
 
 \end_inset
 
@@ -860,8 +858,8 @@ name "L16B_3_smo"
 \end_layout
 
 \begin_layout Standard
-There is quite a lot of switch between state in the two-state model of software
- release L17A.
+There are quite a lot of switches between states in the two-state model
+ of software release L17A.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -869,7 +867,7 @@ reference "L17A_2_smo"
 
 \end_inset
 
-, when the Markov chain is in state 1, it stay there quite some time before
+, when the Markov chain is in state 1, it stays there quite some time before
  leaving the state.
  However, the chain has a short duration being in state 2 and quickly switch
  back to the state 1.
@@ -883,6 +881,10 @@ reference "L17A_3_smo"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+switch between the state 1 and the state 2 
 \end_layout
 
 \begin_layout Standard
@@ -901,7 +903,7 @@ status open
 \begin_inset Graphics
 	filename picture/L17A_2_smo.png
 	lyxscale 50
-	scale 50
+	scale 35
 
 \end_inset
 
@@ -938,7 +940,7 @@ status open
 \begin_inset Graphics
 	filename picture/L17A_3_smo.png
 	lyxscale 50
-	scale 50
+	scale 35
 
 \end_inset
 
@@ -967,20 +969,7 @@ name "L17A_3_smo"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Include reasons here or at the discussion?????
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Outputs from function along with plots provide more interpretable result
+The outputs from the model along with plots provide more interpretable results
  when defining the model with three states in software release L16B and
  L17A despite the slightly higher value in BIC.
  In regards to this, the three-state models for each software release are
@@ -1299,8 +1288,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/ediv_L16A.png
-	lyxscale 30
-	scale 40
+	lyxscale 50
+	scale 35
 
 \end_inset
 
@@ -1313,10 +1302,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization for the software release L16A.
- The red dashed vertical lines indicate the locations of estimated change
- points.
- 
+The CPU utilization for the software release L16A
 \end_layout
 
 \end_inset
@@ -1350,8 +1336,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/ediv_L16B.png
-	lyxscale 30
-	scale 40
+	lyxscale 50
+	scale 35
 
 \end_inset
 
@@ -1397,8 +1383,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/ediv_L17A.png
-	lyxscale 30
-	scale 40
+	lyxscale 50
+	scale 35
 
 \end_inset
 
