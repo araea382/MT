@@ -13,46 +13,21 @@ fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 ###############
 mod_L16B <- lm(fmla, data=train_g2_L16B)
 summary(mod_L16B)
+
 switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-
-set.seed(1)
-mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-summary(mswm_L16B_3)
-# 1508.797 1797.259 -721.3983
-
-plot(mswm_L16B_3)
-
-plotDiag(mswm_L16B_3, which=1)
-plotDiag(mswm_L16B_3, which=2)
-plotDiag(mswm_L16B_3, which=3)
-
-plotProb(mswm_L16B_3, which=1)
-plotProb(mswm_L16B_3, which=2)
-plotProb(mswm_L16B_3, which=3)
-plotProb(mswm_L16B_3, which=4)
-
-plotReg(mswm_L16B_3, expl=predictor[1], regime=1)
-plotReg(mswm_L16B_3, expl=predictor[1], regime=2)
-plotReg(mswm_L16B_3, expl=predictor[1], regime=3)
-
-plotReg(mswm_L16B_3, expl=predictor[2], regime=1)
-plotReg(mswm_L16B_3, expl=predictor[2], regime=2)
-plotReg(mswm_L16B_3, expl=predictor[2], regime=3)
-
-plotReg(mswm_L16B_3, expl=predictor[3], regime=1)
-plotReg(mswm_L16B_3, expl=predictor[3], regime=2)
-plotReg(mswm_L16B_3, expl=predictor[3], regime=3)
-
-# # predict
-# predict(mswm_L16B_3, newdata)
-
-#--------------------------------#
-# change the swiching parameter
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
+names(switch) <- c(names(mod_L16B$coefficients),"AR","var")
 switch[c(5,6,7,8,9,10)] <- FALSE; switch
 set.seed(1)
 mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=1000, parallel=FALSE))
 summary(mswm_L16B_3)
+# 1603.962 1787.528 -780.9808
+# lower BIC
+# higher residual standard error in every state
+# one state has r-squared 0.58
+
+plotDiag(mswm_L16B_3, which=1)
+plotDiag(mswm_L16B_3, which=2)
+plotDiag(mswm_L16B_3, which=3)
 
 #--------------------------------#
 # smoothed prob plot
@@ -88,37 +63,22 @@ ggplot(data=state_L16B_3, aes(x=index, y=y)) + geom_line() +
 # g2 L16B
 # 2 states
 ###############
+switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
+names(switch) <- c(names(mod_L16B$coefficients),"AR","var")
+switch[c(5,6,7,8,9,10)] <- FALSE; switch
 set.seed(1)
-mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=rep(TRUE,length(mod_L16B$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L16B_2)
-# 1571.198 1763.507 -763.5992
+# 1671.193 1811.054 -819.5966
+# higher BIC
+# higher residual standard error in every state
+# one state has r-squared 0.69
 
 plot(mswm_L16B_2)
 
 plotDiag(mswm_L16B_2, which=1)
 plotDiag(mswm_L16B_2, which=2)
 plotDiag(mswm_L16B_2, which=3)
-
-plotProb(mswm_L16B_2, which=1)
-plotProb(mswm_L16B_2, which=2)
-plotProb(mswm_L16B_2, which=3)
-
-plotReg(mswm_L16B_2, expl=predictor[4], regime=1)
-plotReg(mswm_L16B_2, expl=predictor[4], regime=2)
-
-plotReg(mswm_L16B_2, expl=predictor[5], regime=1)
-plotReg(mswm_L16B_2, expl=predictor[5], regime=2)
-
-plotReg(mswm_L16B_2, expl=predictor[6], regime=1)
-plotReg(mswm_L16B_2, expl=predictor[6], regime=2)
-
-#--------------------------------#
-# change the swiching parameter
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-switch[c(5,6,7,8,9,10)] <- FALSE; switch
-set.seed(1)
-mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-summary(mswm_L16B_2)
 
 #--------------------------------#
 # smoothed prob plot
@@ -139,42 +99,6 @@ ggplot(data=state_L16B_2, aes(x=index, y=y)) + geom_line() +
   scale_fill_manual(values=c("red","green","blue")) + 
   ylab("TotCpu") + ggtitle("L16B") + theme_bw()
 
-###############
-# g2 L16B
-# 4 states
-###############
-# set.seed(1)
-# mswm_L16B_4 <- MSwM2::msmFit(mod_L16B, k=4, p=1, sw=rep(TRUE,length(mod_L16B$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-# summary(mswm_L16B_4)
-# # 1433.622 1818.238 -672.811
-#
-# plot(mswm_L16B_4)
-#
-# plotDiag(mswm_L16B_4, which=1)
-# plotDiag(mswm_L16B_4, which=2)
-# plotDiag(mswm_L16B_4, which=3)
-#
-# plotProb(mswm_L16B_4, which=1)
-# plotProb(mswm_L16B_4, which=2)
-# plotProb(mswm_L16B_4, which=3)
-#
-# plotReg(mswm_L16B_4, expl=predictor[4], regime=1)
-# plotReg(mswm_L16B_4, expl=predictor[4], regime=2)
-#
-# plotReg(mswm_L16B_4, expl=predictor[5], regime=1)
-# plotReg(mswm_L16B_4, expl=predictor[5], regime=2)
-#
-# plotReg(mswm_L16B_4, expl=predictor[6], regime=1)
-# plotReg(mswm_L16B_4, expl=predictor[6], regime=2)
-#
-# #--------------------------------#
-# # change the swiching parameter
-# switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-# switch[c(3,4,5,6,11)] <- FALSE; switch
-# set.seed(1)
-# mswm_L16B_4 <- MSwM2::msmFit(mod_L16B, k=4, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-# summary(mswm_L16B_4)
-
 
 ###############
 # g2 L16A
@@ -185,35 +109,22 @@ fmla2 <- as.formula(paste("TotCpu ~ ", paste(predictor2, collapse= "+")))
 
 mod_L16A <- lm(fmla2, data=train_g2_L16A)
 summary(mod_L16A)
-alias(mod_L16A)
 
+switch <- rep(TRUE,length(mod_L16A$coefficients)+1+1)
+names(switch) <- c(names(mod_L16A$coefficients),"AR","var")
+switch[c(5,6,7)] <- FALSE; switch
 set.seed(1)
-mswm_L16A_3 <- MSwM2::msmFit(mod_L16A, k=3, p=1, sw=rep(TRUE,length(mod_L16A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+mswm_L16A_3 <- MSwM2::msmFit(mod_L16A, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L16A_3)
-# 272.465 417.6819 -112.2325
+# 304.4953 413.408 -134.2477
+# lower BIC
+# p_33 is 0
 
 plot(mswm_L16A_3)
 
 plotDiag(mswm_L16A_3, which=1)
 plotDiag(mswm_L16A_3, which=2)
 plotDiag(mswm_L16A_3, which=3)
-
-plotProb(mswm_L16A_3, which=1)
-plotProb(mswm_L16A_3, which=2)
-plotProb(mswm_L16A_3, which=3)
-plotProb(mswm_L16A_3, which=4)
-
-plotReg(mswm_L16A_3, expl=predictor[1], regime=1)
-plotReg(mswm_L16A_3, expl=predictor[1], regime=2)
-plotReg(mswm_L16A_3, expl=predictor[1], regime=3)
-
-plotReg(mswm_L16A_3, expl=predictor[2], regime=1)
-plotReg(mswm_L16A_3, expl=predictor[2], regime=2)
-plotReg(mswm_L16A_3, expl=predictor[2], regime=3)
-
-plotReg(mswm_L16A_3, expl=predictor[3], regime=1)
-plotReg(mswm_L16A_3, expl=predictor[3], regime=2)
-plotReg(mswm_L16A_3, expl=predictor[3], regime=3)
 
 #--------------------------------#
 # smoothed prob plot
@@ -238,29 +149,21 @@ ggplot(data=state_L16A_3, aes(x=index, y=y)) + geom_line() +
 # g2 L16A
 # 2 states
 ###############
+switch <- rep(TRUE,length(mod_L16A$coefficients)+1+1)
+names(switch) <- c(names(mod_L16A$coefficients),"AR","var")
+switch[c(5,6,7)] <- FALSE; switch
 set.seed(1)
-mswm_L16A_2 <- MSwM2::msmFit(mod_L16A, k=2, p=1, sw=rep(TRUE,length(mod_L16A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+mswm_L16A_2 <- MSwM2::msmFit(mod_L16A, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L16A_2)
-# 342.8614 439.6726 -155.4307
+# 337.0088 415.668 -155.5044
+# lower BIC
+# pretty much the same
 
 plot(mswm_L16A_2)
 
 plotDiag(mswm_L16A_2, which=1)
 plotDiag(mswm_L16A_2, which=2)
 plotDiag(mswm_L16A_2, which=3)
-
-plotProb(mswm_L16A_2, which=1)
-plotProb(mswm_L16A_2, which=2)
-plotProb(mswm_L16A_2, which=3)
-
-plotReg(mswm_L16A_2, expl=predictor[1], regime=1)
-plotReg(mswm_L16A_2, expl=predictor[1], regime=2)
-
-plotReg(mswm_L16A_2, expl=predictor[2], regime=1)
-plotReg(mswm_L16A_2, expl=predictor[2], regime=2)
-
-plotReg(mswm_L16A_2, expl=predictor[3], regime=1)
-plotReg(mswm_L16A_2, expl=predictor[3], regime=2)
 
 #--------------------------------#
 # smoothed prob plot
@@ -281,17 +184,6 @@ ggplot(data=state_L16A_2, aes(x=index, y=y)) + geom_line() +
   scale_fill_manual(values=c("red","green","blue")) + 
   ylab("TotCpu") + ggtitle("L16A") + theme_bw()
 
-###
-# normalized <-function(x){
-#   ans <- (x-min(x))/(max(x)-min(x))
-#   return(ans)
-# } 
-# 
-# L16A <- subset(train_g2_L16A, select=c("TotCpu", predictor))
-# y_L16A <- normalized(L16A$TotCpu)
-# dat_L16A <- data.frame(x=seq(1:length(y_L16A)), y_L16A)
-
-
 
 ###############
 # g2 L17A
@@ -300,33 +192,21 @@ ggplot(data=state_L16A_2, aes(x=index, y=y)) + geom_line() +
 mod_L17A <- lm(fmla, data=train_g2_L17A)
 summary(mod_L17A)
 
+switch <- rep(TRUE,length(mod_L17A$coefficients)+1+1)
+names(switch) <- c(names(mod_L17A$coefficients),"AR","var")
+switch[c(5,6,7,8,9)] <- FALSE; switch
 set.seed(1)
-mswm_L17A_3 <- MSwM2::msmFit(mod_L17A, k=3, p=1, sw=rep(TRUE,length(mod_L17A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+mswm_L17A_3 <- MSwM2::msmFit(mod_L17A, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L17A_3)
-# 967.9531 1199.075 -453.9765
+# 986.3931 1140.474 -473.1965
+# lower BIC
+# higher residual standard error in every state
 
 plot(mswm_L17A_3)
 
 plotDiag(mswm_L17A_3, which=1)
 plotDiag(mswm_L17A_3, which=2)
 plotDiag(mswm_L17A_3, which=3)
-
-plotProb(mswm_L17A_3, which=1)
-plotProb(mswm_L17A_3, which=2)
-plotProb(mswm_L17A_3, which=3)
-plotProb(mswm_L17A_3, which=4)
-
-plotReg(mswm_L17A_3, expl=predictor[1], regime=1)
-plotReg(mswm_L17A_3, expl=predictor[1], regime=2)
-plotReg(mswm_L17A_3, expl=predictor[1], regime=3)
-
-plotReg(mswm_L17A_3, expl=predictor[2], regime=1)
-plotReg(mswm_L17A_3, expl=predictor[2], regime=2)
-plotReg(mswm_L17A_3, expl=predictor[2], regime=3)
-
-plotReg(mswm_L17A_3, expl=predictor[3], regime=1)
-plotReg(mswm_L17A_3, expl=predictor[3], regime=2)
-plotReg(mswm_L17A_3, expl=predictor[3], regime=3)
 
 #--------------------------------#
 # smoothed prob plot
@@ -351,30 +231,21 @@ ggplot(data=state_L17A_3, aes(x=index, y=y)) + geom_line() +
 # g2 L17A
 # 2 states
 ###############
+switch <- rep(TRUE,length(mod_L17A$coefficients)+1+1)
+names(switch) <- c(names(mod_L17A$coefficients),"AR","var")
+switch[c(5,6,7,8,9)] <- FALSE; switch
 set.seed(1)
-mswm_L17A_2 <- MSwM2::msmFit(mod_L17A, k=2, p=1, sw=rep(TRUE,length(mod_L17A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+mswm_L17A_2 <- MSwM2::msmFit(mod_L17A, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L17A_2)
-# 1034.98 1189.061 -497.4898
+# 1039.543 1155.104 -504.7716
+# lower BIC
+# a bit higher but pretty much the same
 
 plot(mswm_L17A_2)
 
 plotDiag(mswm_L17A_2, which=1)
 plotDiag(mswm_L17A_2, which=2)
 plotDiag(mswm_L17A_2, which=3)
-
-plotProb(mswm_L17A_2, which=1)
-plotProb(mswm_L17A_2, which=2)
-plotProb(mswm_L17A_2, which=3)
-
-plotReg(mswm_L17A_2, expl=predictor[1], regime=1)
-plotReg(mswm_L17A_2, expl=predictor[1], regime=2)
-
-plotReg(mswm_L17A_2, expl=predictor[2], regime=1)
-plotReg(mswm_L17A_2, expl=predictor[2], regime=2)
-
-plotReg(mswm_L17A_2, expl=predictor[3], regime=1)
-plotReg(mswm_L17A_2, expl=predictor[3], regime=2)
-
 
 #--------------------------------#
 # smoothed prob plot

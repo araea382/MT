@@ -352,7 +352,11 @@ You may want to include an appendix to describe the software used in the
 
 \begin_layout Standard
 The algorithm used for fitting the Markov switching autoregressive model
- is mainly based on the MSwM package in R 
+ is mainly based on the 
+\emph on
+MSwM
+\emph default
+ package in R 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "mswm"

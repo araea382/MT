@@ -3,9 +3,11 @@ library(ecp)
 library(ggplot2)
 library(reshape2)
 
-# one test case per SW
-predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","DuProdName","Fdd.Tdd","NumCells")
-fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
+predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest")
+fmla<- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
+
+## NOTE:
+# BIC LOWER FOR ALL CASES******
 
 ###############
 # g2 L16B
@@ -18,7 +20,8 @@ switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
 set.seed(1)
 mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L16B_3)
-# 1508.797 1797.259 -721.3983
+# 1601.977 1733.096 -785.9885
+
 
 plot(mswm_L16B_3)
 
@@ -47,12 +50,12 @@ plotReg(mswm_L16B_3, expl=predictor[3], regime=3)
 # predict(mswm_L16B_3, newdata)
 
 #--------------------------------#
-# change the swiching parameter
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-switch[c(5,6,7,8,9,10)] <- FALSE; switch
-set.seed(1)
-mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=1000, parallel=FALSE))
-summary(mswm_L16B_3)
+# # change the swiching parameter
+# switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
+# switch[c(5,6,7,8,9,10)] <- FALSE; switch
+# set.seed(1)
+# mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=1000, parallel=FALSE))
+# summary(mswm_L16B_3)
 
 #--------------------------------#
 # smoothed prob plot
@@ -91,7 +94,9 @@ ggplot(data=state_L16B_3, aes(x=index, y=y)) + geom_line() +
 set.seed(1)
 mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=rep(TRUE,length(mod_L16B$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L16B_2)
-# 1571.198 1763.507 -763.5992
+# 1652.581 1739.993 -816.2903
+
+#-------------#
 
 plot(mswm_L16B_2)
 
@@ -140,57 +145,16 @@ ggplot(data=state_L16B_2, aes(x=index, y=y)) + geom_line() +
   ylab("TotCpu") + ggtitle("L16B") + theme_bw()
 
 ###############
-# g2 L16B
-# 4 states
-###############
-# set.seed(1)
-# mswm_L16B_4 <- MSwM2::msmFit(mod_L16B, k=4, p=1, sw=rep(TRUE,length(mod_L16B$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-# summary(mswm_L16B_4)
-# # 1433.622 1818.238 -672.811
-#
-# plot(mswm_L16B_4)
-#
-# plotDiag(mswm_L16B_4, which=1)
-# plotDiag(mswm_L16B_4, which=2)
-# plotDiag(mswm_L16B_4, which=3)
-#
-# plotProb(mswm_L16B_4, which=1)
-# plotProb(mswm_L16B_4, which=2)
-# plotProb(mswm_L16B_4, which=3)
-#
-# plotReg(mswm_L16B_4, expl=predictor[4], regime=1)
-# plotReg(mswm_L16B_4, expl=predictor[4], regime=2)
-#
-# plotReg(mswm_L16B_4, expl=predictor[5], regime=1)
-# plotReg(mswm_L16B_4, expl=predictor[5], regime=2)
-#
-# plotReg(mswm_L16B_4, expl=predictor[6], regime=1)
-# plotReg(mswm_L16B_4, expl=predictor[6], regime=2)
-#
-# #--------------------------------#
-# # change the swiching parameter
-# switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-# switch[c(3,4,5,6,11)] <- FALSE; switch
-# set.seed(1)
-# mswm_L16B_4 <- MSwM2::msmFit(mod_L16B, k=4, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-# summary(mswm_L16B_4)
-
-
-###############
 # g2 L16A
 # 3 states
 ###############
-predictor2 <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Fdd.Tdd","NumCells")
-fmla2 <- as.formula(paste("TotCpu ~ ", paste(predictor2, collapse= "+")))
-
-mod_L16A <- lm(fmla2, data=train_g2_L16A)
+mod_L16A <- lm(fmla, data=train_g2_L16A)
 summary(mod_L16A)
-alias(mod_L16A)
 
 set.seed(1)
 mswm_L16A_3 <- MSwM2::msmFit(mod_L16A, k=3, p=1, sw=rep(TRUE,length(mod_L16A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L16A_3)
-# 272.465 417.6819 -112.2325
+# 249.0887 339.8492 -109.5443
 
 plot(mswm_L16A_3)
 
@@ -241,7 +205,7 @@ ggplot(data=state_L16A_3, aes(x=index, y=y)) + geom_line() +
 set.seed(1)
 mswm_L16A_2 <- MSwM2::msmFit(mod_L16A, k=2, p=1, sw=rep(TRUE,length(mod_L16A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L16A_2)
-# 342.8614 439.6726 -155.4307
+# 370.086 430.593 -175.043
 
 plot(mswm_L16A_2)
 
@@ -281,17 +245,6 @@ ggplot(data=state_L16A_2, aes(x=index, y=y)) + geom_line() +
   scale_fill_manual(values=c("red","green","blue")) + 
   ylab("TotCpu") + ggtitle("L16A") + theme_bw()
 
-###
-# normalized <-function(x){
-#   ans <- (x-min(x))/(max(x)-min(x))
-#   return(ans)
-# } 
-# 
-# L16A <- subset(train_g2_L16A, select=c("TotCpu", predictor))
-# y_L16A <- normalized(L16A$TotCpu)
-# dat_L16A <- data.frame(x=seq(1:length(y_L16A)), y_L16A)
-
-
 
 ###############
 # g2 L17A
@@ -303,7 +256,7 @@ summary(mod_L17A)
 set.seed(1)
 mswm_L17A_3 <- MSwM2::msmFit(mod_L17A, k=3, p=1, sw=rep(TRUE,length(mod_L17A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L17A_3)
-# 967.9531 1199.075 -453.9765
+# 1008.596 1124.156 -489.2978
 
 plot(mswm_L17A_3)
 
@@ -354,7 +307,7 @@ ggplot(data=state_L17A_3, aes(x=index, y=y)) + geom_line() +
 set.seed(1)
 mswm_L17A_2 <- MSwM2::msmFit(mod_L17A, k=2, p=1, sw=rep(TRUE,length(mod_L17A$coefficients)+1+1), control=list(trace=TRUE, maxiter=500, parallel=FALSE))
 summary(mswm_L17A_2)
-# 1034.98 1189.061 -497.4898
+# 1059.637 1136.678 -519.8185
 
 plot(mswm_L17A_2)
 

@@ -319,13 +319,11 @@ In this chapter, methods used for performing the change point analysis in
  It first starts by providing general details about Markov chains.
  Later on, the simple Markov switching model feature and more general model
  specifications namely Markov switching autoregressive model are discussed.
- Next two sections are devoted to some techniques for estimating the values
- of parameters and selecting a suitable model for the datasets.
- Finally, a non-parametric analysis is described.
-\end_layout
-
-\begin_layout Standard
-Simulation
+ Next three sections are devoted to some methods for estimating the values
+ of parameters, predicting a state for a new observation and selecting a
+ suitable model for the datasets.
+ Another change point method in a non-parametric approach is described.
+ Finally, a simulation technique is explained.
 \end_layout
 
 \begin_layout Section
@@ -793,7 +791,7 @@ status open
 \end_layout
 
 \begin_layout Definition
-If there is a state space finite, an irreducible Markov chain is the same
+If there is a finite state space, an irreducible Markov chain is the same
  thing as ergodic Markov chain.
  It is possible to go from every state to every other state with positive
  probability.
@@ -1426,7 +1424,7 @@ Assuming that we do not observe st directly, but only infer its operation
 \end_layout
 
 \begin_layout Section
-Parameter Estimation
+Parameter estimation
 \end_layout
 
 \begin_layout Standard
@@ -1634,7 +1632,7 @@ where
 \end_inset
 
 .
- Thi is simply the Gaussian probability density function.
+ This is simply the Gaussian probability density function.
 \end_layout
 
 \begin_layout Standard
@@ -1878,6 +1876,71 @@ n except that it has to be weighted by the smoothed probabilities since
 \end_layout
 
 \begin_layout Section
+State prediction
+\end_layout
+
+\begin_layout Standard
+A function to predict the most probable state for the new observation is
+ implemented in this analysis (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:MSwM-Package"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The probabilities of being in state 
+\begin_inset Formula $j$
+\end_inset
+
+ at time 
+\begin_inset Formula $T+1$
+\end_inset
+
+ on the basis of current information are computed by performing the filtering
+ algorithm in the E-step of E-M algorithm.
+ The filtered probabilities are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(S_{T+1}=j|\Omega_{T+1};\theta)=\frac{f(y_{T+1}|S_{T+1}=j,\Omega_{T};\theta)P(S_{T+1}=j|\Omega_{T};\theta)}{f(y_{T+1}|\Omega_{T};\theta)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fProb"
+
+\end_inset
+
+ where 
+\begin_inset Formula $t=T+1$
+\end_inset
+
+.
+ Then, the new observation at time 
+\begin_inset Formula $T+1$
+\end_inset
+
+ is said to be in the state 
+\begin_inset Formula $j$
+\end_inset
+
+ if it has the highest probability.
+\end_layout
+
+\begin_layout Section
 Model selection
 \end_layout
 
@@ -1887,20 +1950,20 @@ Model selection is a task of selecting the most suitable model for a given
  In this thesis framework, the Bayesian Information Criterion (BIC) is widely
  employed in the applied literature and proved to be useful in selecting
  the model among a finite set of models.
- It is also known as Schwarz Information Criterion and defined as 
+ It is also known as Schwarz Information Criterion 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "schwarz1978estimating"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
--2\ln(L(\hat{\theta}))+m\cdot\ln(T)
+\mathrm{BIC}=-2\ln(L(\hat{\theta}))+m\cdot\ln(T)
 \]
 
 \end_inset

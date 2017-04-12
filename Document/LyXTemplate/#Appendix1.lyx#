@@ -352,7 +352,11 @@ You may want to include an appendix to describe the software used in the
 
 \begin_layout Standard
 The algorithm used for fitting the Markov switching autoregressive model
- is mainly based on the MSwM package in R 
+ is mainly based on the 
+\emph on
+MSwM
+\emph default
+ package in R 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "mswm"
@@ -416,14 +420,10 @@ Categorical variable
 The package does not work properly well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
- 
-\end_layout
-
-\begin_layout Standard
-Factors are used to represent the categorical variables in R.
+ Factors are used to represent the categorical variables in R.
  Most of the time, the order of the factor does not matter.
  However, sometimes the order of the factor is of interest in the analysis
- and needs to be specified for comparing or meaningful interpretation.
+ and needs to be specified for comparison or meaningful interpretation.
  
 \end_layout
 
@@ -432,7 +432,7 @@ Factors are used to represent the categorical variables in R.
 status open
 
 \begin_layout Plain Layout
-reference level to be the highest occurrence
+There are reference level to be the highest occurrence
 \end_layout
 
 \end_inset
@@ -527,7 +527,7 @@ The implementation for the model prediction is added in the package.
  belong to.
  The input of the predict function is the training model and the new set
  of data.
- The function computes the filtered probability or the Equation 
+ The function computes the filtered probabilities or the Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:fProb"
@@ -535,7 +535,9 @@ reference "eq:fProb"
 \end_inset
 
 .
- The highest probability is the output 
+ The prediction of the state for the new observation is the state which
+ has the highest probability.
+ The function returns 
 \end_layout
 
 \begin_layout Standard

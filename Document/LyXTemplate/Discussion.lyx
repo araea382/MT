@@ -329,9 +329,11 @@ Suggestion for a better result –> future
 A thorough search of the relevant literature yielded that this might be
  the first time that Markov switching model is applied on the data to deal
  with ....
- In previous work, it is mostly mentioned that this model is used for predicting
- ....
- finance and signal (financial modeling)
+\end_layout
+
+\begin_layout Standard
+In previous work, it is mostly mentioned that this model is used for unraveling
+ the state in financial time series data and signal processing.
 \end_layout
 
 \begin_layout Standard

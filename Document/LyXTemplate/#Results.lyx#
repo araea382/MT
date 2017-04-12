@@ -373,8 +373,8 @@ reference "chap:MSwM-Package"
 
 .
  Markov switching autoregressive model is performed for each dataset with
- every parameter in the model has switching effects i.e., the parameters can
- take on different values in different periods.
+ every parameter in the model has switching effects i.e., the coefficients
+ can take on different values in different periods.
  The estimation is made under the assumptions of two or three states 
 \begin_inset Formula $S_{t}\in S$
 \end_inset
@@ -636,7 +636,7 @@ reference "L16A_2_smo"
 \end_inset
 
 .
- On the other hands, it can be seen that there are more switching between
+ On the other hand, it can be seen that there are more switching between
  states in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -757,8 +757,8 @@ reference "L16B_2_smo"
  the two states.
  The duration of being in State 2 is longer compares to the duration of
  staying in State 1.
- Even though there are some periods where the chain stays in State 2 for
- quite some time before turning to State 1.
+ It can be seen that the chain stays in State 2 for quite some time in the
+ middle period (observation 91-99 and 101-114) before turning to State 1.
  Apparently, there are more switches between states in the three-state model
  especially in the beginning, middle and the end of the period.
  State 3 in 
@@ -768,7 +768,8 @@ reference "L16B_3_smo"
 
 \end_inset
 
- appears to remain in its own state rather long than any other states.
+ appears to remain in its own state longer than any other states as can
+ be seen throughout observation 15-39, 42-67 and 140-170.
 \end_layout
 
 \begin_layout Standard
@@ -859,7 +860,7 @@ name "L16B_3_smo"
 
 \begin_layout Standard
 There are quite a lot of switches between states in the two-state model
- of software release L17A.
+ of the software release L17A.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -867,28 +868,22 @@ reference "L17A_2_smo"
 
 \end_inset
 
-, when the Markov chain is in state 1, it stays there quite some time before
- leaving the state.
- However, the chain has a short duration being in state 2 and quickly switch
- back to the state 1.
-\end_layout
-
-\begin_layout Standard
+, when the Markov chain is in State 1, it stays there quite some time before
+ leaving to State 2.
+ It can be seen that the chain has fairly a short duration being in State
+ 2 and quickly switch back to State 1.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L17A_3_smo"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-switch between the state 1 and the state 2 
-\end_layout
-
-\begin_layout Standard
-stay in the state 2 rather long until the end of the time period.
+ presents the chain which has many switches between State 1 and State 2
+ in the first half of the time period.
+ There are State 2 in the beginning The chain for the three-state model
+ stays in State 2 significantly long from observation 104 until 129, the
+ end of the duration.
 \end_layout
 
 \begin_layout Standard
@@ -990,30 +985,277 @@ smoothed inference probabilities mostly to show how the regimes are identified
 \end_layout
 
 \begin_layout Section
-Switching parameters
+Switching coefficients
 \end_layout
 
 \begin_layout Standard
-The fitting Markov switching models earlier do not take into account state-indep
-endent parameters – in other words, all the parameters of the model are
+The fitted Markov switching models earlier do not take into account state-indepe
+ndent parameters – in other words, all the coefficients of the model are
  differed in each state.
- Apparently, each parameter can have either a switching or non-switching
- effect.
- The hypothesis is that the local events have switching effects while the
- parameters considered as the test environment have non-switching effects.
  
 \end_layout
 
 \begin_layout Standard
-L16A 
+\begin_inset Formula 
+\begin{align*}
+y_{t}= & \beta_{0,S_{t}}+\beta_{1,S_{t}}X_{RrcConnectionSetupComplete,t}+\beta_{2,S_{t}}X_{Paging,t}+\beta_{3,S_{t}}X_{X2HandoverRequest,t}\\
+ & +\beta_{4,S_{t}}X_{DuProdName,t}+\beta_{5,S_{t}}X_{Fdd/Tdd,t}+\beta_{6,S_{t}}X_{NumCells,t}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{S_{t}}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-L16B
+Apparently, each parameter can have either a switching or non-switching
+ effect.
+ The hypothesis for this switching/non-switching coefficients is that the
+ local events have switching effects while the parameters considered as
+ the test environment have non-switching effects.
+ 
+\end_layout
+
+\begin_layout Subsection
+Software release L16A 
 \end_layout
 
 \begin_layout Standard
-L17A 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}+\beta_{Paging,S_{t}}+\beta_{X2HandoverRequest,S_{t}}\\
+ & +\beta_{DuProdName,S_{t}}+\beta_{Fdd/Tdd,S_{t}}+\beta_{NumCells,S_{t}}+\phi_{1,S_{t}}+\varepsilon_{S_{t}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{multline*}
+y_{t}=\beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}+\beta_{Paging,S_{t}}+\beta_{X2HandoverRequest,S_{t}}+\\
++\beta_{Fdd/Tdd,S_{t}}+\beta_{NumCells,S_{t}}+\phi_{1,S_{t}}+\varepsilon_{S_{t}}
+\end{multline*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Markov switching autoregressive model with different switching coefficients
+ along with BIC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Switching effect
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BIC
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fdd/Tdd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NumCells
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Software release L16B
+\end_layout
+
+\begin_layout Standard
+dfdf
+\end_layout
+
+\begin_layout Subsection
+Software release L17A 
+\end_layout
+
+\begin_layout Standard
+dfd
 \end_layout
 
 \begin_layout Section
@@ -1252,8 +1494,9 @@ L17A
 \end_layout
 
 \begin_layout Standard
-The CPU utilization for each dataset along with its estimated change points
- in the time series is plotted and shown in 
+The CPU utilization for software release L16A, L16B and L17A along with
+ its estimated change points in the time series is plotted and shown in
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ediv_L16A"
@@ -1274,7 +1517,10 @@ reference "ediv_L17A"
 
 \end_inset
 
-.
+, respectively.
+ The E-divisive method cannot identify any changes in the dataset of software
+ release L16A.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1323,6 +1569,16 @@ name "ediv_L16A"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Four change points are identified from the method for the software release
+ L16B and L17A.
+ In The estimated change points for the dataset of software release L16B
+ are likely to occur around the same period of time.
+ On the contrary, the software release L17A has the estimated change points
+ from the method rather spread out.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1420,35 +1676,26 @@ name "ediv_L17A"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 compare with results from Markov switching autoregressive model.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-State prediction
+Predicting the state
 \end_layout
 
 \begin_layout Standard
-A function to predict the most probable state for the new observation is
- implemented in this analysis (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:MSwM-Package"
-
-\end_inset
-
-).
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:MSwM-Package"
-
-\end_inset
-
- presents a more detail on the algorithm.
-\end_layout
-
-\begin_layout Standard
-Results
+After deciding which model is going to be used for the given dataset of
+ the software release, the test set is used to find the most probable state
+ for each new observation.
 \end_layout
 
 \begin_layout Standard
