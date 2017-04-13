@@ -636,7 +636,7 @@ reference "L16A_2_smo"
 \end_inset
 
 .
- On the other hand, it can be seen that there are more switching between
+ On the other hand, it is visible that there are more switching between
  states in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -989,17 +989,50 @@ Switching coefficients
 \end_layout
 
 \begin_layout Standard
-The fitted Markov switching autoregressive models earlier do not take into
- account state-independent parameters – in other words, all the coefficients
- of the model are differed in each state.
- 
+The fitted Markov switching autoregressive models earlier only have state-depend
+ent parameters i.e., coefficients of the regression with switching effects.
+ The complete Markov switching autoregressive model where 
+\begin_inset Formula $S_{t}=1,2,$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $3$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is defined as
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-y_{t}= & \beta_{0,S_{t}}+\beta_{1,S_{t}}X_{RrcConnectionSetupComplete,t}+\beta_{2,S_{t}}X_{Paging,t}+\beta_{3,S_{t}}X_{X2HandoverRequest,t}\\
- & +\beta_{4,S_{t}}X_{DuProdName,t}+\beta_{5,S_{t}}X_{Fdd/Tdd,t}+\beta_{6,S_{t}}X_{NumCells,t}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{S_{t}}
+y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}X_{RrcConnectionSetupComplete,t}\\
+ & +\beta_{Paging,S_{t}}X_{Paging,t}+\beta_{2HandoverRequest,S_{t}}X_{X2HandoverRequest,t}\\
+ & +\beta_{DuProdName,S_{t}}X_{DuProdName,t}+\beta_{Fdd/Tdd,S_{t}}X_{Fdd/Tdd,t}\\
+ & +\beta_{NumCells,S_{t}}X_{NumCells,t}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{S_{t}}
 \end{align*}
 
 \end_inset
@@ -1008,11 +1041,11 @@ y_{t}= & \beta_{0,S_{t}}+\beta_{1,S_{t}}X_{RrcConnectionSetupComplete,t}+\beta_{
 \end_layout
 
 \begin_layout Standard
-Apparently, each parameter can have either a switching or non-switching
+Apparently, each coefficient can have either a switching or non-switching
  effect.
  The hypothesis for this switching/non-switching coefficients is that the
- local events have switching effects while the parameters considered as
- the test environment have non-switching effects.
+ local events variables have switching effects while the variables considered
+ as the test environment might have non-switching effects.
  
 \end_layout
 
@@ -1053,6 +1086,18 @@ y_{t}=\beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}+\beta_{Paging,S_{
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+y_{t}= & \beta_{0,S_{t}}+\beta_{1,S_{t}}X_{RrcConnectionSetupComplete,t}+\beta_{2,S_{t}}X_{Paging,t}+\beta_{3,S_{t}}X_{X2HandoverRequest,t}\\
+ & +\beta_{4,S_{t}}X_{DuProdName,t}+\beta_{5,S_{t}}X_{Fdd/Tdd,t}+\beta_{6,S_{t}}X_{NumCells,t}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{S_{t}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -1068,8 +1113,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure with different switching coefficients along
- with BIC
+List of the model structure for software release L16A with different switching
+ coefficients along with BIC
 \end_layout
 
 \end_inset
@@ -1261,8 +1306,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure with different switching coefficients along
- with BIC
+List of the model structure for software release L16B with different switching
+ coefficients along with BIC
 \end_layout
 
 \end_inset
@@ -1652,8 +1697,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure with different switching coefficients along
- with BIC
+List of the model structure for software release L17A with different switching
+ coefficients along with BIC
 \end_layout
 
 \end_inset
@@ -2050,19 +2095,6 @@ L16B
 
 \begin_layout Standard
 L17A 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-It doesn't seem to look good anymore
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
