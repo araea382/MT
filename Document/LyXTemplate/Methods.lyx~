@@ -2167,8 +2167,8 @@ y=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-The data contains 500 observations which has a presence of three different
- states – Normal, Bad and Good.
+The simulated data contains 500 observations which has a presence of three
+ different states – Normal, Bad and Good.
  
 \begin_inset CommandInset ref
 LatexCommand ref

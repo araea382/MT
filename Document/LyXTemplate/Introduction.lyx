@@ -438,7 +438,7 @@ n environment.
  to test and determine how each software package performs.
  The performance of these software packages is evaluated by considering
  on CPU utilization (percentages of CPU's cycle spent on each process),
- memory usage and latency.
+ memory usage, and latency.
  
 \end_layout
 
@@ -597,7 +597,7 @@ To summarize, this thesis aims to:
 \end_layout
 
 \begin_layout Itemize
-Detect the state of the CPU utilization (degrading, improving or steady
+Detect the state of the CPU utilization (degrading, improving, or steady
  state)
 \end_layout
 

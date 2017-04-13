@@ -263,7 +263,7 @@ reref <- function(data, var){
   std=rep(0,k)
 
   ####
-  # Add: no need to divide data 
+  # Add: no need to divide data
   #      use the whole data to get the initial coefficients
   ####
   for(i in 1:k){

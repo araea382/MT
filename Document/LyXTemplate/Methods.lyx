@@ -933,7 +933,7 @@ key "hamilton1989new"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y_{t}=X_{t}'\beta_{S_{t}}+\varepsilon_{t}\label{eq:msm}
+y_{t}=X_{t}'\beta_{S_{t}}+\varepsilon_{t}\label{eq:general_mswm}
 \end{equation}
 
 \end_inset
@@ -1018,7 +1018,7 @@ where
 The Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:msm"
+reference "eq:general_mswm"
 
 \end_inset
 
