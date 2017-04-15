@@ -438,7 +438,7 @@ n environment.
  to test and determine how each software package performs.
  The performance of these software packages is evaluated by considering
  on CPU utilization (percentages of CPU's cycle spent on each process),
- memory usage and latency.
+ memory usage, and latency.
  
 \end_layout
 
@@ -538,13 +538,14 @@ Each software package in the system is viewed as a time point in time series
  Therefore, additional dependencies, with the first order autoregression,
  is taken into consideration when modeling the Markov switching model and
  becomes Markov switching autoregressive model.
+ This
 \end_layout
 
 \begin_layout Standard
 There are two approaches, a parametric and a non-parametric analysis, for
  detecting the change point in the time series.
  The parametric analysis benefits from assuming some knowledge of data distribut
-ion and integrates it to the detection scheme.
+ion and integrating it to the detection scheme.
  On the other hand, the non-parametric analysis is more flexible that there
  is no assumption made about the distribution.
  It can, therefore, apply to a wider range of application and capture various
@@ -557,7 +558,8 @@ key "sharkey2014nonparametric"
 
 .
  In this study, the non-parametric analysis using hierarchical estimation
- techniques is also used for identifying the change in time.
+ techniques is also implemented for identifying the change of location in
+ the time series.
  
 \end_layout
 
@@ -596,7 +598,7 @@ To summarize, this thesis aims to:
 \end_layout
 
 \begin_layout Itemize
-Detect the state of the CPU utilization (degrading, improving or steady
+Detect the state of the CPU utilization (degrading, improving, or steady
  state)
 \end_layout
 

@@ -298,7 +298,7 @@ Software
 \end_layout
 
 \begin_layout Standard
-Both R and Python are powerful programming language for data analysis.
+Both R and Python are powerful programming languages for data analysis.
  Python has been known as a general purpose language with an easy to understand
  syntax.
  It emphasizes on code readability and has a gentle learning curve.
@@ -307,11 +307,11 @@ Both R and Python are powerful programming language for data analysis.
  starts to expand to different fields.
  R also has a strong reputation for data visualization.
  However, in terms of computation, R still cannot compete with Python which
- is built specifically for computer programming.
+ is built specifically for the computer programming.
  With strengths and weaknesses between R and Python described earlier, R
  is chosen to be used in this study.
  R offers more implemented algorithms to solve the problem at hand.
- Moreover, effective visualization helps analyst and user to understand
+ Moreover, an effective visualization helps analyst and user to understand
  more about their data especially for the complex one.
  Visualizing data is useful in many ways such as uncover new patterns, identify
  some factors, and get an overall trend.
@@ -459,7 +459,7 @@ It is worth noting that the function computes conditional means for each
 \end_inset
 
 .
- Therefore, if NAs exist in the coefficient matrix, 
+ Therefore, if NAs exist in the coefficient matrix 
 \family roman
 \series medium
 \shape up
@@ -508,7 +508,7 @@ Due to the randomness in partitioning the data, sometimes a variable in
 
 \begin_layout Standard
 One approach to resolve this issue is by removing the process of partitioning
- the data in the beginning and fitting the model with the whole data to
+ the data in the beginning, and fitting the model with the whole data to
  get the initial coefficients instead.
  The parameters in each state will then have the same coefficient values.
  It proved that dividing data into subsets is only a method to get the starting
@@ -527,7 +527,7 @@ The implementation for the model prediction is added in the package.
  belong to.
  The input of the predict function is the training model and the new set
  of data.
- The function computes the filtered probability or the Equation 
+ The function computes the filtered probabilities or the Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:fProb"
@@ -535,9 +535,8 @@ reference "eq:fProb"
 \end_inset
 
 .
- The prediction of the state for the new observation is the state which
+ The output from the function is the state for the new observation which
  has the highest probability.
- 
 \end_layout
 
 \begin_layout Standard

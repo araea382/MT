@@ -785,7 +785,7 @@ reference "L16B_2_smo"
 \end_inset
 
 , the Markov chain has several periods that switch back and forth between
- the two states for the softwar relase L16B.
+ the two states for the software relase L16B.
  The duration of being in State 2 is longer compares to the duration of
  staying in State 1.
  It can be seen that the chain stays in State 2 for quite some time in the
@@ -1026,13 +1026,8 @@ ent parameters i.e., coefficients of the regression with switching effects.
  effect.
  The hypothesis for this switching/non-switching coefficients is that the
  local events variables have switching effects while the variables considered
- as the test environment might have non-switching effects.
+ as the test environment are possible to have non-switching effects.
  
-\end_layout
-
-\begin_layout Standard
-The Markov switching autoregressive models are applied to each dataset and
- are shown as follow:
 \end_layout
 
 \begin_layout Standard
@@ -1080,19 +1075,21 @@ y_{t}= & \beta_{0,S_{t}}+\beta_{1,S_{t}}X_{RrcConnectionSetupComplete,t}+\beta_{
 
 \end_layout
 
-\begin_layout Subsection
-Software release L16A 
-\end_layout
-
 \begin_layout Standard
-There is only a second model which has higher BIC value than the original
- model with all switching coefficients.
- 
-\end_layout
+The Markov switching autoregressive models are applied to each dataset.
+ All combinations of coefficient in the regression with and without switching
+ effect are tried out.
+ Since DuProdName is not included in the model fitting for the dataset of
+ software release L16A, two variables are left for trying whether it can
+ have non-switching effect or not.
+ The result is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_switch"
 
-\begin_layout Standard
-Model 3 seems to have a singular issue....
- from std error equal 0
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1108,6 +1105,13 @@ status open
 List of the model structure for software release L16A with different switching
  coefficients along with BIC
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16A_switch"
 
 \end_inset
 
@@ -1514,28 +1518,40 @@ status open
 \end_layout
 
 \begin_layout Standard
-The model is 
+The second model has the highest BIC value and even higher than the original
+ model with all switching coefficients.
+ From the obtained outputs, it is found that a linear regression for State
+ 3 in all three models has r-squared equals to 1 with moderately small residual
+ standard error.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}X_{RrcConnectionSetupComplete,t}\\
- & +\beta_{Paging,S_{t}}X_{Paging,t}+\beta_{X2HandoverRequest,S_{t}}X_{X2HandoverRequest,t}\\
- & +\beta_{Fdd/Tdd,S_{t}}X_{Fdd/Tdd,t}+\beta_{NumCells}X_{NumCells,t}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{S_{t}}
-\end{align*}
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection
-Software release L16B
-\end_layout
-
 \begin_layout Standard
-dfdf
+Next, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_switch"
+
+\end_inset
+
+ presents the results of fitting the model with different combinations in
+ switching coefficients for the software release L16B.
+ Models that have higher BIC values than the model which has switching effect
+ in all coefficients are model 5 and 7.
+ It is noticeable that model 2 which has DuProdName and Fdd/Tdd as coefficient
+ with non-switching effect has a smallest value in BIC.
 \end_layout
 
 \begin_layout Standard
@@ -1551,6 +1567,13 @@ status open
 List of the model structure for software release L16B with different switching
  coefficients along with BIC
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_switch"
 
 \end_inset
 
@@ -2388,12 +2411,31 @@ status open
 
 \end_layout
 
-\begin_layout Subsection
-Software release L17A 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-dfd
+It can be seen in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_switch"
+
+\end_inset
+
+ that only model 2 has a higher BIC value than the model with.
+ The least BIC value goes to the first model that all three parameters in
+ the test environment have non-switching effects.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2409,6 +2451,13 @@ status open
 List of the model structure for software release L17A with different switching
  coefficients along with BIC
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L17A_switch"
 
 \end_inset
 
@@ -3246,6 +3295,18 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+Further discussion and details about how to select the Markov switching
+ autoregressive model for the given dataset is provided in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Discussion"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Residual analysis
 \end_layout
@@ -3258,7 +3319,8 @@ The results of the selected Markov switching autoregressive model for each
 
 \begin_layout Standard
 Plot of residuals against fitted values, a Normal Q-Q plot, ACF/PACF of
- residuals and ACF/PACF of square residuals.
+ residuals and ACF/PACF of square residuals of each model are shown below.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3266,12 +3328,8 @@ Plot of residuals against fitted values, a Normal Q-Q plot, ACF/PACF of
 status open
 
 \begin_layout Plain Layout
-model validation 
-\end_layout
-
-\begin_layout Plain Layout
-(using residual analysis- if the residuals appear to behave randomly, it
- suggests that the model fits the data well.)
+model validation (using residual analysis- if the residuals appear to behave
+ randomly, it suggests that the model fits the data well.)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3279,28 +3337,28 @@ Different types of plots of the residuals from a fitted model provide informatio
 n on the adequacy of different aspects of the model.
 \end_layout
 
-\begin_layout Enumerate
-sufficiency of the functional part of the model: scatter plots of residuals
+\begin_layout Plain Layout
+- sufficiency of the functional part of the model: scatter plots of residuals
  versus predictors 
 \end_layout
 
-\begin_layout Enumerate
-non-constant variation across the data: scatter plots of residuals versus
+\begin_layout Plain Layout
+- non-constant variation across the data: scatter plots of residuals versus
  predictors; for data collected over time, also plots of residuals against
  time 
 \end_layout
 
-\begin_layout Enumerate
-drift in the errors (data collected over time): run charts of the response
+\begin_layout Plain Layout
+- drift in the errors (data collected over time): run charts of the response
  and errors versus time 
 \end_layout
 
-\begin_layout Enumerate
-independence of errors: lag plot 
+\begin_layout Plain Layout
+- independence of errors: lag plot 
 \end_layout
 
-\begin_layout Enumerate
-normality of errors: histogram and normal probability plot
+\begin_layout Plain Layout
+- normality of errors: histogram and normal probability plot
 \end_layout
 
 \end_inset

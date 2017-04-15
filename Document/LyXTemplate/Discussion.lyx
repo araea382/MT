@@ -295,6 +295,13 @@ thepage
 
 \begin_layout Chapter
 Discussion
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Discussion"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -320,6 +327,10 @@ status open
 Suggestion for a better result –> future
 \end_layout
 
+\begin_layout Plain Layout
+Inference about each state
+\end_layout
+
 \end_inset
 
 
@@ -327,21 +338,20 @@ Suggestion for a better result –> future
 
 \begin_layout Standard
 A thorough search of the relevant literature yielded that this might be
- the first time that Markov switching model is applied on the data to deal
- with ....
+ the first time that Markov switching model is applied on the data rather
+ than financial time series or signal processing.
+ A large amount of time is spent on understanding the data and determining
+ which methods would be the best fit to this problem.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 In previous work, it is mostly mentioned that this model is used for unraveling
  the state in financial time series data and signal processing.
 \end_layout
-
-\begin_layout Standard
-estimate simple models –> number of parameters grows exponentially –> solution
- is probably a local maximum 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "perlin2015ms_regress"
 
 \end_inset
 
@@ -349,16 +359,41 @@ key "perlin2015ms_regress"
 \end_layout
 
 \begin_layout Standard
-assume that NodeName which executed test case is indifferent.
+One thing worth mentioning is that it is better to always try estimating
+ simple models first.
+ The model's size grows exponentially according to the number of state (k)
+ and the number of predictor variables.
+ However, the obtained results might probably be a local maximum and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "perlin2015ms_regress"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-small dataset 
+In this study, it is assumed that NodeName which is used to execute test
+ cases is indifferent i.e., results are the same regardless of the ...
 \end_layout
 
 \begin_layout Standard
-should drop the variable from the regression model unless there is more
- data
+The data or in this case number of test cases in each software release is
+ rather small.
+ It is found earlier that one variable is excluded from the regression model
+ in the dataset of software release L16A.
+ This is because the singularity 
+\end_layout
+
+\begin_layout Standard
+It has only 57 test cases used in training the model.
+ 
+\end_layout
+
+\begin_layout Standard
+Therefore, unless there is more data, it is better just to drop the variable
+ from the regression model.
 \end_layout
 
 \begin_layout Standard
@@ -367,17 +402,10 @@ take a risk aversion when deciding which number of states is more desirable
 \end_layout
 
 \begin_layout Standard
-A four-state is tested but the results is rather poor compare to the rest
- –> can not really make an inference
-\end_layout
-
-\begin_layout Standard
-Inference about each state
-\end_layout
-
-\begin_layout Standard
-non-parametric analysis is able to detect any type of distributional change
- within a time series
+Markov switching model with four states is also tested in the analysis but
+ results are rather poor compare to the model with two and three states.
+ The four-state model gives more difficulty and perhaps impossible to make
+ an inference on the states.
 \end_layout
 
 \begin_layout Standard
@@ -387,11 +415,32 @@ One benefit from using non-parametric analysis is that it does not require
 \end_layout
 
 \begin_layout Standard
+non-parametric analysis is able to detect any type of distributional change
+ within a time series
+\end_layout
+
+\begin_layout Standard
 E-divisive high computation 
 \end_layout
 
 \begin_layout Standard
 easy simulated data –> high accuracy
+\end_layout
+
+\begin_layout Standard
+L16B_NNY -> smallest BIC but graph is not interpretable
+\end_layout
+
+\begin_layout Standard
+Software release L16A
+\end_layout
+
+\begin_layout Standard
+Software release L16B
+\end_layout
+
+\begin_layout Standard
+Software release L17A
 \end_layout
 
 \begin_layout Standard

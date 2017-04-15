@@ -338,8 +338,8 @@ name "sec:Markov-chains"
 \end_layout
 
 \begin_layout Standard
-A Markov chain is a random process which has a property that given on the
- current value, the future is independent of the past.
+A Markov chain is a random process which has a property that is given on
+ the current value, the future is independent of the past.
  A random process 
 \begin_inset Formula $X$
 \end_inset
@@ -352,11 +352,11 @@ A Markov chain is a random process which has a property that given on the
 \begin_inset Formula $T$
 \end_inset
 
- where 
+, where 
 \begin_inset Formula $T=\{0,1,2,...\}$
 \end_inset
 
- is called a discrete-time process and 
+ is called a discrete-time process, and 
 \begin_inset Formula $T=[0,\infty)$
 \end_inset
 
@@ -371,7 +371,7 @@ A Markov chain is a random process which has a property that given on the
 
 .
  The process begins from one of these states and moves to another state.
- The move between state is called a step.
+ The move between states is called a step.
  The process of Markov chains is described here.
 \end_layout
 
@@ -422,7 +422,7 @@ If
 \begin_inset Formula $X_{t}=i$
 \end_inset
 
- then it is said that the chain is being in state 
+ then the chain is being in state 
 \begin_inset Formula $i$
 \end_inset
 
@@ -450,7 +450,7 @@ There are transitions between states which
 \uwave off
 \noun off
 \color none
-describe the distribution for the next state given the current state
+describe the distribution of the next state given the current state
 \family default
 \series default
 \shape default
@@ -549,11 +549,11 @@ for all
 \end_inset
 
 .
- Then, the transition matrix 
-\begin_inset Formula $\mathbf{P}$
+ A transition matrix 
+\begin_inset Formula $\mathbf{P}=(p_{ij})$
 \end_inset
 
- is the matrix of transition probabilities
+ is a matrix of transition probabilities
 \end_layout
 
 \begin_layout Definition
@@ -651,7 +651,7 @@ key "grimmett2001probability"
 \begin_layout Definition
 \begin_inset Formula 
 \[
-\mu_{i}=E(T_{i}|X=0=i)=\sum_{n}n\cdot f_{ii}(n)
+\mu_{i}=E(T_{i}|X_{0}=i)=\sum_{n}n\cdot f_{ii}(n)
 \]
 
 \end_inset
@@ -664,7 +664,7 @@ State
 \begin_inset Formula $i$
 \end_inset
 
- is positive recurrent or non-null persistent if 
+ is a positive recurrent or non-null persistent if 
 \begin_inset Formula $\mu_{i}$
 \end_inset
 
@@ -702,11 +702,11 @@ key "grimmett2001probability"
 \begin_inset Formula $i$
 \end_inset
 
- has the period 
+ that has a period 
 \begin_inset Formula $d(i)$
 \end_inset
 
- and is defined as 
+ is defined as 
 \end_layout
 
 \begin_layout Definition
@@ -773,8 +773,8 @@ status open
 \end_layout
 
 \begin_layout Definition
-A chain is called irreducible if all states are eventually reached from
- any state.
+A chain is called irreducible if it is possible to go from every state to
+ every other states.
 \end_layout
 
 \begin_layout Standard
@@ -793,8 +793,6 @@ status open
 \begin_layout Definition
 If there is a finite state space, an irreducible Markov chain is the same
  thing as ergodic Markov chain.
- It is possible to go from every state to every other state with positive
- probability.
  
 \end_layout
 
@@ -803,15 +801,13 @@ Markov switching model
 \end_layout
 
 \begin_layout Standard
-A Markov switching model is used for time series that are evolved over unobserve
-d distinct states or regimes.
- This is a regime switching model where the shifting back and forth between
- the regimes is controlled by a latent Markov chain.
+A Markov switching model is a switching model where the shifting back and
+ forth between the states or regimes is controlled by a latent Markov chain.
  The model structure consists of two stochastic processes embedded in two
  levels of hierarchy.
- One process is an underlying stochastic process that is not observable
- but it is possible to observe them through another stochastic process which
- generated the sequence of observation 
+ One process is an underlying stochastic process that is not normally observable
+, but possible to be observed through another stochastic process which generates
+ the sequence of observation 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rabiner1986introduction"
@@ -819,8 +815,7 @@ key "rabiner1986introduction"
 \end_inset
 
 .
- The time of transition to different state and the duration in between is
- random.
+ The time that transition between state occurs is random.
  In addition, the state assumes to follow the Markov property that the future
  state depends only on the current state.
  
@@ -828,9 +823,8 @@ key "rabiner1986introduction"
 
 \begin_layout Standard
 The Markov switching model is able to model more complex stochastic processes
- and describes changes in the dynamic behavior.
- A general structure of the model can be drawn in graphically as shown in
- 
+ and describe changes in the dynamic behavior.
+ A general structure of the model can be drawn graphically as shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "msm"
@@ -871,8 +865,8 @@ reference "msm"
 \color inherit
  denote the state sequence and observation sequence in the Markov process,
  respectively.
- The arrows from one state to another state in the diagram implied the condition
-al dependency.
+ The arrows from one state to another state in the diagram imply a conditional
+ dependency.
  
 \end_layout
 
@@ -933,7 +927,7 @@ key "hamilton1989new"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y_{t}=X_{t}'\beta_{S_{t}}+\varepsilon_{t}\label{eq:msm}
+y_{t}=X_{t}'\beta_{S_{t}}+\varepsilon_{t}\label{eq:general_mswm}
 \end{equation}
 
 \end_inset
@@ -942,7 +936,7 @@ where
 \begin_inset Formula $y_{t}$
 \end_inset
 
- is the observed value of the time series at time 
+ is an observed value of the time series at time 
 \family roman
 \series medium
 \shape up
@@ -965,7 +959,7 @@ where
 \begin_inset Formula $X_{t}$
 \end_inset
 
- are the predictor variables of the time series at time 
+ are predictor variables of the time series at time 
 \family roman
 \series medium
 \shape up
@@ -988,7 +982,7 @@ where
 \begin_inset Formula $\beta_{S_{t}}$
 \end_inset
 
- are the coefficients in state 
+ are coefficients in state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -1007,7 +1001,7 @@ where
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
- follows a Normal distribution with mean zero and variance given by 
+ follows a Normal distribution with zero mean and variance given by 
 \begin_inset Formula $\sigma_{S_{t}}^{2}$
 \end_inset
 
@@ -1018,7 +1012,7 @@ where
 The Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:msm"
+reference "eq:general_mswm"
 
 \end_inset
 
@@ -1027,11 +1021,12 @@ reference "eq:msm"
 \end_inset
 
  structural breaks in the model parameters.
- To aid understanding, the baseline model assuming two states 
+ To aid understanding, the baseline model is assumed to have only two states
+ 
 \begin_inset Formula $(k=2)$
 \end_inset
 
- is discussed.
+ in this discussion.
  
 \begin_inset Formula $S_{t}$
 \end_inset
@@ -1140,7 +1135,7 @@ reference "eq:msm"
 
 \begin_layout Standard
 There are several options for computing the probability of the initial state.
- One procedure is to simply use a naive guess i.e., setting 
+ One procedure is to commonly set 
 \begin_inset Formula $P(S_{0}=i)=0.5$
 \end_inset
 
@@ -1179,8 +1174,8 @@ Autoregressive (AR) model
 \end_layout
 
 \begin_layout Standard
-An autoregressive model is one type of time series model that uses for describin
-g the time-varying process.
+An autoregressive model is one type of time series models that is used to
+ describe the time-varying process.
  The model is flexible in handling various kinds of time series patterns.
  The name autoregressive comes from how the model performs a regression
  of the variable against its own previous outputs 
@@ -1238,11 +1233,11 @@ where
 \begin_inset Formula $\phi_{i}$
 \end_inset
 
- are the coefficients in the autoregression and 
+ are coefficients in the autoregression and 
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
- is Gaussian white noise with zero mean and variance 
+ is a Gaussian white noise with zero mean and variance 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
@@ -1263,11 +1258,10 @@ Markov switching autoregressive model
 \end_layout
 
 \begin_layout Standard
-This model is an extension of the basic Markov switching model where observation
-s are drawn from autoregression process.
- Markov switching autoregressive model relaxes the conditional independent
- assumption by allowing an observation to also depends on a past observation
- and a current state 
+A Markov switching autoregressive model is an extension of a basic Markov
+ switching model where observations are drawn from an autoregression process.
+ The model relaxes the conditional independent assumption by allowing an
+ observation to depend on both past observation and a current state 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "shannon2009formulation"
@@ -1310,7 +1304,7 @@ where
 \begin_inset Formula $\phi_{1,S_{t}}$
 \end_inset
 
- is the autoregression coefficient of the observed value at time 
+ is an autoregression coefficient of the observed value at time 
 \begin_inset Formula $t-1$
 \end_inset
 
@@ -1318,11 +1312,12 @@ where
 \begin_inset Formula $S_{t}$
 \end_inset
 
- and 
+.
+ 
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
- follows a Normal distribution with mean zero and variance given by 
+ follows a Normal distribution with zero mean and variance given by 
 \begin_inset Formula $\sigma_{S_{t}}^{2}$
 \end_inset
 
@@ -1395,8 +1390,8 @@ Assuming two states
 \begin_inset Formula $2$
 \end_inset
 
-, the set of parameters for the Markov switching autoregressive model that
- are necessary for describing the law of probability governs 
+, the set of parameters that are necessary to describe the law of probability
+ that governs 
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -1406,21 +1401,6 @@ Assuming two states
 
 .
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Assuming that we do not observe st directly, but only infer its operation
- through the observed behavior of yt, the parameters necessary to fully
- describe the probability law governing yt are 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -1436,7 +1416,7 @@ key "hamilton1990analysis,kim1994dynamic"
 
 \end_inset
 
- used the maximum likelihood criterion, Segmental K-mean 
+ used the maximum likelihood criterion, Segmental K-means 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "juang1990segmental"
@@ -1454,7 +1434,7 @@ key "kim1999state"
  used a Markov chain Monte Carlo simulation method based on the Bayesian
  inference.
  In this thesis framework, E-M algorithm is used in estimating parameters
- and is briefly described a general procedure.
+ and its general procedure is briefly described below.
  
 \end_layout
 
@@ -1463,7 +1443,7 @@ The Expectation-Maximization algorithm
 \end_layout
 
 \begin_layout Standard
-E-M algorithm is originally designed to deal with the incomplete or missing
+E-M algorithm is originally designed to deal with incomplete or missing
  values in data 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1472,17 +1452,22 @@ key "dempster1977maximum"
 \end_inset
 
 .
- Nevertheless, it can potentially implement in Markov switching model since
- the unobserved state 
+ Nevertheless, it could be implemented in Markov switching model since the
+ unobserved state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
- can be viewed as the missing values.
- The set of parameters is estimated by iterative two-step procedure.
- The algorithm starts with an arbitrary initial parameters and finds the
- expected values of the state process given the observations.
- Next, the new maximum likelihood from the derived parameters in previous
- step is calculated.
+ can be viewed as missing values.
+ The set of parameters 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is estimated by iterative two-step procedure.
+ In the first step, the algorithm starts with arbitrary initial parameters,
+ and then finds the expected values of the state process from the given
+ observations.
+ In the second step of the iterative procedure, a new maximum likelihood
+ from the derived parameters in the previous step is calculated.
  These two steps are repeated until the maximum value of the likelihood
  function is reached 
 \begin_inset CommandInset citation
@@ -1499,11 +1484,11 @@ E-step
 \end_layout
 
 \begin_layout Standard
-Assume that 
+In this step, 
 \begin_inset Formula $\theta^{(n)}$
 \end_inset
 
- is the derived set of parameters in M-step from the previous iteration
+ is the derived set of parameters in M-step from the previous iteration,
  and the available observations of time 
 \begin_inset Formula $t-1$
 \end_inset
@@ -1518,14 +1503,14 @@ Assume that
 \end_inset
 
  under the current estimation of the parameters.
- The obtained result is called smoothed inferences probability and is denoted
+ The obtained result is called smoothed inferences probability, and is denoted
  by 
 \begin_inset Formula $P(S_{t}=j|\Omega_{T};\theta)$
 \end_inset
 
 .
- The E-step consists of filtering and smoothing algorithm and the process
- is described as follows 
+ The E-step which consists of filtering and smoothing algorithm is described
+ as follows 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1994dynamic"
@@ -1540,7 +1525,7 @@ Filtering
 \end_layout
 
 \begin_layout Standard
-Filtered probability is the probability of the non-observable Markov chain
+A filtered probability is a probability of a non-observable Markov chain
  being in a given state 
 \begin_inset Formula $j$
 \end_inset
@@ -1563,17 +1548,17 @@ Filtered probability is the probability of the non-observable Markov chain
 \end_inset
 
 .
- The starting points for the first iteration where 
+ A starting point for the first iteration where 
 \begin_inset Formula $t=1$
 \end_inset
 
- is chosen as arbitrary values.
- The probabilities of each state given that the available observation is
+ is chosen from arbitrary values.
+ The probabilities of each state, given that the available observation is
  up to time 
 \begin_inset Formula $t-1$
 \end_inset
 
- is calculated.
+, is calculated by
 \end_layout
 
 \begin_layout Standard
@@ -1588,7 +1573,7 @@ P(S_{t}=j|\Omega_{t-1};\theta^{(n)})=\sum_{i=1}^{k}p_{ij}^{(n)}P(S_{t-1}=i|\Omeg
 \end_layout
 
 \begin_layout Standard
-and the conditional densities of 
+The conditional densities of 
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -1632,7 +1617,7 @@ where
 \end_inset
 
 .
- This is simply the Gaussian probability density function.
+ This is simply a Gaussian probability density function.
 \end_layout
 
 \begin_layout Standard
@@ -1640,7 +1625,8 @@ Then, with the new observation at time
 \begin_inset Formula $t$
 \end_inset
 
-, the probabilities of each state are updated by using Bayes' rule
+, the probabilities of each state are updated by using Bayes' rule as shown
+ below
 \end_layout
 
 \begin_layout Standard
@@ -1655,7 +1641,8 @@ P(S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n
 \end_layout
 
 \begin_layout Standard
-It is computing iteratively until all the observation is reached i.e., 
+The process above is computed iteratively until all the observation is reached
+ i.e., 
 \begin_inset Formula $t=T$
 \end_inset
 
@@ -1746,7 +1733,7 @@ Smoothing
 \end_layout
 
 \begin_layout Standard
-Smoothed probability is the probability of the non-observable Markov chain
+A smoothed probability is a probability of a non-observable Markov chain
  being in state 
 \begin_inset Formula $j$
 \end_inset
@@ -1766,7 +1753,7 @@ Smoothed probability is the probability of the non-observable Markov chain
 \end_layout
 
 \begin_layout Standard
-By nothing that
+By noting that
 \end_layout
 
 \begin_layout Standard
@@ -1798,7 +1785,7 @@ P(S_{t}=j|\Omega_{T};\theta^{(n)})=\sum_{i=1}^{k}P(S_{t}=j,S_{t+1}=i|\Omega_{T};
 \end_layout
 
 \begin_layout Standard
-Then, the smoothed probabilities can be expressed as
+then, the smoothed probabilities can be expressed as
 \end_layout
 
 \begin_layout Standard
@@ -1817,7 +1804,7 @@ P(S_{t}=j|\Omega_{T};\theta^{(n)})=\sum_{i=1}^{k}\frac{P(S_{t+1}=i|\Omega_{T};\t
 \begin_inset Newline newline
 \end_inset
 
-Once the filtered probabilities are estimated, there is necessarily enough
+Once the filtered probabilities are estimated, there is enough necessary
  information to calculate the full log-likelihood function.
 \end_layout
 
@@ -1846,7 +1833,7 @@ The new estimated model parameters
 \begin_inset Formula $\theta^{(n+1)}$
 \end_inset
 
- is obtained by finding the set of parameters that maximizes the Equation
+ is obtained by finding a set of parameters that maximizes the Equation
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1855,19 +1842,31 @@ reference "eq:loglik"
 \end_inset
 
 .
- This new set of parameters is more exact value of the maximum likelihood
- estimates than the previous one.
- It serves as the set of parameters in the next iteration of the E-step.
- The estimated parameters are derived by taking the partial derivative of
- the log-likelihood function with respect to the specific parameter and
- then setting it to zero.
+ This new set of parameters is more precise than the previous estimated
+ value of the maximum likelihood.
+ 
+\begin_inset Formula $\theta^{(n+1)}$
+\end_inset
+
+ serves as a set of parameters in the next iteration of the E-step.
+ 
+\end_layout
+
+\begin_layout Standard
+Each individual parameter in 
+\begin_inset Formula $\theta^{(n+1)}$
+\end_inset
+
+ are taken from its maximum value, which is determined by taking partial
+ derivative of the log-likelihood function with respect to each parameter.
  Generally, this process is similar to the standard maximum likelihood estimatio
-n except that it has to be weighted by the smoothed probabilities since
- each observation 
+n.
+ However, it has to be weighted by the smoothed probabilities because each
+ observation 
 \begin_inset Formula $y_{t}$
 \end_inset
 
- carries probability of coming from any of the 
+ contains probability from any of the 
 \begin_inset Formula $k$
 \end_inset
 
@@ -1892,7 +1891,7 @@ reference "chap:MSwM-Package"
 \end_layout
 
 \begin_layout Standard
-The probabilities of being in state 
+The probability of being in state 
 \begin_inset Formula $j$
 \end_inset
 
@@ -1900,7 +1899,7 @@ The probabilities of being in state
 \begin_inset Formula $T+1$
 \end_inset
 
- on the basis of current information are computed by performing the filtering
+ on the basis of current information is computed by performing the filtering
  algorithm in the E-step of E-M algorithm.
  The filtered probabilities are
 \end_layout
@@ -2141,8 +2140,8 @@ Since there is no annotation for the state of the CPU utilization in the
  data, an accuracy can not be computed after making a state prediction.
  One possible solution to test and verify how well the implemented predict
  function performs is to use the simulation technique.
- Therefore, a data consists of two predictor variables and one response
- variable with the known state is simulated.
+ The data consists of two predictor variables and one response variable
+ with the known state is simulated.
  The actual models for each state are 
 \end_layout
 
@@ -2167,8 +2166,8 @@ y=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-The data contains 500 observations which has a presence of three different
- states – Normal, Bad and Good.
+The simulated data contains 500 observations which has a presence of three
+ different states – Normal, Bad and Good.
  
 \begin_inset CommandInset ref
 LatexCommand ref

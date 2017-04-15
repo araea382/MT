@@ -430,8 +430,8 @@ key "basseville1993detection"
 \end_layout
 
 \begin_layout Standard
-In this study, change point analysis will be used to identify changes in
- performance of Ericsson's software products.
+For this analysis, change point analysis will be used to identify changes
+ in performance of Ericsson's software products.
  Many test cases have been executed for testing software packages in a simulatio
 n environment.
  Before launching the software products to its customers, the company needs
@@ -529,15 +529,17 @@ ics in different states at different time.
 \end_layout
 
 \begin_layout Standard
-Each software package in the system is viewed as a time point in time series
- and the performance of each software package is treated as an observed
- value.
- In this study, the observed value is not completely independent of each
+In this study, each software package in the system is viewed as a time point
+ in time series and the performance of each software package is treated
+ as an observed value.
+ It is proven that the observed value is not completely independent of each
  other i.e., the performance of the current software package depends on the
  performance from the prior version of the software package.
  Therefore, additional dependencies, with the first order autoregression,
  is taken into consideration when modeling the Markov switching model and
  becomes Markov switching autoregressive model.
+ This model is applied to the given data in order to discover the changes
+ in the performance.
 \end_layout
 
 \begin_layout Standard
