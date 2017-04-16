@@ -47,14 +47,6 @@ plotReg(mswm_L16B_3, expl=predictor[3], regime=3)
 # predict(mswm_L16B_3, newdata)
 
 #--------------------------------#
-# change the swiching parameter
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-switch[c(5,6,7,8,9,10)] <- FALSE; switch
-set.seed(1)
-mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=1000, parallel=FALSE))
-summary(mswm_L16B_3)
-
-#--------------------------------#
 # smoothed prob plot
 L16B_3 <- as.data.frame(mswm_L16B_3@Fit@smoProb)
 L16B_3 <- cbind(index=seq(1,nrow(L16B_3)),L16B_3)
@@ -111,14 +103,6 @@ plotReg(mswm_L16B_2, expl=predictor[5], regime=2)
 
 plotReg(mswm_L16B_2, expl=predictor[6], regime=1)
 plotReg(mswm_L16B_2, expl=predictor[6], regime=2)
-
-#--------------------------------#
-# change the swiching parameter
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-switch[c(5,6,7,8,9,10)] <- FALSE; switch
-set.seed(1)
-mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-summary(mswm_L16B_2)
 
 #--------------------------------#
 # smoothed prob plot

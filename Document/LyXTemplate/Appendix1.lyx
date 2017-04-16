@@ -540,11 +540,18 @@ reference "eq:fProb"
 \end_layout
 
 \begin_layout Chapter
-Output
+Output 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Output"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
+L16A_YN
 \end_layout
 
 \begin_layout Standard

@@ -328,7 +328,7 @@ Suggestion for a better result –> future
 \end_layout
 
 \begin_layout Plain Layout
-Inference about each state
+Inference about each state (Results or Discussion)
 \end_layout
 
 \end_inset
@@ -338,32 +338,24 @@ Inference about each state
 
 \begin_layout Standard
 A thorough search of the relevant literature yielded that this might be
- the first time that Markov switching model is applied on the data rather
- than financial time series or signal processing.
+ the first time that Markov switching model is applied on the data which
+ is not related to financial time series or signal processing.
  A large amount of time is spent on understanding the data and determining
  which methods would be the best fit to this problem.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-In previous work, it is mostly mentioned that this model is used for unraveling
- the state in financial time series data and signal processing.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 One thing worth mentioning is that it is better to always try estimating
  simple models first.
- The model's size grows exponentially according to the number of state (k)
- and the number of predictor variables.
- However, the obtained results might probably be a local maximum and 
+ The model's size grows exponentially according to the number of state 
+\begin_inset Formula $k$
+\end_inset
+
+, and the number of predictor variables.
+ There would be more parameters to be estimated if parameters also have
+ switching effects.
+ The obtained results probably be a local maximum and cannot be completely
+ trusted 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "perlin2015ms_regress"
@@ -375,53 +367,161 @@ key "perlin2015ms_regress"
 
 \begin_layout Standard
 In this study, it is assumed that NodeName which is used to execute test
- cases is indifferent i.e., results are the same regardless of .
+ cases is indifferent i.e., results are the same regardless of the ...
 \end_layout
 
 \begin_layout Standard
-The data or in this case number of test cases in each software release is
- rather small.
-  
+It is found earlier that in the dataset of software release L16A, there
+ is one variable which is an exact linear combination of the other variables.
+ Hence, the variable is excluded from the regression model.
+ used only 57 test cases in training the model.
+ The data or in this case number of test cases in each software release
+ is rather small which make it easier for an occurrence of singularity.
+ Therefore, unless there is more data, it is better to drop the variable
+ from the regression model before doing a further analysis.
 \end_layout
 
 \begin_layout Standard
-should drop the variable from the regression model unless there is more
- data
-\end_layout
-
-\begin_layout Standard
-take a risk aversion when deciding which number of states is more desirable
+One has to understand and accept a risk when deciding on the number of states.
+ There is no guarantee how many states would yield the best outcome, and
+ the one which is more appealing is selected.
+ The same situation also applies when determining the number of switching
+ coefficient in the model.
  
 \end_layout
 
 \begin_layout Standard
 Markov switching model with four states is also tested in the analysis but
  results are rather poor compare to the model with two and three states.
- The four-state model gives more difficulty and perhaps impossible to make
+ The four-state model causes more difficulty and perhaps impossible to make
  an inference on the states.
 \end_layout
 
 \begin_layout Standard
-One benefit from using non-parametric analysis is that it does not require
+Switching only the test environment variable because ...
+\end_layout
+
+\begin_layout Standard
+Residual analysis
+\end_layout
+
+\begin_layout Standard
+One benefit from using the non-parametric analysis is that it does not require
  a prior assumption of the data distribution.
- In this thesis framework, it is used for 
+ This analysis is able to detect any type of distributional change within
+ a time series.
+ In this thesis framework, the non-parametric analysis is used for comparing
+ with the results from Markov switching model.
+ 
 \end_layout
 
 \begin_layout Standard
-non-parametric analysis is able to detect any type of distributional change
- within a time series
+The computational time of the E-divisive algorithm is 
+\begin_inset Formula $O(kT^{2})$
+\end_inset
+
+, where 
+\begin_inset Formula $k$
+\end_inset
+
+ is the number of estimated change points and 
+\begin_inset Formula $T$
+\end_inset
+
+ is the number of observation in the time series data.
 \end_layout
 
 \begin_layout Standard
-E-divisive high computation 
+The accuracy of the test set in simulated data is significantly high.
+ One reason for that might be because of this simulated data has some kinds
+ of pattern.
+ The model is able to capture the behavior of the time series data.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Model selection
 \end_layout
 
 \begin_layout Standard
-easy simulated data –> high accuracy
+The model for each dataset which have all switching parameters acts as a
+ baseline model in the analysis.
+ In other words, this model is used to compare with other models with different
+ combination of switching coefficients.
+ If the fitted model has higher BIC value than the baseline model it means
+ that the model performs worst and should not be considered.
+\end_layout
+
+\begin_layout Paragraph*
+Software release L16A
 \end_layout
 
 \begin_layout Standard
-L16B_NNY -> smallest BIC but graph is not interpretable
+Even though model 3 has the lowest BIC value, it is found in the output
+ that the coefficient of Paging has zero standard error leading t-value
+ to infinity (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Output"
+
+\end_inset
+
+).
+ This zero value can be interpreted in two different ways: an actual zero
+ or treated as zero because significant digit is lost due to the floating
+ point.
+ Nevertheless, either way suggests that this model might not be a good one.
+ Therefore, model 1 which is the second lowest BIC is chosen for this given
+ dataset instead.
+\end_layout
+
+\begin_layout Paragraph*
+Software release L16B
+\end_layout
+
+\begin_layout Standard
+When choosing model for the data, it is insufficient to only look at the
+ BIC value.
+ Other aspects should also be taken into consideration.
+ For instance, model 2 has the smallest BIC value this could be a but graph
+ is not interpretable
+\end_layout
+
+\begin_layout Standard
+The model 1
+\end_layout
+
+\begin_layout Standard
+Unfortunately, this model appears to have similar output like in model 2.
+\end_layout
+
+\begin_layout Standard
+model 4 is chosen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+graph model 2 and 1 in result of appendix?????
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Software release L17A
+\end_layout
+
+\begin_layout Standard
+There is model 1 is chosen
+\end_layout
+
+\begin_layout Section*
+Inference state
 \end_layout
 
 \begin_layout Standard

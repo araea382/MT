@@ -254,39 +254,39 @@ ggplot(data=state_L16B_3, aes(x=index, y=y)) + geom_line() +
     ylab("TotCpu") + ggtitle("L16B_YYN") + theme_bw()
 
 
-###############
-# g2 L16B
-# 2 states
-###############
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-names(switch) <- c(names(mod_L16B$coefficients),"AR","var")
-switch[c(5:6)] <- FALSE; switch
-set.seed(1)
-mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
-summary(mswm_L16B_2)
-# 1671.193 1811.054 -819.5966
-# higher BIC
-# higher residual standard error in every state
-# one state has r-squared 0.69
-
-#--------------------------------#
-# smoothed prob plot
-L16B_2 <- as.data.frame(mswm_L16B_2@Fit@smoProb)
-L16B_2 <- cbind(index=seq(1,nrow(L16B_2)),L16B_2)
-colnames(L16B_2) <- c("index","State 1","State 2")
-
-L16B_2 <- melt(L16B_2, id="index")
-ggplot(data=L16B_2, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-  theme_bw() + theme(legend.title = element_blank())
-
-#--------------------------------#
-# plot with state area
-state_L16B_2 <- gen(mswm_L16B_2, train_g2_L16B)
-ggplot(data=state_L16B_2, aes(x=index, y=y)) + geom_line() +
-  geom_rect(data=state_L16B_2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
-  scale_fill_manual(values=c("red","green","blue")) +
-  ylab("TotCpu") + ggtitle("L16B") + theme_bw()
+# ###############
+# # g2 L16B
+# # 2 states
+# ###############
+# switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
+# names(switch) <- c(names(mod_L16B$coefficients),"AR","var")
+# switch[c(5:6)] <- FALSE; switch
+# set.seed(1)
+# mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+# summary(mswm_L16B_2)
+# # 1671.193 1811.054 -819.5966
+# # higher BIC
+# # higher residual standard error in every state
+# # one state has r-squared 0.69
+# 
+# #--------------------------------#
+# # smoothed prob plot
+# L16B_2 <- as.data.frame(mswm_L16B_2@Fit@smoProb)
+# L16B_2 <- cbind(index=seq(1,nrow(L16B_2)),L16B_2)
+# colnames(L16B_2) <- c("index","State 1","State 2")
+# 
+# L16B_2 <- melt(L16B_2, id="index")
+# ggplot(data=L16B_2, aes(x=index, y=value, colour=variable)) + geom_line() +
+#   ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+#   theme_bw() + theme(legend.title = element_blank())
+# 
+# #--------------------------------#
+# # plot with state area
+# state_L16B_2 <- gen(mswm_L16B_2, train_g2_L16B)
+# ggplot(data=state_L16B_2, aes(x=index, y=y)) + geom_line() +
+#   geom_rect(data=state_L16B_2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+#   scale_fill_manual(values=c("red","green","blue")) +
+#   ylab("TotCpu") + ggtitle("L16B") + theme_bw()
 
 
 ###############
