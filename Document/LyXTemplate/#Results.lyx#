@@ -702,7 +702,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities for software release L16A with two-state model
+The smoothed probabilities of software release L16A with two-state model
 \end_layout
 
 \end_inset
@@ -742,7 +742,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities for software release L16A with three-state model
+The smoothed probabilities of software release L16A with three-state model
 \end_layout
 
 \end_inset
@@ -826,7 +826,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities for software release L16B with two-state model
+The smoothed probabilities of software release L16B with two-state model
 \end_layout
 
 \end_inset
@@ -869,7 +869,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities for software release L16B with three-state model
+The smoothed probabilities of software release L16B with three-state model
 \end_layout
 
 \end_inset
@@ -937,7 +937,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities for software release L17A with three-state model
+The smoothed probabilities of software release L17A with three-state model
 \end_layout
 
 \end_inset
@@ -974,7 +974,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities for software release L17A with three-state model
+The smoothed probabilities of software release L17A with three-state model
 \end_layout
 
 \end_inset
@@ -1090,6 +1090,23 @@ reference "L16A_switch"
 \end_inset
 
 .
+ The second model has the highest BIC value and even higher than the original
+ model with all switching coefficients.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+From the obtained outputs, it is found that a linear regression for State
+ 3 in all three models has r-squared equals to 1 with moderately small residual
+ standard error.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1102,7 +1119,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure for software release L16A with different switching
+List of the model structure of software release L16A with different switching
  coefficients along with BIC
 \end_layout
 
@@ -1392,14 +1409,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-The second model has the highest BIC value and even higher than the original
- model with all switching coefficients.
- From the obtained outputs, it is found that a linear regression for State
- 3 in all three models has r-squared equals to 1 with moderately small residual
- standard error.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1425,54 +1434,12 @@ Model 1: L16A_NN
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "L16A_NN"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/L16A_YN.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Model 3: L16A_YN
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1507,7 +1474,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure for software release L16B with different switching
+List of the model structure of software release L16B with different switching
  coefficients along with BIC
 \end_layout
 
@@ -1585,7 +1552,7 @@ BIC
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Selected
 \end_layout
 
 \end_inset
@@ -1865,7 +1832,7 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+*
 \end_layout
 
 \end_inset
@@ -2067,10 +2034,40 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16B_NYY.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model 4: L16B_NYY
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_NYY"
+
+\end_inset
+
 
 \end_layout
 
@@ -2104,7 +2101,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure for software release L17A with different switching
+List of the model structure of software release L17A with different switching
  coefficients along with BIC
 \end_layout
 
@@ -2124,8 +2121,9 @@ name "L17A_switch"
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="5">
+<lyxtabular version="3" rows="9" columns="6">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2177,6 +2175,15 @@ BIC
 
 \end_inset
 </cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Selected
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -2216,6 +2223,15 @@ NumCells
 \end_inset
 </cell>
 <cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2271,6 +2287,15 @@ N
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -2314,6 +2339,15 @@ Y
 
 \begin_layout Plain Layout
 1,204.280
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2365,6 +2399,15 @@ N
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -2412,6 +2455,15 @@ Y
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -2454,7 +2506,16 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,146
+1,146.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2506,6 +2567,15 @@ Y
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -2553,6 +2623,15 @@ N
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
@@ -2582,6 +2661,49 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L17A_NNN.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model 1: L17A_NNN
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L17A_NNN"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Further discussion and details about how to select the Markov switching
  autoregressive model for the given dataset is provided in 
 \begin_inset CommandInset ref
@@ -2598,25 +2720,17 @@ Residual analysis
 \end_layout
 
 \begin_layout Standard
-The results of the selected Markov switching autoregressive model for each
+The results of the selected Markov switching autoregressive model of each
  software release are analyzed to see how well the time series data fits
  the assumption of normally distributed residuals.
-\end_layout
-
-\begin_layout Standard
-Plot of residuals against fitted values, a Normal Q-Q plot, ACF/PACF of
- residuals and ACF/PACF of square residuals of each model are shown below.
+ A Normal Q-Q plot, and ACF/PACF of pooled residuals of each model are shown
+ below.
  
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
 status open
-
-\begin_layout Plain Layout
-model validation (using residual analysis- if the residuals appear to behave
- randomly, it suggests that the model fits the data well.)
-\end_layout
 
 \begin_layout Plain Layout
 Different types of plots of the residuals from a fitted model provide informatio
@@ -2652,28 +2766,445 @@ n on the adequacy of different aspects of the model.
 
 \end_layout
 
-\begin_layout Subsection
-Software release L16A 
+\begin_layout Standard
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_plotDiag"
+
+\end_inset
+
+, the pooled residuals appears to fall in a straight line with some deviations
+ in its tails.
+ It is fairly safe to Normal distribution.
+ The model is able to capture the pattern of data rather well.
+ Autocorrelation Function of the pooled residuals from the model suggests
+ that this is a first order autoregressive model.
 \end_layout
 
 \begin_layout Standard
-df
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+There is an outlier in the residuals (2004:Q4) which suggests there was
+ something unusual happening in that quarter.
+ It would be worth investigating that outlier to see if there were any unusual
+ circumstances or events that may have reduced beer production for the quarter.
 \end_layout
 
-\begin_layout Subsection
-Software release L16B
+\begin_layout Plain Layout
+The remaining residuals show that the model has captured the patterns in
+ the data quite well, although there is a small amount of autocorrelation
+ left in the residuals (seen in the significant spike in the ACF plot).
+ This suggests that the model can be slightly improved, although it is unlikely
+ to make much difference to the resulting forecasts.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-df
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16A_QQPool.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\begin_inset Formula $\quad$
+\end_inset
+
+
+\begin_inset Graphics
+	filename picture/L16A_ACFPool.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subsection
-Software release L17A 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Normal Q-Q Plot and ACF/PACF of pooled residuals of software release L16A
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16A_plotDiag"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-df
+The assumption of a Normally distributed residuals is justified for software
+ release L16B.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_plotDiag"
+
+\end_inset
+
+, it is noticed that the points form a straight line in the middle of the
+ plot, but curve off at the end.
+ This is a characteristics of the heavy-tailed distribution.
+ The data has more extreme values than it should be if the data is truly
+ comes from the Normal distribution.
+ The 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16B_QQPool.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\begin_inset Formula $\quad$
+\end_inset
+
+
+\begin_inset Graphics
+	filename picture/L16B_ACFPool.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Normal Q-Q Plot and ACF/PACF of pooled residuals of software release L16B
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_plotDiag"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L17A_QQPool.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\begin_inset Formula $\quad$
+\end_inset
+
+
+\begin_inset Graphics
+	filename picture/L17A_ACFPool.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Normal Q-Q Plot and ACF/PACF of pooled residuals of software release L17A
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L17A_plotDiag"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_QQ"
+
+\end_inset
+
+, the residual of State 1 does not seems to follow a normal distribution.
+ The residuals of State 2 and State 3 both have heavy-tailed.
+ A few outliers can also be seen in the plot.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16A_QQ.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Normal Q-Q plot of software release L16A
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16A_QQ"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16A_ACF.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ACF/PACF of pooled residuals and ACF/PACF of square residuals of software
+ release L16A
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+It is clearly that State 1 does not come from a Normal distribution in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_QQ"
+
+\end_inset
+
+.
+ There are three different lines in one plot.
+ Both State 2 and State 3 appear to fall is a straight line with some deviations
+ in their tails.
+ This is a characteristics of the heavy-tailed distribution.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16B_QQ.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Normal Q-Q plot of software release L16B
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_QQ"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_QQ"
+
+\end_inset
+
+ presents State 1 heavy-tailed
+\end_layout
+
+\begin_layout Plain Layout
+State 2 bimodal
+\end_layout
+
+\begin_layout Plain Layout
+State 3 right skew
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L17A_QQ.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Normal Q-Q plot of software release L17A
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L17A_QQ"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -3062,6 +3593,8 @@ reference "confusion"
  Moreover, another two observations from the Good state are classified to
  the Normal state.
  The overall accuracy is 0.96 and the misclassification rate is 0.04.
+ One can see that the model is able to correctly predict the observations
+ which have Bad and Good state.
  
 \end_layout
 
@@ -3342,22 +3875,6 @@ Good
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-One can see that the model is able to predict the Bad and Good state correctly.
- The model and it has accuracy equals to 0.88.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Accuracy each class
 \end_layout
 
 \end_inset

@@ -43,9 +43,6 @@ plotReg(mswm_L16B_3, expl=predictor[3], regime=1)
 plotReg(mswm_L16B_3, expl=predictor[3], regime=2)
 plotReg(mswm_L16B_3, expl=predictor[3], regime=3)
 
-# # predict
-# predict(mswm_L16B_3, newdata)
-
 #--------------------------------#
 # smoothed prob plot
 L16B_3 <- as.data.frame(mswm_L16B_3@Fit@smoProb)

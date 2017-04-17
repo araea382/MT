@@ -352,7 +352,7 @@ You may want to include an appendix to describe the software used in the
 
 \begin_layout Standard
 The algorithm used for fitting the Markov switching autoregressive model
- is mainly based on the 
+ is mainly based on a 
 \emph on
 MSwM
 \emph default
@@ -366,7 +366,7 @@ key "mswm"
 .
  This package performs an univariate autoregressive Markov switching model
  for linear and generalized models.
- The package implemented the Expectation-Maximization (E-M) algorithm to
+ The package implements the Expectation-Maximization (E-M) algorithm to
  fit the Markov switching model.
  
 \end_layout
@@ -552,6 +552,96 @@ name "chap:Output"
 
 \begin_layout Standard
 L16A_YN
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16B_NNY.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model 2: L16B_NNY
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_NNY"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16B_YNY.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Model 6: L16B_YNY
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_YNY"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

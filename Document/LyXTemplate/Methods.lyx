@@ -1905,7 +1905,7 @@ reference "chap:MSwM-Package"
 \end_layout
 
 \begin_layout Standard
-The probability of being in state 
+The probabilities of being in state 
 \begin_inset Formula $j$
 \end_inset
 
@@ -1913,7 +1913,7 @@ The probability of being in state
 \begin_inset Formula $T+1$
 \end_inset
 
- on the basis of current information is computed by performing the filtering
+ on a basis of the current information are computed by performing the filtering
  algorithm in the E-step of E-M algorithm.
  The filtered probabilities are
 \end_layout
@@ -1959,10 +1959,10 @@ Model selection
 
 \begin_layout Standard
 Model selection is a task of selecting the most suitable model for a given
- set of data based on the quality of the model.
- In this thesis framework, the Bayesian Information Criterion (BIC) is widely
- employed in the applied literature and proved to be useful in selecting
- the model among a finite set of models.
+ set of data, based on the quality of the model.
+ The Bayesian Information Criterion (BIC) is widely employed in the applied
+ literature and proved to be useful in selecting the model among a finite
+ set of models.
  It is also known as Schwarz Information Criterion 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2032,10 +2032,10 @@ Non-parametric analysis
 \end_layout
 
 \begin_layout Standard
-The parametric test statistics outperform the non-parametric test if data
- belongs to some known distribution families.
- However, the parametric test is not properly performing well in detecting
- change point for an unknown underlying distribution 
+A parametric analysis outperform a non-parametric analysis if the applied
+ data belongs to a known distribution family.
+ However, a parametric test does not perform well in detecting change point
+ of an unknown underlying distribution 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sharkey2014nonparametric"
@@ -2043,10 +2043,11 @@ key "sharkey2014nonparametric"
 \end_inset
 
 .
- Applying the non-parametric analysis to the real-world process gives a
- real advantage to the analysis since data collected from application, in
- general, does not always have a well-defined structure and prefer such
- analysis that is not too restricted 
+ Applying a non-parametric analysis to a real-world process gives a real
+ advantage to the analysis.
+ Data collected from a real-world process, in general, usually does not
+ have a well-defined structure, which is more suitable to be applied with
+ the non-parametric analysis that is not too restricted 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "hawkins2010nonparametric"
@@ -2055,9 +2056,9 @@ key "hawkins2010nonparametric"
 
 .
  For this reason, the non-parametric analysis is implemented in order to
- get a heuristic idea of the change point location in this thesis framework.
- The obtained result is also used for comparing with the result from the
- Markov switching autoregressive model.
+ get a rough idea of the change point location in this thesis framework.
+ The obtained result is also compared with the result from using the Markov
+ switching autoregressive model.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2065,7 +2066,7 @@ E-divisive
 \end_layout
 
 \begin_layout Standard
-The 
+An 
 \emph on
 ecp
 \emph default
@@ -2079,11 +2080,11 @@ https://cran.r-project.org/web/packages/ecp/index.html
 
 \end_inset
 
- is an extension package in R which mainly focuses on computing the non-parametr
-ic test for multiple change point analysis.
+ is an extension package in R which mainly focuses on computing a non-parametric
+ test for multiple change point analysis.
  This change point method is applicable to both univariate and multivariate
  time series.
- A fundamental idea for the method is based on the hierarchical clustering
+ A fundamental idea of the pacakge is based on the hierarchical clustering
  approach 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2096,7 +2097,7 @@ key "james2013ecp"
 \end_layout
 
 \begin_layout Standard
-The E-divisive method is an algorithm in the 
+An E-divisive method is an algorithm in the 
 \emph on
 ecp
 \emph default
@@ -2105,11 +2106,11 @@ ecp
  multiple change points.
  The E-divisive recursively partitions a time series and estimates a single
  change point in each iteration.
- Consequently, the new change point is located at each iteration and it
+ Consequently, the new change point is located in each iteration, which
  divides the time series into different segments.
- The algorithm also used a permutation test to compute the statistical significa
+ The algorithm also uses a permutation test to compute the statistical significa
 nce of an estimated change point.
- More details about the estimation is described on 
+ More details about the estimation is described in 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "matteson2014nonparametric"
@@ -2150,13 +2151,13 @@ Simulation
 \end_layout
 
 \begin_layout Standard
-Since there is no annotation for the state of the CPU utilization in the
- data, an accuracy can not be computed after making a state prediction.
+Since the state of the CPU utilization in the data is unknown, an accuracy
+ of the model cannot be computed.
  One possible solution to test and verify how well the implemented predict
- function performs is to use the simulation technique.
- The data consists of two predictor variables and one response variable
- with the known state is simulated.
- The actual models for each state are 
+ function performs is to used a simulation technique.
+ The data that consists of two predictor variables and one response variable
+ with already known states is simulated.
+ The actual models of each state are 
 \end_layout
 
 \begin_layout Standard
@@ -2168,9 +2169,9 @@ y=\begin{cases}
 2+0.8X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(2)}\\
 -12+0.7X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(3)}
 \end{array} & \begin{array}{c}
-\varepsilon_{t}^{(1)}\sim N(0,1)\\
-\varepsilon_{t}^{(2)}\sim N(2,0.5)\\
-\varepsilon_{t}^{(3)}\sim N(1,1)
+\varepsilon_{t}^{(1)}\sim N(0,1);\quad\mathrm{Normal}\\
+\varepsilon_{t}^{(2)}\sim N(2,0.5);\quad\mathrm{Good}\\
+\varepsilon_{t}^{(3)}\sim N(1,1);\quad\mathrm{Bad}
 \end{array}\end{cases}
 \]
 
@@ -2180,8 +2181,7 @@ y=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-The simulated data contains 500 observations which has a presence of three
- different states – Normal, Bad and Good.
+The simulated data which contains 500 observations.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2193,8 +2193,9 @@ reference "sim_data"
 \begin_inset Formula $y$
 \end_inset
 
- over a period of time and the period where observations in the data belong
- to one of the state is shown in 
+ over a period of time.
+ The period where observations in the data belong to one of the state is
+ shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sim_state"
@@ -2202,6 +2203,21 @@ reference "sim_state"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The simulated data, which contains 500 observations, has three different
+ states – Normal, Bad and Good.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -406,6 +406,10 @@ Residual analysis
 \end_layout
 
 \begin_layout Standard
+remember that dataset is not large 
+\end_layout
+
+\begin_layout Standard
 One benefit from using the non-parametric analysis is that it does not require
  a prior assumption of the data distribution.
  This analysis is able to detect any type of distributional change within
@@ -483,33 +487,30 @@ Software release L16B
 When choosing model for the data, it is insufficient to only look at the
  BIC value.
  Other aspects should also be taken into consideration.
- For instance, model 2 has the smallest BIC value this could be a but graph
- is not interpretable
-\end_layout
-
-\begin_layout Standard
-The model 1
-\end_layout
-
-\begin_layout Standard
-Unfortunately, this model appears to have similar output like in model 2.
-\end_layout
-
-\begin_layout Standard
-model 4 is chosen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-graph model 2 and 1 in result of appendix?????
-\end_layout
+ For instance, although model 2 has the least BIC value, its graph is not
+ interpretable.
+ There are divided into two main parts.
+ As can be seen in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_NNY"
 
 \end_inset
 
+, mostly observations in the first half of the period stay in State 3 while
+ observations are in State 2 in the second half of the period.
+ This seems somewhat unrealistic that observation i.e., software package stays
+ in the same period for a long duration without switching to other states.
+ The model 6 which has the second smallest BIC value appears to have the
+ same output like in model 2, as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_YNY"
 
+\end_inset
+
+.
+ The selected model for this dataset is model 4.
 \end_layout
 
 \begin_layout Paragraph*
@@ -517,7 +518,8 @@ Software release L17A
 \end_layout
 
 \begin_layout Standard
-model 1 is chosen
+Model 1 has the lowest value of BIC and appears to have a good explanation.
+ Hence, it is preferably chosen.
 \end_layout
 
 \begin_layout Section*
