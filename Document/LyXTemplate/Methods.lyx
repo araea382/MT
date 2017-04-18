@@ -2017,7 +2017,7 @@ where
 \begin_inset Formula $T$
 \end_inset
 
- is the number of observations and 
+ is the number of observations, and 
 \begin_inset Formula $m$
 \end_inset
 
@@ -2181,7 +2181,7 @@ y=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-The simulated data which contains 500 observations.
+The simulated data contains 500 observations.
  
 \begin_inset CommandInset ref
 LatexCommand ref

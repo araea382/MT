@@ -320,11 +320,14 @@ The most relevant results of the analysis is shown and organized in this
  Then, performing a model selection for the given dataset in order to find
  which model is the most appropriate one and which parameter should have
  a switching effect in the model.
- Residual analysis is performed in the later section to validate the models.
- Next, the results of the non-parametric analysis are also presented.
- The last two sections report the results of predicting the state for the
- new observation in each dataset and verification the use of predict function
- in simulated data.
+ Residual analysis is performed in the later section as a means to validate
+ the models.
+ Next, the results of the non-parametric analysis are presented, and the
+ comparison between Markov switching autoregressive model and the non-parametric
+ analysis are made.
+ The last two sections report the results of predicting the state of the
+ new observations in each dataset, and the usage of predict function using
+ a simulated data.
  
 \end_layout
 
@@ -359,7 +362,7 @@ REASON: (easier to compare...what else?)
 \end_layout
 
 \begin_layout Standard
-To estimate the set of necessary parameters, the 
+To estimate the set of necessary parameters, an 
 \emph on
 MSwM
 \emph default
@@ -373,6 +376,25 @@ reference "chap:MSwM-Package"
 
 .
  
+\end_layout
+
+\begin_layout Standard
+The complete linear Markov switching autoregressive model in this thesis
+ framework is defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}X_{RrcConnectionSetupComplete,t}\nonumber \\
+ & +\beta_{Paging,S_{t}}X_{Paging,t}+\beta_{X2HandoverRequest,S_{t}}X_{X2HandoverRequest,t}\label{eq:mswm}\\
+ & +\beta_{DuProdName,S_{t}}X_{DuProdName,t}+\beta_{Fdd/Tdd,S_{t}}X_{Fdd/Tdd,t}\nonumber \\
+ & +\beta_{NumCells,S_{t}}X_{NumCells,t}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{S_{t}}\nonumber 
+\end{align}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -401,25 +423,7 @@ Markov switching autoregressive model is performed for each dataset with
  states (Normal, Bad, and Good).
  In addition, the normality assumption applies to the distribution of residuals
  during the estimation.
-\end_layout
-
-\begin_layout Standard
-The complete linear Markov switching autoregressive model in this thesis
- framework is defined as
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align}
-y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}X_{RrcConnectionSetupComplete,t}\nonumber \\
- & +\beta_{Paging,S_{t}}X_{Paging,t}+\beta_{X2HandoverRequest,S_{t}}X_{X2HandoverRequest,t}\label{eq:mswm}\\
- & +\beta_{DuProdName,S_{t}}X_{DuProdName,t}+\beta_{Fdd/Tdd,S_{t}}X_{Fdd/Tdd,t}\nonumber \\
- & +\beta_{NumCells,S_{t}}X_{NumCells,t}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{S_{t}}\nonumber 
-\end{align}
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -902,7 +906,7 @@ reference "L17A_2_smo"
 , when the Markov chain is in State 1, it stays there quite some time before
  leaving to State 2.
  It can be seen that the chain has fairly a short duration being in State
- 2 and quickly switch back to State 1.
+ 2 and quickly switches back to State 1.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -912,9 +916,8 @@ reference "L17A_3_smo"
 
  presents the chain which has many switches between State 1 and State 2
  in the first half of the time period.
- There are State 2 in the beginning The chain for the three-state model
- stays in State 2 significantly long from observation 104 until 129, the
- end of the duration.
+ The chain for the three-state model stays in State 2 significantly long
+ from observation 104 until 129, the end of the duration.
 \end_layout
 
 \begin_layout Standard
@@ -999,7 +1002,7 @@ The outputs from the model along with plots provide more interpretable results
  when defining the model with three states in software release L16B and
  L17A despite the slightly higher value in BIC.
  In regards to this, the three-state models for each software release are
- further analyzed throughout the thesis.
+ further analyzed in the thesis.
 \end_layout
 
 \begin_layout Standard
@@ -1016,23 +1019,19 @@ smoothed inference probabilities mostly to show how the regimes are identified
 \end_layout
 
 \begin_layout Section
-Switching coefficients
-\end_layout
+Switching coefficients 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Switching-coefficients"
 
-\begin_layout Standard
-The fitted Markov switching autoregressive models earlier only have state-depend
-ent parameters i.e., coefficients of the regression with switching effects.
- Apparently, each coefficient can have either a switching or non-switching
- effect.
- The hypothesis for this switching/non-switching coefficients is that the
- local events variables have switching effects while the variables considered
- as the test environment are possible to have non-switching effects.
- 
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Formula 
@@ -1076,12 +1075,36 @@ y_{t}= & \beta_{0,S_{t}}+\beta_{1,S_{t}}X_{RrcConnectionSetupComplete,t}+\beta_{
 \end_layout
 
 \begin_layout Standard
-The Markov switching autoregressive models are applied to each dataset.
- All combinations of coefficient in the regression with and without switching
- effect are tried out.
- Since DuProdName is not included in the model fitting for the dataset of
+The fitted Markov switching autoregressive models earlier only have state-depend
+ent parameters i.e., coefficients of the regression with switching effects.
+ Apparently, each coefficient can have either a switching or non-switching
+ effect.
+ The hypothesis for this switching/non-switching coefficients is that the
+ local events variables have switching effects while the variables considered
+ as the test environment are possible to have non-switching effects.
+ The Markov switching autoregressive models are applied to each dataset
+ again, but this time all combinations of coefficient in the regression
+ with and without switching effect are tried out.
+ Tables report the structure of the model in each software release, while
+ the plots present the state specifications from the selected Markov switching
+ autoregressive model.
+ Further discussion and details about how to select the Markov switching
+ autoregressive model for the given dataset is provided in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Discussion"
+
+\end_inset
+
+.
+ It should be noted that these three selected model of each software release
+ will later be used throughout this thesis.
+\end_layout
+
+\begin_layout Standard
+Since DuProdName is not included in the model fitting for the dataset of
  software release L16A, two variables for the test environment are left
- for trying whether it can have non-switching effect or not.
+ to try whether it can have non-switching effect or not.
  The result is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1090,13 +1113,15 @@ reference "L16A_switch"
 \end_inset
 
 .
- The second model has the highest BIC value and even higher than the original
- model with all switching coefficients.
+ The second model has the highest BIC value and even higher than the model
+ with all switching coefficients.
+ The first model where Fdd/Tdd and NumCells have switching effects is selected
+ to use with the dataset.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 From the obtained outputs, it is found that a linear regression for State
@@ -1119,8 +1144,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of software release L16A with different switching
- coefficients along with BIC
+List of the model structure of the software release L16A with different
+ switching coefficients along with its BIC
 \end_layout
 
 \end_inset
@@ -1386,11 +1411,6 @@ N
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
 \begin_inset Note Comment
 status open
 
@@ -1406,6 +1426,27 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_NN"
+
+\end_inset
+
+ indicates the CPU utilization of the software release L16A showing the
+ periods of the derived state from the model.
+ It is not difficult to notice that State 2 has a longer duration to remain
+ in its own state compares to any other states.
+ When the chain moves to State 3, it immediately switches to different states.
+ In other words, it does not really stay in State 3 during the time series
+ period.
+ Although State 1 appears to have a similar behavior like in State 3, it
+ tends to stay longer in the beginning and almost at the end of the period.
+ The plot also shows that there is more chances from State 2 to switch to
+ State 3 rather than State 1.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1428,7 +1469,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Model 1: L16A_NN
+The CPU utilization of the software release L16A showing the periods where
+ the observation is in the specific state.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Model 1: Fdd/Tdd and Numcells are non-switching coefficients.
 \end_layout
 
 \end_inset
@@ -1462,6 +1509,8 @@ reference "L16B_switch"
  in all coefficients are model 5 and 7.
  It is noticeable that model 2 which has DuProdName and Fdd/Tdd as coefficient
  with non-switching effect has a smallest value in BIC.
+ The model which has only DuProdName with a non-switching coefficient is
+ used for this dataset.
 \end_layout
 
 \begin_layout Standard
@@ -1474,8 +1523,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of software release L16B with different switching
- coefficients along with BIC
+List of the model structure of the software release L16B with different
+ switching coefficients along with its BIC
 \end_layout
 
 \end_inset
@@ -2011,11 +2060,6 @@ N
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
 \begin_inset Note Comment
 status open
 
@@ -2031,6 +2075,23 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Many switches between states can easily be seen in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_NYY"
+
+\end_inset
+
+.
+ However, the state which has the longest duration is State 3.
+ It is visible that there are three long duration that stay in State 3.
+ Another noticeable behavior from this switching mechanism is that there
+ is plenty of switches between State 1 and State 2 in the beginning, middle,
+ and at the end of the time period.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2056,7 +2117,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Model 4: L16B_NYY
+The CPU utilization of the software release L16B showing the periods where
+ the observation is in the specific state.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Model 4: DuProdName are non-switching coefficients.
 \end_layout
 
 \end_inset
@@ -2088,7 +2155,7 @@ reference "L17A_switch"
  coefficients.
  The least BIC value is from the first model that all three parameters in
  the test environment have non-switching effects.
- 
+ This model is also chosen to be further used for this dataset.
 \end_layout
 
 \begin_layout Standard
@@ -2101,8 +2168,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of software release L17A with different switching
- coefficients along with BIC
+List of the model structure of the software release L17A with different
+ switching coefficients along with its BIC
 \end_layout
 
 \end_inset
@@ -2638,11 +2705,6 @@ N
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
 \begin_inset Note Comment
 status open
 
@@ -2658,6 +2720,24 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+There are plenty of switches between states exist in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_NNN"
+
+\end_inset
+
+.
+ It appears that there is less switch from different states to State 1 around
+ the end of the time series period.
+ Moreover, State 2 seems to be the only state which has rather a short duration
+ to remain in its own state.
+ It can also be seen that State 2 tends to move to State 1 more often than
+ move to State 3.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2683,7 +2763,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Model 1: L17A_NNN
+The CPU utilization of the software release L17A showing the periods where
+ the observation is in the specific state.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Model 1: DuProdName, Fdd/Tdd, and NumCells are non-switching coefficients.
 \end_layout
 
 \end_inset
@@ -2704,15 +2790,24 @@ name "L17A_NNN"
 \end_layout
 
 \begin_layout Standard
-Further discussion and details about how to select the Markov switching
- autoregressive model for the given dataset is provided in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Discussion"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+OUTPUT r-squared of each state
+\end_layout
 
 \end_inset
 
-.
+
+\end_layout
+
+\begin_layout Standard
+Model validation
+\end_layout
+
+\begin_layout Standard
+r squared of each state 
 \end_layout
 
 \begin_layout Section
@@ -2720,17 +2815,8 @@ Residual analysis
 \end_layout
 
 \begin_layout Standard
-The results of the selected Markov switching autoregressive model of each
- software release are analyzed to see how well the time series data fits
- the assumption of normally distributed residuals.
- A Normal Q-Q plot, and ACF/PACF of pooled residuals of each model are shown
- below.
- 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Different types of plots of the residuals from a fitted model provide informatio
@@ -2767,6 +2853,26 @@ n on the adequacy of different aspects of the model.
 \end_layout
 
 \begin_layout Standard
+The residuals of the selected Markov switching autoregressive model from
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Switching-coefficients"
+
+\end_inset
+
+ are analyzed to see how well the time series data fits the assumption of
+ a normal distribution.
+ A Quantile-Quantile (Q-Q) plot is an effective tool for assessing normality.
+ Moreover, an Autocorrelation function (ACF) and Partial Autocorrelation
+ Function (PACF) of residuals are plotted in order to check on the independence
+ of noise terms in the model.
+ These two plots play a significant role in the residual diagnostics.
+ The Q-Q plot and the ACF/PACF plot of each dataset are shown below.
+ 
+\end_layout
+
+\begin_layout Standard
 In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2776,15 +2882,23 @@ reference "L16A_plotDiag"
 
 , the pooled residuals appears to fall in a straight line with some deviations
  in its tails.
- It is fairly safe to state that residuals are normally distributed.
- Furthermore, the model is able to capture the pattern of data rather well.
- Autocorrelation Function of the pooled residuals from the model suggests
- that this is a first order autoregressive model.
+ There is an evidence of autocorrelation in the residuals of this model,
+ which can be seen in both ACF and PACF plot, at lag 8.
+ This provides some evidence that the residual is somehow independently
+ and identically distributed.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
+
+\begin_layout Plain Layout
+Furthermore, the model is able to capture the pattern of data rather well.
+\end_layout
+
+\begin_layout Plain Layout
+heavy tail = high variance
+\end_layout
 
 \begin_layout Plain Layout
 There is an outlier in the residuals (2004:Q4) which suggests there was
@@ -2841,7 +2955,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Normal Q-Q Plot and ACF/PACF of pooled residuals of software release L16A
+The normal Q-Q plot and thr ACF/PACF of pooled residuals of software release
+ L16A
 \end_layout
 
 \end_inset
@@ -2862,9 +2977,7 @@ name "L16A_plotDiag"
 \end_layout
 
 \begin_layout Standard
-The assumption of a Normally distributed residuals is justified for software
- release L16B.
- In 
+In 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_plotDiag"
@@ -2874,9 +2987,14 @@ reference "L16B_plotDiag"
 , it is noticed that the points form a straight line in the middle of the
  plot, but curve off at the end.
  This is a characteristics of the heavy-tailed distribution.
- The data has more extreme values than it should be if the data is truly
- comes from the Normal distribution.
- The 
+ The data has more extreme values than it should be if the data truly comes
+ from a normal distribution.
+ In addition, both the ACF and PACF plot show that there is a small amount
+ of autocorrelation remaining in the residuals.
+ The statistically significant correlation of this model are at lags 6 and
+ 10.
+ The significant at lag 4 both in the ACF and PACF plot is slightly higher
+ than a 2 standard errors.
 \end_layout
 
 \begin_layout Standard
@@ -2914,7 +3032,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Normal Q-Q Plot and ACF/PACF of pooled residuals of software release L16B
+The normal Q-Q plot and the ACF/PACF of pooled residuals of software release
+ L16B
 \end_layout
 
 \end_inset
@@ -2932,6 +3051,25 @@ name "L16B_plotDiag"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The Q-Q plot in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_plotDiag"
+
+\end_inset
+
+ suggests that the distribution of the pooled residuals may have a tail
+ thicker than that of a normal distribution.
+ It is visible that there are many extreme positive and negative residuals
+ in the plot.
+ Furthermore, the ACF plot of pooled residuals are significant for the first
+ two lags, whereas the PACF plot is significant only at lag 2.
+ The model seems to capture the dependent structure of the error terms in
+ the time series, except for the reported significant lag.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2969,7 +3107,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Normal Q-Q Plot and ACF/PACF of pooled residuals of software release L17A
+The normal Q-Q plot and the ACF/PACF of pooled residuals of software release
+ L17A
 \end_layout
 
 \end_inset
@@ -2991,7 +3130,7 @@ name "L17A_plotDiag"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 In 
@@ -3357,7 +3496,7 @@ L17A
 
 \begin_layout Standard
 The CPU utilization for software release L16A, L16B and L17A along with
- its estimated change points in the time series is plotted and shown in
+ its estimated change points in the time series are plotted and shown in
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3436,10 +3575,24 @@ name "ediv_L16A"
 \begin_layout Standard
 Four change points are identified from the method for the software release
  L16B and L17A.
- In The estimated change points for the dataset of software release L16B
- are likely to occur around the same period of time.
- On the contrary, the software release L17A has the estimated change points
- from the method rather spread out.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ediv_L16B"
+
+\end_inset
+
+, the estimated change points for the dataset of software release L16B are
+ likely to occur around the same period of time.
+ On the contrary, the result for the software release L17A, which is shown
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ediv_L17A"
+
+\end_inset
+
+, has the estimated change points rather spread out.
  
 \end_layout
 
@@ -3550,14 +3703,21 @@ compare with results from Markov switching autoregressive model.
 
 \end_layout
 
+\begin_layout Subsection*
+Comparison
+\end_layout
+
+\begin_layout Standard
+Firs, it is seen that 
+\end_layout
+
 \begin_layout Section
 Predicting the state
 \end_layout
 
 \begin_layout Standard
-After deciding which model is going to be used for the given dataset of
- the software release, the test set is used to find the most probable state
- for each new observation.
+Now, the test set is used to find the most probable state for each new observati
+on.
 \end_layout
 
 \begin_layout Standard

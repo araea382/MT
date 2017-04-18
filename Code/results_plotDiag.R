@@ -100,8 +100,12 @@ qqplot.data2 <- function(vec){
 residPooled <- apply(mswm_L16A_NN["Fit"]["error"]*mswm_L16A_NN["Fit"]["smoProb"][-1,],1,sum)
 qqplot.data2(residPooled)
 
+fit <- apply(mswm_L16A_NN["Fit"]["CondMean"]*mswm_L16A_NN["Fit"]["smoProb"][-1,],1,sum)
+plot(x=fit, y=residPooled,ylab="Residuals")
+plot(fit, ylab="Residuals")
+
 par(mfrow=c(2,1))
-acf(residPooled,ylim=c(-1,1),main="ACF of Residuals")
+acf(residPooled,ylim=c(-1,1),main="ACF of Residuals", lag.max=20)
 pacf(residPooled,ylim=c(-1,1),main="PACF of Residuals")
 
 qqplot.data <- function(vec, ind){

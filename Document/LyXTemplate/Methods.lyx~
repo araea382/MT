@@ -2169,9 +2169,9 @@ y=\begin{cases}
 2+0.8X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(2)}\\
 -12+0.7X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(3)}
 \end{array} & \begin{array}{c}
-\varepsilon_{t}^{(1)}\sim N(0,1)\\
-\varepsilon_{t}^{(2)}\sim N(2,0.5)\\
-\varepsilon_{t}^{(3)}\sim N(1,1)
+\varepsilon_{t}^{(1)}\sim N(0,1);\quad\mathrm{Normal}\\
+\varepsilon_{t}^{(2)}\sim N(2,0.5);\quad\mathrm{Good}\\
+\varepsilon_{t}^{(3)}\sim N(1,1);\quad\mathrm{Bad}
 \end{array}\end{cases}
 \]
 
@@ -2181,8 +2181,7 @@ y=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-The simulated data, which contains 500 observations, has three different
- states – Normal, Bad and Good.
+The simulated data contains 500 observations.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2207,7 +2206,18 @@ reference "sim_state"
 \end_layout
 
 \begin_layout Standard
-The simulated data which contains 500 observations.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The simulated data, which contains 500 observations, has three different
+ states – Normal, Bad and Good.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

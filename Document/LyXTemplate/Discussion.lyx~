@@ -398,6 +398,10 @@ Markov switching model with four states is also tested in the analysis but
 \end_layout
 
 \begin_layout Standard
+Three-state is more interpretable because ...
+\end_layout
+
+\begin_layout Standard
 Switching only the test environment variable because ...
 \end_layout
 
@@ -406,6 +410,27 @@ Residual analysis -> It reveals that residual does not completely follow
  a normal distribution -> remember that dataset is not large -> hard to
  spot a basic feature -> representing some noise -> with small samples often
  situation may be less clearer
+\end_layout
+
+\begin_layout Standard
+model validation -> if the residuals appear to behave randomly, it suggests
+ that the model fits the data well
+\end_layout
+
+\begin_layout Standard
+randomness tends to obscure the true behavior especially with small data
+\end_layout
+
+\begin_layout Standard
+The assumption of a normally distributed residuals is justified for software
+ release L16B.
+\end_layout
+
+\begin_layout Standard
+Q-Q plot is used to check the assumption.
+ It is a visual check that provides a rough idea whether the assumption
+ is plausible.
+ 
 \end_layout
 
 \begin_layout Standard
