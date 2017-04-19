@@ -323,7 +323,8 @@ Data sources
 \end_layout
 
 \begin_layout Standard
-Data used in this thesis is provided by Ericsson site in Linköping, Sweden.
+The data used in this thesis is provided by Ericsson site in Linköping,
+ Sweden.
  Ericsson
 \begin_inset Foot
 status open
@@ -334,18 +335,18 @@ https://www.ericsson.com/
 
 \end_inset
 
- founded by Lars Magnus Ericsson since 1876 is one of the world’s leading
- in telecommunication industry.
- The company provides services, software products and infrastructure related
+, founded by Lars Magnus Ericsson since 1876, is one of the world’s leader
+ in the telecommunication industry.
+ The company provides services, software products, and infrastructure related
  to information and communications technology (ICT).
  Its head quarter is located in Stockholm, Sweden.
  Ericsson continuously expands its services and products beyond telecoms
- sector such as mobile broadband, cloud services, transportation and network
+ sector such as mobile broadband, cloud services, transportation, and network
  design.
 \end_layout
 
 \begin_layout Standard
-LTE, widely known as 4G, is the Long-Term Evolution of the 3G network.
+LTE, widely known as 4G, is a Long-Term Evolution of the 3G network.
  The high-level network architecture of LTE is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -362,16 +363,16 @@ key "dahlman20134g"
 
 .
  The E-UTRAN, an official standard name for the radio access network of
- LTE, is the entire network.
- It handles the radio communication between the User Equipment, UE, or mobile
+ LTE, is the entire radio access network.
+ It handles the radio communication between the User Equipment (UE) or mobile
  device and the evolved base stations called eNB.
  Each eNB is a base station which controls and manages radio communications
  with multiple devices in one or more cells.
- Several base stations are connected to a Mobility Management Entity, MME,
+ Several base stations are connected to a Mobility Management Entity (MME),
  which handles the high-level operation of the mobile for different UEs.
  MME establishes a connection and runs a security application to ensure
  that the UE is allowed on the network.
- In LTE mobile network, multiple UEs connect to a single base station.
+ In LTE mobile network, multiple UEs are connected to a single base station.
  A new UE performs a cell search procedure by searching for an available
  eNB when it first connects to the network.
  Then, the UE sends information about itself to establish a link between
@@ -441,9 +442,9 @@ A
 \emph default
  or 
 \emph on
-B
+B,
 \emph default
- which generally corresponds to 
+ which generally corresponds to the 
 \begin_inset Formula $1^{st}$
 \end_inset
 
@@ -456,29 +457,28 @@ B
 on track.
  This track becomes the main track of the work or the focal branch for all
  code deliveries.
- There are hundreds of teams producing code and code is committed to this
- track continuously.
+ There are hundreds of teams producing code, and each team commit the code
+ to this track continuously.
  In order to create a structure for this contribution, a daily 
 \emph on
 software package
 \emph default
- is built.
- Every day a new software package is built which can be seen as a snapshot
- or a marker in the continuous delivery timeline.
+ is built which can be seen as a snapshot or a marker in the continuous
+ delivery timeline.
  This software package is then run through various automated test loops
  to ensure that there are no faults in the system.
  The software packages are named 
 \emph on
-R
+R,
 \emph default
- followed by one or more numbers, which is then followed by one or more
+ and followed by one or more numbers, which is then followed by one or more
  letters.
  
 \emph on
 R
 \emph default
  stands for Release-state.
- To summarize, each software package is the snapshot in the code integration
+ To summarize, each software package is a snapshot in the code integration
  timeline.
  
 \begin_inset CommandInset ref
@@ -487,7 +487,7 @@ reference "release"
 
 \end_inset
 
- presents the relation between software release and software package.
+ presents a relationship between a software release and software packages.
  
 \end_layout
 
@@ -515,7 +515,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Example of one software release that begins a code integration track.
+An example of one software release that begins a code integration track.
  Several software packages are launched in the timeline.
 \end_layout
 
@@ -539,30 +539,30 @@ name "release"
 \begin_layout Standard
 There are thousands of automated tests performed.
  Each test belongs to a particular suite of tests, which belongs to a particular
- quality assurance (QA) area.
- For this thesis framework, one suite of test cases that test the signaling
- capacity within QA Capacity is focused.
- The QA Capacity has the responsibility of testing and tracking test cases
- related to LTE node capacity.
- Each one of these test cases has a well-defined traffic model it tries
+ Quality Assurance (QA) Capacity.
+ For this thesis framework, one suite of the test cases that tests the signaling
+ capacity is focused.
+ The QA Capacity is responsible for testing and tracking test cases related
+ to LTE node capacity.
+ Each one of these test cases has a well-defined traffic model that it tries
  to execute.
  The traffic model in this context means certain intensity (per second)
  of procedures, which can be seen as stimuli in the LTE node.
  The LTE node then increments one or more counters for each one of these
- procedures or stimuli it detects.
- These counters are called local events and they are represented by EventsPerSec.
+ procedures or stimuli that it detects.
+ These counters are called local events and represented by EventsPerSec.
  
 \end_layout
 
 \begin_layout Standard
 A logging loop is started during the execution of these test cases of QA
  Capacity – signaling capacity.
- The logging loop collects a bunch of metrics, and a subset of these metrics
- is what this thesis is currently studied with.
+ The logging loop collects several metrics, and a subset of these metrics
+ is what this thesis is currently studying.
  Once the logging loop is finished, it is written to a log file.
- Then, there are cron jobs that crawl through this infrastructure once a
- day to find latest logs and do a post-processing.
- The final output of these are either the CSV data or JSON encoded charts.
+ Then, there are cron jobs that slowly scan through this infrastructure
+ once a day to find latest logs and do a post-processing.
+ The final output is either CSV data or JSON encoded charts.
  The flowchart of this process is illustrated in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -597,11 +597,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Example of one software package.
- First, the QA Capacity automated test suites is started.
+An example of one software package.
+ First, a QA Capacity automated test suites is started.
  For each test suite, a logging loop is started and a log is produced for
  each test case.
- The log file is fed to post-processing tools and the data output is obtained.
+ The log file is fed to post-processing tools, and the data output is obtained.
 \end_layout
 
 \end_inset
@@ -626,14 +626,14 @@ Data description
 \end_layout
 
 \begin_layout Standard
-This is the data for the second generation (G2) product which contain 2,781
- test cases.
- The data is collected on 20 January 2017 and is extracted from log file
+This data is the data for the second generation (G2) product which contains
+ 2,781 test cases.
+ The data is collected on 20 January 2017 and is extracted from log files
  produced by test cases.
  There are different types of test cases which are being executed in the
  automated test suites.
  Each test case is viewed as an observation in the data.
- Following are the variables in the data:
+ The following are the variables in the data:
 \end_layout
 
 \begin_layout Paragraph
@@ -722,10 +722,9 @@ EventsPerSec: Event intensity
 \begin_deeper
 \begin_layout Standard
 This variable contains several local events that can be used when defining
- the test case.
+ the test cases.
  Apparently, there is no fixed number of local events in this variable as
- different test cases involve additional procedure compared to other test
- cases.
+ different test cases involve different testing procedures.
  The local events along with their values are also varied depending on which
  types of test cases are being executed.
  An example of the local events in test cases is shown in 
@@ -880,12 +879,13 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
-The data consists of three software releases – L16A, L16B and L17A – and
- it is split into a dataset according to the software release.
- The dataset is sorted by the version of the software package which is named
- alphabetically.
- Even though the dataset has a timestamp when the test case is run, the
- timestamp is unsuitable to represent itself as a time point in time series.
+The data, which consists of three software releases – L16A, L16B and L17A,
+ is split into three datasets according to the software release.
+ The test case in each dataset is sorted by its software package version,
+ which is named alphabetically.
+ Even though each dataset is assigned a timestamp when the test case is
+ run, the timestamp is unsuitable to represent itself as a time point in
+ time series.
  The software package is an important variable and more of an interest to
  this analysis.
  Therefore, it is viewed as the data points indexed in time order in the

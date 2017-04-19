@@ -1097,7 +1097,8 @@ reference "chap:Discussion"
 \end_inset
 
 .
- 
+ It should be noted that these three selected model of each software release
+ will later be used throughout this thesis.
 \end_layout
 
 \begin_layout Standard
@@ -2732,9 +2733,11 @@ reference "L17A_NNN"
 .
  It appears that there is less switch from different states to State 1 around
  the end of the time series period.
- happens a lot in the first half of the time period, whereas there is a
- few switches to State 1 around the end of the period.
- Moreover, State 2 seems to be the only state which does not remain long.
+ Moreover, State 2 seems to be the only state which has rather a short duration
+ to remain in its own state.
+ It can also be seen that State 2 tends to move to State 1 more often than
+ move to State 3.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2784,11 +2787,6 @@ name "L17A_NNN"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-It should be noted that these three selected Markov switching autoregressive
- model of each software release will be used throughout this thesis.
 \end_layout
 
 \begin_layout Standard
@@ -2886,8 +2884,18 @@ reference "L16A_plotDiag"
  in its tails.
  There is an evidence of autocorrelation in the residuals of this model,
  which can be seen in both ACF and PACF plot, at lag 8.
- This provides some evidence that the residual is somehow independently
- and identically distributed.
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This provides some evidence that the residual is somehow independently and
+ identically distributed.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2957,7 +2965,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The normal Q-Q plot and thr ACF/PACF of pooled residuals of software release
+The normal Q-Q plot and the ACF/PACF of pooled residuals of software release
  L16A
 \end_layout
 
@@ -2996,7 +3004,7 @@ reference "L16B_plotDiag"
  The statistically significant correlation of this model are at lags 6 and
  10.
  The significant at lag 4 both in the ACF and PACF plot is slightly higher
- than a 2 standard errors.
+ than two standard errors.
 \end_layout
 
 \begin_layout Standard

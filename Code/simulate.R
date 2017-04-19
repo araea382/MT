@@ -85,7 +85,7 @@ result <- confusionMatrix(test_state, pred)
 # X_bad[ind_bad] <- ind_bad
 
 Y <- as.factor(state)
-Y <- factor(Y,levels(Y)[c(1,3,2)])
+Y <- factor(Y,levels(Y)[c(2,3,1)])
 
 # temp <- data.frame(Y,X_normal,X_good,X_bad)
 # ggplot() + geom_point(data=temp, aes(x=X_normal, y=Y)) +
@@ -103,6 +103,27 @@ ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
         axis.ticks.y=element_blank()) +
   ggtitle("State of the simulated data") +
   scale_colour_manual(values=cbPalette)
+
+
+p1<-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+    ggtitle("Simulated data")+ theme_bw()
+
+p2<-ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
+    xlab("index") + ylab("") + theme_bw() +
+    theme(legend.title = element_blank(),
+          axis.ticks.y=element_blank(),
+          axis.text.y=element_text(colour="white",size=5),
+          legend.position="bottom") +
+    ggtitle("State of the simulated data") +
+    scale_colour_manual(values=cbPalette)
+
+require(gridExtra)
+grid.arrange(p1,p2,nrow=2)
+
+# d <- data.frame(y,temp2)
+# colnames(d) <- c("value","state","index")
+# ggplot(d, aes(x=index, y=value)) + geom_line() + 
+#     facet_grid(value~ ., scales = "free_y") + theme(legend.position = "none")
 
 
 Y_test <- state[401:500]

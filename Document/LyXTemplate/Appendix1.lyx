@@ -82,7 +82,7 @@ customHeadersFooters
 \font_tt_scale 100 100
 \graphics default
 \default_output_format default
-\output_sync 0
+\output_sync 1
 \bibtex_command default
 \index_command default
 \float_placement h
@@ -421,7 +421,7 @@ Categorical variable
 \end_layout
 
 \begin_layout Standard
-The package does not work properly well with categorical predictor variables.
+The package does not work well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
  Factors are used to represent the categorical variables in R.

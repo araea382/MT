@@ -435,6 +435,7 @@ th state at the
 \end_inset
 
 th step.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -636,6 +637,90 @@ status open
 \begin_layout Definition
 \begin_inset CommandInset citation
 LatexCommand citep
+after "p.220"
+key "grimmett2001probability"
+
+\end_inset
+
+ State 
+\begin_inset Formula $i$
+\end_inset
+
+ is called persistent (or recurrent) if
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+P(X_{t}=i\mathrm{\:for\,}\mathrm{some\,\mathrm{n}}\geq1|X_{0}=i)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $f_{ij}(n)=P(X_{1}\neq j,X_{2}\neq j,...,X_{t}\neq j|X_{0}=i)$
+\end_inset
+
+ be the probability of visiting state 
+\begin_inset Formula $j$
+\end_inset
+
+ first by starting from 
+\begin_inset Formula $i$
+\end_inset
+
+, takes place at 
+\begin_inset Formula $t$
+\end_inset
+
+th step.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset citation
+LatexCommand citep
 after "p.222"
 key "grimmett2001probability"
 
@@ -664,7 +749,7 @@ State
 \begin_inset Formula $i$
 \end_inset
 
- is a positive recurrent or non-null persistent if 
+ is a non-null persistent (or positive recurrent) if 
 \begin_inset Formula $\mu_{i}$
 \end_inset
 
@@ -2017,7 +2102,7 @@ where
 \begin_inset Formula $T$
 \end_inset
 
- is the number of observations and 
+ is the number of observations, and 
 \begin_inset Formula $m$
 \end_inset
 
@@ -2170,8 +2255,8 @@ y=\begin{cases}
 -12+0.7X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(3)}
 \end{array} & \begin{array}{c}
 \varepsilon_{t}^{(1)}\sim N(0,1);\quad\mathrm{Normal}\\
-\varepsilon_{t}^{(2)}\sim N(2,0.5);\quad\mathrm{Good}\\
-\varepsilon_{t}^{(3)}\sim N(1,1);\quad\mathrm{Bad}
+\varepsilon_{t}^{(2)}\sim N(2,0.5);\quad\mathrm{Bad}\\
+\varepsilon_{t}^{(3)}\sim N(1,1);\quad\mathrm{Good}
 \end{array}\end{cases}
 \]
 
@@ -2193,16 +2278,8 @@ reference "sim_data"
 \begin_inset Formula $y$
 \end_inset
 
- over a period of time.
- The period where observations in the data belong to one of the state is
- shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sim_state"
-
-\end_inset
-
-.
+ over a period of time, and the period where observations in the data belong
+ to one of the state.
 \end_layout
 
 \begin_layout Standard
@@ -2230,9 +2307,9 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/sim_data.png
+	filename picture/sim.png
 	lyxscale 50
-	scale 40
+	scale 35
 
 \end_inset
 
@@ -2243,12 +2320,20 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Simulated data.
- The 
+
+\emph on
+Top:
+\emph default
+ A simulated data where 
 \begin_inset Formula $y$
 \end_inset
 
- variable is the response variable
+ variable is the response variable.
+ 
+\emph on
+Bottom:
+\emph default
+ The period in the time series when observation is in each state.
 \end_layout
 
 \end_inset
@@ -2261,59 +2346,6 @@ name "sim_data"
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/sim_state.png
-	lyxscale 30
-	scale 40
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The period in the time series when data is in each state 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sim_state"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-COMBINE PLOT
 \end_layout
 
 \end_inset

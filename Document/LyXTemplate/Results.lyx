@@ -2884,8 +2884,18 @@ reference "L16A_plotDiag"
  in its tails.
  There is an evidence of autocorrelation in the residuals of this model,
  which can be seen in both ACF and PACF plot, at lag 8.
- This provides some evidence that the residual is somehow independently
- and identically distributed.
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This provides some evidence that the residual is somehow independently and
+ identically distributed.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2955,7 +2965,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The normal Q-Q plot and thr ACF/PACF of pooled residuals of software release
+The normal Q-Q plot and the ACF/PACF of pooled residuals of software release
  L16A
 \end_layout
 
@@ -2994,7 +3004,7 @@ reference "L16B_plotDiag"
  The statistically significant correlation of this model are at lags 6 and
  10.
  The significant at lag 4 both in the ACF and PACF plot is slightly higher
- than a 2 standard errors.
+ than two standard errors.
 \end_layout
 
 \begin_layout Standard
@@ -3495,7 +3505,7 @@ L17A
 \end_layout
 
 \begin_layout Standard
-The CPU utilization for software release L16A, L16B and L17A along with
+The CPU utilization of the software release L16A, L16B and L17A along with
  its estimated change points in the time series are plotted and shown in
  
 \begin_inset CommandInset ref
@@ -3549,7 +3559,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization for the software release L16A
+The CPU utilization of the software release L16A
 \end_layout
 
 \end_inset
@@ -3620,7 +3630,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization for the software release L16B.
+The CPU utilization of the software release L16B.
  The red dashed vertical lines indicate the locations of estimated change
  points.
  
@@ -3667,7 +3677,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization for the software release L17A.
+The CPU utilization of the software release L17A.
  The red dashed vertical lines indicate the locations of estimated change
  points.
  

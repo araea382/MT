@@ -82,7 +82,7 @@ customHeadersFooters
 \font_tt_scale 100 100
 \graphics default
 \default_output_format default
-\output_sync 0
+\output_sync 1
 \bibtex_command default
 \index_command default
 \float_placement h
@@ -308,7 +308,11 @@ Both R and Python are powerful programming languages for data analysis.
  R also has a strong reputation for data visualization.
  However, in terms of computation, R still cannot compete with Python which
  is built specifically for the computer programming.
- With strengths and weaknesses between R and Python described earlier, R
+ 
+\end_layout
+
+\begin_layout Standard
+With strengths and weaknesses between R and Python described earlier, R
  is chosen to be used in this study.
  R offers more implemented algorithms to solve the problem at hand.
  Moreover, an effective visualization helps analyst and user to understand
