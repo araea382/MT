@@ -13,6 +13,16 @@ ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() + scale_color_manual(valu
   geom_vline(xintercept=out, colour="red", linetype="dashed") +
   ggtitle("E-divisive L16B") + theme_bw()
 
+state_L16B_3 <- gen(mswm_L16B_NYY, train_g2_L16B)
+g <- ggplot(data=state_L16B_3, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L16B_3, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L16B_NYY") + theme_bw()
+
+ecp_L16B <- c(130,135,153,170)
+g + geom_vline(xintercept=ecp_L16B, color="red", size=1, linetype="dashed")
+
+
 
 ###############
 # ecp
@@ -44,4 +54,13 @@ ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() +
   geom_vline(xintercept=out, colour="red", linetype="dashed") +
   ggtitle("E-divisive L17A") + theme_bw()
 
+
+state_L17A_3 <- gen(mswm_L17A_NNN, train_g2_L17A)
+g <- ggplot(data=state_L17A_3, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L17A_3, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L17A_NNN") + theme_bw()
+
+ecp_L17A <- c(9,77,82,105)
+g + geom_vline(xintercept=ecp_L17A, color="red", size=1, linetype="dashed")
 

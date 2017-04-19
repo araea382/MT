@@ -335,6 +335,10 @@ Inference about each state (Results or Discussion)
 Coefficients value ?????????????????
 \end_layout
 
+\begin_layout Plain Layout
+Although not reported, similar results are obtained for the
+\end_layout
+
 \end_inset
 
 
@@ -390,7 +394,7 @@ One has to understand and accept a risk when deciding on the number of states.
  There is no guarantee how many states would yield the best outcome, and
  the one which is more appealing is selected.
  The same situation also applies when determining the number of switching
- coefficient in the model.
+ coefficients in the model.
  
 \end_layout
 
@@ -551,7 +555,7 @@ Model 1 has the lowest value of BIC and appears to have a good explanation.
 \end_layout
 
 \begin_layout Section*
-Inference state
+State inference
 \end_layout
 
 \begin_layout Standard
