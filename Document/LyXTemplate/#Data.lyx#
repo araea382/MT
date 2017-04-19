@@ -363,7 +363,7 @@ key "dahlman20134g"
 
 .
  The E-UTRAN, an official standard name for the radio access network of
- LTE, is the entire network.
+ LTE, is the entire radio access network.
  It handles the radio communication between the User Equipment (UE) or mobile
  device and the evolved base stations called eNB.
  Each eNB is a base station which controls and manages radio communications
@@ -879,40 +879,23 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
-The data, which consists of three software releases – L16A, L16B and L17A
- – , is split into three datasets according to the software release.
+The data, which consists of three software releases – L16A, L16B and L17A,
+ is split into three datasets according to the software release.
  The test case in each dataset is sorted by its software package version,
  which is named alphabetically.
- Even though each dataset is assigned a timestamp when the test case is
- run, the timestamp is unsuitable to represent itself as a time point in
- time series.
- The software package is an important variable and more of an interest to
- this analysis.
- Therefore, it is viewed as the data points indexed in time order in the
- time series.
+ The name of the software package is used as a time point in the time series.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Why is it unsuitable? give one reason
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Test cases are not always being executed properly.
- It is either no traffic is generated during the test case or that data
- is not logged.
- If the EventsPerSec field is missing or has no value in it, the test case
- is being treated as incomplete and all the data related to that particular
- test case is ignored.
- This also applied for other cases when any fields in the dataset is missing.
+Test cases are not always executed properly.
+ The problem is either no traffic is generated during the test case or the
+ data is not logged.
+ This usually result in a missing value in the EventPerSec field, which
+ causes the test case to be incomplete.
+ The particular test case and all the data related to the test case is ignored.
+ If the value in any other fields is missing, the test case will also be
+ ignored.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -925,40 +908,37 @@ reference "eventspersec"
 
 , it can be seen that EventsPerSec variable stores multiple values separated
  by a tab character.
- These tab-separated values in the field are split to columns.
- The process is done in order to get its local events and values which character
-ized the test case.
- These are later on used as predictor variables for fitting the Markov switching
- model.
+ These tab-separated values in the field are split into columns.
+ The process is done in order to turn its local events and values, which
+ characterize the test case, into a useable parameter.
+ These parameters are later on used as predictor variables when the Markov
+ switching model is applied.
 \end_layout
 
 \begin_layout Standard
 Each software release consists of several software packages.
- Also, numerous test cases are executed in one software package.
- Since the software package acts as a point in time in the time series,
- it appears to be rather difficult to visualize all results from every executed
- test case for each software package.
- Hence, the test case which has the lowest value of the CPU utilization
- (or minimum value of TotCpu%) is selected to represent the performance
- of a specific software package.
- Although taking an average of the multiple runs for test cases in the software
+ In one software package, numerous test cases are executed.
+ Since a software package acts as a time point in the time series, the result
+ is rather difficult to be visualized from every executed test case for
+ each software package.
+ Hence, a test case that has the lowest value of the CPU utilization (or
+ minimum value of TotCpu%) is selected to represent a performance of a specific
+ software package.
+ Although taking an average of multiple runs for test cases in the software
  package appears to be a good approach, it does not yield the best outcome
  in this case.
  The first reason is that manipulating data can easily be misleading.
- It is, therefore, settled to remain the data as it is and always visualize
- the data exactly as it is recorded.
+ It is, therefore, settled to keep the original data and always use the
+ unmanipulated data to visualize the time series.
  Another important reason for not using the average value of the CPU utilization
- is because the essential information in the test case will be lost.
- Each test case has its own local events in EventsPerSec field that used
+ is that the essential information in the test case could be lost.
+ Each test case has its own local events in EventsPerSec field that is used
  for identifying the test case.
- The details of these local events are absent when averaging over the CPU
- utilization of the test cases in the software package.
+ The details of these local events will be absent if the CPU utilization
+ of the test case is averaged.
  
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The reason for choosing the minimum value of the CPU utilization is because
@@ -976,7 +956,7 @@ tried to be optimistic...
 \end_layout
 
 \begin_layout Standard
-After performing all the steps describing above, the dataset of software
+After performing all the steps described above, the dataset of software
  release L16A, L16B and L17A consist of 64, 241, and 144 test cases, respectivel
 y.
  Lastly, each dataset with particular software release is divided into two

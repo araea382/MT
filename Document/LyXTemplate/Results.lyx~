@@ -2816,14 +2816,6 @@ OUTPUT r-squared of each state
 
 \end_layout
 
-\begin_layout Standard
-Model validation
-\end_layout
-
-\begin_layout Standard
-r squared of each state 
-\end_layout
-
 \begin_layout Section
 Residual analysis
 \end_layout
@@ -2900,43 +2892,11 @@ reference "L16A_plotDiag"
  which can be seen in both ACF and PACF plot, at lag 8.
  
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 This provides some evidence that the residual is somehow independently and
  identically distributed.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Furthermore, the model is able to capture the pattern of data rather well.
-\end_layout
-
-\begin_layout Plain Layout
-heavy tail = high variance
-\end_layout
-
-\begin_layout Plain Layout
-There is an outlier in the residuals (2004:Q4) which suggests there was
- something unusual happening in that quarter.
- It would be worth investigating that outlier to see if there were any unusual
- circumstances or events that may have reduced beer production for the quarter.
-\end_layout
-
-\begin_layout Plain Layout
-The remaining residuals show that the model has captured the patterns in
- the data quite well, although there is a small amount of autocorrelation
- left in the residuals (seen in the significant spike in the ACF plot).
- This suggests that the model can be slightly improved, although it is unlikely
- to make much difference to the resulting forecasts.
 \end_layout
 
 \end_inset
@@ -3091,9 +3051,19 @@ reference "L17A_plotDiag"
  in the plot.
  Furthermore, the ACF plot of pooled residuals are significant for the first
  two lags, whereas the PACF plot is significant only at lag 2.
- The model seems to capture the dependent structure of the error terms in
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The model seems to capture the dependent structure of the error terms in
  the time series, except for the reported significant lag.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3622,6 +3592,21 @@ reference "ediv_L17A"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+report about the change point...
+ something...
+ like peak and negative peak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3720,40 +3705,137 @@ Comparison
 \end_layout
 
 \begin_layout Standard
-One thing is that E-divisive method is able to identify the change point
- less than the Markov switching autoregressive model.
-\end_layout
-
-\begin_layout Standard
-As mentioned previously, no estimated change points is discovered when applying
- the E-divisive algorithm to the dataset of the software release L16A.
- Hence, a comparison between two methods cannot be made for this dataset.
+One noticeable thing is that the E-divisive method is able to identify the
+ changes of the data less than the Markov switching autoregressive model.
+ As mentioned previously, no estimated change points is discovered when
+ applying the E-divisive algorithm to the dataset of the software release
+ L16A.
+ Thus, a comparison between two methods cannot be made for this dataset.
  
 \end_layout
 
 \begin_layout Standard
-For the dataset of the software release L16B, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_L16B"
+
+\end_inset
+
+ presents results of both switches from the Markov switching autoregressive
+ model and change point locations from the E-divisive method.
+ There is one location where the E-divisive method detect the change but
+ the Markov switching autoregressive model does not report any switches.
+ As can be seen, the E-divisive method appears to detect the changes when
+ State 2 switches to State 3.
+ There is one change at 130 where the E-divisive method is able to detect
+ the switch in the state at the same time as Markov switching autoregressive
+ model.
+ However, the other two locations at 135 and 170, one delay and one before
 \end_layout
 
 \begin_layout Standard
-seems to detect when switching from State 2 to State 3 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/compare_L16B_smo.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The combined results of the Markov switching autoregressive model and the
+ E-divisive method for the software release 16B
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "compare_L16B"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-two out of three delay (130, 135) and one is about the same time (170)
+For the dataset of the software release L17A, identify one location which
+ the Markov switching autoregressive model cannot (105) 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_L17A"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-there is one location where the Markov switching autoregressive model did
- not report any switches but the E-divisive method did (153)
+detect switch from State 1 to State 3 and from State 3 to State 1 
 \end_layout
 
 \begin_layout Standard
-L17A 
+two out of three the same (77, 82) and one is before (9)
 \end_layout
 
 \begin_layout Standard
-9, 77, 82, 105
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/compare_L17A_smo.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The combined results of the Markov switching autoregressive model and the
+ E-divisive method for the software release 17A
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "compare_L17A"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -3799,9 +3881,9 @@ Simulation
 \end_layout
 
 \begin_layout Standard
-Markov switching autoregressive model is fitted with eighty percent of the
- observations from a simulated data, and the remaining is used as a test
- set.
+Markov switching autoregressive model is fitted with eighty percents of
+ the observations from a simulated data, and the remaining is used as a
+ test set.
  Then, using the training model to predict the state of each observation
  in the test set, and the result is shown in 
 \begin_inset CommandInset ref

@@ -421,6 +421,39 @@ Residual analysis -> It reveals that residual does not completely follow
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Furthermore, the model is able to capture the pattern of data rather well.
+\end_layout
+
+\begin_layout Plain Layout
+heavy tail = high variance
+\end_layout
+
+\begin_layout Plain Layout
+There is an outlier in the residuals (2004:Q4) which suggests there was
+ something unusual happening in that quarter.
+ It would be worth investigating that outlier to see if there were any unusual
+ circumstances or events that may have reduced beer production for the quarter.
+\end_layout
+
+\begin_layout Plain Layout
+The remaining residuals show that the model has captured the patterns in
+ the data quite well, although there is a small amount of autocorrelation
+ left in the residuals (seen in the significant spike in the ACF plot).
+ This suggests that the model can be slightly improved, although it is unlikely
+ to make much difference to the resulting forecasts.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 model validation -> if the residuals appear to behave randomly, it suggests
  that the model fits the data well
 \end_layout
@@ -555,7 +588,7 @@ Model 1 has the lowest value of BIC and appears to have a good explanation.
 \end_layout
 
 \begin_layout Section*
-Inference state
+State inference
 \end_layout
 
 \begin_layout Standard
