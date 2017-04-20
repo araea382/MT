@@ -346,10 +346,16 @@ Although not reported, similar results are obtained for the
 
 \begin_layout Standard
 A thorough search of the relevant literature yielded that this might be
- the first time that Markov switching model is applied on the data which
- is not related to financial time series or signal processing.
+ the first time that Markov switching model is applied on the data used
+ in the thesis to detect the state of the CPU.
+ In previous work, this model is mainly implemented in finance or signal
+ processing.
  A large amount of time is spent on understanding the data and determining
  which methods would be the best fit to this problem.
+\end_layout
+
+\begin_layout Standard
+also modified code in the package
 \end_layout
 
 \begin_layout Standard
@@ -422,7 +428,7 @@ Residual analysis -> It reveals that residual does not completely follow
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Furthermore, the model is able to capture the pattern of data rather well.
@@ -500,11 +506,39 @@ The computational time of the E-divisive algorithm is
 \end_layout
 
 \begin_layout Standard
+take into account only the CPU utilization (or TotCpu% variable)
+\end_layout
+
+\begin_layout Standard
 The accuracy of the test set in simulated data is significantly high.
  One reason for that might be because of this simulated data has some kinds
  of pattern.
  The model is able to capture the behavior of the time series data.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+AlessandroOlivi page39
+\end_layout
+
+\begin_layout Plain Layout
+Nevertheless, it is important to note that the model output could be potentially
+ affected by various kinds of bias.
+ First, the model is trained in a quite small sample size that may not be
+ representative for all the world sites.
+ For example, sites with extreme cold or warm temperatures or high altitude
+ may be wrongly estimated.
+ Generally, models cannot guarantee accurate predictions for new observations
+ that lie outside the range of the trained data.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -583,11 +617,23 @@ Software release L17A
 
 \begin_layout Standard
 Model 1 has the lowest value of BIC and appears to have a good explanation.
- Hence, it is preferably chosen.
+ Thus, it is preferably chosen.
 \end_layout
 
 \begin_layout Section*
 State inference
+\end_layout
+
+\begin_layout Standard
+software release L16A
+\end_layout
+
+\begin_layout Standard
+software release L16B
+\end_layout
+
+\begin_layout Standard
+software release L17A
 \end_layout
 
 \begin_layout Standard

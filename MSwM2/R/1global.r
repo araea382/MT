@@ -21,4 +21,4 @@ setGeneric("em",function(object,control){standardGeneric("em")})
 
 setGeneric("hessian",function(object){standardGeneric("hessian")})
 
-setGeneric("predict",function(object,newdata){standardGeneric("predict")})
+setGeneric("statePredict",function(object,newdata){standardGeneric("statePredict")})

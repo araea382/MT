@@ -343,22 +343,19 @@ name "sec:States"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
+To estimate the set of necessary parameters, an 
+\emph on
+MSwM
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-REASON: (easier to compare...what else?)
+https://cran.r-project.org/web/packages/MSwM/index.html
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-To estimate the set of necessary parameters, an 
-\emph on
-MSwM
 \emph default
  package in R is used.
  More details about the package can be found in 
@@ -418,6 +415,16 @@ Markov switching autoregressive model is performed for each dataset with
  During the estimation, a normality assumption is also applied to the distributi
 on of residuals.
  
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+REASON: (easier to compare...what else?)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -425,7 +432,7 @@ Before performing the Markov switching autoregressive model, a standard
  linear regression model is fitted to the dataset first.
  It is found that one coefficient in the dataset of software release L16A
  is not defined because of singularity.
- Hence, DuProdName variable is dropped from the Equation 
+ Hence, DuProdName variable is dropped from Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mswm"
@@ -1128,9 +1135,7 @@ reference "L16A_switch"
  all switching coefficients.
  The first model, where both Fdd/Tdd and NumCells have switching effects,
  is selected to use with this dataset.
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset Note Comment
 status collapsed
 
@@ -3577,33 +3582,10 @@ reference "ediv_L16B"
 \end_inset
 
 , the estimated change points for the dataset of the software release L16B
- are likely to occur around the same period of time.
- They are detected almost at the end of the time series data.
- On the contrary, the result of the software release L17A, which is shown
- in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ediv_L17A"
-
-\end_inset
-
-, has the estimated change points rather spread out.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-report about the change point...
- something...
- like peak and negative peak
-\end_layout
-
-\end_inset
-
-
+ are likely to occur around the same period of time, which are almost at
+ the end of the time series data.
+ The estimated points from the method are approximately at peaks and negative
+ peaks.
 \end_layout
 
 \begin_layout Standard
@@ -3651,6 +3633,21 @@ name "ediv_L16B"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+On the contrary, the result of the dataset of the software release L17A,
+ which is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ediv_L17A"
+
+\end_inset
+
+, has the estimated change points rather spread out.
+ The E-divisive method discovers changes when the CPU utilization is about
+ to drop or increase its value.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3724,12 +3721,12 @@ reference "compare_L16B"
  presents results of both switches from the Markov switching autoregressive
  model and change point locations from the E-divisive method.
  There is one location where the E-divisive method detect the change but
- the Markov switching autoregressive model does not report any switches.
- As can be seen, the E-divisive method appears to detect the changes when
- State 2 switches to State 3.
+ the Markov switching autoregressive model does not show any switches.
+ As can be seen, the E-divisive method appears to detect changes when State
+ 2 switches to State 3.
  At the observation 130, the E-divisive method discover the switch in the
  state at the same time as Markov switching autoregressive model does.
- However, the E-divisive method identify the switch after and before the
+ However, the E-divisive method identifies the switch after and before the
  Markov switching autoregressive model at the observations 135 and 170,
  respectively.
 \end_layout
@@ -3779,23 +3776,24 @@ name "compare_L16B"
 \end_layout
 
 \begin_layout Standard
-For the dataset of the software release L17A, identify one location which
- the Markov switching autoregressive model cannot (105) 
+For the dataset of the software release L17A, the E-divisive method reports
+ that there is a change at the observation 105 whereas no switch between
+ states can be found from the result of the Markov switching autoregressive
+ model.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_L17A"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-detect switch from State 1 to State 3 and from State 3 to State 1 
-\end_layout
-
-\begin_layout Standard
-two out of three the same (77, 82) and one is before (9)
+ indicates that the E-divisive method is able to detect a switch from State
+ 1 to State 3, and also a switch from State 3 to State 1.
+ It is visible that there are two observations 77 and 82 where both two
+ methods can detect the change at the same period of time.
+ The E-divisive method detects a change at observation 9 which is before
+ there is a switch in the state from the result of the Markov switching
+ autoregressive model.
 \end_layout
 
 \begin_layout Standard
@@ -3849,7 +3847,7 @@ Now, an implemented predict function is applied to the test set in order
 \end_layout
 
 \begin_layout Standard
-L16A -> ERROR
+software release L16A -> ERROR
 \end_layout
 
 \begin_layout Standard
@@ -3862,19 +3860,136 @@ predict function is not able to predict the state for the last observation
 \end_layout
 
 \begin_layout Standard
-L16B
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+the software release L16A 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "predict_L16A"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-25 observations
+In total, there are 25 observations in the test set of the software release
+ L16B.
+ The result after applying the predict function to the test set is shown
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "predict_L16B"
+
+\end_inset
+
+.
+ There is only one observation which is in State 2.
+ 
 \end_layout
 
 \begin_layout Standard
-L17A
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/predict_L16B.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+the software release L16B
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "predict_L16B"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-15 observations
+software release L17A
+\end_layout
+
+\begin_layout Standard
+Fifteen observations is in the test set of the software release L17A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+the software release L17A
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "predict_L17A"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -3884,9 +3999,8 @@ Simulation
 \begin_layout Standard
 Markov switching autoregressive model is fitted with eighty percents of
  the observations from a simulated data, and the remaining is used as a
- test set.
- Then, using the training model to predict the state of each observation
- in the test set, and the result is shown in 
+ test set to evaluate the performance of the model.
+ The result of the model performance is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "confusion"

@@ -304,7 +304,7 @@ Both R and Python are powerful programming languages for data analysis.
  It emphasizes on code readability and has a gentle learning curve.
  R is developed by and for statistician.
  It provides a huge number of essential packages in statistics, and even
- starts to expand to different fields.
+ starts to expand its package to different fields.
  R also has a strong reputation for data visualization.
  However, in terms of computation, R still cannot compete with Python which
  is built specifically for the computer programming.
@@ -319,8 +319,8 @@ With strengths and weaknesses between R and Python described earlier, R
  more about their data especially for the complex one.
  Visualizing data is useful in many ways such as uncover new patterns, identify
  some factors, and get an overall trend.
- R proves itself a good choice since it provides a great feature in creating
- an interactive graphic and visualization.
+ R proves to be a good choice since it provides a great feature in creating
+ an interactive graphic.
 \end_layout
 
 \begin_layout Chapter
@@ -355,8 +355,7 @@ You may want to include an appendix to describe the software used in the
 \end_layout
 
 \begin_layout Standard
-The algorithm used for fitting the Markov switching autoregressive model
- is mainly based on a 
+A 
 \emph on
 MSwM
 \emph default
@@ -367,18 +366,17 @@ key "mswm"
 
 \end_inset
 
-.
- This package performs an univariate autoregressive Markov switching model
- for linear and generalized models.
- The package implements the Expectation-Maximization (E-M) algorithm to
- fit the Markov switching model.
+ is mainly used to perform an univariate autoregressive Markov switching
+ model for linear and generalized models.
+ The package implements an Expectation-Maximization (E-M) algorithm to fit
+ the Markov switching model.
  
 \end_layout
 
 \begin_layout Standard
-Code is further implemented and some modifications are made in the function
- to handle warnings and errors produced when fitting the model.
- These are described in more details here.
+Code is further implemented, and some modifications are also made in the
+ function to handle warnings and errors produced when fitting the model.
+ These modifications are described in more details here.
 \end_layout
 
 \begin_layout Paragraph*
@@ -386,9 +384,9 @@ Non-switching effect
 \end_layout
 
 \begin_layout Standard
-When setting variance to have a non-switching effect, the function generates
+When setting variance to have a non-switching effect, a function generates
  a warning.
- It proved that there is a minor mistake in the code.
+ This issue is caused by a minor mistake in the code.
  
 \end_layout
 
@@ -397,10 +395,11 @@ Non-invertible Hessian
 \end_layout
 
 \begin_layout Standard
-The package uses a Hessian, the matrix of second order partial derivatives
- with respect to parameters, for numerical optimization.
- In some cases, Hessian matrix will not be invertible as the matrix is singular.
- Consequently, the function can not compute standard error of estimated
+The package uses a Hessian, a matrix of second order partial derivatives
+ with respect to parameters, for a numerical optimization.
+ In some cases, the Hessian matrix will not be invertible as the matrix
+ is singular.
+ Consequently, the function cannot compute the standard error of estimated
  parameters.
  It is assumed that the singularity is coming from numerics issue i.e., the
  matrix is not singular but computationally it is.
@@ -421,13 +420,14 @@ Categorical variable
 \end_layout
 
 \begin_layout Standard
-The package does not work well with categorical predictor variables.
+The package does not appear to work well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
- Factors are used to represent the categorical variables in R.
- Most of the time, the order of the factor does not matter.
+ R refers to categorical variables as factors.
+ Most of the time, an order of the factor does not matter.
  However, sometimes the order of the factor is of interest in the analysis
- and needs to be specified for comparison or meaningful interpretation.
+ and needs to be specified for the purpose of comparison or obraining a
+ meaningful interpretation.
  
 \end_layout
 
@@ -449,11 +449,12 @@ NA coefficients
 \end_layout
 
 \begin_layout Standard
-When performing the Markov switching model, the function in the package
- first randomly divides the data into different subsets and separately fit
- the model to get initial coefficients in each state.
+When performing the Markov switching model, a function in the package first
+ randomly divides the data into different subsets, and then separately fit
+ the model to each subset to get initial coefficients in each state.
  These coefficients are later used for further analysis e.g., computing condition
- means, error and likelihood for each state.
+ means, conditional residuals of the model, and likelihood of the parameters
+ for each state.
 \end_layout
 
 \begin_layout Standard
@@ -491,7 +492,11 @@ It is worth noting that the function computes conditional means for each
 \uwave default
 \noun default
 \color inherit
-, these conditional means will also become NAs.
+, these conditional means 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ will also become NAs.
  
 \end_layout
 
@@ -500,8 +505,8 @@ Due to the randomness in partitioning the data, sometimes a variable in
  a subset will have the same value in all observations.
  Then, NA coefficient is generated for this specific variable because of
  singularity.
- This NA coefficient issue occurs more frequently with a categorical variable
- as each categorical variable has its own number of levels.
+ This NA coefficient issue frequently occurs with a categorical variable
+ because each categorical variable has its own number of levels.
  It is rather difficult for every subset to contain all levels of the variable
  especially if the variable contains several number of levels or many states
  are specified.
@@ -514,10 +519,19 @@ Due to the randomness in partitioning the data, sometimes a variable in
 One approach to resolve this issue is by removing the process of partitioning
  the data in the beginning, and fitting the model with the whole data to
  get the initial coefficients instead.
- The parameters in each state will then have the same coefficient values.
- It proved that dividing data into subsets is only a method to get the starting
- values for coefficients in each state and does not have much effect for
- the algorithm.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The parameters in each state will then have the same coefficient values.
+\end_layout
+
+\end_inset
+
+ It proved that dividing data into subsets in the original function is only
+ a method to get the starting values of coefficients in each state and does
+ not have much effect for the algorithm.
  
 \end_layout
 

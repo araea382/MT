@@ -1918,8 +1918,7 @@ The new estimated model parameters
 \begin_inset Formula $\theta^{(n+1)}$
 \end_inset
 
- is obtained by finding a set of parameters that maximizes the Equation
- 
+ is obtained by finding a set of parameters that maximizes Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:loglik"
@@ -2015,7 +2014,7 @@ P(S_{T+1}=j|\Omega_{T+1};\theta)=\frac{f(y_{T+1}|S_{T+1}=j,\Omega_{T};\theta)P(S
 \end_layout
 
 \begin_layout Standard
-This is the Equation 
+This is Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:fProb"
@@ -2307,7 +2306,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/sim.png
+	filename picture/sim1.png
 	lyxscale 50
 	scale 35
 

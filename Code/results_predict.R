@@ -1,7 +1,7 @@
 library(MSwM2)
 library(ggplot2)
 
-pred_L16A <- MSwM2::predict(mswm_L16A_NN, test_g2_L16A) ##FIX
+pred_L16A <- MSwM2::statePredict(mswm_L16A_NN, test_g2_L16A) ##FIX
 # Note:
 # last observation NaN because Likl is [0,0,0] -> fProb is 0/0
 # try model mswm_16A_3 -> works fine... probably
@@ -14,7 +14,10 @@ pred_L16A <- MSwM2::predict(mswm_L16A_NN, test_g2_L16A) ##FIX
 # [63,] 1.00000000  0.000000e+00  0.000000e+00
 # [64,] 1.00000000  0.000000e+00  0.000000e+00
 
-pred_L16B <- MSwM2::predict(mswm_L16B_NYY, test_g2_L16B)
+
+#----------------------------------------------------------------#
+
+pred_L16B <- MSwM2::statePredict(mswm_L16B_NYY, test_g2_L16B)
 # 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
 # 1  1  1  1  1  3  1  3  3  3  1  3  3  3  2  3  3  3  3  3  3  3  1  3  1
 
@@ -31,6 +34,8 @@ gen2 <- function(x,dat,data){
     ans <- data.frame(index,xmin,xmax,state,y=y,ymin=rep(ymin,n),ymax=rep(ymax,n))
     return(ans)
 }
+
+
 state_test_L16B <- gen2(pred_L16B, state_L16B_3, test_g2_L16B)
 ggplot(data=state_test_L16B, aes(x=index, y=y)) + geom_line() +
     geom_rect(data=state_test_L16B, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
@@ -38,7 +43,9 @@ ggplot(data=state_test_L16B, aes(x=index, y=y)) + geom_line() +
     ylab("TotCpu") + ggtitle("L16B") + theme_bw()
 
 
-pred_L17A <- MSwM2::predict(mswm_L17A_NNN, test_g2_L17A)
+#----------------------------------------------------------------#
+
+pred_L17A <- MSwM2::statePredict(mswm_L17A_NNN, test_g2_L17A)
 # 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 
 # 1  1  1  2  1  3  2  3  3  2  2  2  2  2  2 
 

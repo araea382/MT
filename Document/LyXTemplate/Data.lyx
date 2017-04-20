@@ -346,41 +346,6 @@ https://www.ericsson.com/
 \end_layout
 
 \begin_layout Standard
-LTE, widely known as 4G, is a Long-Term Evolution of the 3G network.
- The high-level network architecture of LTE is shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lte"
-
-\end_inset
-
- and is described as follows 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "dahlman20134g"
-
-\end_inset
-
-.
- The E-UTRAN, an official standard name for the radio access network of
- LTE, is the entire radio access network.
- It handles the radio communication between the User Equipment (UE) or mobile
- device and the evolved base stations called eNB.
- Each eNB is a base station which controls and manages radio communications
- with multiple devices in one or more cells.
- Several base stations are connected to a Mobility Management Entity (MME),
- which handles the high-level operation of the mobile for different UEs.
- MME establishes a connection and runs a security application to ensure
- that the UE is allowed on the network.
- In LTE mobile network, multiple UEs are connected to a single base station.
- A new UE performs a cell search procedure by searching for an available
- eNB when it first connects to the network.
- Then, the UE sends information about itself to establish a link between
- the UE and the eNB.
- 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -421,6 +386,41 @@ name "lte"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+LTE, widely known as 4G, is a Long-Term Evolution of the 3G network.
+ The high-level network architecture of LTE is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lte"
+
+\end_inset
+
+ and is described as follows 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dahlman20134g"
+
+\end_inset
+
+.
+ The E-UTRAN, an official standard name for the radio access network of
+ LTE, is the entire radio access network.
+ It handles the radio communication between the User Equipment (UE) or mobile
+ device and the evolved base stations called eNB.
+ Each eNB is a base station which controls and manages radio communications
+ with multiple devices in one or more cells.
+ Several base stations are connected to a Mobility Management Entity (MME),
+ which handles the high-level operation of the mobile for different UEs.
+ MME establishes a connection and runs a security application to ensure
+ that the UE is allowed on the network.
+ In LTE mobile network, multiple UEs are connected to a single base station.
+ A new UE performs a cell search procedure by searching for an available
+ eNB when it first connects to the network.
+ Then, the UE sends information about itself to establish a link between
+ the UE and the eNB.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -598,7 +598,7 @@ status open
 
 \begin_layout Plain Layout
 An example of one software package.
- First, a QA Capacity automated test suites is started.
+ First, QA Capacity automated test suites is started.
  For each test suite, a logging loop is started and a log is produced for
  each test case.
  The log file is fed to post-processing tools, and the data output is obtained.

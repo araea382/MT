@@ -1343,8 +1343,8 @@ setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
 
 
 ##########
-##### predict
-.MSM.lm.predict=function(object, newdata){
+##### state predict
+.MSM.lm.statePredict=function(object, newdata){
   p <- object@p
   k <- object["k"]
   model <- object["model"]
@@ -1396,4 +1396,4 @@ setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
   names(st) <- seq(1:nrow(test))
   return(st)
 }
-setMethod(f="predict",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.predict)
+setMethod(f="statePredict",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.statePredict)
