@@ -432,7 +432,7 @@ Before performing the Markov switching autoregressive model, a standard
  linear regression model is fitted to the dataset first.
  It is found that one coefficient in the dataset of software release L16A
  is not defined because of singularity.
- Hence, DuProdName variable is dropped from the Equation 
+ Hence, DuProdName variable is dropped from Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mswm"
@@ -3856,7 +3856,8 @@ predict function is not able to predict the state for the last observation
 \end_layout
 
 \begin_layout Standard
-7 observations
+7 observations.
+ Nevertheless,
 \end_layout
 
 \begin_layout Standard
@@ -3869,7 +3870,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-the software release L16A 
+The predicted state of the test set in the software release L16A 
 \end_layout
 
 \end_inset
@@ -3904,8 +3905,9 @@ reference "predict_L16B"
 \end_inset
 
 .
- There is only one observation which is in State 2.
- 
+ Observation 15 is the only observation which is in State 2.
+ Many switches between State 1 and State 2 can be seen from the plot.
+ In addition, observation appears to stay in State 1 rather a short 
 \end_layout
 
 \begin_layout Standard
@@ -3931,7 +3933,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-the software release L16B
+The predicted state of the test set in the software release L16B
 \end_layout
 
 \end_inset
@@ -3959,7 +3961,15 @@ software release L17A
 \end_layout
 
 \begin_layout Standard
-Fifteen observations is in the test set of the software release L17A
+Fifteen observations is in the test set of the software release L17A.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "predict_L17A"
+
+\end_inset
+
+ presents 
 \end_layout
 
 \begin_layout Standard
@@ -3969,10 +3979,23 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/predict_L17A.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-the software release L17A
+The predicted state of the test set in the software release L17A
 \end_layout
 
 \end_inset
@@ -3999,9 +4022,8 @@ Simulation
 \begin_layout Standard
 Markov switching autoregressive model is fitted with eighty percents of
  the observations from a simulated data, and the remaining is used as a
- test set.
- Then, using the training model to predict the state of each observation
- in the test set, and the result is shown in 
+ test set to evaluate the performance of the model.
+ The result of the model performance is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "confusion"
