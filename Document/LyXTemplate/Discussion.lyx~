@@ -348,7 +348,7 @@ Although not reported, similar results are obtained for the
 A thorough search of the relevant literature yielded that this might be
  the first time that Markov switching model is applied on the data used
  in the thesis to detect the state of the CPU.
- In previous work, the method is mainly implemented in finance or signal
+ In previous work, this model is mainly implemented in finance or signal
  processing.
  A large amount of time is spent on understanding the data and determining
  which methods would be the best fit to this problem.
@@ -518,8 +518,16 @@ The accuracy of the test set in simulated data is significantly high.
 \end_layout
 
 \begin_layout Standard
+Predict ERROR
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Comment
 status open
+
+\begin_layout Plain Layout
+AlessandroOlivi page39
+\end_layout
 
 \begin_layout Plain Layout
 Nevertheless, it is important to note that the model output could be potentially
@@ -557,14 +565,7 @@ Software release L16A
 \begin_layout Standard
 Even though model 3 has the lowest BIC value, it is found in the output
  that the coefficient of Paging has zero standard error leading t-value
- to infinity (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Output"
-
-\end_inset
-
-).
+ to infinity.
  This zero value can be interpreted in two different ways: an actual zero
  or treated as zero because significant digit is lost due to the floating
  point.

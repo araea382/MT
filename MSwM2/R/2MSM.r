@@ -1393,7 +1393,7 @@ setMethod(f="em",signature=c("MSM.linear","list"),definition=.MSM.em)
     margLik <- rbind(margLik, margLik_new)
     st <- c(st, which.max(fProb_new))
   }
-  names(st) <- seq(1:nrow(test))
+  # names(st) <- seq(1:nrow(test))
   return(st)
 }
 setMethod(f="statePredict",signature=c("MSM.lm","data.frame"),definition=.MSM.lm.statePredict)

@@ -518,6 +518,10 @@ The accuracy of the test set in simulated data is significantly high.
 \end_layout
 
 \begin_layout Standard
+Predict ERROR
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Comment
 status open
 
@@ -561,14 +565,7 @@ Software release L16A
 \begin_layout Standard
 Even though model 3 has the lowest BIC value, it is found in the output
  that the coefficient of Paging has zero standard error leading t-value
- to infinity (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Output"
-
-\end_inset
-
-).
+ to infinity.
  This zero value can be interpreted in two different ways: an actual zero
  or treated as zero because significant digit is lost due to the floating
  point.
@@ -600,14 +597,7 @@ reference "L16B_NNY"
  This seems somewhat unrealistic that observation i.e., software package stays
  in the same period for a long duration without switching to other states.
  The model 6 which has the second smallest BIC value appears to have the
- same output like in model 2, as shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "L16B_YNY"
-
-\end_inset
-
-.
+ same output like in model 2.
  The selected model for this dataset is model 4.
 \end_layout
 

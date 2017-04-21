@@ -15,12 +15,30 @@ pred_L16A <- MSwM2::statePredict(mswm_L16A_NN, test_g2_L16A) ##FIX
 # [64,] 1.00000000  0.000000e+00  0.000000e+00
 
 
+state_L16A_3 <- gen(mswm_L16A_NN, train_g2_L16A)
+
+state <- factor(pred_L16A)
+state <- c(state, NA)
+index=seq(1,nrow(test_g2_L16A))
+xmin=index-0.5
+xmax=index+0.5
+y=test_g2_L16A$TotCpu
+ymin=ifelse(unique(state_L16A_3$ymin) > min(y), min(y), unique(state_L16A_3$ymin))
+ymax=ifelse(unique(state_L16A_3$ymax) > max(y), unique(state_L16A_3$ymax), max(y))
+n=nrow(test_g2_L16A)
+ans <- data.frame(index,xmin,xmax,state=factor(state),y=y,ymin=rep(ymin,n),ymax=rep(ymax,n))
+
+
+ggplot(data=ans, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=ans, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("L16A") + theme_bw()
+
 
 
 #----------------------------------------------------------------#
 
 pred_L16B <- MSwM2::statePredict(mswm_L16B_NYY, test_g2_L16B)
-# 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
 # 1  1  1  1  1  3  1  3  3  3  1  3  3  3  2  3  3  3  3  3  3  3  1  3  1
 
 # plot with state area
@@ -59,7 +77,6 @@ ggplot(data=state_test_L16B, aes(x=index, y=y)) + geom_line() +
 #----------------------------------------------------------------#
 
 pred_L17A <- MSwM2::statePredict(mswm_L17A_NNN, test_g2_L17A)
-# 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 
 # 1  1  1  2  1  3  2  3  3  2  2  2  2  2  2 
 
 state_L17A_3 <- gen(mswm_L17A_NNN, train_g2_L17A)

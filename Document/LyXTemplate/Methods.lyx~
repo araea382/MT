@@ -323,7 +323,7 @@ In this chapter, methods used for performing the change point analysis in
  of parameters, predicting a state for a new observation and selecting a
  suitable model for the datasets.
  Another change point method in a non-parametric approach is described.
- Finally, a simulation technique is explained.
+ Finally, a simulation technique  is explained.
 \end_layout
 
 \begin_layout Section
@@ -1094,7 +1094,7 @@ where
 \end_layout
 
 \begin_layout Standard
-The Equation 
+Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:general_mswm"
@@ -2168,7 +2168,7 @@ https://cran.r-project.org/web/packages/ecp/index.html
  test for multiple change point analysis.
  This change point method is applicable to both univariate and multivariate
  time series.
- A fundamental idea of the pacakge is based on the hierarchical clustering
+ A fundamental idea of the package is based on the hierarchical clustering
  approach 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2206,7 +2206,7 @@ key "matteson2014nonparametric"
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 E-agglomerative
@@ -2231,7 +2231,7 @@ The E-agglomerative algorithm performs an agglomerative clustering in favor
 \end_layout
 
 \begin_layout Section
-Simulation 
+Simulation study
 \end_layout
 
 \begin_layout Standard
