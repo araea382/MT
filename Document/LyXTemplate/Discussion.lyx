@@ -352,22 +352,30 @@ A thorough search of the relevant literature yielded that this might be
  processing.
  A large amount of time is spent on understanding the data and determining
  which methods would be the best fit to this problem.
+ Besides, a lot of work is done when trying to study implemented algorithms
+ in the R package and also modify code as necessary.
 \end_layout
 
 \begin_layout Standard
-also modified code in the package
+In this study, NodeName, which is used to execute test cases, is assumed
+ to be indifferent i.e., performance of test cases are the same regardless
+ of the machine.
 \end_layout
 
 \begin_layout Standard
-One thing worth mentioning is that it is better to always try estimating
- simple models first.
+One thing worth mentioning is that when modeling the Markov switching model,
+ it is better to try estimating simple models first.
  The model's size grows exponentially according to the number of state 
 \begin_inset Formula $k$
 \end_inset
 
 , and the number of predictor variables.
- There would be more parameters to be estimated if parameters also have
- switching effects.
+ Switching coefficients also 
+\end_layout
+
+\begin_layout Standard
+There would be more parameters to be estimated if parameters also have switching
+ effects.
  The obtained results probably be a local maximum and cannot be completely
  trusted 
 \begin_inset CommandInset citation
@@ -380,15 +388,17 @@ key "perlin2015ms_regress"
 \end_layout
 
 \begin_layout Standard
-In this study, it is assumed that NodeName which is used to execute test
- cases is indifferent i.e., results are the same regardless of the ...
-\end_layout
+As mention previously in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:States"
 
-\begin_layout Standard
-It is found earlier that in the dataset of software release L16A, there
- is one variable which is an exact linear combination of the other variables.
+\end_inset
+
+, there is one variable in the dataset of software release L16A which is
+ an exact linear combination of the other variables.
  Hence, the variable is excluded from the regression model.
- used only 57 test cases in training the model.
+ This dataset has 57 test cases for training the Markov switching model.
  The data or in this case number of test cases in each software release
  is rather small which make it easier for an occurrence of singularity.
  Therefore, unless there is more data, it is better to drop the variable
@@ -550,12 +560,25 @@ Model selection
 \end_layout
 
 \begin_layout Standard
-The model for each dataset which have all switching parameters acts as a
- baseline model in the analysis.
- In other words, this model is used to compare with other models with different
- combination of switching coefficients.
- If the fitted model has higher BIC value than the baseline model it means
- that the model performs worst and should not be considered.
+In this analysis, a model with all switching coefficients, which is a three-stat
+e model from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:States"
+
+\end_inset
+
+, acts as a baseline model for each dataset.
+ This model is used to compare with other models which have different combinatio
+n of switching coefficients in a particular dataset.
+ If the fitted model has higher BIC than the baseline model, it means that
+ this specific model performs worst and should not be considered for further
+ analysis.
+ However, it is insufficient to only look at the BIC when choosing model
+ for the data.
+ Other aspects should also be taken into consideration along with the BIC
+ such as model outputs or graph.
+ 
 \end_layout
 
 \begin_layout Paragraph*
@@ -563,14 +586,16 @@ Software release L16A
 \end_layout
 
 \begin_layout Standard
-Even though model 3 has the lowest BIC value, it is found in the output
- that the coefficient of Paging has zero standard error leading t-value
- to infinity.
+Even though model 3 has the lowest BIC, it is found in the output (not reported)
+ that a coefficient of Paging has a zero standard error.
+ As a consequence, it leads t-value of this parameter to infinity.
  This zero value can be interpreted in two different ways: an actual zero
  or treated as zero because significant digit is lost due to the floating
  point.
- Nevertheless, either way suggests that this model might not be a good one.
- Therefore, model 1 which is the second lowest BIC is chosen for this given
+ Nevertheless, either way suggests that this model might not be a good model
+ to use with this dataset.
+ The model might be overfitting with the training data.
+ Therefore, model 1 which has the second lowest BIC is chosen for this given
  dataset instead.
 \end_layout
 
@@ -579,11 +604,7 @@ Software release L16B
 \end_layout
 
 \begin_layout Standard
-When choosing model for the data, it is insufficient to only look at the
- BIC value.
- Other aspects should also be taken into consideration.
- For instance, although model 2 has the least BIC value, its graph is not
- interpretable.
+Although model 2 has the least BIC, its graph is not interpretable.
  There are divided into two main parts.
  As can be seen in 
 \begin_inset CommandInset ref
@@ -596,8 +617,8 @@ reference "L16B_NNY"
  observations are in State 2 in the second half of the period.
  This seems somewhat unrealistic that observation i.e., software package stays
  in the same period for a long duration without switching to other states.
- The model 6 which has the second smallest BIC value appears to have the
- same output like in model 2.
+ The model 6 which has the second smallest BIC appears to have the same
+ output like in model 2 although not reported.
  The selected model for this dataset is model 4.
 \end_layout
 
@@ -606,7 +627,8 @@ Software release L17A
 \end_layout
 
 \begin_layout Standard
-Model 1 has the lowest value of BIC and appears to have a good explanation.
+Model 1 has the lowest BIC and appears to have a good explanation when looking
+ at the plot.
  Thus, it is preferably chosen.
 \end_layout
 
