@@ -1114,6 +1114,7 @@ reference "chap:Discussion"
 .
  It should be noted that these three selected model will later be used throughou
 t this thesis.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2630,6 +2631,13 @@ name "L17A_NNN"
 
 \begin_layout Section
 Residual analysis
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Residual-analysis"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

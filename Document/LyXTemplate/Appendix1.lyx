@@ -578,6 +578,24 @@ reference "eq:fProb"
 
 .
  The output from the function is the most likely state of the new observation.
+ The function is defined as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=R"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+statePredict(object, newdata)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter

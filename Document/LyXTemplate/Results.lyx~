@@ -1114,6 +1114,7 @@ reference "chap:Discussion"
 .
  It should be noted that these three selected model will later be used throughou
 t this thesis.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3790,13 +3791,13 @@ reference "predict_L17A"
 
 \end_inset
 
- presents a considerably long duration for staying in State 2, from observation
- 10 to the end of the time series data.
+ presents a considerably long period for staying in State 2, which is from
+ observation 10 to the end of the time series data.
  There are several switches between states happening in the plot.
  As can be seen, observation between 4 and 7 swaps between states fairly
  quick.
- It visits the particular state for one time and then move to the other
- states.
+ Observation visits the particular state for one time and then move to the
+ other states.
  
 \end_layout
 
@@ -3844,13 +3845,13 @@ name "predict_L17A"
 \end_layout
 
 \begin_layout Section
-Assessing state prediction using simulation technique
+Assessing state prediction using a simulation technique
 \end_layout
 
 \begin_layout Standard
 Markov switching autoregressive model is fitted with eighty percents of
  the observations from a simulated data, and the remaining is used as a
- test set to evaluate the performance of the model.
+ test set to evaluate a performance of the model.
  The result of the model performance is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref

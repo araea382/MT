@@ -1114,6 +1114,14 @@ reference "chap:Discussion"
 .
  It should be noted that these three selected model will later be used throughou
 t this thesis.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Model-selection"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3790,7 +3798,7 @@ reference "predict_L17A"
 
 \end_inset
 
- presents a considerably long period for staying in State 2 that is from
+ presents a considerably long period for staying in State 2, which is from
  observation 10 to the end of the time series data.
  There are several switches between states happening in the plot.
  As can be seen, observation between 4 and 7 swaps between states fairly

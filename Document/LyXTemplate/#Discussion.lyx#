@@ -328,20 +328,146 @@ Suggestion for a better result –> future
 \end_layout
 
 \begin_layout Plain Layout
-Inference about each state (Results or Discussion)
-\end_layout
-
-\begin_layout Plain Layout
 Coefficients value ?????????????????
-\end_layout
-
-\begin_layout Plain Layout
-Although not reported, similar results are obtained for the
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Model selection 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Model-selection"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this analysis, a model with all switching coefficients, which is a three-stat
+e model from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:States"
+
+\end_inset
+
+, acts as a baseline model for each dataset.
+ This model is used to compare with other models which have different combinatio
+n of switching coefficients in a particular dataset.
+ If the fitted model has higher BIC than the baseline model, it means that
+ this specific model performs worst and should not be considered for further
+ analysis.
+ However, it is insufficient to only look at the BIC when choosing model
+ for the data.
+ Other aspects should also be taken into consideration along with the BIC
+ such as model outputs or graph.
+ 
+\end_layout
+
+\begin_layout Subsection
+Software release L16A
+\end_layout
+
+\begin_layout Standard
+Even though model 3 has the lowest BIC, it is found in the output (not reported)
+ that a coefficient of Paging has a zero standard error in one of the state.
+ As a consequence, it leads t-value of this parameter to infinity.
+ This zero value can be interpreted in two different ways: an actual zero
+ or treated as zero because significant digit is lost due to the floating
+ point.
+ Nevertheless, either way suggests that this model might not be a good model
+ to use with this dataset as the model might be overfitting with the training
+ data.
+ The standard error equal to zero means that there is no variation in the
+ data i.e., every data value is equal to the mean.
+ Therefore, model 1 which has the second lowest BIC is chosen for this given
+ dataset instead.
+\end_layout
+
+\begin_layout Paragraph*
+Software release L16B
+\end_layout
+
+\begin_layout Standard
+Although model 2 has the least BIC, its graph which is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_NNY"
+
+\end_inset
+
+ is not interpretable.
+ There are divided into two main parts.
+ As can be seen, mostly observations in the first half of the period stay
+ in State 3 while observations are in State 2 in the second half of the
+ period.
+ This seems somewhat unrealistic that observation or software package stays
+ in the same period for a long duration without switching to other states.
+ Although not reported, similar results are obtained for the model 6 which
+ has the second smallest BIC.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The model 6 which has the second smallest BIC appears to have the same output
+ and graph like in model 2.
+\end_layout
+
+\end_inset
+
+ Hence, the selected model for this dataset is model 4.
+\end_layout
+
+\begin_layout Paragraph*
+Software release L17A
+\end_layout
+
+\begin_layout Standard
+Model 1 has the lowest BIC and appears to have a good explanation when looking
+ at a graph.
+ Thus, it is preferably chosen.
+\end_layout
+
+\begin_layout Section
+State inference
+\end_layout
+
+\begin_layout Standard
+After deciding the model, 
+\end_layout
+
+\begin_layout Paragraph*
+Software release L16A
+\end_layout
+
+\begin_layout Standard
+dsf
+\end_layout
+
+\begin_layout Paragraph*
+Software release L16B
+\end_layout
+
+\begin_layout Standard
+df
+\end_layout
+
+\begin_layout Paragraph
+Software release L17A
+\end_layout
+
+\begin_layout Standard
+sdfdgfdfgsdgd
+\end_layout
+
+\begin_layout Section
+General discussion
 \end_layout
 
 \begin_layout Standard
@@ -360,6 +486,47 @@ A thorough search of the relevant literature yielded that this might be
 In this study, NodeName, which is used to execute test cases, is assumed
  to be indifferent i.e., performance of test cases are the same regardless
  of the machine.
+ Therefore, selecting a minimum value of the CPU utilization of the test
+ case for each software package when preprocessing the data is acceptable.
+\end_layout
+
+\begin_layout Standard
+One has to understand and accept a risk when deciding on the number of states
+ as there is no guarantee how many states would yield the best outcome.
+ This same situation also applies when determining the number of switching
+ coefficients in the model.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:States"
+
+\end_inset
+
+, three-state model provides more interpretable graph and also meets with
+ a prior requirement of the thesis objective.
+ The results from the model with two states seem to offer less details and
+ does not cover all the happening situations.
+ Almost all graphs of a two state model have one state with considerably
+ long period and another state with fairly short period.
+ There is a problematic interpretation when trying to make a rough inference
+ on the state.
+ The relevant side note is that Markov switching model with four states
+ for each software release is also tested in the analysis.
+ However, the results are rather poor compare to the model with two and
+ three states.
+ Defining four states causes more difficulty when fitting the model and
+ making an inference on the states.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+find more reasons...
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -369,22 +536,50 @@ One thing worth mentioning is that when modeling the Markov switching model,
 \begin_inset Formula $k$
 \end_inset
 
-, and the number of predictor variables.
- Switching coefficients also 
-\end_layout
+, and the number of predictor variables 
+\begin_inset Formula $n$
+\end_inset
 
-\begin_layout Standard
-There would be more parameters to be estimated if parameters also have switching
- effects.
- The obtained results probably be a local maximum and cannot be completely
- trusted 
+.
+ In addition, there would be more parameters to be estimated if all coefficients
+ have switching effects.
+ The function will try to estimate coefficients, but there is no guarantee
+ that the obtained results will be a global maximum.
+ Therefore, the estimated values cannot be completely trusted.
+ 
 \begin_inset CommandInset citation
-LatexCommand citep
+LatexCommand citet
 key "perlin2015ms_regress"
 
 \end_inset
 
+ suggested that it is not recommended to estimate any model with 
+\begin_inset Formula $k>3$
+\end_inset
+
+ and 
+\begin_inset Formula $n\geq4$
+\end_inset
+
 .
+\end_layout
+
+\begin_layout Standard
+The hypothesis in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Switching-coefficients"
+
+\end_inset
+
+ is to make a switching effect only for variables in the test environment.
+ The reason for that 
+\end_layout
+
+\begin_layout Standard
+local events in EventPerSec is essential and should have flexible values
+ in each state.
+ Nevertheless, 
 \end_layout
 
 \begin_layout Standard
@@ -395,8 +590,8 @@ reference "sec:States"
 
 \end_inset
 
-, there is one variable in the dataset of software release L16A which is
- an exact linear combination of the other variables.
+, there is one variable in the dataset of the software release L16A which
+ is an exact linear combination of the other variables.
  Hence, the variable is excluded from the regression model.
  This dataset has 57 test cases for training the Markov switching model.
  The data or in this case number of test cases in each software release
@@ -406,34 +601,21 @@ reference "sec:States"
 \end_layout
 
 \begin_layout Standard
-One has to understand and accept a risk when deciding on the number of states.
- There is no guarantee how many states would yield the best outcome, and
- the one which is more appealing is selected.
- The same situation also applies when determining the number of switching
- coefficients in the model.
- 
+From residual analysis in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Residual-analysis"
+
+\end_inset
+
+, it reveals that residual does not completely follow a normal distribution
+ for all three datasets.
 \end_layout
 
 \begin_layout Standard
-Markov switching model with four states is also tested in the analysis but
- results are rather poor compare to the model with two and three states.
- The four-state model causes more difficulty and perhaps impossible to make
- an inference on the states.
-\end_layout
-
-\begin_layout Standard
-Three-state is more interpretable because ...
-\end_layout
-
-\begin_layout Standard
-Switching only the test environment variable because ...
-\end_layout
-
-\begin_layout Standard
-Residual analysis -> It reveals that residual does not completely follow
- a normal distribution -> remember that dataset is not large -> hard to
- spot a basic feature -> representing some noise -> with small samples often
- situation may be less clearer
+-> remember that dataset is not large -> hard to spot a basic feature ->
+ representing some noise -> with small samples often situation may be less
+ clearer
 \end_layout
 
 \begin_layout Standard
@@ -491,16 +673,20 @@ Q-Q plot is used to check the assumption.
 
 \begin_layout Standard
 One benefit from using the non-parametric analysis is that it does not require
- a prior assumption of the data distribution.
+ a prior assumption of a data distribution.
  This analysis is able to detect any type of distributional change within
  a time series.
- In this thesis framework, the non-parametric analysis is used for comparing
- with the results from Markov switching model.
  
 \end_layout
 
 \begin_layout Standard
-The computational time of the E-divisive algorithm is 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+In this thesis framework, the non-parametric analysis is used for comparing
+ with the results from Markov switching model.
+ The computational time of the E-divisive algorithm is 
 \begin_inset Formula $O(kT^{2})$
 \end_inset
 
@@ -515,8 +701,22 @@ The computational time of the E-divisive algorithm is
  is the number of observation in the time series data.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-take into account only the CPU utilization (or TotCpu% variable)
+It can be seen that variables which have influences on the CPU utilization
+ (or TotCpu% variable) are also taking into account when performing a Markov
+ switching model.
+ Nevertheless, an E-divisive algorithm only consider values of the CPU utilizati
+on.
+ With this and 
+\end_layout
+
+\begin_layout Standard
+Predict ERROR
 \end_layout
 
 \begin_layout Standard
@@ -525,10 +725,6 @@ The accuracy of the test set in simulated data is significantly high.
  of pattern.
  The model is able to capture the behavior of the time series data.
  
-\end_layout
-
-\begin_layout Standard
-Predict ERROR
 \end_layout
 
 \begin_layout Standard
@@ -550,101 +746,20 @@ Nevertheless, it is important to note that the model output could be potentially
  that lie outside the range of the trained data.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
-Model selection
-\end_layout
-
-\begin_layout Standard
-In this analysis, a model with all switching coefficients, which is a three-stat
-e model of each dataset from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:States"
-
-\end_inset
-
-, acts as a baseline model.
- This model is used to compare with other models which have different combinatio
-n of switching coefficients in a particular dataset.
- If the fitted model has higher BIC than the baseline model, it means that
- this specific model performs worst and should not be considered for further
- analysis.
- However, it is insufficient to only look at the BIC when choosing model
- for the data.
- Other aspects should also be taken into consideration e.g., outputs, and
- graph.
+\begin_layout Plain Layout
+Second, failures could be driven by other environmental factors not considered
+ in the model, for example presence of sand in the air.
+ Some of the environmental attributes we considered are quite raw approximations
+: for example, the temperature is a raw mean between two values and it is
+ calculated only in the months of January and July.
+ It would be reasonable here to consider not only the mean temperature but
+ also the variation.
  
 \end_layout
 
-\begin_layout Paragraph*
-Software release L16A
-\end_layout
-
-\begin_layout Standard
-Even though model 3 has the lowest BIC, it is found in the output that a
- coefficient of Paging has zero standard error which leads t-value to infinity.
- This zero value can be interpreted in two different ways: an actual zero
- or treated as zero because significant digit is lost due to the floating
- point.
- Nevertheless, either way suggests that this model might not be a good model
- to use.
- The model might be overfitting with the training data.
- Therefore, model 1 which has the second lowest BIC is chosen for this given
- dataset instead.
-\end_layout
-
-\begin_layout Paragraph*
-Software release L16B
-\end_layout
-
-\begin_layout Standard
-Although model 2 has the least BIC, its graph is not interpretable.
- There are divided into two main parts.
- As can be seen in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "L16B_NNY"
-
 \end_inset
 
-, mostly observations in the first half of the period stay in State 3 while
- observations are in State 2 in the second half of the period.
- This seems somewhat unrealistic that observation i.e., software package stays
- in the same period for a long duration without switching to other states.
- The model 6 which has the second smallest BIC appears to have the same
- output like in model 2 although not reported.
- The selected model for this dataset is model 4.
-\end_layout
 
-\begin_layout Paragraph*
-Software release L17A
-\end_layout
-
-\begin_layout Standard
-Model 1 has the lowest BIC and appears to have a good explanation when looking
- at the plot.
- Thus, it is preferably chosen.
-\end_layout
-
-\begin_layout Section*
-State inference
-\end_layout
-
-\begin_layout Standard
-software release L16A
-\end_layout
-
-\begin_layout Standard
-software release L16B
-\end_layout
-
-\begin_layout Standard
-software release L17A
 \end_layout
 
 \begin_layout Standard
