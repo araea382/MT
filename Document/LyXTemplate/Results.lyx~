@@ -389,10 +389,10 @@ y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}X_{RrcConnectio
 \end_layout
 
 \begin_layout Standard
-Markov switching autoregressive model is performed for each dataset with
- every parameter in the model has switching effects i.e., the coefficients
+Markov switching autoregressive model was performed for each dataset with
+ every parameter in the model had switching effects i.e., the coefficients
  can take on different values in different periods.
- The estimation is made under the assumptions of two or three states 
+ The estimation was made under the assumptions of two or three states 
 \begin_inset Formula $S_{t}\in S$
 \end_inset
 
@@ -412,8 +412,8 @@ Markov switching autoregressive model is performed for each dataset with
  These two numbers come from a hypothesis that the state of the CPU utilization
  might have two states (Normal and Bad, Normal and Good, Bad and Good) or
  three states (Normal, Bad, and Good).
- During the estimation, a normality assumption is also applied to the distributi
-on of residuals.
+ During the estimation, a normality assumption was also applied to the distribut
+ion of residuals.
  
 \begin_inset Note Comment
 status collapsed
@@ -429,10 +429,10 @@ REASON: (easier to compare...what else?)
 
 \begin_layout Standard
 Before performing the Markov switching autoregressive model, a standard
- linear regression model is fitted to the dataset first.
- It is found that one coefficient in the dataset of software release L16A
- is not defined because of singularity.
- Hence, DuProdName variable is dropped from Equation 
+ linear regression model was fitted to the dataset first.
+ It was found that one coefficient in the dataset of software release L16A
+ was not defined because of singularity.
+ Hence, DuProdName variable was dropped from Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mswm"
@@ -661,11 +661,11 @@ reference "L16A_2_smo"
 
 \end_inset
 
- presents that the Markov chain remains in State 1 for an extensive period
- of time before it switches to State 2.
- When the chain is in State 2, it stays there only a short time and then
- quickly moves back to State 1.
- There are a few switches between these two states in 
+ presents that the Markov chain remained in State 1 for an extensive period
+ of time before it switched to State 2.
+ When the chain was in State 2, it stayed there only a short time and then
+ quickly moved back to State 1.
+ There were a few switches between these two states in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16A_2_smo"
@@ -673,8 +673,8 @@ reference "L16A_2_smo"
 \end_inset
 
 .
- On the other hand, it is visible that there are more switches between states
- in 
+ On the other hand, it is visible that there were more switches between
+ states in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16A_3_smo"
@@ -779,7 +779,7 @@ reference "state-bic"
 \end_inset
 
 , the Markov switching autoregressive models with two states for the remaining
- two software releases, L16B and L17A, yield better results in favor of
+ two software releases, L16B and L17A, yields better results in favor of
  lower BICs.
  
 \end_layout
@@ -792,15 +792,15 @@ reference "L16B_2_smo"
 
 \end_inset
 
-, the Markov chain has several periods where it switches back and forth
+, the Markov chain had several periods where it switched back and forth
  between two states of the software release L16B.
- The durations of being in State 2 have a longer length compare with the
+ The durations of being in State 2 had a longer length compare with the
  durations of staying in State 1.
- Although the chain temporarily stays in State 1, it remains in this state
+ Although the chain temporarily stayed in State 1, it remained in this state
  for a few moments in the middle of the time period (observation 91-99 and
  101-114) before turning to State 2.
- Apparently, there are more switches between states in the three-state model,
- especially in the beginning, middle, and at the end of the period.
+ Apparently, there were more switches between states in the three-state
+ model, especially in the beginning, middle, and at the end of the period.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -808,8 +808,8 @@ reference "L16B_3_smo"
 
 \end_inset
 
- shows that the chain remains in State 3 over a considerable period as can
- be seen throughout observation 15-39, 42-67, and 140-170.
+ shows that the chain remained in State 3 over a considerable period as
+ can be seen throughout observation 15-39, 42-67, and 140-170.
 \end_layout
 
 \begin_layout Standard
@@ -900,7 +900,7 @@ name "L16B_3_smo"
 \end_layout
 
 \begin_layout Standard
-There are a number of switches between states in the two-state model of
+There were a number of switches between states in the two-state model of
  the software release L17A.
  In 
 \begin_inset CommandInset ref
@@ -909,11 +909,11 @@ reference "L17A_2_smo"
 
 \end_inset
 
-, when the Markov chain is in State 1, it continues to stay in its state
+, when the Markov chain was in State 1, it continued to stay in its state
  for a while before leaving to State 2.
- Furthermore, it can be seen that the chain has a fairly short duration
+ Furthermore, it can be seen that the chain had a fairly short duration
  staying in State 2.
- After the chain visits State 2, it instantly switches back to State 1.
+ After the chain visited State 2, it instantly switched back to State 1.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -921,10 +921,10 @@ reference "L17A_3_smo"
 
 \end_inset
 
- presents the chain which has many switches between State 1 and State 2
+ presents the chain which had many switches between State 1 and State 2
  in the first half of the time period.
- The chain for the three-state model also stays in State 2 significantly
- long from observation 104 until 129, which is the end of the time series.
+ The chain for the three-state model also stayed in State 2 significantly
+ long from observation 104 until 129, which was the end of the time series.
 \end_layout
 
 \begin_layout Standard
@@ -1007,10 +1007,10 @@ name "L17A_3_smo"
 \end_layout
 
 \begin_layout Standard
-The outputs from the models along with plots provide more interpretable
+The outputs from the models along with plots provided more interpretable
  results when defining the model with three states in the software release
  L16B and L17A.
- In regards to this, the three-state models for each software release are
+ In regards to this, the three-state models for each software release were
  further analyzed in the thesis.
 \end_layout
 
@@ -1091,15 +1091,15 @@ reference "sec:States"
 
 \end_inset
 
- only have state-dependent parameters i.e., coefficients of the regression
+ only had state-dependent parameters i.e., coefficients of the regression
  with switching effects.
  Apparently, each coefficient can have either a switching or non-switching
  effect.
  A hypothesis for the switching/non-switching coefficients is that the variables
  considered as the test environment are possible to have non-switching effects.
- Markov switching autoregressive models are applied to each dataset again,
+ Markov switching autoregressive models were applied to each dataset again,
  but this time all combinations of switching/non-switching coefficients
- in the model are tried out.
+ in the model were tried out.
  In this section, tables report the structure of the model, while plots
  present the state specifications from the chosen Markov switching autoregressiv
 e model.
@@ -1118,10 +1118,10 @@ t this thesis.
 \end_layout
 
 \begin_layout Standard
-For the dataset of the software release L16A, DuProdName is not included
+For the dataset of the software release L16A, DuProdName was not included
  in the model fitting as previously explained.
- Only two variables of the test environment are left to try whether it can
- have non-switching effect or not.
+ Only two variables of the test environment were left to try whether it
+ can have non-switching effect or not.
  The result is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1130,10 +1130,10 @@ reference "L16A_switch"
 \end_inset
 
 .
- The second model has the highest BIC and even higher than the model with
+ The second model had the highest BIC and even higher than the model with
  all switching coefficients.
- The first model, where both Fdd/Tdd and NumCells have switching effects,
- is selected to use with this dataset.
+ The first model, where both Fdd/Tdd and NumCells had switching effects,
+ was selected to use with this dataset.
  
 \begin_inset Note Comment
 status collapsed
@@ -1415,15 +1415,15 @@ reference "L16A_NN"
 
  indicates the CPU utilization of the software release L16A and also shows
  the periods of the derived state from the model.
- It is not difficult to notice that State 2 has the longest duration to
+ It is not difficult to notice that State 2 had the longest duration to
  remain in its own state.
- When the chain moves to State 3, it immediately switches to the other states.
- In other words, the chain does not linger in State 3 during the time series
+ When the chain moved to State 3, it immediately switched to the other states.
+ In other words, the chain did not linger in State 3 during the time series
  period.
- In addition, this pattern happens to most of the durations in State 1,
+ In addition, this pattern happened to most of the durations in State 1,
  except in the beginning and almost at the end of the period where the chain
- tends to have a longer duration.
- There is also more chance from State 2 to switch to State 3 rather than
+ tended to have a longer duration.
+ There was also more chance from State 2 to switch to State 3 rather than
  switch to State 1.
  
 \end_layout
@@ -1484,11 +1484,11 @@ reference "L16B_switch"
 
  presents the results of fitting the model with different combinations of
  switching coefficients.
- Model 5 and 7 have higher BICs than the model which has switching effect
+ Models 5 and 7 had higher BICs than the model which had switching effect
  in all coefficients.
- The second model, where DuProdName and Fdd/Tdd are non-switching coefficients,
- has a smallest BIC.
- The chosen model for this dataset is the model which has only DuProdName
+ The second model, where DuProdName and Fdd/Tdd were non-switching coefficients,
+ had a smallest BIC.
+ The chosen model for this dataset was the model which had only DuProdName
  with a non-switching coefficient or model 4.
 \end_layout
 
@@ -1994,12 +1994,12 @@ reference "L16B_NYY"
 \end_inset
 
 .
- However, the state which has the longest duration to remain in its own
- state is State 3.
- It is visible that there are three durations where the chain stays in State
- 3 for a long time.
+ However, the state which had the longest duration to remain in its own
+ state was State 3.
+ It is visible that there were three durations where the chain stayed in
+ State 3 for a long time.
  Another noticeable behavior from this switching mechanism is that there
- is several switches between State 1 and State 2 in the beginning, middle,
+ was several switches between State 1 and State 2 in the beginning, middle,
  and at the end of the time period.
  
 \end_layout
@@ -2061,11 +2061,11 @@ reference "L17A_switch"
 \end_inset
 
  presents the different models for the software release L17A.
- There is only model 2 that has a higher BIC than the model with all switching
+ There was only model 2 that had a higher BIC than the model with all switching
  coefficients.
- The least BIC is from the first model that all three variables in the test
- environment have non-switching effects.
- This model is also chosen to be further used for this dataset.
+ The least BIC was from the first model that all three variables in the
+ test environment had non-switching effects.
+ This model was also chosen to be further used for this dataset.
 \end_layout
 
 \begin_layout Standard
@@ -2571,9 +2571,9 @@ reference "L17A_NNN"
 \end_inset
 
 .
- Around the end of the time series period, State 3 appears to have a longer
- duration and there is a fewer switches to State 1.
- State 2 seems to be the only state which has a fairly short duration for
+ Around the end of the time series period, State 3 appeared to have a longer
+ duration and there was a fewer switches to State 1.
+ State 2 seemed to be the only state which had a fairly short duration for
  the chain to stay in the state.
  The plot also indicates that State 2 tends to switch to State 1 more often
  than switch to State 3.
@@ -2631,6 +2631,13 @@ name "L17A_NNN"
 
 \begin_layout Section
 Residual analysis
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Residual-analysis"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2680,7 +2687,7 @@ reference "sec:Switching-coefficients"
 
 \end_inset
 
- are analyzed to see how well it fits an assumption of a normal distribution.
+ were analyzed to see how well it fitted an assumption of a normal distribution.
  A Quantile-Quantile (Q-Q) plot is an effective tool for assessing normality.
  Moreover, an Autocorrelation function (ACF) and a Partial Autocorrelation
  Function (PACF) of residuals are a useful technique to check on the independenc
@@ -2699,9 +2706,9 @@ reference "L16A_plotDiag"
 
 \end_inset
 
-, the pooled residuals appear to fall in a straight line with some deviations
+, the pooled residuals appeared to fall in a straight line with some deviations
  in its tails.
- There is an evidence of autocorrelation in the residuals of this model,
+ There was an evidence of autocorrelation in the residuals of this model,
  which can be seen in both ACF and PACF plot, at lag 8.
  
 \begin_inset Note Comment
@@ -2781,16 +2788,16 @@ reference "L16B_plotDiag"
 
 \end_inset
 
-, it is noticed that points form a straight line in the middle of the plot,
- but curve off at both ends.
+, it is noticed that points formed a straight line in the middle of the
+ plot, but curved off at both ends.
  This is a characteristic of a heavy-tailed distribution.
  The data has more extreme values than it should be if the data truly comes
  from a normal distribution.
- In addition, both the ACF and PACF plot show that there is a small amount
+ In addition, both the ACF and PACF plot show that there was a small amount
  of autocorrelation remaining in the residuals.
- The statistically significant correlation of this model are at lags 6 and
- 10.
- The significant at lag 4 both in the ACF and PACF plot is slightly higher
+ The statistically significant correlation of this model were at lags 6
+ and 10.
+ The significant at lag 4 both in the ACF and PACF plot was slightly higher
  than two standard errors.
 \end_layout
 
@@ -2860,10 +2867,10 @@ reference "L17A_plotDiag"
 
  suggests that a distribution of the pooled residuals may have a tail thicker
  than that of a normal distribution.
- It is visible that there are many extreme positive and negative residuals
+ It is visible that there were many extreme positive and negative residuals
  in the plot.
- Furthermore, the ACF plot of pooled residuals are significant for the first
- two lags, whereas the PACF plot is significant only at lag 2.
+ Furthermore, the ACF plot of pooled residuals were significant for the
+ first two lags, whereas the PACF plot was significant only at lag 2.
  
 \begin_inset Note Comment
 status collapsed
@@ -3158,10 +3165,10 @@ Non-parametric analysis
 \end_layout
 
 \begin_layout Standard
-An E-divisive method is applied to all three datasets.
+An E-divisive method was applied to all three datasets.
  The method reports one cluster for the dataset of the software release
  L16A.
- There are five clusters found in both datasets of the software release
+ There were five clusters found in both datasets of the software release
  L16B and L17A.
  
 \begin_inset CommandInset ref
@@ -3170,7 +3177,7 @@ reference "ediv"
 
 \end_inset
 
- shows places in the time series data where the E-divisive algorithm is
+ shows places in the time series data where the E-divisive algorithm was
  able to detect the significant changes.
  
 \end_layout
@@ -3326,8 +3333,8 @@ reference "ediv_L17A"
 \end_inset
 
 , respectively.
- The E-divisive method cannot identify any changes in the dataset of the
- software release L16A.
+ The E-divisive method could not identify any changes in the dataset of
+ the software release L16A.
  
 \end_layout
 
@@ -3380,7 +3387,7 @@ name "ediv_L16A"
 \end_layout
 
 \begin_layout Standard
-Four change points are identified from the method for the software release
+Four change points were identified from the method for the software release
  L16B and L17A.
  In 
 \begin_inset CommandInset ref
@@ -3390,9 +3397,9 @@ reference "ediv_L16B"
 \end_inset
 
 , the estimated change points for the dataset of the software release L16B
- are likely to occur around the same period of time, which are almost at
- the end of the time series data.
- The estimated points from the method are approximately at peaks and negative
+ were likely to occur around the same period of time, which were almost
+ at the end of the time series data.
+ The estimated points from the method were approximately at peaks and negative
  peaks.
 \end_layout
 
@@ -3452,8 +3459,8 @@ reference "ediv_L17A"
 
 \end_inset
 
-, has the estimated change points rather spread out.
- The E-divisive method discovers changes when the CPU utilization is about
+, had the estimated change points rather spread out.
+ The E-divisive method discovered changes when the CPU utilization was about
  to drop or increase its value.
  
 \end_layout
@@ -3511,12 +3518,12 @@ Comparison between the Markov switching autoregressive model and the E-divisive
 \end_layout
 
 \begin_layout Standard
-One noticeable thing is that the E-divisive method is able to identify the
- changes of the data less than the Markov switching autoregressive model.
- As mentioned previously, no estimated change points is discovered when
+One noticeable thing is that the E-divisive method was able to identify
+ the changes of the data less than the Markov switching autoregressive model.
+ As mentioned previously, no estimated change points was discovered when
  applying the E-divisive algorithm to the dataset of the software release
  L16A.
- Thus, a comparison between two methods cannot be made for this dataset.
+ Thus, a comparison between two methods could not be made for this dataset.
  
 \end_layout
 
@@ -3529,14 +3536,14 @@ reference "compare_L16B"
 
  presents results of both switches from the Markov switching autoregressive
  model and change point locations from the E-divisive method.
- There is one location where the E-divisive method detects a change but
- the Markov switching autoregressive model does not show any switches.
- As can be seen, the E-divisive method appears to detect changes when State
+ There was one location where the E-divisive method detected a change but
+ the Markov switching autoregressive model did not show any switches.
+ As can be seen, the E-divisive method appeared to detect changes when State
  2 switches to State 3.
- At observation 130, the E-divisive method discovers a switch in the state
- at the same time as Markov switching autoregressive model does.
- However, the E-divisive method identifies switches after and before the
- Markov switching autoregressive model does at observations 135 and 170,
+ At observation 130, the E-divisive method discovered a switch in the state
+ at the same time as Markov switching autoregressive model did.
+ However, the E-divisive method identified switches after and before the
+ Markov switching autoregressive model did at observations 135 and 170,
  respectively.
 \end_layout
 
@@ -3585,10 +3592,10 @@ name "compare_L16B"
 \end_layout
 
 \begin_layout Standard
-For the dataset of the software release L17A, the E-divisive method reports
- a change at observation 105 whereas no switch between states can be found
+For the dataset of the software release L17A, the E-divisive method reported
+ a change at observation 105 whereas no switch between states could be found
  from the result of the Markov switching autoregressive model.
- The E-divisive method is able to detect a switch from State 1 to State
+ The E-divisive method was able to detect a switch from State 1 to State
  3, and also a switch from State 3 to State 1 in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3597,10 +3604,10 @@ reference "compare_L17A"
 \end_inset
 
 .
- It is visible that both two methods can detect the change at the same period
- of time at observations 77 and 82.
- The E-divisive method detects a change at observation 9 which is before
- there is a switch in the state from the result of the Markov switching
+ It is visible that both two methods could detect the change at the same
+ period of time at observations 77 and 82.
+ The E-divisive method detected a change at observation 9 which was before
+ there was a switch in the state from the result of the Markov switching
  autoregressive model.
 \end_layout
 
@@ -3650,8 +3657,8 @@ Predicting the state
 \end_layout
 
 \begin_layout Standard
-Now, an implemented predict function is applied to the test set in order
- to find the most probable state for new observations.
+Now, an implemented of state prediction function was applied to the test
+ set in order to find the most probable state for new observations.
  For the software release L16A, there are 7 observations in a test set.
  In 
 \begin_inset CommandInset ref
@@ -3660,13 +3667,13 @@ reference "predict_L16A"
 
 \end_inset
 
-, only two states, which are State 1 and State 2, are assigned for these
+, only two states, which were State 1 and State 2, were assigned for these
  observations.
- The first three observations are in State 2.
- Afterwards, observation tends to switch back and forth between states until
- the end.
- It is noticed that the last observation does not belong to any state.
- After applying a predict function to the test set, the function is unable
+ The first three observations were in State 2.
+ Afterwards, observation tended to switch back and forth between states
+ until the end.
+ It is noticed that the last observation did not belong to any state.
+ After applying a predict function to the test set, the function was unable
  to predict the most likely state for the last observation of the test set.
  
 \end_layout
@@ -3729,10 +3736,10 @@ reference "predict_L16B"
 \end_inset
 
 .
- Observation 15 is the only observation which is in State 2.
+ Observation 15 was the only observation which was in State 2.
  Many switches between State 1 and State 2 can be seen from the plot.
- In addition, observation appears to stay in State 1 only a short time before
- moving to State 3, except for the first five observations.
+ In addition, observation appeared to stay in State 1 only a short time
+ before moving to State 3, except for the first five observations.
  
 \end_layout
 
@@ -3791,13 +3798,13 @@ reference "predict_L17A"
 
 \end_inset
 
- presents a considerably long period for staying in State 2, which is from
+ presents a considerably long period for staying in State 2, which was from
  observation 10 to the end of the time series data.
- There are several switches between states happening in the plot.
- As can be seen, observation between 4 and 7 swaps between states fairly
+ There were several switches between states happening in the plot.
+ As can be seen, observation between 4 and 7 swapped between states fairly
  quick.
- Observation visits the particular state for one time and then move to the
- other states.
+ Observation visited the particular state for one time and then moved to
+ the other states.
  
 \end_layout
 
@@ -3849,8 +3856,8 @@ Assessing state prediction using a simulation technique
 \end_layout
 
 \begin_layout Standard
-Markov switching autoregressive model is fitted with eighty percents of
- the observations from a simulated data, and the remaining is used as a
+Markov switching autoregressive model was fitted with eighty percents of
+ the observations from a simulated data, and the remaining was used as a
  test set to evaluate a performance of the model.
  The result of the model performance is shown in 
 \begin_inset CommandInset ref
@@ -3860,14 +3867,14 @@ reference "confusion"
 \end_inset
 
 .
- There are two observations from the Bad state which are wrongly classified
+ There were two observations from the Bad state which were wrongly classified
  to the Normal state.
- Moreover, another two observations from the Good state are classified to
- the Normal state.
- The overall accuracy of the model is 0.96, and the misclassification rate
- is 0.04.
- One can see that the model is able to correctly predict the observations
- which have Bad and Good state.
+ Moreover, another two observations from the Good state were classified
+ to the Normal state.
+ The overall accuracy of the model was 0.96, and the misclassification rate
+ was 0.04.
+ One can see that the model was able to correctly predict the observations
+ which had Bad and Good state.
  
 \end_layout
 
