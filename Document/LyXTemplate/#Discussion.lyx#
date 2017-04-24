@@ -348,16 +348,16 @@ name "subsec:Model-selection"
 \end_layout
 
 \begin_layout Standard
-In this analysis, a model with all switching coefficients, which is a three-stat
-e model from 
+In this analysis, a model with all switching coefficients, which was a three-sta
+te model from 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:States"
 
 \end_inset
 
-, acts as a baseline model for each dataset.
- This model is used to compare with other models which have different combinatio
+, acted as a baseline model for each dataset.
+ This model was used to compare with other models which had different combinatio
 n of switching coefficients in a particular dataset.
  If the fitted model has higher BIC than the baseline model, it means that
  this specific model performs worst and should not be considered for further
@@ -365,28 +365,29 @@ n of switching coefficients in a particular dataset.
  However, it is insufficient to only look at the BIC when choosing model
  for the data.
  Other aspects should also be taken into consideration along with the BIC
- such as model outputs or graph.
+ such as model outputs or plots.
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Paragraph*
 Software release L16A
 \end_layout
 
 \begin_layout Standard
-Even though model 3 has the lowest BIC, it is found in the output (not reported)
- that a coefficient of Paging has a zero standard error in one of the state.
- As a consequence, it leads t-value of this parameter to infinity.
+Even though model 3 had the lowest BIC, it was found in the output (not
+ reported) that a coefficient of Paging had a zero standard error in one
+ of the state.
+ As a consequence, it led t-value of this parameter to infinity.
  This zero value can be interpreted in two different ways: an actual zero
- or treated as zero because significant digit is lost due to the floating
- point.
+ or an extremely small value that a computer treated as zero because significant
+ digit is lost due to the floating point.
  Nevertheless, either way suggests that this model might not be a good model
  to use with this dataset as the model might be overfitting with the training
  data.
  The standard error equal to zero means that there is no variation in the
  data i.e., every data value is equal to the mean.
- Therefore, model 1 which has the second lowest BIC is chosen for this given
- dataset instead.
+ Therefore, model 1 which had the second lowest BIC was chosen for this
+ given dataset instead.
 \end_layout
 
 \begin_layout Paragraph*
@@ -394,22 +395,32 @@ Software release L16B
 \end_layout
 
 \begin_layout Standard
-Although model 2 has the least BIC, its graph which is shown in 
+Model 2 had the least BIC among the other models.
+ Nonetheless, its plot shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_NNY"
 
 \end_inset
 
- is not interpretable.
- There are divided into two main parts.
- As can be seen, mostly observations in the first half of the period stay
- in State 3 while observations are in State 2 in the second half of the
- period.
- This seems somewhat unrealistic that observation or software package stays
- in the same period for a long duration without switching to other states.
- Although not reported, similar results are obtained for the model 6 which
- has the second smallest BIC.
+ provided a difficulty in interpreting a result.
+ There were divided into two main parts.
+ Most of observations in the first half of the period stayed in State 3,
+ while observations were in State 2 in the second half of the period.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_NNY"
+
+\end_inset
+
+ indicates a fluctuation in the value of the CPU utilization.
+ Therefore, for observation or software package to remain in the same period
+ for a long duration without switching to other states seems somewhat unrealisti
+c.
+ The next smallest BIC is from a model 6.
+ However, the model established a result similar to the result from the
+ model 2.
  
 \begin_inset Note Comment
 status collapsed
@@ -421,7 +432,10 @@ The model 6 which has the second smallest BIC appears to have the same output
 
 \end_inset
 
- Hence, the selected model for this dataset is model 4.
+ Hence, the selected model for this dataset was model 4 where its BIC was
+ in the thrid place.
+ Even though this model had a bit higher BIC than models 2 and 6, it produced
+ more sensible result.
 \end_layout
 
 \begin_layout Paragraph*
@@ -429,9 +443,9 @@ Software release L17A
 \end_layout
 
 \begin_layout Standard
-Model 1 has the lowest BIC and appears to have a good explanation when looking
- at a graph.
- Thus, it is preferably chosen.
+Model 1 had the lowest BIC and appeared to have a good explanation when
+ looking at a plot.
+ Thus, it was preferably chosen.
 \end_layout
 
 \begin_layout Section
@@ -439,7 +453,12 @@ State inference
 \end_layout
 
 \begin_layout Standard
-After deciding the model, 
+Another important tasks after deciding which model will be used is to make
+ an inference on the given states.
+ A function from the package will estimate coefficients in each state but
+ it does not provide the definition of these derived states.
+ Interpretation and inference of the state needs to be specified by a user.
+ 
 \end_layout
 
 \begin_layout Paragraph*
@@ -447,7 +466,15 @@ Software release L16A
 \end_layout
 
 \begin_layout Standard
-dsf
+It can be seen that State 1
+\end_layout
+
+\begin_layout Standard
+State 2
+\end_layout
+
+\begin_layout Standard
+State 3
 \end_layout
 
 \begin_layout Paragraph*
@@ -455,7 +482,15 @@ Software release L16B
 \end_layout
 
 \begin_layout Standard
-df
+State 1
+\end_layout
+
+\begin_layout Standard
+State 2
+\end_layout
+
+\begin_layout Standard
+State 3
 \end_layout
 
 \begin_layout Paragraph
@@ -463,7 +498,15 @@ Software release L17A
 \end_layout
 
 \begin_layout Standard
-sdfdgfdfgsdgd
+State 1
+\end_layout
+
+\begin_layout Standard
+State 2
+\end_layout
+
+\begin_layout Standard
+State 3
 \end_layout
 
 \begin_layout Section
@@ -471,15 +514,19 @@ General discussion
 \end_layout
 
 \begin_layout Standard
-A thorough search of the relevant literature yielded that this might be
- the first time that Markov switching model is applied on the data used
- in the thesis to detect the state of the CPU.
+A thorough search of the relevant literature yielded that this thesis work
+ might be the first time that Markov switching model has been applied to
+ the specific type of dataset – detecting the state of the CPU.
  In previous work, this model is mainly implemented in finance or signal
  processing.
- A large amount of time is spent on understanding the data and determining
- which methods would be the best fit to this problem.
- Besides, a lot of work is done when trying to study implemented algorithms
- in the R package and also modify code as necessary.
+ Researches and works on that matter were used as an inspiration, but because
+ of some differences that make things slightly more complicated.
+ A large amount of time was spent on understanding the data, determining
+ which variables that have a significant impact on the CPU utilization,
+ and which methods would yield the best outcome to this problem.
+ Besides, after deciding on the most promising method, a lot of work was
+ done on studying implemented algorithms in the R package and also modifying
+ code as necessary.
 \end_layout
 
 \begin_layout Standard
@@ -488,11 +535,13 @@ In this study, NodeName, which is used to execute test cases, is assumed
  of the machine.
  Therefore, selecting a minimum value of the CPU utilization of the test
  case for each software package when preprocessing the data is acceptable.
+ 
 \end_layout
 
 \begin_layout Standard
-One has to understand and accept a risk when deciding on the number of states
- as there is no guarantee how many states would yield the best outcome.
+More importantly, one has to understand and accept a risk when deciding
+ on the number of states as there is no guarantee how many states would
+ yield the best outcome.
  This same situation also applies when determining the number of switching
  coefficients in the model.
  In 
@@ -530,8 +579,8 @@ find more reasons...
 \end_layout
 
 \begin_layout Standard
-One thing worth mentioning is that when modeling the Markov switching model,
- it is better to try estimating simple models first.
+Another thing worth mentioning is that when modeling the Markov switching
+ model, it is better to try estimating simple models first.
  The model's size grows exponentially according to the number of state 
 \begin_inset Formula $k$
 \end_inset
@@ -573,12 +622,8 @@ reference "sec:Switching-coefficients"
 \end_inset
 
  is to make a switching effect only for variables in the test environment.
- The reason for that 
-\end_layout
-
-\begin_layout Standard
-local events in EventPerSec is essential and should have flexible values
- in each state.
+ The reason for that is because local events in EventPerSec is essential
+ and should have flexible values in each state.
  Nevertheless, 
 \end_layout
 

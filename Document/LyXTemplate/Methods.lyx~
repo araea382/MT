@@ -592,7 +592,7 @@ key "grimmett2001probability"
 \begin_inset Formula $\mathbf{P}$
 \end_inset
 
- is a stochastic matrix that
+ is a matrix that
 \end_layout
 
 \begin_deeper
@@ -609,7 +609,7 @@ Each of the entries is a non-negative real number or
 \end_layout
 
 \begin_layout Itemize
-The sum of each column equal to one or 
+The sum of each column row to one or 
 \begin_inset Formula $\sum_{i}p_{ij}=1$
 \end_inset
 
@@ -875,8 +875,14 @@ status open
 
 \end_layout
 
-\begin_layout Definition
-If there is a finite state space, an irreducible Markov chain is the same
+\begin_layout Theorem*
+\begin_inset CommandInset citation
+LatexCommand citep
+key "manning2008introduction"
+
+\end_inset
+
+ If there is a finite state space, an irreducible Markov chain is the same
  thing as ergodic Markov chain.
  
 \end_layout
@@ -2108,7 +2114,7 @@ where
  is the number of parameters to be estimated in the model.
  One benefit from using BIC is that this criterion heavily penalizes model
  complexity as it takes into account the number of parameters in the model.
- BIC attempts to reduce the risk of over-fitting.
+ In addition, BIC attempts to reduce the risk of over-fitting.
 \end_layout
 
 \begin_layout Section

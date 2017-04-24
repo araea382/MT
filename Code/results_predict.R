@@ -35,6 +35,44 @@ ggplot(data=ans, aes(x=index, y=y)) + geom_line() +
   ylab("TotCpu") + ggtitle("L16A") + theme_bw()
 
 
+# # test prediction function
+# # L16A with whole dataset
+# 
+# mod_L17A <- lm(fmla, data=g2_L17A)
+# summary(mod_L17A)
+# 
+# #--------------------#
+# # 5 = DuProdName
+# # 6 = Fdd/Tdd
+# # 7-9 = NumCells
+# 
+# # (1) NNN
+# switch <- rep(TRUE,length(mod_L17A$coefficients)+1+1)
+# names(switch) <- c(names(mod_L17A$coefficients),"AR","var")
+# switch[c(5,6,7,8,9)] <- FALSE; switch
+# set.seed(1)
+# mswm_L17A_NNN <- MSwM2::msmFit(mod_L17A, k=3, p=1, sw=switch, control=list(trace=TRUE, maxiter=500, parallel=FALSE))
+# summary(mswm_L17A_NNN)
+# 
+# #--------------------#
+# # smoothed prob plot
+# L17A_3 <- as.data.frame(mswm_L17A_NNN@Fit@smoProb)
+# L17A_3 <- cbind(index=seq(1,nrow(L17A_3)),L17A_3)
+# colnames(L17A_3) <- c("index","State 1","State 2","State 3")
+# 
+# L17A_3 <- melt(L17A_3, id="index")
+# ggplot(data=L17A_3, aes(x=index, y=value, colour=variable)) + geom_line() +
+#   ylab("Smoothed Probabilities") + ggtitle("L17A_NNN") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+#   theme_bw() + theme(legend.title = element_blank())
+# 
+# #--------------------#
+# # plot with state area
+# state_L17A_3 <- gen(mswm_L17A_NNN, train_g2_L17A)
+# ggplot(data=state_L17A_3, aes(x=index, y=y)) + geom_line() +
+#   geom_rect(data=state_L17A_3, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+#   scale_fill_manual(values=c("red","green","blue")) + 
+#   ylab("TotCpu") + ggtitle("L17A_NNN") + theme_bw()
+
 
 #----------------------------------------------------------------#
 

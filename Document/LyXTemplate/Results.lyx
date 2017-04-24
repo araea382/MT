@@ -390,8 +390,8 @@ y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}X_{RrcConnectio
 
 \begin_layout Standard
 Markov switching autoregressive model was performed for each dataset with
- every parameter in the model had switching effects i.e., the coefficients
- can take on different values in different periods.
+ every parameter in the model had switching effects i.e., coefficients can
+ take on different values in different periods.
  The estimation was made under the assumptions of two or three states 
 \begin_inset Formula $S_{t}\in S$
 \end_inset
@@ -779,7 +779,7 @@ reference "state-bic"
 \end_inset
 
 , the Markov switching autoregressive models with two states for the remaining
- two software releases, L16B and L17A, yields better results in favor of
+ two software releases, L16B and L17A, yielded better results in favor of
  lower BICs.
  
 \end_layout
@@ -794,7 +794,7 @@ reference "L16B_2_smo"
 
 , the Markov chain had several periods where it switched back and forth
  between two states of the software release L16B.
- The durations of being in State 2 had a longer length compare with the
+ The durations of being in State 2 had a longer length compared with the
  durations of staying in State 1.
  Although the chain temporarily stayed in State 1, it remained in this state
  for a few moments in the middle of the time period (observation 91-99 and
@@ -911,8 +911,7 @@ reference "L17A_2_smo"
 
 , when the Markov chain was in State 1, it continued to stay in its state
  for a while before leaving to State 2.
- Furthermore, it can be seen that the chain had a fairly short duration
- staying in State 2.
+ Furthermore, the chain had a fairly short duration staying in State 2.
  After the chain visited State 2, it instantly switched back to State 1.
  
 \begin_inset CommandInset ref
@@ -1120,8 +1119,8 @@ t this thesis.
 \begin_layout Standard
 For the dataset of the software release L16A, DuProdName was not included
  in the model fitting as previously explained.
- Only two variables of the test environment were left to try whether it
- can have non-switching effect or not.
+ Only two variables of the test environment were left to try whether they
+ could have non-switching effects or not.
  The result is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1423,9 +1422,8 @@ reference "L16A_NN"
  In addition, this pattern happened to most of the durations in State 1,
  except in the beginning and almost at the end of the period where the chain
  tended to have a longer duration.
- There was also more chance from State 2 to switch to State 3 rather than
+ State 2 also happened to have more chance to switch to State 3 rather than
  switch to State 1.
- 
 \end_layout
 
 \begin_layout Standard
@@ -1996,8 +1994,8 @@ reference "L16B_NYY"
 .
  However, the state which had the longest duration to remain in its own
  state was State 3.
- It is visible that there were three durations where the chain stayed in
- State 3 for a long time.
+ There were three durations where the chain stayed in State 3 for a long
+ time.
  Another noticeable behavior from this switching mechanism is that there
  was several switches between State 1 and State 2 in the beginning, middle,
  and at the end of the time period.
@@ -2061,8 +2059,7 @@ reference "L17A_switch"
 \end_inset
 
  presents the different models for the software release L17A.
- There was only model 2 that had a higher BIC than the model with all switching
- coefficients.
+ Only model 2 had a higher BIC than the model with all switching coefficients.
  The least BIC was from the first model that all three variables in the
  test environment had non-switching effects.
  This model was also chosen to be further used for this dataset.
@@ -2575,7 +2572,7 @@ reference "L17A_NNN"
  duration and there was a fewer switches to State 1.
  State 2 seemed to be the only state which had a fairly short duration for
  the chain to stay in the state.
- The plot also indicates that State 2 tends to switch to State 1 more often
+ The plot also indicates that State 2 tended to switch to State 1 more often
  than switch to State 3.
  
 \end_layout
@@ -2781,15 +2778,14 @@ name "L16A_plotDiag"
 \end_layout
 
 \begin_layout Standard
-In 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_plotDiag"
 
 \end_inset
 
-, it is noticed that points formed a straight line in the middle of the
- plot, but curved off at both ends.
+ presents points that formed a straight line in the middle of the plot,
+ but curved off at both ends.
  This is a characteristic of a heavy-tailed distribution.
  The data has more extreme values than it should be if the data truly comes
  from a normal distribution.
@@ -3166,7 +3162,7 @@ Non-parametric analysis
 
 \begin_layout Standard
 An E-divisive method was applied to all three datasets.
- The method reports one cluster for the dataset of the software release
+ The method reported one cluster for the dataset of the software release
  L16A.
  There were five clusters found in both datasets of the software release
  L16B and L17A.
@@ -3333,8 +3329,8 @@ reference "ediv_L17A"
 \end_inset
 
 , respectively.
- The E-divisive method could not identify any changes in the dataset of
- the software release L16A.
+ It can be seen that the E-divisive method could not identify any changes
+ in the dataset of the software release L16A.
  
 \end_layout
 
@@ -3534,8 +3530,9 @@ reference "compare_L16B"
 
 \end_inset
 
- presents results of both switches from the Markov switching autoregressive
- model and change point locations from the E-divisive method.
+ presents results of switches between states from the Markov switching autoregre
+ssive model and change point locations from the E-divisive method for the
+ software release L16B.
  There was one location where the E-divisive method detected a change but
  the Markov switching autoregressive model did not show any switches.
  As can be seen, the E-divisive method appeared to detect changes when State
@@ -3592,20 +3589,20 @@ name "compare_L16B"
 \end_layout
 
 \begin_layout Standard
-For the dataset of the software release L17A, the E-divisive method reported
- a change at observation 105 whereas no switch between states could be found
- from the result of the Markov switching autoregressive model.
- The E-divisive method was able to detect a switch from State 1 to State
- 3, and also a switch from State 3 to State 1 in 
+In 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_L17A"
 
 \end_inset
 
-.
- It is visible that both two methods could detect the change at the same
- period of time at observations 77 and 82.
+, the E-divisive method reported a change at observation 105 whereas no
+ switch between states could be found from the result of the Markov switching
+ autoregressive model.
+ It is visible that the E-divisive method was able to detect a switch from
+ State 1 to State 3, and also a switch from State 3 to State 1.
+ Both two methods could detect the changes at the same period of time at
+ observations 77 and 82.
  The E-divisive method detected a change at observation 9 which was before
  there was a switch in the state from the result of the Markov switching
  autoregressive model.
