@@ -2684,7 +2684,8 @@ reference "sec:Switching-coefficients"
 
 \end_inset
 
- were analyzed to see how well it fitted an assumption of a normal distribution.
+ were analyzed to see how well the model fitted an assumption of a normal
+ distribution.
  A Quantile-Quantile (Q-Q) plot is an effective tool for assessing normality.
  Moreover, an Autocorrelation function (ACF) and a Partial Autocorrelation
  Function (PACF) of residuals are a useful technique to check on the independenc
@@ -3511,6 +3512,13 @@ name "ediv_L17A"
 \begin_layout Subsection
 Comparison between the Markov switching autoregressive model and the E-divisive
  
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Comparison-between-the"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

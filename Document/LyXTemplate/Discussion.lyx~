@@ -319,23 +319,6 @@ Critical assessment of the results obtained and the adequacy of the methods
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Suggestion for a better result –> future
-\end_layout
-
-\begin_layout Plain Layout
-Coefficients value ?????????????????
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Model selection 
 \begin_inset CommandInset label
@@ -433,7 +416,7 @@ The model 6 which has the second smallest BIC appears to have the same output
 \end_inset
 
  Hence, the selected model for this dataset was model 4 where its BIC was
- in the thrid place.
+ in the third place.
  Even though this model had a bit higher BIC than models 2 and 6, it produced
  more sensible result.
 \end_layout
@@ -459,6 +442,17 @@ Another important tasks after deciding which model will be used is to make
  it does not provide the definition of these derived states.
  Interpretation and inference of the state needs to be specified by a user.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fighting my friend..
+ try to make an inference on the state as much as you can
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph*
@@ -516,17 +510,18 @@ General discussion
 \begin_layout Standard
 A thorough search of the relevant literature yielded that this thesis work
  might be the first time that Markov switching model has been applied to
- the specific type of dataset – detecting the state of the CPU.
+ the specific type of data – detecting the state of the CPU.
  In previous work, this model is mainly implemented in finance or signal
  processing.
  Researches and works on that matter were used as an inspiration, but because
  of some differences that make things slightly more complicated.
  A large amount of time was spent on understanding the data, examining which
  variables have a significant impact on the CPU utilization, and determining
- which methods would yield the best outcome for this problem.
- Besides, after deciding on the most promising method, a lot of work was
- done on studying implemented algorithms in the R package and also modifying
+ which methods would provide the best possible outcome for this problem.
+ Besides, after deciding on the most promising method, a lot of effort was
+ invested studying implemented algorithms in the R package as well as modifying
  code as necessary.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -553,29 +548,27 @@ reference "sec:States"
 
 , three-state model provides more interpretable graph and also meets with
  a prior requirement of the thesis objective.
- The results from the model with two states seem to offer less details and
- does not cover all the happening situations.
- Almost all graphs of a two state model have one state with considerably
+ The results from the two-state models seem to offer less details and does
+ not cover all the happening situations.
+ Almost all graphs of a model with two states have one state with considerably
  long period and another state with fairly short period.
  There is a problematic interpretation when trying to make a rough inference
  on the state.
- The relevant side note is that Markov switching model with four states
- for each software release is also tested in the analysis.
- However, the results are rather poor compare to the model with two and
- three states.
- Defining four states causes more difficulty when fitting the model and
- making an inference on the states.
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-find more reasons...
+find more reasons for not choosing two state model
 \end_layout
 
 \end_inset
 
-
+ The relevant side note is that Markov switching model with four states
+ for each software release is also tested in the analysis.
+ Apparently, defining four states causes more difficulty when fitting the
+ model and making an inference on the states.
+ The results are rather poor compare to the model with two and three states.
 \end_layout
 
 \begin_layout Standard
@@ -590,11 +583,12 @@ Another thing worth mentioning is that when modeling the Markov switching
 \end_inset
 
 .
- In addition, there would be more parameters to be estimated if all coefficients
- have switching effects.
+ In addition, if all coefficients have switching effects, model will have
+ more parameters to be estimated .
  The function will try to estimate coefficients, but there is no guarantee
  that the obtained results will be a global maximum.
- Therefore, the estimated values cannot be completely trusted.
+ As a consequence, the values of estimated coefficients cannot be completely
+ trusted.
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -611,6 +605,9 @@ key "perlin2015ms_regress"
 \end_inset
 
 .
+ This is also one of the main reason why not including all local events
+ which were generated in each test case.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -624,7 +621,18 @@ reference "sec:Switching-coefficients"
  is to make a switching effect only for variables in the test environment.
  The reason for that is because local events in EventPerSec is essential
  and should have flexible values in each state.
- Nevertheless, 
+ Nevertheless, the test environment is not necessarily h....
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+come up with one or two things
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -640,13 +648,15 @@ reference "sec:States"
  Hence, the variable is excluded from the regression model.
  This dataset has 57 test cases for training the Markov switching model.
  The data or in this case number of test cases in each software release
- is rather small which make it easier for an occurrence of singularity.
+ is rather small which make it easier for an occurrence of a singularity.
  Therefore, unless there is more data, it is better to drop the variable
  from the regression model before doing a further analysis.
 \end_layout
 
 \begin_layout Standard
-From residual analysis in 
+A Q-Q plot is a visual check for an assumption of normality which provides
+ a rough idea whether or not the assumption is plausible.
+ From residual analysis in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Residual-analysis"
@@ -655,17 +665,27 @@ reference "sec:Residual-analysis"
 
 , it reveals that residual does not completely follow a normal distribution
  for all three datasets.
-\end_layout
-
-\begin_layout Standard
--> remember that dataset is not large -> hard to spot a basic feature ->
- representing some noise -> with small samples often situation may be less
- clearer
-\end_layout
-
-\begin_layout Standard
+ However, it should be recalled that the dataset used in this thesis is
+ not sufficiently large.
+ With small samples, it is difficult to spot a basic feature and the situation
+ is often less clearer as it might represent more noise.
+ 
 \begin_inset Note Comment
 status collapsed
+
+\begin_layout Plain Layout
+The assumption of a normally distributed residuals is justified for software
+ release L16B.
+\end_layout
+
+\begin_layout Plain Layout
+If the residuals appear to behave randomly, it suggests that the model fits
+ the data well.
+\end_layout
+
+\begin_layout Plain Layout
+randomness tends to obscure the true behavior especially with small data
+\end_layout
 
 \begin_layout Plain Layout
 Furthermore, the model is able to capture the pattern of data rather well.
@@ -696,80 +716,41 @@ The remaining residuals show that the model has captured the patterns in
 \end_layout
 
 \begin_layout Standard
-model validation -> if the residuals appear to behave randomly, it suggests
- that the model fits the data well
+More importantly, it should be noted that the results of the Markov switching
+ autoregressive model could be affected by various types of bias.
+ First of all, the size of data is crucial in statistical analysis.
+ In this study, a small dataset is used to train the model.
 \end_layout
 
 \begin_layout Standard
-randomness tends to obscure the true behavior especially with small data
+For this reason, prediction for new observations might not be accurate due
+ to lacking data.
+ This is like what happen when fitting a linear model and predicting a state
+ for the software release L16A .
 \end_layout
 
 \begin_layout Standard
-The assumption of a normally distributed residuals is justified for software
- release L16B.
+Another thing is that other factors not considered in the model might also
+ be the reason for the
 \end_layout
 
 \begin_layout Standard
-Q-Q plot is used to check the assumption.
- It is a visual check that provides a rough idea whether the assumption
- is plausible.
- 
+selecting the number of state in the model
 \end_layout
 
 \begin_layout Standard
-One benefit from using the non-parametric analysis is that it does not require
- a prior assumption of a data distribution.
- This analysis is able to detect any type of distributional change within
- a time series.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-In this thesis framework, the non-parametric analysis is used for comparing
- with the results from Markov switching model.
- The computational time of the E-divisive algorithm is 
-\begin_inset Formula $O(kT^{2})$
-\end_inset
-
-, where 
-\begin_inset Formula $k$
-\end_inset
-
- is the number of estimated change points and 
-\begin_inset Formula $T$
-\end_inset
-
- is the number of observation in the time series data.
+find something...
+ write something...
+ do something...
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-It can be seen that variables which have influences on the CPU utilization
- (or TotCpu% variable) are also taking into account when performing a Markov
- switching model.
- Nevertheless, an E-divisive algorithm only consider values of the CPU utilizati
-on.
- With this and 
-\end_layout
-
-\begin_layout Standard
-Predict ERROR
-\end_layout
-
-\begin_layout Standard
-The accuracy of the test set in simulated data is significantly high.
- One reason for that might be because of this simulated data has some kinds
- of pattern.
- The model is able to capture the behavior of the time series data.
- 
 \end_layout
 
 \begin_layout Standard
@@ -800,6 +781,90 @@ Second, failures could be driven by other environmental factors not considered
  It would be reasonable here to consider not only the mean temperature but
  also the variation.
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One benefit from using a non-parametric analysis is that it does not require
+ a prior assumption of a data distribution.
+ This analysis is able to detect any type of distributional change within
+ a time series.
+ It can be noticed that variables which have influences on the CPU utilization
+ (or TotCpu% variable) are also include in the model when performing a Markov
+ switching model.
+ Nevertheless, an E-divisive algorithm only consider values of the CPU utilizati
+on.
+ With this difference, the E-divisive method will have even less power to
+ identify true changes in the CPU utilization.
+ Since there are other variables that affect the value of CPU utilization,
+ it is insufficient to take into account the response variable.
+ However, the E-divisive method can be used to obtain a general idea of
+ estimated change points for the value of the CPU utilization.
+ The E-divisive method appears to perform reasonably well in detecting changes
+ as far as a non-parametric analysis could.
+ As can be seen from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Comparison-between-the"
+
+\end_inset
+
+, the method is able to detect when a change is happened around the same
+ time as the Markov switching model did.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Even though the E-divisive method might not provide the best result, it
+ can give a general idea of estimated change points.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+State prediction function which is an additional implemented function in
+ the package seems to work properly, except for the dataset of the software
+ release L16A.
+ It has an ERROR 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+decide whether to remove or not
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The accuracy of the test set in a simulated data is significantly high.
+ One reason for that might be because of the simulated data has a rather
+ obvious pattern.
+ For instance, the value of the CPU usage is moderately low if it is generated
+ from the Good state.
+ Besides, each state remains in its own state for a while before switching
+ to the other states.
+ Thus, it is easier for the model to be completely capture the behavior
+ of the time series data.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+model validation on coefficient and r-squared
 \end_layout
 
 \end_inset

@@ -911,8 +911,7 @@ reference "L17A_2_smo"
 
 , when the Markov chain was in State 1, it continued to stay in its state
  for a while before leaving to State 2.
- Furthermore, it can be seen that the chain had a fairly short duration
- staying in State 2.
+ Furthermore, the chain had a fairly short duration staying in State 2.
  After the chain visited State 2, it instantly switched back to State 1.
  
 \begin_inset CommandInset ref
@@ -2685,7 +2684,8 @@ reference "sec:Switching-coefficients"
 
 \end_inset
 
- were analyzed to see how well it fitted an assumption of a normal distribution.
+ were analyzed to see how well the model fitted an assumption of a normal
+ distribution.
  A Quantile-Quantile (Q-Q) plot is an effective tool for assessing normality.
  Moreover, an Autocorrelation function (ACF) and a Partial Autocorrelation
  Function (PACF) of residuals are a useful technique to check on the independenc

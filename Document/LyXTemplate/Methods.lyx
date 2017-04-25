@@ -554,7 +554,15 @@ for all
 \begin_inset Formula $\mathbf{P}=(p_{ij})$
 \end_inset
 
- is a matrix of transition probabilities
+ is a matrix of transition probabilities with 
+\begin_inset Formula $j$
+\end_inset
+
+ rows and 
+\begin_inset Formula $i$
+\end_inset
+
+ columns
 \end_layout
 
 \begin_layout Definition
@@ -609,12 +617,12 @@ Each of the entries is a non-negative real number or
 \end_layout
 
 \begin_layout Itemize
-The sum of each column row to one or 
-\begin_inset Formula $\sum_{i}p_{ij}=1$
+The sum of each column equal to one or 
+\begin_inset Formula $\sum_{j}p_{ij}=1$
 \end_inset
 
  for all 
-\begin_inset Formula $j$
+\begin_inset Formula $i$
 \end_inset
 
 
@@ -2208,6 +2216,19 @@ key "matteson2014nonparametric"
 \end_inset
 
 .
+ The computational time of the E-divisive algorithm is 
+\begin_inset Formula $O(kT^{2})$
+\end_inset
+
+, where 
+\begin_inset Formula $k$
+\end_inset
+
+ is number of estimated change points and 
+\begin_inset Formula $T$
+\end_inset
+
+ is number of observations in the time series data.
 \end_layout
 
 \begin_layout Standard
@@ -2247,6 +2268,35 @@ Since the state of the CPU utilization in the data is unknown, an accuracy
  function performs is to used a simulation technique.
  The data that consists of two predictor variables and one response variable
  with already known states is simulated.
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $y$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is assumed to be a value of a CPU usage.
  The actual models of each state are 
 \end_layout
 
