@@ -315,19 +315,19 @@ This section shall contain the most important tables and graphs showing
 
 \begin_layout Standard
 The most relevant results of the analysis are shown and organized in this
- chapter as follows.
- As a first step, the number of states of the model is decided.
- Then, a model selection is performed for the given dataset in order to
- find which model is the most appropriate one, and which parameter should
- have a switching effect in the model.
- An analysis of residuals is carried out with the graphical in a later section
- as a means to validate the models.
+ chapter.
+ As a first step, the number of states of the model was decided.
+ Then, a model selection was performed for the given dataset in order to
+ find the most appropriate model, and the parameter that have a switching
+ effect in the model.
+ An analysis of residuals was carried out as a means to validate the models.
+ The results are shown in a later section.
  Next, the results of a non-parametric analysis are presented, and a comparison
- between Markov switching autoregressive model and the non-parametric analysis
- are made.
- The last two sections report the results of predicting a state of the new
- observations in each dataset, and an evaluation of a predict function using
- a simulated data.
+ between the results of Markov switching model analysis and the results
+ of non-parametric analysis are illustrated.
+ The last two sections report the results of a state prediction of the new
+ observations in each dataset, and an evaluation of the predicting function
+ using a simulated data.
  
 \end_layout
 
@@ -357,7 +357,7 @@ https://cran.r-project.org/web/packages/MSwM/index.html
 
 
 \emph default
- package in R is used.
+ package in R was used.
  More details about the package can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -389,9 +389,9 @@ y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}X_{RrcConnectio
 \end_layout
 
 \begin_layout Standard
-Markov switching autoregressive model was performed for each dataset with
- every parameter in the model had switching effects i.e., coefficients can
- take on different values in different periods.
+Markov switching autoregressive model was performed for each dataset assuming
+ that every parameter in the model had switching effects i.e., coefficients
+ can take on different values in different periods.
  The estimation was made under the assumptions of two or three states 
 \begin_inset Formula $S_{t}\in S$
 \end_inset
@@ -430,8 +430,18 @@ REASON: (easier to compare...what else?)
 \begin_layout Standard
 Before performing the Markov switching autoregressive model, a standard
  linear regression model was fitted to the dataset first.
- It was found that one coefficient in the dataset of software release L16A
- was not defined because of singularity.
+ It was found that one coefficient in the dataset of the software release
+ L16A was not defined because of singularity 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+.
  Hence, DuProdName variable was dropped from Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -651,7 +661,7 @@ L17A
 \end_layout
 
 \begin_layout Standard
-For the software release L16A, BIC suggests that the three-state Markov
+For the software release L16A, the BIC suggests that the three-state Markov
  switching autoregressive model gives a better fit in comparison to the
  two-state model.
  
@@ -663,9 +673,9 @@ reference "L16A_2_smo"
 
  presents that the Markov chain remained in State 1 for an extensive period
  of time before it switched to State 2.
- When the chain was in State 2, it stayed there only a short time and then
- quickly moved back to State 1.
- There were a few switches between these two states in 
+ When the chain is in State 2, it stays there only a short time and then
+ quickly moves back to State 1.
+ There are a few switches between these two states in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16A_2_smo"
@@ -673,8 +683,8 @@ reference "L16A_2_smo"
 \end_inset
 
 .
- On the other hand, it is visible that there were more switches between
- states in 
+ On the other hand, it is visible that there are more switches between states
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16A_3_smo"
@@ -682,11 +692,11 @@ reference "L16A_3_smo"
 \end_inset
 
 .
- One noticeable thing is that State 2 in the two-state model seemed to be
- defined as State 1 in the three-state model instead.
- Moreover, the periods of State 1, which had a rather long duration, in
- the two-state model now contained plenty of switches between states in
- the three-state model.
+ Note that State 2 in the two-state model seems to be defined as State 1
+ in the three-state model instead.
+ Moreover, the periods of State 1, which has a rather long duration in the
+ two-state model, now contains several switches between states in the three-stat
+e model.
 \end_layout
 
 \begin_layout Standard
@@ -779,8 +789,7 @@ reference "state-bic"
 \end_inset
 
 , the Markov switching autoregressive models with two states for the remaining
- two software releases, L16B and L17A, yielded better results in favor of
- lower BICs.
+ two software releases, L16B and L17A, yielded better results (lower BICs).
  
 \end_layout
 
@@ -792,15 +801,15 @@ reference "L16B_2_smo"
 
 \end_inset
 
-, the Markov chain had several periods where it switched back and forth
+, the Markov chain has several periods where it switches back and forth
  between two states of the software release L16B.
- The durations of being in State 2 had a longer length compared with the
- durations of staying in State 1.
- Although the chain temporarily stayed in State 1, it remained in this state
+ The durations of the chain being in State 2 is longer than the durations
+ of the chain staying in State 1.
+ Although the chain temporarily stays in State 1, it remains in this state
  for a few moments in the middle of the time period (observation 91-99 and
- 101-114) before turning to State 2.
- Apparently, there were more switches between states in the three-state
- model, especially in the beginning, middle, and at the end of the period.
+ 101-114) before returning to State 2.
+ Apparently, there are more switches between states in the three-state model,
+ especially in the beginning, middle, and at the end of the period.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -808,8 +817,8 @@ reference "L16B_3_smo"
 
 \end_inset
 
- shows that the chain remained in State 3 over a considerable period as
- can be seen throughout observation 15-39, 42-67, and 140-170.
+ shows that the chain remains in State 3 over a considerable period as shown
+ throughout observation 15-39, 42-67, and 140-170.
 \end_layout
 
 \begin_layout Standard
@@ -900,7 +909,7 @@ name "L16B_3_smo"
 \end_layout
 
 \begin_layout Standard
-There were a number of switches between states in the two-state model of
+There are a number of switches between states in the two-state model of
  the software release L17A.
  In 
 \begin_inset CommandInset ref
@@ -909,10 +918,11 @@ reference "L17A_2_smo"
 
 \end_inset
 
-, when the Markov chain was in State 1, it continued to stay in its state
+, when the Markov chain is in State 1, it continues to stay in its state
  for a while before leaving to State 2.
- Furthermore, the chain had a fairly short duration staying in State 2.
- After the chain visited State 2, it instantly switched back to State 1.
+ Furthermore, the chain has a fairly short duration of staying in State
+ 2.
+ After the chain visits State 2, it instantly switches back to State 1.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -920,10 +930,10 @@ reference "L17A_3_smo"
 
 \end_inset
 
- presents the chain which had many switches between State 1 and State 2
+ presents the chain which has many switches between State 1 and State 2
  in the first half of the time period.
- The chain for the three-state model also stayed in State 2 significantly
- long from observation 104 until 129, which was the end of the time series.
+ The chain for the three-state model also stays in State 2 significantly
+ long from observation 104 to 129, which is the end of the time series.
 \end_layout
 
 \begin_layout Standard
@@ -1006,11 +1016,11 @@ name "L17A_3_smo"
 \end_layout
 
 \begin_layout Standard
-The outputs from the models along with plots provided more interpretable
+The outputs from the models along with the plots provid more interpretable
  results when defining the model with three states in the software release
  L16B and L17A.
- In regards to this, the three-state models for each software release were
- further analyzed in the thesis.
+ Consequently, the three-state models for each software release were further
+ analyzed in the thesis.
 \end_layout
 
 \begin_layout Standard
