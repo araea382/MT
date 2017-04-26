@@ -371,6 +371,16 @@ key "mswm"
  The package implements an Expectation-Maximization (E-M) algorithm to fit
  the Markov switching model.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Note that transition probability define it the other way
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -607,6 +617,11 @@ name "chap:Output"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Outputs from the applying Markov switching autogressive model are shown
+ here.
 \end_layout
 
 \begin_layout Standard

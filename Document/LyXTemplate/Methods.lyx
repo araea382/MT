@@ -554,15 +554,7 @@ for all
 \begin_inset Formula $\mathbf{P}=(p_{ij})$
 \end_inset
 
- is a matrix of transition probabilities with 
-\begin_inset Formula $j$
-\end_inset
-
- rows and 
-\begin_inset Formula $i$
-\end_inset
-
- columns
+ is a matrix of transition probabilities 
 \end_layout
 
 \begin_layout Definition
@@ -617,7 +609,7 @@ Each of the entries is a non-negative real number or
 \end_layout
 
 \begin_layout Itemize
-The sum of each column equal to one or 
+The sum of each row equal to one or 
 \begin_inset Formula $\sum_{j}p_{ij}=1$
 \end_inset
 
@@ -2307,7 +2299,7 @@ y=\begin{cases}
 \begin{array}{c}
 10+0.6X1_{t}-0.9X2_{t}+0.5Y_{t-1}+\varepsilon_{t}^{(1)}\\
 2+0.8X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(2)}\\
--12+0.7X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(3)}
+-12+0.7X1_{t}+0.2X2_{t}-0.2Y_{t-1}+\varepsilon_{t}^{(3)}
 \end{array} & \begin{array}{c}
 \varepsilon_{t}^{(1)}\sim N(0,1);\quad\mathrm{Normal}\\
 \varepsilon_{t}^{(2)}\sim N(2,0.5);\quad\mathrm{Bad}\\
@@ -2318,6 +2310,31 @@ y=\begin{cases}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+There are two simulated datasets – Dataset 1 and Dataset 2 – and each of
+ them contains 500 observations.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sim_data"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sim_data2"
+
+\end_inset
+
+ present plots of 
+\begin_inset Formula $y$
+\end_inset
+
+ over a period of time, and the period where observations in the data belong
+ to one of the state for the first and second simulated data, respectively.
 \end_layout
 
 \begin_layout Standard
@@ -2339,12 +2356,22 @@ reference "sim_data"
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The simulated data, which contains 500 observations, has three different
  states – Normal, Bad and Good.
  
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+CHANGE title, caption, plot for old and new
 \end_layout
 
 \end_inset
@@ -2397,6 +2424,62 @@ Bottom:
 \begin_inset CommandInset label
 LatexCommand label
 name "sim_data"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/sim1.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\emph on
+Top:
+\emph default
+ A simulated data of Dataset 2 where 
+\begin_inset Formula $y$
+\end_inset
+
+ variable is the response variable.
+ 
+\emph on
+Bottom:
+\emph default
+ The period in the time series when observation is in each state.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sim_data2"
 
 \end_inset
 

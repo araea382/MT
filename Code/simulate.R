@@ -61,7 +61,7 @@ plotProb(mswm)
 # regime2 = normal
 # regime3 = good
 
-pred <- MSwM2::predict(mswm,test)
+pred <- MSwM2::statePredict(mswm,test)
 test_state <- state[-c(1:ind)]
 test_state[which(test_state == "Bad")] <- 1
 test_state[which(test_state == "Normal")] <- 2
@@ -105,17 +105,17 @@ ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
   scale_colour_manual(values=cbPalette)
 
 
-p1<-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
-    ggtitle("Simulated data")+ theme_bw()
 
-p2<-ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
+p1<-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+    ggtitle("Dataset 1")+ theme_bw()
+
+p2<-ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") +
     xlab("index") + ylab("") + theme_bw() +
     theme(legend.title = element_blank(),
           axis.ticks.y=element_blank(),
           axis.text.y=element_text(colour="white",size=5),
           legend.position="bottom") +
-    ggtitle("State of the simulated data") +
-    scale_colour_manual(values=cbPalette)
+    ggtitle("State of the the Dataset 1")
 
 require(gridExtra)
 grid.arrange(p1,p2,nrow=2)
@@ -160,66 +160,78 @@ pred2 <- MSwM2::predict(mswm,test[2,]); pred2 # PROBLEM..!
 pred12 <- MSwM2::predict(mswm,test[1:2,]); pred12 # It's okay
 
 
-#####
-## accuracy = 1
-# y1 <- -12 + 0.7*x1 + 0.2*x2 + e3
-# y0 <- c(0,y1[-n])
-# y1 <- y1 - 0.2*y0
-#
-# y2 <- 10 + 0.6*x1 - 0.9*x2 + e1
-# y0 <- c(0,y2[-n])
-# y2 <- y2 + 0.5*y0
-#
-# y3 <- 2 + 0.8*x1 + e2
-# y0 <- c(0,y2[-n])
-# y3 <- y3 + 0.2*y0
-#
-#
-# plot(y2, type="l", ylim=c(0,300)) # normal
-# points(y3, type="l", col="red") # bad
-# points(y1, type="l", col="orange") # good
-#
-# state <- rep(0,n)
-# ind_normal <- c(1:50,71:110,161:220,351:370,421:450)
-# ind_bad <- c(51:70,241:290,371:420,451:491)
-# ind_good <- c(111:160, 221:240,291:350,491:500)
-# state[ind_normal] <- "normal"
-# state[ind_bad] <- "bad"
-# state[ind_good] <- "good"
-#
-# y <- rep(0,n)
-# y[ind_normal] <- y2[ind_normal]
-# y[ind_bad] <- y3[ind_bad]
-# y[ind_good] <- y1[ind_good]
-#
-# points(y, type="l", col="green")
-# plot(y, type="l")
-#
-# simu_data <- data.frame(x1,x2,y)
-#
-# ind <- 500*0.8
-# train <- simu_data[1:ind,]
-# test <- simu_data[-c(1:ind),]
-# mod <- lm(y~., data=train)
-# summary(mod)
-#
-# set.seed(1)
-# mswm <- MSwM2::msmFit(mod, k=3, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1),control=list(trace=TRUE,maxiter=500,parallel=FALSE))
-# summary(mswm)
-#
-# plotProb(mswm)
-# # regime1 = bad
-# # regime2 = normal
-# # regime3 = good
-#
-# pred <- MSwM2::predict(mswm,test)
-# test_state <- state[-c(1:ind)]
-# test_state[which(test_state == "good")] <- 1
-# test_state[which(test_state == "normal")] <- 2
-# test_state[which(test_state == "bad")] <- 3
-#
-# tab <- table(actual=test_state, predict=pred)
-#
-# sum(diag(tab))/sum(tab) # overall accuracy
-# 1-sum(diag(tab))/sum(tab) # incorrect classification
-####
+#--------------------------------------------------------------------
+set.seed(1)
+samp <- sample(3,500,replace=TRUE)
+ind_normal <- which(samp == 1); length(ind_normal)
+ind_bad <- which(samp == 2); length(ind_bad)
+ind_good <- which(samp == 3); length(ind_good)
+state[ind_normal] <- "Normal"
+state[ind_bad] <- "Bad"
+state[ind_good] <- "Good"
+
+y <- rep(0,n)
+y[ind_normal] <- y1[ind_normal]
+y[ind_bad] <- y2[ind_bad]
+y[ind_good] <- y3[ind_good]
+
+points(y, type="l", col="green")
+plot(y, type="l")
+
+ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+  ggtitle("Simulated data")+ theme_bw()
+
+simu_data <- data.frame(x1,x2,y)
+
+ind <- 500*0.8
+train <- simu_data[1:ind,]
+test <- simu_data[-c(1:ind),]
+mod <- lm(y~., data=train)
+summary(mod)
+
+set.seed(1)
+mswm2 <- MSwM2::msmFit(mod, k=3, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1),control=list(trace=TRUE,maxiter=500,parallel=FALSE))
+summary(mswm2)
+
+plotProb(mswm2)
+# regime1 = bad
+# regime2 = good
+# regime3 = normal
+pred_train_state <- apply(mswm2@Fit@smoProb,1,which.max)
+st <- samp[1:ind]
+st[which(st == 1)] <- 4
+st[which(st == 3)] <- 1
+st[which(st == 4)] <- 2
+
+pred <- MSwM2::statePredict(mswm2,test)
+test_state <- state[-c(1:ind)]
+test_state[which(test_state == "Bad")] <- 1
+test_state[which(test_state == "Normal")] <- 3
+test_state[which(test_state == "Good")] <- 2
+
+tab <- table(actual=test_state, predict=pred)
+
+sum(diag(tab))/sum(tab) # overall accuracy
+1-sum(diag(tab))/sum(tab) # incorrect classification
+
+library(caret)
+result <- confusionMatrix(test_state, pred)
+
+Y <- as.factor(state)
+Y <- factor(Y,levels(Y)[c(2,3,1)])
+
+temp2 <- data.frame(Y,X=seq(1:500))
+
+# plot(x=seq(1,500),y=samp, type="h")
+p1 <- ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+  ggtitle("Dataset 2")+ theme_bw()
+p2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") + 
+  xlab("index") + ylab("") + theme_bw() +
+  theme(legend.title = element_blank(),
+                     axis.ticks.y=element_blank(),
+                     axis.text.y=element_text(colour="white",size=5),
+                     legend.position="bottom") +
+  ggtitle("State of the Dataset 2")
+
+
+grid.arrange(p1,p2,nrow=2)

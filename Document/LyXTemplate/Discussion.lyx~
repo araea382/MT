@@ -505,6 +505,13 @@ State 3
 
 \begin_layout Section
 General discussion
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:General-discussion"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -525,9 +532,12 @@ A thorough search of the relevant literature yielded that this thesis work
 \end_layout
 
 \begin_layout Standard
-In this study, NodeName, which is used to execute test cases, is assumed
- to be indifferent i.e., performance of test cases are the same regardless
- of the machine.
+In this study, 
+\emph on
+NodeName
+\emph default
+, which is used to execute test cases, is assumed to be indifferent i.e.,
+ performance of test cases are the same regardless of the machine.
  Therefore, selecting a minimum value of the CPU utilization of the test
  case for each software package when preprocessing the data is acceptable.
  
@@ -537,8 +547,8 @@ In this study, NodeName, which is used to execute test cases, is assumed
 More importantly, one has to understand and accept a risk when deciding
  on the number of states as there is no guarantee how many states would
  yield the best outcome.
- This same situation also applies when determining the number of switching
- coefficients in the model.
+ This risk is also applied to the situation when determining the number
+ of switching coefficients in the model.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -546,29 +556,56 @@ reference "sec:States"
 
 \end_inset
 
-, three-state model provides more interpretable graph and also meets with
- a prior requirement of the thesis objective.
- The results from the two-state models seem to offer less details and does
- not cover all the happening situations.
- Almost all graphs of a model with two states have one state with considerably
- long period and another state with fairly short period.
+, the number of states for applying Markov switching model of each dataset
+ are three.
+ The results from the model with two states offer less details and does
+ not seem to cover all the happening situations.
+ Furthermore, almost all graphs of the two-state model have one state with
+ considerably long period and another state with fairly short period.
  There is a problematic interpretation when trying to make a rough inference
  on the state.
+ Despite lower BICs for the dataset of the software release L16B and L17A,
+ three-state model provides more interpretable plots.
+ This three states also meets with a prior knowledge of the thesis objective.
+ Note that Markov switching model with four states for each software release
+ is also tested in the analysis.
+ Apparently, defining four states causes more difficulty when fitting the
+ model and making an inference on the states.
+ The results are rather poor compare to the model with two and three states.
+\end_layout
+
+\begin_layout Standard
+The hypothesis in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Switching"
+
+\end_inset
+
+ is to make a switching effect only for variables in the test environment.
+ The reason for that is because local events in 
+\emph on
+EventPerSec
+\emph default
+ is essential for each test case and should have flexible values in each
+ of the fixed number of state.
+ Having a constant parameter would be inadequate to characterize the whole
+ time series data.
+ On the contrary, the test environment is not necessarily have a switching
+ mechanism.
+ They can be to have this kinds of characteristic.
+ Moreover, ..
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-find more reasons for not choosing two state model
+Think think think
 \end_layout
 
 \end_inset
 
- The relevant side note is that Markov switching model with four states
- for each software release is also tested in the analysis.
- Apparently, defining four states causes more difficulty when fitting the
- model and making an inference on the states.
- The results are rather poor compare to the model with two and three states.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -605,50 +642,26 @@ key "perlin2015ms_regress"
 \end_inset
 
 .
- This is also one of the main reason why not including all local events
- which were generated in each test case.
+ This is one of the main reason why not including all local events which
+ were generated in each test case and also making all the switching coefficients
+ in the model.
  
 \end_layout
 
 \begin_layout Standard
-The hypothesis in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Switching-coefficients"
-
-\end_inset
-
- is to make a switching effect only for variables in the test environment.
- The reason for that is because local events in EventPerSec is essential
- and should have flexible values in each state.
- Nevertheless, the test environment is not necessarily h....
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-come up with one or two things
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-As mention previously in 
+As mentioned previously in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:States"
 
 \end_inset
 
-, there is one variable in the dataset of the software release L16A which
- is an exact linear combination of the other variables.
- Hence, the variable is excluded from the regression model.
- This dataset has 57 test cases for training the Markov switching model.
- The data or in this case number of test cases in each software release
- is rather small which make it easier for an occurrence of a singularity.
+, one variable in the dataset of the software release L16A, which is an
+ exact linear combination of the other variables, is excluded from the regressio
+n model.
+ This dataset has 57 observations for training the Markov switching model.
+ The dataset (in this case the number of test cases in the software release)
+ is rather small which make it easier for an occurrence of singularity.
  Therefore, unless there is more data, it is better to drop the variable
  from the regression model before doing a further analysis.
 \end_layout
@@ -659,7 +672,7 @@ A Q-Q plot is a visual check for an assumption of normality which provides
  From residual analysis in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Residual-analysis"
+reference "sec:Residual"
 
 \end_inset
 
@@ -717,25 +730,52 @@ The remaining residuals show that the model has captured the patterns in
 
 \begin_layout Standard
 More importantly, it should be noted that the results of the Markov switching
- autoregressive model could be affected by various types of bias.
- First of all, the size of data is crucial in statistical analysis.
- In this study, a small dataset is used to train the model.
+ model could be affected by various types of bias.
+ First of all, a small dataset that is used to train the model.
+ For this reason, a prediction for new observations might not be accurate
+ as it should be.
+ Due to a lack of data, the model will be less effective or unable to capture
+ the behavior for the new observation that lie outside its range of training
+ data.
+ This is like what happened when making a prediction of a state for the
+ software release L16A (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Predict"
+
+\end_inset
+
+).
+ Second, other factors which are not considered in the model might also
+ be the reason of causing a bias.
+ The predictor variables which are chosen in this thesis are variables that
+ have a partial prior knowledge and have been analyzed to significantly
+ impact on CPU utilization.
+ However, it is possible that there are still some explanatory information
+ that is overlooked.
+ Finally, selecting the number of states and switching coefficients in the
+ model could cause a bias as well.
+ 
 \end_layout
 
 \begin_layout Standard
-For this reason, prediction for new observations might not be accurate due
- to lacking data.
- This is like what happen when fitting a linear model and predicting a state
- for the software release L16A .
+As described above, a small dataset is proven to cause several problems
+ and difficulty to the analysis.
+ The size of data is crucial in statistical analysis because more information
+ can be extracted and used as an input for the model to learn.
+ 
 \end_layout
 
 \begin_layout Standard
-Another thing is that other factors not considered in the model might also
- be the reason for the
+The model output 
 \end_layout
 
 \begin_layout Standard
-selecting the number of state in the model
+The estimated coefficients
+\end_layout
+
+\begin_layout Standard
+r-squared
 \end_layout
 
 \begin_layout Standard
@@ -743,44 +783,7 @@ selecting the number of state in the model
 status open
 
 \begin_layout Plain Layout
-find something...
- write something...
- do something...
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-AlessandroOlivi page39
-\end_layout
-
-\begin_layout Plain Layout
-Nevertheless, it is important to note that the model output could be potentially
- affected by various kinds of bias.
- First, the model is trained in a quite small sample size that may not be
- representative for all the world sites.
- For example, sites with extreme cold or warm temperatures or high altitude
- may be wrongly estimated.
- Generally, models cannot guarantee accurate predictions for new observations
- that lie outside the range of the trained data.
-\end_layout
-
-\begin_layout Plain Layout
-Second, failures could be driven by other environmental factors not considered
- in the model, for example presence of sand in the air.
- Some of the environmental attributes we considered are quite raw approximations
-: for example, the temperature is a raw mean between two values and it is
- calculated only in the months of January and July.
- It would be reasonable here to consider not only the mean temperature but
- also the variation.
- 
+model validation on coefficient and r-squared
 \end_layout
 
 \end_inset
@@ -794,8 +797,7 @@ One benefit from using a non-parametric analysis is that it does not require
  This analysis is able to detect any type of distributional change within
  a time series.
  It can be noticed that variables which have influences on the CPU utilization
- (or TotCpu% variable) are also include in the model when performing a Markov
- switching model.
+ are also include in the model when performing a Markov switching model.
  Nevertheless, an E-divisive algorithm only consider values of the CPU utilizati
 on.
  With this difference, the E-divisive method will have even less power to
@@ -809,7 +811,7 @@ on.
  As can be seen from 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Comparison-between-the"
+reference "subsec:Comparison"
 
 \end_inset
 
@@ -831,45 +833,29 @@ Even though the E-divisive method might not provide the best result, it
 
 \begin_layout Standard
 State prediction function which is an additional implemented function in
- the package seems to work properly, except for the dataset of the software
- release L16A.
- It has an ERROR 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-decide whether to remove or not
-\end_layout
+ the package seems to work properly.
+ This can be observed by looking at 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Assessing"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The accuracy of the test set in a simulated data is significantly high.
+.
+ The accuracy of the test set in a simulated data of Dataset 1 is significantly
+ high.
  One reason for that might be because of the simulated data has a rather
  obvious pattern.
  For instance, the value of the CPU usage is moderately low if it is generated
  from the Good state.
  Besides, each state remains in its own state for a while before switching
  to the other states.
- Thus, it is easier for the model to be completely capture the behavior
- of the time series data.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-model validation on coefficient and r-squared
-\end_layout
-
-\end_inset
-
-
+ Therefore, the model can completely capture the behavior of the time series
+ data.
+ In contrast, Dataset 2 has several switches between states and each state
+ does not appear to have a long duration.
+ The model still perform rather well even though the pattern of response
+ variable is rather difficult to see in the plot.
 \end_layout
 
 \begin_layout Standard

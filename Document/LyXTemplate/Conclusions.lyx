@@ -306,6 +306,11 @@ non-parametric seems to look good as well
 \end_layout
 
 \begin_layout Standard
+implemented function of state prediction appear to functionally work from
+ the simulated data
+\end_layout
+
+\begin_layout Standard
 \begin_inset Branch NoChildDocument
 status collapsed
 
