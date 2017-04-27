@@ -317,7 +317,7 @@ This section shall contain the most important tables and graphs showing
 The most relevant results of the analysis are shown and organized in this
  chapter.
  As a first step, the number of states of the model was decided.
- Then, a model selection was performed for the given dataset in order to
+ Then, a model selection was performed for each given dataset in order to
  find the most appropriate model, and the parameter that have a switching
  effect in the model.
  An analysis of residuals was carried out as a means to validate the models.
@@ -332,7 +332,7 @@ The most relevant results of the analysis are shown and organized in this
 \end_layout
 
 \begin_layout Section
-States 
+Analysis I: Number of States 
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:States"
@@ -460,24 +460,7 @@ REASON: (easier to compare...what else?)
 \end_layout
 
 \begin_layout Standard
-Before performing the Markov switching autoregressive model, a standard
- linear regression model was fitted to the dataset first.
- It was found that one coefficient in the dataset of the software release
- L16A was not defined because of singularity i.e., a perfect correlation between
- predictor variables.
- Hence, 
-\emph on
-DuProdName 
-\emph default
-variable was dropped from Equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:mswm"
-
-\end_inset
-
-.
- BICs from fitting the Markov switching autoregressive model are shown in
+BICs from fitting the Markov switching autoregressive model are shown in
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -687,6 +670,31 @@ L17A
 
 \end_layout
 
+\begin_layout Subsection
+Software release L16A
+\end_layout
+
+\begin_layout Standard
+Before performing the Markov switching autoregressive model, a standard
+ linear regression model was fitted to the dataset first.
+ It was found that one coefficient in the dataset of the software release
+ L16A was not defined because of singularity i.e., a perfect correlation between
+ predictor variables.
+ Hence, 
+\emph on
+DuProdName 
+\emph default
+variable was dropped from Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mswm"
+
+\end_inset
+
+.
+ 
+\end_layout
+
 \begin_layout Standard
 For the software release L16A, the BIC suggests that the three-state Markov
  switching autoregressive model gives a better fit in comparison to the
@@ -728,6 +736,7 @@ e model.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -768,6 +777,7 @@ name "L16A_2_smo"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -807,6 +817,10 @@ name "L16A_3_smo"
 
 \end_layout
 
+\begin_layout Subsection
+Software release L16B
+\end_layout
+
 \begin_layout Standard
 According to 
 \begin_inset CommandInset ref
@@ -828,7 +842,7 @@ yielded better results (lower BICs).
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -861,6 +875,7 @@ reference "L16B_3_smo"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -904,6 +919,7 @@ name "L16B_2_smo"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -946,6 +962,10 @@ name "L16B_3_smo"
 
 \end_layout
 
+\begin_layout Subsection
+Software release L17A
+\end_layout
+
 \begin_layout Standard
 There are a number of switches between states in the two-state model of
  the software release L17A.
@@ -976,6 +996,7 @@ reference "L17A_3_smo"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1014,6 +1035,7 @@ name "L17A_2_smo"
 
 
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1054,21 +1076,6 @@ name "L17A_3_smo"
 \end_layout
 
 \begin_layout Standard
-The outputs from the models along with the plots provide more interpretable
- results when defining the model with three states in the software release
- L16B and L17A (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Discussion"
-
-\end_inset
-
-).
- Consequently, the three-state models for each software release were further
- analyzed in the thesis.
-\end_layout
-
-\begin_layout Standard
 After examining the outputs from the models along with the plots, the three-stat
 e models for each software release were further analyzed in the thesis.
  More details are provided in 
@@ -1083,7 +1090,28 @@ reference "chap:Discussion"
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
+
+\begin_layout Plain Layout
+The outputs from the models along with the plots provide more interpretable
+ results when defining the model with three states in the software release
+ L16B and L17A (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Discussion"
+
+\end_inset
+
+).
+ Consequently, the three-state models for each software release were further
+ analyzed in the thesis.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Comment
+status collapsed
 
 \begin_layout Plain Layout
 smoothed inference probabilities mostly to show how the regimes are identified
@@ -1095,7 +1123,7 @@ smoothed inference probabilities mostly to show how the regimes are identified
 \end_layout
 
 \begin_layout Section
-Switching coefficients 
+Analysis II: Number of Switching coefficients 
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Switching"
@@ -1168,20 +1196,19 @@ reference "sec:States"
 
 \end_inset
 
- was performed by assuming that every parameter in the model had switching
+ were performed by assuming that every parameter in the model had switching
  effects i.e., coefficients can have different values in different periods.
- Apparently, each coefficient can have either a switching or non-switching
- effect.
- A hypothesis for the switching/non-switching coefficients is that the variables
- considered as the test environment are possible to have non-switching effects.
- Markov switching autoregressive models were applied to each dataset again,
- but this time all combinations of switching/non-switching coefficients
- in the model were tried out.
- In this section, tables report the structure of the model, while plots
- present the state specifications from the chosen Markov switching autoregressiv
-e model.
- Further discussion and details about the selected model for the given dataset
- are provided in 
+ However, in practice, each coefficient can have either a switching or non-switc
+hing effect.
+ Therefore, Markov switching autoregressive models were applied to each
+ dataset again but with a hypothesis that the variables considered as a
+ test environment are possible to have non-switching effects.
+ In this section, the structure of all the models from all three datasets
+ are reported in the table.
+ The best model is selected for each dataset and its state specification
+ is presented in the plots.
+ Further discussion and details about these chosen models are provided in
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Model-selection"
@@ -1189,8 +1216,8 @@ reference "subsec:Model-selection"
 \end_inset
 
 .
- It should be noted that these three selected model will later be used throughou
-t this thesis and the model outputs are shown in 
+ It should be noted that these three chosen models will later be used throughout
+ this thesis and the model outputs are shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Output"
@@ -1201,12 +1228,16 @@ reference "chap:Output"
  
 \end_layout
 
+\begin_layout Subsection
+Software release L16A
+\end_layout
+
 \begin_layout Standard
 For the dataset of the software release L16A, 
 \emph on
 DuProdName
 \emph default
- was not included in the model fitting as previously explained.
+ was not included in the model fitting as explained previously.
  Only two variables of the test environment were left to try whether they
  could have non-switching effects or not.
  The result is shown in 
@@ -1217,7 +1248,7 @@ reference "L16A_switch"
 \end_inset
 
 .
- The second model had the highest BIC and even higher than the model with
+ The second model has the highest BIC and even higher than the model with
  all switching coefficients.
  The first model, where both 
 \emph on
@@ -1227,7 +1258,7 @@ Fdd/Tdd
 \emph on
 NumCells
 \emph default
- had switching effects, was selected to use with this dataset.
+ have switching effects, was selected to be used with this dataset.
  
 \begin_inset Note Comment
 status collapsed
@@ -1253,8 +1284,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of the software release L16A with different
- switching coefficients along with its BIC.
+List of the model structure of the software release L16A along with its
+ BIC.
  The line in bold indicates the selected model.
 \end_layout
 
@@ -1274,7 +1305,7 @@ name "L16A_switch"
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
+<lyxtabular version="3" rows="6" columns="4">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1478,6 +1509,44 @@ N
 \end_inset
 </cell>
 </row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+417.682
+\end_layout
+
+\end_inset
+</cell>
+</row>
 </lyxtabular>
 
 \end_inset
@@ -1509,16 +1578,25 @@ reference "L16A_NN"
 
  indicates the CPU utilization of the software release L16A and also shows
  the periods of the derived state from the model.
- It is not difficult to notice that State 2 had the longest duration to
- remain in its own state.
- When the chain moved to State 3, it immediately switched to the other states.
- In other words, the chain did not linger in State 3 during the time series
+ From the plot, State 2 clearly has the longest duration to remain in its
+ own state.
+ When the chain moves to either State 1 or State 3, it immediately switches
+ to the other states.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+ In other words, the chain does not linger in State 3 during the time series
  period.
- In addition, this pattern happened to most of the durations in State 1,
- except in the beginning and almost at the end of the period where the chain
- tended to have a longer duration.
- State 2 also happened to have more chance to switch to State 3 rather than
- switch to State 1.
+ 
+\end_layout
+
+\end_inset
+
+ However, the duration that the chain stays in State 1 is longer in the
+ beginning and almost at the end of the period.
+ Another characteristic that could be observed is that when State 2 happens
+ to have more chance to switch to State 3 rather than switch to State 1.
 \end_layout
 
 \begin_layout Standard
@@ -1567,6 +1645,10 @@ name "L16A_NN"
 
 \end_layout
 
+\begin_layout Subsection
+Software release L16B
+\end_layout
+
 \begin_layout Standard
 For the software release L16B, 
 \begin_inset CommandInset ref
@@ -1577,7 +1659,7 @@ reference "L16B_switch"
 
  presents the results of fitting the model with different combinations of
  switching coefficients.
- Models 5 and 7 had higher BICs than the model which had switching effect
+ Models 5 and 7 have higher BICs than the model which have switching effects
  in all coefficients.
  The second model, where 
 \emph on
@@ -1587,12 +1669,12 @@ DuProdName
 \emph on
 Fdd/Tdd
 \emph default
- were non-switching coefficients, had a smallest BIC.
- The chosen model for this dataset was the model which had only 
+ are non-switching coefficients, has the smallest BIC.
+ The chosen model for this dataset is the model which has only 
 \emph on
 DuProdName
 \emph default
- with a non-switching coefficient or model 4.
+ as a non-switching coefficient or model 4.
 \end_layout
 
 \begin_layout Standard
@@ -1605,8 +1687,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of the software release L16B with different
- switching coefficients along with its BIC.
+List of the model structure of the software release L16B along with its
+ BIC.
  The line in bold indicates the selected model.
 \end_layout
 
@@ -2097,12 +2179,11 @@ reference "L16B_NYY"
 \end_inset
 
 .
- However, the state which had the longest duration to remain in its own
- state was State 3.
- There were three durations where the chain stayed in State 3 for a long
- time.
+ However, the state which has the longest duration remaining in its own
+ state is State 3.
+ There are three durations where the chain stays in State 3 for a long time.
  Another noticeable behavior from this switching mechanism is that there
- was several switches between State 1 and State 2 in the beginning, middle,
+ are several switches between State 1 and State 2 in the beginning, middle,
  and at the end of the time period.
  
 \end_layout
@@ -2156,6 +2237,10 @@ name "L16B_NYY"
 
 \end_layout
 
+\begin_layout Subsection
+Software relase L17A
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2163,10 +2248,11 @@ reference "L17A_switch"
 
 \end_inset
 
- presents the different models for the software release L17A.
- Only model 2 had a higher BIC than the model with all switching coefficients.
- The least BIC was from the first model that all three variables in the
- test environment had non-switching effects.
+ presents model structure of the software release L17A.
+ There is only model 2 which has higher BIC than the model with all switching
+ coefficients.
+ The least BIC is from the first model that all three variables in the test
+ environment have non-switching effects.
  This model was also chosen to be further used for this dataset.
 \end_layout
 
@@ -2180,8 +2266,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of the software release L17A with different
- switching coefficients along with its BIC.
+List of the model structure of the software release L17A along with its
+ BIC.
  The line in bold indicates the selected model.
 \end_layout
 
@@ -2664,8 +2750,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-There exists several switches between three states in the beginning of the
- time series as shown in 
+Several switches between three states occur in the beginning of the time
+ series as shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L17A_NNN"
@@ -2673,12 +2759,12 @@ reference "L17A_NNN"
 \end_inset
 
 .
- Around the end of the time series period, State 3 appeared to have a longer
- duration and there was a fewer switches to State 1.
- State 2 seemed to be the only state which had a fairly short duration for
+ Around the end of the time series period, State 3 appears to have a longer
+ duration and fewer switches to State 1.
+ State 2 seems to be the only state which has a fairly short duration for
  the chain to stay in the state.
- The plot also indicates that State 2 tended to switch to State 1 more often
- than switch to State 3.
+ The plot also indicates that State 2 tends to switch to State 1 more often
+ than to switch to State 3.
  
 \end_layout
 
@@ -2829,6 +2915,7 @@ This provides some evidence that the residual is somehow independently and
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2905,6 +2992,7 @@ reference "L16B_plotDiag"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -2990,6 +3078,7 @@ The model seems to capture the dependent structure of the error terms in
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3442,6 +3531,7 @@ reference "ediv_L17A"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3507,6 +3597,7 @@ reference "ediv_L16B"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3569,6 +3660,7 @@ reference "ediv_L17A"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3659,6 +3751,7 @@ ssive model and change point locations from the E-divisive method for the
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3723,6 +3816,7 @@ reference "compare_L17A"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3797,6 +3891,7 @@ reference "predict_L16A"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3862,6 +3957,7 @@ reference "predict_L16B"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -3927,6 +4023,7 @@ reference "predict_L17A"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open

@@ -1,3 +1,6 @@
+library(MSwM2)
+library(ggplot2)
+
 # simulation data
 # three states
 set.seed(1)
@@ -107,7 +110,7 @@ ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
 
 
 p1<-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
-    ggtitle("Dataset 1")+ theme_bw()
+    ggtitle("Simulated Dataset 1")+ theme_bw()
 
 p2<-ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") +
     xlab("index") + ylab("") + theme_bw() +
@@ -122,7 +125,7 @@ grid.arrange(p1,p2,nrow=2)
 
 # d <- data.frame(y,temp2)
 # colnames(d) <- c("value","state","index")
-# ggplot(d, aes(x=index, y=value)) + geom_line() + 
+# ggplot(d, aes(x=index, y=value)) + geom_line() +
 #     facet_grid(value~ ., scales = "free_y") + theme(legend.position = "none")
 
 
@@ -224,8 +227,8 @@ temp2 <- data.frame(Y,X=seq(1:500))
 
 # plot(x=seq(1,500),y=samp, type="h")
 p1 <- ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
-  ggtitle("Dataset 2")+ theme_bw()
-p2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") + 
+  ggtitle("Simulated Dataset 2")+ theme_bw()
+p2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") +
   xlab("index") + ylab("") + theme_bw() +
   theme(legend.title = element_blank(),
                      axis.ticks.y=element_blank(),
@@ -235,3 +238,4 @@ p2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="ident
 
 
 grid.arrange(p1,p2,nrow=2)
+
