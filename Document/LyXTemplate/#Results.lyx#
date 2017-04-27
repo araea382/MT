@@ -316,10 +316,12 @@ This section shall contain the most important tables and graphs showing
 \begin_layout Standard
 The most relevant results of the analysis are shown and organized in this
  chapter.
- As a first step, the number of states of the model was decided.
- Then, a model selection was performed for each given dataset in order to
- find the most appropriate model, and the parameter that have a switching
- effect in the model.
+ As a first step, the number of states of the model was decided (Analysis
+ I).
+ Then, the number of parameters that have switching effects in the model
+ was determined (Analysis II).
+ A model selection was performed for Analysis I and Analysis II in order
+ to find the most appropriate model for each given dataset.
  An analysis of residuals was carried out as a means to validate the models.
  The results are shown in a later section.
  Next, the results of a non-parametric analysis are presented, and a comparison
@@ -366,12 +368,8 @@ reference "chap:MSwM-Package"
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-A complete linear Markov switching autoregressive model in this thesis framework
- is defined as
+ A complete linear Markov switching autoregressive model in this thesis
+ framework is defined as
 \end_layout
 
 \begin_layout Standard
@@ -469,6 +467,22 @@ reference "state-bic"
 \end_inset
 
 .
+ For the software release L16A, the BIC suggests that the three-state Markov
+ switching autoregressive model gives a better fit in comparison to the
+ two-state model.
+ However, the models with two states for the remaining two software releases,
+ L16B and L17A, had lower BICs.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+yielded better results (lower BICs).
+ 
+\end_layout
+
+\end_inset
+
  
 \end_layout
 
@@ -696,20 +710,16 @@ reference "eq:mswm"
 \end_layout
 
 \begin_layout Standard
-For the software release L16A, the BIC suggests that the three-state Markov
- switching autoregressive model gives a better fit in comparison to the
- two-state model.
- 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16A_2_smo"
 
 \end_inset
 
- presents that the Markov chain remained in State 1 for an extensive period
- of time before it switched to State 2.
- When the chain is in State 2, it stays there only a short time and then
- quickly moves back to State 1.
+ presents that the Markov chain remained in State1 for an extensive period
+ of time before it switched to State2.
+ When the chain is in State2, it stays there only a short time and then
+ quickly moves back to State1.
  There are a few switches between these two states in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -727,9 +737,9 @@ reference "L16A_3_smo"
 \end_inset
 
 .
- Note that State 2 in the two-state model seems to be defined as State 1
- in the three-state model instead.
- Moreover, the periods of State 1, which has a rather long duration in the
+ Note that State2 in the two-state model seems to be defined as State1 in
+ the three-state model instead.
+ Moreover, the periods of State1, which has a rather long duration in the
  two-state model, now contains several switches between states in the three-stat
 e model.
 \end_layout
@@ -777,7 +787,7 @@ name "L16A_2_smo"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -822,30 +832,6 @@ Software release L16B
 \end_layout
 
 \begin_layout Standard
-According to 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "state-bic"
-
-\end_inset
-
-, the Markov switching autoregressive models with two states for the remaining
- two software releases, L16B and L17A, had lower BICs.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-yielded better results (lower BICs).
- 
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
 In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -855,11 +841,11 @@ reference "L16B_2_smo"
 
 , the Markov chain has several periods where it switches back and forth
  between two states of the software release L16B.
- The durations of the chain being in State 2 is longer than the durations
+ The durations of the chain being in State2 is longer than the durations
  of the chain staying in State 1.
- Although the chain temporarily stays in State 1, it remains in this state
+ Although the chain temporarily stays in State1, it remains in this state
  for a few moments in the middle of the time period (observation 91-99 and
- 101-114) before returning to State 2.
+ 101-114) before returning to State2.
  Apparently, there are more switches between states in the three-state model,
  especially in the beginning, middle, and at the end of the period.
  
@@ -869,7 +855,7 @@ reference "L16B_3_smo"
 
 \end_inset
 
- shows that the chain remains in State 3 over a considerable period as shown
+ shows that the chain remains in State3 over a considerable period as shown
  throughout observation 15-39, 42-67, and 140-170.
 \end_layout
 
@@ -976,11 +962,10 @@ reference "L17A_2_smo"
 
 \end_inset
 
-, when the Markov chain is in State 1, it continues to stay in its state
- for a while before leaving to State 2.
- Furthermore, the chain has a fairly short duration of staying in State
- 2.
- After the chain visits State 2, it instantly switches back to State 1.
+, when the Markov chain is in State1, it continues to stay in its state
+ for a while before leaving to State2.
+ Furthermore, the chain has a fairly short duration of staying in State2.
+ After the chain visits State2, it instantly switches back to State1.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -988,9 +973,9 @@ reference "L17A_3_smo"
 
 \end_inset
 
- presents the chain which has many switches between State 1 and State 2
- in the first half of the time period.
- The chain for the three-state model also stays in State 2 significantly
+ presents the chain which has many switches between State1 and State2 in
+ the first half of the time period.
+ The chain for the three-state model also stays in State2 significantly
  long from observation 104 to 129, which is the end of the time series.
 \end_layout
 
@@ -1248,8 +1233,8 @@ reference "L16A_switch"
 \end_inset
 
 .
- The second model has the highest BIC and even higher than the model with
- all switching coefficients.
+ The second model has the highest BIC and even higher than the model which
+ have all switching coefficients.
  The first model, where both 
 \emph on
 Fdd/Tdd
@@ -1264,8 +1249,8 @@ NumCells
 status collapsed
 
 \begin_layout Plain Layout
-From the obtained outputs, it is found that a linear regression for State
- 3 in all three models has r-squared equals to 1 with moderately small residual
+From the obtained outputs, it is found that a linear regression for State3
+ in all three models has r-squared equals to 1 with moderately small residual
  standard error.
 \end_layout
 
@@ -1286,6 +1271,8 @@ status open
 \begin_layout Plain Layout
 List of the model structure of the software release L16A along with its
  BIC.
+ The last line is the result taken from the three-state model in the Analysis
+ I.
  The line in bold indicates the selected model.
 \end_layout
 
@@ -1552,16 +1539,6 @@ Y
 \end_inset
 
 
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-417.682
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1578,29 +1555,41 @@ reference "L16A_NN"
 
  indicates the CPU utilization of the software release L16A and also shows
  the periods of the derived state from the model.
- From the plot, State 2 clearly has the longest duration to remain in its
+ From the plot, State2 clearly has the longest duration to remain in its
  own state.
- When the chain moves to either State 1 or State 3, it immediately switches
+ When the chain moves to either State1 or State3, it immediately switches
  to the other states.
 \begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
- In other words, the chain does not linger in State 3 during the time series
+In other words, the chain does not linger in State3 during the time series
  period.
  
 \end_layout
 
 \end_inset
 
- However, the duration that the chain stays in State 1 is longer in the
- beginning and almost at the end of the period.
- Another characteristic that could be observed is that when State 2 happens
- to have more chance to switch to State 3 rather than switch to State 1.
+ However, the duration that the chain stays in State1 is longer in the beginning
+ and almost at the end of the period.
+ Another characteristic that could be observed is that when State2 happens
+ to have more chance to switch to State3 rather than switch to State1.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+False positive..?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1689,6 +1678,8 @@ status open
 \begin_layout Plain Layout
 List of the model structure of the software release L16B along with its
  BIC.
+ The last line is the result taken from the three-state model in the Analysis
+ I.
  The line in bold indicates the selected model.
 \end_layout
 
@@ -1708,7 +1699,7 @@ name "L16B_switch"
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="5">
+<lyxtabular version="3" rows="10" columns="5">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1850,7 +1841,7 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,787.528
+1787.528
 \end_layout
 
 \end_inset
@@ -1897,7 +1888,7 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,704.393
+1704.393
 \end_layout
 
 \end_inset
@@ -1944,7 +1935,7 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,784.384
+1784.384
 \end_layout
 
 \end_inset
@@ -2001,7 +1992,7 @@ Y
 \begin_layout Plain Layout
 
 \series bold
-1,776.102
+1776.102
 \end_layout
 
 \end_inset
@@ -2048,7 +2039,7 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,806.385
+1806.385
 \end_layout
 
 \end_inset
@@ -2095,7 +2086,7 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,725.865
+1725.865
 \end_layout
 
 \end_inset
@@ -2142,23 +2133,60 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,804.487
+1804.487
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1797.259
 \end_layout
 
 \end_inset
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-1,797.259
-\end_layout
 
 \end_inset
 
@@ -2180,16 +2208,17 @@ reference "L16B_NYY"
 
 .
  However, the state which has the longest duration remaining in its own
- state is State 3.
- There are three durations where the chain stays in State 3 for a long time.
+ state is State3.
+ There are three durations where the chain stays in State3 for a long time.
  Another noticeable behavior from this switching mechanism is that there
- are several switches between State 1 and State 2 in the beginning, middle,
+ are several switches between State1 and State2 in the beginning, middle,
  and at the end of the time period.
  
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -2238,7 +2267,7 @@ name "L16B_NYY"
 \end_layout
 
 \begin_layout Subsection
-Software relase L17A
+Software release L17A
 \end_layout
 
 \begin_layout Standard
@@ -2249,7 +2278,7 @@ reference "L17A_switch"
 \end_inset
 
  presents model structure of the software release L17A.
- There is only model 2 which has higher BIC than the model with all switching
+ There is model 2 which has higher BIC than the model which have all switching
  coefficients.
  The least BIC is from the first model that all three variables in the test
  environment have non-switching effects.
@@ -2268,6 +2297,8 @@ status open
 \begin_layout Plain Layout
 List of the model structure of the software release L17A along with its
  BIC.
+ The last line is the result taken from the three-state model in the Analysis
+ I.
  The line in bold indicates the selected model.
 \end_layout
 
@@ -2287,7 +2318,7 @@ name "L17A_switch"
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="5">
+<lyxtabular version="3" rows="10" columns="5">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2439,7 +2470,7 @@ N
 \begin_layout Plain Layout
 
 \series bold
-1,140.474
+1140.474
 \end_layout
 
 \end_inset
@@ -2486,7 +2517,7 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,204.280
+1204.280
 \end_layout
 
 \end_inset
@@ -2533,7 +2564,7 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,152.740
+1152.740
 \end_layout
 
 \end_inset
@@ -2580,7 +2611,7 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,184.643
+1184.643
 \end_layout
 
 \end_inset
@@ -2627,7 +2658,7 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,146.000
+1146.000
 \end_layout
 
 \end_inset
@@ -2674,7 +2705,7 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,189.236
+1189.236
 \end_layout
 
 \end_inset
@@ -2721,23 +2752,60 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-1,157.311
+1157.311
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1199.075
 \end_layout
 
 \end_inset
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-1,199.075
-\end_layout
 
 \end_inset
 
@@ -2759,17 +2827,18 @@ reference "L17A_NNN"
 \end_inset
 
 .
- Around the end of the time series period, State 3 appears to have a longer
- duration and fewer switches to State 1.
- State 2 seems to be the only state which has a fairly short duration for
+ Around the end of the time series period, State3 appears to have a longer
+ duration and fewer switches to State1.
+ State2 seems to be the only state which has a fairly short duration for
  the chain to stay in the state.
- The plot also indicates that State 2 tends to switch to State 1 more often
- than to switch to State 3.
+ Furthermore, State2 tends to switch to State1 more often than to switch
+ to State3.
  
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -2887,6 +2956,10 @@ e of noise terms in the model.
  
 \end_layout
 
+\begin_layout Subsection
+Software release L16A
+\end_layout
+
 \begin_layout Standard
 In 
 \begin_inset CommandInset ref
@@ -2895,9 +2968,9 @@ reference "L16A_plotDiag"
 
 \end_inset
 
-, the pooled residuals appeared to fall in a straight line with some deviations
+, the pooled residuals appears to fall in a straight line with some deviations
  in its tails.
- There was an evidence of autocorrelation in the residuals of this model,
+ There is an evidence of autocorrelation in the residuals of this model,
  which can be seen in both ACF and PACF plot, at lag 8.
  
 \begin_inset Note Comment
@@ -2970,6 +3043,10 @@ name "L16A_plotDiag"
 
 \end_layout
 
+\begin_layout Subsection
+Software release L16B
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2977,22 +3054,22 @@ reference "L16B_plotDiag"
 
 \end_inset
 
- presents points that formed a straight line in the middle of the plot,
- but curved off at both ends.
+ presents points that form a straight line in the middle of the plot, but
+ curve off at both ends.
  This is a characteristic of a heavy-tailed distribution.
  The data has more extreme values than it should be if the data truly comes
  from a normal distribution.
- In addition, both the ACF and PACF plot show that there was a small amount
+ In addition, both the ACF and PACF plot show that there is a small amount
  of autocorrelation remaining in the residuals.
- The statistically significant correlation of this model were at lags 6
- and 10.
- The significant at lag 4 both in the ACF and PACF plot was slightly higher
+ The statistically significant correlation of this model are at lags 6 and
+ 10.
+ The significant at lag 4 both in the ACF and PACF plot is slightly higher
  than two standard errors.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -3047,6 +3124,10 @@ name "L16B_plotDiag"
 
 \end_layout
 
+\begin_layout Subsection
+Software release L17A
+\end_layout
+
 \begin_layout Standard
 A Q-Q plot in 
 \begin_inset CommandInset ref
@@ -3057,10 +3138,10 @@ reference "L17A_plotDiag"
 
  suggests that a distribution of the pooled residuals may have a tail thicker
  than that of a normal distribution.
- It is visible that there were many extreme positive and negative residuals
+ It is visible that there are many extreme positive and negative residuals
  in the plot.
- Furthermore, the ACF plot of pooled residuals were significant for the
- first two lags, whereas the PACF plot was significant only at lag 2.
+ Furthermore, the ACF plot of pooled residuals are significant for the first
+ two lags, whereas the PACF plot is significant only at lag 2.
  
 \begin_inset Note Comment
 status collapsed
@@ -3078,7 +3159,7 @@ The model seems to capture the dependent structure of the error terms in
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -3368,7 +3449,7 @@ reference "ediv"
 
 \end_inset
 
- shows places in the time series data where the E-divisive algorithm was
+ shows places in the time series data where the E-divisive algorithm is
  able to detect the significant changes.
  
 \end_layout
@@ -3589,15 +3670,15 @@ reference "ediv_L16B"
 \end_inset
 
 , the estimated change points for the dataset of the software release L16B
- were likely to occur around the same period of time, which were almost
- at the end of the time series data.
- The estimated points from the method were approximately at peaks and negative
+ are likely to occur around the same period of time, which are almost at
+ the end of the time series data.
+ The estimated points from the method are approximately at peaks and negative
  peaks.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -3652,15 +3733,15 @@ reference "ediv_L17A"
 
 \end_inset
 
-, had the estimated change points rather spread out.
- The E-divisive method discovered changes when the CPU utilization was about
+, have the estimated change points rather spread out.
+ The E-divisive method discovers changes when the CPU utilization was about
  to drop or increase its value.
  
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -3738,20 +3819,20 @@ reference "compare_L16B"
  presents results of switches between states from the Markov switching autoregre
 ssive model and change point locations from the E-divisive method for the
  software release L16B.
- There was one location where the E-divisive method detected a change but
- the Markov switching autoregressive model did not show any switches.
- As can be seen, the E-divisive method appeared to detect changes when State
- 2 switches to State 3.
- At observation 130, the E-divisive method discovered a switch in the state
- at the same time as Markov switching autoregressive model did.
- However, the E-divisive method identified switches after and before the
- Markov switching autoregressive model did at observations 135 and 170,
+ There is one location where the E-divisive method detects a change but
+ the Markov switching autoregressive model does not show any switches.
+ As can be seen, the E-divisive method appears to detect changes when State2
+ switches to State3.
+ At observation 130, the E-divisive method discovers a switch in the state
+ at the same time as Markov switching autoregressive model does.
+ However, the E-divisive method identifies switches after and before the
+ Markov switching autoregressive model does at observations 135 and 170,
  respectively.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -3802,21 +3883,21 @@ reference "compare_L17A"
 
 \end_inset
 
-, the E-divisive method reported a change at observation 105 whereas no
- switch between states could be found from the result of the Markov switching
+, a change is reported from the E-divisive method at observation 105 whereas
+ no switch between states could be found from the result of the Markov switching
  autoregressive model.
- It is visible that the E-divisive method was able to detect a switch from
- State 1 to State 3, and also a switch from State 3 to State 1.
+ It is visible that the E-divisive method is able to detect a switch from
+ State1 to State3, and also a switch from State3 to State1.
  Both two methods could detect the changes at the same period of time at
  observations 77 and 82.
- The E-divisive method detected a change at observation 9 which was before
+ The E-divisive method detects a change at observation 9 which is before
  there was a switch in the state from the result of the Markov switching
  autoregressive model.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -3857,7 +3938,7 @@ name "compare_L17A"
 \end_layout
 
 \begin_layout Section
-Predicting the state 
+Predicting the state of the CPU utilization 
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Predict"
@@ -3878,13 +3959,13 @@ reference "predict_L16A"
 
 \end_inset
 
-, only two states, which were State 1 and State 2, were assigned for these
- observations.
- The first three observations were in State 2.
- Afterwards, observation tended to switch back and forth between states
- until the end.
- It is noticed that the last observation did not belong to any state.
- After applying a predict function to the test set, the function was unable
+, only two states, which are State1 and State2, are assigned for these observati
+ons.
+ The first three observations are in State2.
+ Afterwards, observation tends to switch back and forth between states until
+ the end.
+ It is noticed that the last observation does not belong to any state.
+ After applying a predict function to the test set, the function is unable
  to predict the most likely state for the last observation of the test set.
  
 \end_layout
@@ -3948,10 +4029,10 @@ reference "predict_L16B"
 \end_inset
 
 .
- Observation 15 was the only observation which was in State 2.
- Many switches between State 1 and State 2 can be seen from the plot.
- In addition, observation appeared to stay in State 1 only a short time
- before moving to State 3, except for the first five observations.
+ Observation 15 is the only observation which is in State2.
+ Many switches between State1 and State2 can be seen from the plot.
+ In addition, observation appears to stay in State1 only a short time before
+ moving to State3, except for the first five observations.
  
 \end_layout
 
@@ -4011,12 +4092,12 @@ reference "predict_L17A"
 
 \end_inset
 
- presents a considerably long period for staying in State 2, which was from
+ presents a considerably long period for staying in State2, which is from
  observation 10 to the end of the time series data.
- There were several switches between states happening in the plot.
- As can be seen, observation between 4 and 7 swapped between states fairly
+ There are several switches between states happening in the plot.
+ As can be seen, observation between 4 and 7 swap between states fairly
  quick.
- Observation visited the particular state for one time and then moved to
+ Observation visits the particular state for one time and then moves to
  the other states.
  
 \end_layout
@@ -4080,7 +4161,7 @@ name "sec:Assessing"
 Markov switching autoregressive model was fitted with eighty percents of
  the observations from a simulated data, and the remaining was used as a
  test set to evaluate a performance of the model.
- The result of the model performance is shown in 
+ The result of the model performance using Dataset 1 is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "confusion"
@@ -4128,7 +4209,7 @@ status open
 
 \begin_layout Plain Layout
 Confusion matrix after applying the Markov switching autoregressive model
- to fit with the test set 
+ to fit with the test set from the simulated Dataset 1
 \end_layout
 
 \end_inset
@@ -4408,7 +4489,7 @@ reference "confusion2"
 
 \end_inset
 
- presents a confusion matrix for a test set from a simulated data.
+ presents a confusion matrix for a test set from a second simulated data.
  One can see that the model able to correctly predict the observations which
  had 
 \emph on
@@ -4455,7 +4536,7 @@ status open
 
 \begin_layout Plain Layout
 Confusion matrix after applying the Markov switching autoregressive model
- to fit with the test set from the second simulated data
+ to fit with the test set from the simulated Datatset 2
 \end_layout
 
 \end_inset

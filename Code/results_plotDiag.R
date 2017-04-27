@@ -44,6 +44,10 @@ plotDiag(mswm_L16B_NYY, regime=3)
 residPooled <- apply(mswm_L16B_NYY["Fit"]["error"]*mswm_L16B_NYY["Fit"]["smoProb"][-1,],1,sum)
 qqplot.data2(residPooled)
 
+d <- data.frame(fit=train_g2_L16B$TotCpu[-1], residPooled)
+ggplot(data=d) + geom_point(aes(x=fit,y=residPooled)) + theme_bw() +
+  xlab("Fitted value") + ggtitle("Residuals versus the Fitted values")
+
 par(mfrow=c(2,1))
 acf(residPooled,ylim=c(-1,1),main="ACF of Residuals")
 pacf(residPooled,ylim=c(-1,1),main="PACF of Residuals")
@@ -99,6 +103,10 @@ qqplot.data2 <- function(vec){
 
 residPooled <- apply(mswm_L16A_NN["Fit"]["error"]*mswm_L16A_NN["Fit"]["smoProb"][-1,],1,sum)
 qqplot.data2(residPooled)
+
+d <- data.frame(fit=train_g2_L16A$TotCpu[-1], residPooled)
+ggplot(data=d) + geom_point(aes(x=fit,y=residPooled)) + theme_bw() +
+  xlab("Fitted value") + ggtitle("Residuals versus the Fitted values")
 
 fit <- apply(mswm_L16A_NN["Fit"]["CondMean"]*mswm_L16A_NN["Fit"]["smoProb"][-1,],1,sum)
 plot(x=fit, y=residPooled,ylab="Residuals")
@@ -161,6 +169,10 @@ plotDiag(mswm_L17A_NNN, regime=3)
 
 residPooled <- apply(mswm_L17A_NNN["Fit"]["error"]*mswm_L17A_NNN["Fit"]["smoProb"][-1,],1,sum)
 qqplot.data2(residPooled)
+
+d <- data.frame(fit=train_g2_L17A$TotCpu[-1], residPooled)
+ggplot(data=d) + geom_point(aes(x=fit,y=residPooled)) + theme_bw() +
+  xlab("Fitted value") + ggtitle("Residuals versus the Fitted values")
 
 par(mfrow=c(2,1))
 acf(residPooled,ylim=c(-1,1),main="ACF of Residuals")

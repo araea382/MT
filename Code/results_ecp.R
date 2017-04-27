@@ -13,7 +13,8 @@ ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() + scale_color_manual(valu
   geom_vline(xintercept=out, colour="red", linetype="longdash") +
   ggtitle("E-divisive L16B") + theme_bw()
 
-
+#---------------------------------------------------------------------------#
+# compare
 ecp_L16B <- c(130,135,153,170)
 
 L16B_3 <- as.data.frame(mswm_L16B_NYY@Fit@smoProb)
@@ -35,6 +36,7 @@ g2 <- ggplot(data=state_L16B_3, aes(x=index, y=y)) + geom_line() +
   ylab("TotCpu") + ggtitle("L16B_NYY") + theme_bw()
 
 g2 + geom_vline(xintercept=ecp_L16B, color="red", size=0.6, linetype="longdash")
+
 
 
 
@@ -70,7 +72,8 @@ ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() +
   geom_vline(xintercept=out, colour="red", linetype="dashed") +
   ggtitle("E-divisive L17A") + theme_bw()
 
-
+#---------------------------------------------------------------------------#
+# compare
 ecp_L17A <- c(9,77,82,105)
 
 L17A_3 <- as.data.frame(mswm_L17A_NNN@Fit@smoProb)

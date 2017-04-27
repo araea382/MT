@@ -319,6 +319,13 @@ Critical assessment of the results obtained and the adequacy of the methods
 
 \end_layout
 
+\begin_layout Standard
+In this chapter, the discussion of model selection for each given dataset
+ is explained.
+ Then, a state inference from the model is made for the given dataset.
+ Lastly, a general discussion of this study is provided.
+\end_layout
+
 \begin_layout Section
 Model selection 
 \begin_inset CommandInset label
@@ -371,6 +378,25 @@ Even though model 3 had the lowest BIC, it was found in the output (not
  data i.e., every data value is equal to the mean.
  Therefore, model 1 which had the second lowest BIC was chosen for this
  given dataset instead.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The t statistic is the coefficient divided by its standard error.
+ The standard error is an estimate of the standard deviation of the coefficient,
+ the amount it varies across cases.
+ It can be thought of as a measure of the precision with which the regression
+ coefficient is measured.
+ If a coefficient is large compared to its standard error, then it is probably
+ different from 0.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph*
@@ -459,6 +485,16 @@ Software release L16A
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_NN"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 It can be seen that State 1
 \end_layout
 
@@ -475,6 +511,16 @@ Software release L16B
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_NYY"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 State 1
 \end_layout
 
@@ -488,6 +534,16 @@ State 3
 
 \begin_layout Paragraph
 Software release L17A
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_NNN"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -520,7 +576,7 @@ A thorough search of the relevant literature yielded that this thesis work
  In previous work, this model is mainly implemented in finance or signal
  processing.
  Researches and works on that matter were used as an inspiration, but because
- of some differences that make things slightly more complicated.
+ of some differences, it makes things slightly more complicated.
  A large amount of time was spent on understanding the data, examining which
  variables have a significant impact on the CPU utilization, and determining
  which methods would provide the best possible outcome for this problem.
@@ -574,32 +630,33 @@ reference "sec:States"
 \end_layout
 
 \begin_layout Standard
-The hypothesis in 
+In 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Switching"
 
 \end_inset
 
- is to make a switching effect only for variables in the test environment.
+, a hypothesis is made – the test environment variable is possible to have
+ a switching effect.
  The reason for that is because local events in 
 \emph on
 EventPerSec
 \emph default
  is essential for each test case and should have flexible values in each
  of the fixed number of state.
- Having a constant parameter would be inadequate to characterize the whole
- time series data.
- On the contrary, the test environment is not necessarily have a switching
- mechanism.
- They can be to have this kinds of characteristic.
- Moreover, ..
+ Having a constant value for these variables would be inadequate to characterize
+ the whole time series data.
+ On the contrary, the test environment does not necessarily need to have
+ a switching mechanism.
+ These test environment variables affect the CPU utilization but it can
+ be to have this kinds of characteristic.
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Think think think
+...........
 \end_layout
 
 \end_inset
@@ -663,6 +720,20 @@ n model.
  is rather small which make it easier for an occurrence of singularity.
  Therefore, unless there is more data, it is better to drop the variable
  from the regression model before doing a further analysis.
+\end_layout
+
+\begin_layout Standard
+For each software release, each state in the model have a significantly
+ high r-squared (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Output"
+
+\end_inset
+
+) will all values are greater than 0.9.
+ This indicates that the model can .
+ Nevertheless, high r-squared does not always 
 \end_layout
 
 \begin_layout Standard
@@ -774,15 +845,11 @@ The estimated coefficients
 \end_layout
 
 \begin_layout Standard
-r-squared
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-model validation on coefficient and r-squared
+model validation on coefficient
 \end_layout
 
 \end_inset

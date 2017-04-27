@@ -28,6 +28,8 @@ plot(y1, type="l", ylim=c(0,300)) # normal
 points(y2, type="l", col="red") # bad
 points(y3, type="l", col="orange") # good
 
+#--------------------------------------------------------------------#
+# Simulated Dataset 1
 state <- rep(0,n)
 ind_normal <- c(1:50,71:110,161:220,351:370,421:450)
 ind_bad <- c(51:70,241:290,371:420,451:491)
@@ -35,6 +37,11 @@ ind_good <- c(111:160, 221:240,291:350,491:500)
 state[ind_normal] <- "Normal"
 state[ind_bad] <- "Bad"
 state[ind_good] <- "Good"
+
+st <- rep(0,n)
+st[ind_normal] <- 1
+st[ind_bad] <- 2
+st[ind_good] <- 3
 
 y <- rep(0,n)
 y[ind_normal] <- y1[ind_normal]
@@ -60,9 +67,9 @@ mswm <- MSwM2::msmFit(mod, k=3, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1),c
 summary(mswm)
 
 plotProb(mswm)
-# regime1 = bad
-# regime2 = normal
-# regime3 = good
+# regime1 = bad (2)
+# regime2 = normal (1)
+# regime3 = good (3)
 
 pred <- MSwM2::statePredict(mswm,test)
 test_state <- state[-c(1:ind)]
@@ -123,112 +130,163 @@ p2<-ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identit
 require(gridExtra)
 grid.arrange(p1,p2,nrow=2)
 
+#--------------------------------#
+# MSwM2
+# smoothed prob plot
+sim <- as.data.frame(mswm@Fit@smoProb)
+sim <- cbind(index=seq(1,nrow(sim)),sim)
+colnames(sim) <- c("index","State 1","State 2","State 3")
+
+sim <- melt(sim, id="index")
+ggplot(data=sim, aes(x=index, y=value, colour=variable)) + geom_line() +
+  ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 1") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  theme_bw() + theme(legend.title = element_blank())
+
+
+# plot with state area
+gen_sim <- function(object,data){
+  state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
+  state <- factor(state)
+  index=seq(1,nrow(data))
+  xmin=index-0.5
+  xmax=index+0.5
+  y=data$y
+  ans <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
+  return(ans)
+}
+
+state_sim <- gen_sim(mswm, train)
+ggplot(data=state_sim, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_sim, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("Simulated Dataset 1") + theme_bw()
+
+
+#--------------------------------#
+# ecp
+set.seed(1)
+Ediv_sim <- e.divisive(matrix(simu_data2$yy), R=499, min.size=5)
+Ediv_sim$k.hat
+Ediv_sim$estimates
+out <- Ediv_sim$estimates[c(-1,-length(Ediv_sim$estimates))]
+
+dat <- data.frame(index=seq(1,nrow(simu_data2)), y=simu_data$y)
+ggplot(data=dat, aes(x=index, y=y)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  geom_vline(xintercept=out, colour="red", linetype="longdash") +
+  ggtitle("E-divisive simulated Dataset 1") + theme_bw()
+
+
+#--------------------------------#
+g <- ggplot(data=sim, aes(x=index, y=value, colour=variable)) + geom_line() +
+  ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 1") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  theme_bw() + theme(legend.title = element_blank())
+
+g + geom_vline(xintercept=out, color="black", size=0.6, linetype="longdash")
+
 # d <- data.frame(y,temp2)
 # colnames(d) <- c("value","state","index")
 # ggplot(d, aes(x=index, y=value)) + geom_line() +
 #     facet_grid(value~ ., scales = "free_y") + theme(legend.position = "none")
 
 
-Y_test <- state[401:500]
-temp3 <- data.frame(Y_test,X=seq(1:100))
-ggplot() + geom_point(data=temp3, aes(x=X, y=Y_test, colour=Y_test)) +
-  xlab("index") + ylab("") + theme_bw() +
-  theme(legend.title = element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank()) +
-  ggtitle("State of the simulated data") +
-  scale_colour_manual(values=cbPalette)
+# Y_test <- state[401:500]
+# temp3 <- data.frame(Y_test,X=seq(1:100))
+# ggplot() + geom_point(data=temp3, aes(x=X, y=Y_test, colour=Y_test)) +
+#   xlab("index") + ylab("") + theme_bw() +
+#   theme(legend.title = element_blank(),
+#         axis.text.y=element_blank(),
+#         axis.ticks.y=element_blank()) +
+#   ggtitle("State of the simulated data") +
+#   scale_colour_manual(values=cbPalette)
+# 
+# pred[which(pred == 1)] <- "Bad"
+# pred[which(pred == 2)] <- "Normal"
+# pred[which(pred == 3)] <- "Good"
+# pred <- as.factor(pred)
+# temp4 <- data.frame(pred,X=seq(1:100))
+# ggplot() + geom_point(data=temp4, aes(x=X, y=pred, colour=pred)) +
+#   xlab("index") + ylab("") + theme_bw() +
+#   theme(legend.title = element_blank(),
+#         axis.text.y=element_blank(),
+#         axis.ticks.y=element_blank()) +
+#   ggtitle("State of the simulated data") +
+#   scale_colour_manual(values=cbPalette)
 
-pred[which(pred == 1)] <- "Bad"
-pred[which(pred == 2)] <- "Normal"
-pred[which(pred == 3)] <- "Good"
-pred <- as.factor(pred)
-temp4 <- data.frame(pred,X=seq(1:100))
-ggplot() + geom_point(data=temp4, aes(x=X, y=pred, colour=pred)) +
-  xlab("index") + ylab("") + theme_bw() +
-  theme(legend.title = element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank()) +
-  ggtitle("State of the simulated data") +
-  scale_colour_manual(values=cbPalette)
-
-
-# library(pROC)
-# plot(multiclass.roc(pred, test_state))
 
 ##
 # test with one obs. at a time
-pred1 <- MSwM2::predict(mswm,test[1,])
-pred2 <- MSwM2::predict(mswm,test[2,]); pred2 # PROBLEM..!
-pred12 <- MSwM2::predict(mswm,test[1:2,]); pred12 # It's okay
+# pred1 <- MSwM2::predict(mswm,test[1,])
+# pred2 <- MSwM2::predict(mswm,test[2,]); pred2 # PROBLEM..!
+# pred12 <- MSwM2::predict(mswm,test[1:2,]); pred12 # It's okay
 
 
-#--------------------------------------------------------------------
+#--------------------------------------------------------------------#
+# Simulated Dataset 2
 set.seed(1)
+state2 <- rep(0,n)
 samp <- sample(3,500,replace=TRUE)
-ind_normal <- which(samp == 1); length(ind_normal)
-ind_bad <- which(samp == 2); length(ind_bad)
-ind_good <- which(samp == 3); length(ind_good)
-state[ind_normal] <- "Normal"
-state[ind_bad] <- "Bad"
-state[ind_good] <- "Good"
+ind_normal2 <- which(samp == 1); length(ind_normal2)
+ind_bad2 <- which(samp == 2); length(ind_bad2)
+ind_good2 <- which(samp == 3); length(ind_good2)
+state2[ind_normal2] <- "Normal"
+state2[ind_bad2] <- "Bad"
+state2[ind_good2] <- "Good"
 
-y <- rep(0,n)
-y[ind_normal] <- y1[ind_normal]
-y[ind_bad] <- y2[ind_bad]
-y[ind_good] <- y3[ind_good]
+yy <- rep(0,n)
+yy[ind_normal2] <- y1[ind_normal2]
+yy[ind_bad2] <- y2[ind_bad2]
+yy[ind_good2] <- y3[ind_good2]
 
-points(y, type="l", col="green")
-plot(y, type="l")
+points(yy, type="l", col="green")
+plot(yy, type="l")
 
-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+ggplot(data.frame(index=seq(1:n),yy), aes(x=index, y=yy)) + geom_line() +
   ggtitle("Simulated data")+ theme_bw()
 
-simu_data <- data.frame(x1,x2,y)
+simu_data2 <- data.frame(x1,x2,yy)
 
 ind <- 500*0.8
-train <- simu_data[1:ind,]
-test <- simu_data[-c(1:ind),]
-mod <- lm(y~., data=train)
-summary(mod)
+train2 <- simu_data2[1:ind,]
+test2 <- simu_data2[-c(1:ind),]
+mod2 <- lm(yy~., data=train2)
+summary(mod2)
 
 set.seed(1)
-mswm2 <- MSwM2::msmFit(mod, k=3, p=1, sw=rep(TRUE,length(mod$coefficients)+1+1),control=list(trace=TRUE,maxiter=500,parallel=FALSE))
+mswm2 <- MSwM2::msmFit(mod2, k=3, p=1, sw=rep(TRUE,length(mod2$coefficients)+1+1),control=list(trace=TRUE,maxiter=500,parallel=FALSE))
 summary(mswm2)
 
 plotProb(mswm2)
 # regime1 = bad
 # regime2 = good
 # regime3 = normal
-pred_train_state <- apply(mswm2@Fit@smoProb,1,which.max)
-st <- samp[1:ind]
-st[which(st == 1)] <- 4
-st[which(st == 3)] <- 1
-st[which(st == 4)] <- 2
 
-pred <- MSwM2::statePredict(mswm2,test)
-test_state <- state[-c(1:ind)]
-test_state[which(test_state == "Bad")] <- 1
-test_state[which(test_state == "Normal")] <- 3
-test_state[which(test_state == "Good")] <- 2
+# pred_train_state <- apply(mswm2@Fit@smoProb,1,which.max)
+# st <- samp[1:ind]
+# st[which(st == 1)] <- 4
+# st[which(st == 3)] <- 1
+# st[which(st == 4)] <- 2
 
-tab <- table(actual=test_state, predict=pred)
+pred2 <- MSwM2::statePredict(mswm2,test2)
+test_state2 <- state2[-c(1:ind)]
+test_state2[which(test_state2 == "Bad")] <- 1
+test_state2[which(test_state2 == "Normal")] <- 3
+test_state2[which(test_state2 == "Good")] <- 2
 
-sum(diag(tab))/sum(tab) # overall accuracy
-1-sum(diag(tab))/sum(tab) # incorrect classification
+tab2 <- table(actual=test_state2, predict=pred2)
 
-library(caret)
-result <- confusionMatrix(test_state, pred)
+sum(diag(tab2))/sum(tab2) # overall accuracy
+1-sum(diag(tab2))/sum(tab2) # incorrect classification
 
-Y <- as.factor(state)
-Y <- factor(Y,levels(Y)[c(2,3,1)])
 
-temp2 <- data.frame(Y,X=seq(1:500))
+YY <- as.factor(state2)
+YY <- factor(YY,levels(YY)[c(2,3,1)])
+
+temp2 <- data.frame(YY,X=seq(1:500))
 
 # plot(x=seq(1,500),y=samp, type="h")
-p1 <- ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+pp1 <- ggplot(data.frame(index=seq(1:n),yy), aes(x=index, y=yy)) + geom_line() +
   ggtitle("Simulated Dataset 2")+ theme_bw()
-p2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") +
+pp2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=YY, fill=YY, color=YY),stat="identity") +
   xlab("index") + ylab("") + theme_bw() +
   theme(legend.title = element_blank(),
                      axis.ticks.y=element_blank(),
@@ -237,5 +295,59 @@ p2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="ident
   ggtitle("State of the Dataset 2")
 
 
-grid.arrange(p1,p2,nrow=2)
+grid.arrange(pp1,pp2,nrow=2)
+
+
+#--------------------------------#
+# MSwM2
+# smoothed prob plot
+sim2 <- as.data.frame(mswm2@Fit@smoProb)
+sim2 <- cbind(index=seq(1,nrow(sim2)),sim2)
+colnames(sim2) <- c("index","State 1","State 2","State 3")
+
+sim2 <- melt(sim2, id="index")
+ggplot(data=sim2, aes(x=index, y=value, colour=variable)) + geom_line() +
+  ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 2") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  theme_bw() + theme(legend.title = element_blank())
+
+
+# plot with state area
+gen_sim2 <- function(object,data){
+  state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
+  state <- factor(state)
+  index=seq(1,nrow(data))
+  xmin=index-0.5
+  xmax=index+0.5
+  y=data$yy
+  ans <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
+  return(ans)
+}
+
+state_sim2 <- gen_sim2(mswm2, train2)
+ggplot(data=state_sim2, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_sim2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("Simulated Dataset 2") + theme_bw()
+
+
+#--------------------------------#
+# ecp
+set.seed(1)
+Ediv_sim2 <- e.divisive(matrix(simu_data2$yy), R=499, min.size=5)
+Ediv_sim2$k.hat
+Ediv_sim2$estimates
+out2 <- Ediv_sim2$estimates[c(-1,-length(Ediv_sim2$estimates))]
+
+dat <- data.frame(index=seq(1,nrow(simu_data2)), y=simu_data2$yy)
+ggplot(data=dat, aes(x=index, y=yy)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  geom_vline(xintercept=out, colour="red", linetype="longdash") +
+  ggtitle("E-divisive simulated Dataset 2") + theme_bw()
+
+
+#--------------------------------#
+g <- ggplot(data=sim2, aes(x=index, y=value, colour=variable)) + geom_line() +
+  ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 2") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  theme_bw() + theme(legend.title = element_blank())
+
+g + geom_vline(xintercept=out2, color="black", size=0.6, linetype="longdash")
 
