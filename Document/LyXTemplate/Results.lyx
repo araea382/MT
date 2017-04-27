@@ -1189,7 +1189,7 @@ hing effect.
  dataset again but with a hypothesis that the variables considered as a
  test environment are possible to have non-switching effects.
  In this section, the structure of all the models from all three datasets
- are reported in the table.
+ are reported in the tables.
  The best model is selected for each dataset and its state specification
  is presented in the plots.
  Further discussion and details about these chosen models are provided in
@@ -1572,8 +1572,8 @@ In other words, the chain does not linger in State3 during the time series
 
  However, the duration that the chain stays in State1 is longer in the beginning
  and almost at the end of the period.
- Another characteristic that could be observed is that when State2 happens
- to have more chance to switch to State3 rather than switch to State1.
+ Another characteristic that could be observed is that State2 have more
+ chance to switch to State3 rather than switch to State1.
  
 \begin_inset Note Note
 status open
@@ -2209,7 +2209,8 @@ reference "L16B_NYY"
 .
  However, the state which has the longest duration remaining in its own
  state is State3.
- There are three durations where the chain stays in State3 for a long time.
+ There are three durations where the chain stays in State3 for a long period
+ of time.
  Another noticeable behavior from this switching mechanism is that there
  are several switches between State1 and State2 in the beginning, middle,
  and at the end of the time period.
@@ -2278,8 +2279,8 @@ reference "L17A_switch"
 \end_inset
 
  presents model structure of the software release L17A.
- There is model 2 which has higher BIC than the model which have all switching
- coefficients.
+ Only model 2 has higher BIC than the model which have all switching coefficient
+s.
  The least BIC is from the first model that all three variables in the test
  environment have non-switching effects.
  This model was also chosen to be further used for this dataset.
@@ -2944,15 +2945,36 @@ reference "sec:Switching"
 
 \end_inset
 
- were analyzed to see how well the model fitted an assumption of a normal
- distribution.
+ were analyzed to determine how well the model fitted with an assumption
+ of a normal distribution.
  A Quantile-Quantile (Q-Q) plot is an effective tool for assessing normality.
  Moreover, an Autocorrelation function (ACF) and a Partial Autocorrelation
  Function (PACF) of residuals are a useful technique to check on the independenc
 e of noise terms in the model.
- The Q-Q plot and the ACF/PACF plot play a significant role in the residual
+ The Q-Q plot and the ACF/PACF plots play a significant role in the residual
  diagnostics.
- These plots of each dataset are shown below.
+ These plots of each dataset are shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16A_plotDiag"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_plotDiag"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_plotDiag"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -2968,7 +2990,7 @@ reference "L16A_plotDiag"
 
 \end_inset
 
-, the pooled residuals appears to fall in a straight line with some deviations
+, the pooled residuals appear to fall in a straight line with some deviations
  in its tails.
  There is an evidence of autocorrelation in the residuals of this model,
  which can be seen in both ACF and PACF plot, at lag 8.
@@ -3057,13 +3079,13 @@ reference "L16B_plotDiag"
  presents points that form a straight line in the middle of the plot, but
  curve off at both ends.
  This is a characteristic of a heavy-tailed distribution.
- The data has more extreme values than it should be if the data truly comes
+ The data has more extreme values than it should if the data truly comes
  from a normal distribution.
- In addition, both the ACF and PACF plot show that there is a small amount
- of autocorrelation remaining in the residuals.
+ In addition, both the ACF and PACF plots show that there is a small amount
+ of autocorrelation remain in the residuals.
  The statistically significant correlation of this model are at lags 6 and
  10.
- The significant at lag 4 both in the ACF and PACF plot is slightly higher
+ The significance at lag 4 both in the ACF and PACF plots is slightly higher
  than two standard errors.
 \end_layout
 
@@ -3787,9 +3809,118 @@ name "ediv_L17A"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Comparison between the Markov switching autoregressive model and the E-divisive
- 
+\end_layout
+
+\begin_layout Standard
+In order to make a comparison between 
+\end_layout
+
+\begin_layout Standard
+use simulated data with already known states
+\end_layout
+
+\begin_layout Subsection
+Simulated Dataset 1
+\end_layout
+
+\begin_layout Standard
+dsfsd
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/compare_sim1.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Three different plots 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Simulated Dataset 2
+\end_layout
+
+\begin_layout Standard
+sdfds
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/compare_sim2.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Real data 
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Comparison"
@@ -3800,9 +3931,18 @@ name "subsec:Comparison"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 One noticeable thing is that the E-divisive method was able to identify
  the changes of the data less than the Markov switching autoregressive model.
- As mentioned previously, no estimated change points was discovered when
+ 
+\end_layout
+
+\end_inset
+
+As mentioned previously, no estimated change points was discovered when
  applying the E-divisive algorithm to the dataset of the software release
  L16A.
  Thus, a comparison between two methods could not be made for this dataset.

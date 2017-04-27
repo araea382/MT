@@ -2338,6 +2338,10 @@ reference "sim_data2"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 The simulated data contains 500 observations.
  
 \begin_inset CommandInset ref
@@ -2354,6 +2358,11 @@ reference "sim_data"
  to one of the state.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Comment
 status collapsed
@@ -2362,16 +2371,6 @@ status collapsed
 The simulated data, which contains 500 observations, has three different
  states – Normal, Bad and Good.
  
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-CHANGE title, caption, plot for old and new
 \end_layout
 
 \end_inset
@@ -2389,7 +2388,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/sim1.png
+	filename picture/sim.png
 	lyxscale 50
 	scale 35
 
@@ -2406,7 +2405,7 @@ status open
 \emph on
 Top:
 \emph default
- A simulated data where 
+ A simulated data of Dataset 1 where 
 \begin_inset Formula $y$
 \end_inset
 
@@ -2445,7 +2444,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/sim1.png
+	filename picture/sim2.png
 	lyxscale 50
 	scale 35
 

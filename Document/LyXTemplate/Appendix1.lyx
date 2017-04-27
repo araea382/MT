@@ -3057,19 +3057,6 @@ State 3
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-change
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3079,7 +3066,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/L16B_NNY.png
+	filename picture/L16B_NNY1.png
 	lyxscale 50
 	scale 35
 
