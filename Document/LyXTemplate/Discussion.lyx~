@@ -723,6 +723,20 @@ n model.
 \end_layout
 
 \begin_layout Standard
+For each software release, each state in the model have a significantly
+ high r-squared (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Output"
+
+\end_inset
+
+) will all values are greater than 0.9.
+ This indicates that the model can .
+ Nevertheless, high r-squared does not always 
+\end_layout
+
+\begin_layout Standard
 A Q-Q plot is a visual check for an assumption of normality which provides
  a rough idea whether or not the assumption is plausible.
  From residual analysis in 
@@ -823,16 +837,7 @@ As described above, a small dataset is proven to cause several problems
 \end_layout
 
 \begin_layout Standard
-The model output 
-\end_layout
-
-\begin_layout Standard
-The estimated coefficients
-\end_layout
-
-\begin_layout Standard
-For each software release, each state seems to have a rather high r-squared.
- This indicates that the model can capture 
+The estimated coefficients in the model output
 \end_layout
 
 \begin_layout Standard
@@ -840,7 +845,7 @@ For each software release, each state seems to have a rather high r-squared.
 status open
 
 \begin_layout Plain Layout
-model validation on coefficient and r-squared
+model validation on coefficient
 \end_layout
 
 \end_inset

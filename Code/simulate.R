@@ -89,6 +89,12 @@ tab <- table(actual=test_state, predict=pred)
 sum(diag(tab))/sum(tab) # overall accuracy
 1-sum(diag(tab))/sum(tab) # incorrect classification
 
+fn <- tab
+fp <-
+
+library(caret)
+confusionMatrix(test_state, pred)
+
 Y <- as.factor(state)
 Y <- factor(Y,levels(Y)[c(2,3,1)])
 cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
@@ -213,7 +219,7 @@ ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("Simulated Dataset 1") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour="red")
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("red2",length(out)),rep("limegreen",length(chg_mswm)),rep("cyan3",length(chg_train))))
 
 
 
@@ -437,7 +443,7 @@ ggplot(data=temp2, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("Simulated Dataset 2") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour="red")
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("red2",length(out2)),rep("limegreen",length(chg_mswm2)),rep("cyan3",length(chg_train2))))
 
 
 

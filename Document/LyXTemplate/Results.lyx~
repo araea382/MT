@@ -3627,12 +3627,24 @@ reference "ediv_L17A"
 \end_inset
 
 , respectively.
- It can be seen that the E-divisive method could not identify any changes
- in the dataset of the software release L16A.
  
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Subsection
+Software release L16A
+\end_layout
+
+\begin_layout Plain Layout
+It can be seen that the E-divisive method could not identify any changes
+ in the dataset of the software release L16A.
+ 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Float figure
 placement h
 wide false
@@ -3681,7 +3693,11 @@ name "ediv_L16A"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
+Software release L16B
+\end_layout
+
+\begin_layout Plain Layout
 Four change points were identified from the method for the software release
  L16B and L17A.
  In 
@@ -3698,7 +3714,7 @@ reference "ediv_L16B"
  peaks.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 placement H
 wide false
@@ -3746,7 +3762,11 @@ name "ediv_L16B"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
+Software release L17A
+\end_layout
+
+\begin_layout Plain Layout
 On the contrary, the result of the dataset of the software release L17A,
  which is shown in 
 \begin_inset CommandInset ref
@@ -3761,7 +3781,7 @@ reference "ediv_L17A"
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 placement H
 wide false
@@ -3809,16 +3829,20 @@ name "ediv_L17A"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-Comparison between the Markov switching autoregressive model and the E-divisive
+Comparison between the Markov switching model and the E-divisive method
 \end_layout
 
 \begin_layout Standard
-In order to make a comparison between 
-\end_layout
-
-\begin_layout Standard
-use simulated data with already known states
+A comparison between the Markov switching model and the E-divisive method
+ was made by using simulated data which the true changes are already known
+ beforehand.
+ Two methods were applied to the two simulate datasets and a real data.
 \end_layout
 
 \begin_layout Subsection
@@ -3826,12 +3850,70 @@ Simulated Dataset 1
 \end_layout
 
 \begin_layout Standard
-dsfsd
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_sim1"
+
+\end_inset
+
+, there are nine change locations in the actual data.
+ The Markov switching model detects more changes than what data actually
+ has.
+ In contrast, the E-divisive method is able to identify changes less than
+ the actual changes in the data, and clearly less than the results from
+ the Markov switching model.
+ For the Markov switching model, the model reports two more change locations.
+ The plot indicates that the model perform rather well in detecting the
+ changes in the data.
+ The model discovers most changes when they occur.
+ However, there is one location where the model detect the change later
+ than the actual change.
+ 
+\end_layout
+
+\begin_layout Standard
+A delay in detecting the changes for the E-divisive method can be seen in
+ the plot.
+ There are in total three change point locations where the method identify
+ changes later than the true changes.
+ Furthermore, one location is discovered by this method before the actual
+ change occurs.
+ The E-divisive method is unable to detect any changes in the data at the
+ beginning of the time period.
+\end_layout
+
+\begin_layout Standard
+Mostly, when these two methods detect changes after the actual change, these
+ estimated changes are only just behind one or two time index.
+ To sum up, from this dataset, the Markov switching model had more false
+ alarms while the E-divisive appears to have more missed detections.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Another noticeable behavior is that if the change from one state to another
+ state in the data which is not obvious (low to high value or high to low
+ value), the E-divisive method is unable to detect the changes.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+The E-divisive has clearly less power to detect the changes in the data.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement h
 wide false
 sideways false
 status open
@@ -3853,7 +3935,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Three different plots 
+The simulated Dataset 1 showing the estimated changes from the E-divisive
+ method (Top) and the Markov switching model (Middle), which are indicated
+ by dashed vertical lines.
+ The true change points in the data are indicated in the bottom plot.
+ 
 \end_layout
 
 \end_inset
@@ -3862,6 +3948,12 @@ Three different plots
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "compare_sim1"
+
+\end_inset
+
 
 \end_layout
 
@@ -3875,7 +3967,35 @@ Simulated Dataset 2
 \end_layout
 
 \begin_layout Standard
-sdfds
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_sim2"
+
+\end_inset
+
+ presents estimated change point locations of the E-divisive method and
+ the Markov switching model, and also true change points in the data.
+ The E-divisive method
+\end_layout
+
+\begin_layout Standard
+The Dataset 2 clearly contained numerous switches between states.
+ This is somewhat difficult to describe every changes between the Markov
+ switching model and the actual data in details.
+ Generally, the model is able to identify the changes considerably well
+ despite a few false alarms and missed detections.
+ 
+\end_layout
+
+\begin_layout Standard
+For the E-divisive method, it can be seen that the method has the worst
+ performance in detecting changes.
+ There is, in total, two estimated change point locations.
+ One estimated point (the second location) is a true change point while
+ another one (the first location) is not.
+ The E-divisive method is obviously has many changes which are failed to
+ detect.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3902,7 +4022,137 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+The simulated Dataset 2 showing the estimated changes from the E-divisive
+ method (Top) and the Markov switching model (Middle), which are indicated
+ by dashed vertical lines.
+ The true change points in the data are indicated in the bottom plot.
+ 
+\end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "compare_sim2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Real data 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Real-data"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Software release L16A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+One noticeable thing is that the E-divisive method was able to identify
+ the changes of the data less than the Markov switching autoregressive model.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+As previously mentioned, no estimated change points was discovered when
+ applying the E-divisive algorithm to the dataset of the software release
+ L16A.
+\end_layout
+
+\end_inset
+
+According to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ediv"
+
+\end_inset
+
+, the E-divisive method could not identify any changes in the dataset of
+ the software release L16A.
+ Thus, a comparison between two methods could not be made for this dataset.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Software release L16B
+\end_layout
+
+\begin_layout Standard
+Four change points were identified from the E-divisive method for the software
+ release L16B.
+ The estimated change points for the dataset of the software release L16B
+ are likely to occur around the same period of time, which are almost at
+ the end of the time series data.
+ The estimated points from the method are approximately at peaks and negative
+ peaks.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_L16B"
+
+\end_inset
+
+ presents results of estimated change points from the Markov switching model
+ and the E-divisive method.
+ Apparently, two methods are able to estimate change points nearly the same
+ time.
+ There is even one location where both methods detect a change at the exact
+ time.
+ Moreover, one change point is discovered by the E-divisive method but not
+ by the Markov switching model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The CPU utilization of the software release L16B.
+ The dashed vertical lines indicate the locations of estimated change points
+ from the E-divisive method (Top) and the Markov switching model (Bottom).
+ 
 \end_layout
 
 \end_inset
@@ -3919,49 +4169,31 @@ status open
 
 \end_layout
 
-\begin_layout Subsection
-Real data 
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Comparison"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-One noticeable thing is that the E-divisive method was able to identify
- the changes of the data less than the Markov switching autoregressive model.
- As mentioned previously, no estimated change points was discovered when
- applying the E-divisive algorithm to the dataset of the software release
- L16A.
- Thus, a comparison between two methods could not be made for this dataset.
- 
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_L16B"
 
 \end_inset
 
- presents results of switches between states from the Markov switching autoregre
-ssive model and change point locations from the E-divisive method for the
- software release L16B.
+ presents results of switches between states from the Markov switching model
+ and change point locations from the E-divisive method for the software
+ release L16B.
  There is one location where the E-divisive method detects a change but
- the Markov switching autoregressive model does not show any switches.
+ the Markov switching model does not show any switches.
  As can be seen, the E-divisive method appears to detect changes when State2
  switches to State3.
  At observation 130, the E-divisive method discovers a switch in the state
- at the same time as Markov switching autoregressive model does.
+ at the same time as Markov switching model does.
  However, the E-divisive method identifies switches after and before the
- Markov switching autoregressive model does at observations 135 and 170,
- respectively.
+ Markov switching model does at observations 135 and 170, respectively.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 placement H
 wide false
@@ -4006,7 +4238,71 @@ name "compare_L16B"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Software release L17A
+\end_layout
+
 \begin_layout Standard
+There are four estimated change points which are identified from the E-divisive
+ method.
+ These estimated change points are rather spread out.
+ The E-divisive method discovers changes when the CPU utilization was about
+ to drop or increase its value.
+ 
+\end_layout
+
+\begin_layout Standard
+Many changes are discovered by the Markov switching model as can be seen
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_L17A"
+
+\end_inset
+
+.
+ It is found that there is no single estimated change point from the two
+ methods that are identified at the same time.
+ Nevertheless, they seem to detect changes roughly the same time.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The CPU utilization of the software release L17A.
+ The dashed vertical lines indicate the locations of estimated change points
+ from the E-divisive method (Top) and the Markov switching model (Bottom).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4016,17 +4312,17 @@ reference "compare_L17A"
 
 , a change is reported from the E-divisive method at observation 105 whereas
  no switch between states could be found from the result of the Markov switching
- autoregressive model.
+ model.
  It is visible that the E-divisive method is able to detect a switch from
  State1 to State3, and also a switch from State3 to State1.
  Both two methods could detect the changes at the same period of time at
  observations 77 and 82.
  The E-divisive method detects a change at observation 9 which is before
  there was a switch in the state from the result of the Markov switching
- autoregressive model.
+ model.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 placement H
 wide false
@@ -4068,6 +4364,11 @@ name "compare_L17A"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Predicting the state of the CPU utilization 
 \begin_inset CommandInset label
@@ -4082,7 +4383,15 @@ name "sec:Predict"
 \begin_layout Standard
 Now, an implemented of state prediction function was applied to the test
  set in order to find the most probable state for new observations.
- For the software release L16A, there are 7 observations in a test set.
+ 
+\end_layout
+
+\begin_layout Subsection
+Software release L16A
+\end_layout
+
+\begin_layout Standard
+For the software release L16A, there are 7 observations in a test set.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4146,6 +4455,10 @@ name "predict_L16A"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Software release L16B
 \end_layout
 
 \begin_layout Standard
@@ -4212,6 +4525,10 @@ name "predict_L16B"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Software release L17A
 \end_layout
 
 \begin_layout Standard
@@ -4292,7 +4609,15 @@ name "sec:Assessing"
 Markov switching autoregressive model was fitted with eighty percents of
  the observations from a simulated data, and the remaining was used as a
  test set to evaluate a performance of the model.
- The result of the model performance using Dataset 1 is shown in 
+ 
+\end_layout
+
+\begin_layout Subsection
+Simulated Dataset 1
+\end_layout
+
+\begin_layout Standard
+The result of the model performance using Dataset 1 is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "confusion"
@@ -4331,6 +4656,7 @@ Good
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -4613,6 +4939,10 @@ Good
 
 \end_layout
 
+\begin_layout Subsection
+Simulated Dataset 2
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4658,6 +4988,7 @@ Good
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open

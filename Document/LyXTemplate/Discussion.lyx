@@ -837,11 +837,7 @@ As described above, a small dataset is proven to cause several problems
 \end_layout
 
 \begin_layout Standard
-The model output 
-\end_layout
-
-\begin_layout Standard
-The estimated coefficients
+The estimated coefficients in the model output
 \end_layout
 
 \begin_layout Standard
@@ -877,7 +873,7 @@ on.
  As can be seen from 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Comparison"
+reference "subsec:Real-data"
 
 \end_inset
 
