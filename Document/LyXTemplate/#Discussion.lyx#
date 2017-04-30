@@ -647,21 +647,10 @@ EventPerSec
  of the fixed number of state.
  Having a constant value for these variables would be inadequate to characterize
  the whole time series data.
- On the contrary, the test environment does not necessarily need to have
- a switching mechanism.
- These test environment variables affect the CPU utilization but it can
- be to have this kinds of characteristic.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-...........
-\end_layout
-
-\end_inset
-
- 
+ On the contrary, the test environment does not necessarily require a switching
+ mechanism.
+ Although these test environment variables affect the CPU utilization, they
+ do not need to have different values in each state.
 \end_layout
 
 \begin_layout Standard
@@ -731,9 +720,19 @@ reference "chap:Output"
 
 \end_inset
 
-) will all values are greater than 0.9.
- This indicates that the model can .
+) which are greater than 0.9.
+ This indicates that the model cl.
  Nevertheless, high r-squared does not always 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+.....
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -837,19 +836,11 @@ As described above, a small dataset is proven to cause several problems
 \end_layout
 
 \begin_layout Standard
-The model output 
-\end_layout
-
-\begin_layout Standard
-The estimated coefficients
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-model validation on coefficient
+The estimated coefficients in the model output
 \end_layout
 
 \end_inset
@@ -858,37 +849,78 @@ model validation on coefficient
 \end_layout
 
 \begin_layout Standard
-One benefit from using a non-parametric analysis is that it does not require
- a prior assumption of a data distribution.
- This analysis is able to detect any type of distributional change within
- a time series.
- It can be noticed that variables which have influences on the CPU utilization
- are also include in the model when performing a Markov switching model.
+A benefit from using a non-parametric analysis is that it does not require
+ a prior assumption of a data distribution and is able to detect any type
+ of distributional change within a time series.
+ Another noted behavior which can be seen in the simulated data is that
+ if the pattern of changing from one state to another state in the data
+ is not obvious (
+\emph on
+Normal
+\emph default
+ to 
+\emph on
+Bad
+\emph default
+ state or 
+\emph on
+Good
+\emph default
+ to 
+\emph on
+Normal
+\emph default
+ state), the E-divisive method is unable to detect the location of changes.
+ For instance, the method cannot identify change in the first hundred observatio
+ns and at the end of the time series in the simulated Dataset 1.
+ Likewise, the simulated Dataset 2 had a rather difficult to notice of the
+ switching pattern.
+ The shift between states is not dramatic to see the huge difference.
+ Therefore, the E-divisive method can only detect two change point locations
+ where the shifts are obvious.
+ 
+\end_layout
+
+\begin_layout Standard
+After examining the results in both simulated data, the E-divisive method
+ and the Markov switching model appear to discover changes at around the
+ same time when the true changes occur, despite some false alarms and missed
+ detections.
+ However, the E-divisive method have less power in detecting changes in
+ the data.
+ Another thing that can be inferred is that for the real data where the
+ state is unknown, the true change might occur around locations where these
+ two methods are able to detect.
+ In addition, there is a high probability to be a true change if these two
+ methods identify the exact same location.
+\end_layout
+
+\begin_layout Standard
+Note that when performing a Markov switching model, variables which have
+ influences on the CPU utilization are also include in the model.
  Nevertheless, an E-divisive algorithm only consider values of the CPU utilizati
 on.
  With this difference, the E-divisive method will have even less power to
  identify true changes in the CPU utilization.
  Since there are other variables that affect the value of CPU utilization,
  it is insufficient to take into account the response variable.
- However, the E-divisive method can be used to obtain a general idea of
- estimated change points for the value of the CPU utilization.
- The E-divisive method appears to perform reasonably well in detecting changes
- as far as a non-parametric analysis could.
- As can be seen from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Comparison"
-
-\end_inset
-
-, the method is able to detect when a change is happened around the same
- time as the Markov switching model did.
  
 \begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
-Even though the E-divisive method might not provide the best result, it
+The E-divisive method appears to perform reasonably well in detecting changes
+ as far as a non-parametric analysis could.
+ As can be seen from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Real-data"
+
+\end_inset
+
+, the method is able to detect when a change is happened around the same
+ time as the Markov switching model did.
+ Even though the E-divisive method might not provide the best result, it
  can give a general idea of estimated change points.
 \end_layout
 

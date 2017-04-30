@@ -48,7 +48,7 @@ ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("L16B") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("red2",length(out_L16B)),rep("limegreen",length(chg_mswm_L16B))))
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out_L16B)),rep("cyan3",length(chg_mswm_L16B))))
 
 
 
@@ -59,12 +59,27 @@ ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
 Ediv_L16A <- e.divisive(matrix(train_g2_L16A$TotCpu), R=499, min.size=5)
 Ediv_L16A$k.hat
 Ediv_L16A$estimates
-out <- Ediv_L16A$estimates[c(-1,-length(Ediv_L16A$estimates))]
+out_L16A <- Ediv_L16A$estimates[c(-1,-length(Ediv_L16A$estimates))]
 
 dat <- data.frame(index=seq(1,nrow(train_g2_L16A)), TotCpu=train_g2_L16A$TotCpu)
 ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() +
   geom_vline(xintercept=out, colour="red", linetype="dashed") +
   ggtitle("E-divisive L16A") + theme_bw()
+
+#---------------------------------------------------------------------------#
+# compare
+pred_state_L16A <- sapply(1:nrow(train_g2_L16A), function(x) which.max(mswm_L16A_NN@Fit@smoProb[x,]))
+chg_mswm_L16A <- which(diff(pred_state_L16A) != 0) + 1
+
+ind <- nrow(train_g2_L16A)
+method <- c(rep("Markov switching model",ind),rep("E-divisive",ind))
+changePoints <- data.frame(changeP=c(chg_mswm_L16A, out_L16A), method=c(rep("Markov switching model",length(chg_mswm_L16A)), rep("E-divisive",length(out_L16A))))
+temp <- data.frame(index=rep(1:ind,2),y=rep(train_g2_L16A$TotCpu,2), method)
+ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
+    facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
+    ggtitle("L16A") +
+    theme(panel.spacing = unit(0.2, "lines")) +
+    geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out_L16A)),rep("cyan3",length(chg_mswm_L16A))))
 
 
 ###############
@@ -118,7 +133,7 @@ ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("L17A") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("red2",length(out_L17A)),rep("limegreen",length(chg_mswm_L17A))))
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out_L17A)),rep("cyan3",length(chg_mswm_L17A))))
 
 
 

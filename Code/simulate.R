@@ -89,124 +89,121 @@ tab <- table(actual=test_state, predict=pred)
 sum(diag(tab))/sum(tab) # overall accuracy
 1-sum(diag(tab))/sum(tab) # incorrect classification
 
-fn <- tab
-fp <-
-
 library(caret)
 confusionMatrix(test_state, pred)
 
-Y <- as.factor(state)
-Y <- factor(Y,levels(Y)[c(2,3,1)])
-cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-
-temp2 <- data.frame(Y,X=seq(1:500))
-ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
-  xlab("index") + ylab("") + theme_bw() +
-  theme(legend.title = element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank()) +
-  ggtitle("State of the simulated data") +
-  scale_colour_manual(values=cbPalette)
-
-p1<-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
-    ggtitle("Simulated Dataset 1")+ theme_bw()
-
-p2<-ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") +
-    xlab("index") + ylab("") + theme_bw() +
-    theme(legend.title = element_blank(),
-          axis.ticks.y=element_blank(),
-          axis.text.y=element_text(colour="white",size=5),
-          legend.position="bottom") +
-    ggtitle("State of the the Dataset 1")
-
-require(gridExtra)
-grid.arrange(p1,p2,nrow=2)
-
-#--------------------------------#
-# MSwM2
-# smoothed prob plot
-sim <- as.data.frame(mswm@Fit@smoProb)
-sim <- cbind(index=seq(1,nrow(sim)),sim)
-colnames(sim) <- c("index","State 1","State 2","State 3")
-
-sim <- melt(sim, id="index")
-ggplot(data=sim, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 1") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-  theme_bw() + theme(legend.title = element_blank())
-
-
-# plot with state area
-gen_sim <- function(object,data){
-  state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
-  state <- factor(state)
-  index=seq(1,nrow(data))
-  xmin=index-0.5
-  xmax=index+0.5
-  y=data$y
-  ans <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
-  return(ans)
-}
+# Y <- as.factor(state)
+# Y <- factor(Y,levels(Y)[c(2,3,1)])
+# cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+# 
+# temp2 <- data.frame(Y,X=seq(1:500))
+# ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
+#   xlab("index") + ylab("") + theme_bw() +
+#   theme(legend.title = element_blank(),
+#         axis.text.y=element_blank(),
+#         axis.ticks.y=element_blank()) +
+#   ggtitle("State of the simulated data") +
+#   scale_colour_manual(values=cbPalette)
+# 
+# p1<-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+#     ggtitle("Simulated Dataset 1")+ theme_bw()
+# 
+# p2<-ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") +
+#     xlab("index") + ylab("") + theme_bw() +
+#     theme(legend.title = element_blank(),
+#           axis.ticks.y=element_blank(),
+#           axis.text.y=element_text(colour="white",size=5),
+#           legend.position="bottom") +
+#     ggtitle("State of the the Dataset 1")
+# 
+# require(gridExtra)
+# grid.arrange(p1,p2,nrow=2)
+# 
+# #--------------------------------#
+# # MSwM2
+# # smoothed prob plot
+# sim <- as.data.frame(mswm@Fit@smoProb)
+# sim <- cbind(index=seq(1,nrow(sim)),sim)
+# colnames(sim) <- c("index","State 1","State 2","State 3")
+# 
+# sim <- melt(sim, id="index")
+# ggplot(data=sim, aes(x=index, y=value, colour=variable)) + geom_line() +
+#   ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 1") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+#   theme_bw() + theme(legend.title = element_blank())
+# 
+# 
+# # plot with state area
+# gen_sim <- function(object,data){
+#   state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
+#   state <- factor(state)
+#   index=seq(1,nrow(data))
+#   xmin=index-0.5
+#   xmax=index+0.5
+#   y=data$y
+#   ans <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
+#   return(ans)
+# }
 
 pred_state <- sapply(1:nrow(train), function(x) which.max(mswm@Fit@smoProb[x,]))
 chg_mswm <- which(diff(pred_state) != 0) + 1
 
-state_sim <- gen_sim(mswm, train)
-ggplot(data=state_sim, aes(x=index, y=y)) + geom_line() +
-  geom_rect(data=state_sim, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
-  scale_fill_manual(values=c("red","green","blue")) +
-  ylab("y") + ggtitle("Simulated Dataset 1") + theme_bw()
-
-
-#--------------------------------#
-# ecp
-set.seed(1)
-Ediv_sim <- e.divisive(matrix(train$y), R=499, min.size=5)
-Ediv_sim$k.hat
-Ediv_sim$estimates
-out <- Ediv_sim$estimates[c(-1,-length(Ediv_sim$estimates))] # 112 162 221 241 285 353
-
-dat <- data.frame(index=seq(1,nrow(train)), y=train$y)
-ggplot(data=dat, aes(x=index, y=y)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-  geom_vline(xintercept=out, colour="red", linetype="longdash") +
-  geom_vline(xintercept=chg_train, colour="purple", linetype="longdash") +
-  ggtitle("E-divisive simulated Dataset 1") + theme_bw()
-
-
-#--------------------------------#
-# smo prob
-# quite difficult to see...
-g <- ggplot(data=sim, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 1") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-  theme_bw() + theme(legend.title = element_blank())
-
-g + geom_vline(xintercept=out, color="red", size=0.6, linetype="longdash") +
-  geom_vline(xintercept=chg_train, colour="blue", size=0.6, linetype="longdash")
-
-
-
-# state
-# easier to see but there are switches that are missing
-g <- ggplot(data=state_sim, aes(x=index, y=y)) + geom_line() +
-  geom_rect(data=state_sim, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
-  scale_fill_manual(values=c("red","green","blue")) +
-  ylab("t") + ggtitle("Simulated Dataset 1") + theme_bw()
-
-g + geom_vline(xintercept=out, color="red", linetype="longdash") +
-  geom_vline(xintercept=chg_train, colour="blue", linetype="longdash")
-
-
-# TRUE state
-# two methods overlap.... ugh.. almost
-temp <- data.frame(index=seq(1, nrow(train)), y=train$y, state=state[1:ind])
-index=seq(1,nrow(train))
-state_sim_train <- data.frame(index,xmin=index-0.5,xmax=index+0.5,state=state[1:ind],y=train$y,ymin=min(train$y),ymax=max(train$y))
-
-ggplot(data=state_sim_train, aes(x=index, y=y)) + geom_line() +
-  geom_rect(data=state_sim_train, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
-  scale_fill_manual(values=c("red","green","blue")) +
-  ylab("y") + ggtitle("Simulated Dataset 1") + theme_bw() +
-  geom_vline(xintercept=out, color="magenta", linetype="longdash") +
-  geom_vline(xintercept=chg_mswm, colour="blue", linetype="longdash")
+# state_sim <- gen_sim(mswm, train)
+# ggplot(data=state_sim, aes(x=index, y=y)) + geom_line() +
+#   geom_rect(data=state_sim, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+#   scale_fill_manual(values=c("red","green","blue")) +
+#   ylab("y") + ggtitle("Simulated Dataset 1") + theme_bw()
+# 
+# 
+# #--------------------------------#
+# # ecp
+# set.seed(1)
+# Ediv_sim <- e.divisive(matrix(train$y), R=499, min.size=5)
+# Ediv_sim$k.hat
+# Ediv_sim$estimates
+# out <- Ediv_sim$estimates[c(-1,-length(Ediv_sim$estimates))] # 112 162 221 241 285 353
+# 
+# dat <- data.frame(index=seq(1,nrow(train)), y=train$y)
+# ggplot(data=dat, aes(x=index, y=y)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+#   geom_vline(xintercept=out, colour="red", linetype="longdash") +
+#   geom_vline(xintercept=chg_train, colour="purple", linetype="longdash") +
+#   ggtitle("E-divisive simulated Dataset 1") + theme_bw()
+# 
+# 
+# #--------------------------------#
+# # smo prob
+# # quite difficult to see...
+# g <- ggplot(data=sim, aes(x=index, y=value, colour=variable)) + geom_line() +
+#   ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 1") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+#   theme_bw() + theme(legend.title = element_blank())
+# 
+# g + geom_vline(xintercept=out, color="red", size=0.6, linetype="longdash") +
+#   geom_vline(xintercept=chg_train, colour="blue", size=0.6, linetype="longdash")
+# 
+# 
+# 
+# # state
+# # easier to see but there are switches that are missing
+# g <- ggplot(data=state_sim, aes(x=index, y=y)) + geom_line() +
+#   geom_rect(data=state_sim, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+#   scale_fill_manual(values=c("red","green","blue")) +
+#   ylab("t") + ggtitle("Simulated Dataset 1") + theme_bw()
+# 
+# g + geom_vline(xintercept=out, color="red", linetype="longdash") +
+#   geom_vline(xintercept=chg_train, colour="blue", linetype="longdash")
+# 
+# 
+# # TRUE state
+# # two methods overlap.... ugh.. almost
+# temp <- data.frame(index=seq(1, nrow(train)), y=train$y, state=state[1:ind])
+# index=seq(1,nrow(train))
+# state_sim_train <- data.frame(index,xmin=index-0.5,xmax=index+0.5,state=state[1:ind],y=train$y,ymin=min(train$y),ymax=max(train$y))
+# 
+# ggplot(data=state_sim_train, aes(x=index, y=y)) + geom_line() +
+#   geom_rect(data=state_sim_train, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+#   scale_fill_manual(values=c("red","green","blue")) +
+#   ylab("y") + ggtitle("Simulated Dataset 1") + theme_bw() +
+#   geom_vline(xintercept=out, color="magenta", linetype="longdash") +
+#   geom_vline(xintercept=chg_mswm, colour="blue", linetype="longdash")
 
 
 
@@ -219,10 +216,10 @@ ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("Simulated Dataset 1") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("red2",length(out)),rep("limegreen",length(chg_mswm)),rep("cyan3",length(chg_train))))
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out)),rep("cyan3",length(chg_mswm)),rep("limegreen",length(chg_train))))
 
 
-
+.no <- function(){
 #--------------------------------#
 # d <- data.frame(y,temp2)
 # colnames(d) <- c("value","state","index")
@@ -259,7 +256,7 @@ ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
 # pred1 <- MSwM2::predict(mswm,test[1,])
 # pred2 <- MSwM2::predict(mswm,test[2,]); pred2 # PROBLEM..!
 # pred12 <- MSwM2::predict(mswm,test[1:2,]); pred12 # It's okay
-
+}
 
 #--------------------------------------------------------------------#
 # Simulated Dataset 2
@@ -326,111 +323,111 @@ tab2 <- table(actual=test_state2, predict=pred2)
 sum(diag(tab2))/sum(tab2) # overall accuracy
 1-sum(diag(tab2))/sum(tab2) # incorrect classification
 
-
-YY <- as.factor(state2)
-YY <- factor(YY,levels(YY)[c(2,3,1)])
-
-temp2 <- data.frame(YY,X=seq(1:500))
-
-# plot(x=seq(1,500),y=samp, type="h")
-pp1 <- ggplot(data.frame(index=seq(1:n),yy), aes(x=index, y=yy)) + geom_line() +
-  ggtitle("Simulated Dataset 2")+ theme_bw()
-pp2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=YY, fill=YY, color=YY),stat="identity") +
-  xlab("index") + ylab("") + theme_bw() +
-  theme(legend.title = element_blank(),
-                     axis.ticks.y=element_blank(),
-                     axis.text.y=element_text(colour="white",size=5),
-                     legend.position="bottom") +
-  ggtitle("State of the Dataset 2")
-
-
-grid.arrange(pp1,pp2,nrow=2)
-
-
-#--------------------------------#
-# MSwM2
-# smoothed prob plot
-sim2 <- as.data.frame(mswm2@Fit@smoProb)
-sim2 <- cbind(index=seq(1,nrow(sim2)),sim2)
-colnames(sim2) <- c("index","State 1","State 2","State 3")
-
-sim2 <- melt(sim2, id="index")
-ggplot(data=sim2, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 2") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-  theme_bw() + theme(legend.title = element_blank())
-
-
-# plot with state area
-gen_sim2 <- function(object,data){
-  state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
-  state <- factor(state)
-  index=seq(1,nrow(data))
-  xmin=index-0.5
-  xmax=index+0.5
-  y=data$yy
-  ans <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
-  return(ans)
-}
+# 
+# YY <- as.factor(state2)
+# YY <- factor(YY,levels(YY)[c(2,3,1)])
+# 
+# temp2 <- data.frame(YY,X=seq(1:500))
+# 
+# # plot(x=seq(1,500),y=samp, type="h")
+# pp1 <- ggplot(data.frame(index=seq(1:n),yy), aes(x=index, y=yy)) + geom_line() +
+#   ggtitle("Simulated Dataset 2")+ theme_bw()
+# pp2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=YY, fill=YY, color=YY),stat="identity") +
+#   xlab("index") + ylab("") + theme_bw() +
+#   theme(legend.title = element_blank(),
+#                      axis.ticks.y=element_blank(),
+#                      axis.text.y=element_text(colour="white",size=5),
+#                      legend.position="bottom") +
+#   ggtitle("State of the Dataset 2")
+# 
+# 
+# grid.arrange(pp1,pp2,nrow=2)
+# 
+# 
+# #--------------------------------#
+# # MSwM2
+# # smoothed prob plot
+# sim2 <- as.data.frame(mswm2@Fit@smoProb)
+# sim2 <- cbind(index=seq(1,nrow(sim2)),sim2)
+# colnames(sim2) <- c("index","State 1","State 2","State 3")
+# 
+# sim2 <- melt(sim2, id="index")
+# ggplot(data=sim2, aes(x=index, y=value, colour=variable)) + geom_line() +
+#   ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 2") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+#   theme_bw() + theme(legend.title = element_blank())
+# 
+# 
+# # plot with state area
+# gen_sim2 <- function(object,data){
+#   state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
+#   state <- factor(state)
+#   index=seq(1,nrow(data))
+#   xmin=index-0.5
+#   xmax=index+0.5
+#   y=data$yy
+#   ans <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
+#   return(ans)
+# }
 
 pred_state2 <- sapply(1:nrow(train2), function(x) which.max(mswm2@Fit@smoProb[x,]))
 chg_mswm2 <- which(diff(pred_state2) != 0) + 1
 
-state_sim2 <- gen_sim2(mswm2, train2)
-ggplot(data=state_sim2, aes(x=index, y=y)) + geom_line() +
-  geom_rect(data=state_sim2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
-  scale_fill_manual(values=c("red","green","blue")) +
-  ylab("y") + ggtitle("Simulated Dataset 2") + theme_bw()
-
-
-#--------------------------------#
-# ecp
-set.seed(1)
-Ediv_sim2 <- e.divisive(matrix(train2$yy), R=499, min.size=5)
-Ediv_sim2$k.hat
-Ediv_sim2$estimates
-out2 <- Ediv_sim2$estimates[c(-1,-length(Ediv_sim2$estimates))] # 270 300
-
-dat <- data.frame(index=seq(1,nrow(train2)), y=train2$yy)
-ggplot(data=dat, aes(x=index, y=y)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-  geom_vline(xintercept=out2, colour="red", linetype="longdash") +
-  ggtitle("E-divisive simulated Dataset 2") + theme_bw()
-
-
-#--------------------------------#
-# smo prob
-# quite difficult to see... OMG!!!!!!!!!!
-g <- ggplot(data=sim2, aes(x=index, y=value, colour=variable)) + geom_line() +
-  ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 2") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-  theme_bw() + theme(legend.title = element_blank())
-
-g + geom_vline(xintercept=out2, color="red", size=0.6, linetype="longdash") +
-  geom_vline(xintercept=chg_train2, colour="blue", size=0.6, linetype="longdash")
-
-
-
-# state
-# OMG!!!!!!!!! no different than the first one
-g <- ggplot(data=state_sim2, aes(x=index, y=y)) + geom_line() +
-  geom_rect(data=state_sim2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
-  scale_fill_manual(values=c("red","green","blue")) +
-  ylab("t") + ggtitle("Simulated Dataset 2") + theme_bw()
-
-g + geom_vline(xintercept=out2, color="red", linetype="longdash") +
-  geom_vline(xintercept=chg_train2, colour="blue", linetype="longdash")
-
-
-# TRUE state
-# OMG!!!!!!!!! no different than the first and second one
-temp <- data.frame(index=seq(1, nrow(train2)), y=train2$yy, state=state2[1:ind])
-index=seq(1,nrow(train2))
-state_sim_train2 <- data.frame(index,xmin=index-0.5,xmax=index+0.5,state=state2[1:ind],y=train2$yy,ymin=min(train2$yy),ymax=max(train2$yy))
-
-ggplot(data=state_sim_train2, aes(x=index, y=y)) + geom_line() +
-  geom_rect(data=state_sim_train2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
-  scale_fill_manual(values=c("red","green","blue")) +
-  ylab("y") + ggtitle("Simulated Dataset 2") + theme_bw() +
-  geom_vline(xintercept=out2, color="magenta", linetype="longdash") +
-  geom_vline(xintercept=chg_mswm2, colour="blue", linetype="longdash")
+# state_sim2 <- gen_sim2(mswm2, train2)
+# ggplot(data=state_sim2, aes(x=index, y=y)) + geom_line() +
+#   geom_rect(data=state_sim2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+#   scale_fill_manual(values=c("red","green","blue")) +
+#   ylab("y") + ggtitle("Simulated Dataset 2") + theme_bw()
+# 
+# 
+# #--------------------------------#
+# # ecp
+# set.seed(1)
+# Ediv_sim2 <- e.divisive(matrix(train2$yy), R=499, min.size=5)
+# Ediv_sim2$k.hat
+# Ediv_sim2$estimates
+# out2 <- Ediv_sim2$estimates[c(-1,-length(Ediv_sim2$estimates))] # 270 300
+# 
+# dat <- data.frame(index=seq(1,nrow(train2)), y=train2$yy)
+# ggplot(data=dat, aes(x=index, y=y)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+#   geom_vline(xintercept=out2, colour="red", linetype="longdash") +
+#   ggtitle("E-divisive simulated Dataset 2") + theme_bw()
+# 
+# 
+# #--------------------------------#
+# # smo prob
+# # quite difficult to see... OMG!!!!!!!!!!
+# g <- ggplot(data=sim2, aes(x=index, y=value, colour=variable)) + geom_line() +
+#   ylab("Smoothed Probabilities") + ggtitle("Simulated Dataset 2") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+#   theme_bw() + theme(legend.title = element_blank())
+# 
+# g + geom_vline(xintercept=out2, color="red", size=0.6, linetype="longdash") +
+#   geom_vline(xintercept=chg_train2, colour="blue", size=0.6, linetype="longdash")
+# 
+# 
+# 
+# # state
+# # OMG!!!!!!!!! no different than the first one
+# g <- ggplot(data=state_sim2, aes(x=index, y=y)) + geom_line() +
+#   geom_rect(data=state_sim2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+#   scale_fill_manual(values=c("red","green","blue")) +
+#   ylab("t") + ggtitle("Simulated Dataset 2") + theme_bw()
+# 
+# g + geom_vline(xintercept=out2, color="red", linetype="longdash") +
+#   geom_vline(xintercept=chg_train2, colour="blue", linetype="longdash")
+# 
+# 
+# # TRUE state
+# # OMG!!!!!!!!! no different than the first and second one
+# temp <- data.frame(index=seq(1, nrow(train2)), y=train2$yy, state=state2[1:ind])
+# index=seq(1,nrow(train2))
+# state_sim_train2 <- data.frame(index,xmin=index-0.5,xmax=index+0.5,state=state2[1:ind],y=train2$yy,ymin=min(train2$yy),ymax=max(train2$yy))
+# 
+# ggplot(data=state_sim_train2, aes(x=index, y=y)) + geom_line() +
+#   geom_rect(data=state_sim_train2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+#   scale_fill_manual(values=c("red","green","blue")) +
+#   ylab("y") + ggtitle("Simulated Dataset 2") + theme_bw() +
+#   geom_vline(xintercept=out2, color="magenta", linetype="longdash") +
+#   geom_vline(xintercept=chg_mswm2, colour="blue", linetype="longdash")
 
 
 
@@ -443,7 +440,7 @@ ggplot(data=temp2, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("Simulated Dataset 2") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("red2",length(out2)),rep("limegreen",length(chg_mswm2)),rep("cyan3",length(chg_train2))))
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out2)),rep("cyan3",length(chg_mswm2)),rep("limegreen",length(chg_train2))))
 
 
 

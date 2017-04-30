@@ -322,7 +322,7 @@ Critical assessment of the results obtained and the adequacy of the methods
 \begin_layout Standard
 In this chapter, the discussion of model selection for each given dataset
  is explained.
- Then, a state inference from the model is made for the given dataset.
+ Then, a state inference from the model is made.
  Lastly, a general discussion of this study is provided.
 \end_layout
 
@@ -338,22 +338,22 @@ name "subsec:Model-selection"
 \end_layout
 
 \begin_layout Standard
-In this analysis, a model with all switching coefficients, which was a three-sta
-te model from 
+In this analysis, a three-state model which had all switching coefficients
+ from Analysis I (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:States"
 
 \end_inset
 
-, acted as a baseline model for each dataset.
+) acted as a baseline model for each dataset.
  This model was used to compare with other models which had different combinatio
-n of switching coefficients in a particular dataset.
- If the fitted model has higher BIC than the baseline model, it means that
- this specific model performs worst and should not be considered for further
+n of switching coefficients.
+ If the model has higher BIC than the baseline model, it means that this
+ specific model performs worst and should not be considered for further
  analysis.
- However, it is insufficient to only look at the BIC when choosing model
- for the data.
+ However, only examining the BIC when choosing a model for the data is insuffici
+ent.
  Other aspects should also be taken into consideration along with the BIC
  such as model outputs or plots.
  
@@ -364,10 +364,11 @@ Software release L16A
 \end_layout
 
 \begin_layout Standard
-Even though model 3 had the lowest BIC, it was found in the output (not
- reported) that a coefficient of Paging had a zero standard error in one
- of the state.
- As a consequence, it led t-value of this parameter to infinity.
+Even though model 3 had the lowest BIC, a coefficient of 
+\emph on
+Paging
+\emph default
+ in one state had a zero standard error and led t-value to infinity.
  This zero value can be interpreted in two different ways: an actual zero
  or an extremely small value that a computer treated as zero because significant
  digit is lost due to the floating point.
@@ -405,17 +406,18 @@ Software release L16B
 
 \begin_layout Standard
 Model 2 had the least BIC among the other models.
- Nonetheless, its plot shown in 
+ Nonetheless, its plot provided somewhat difficulty in interpreting a result
+ (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_NNY"
 
 \end_inset
 
- provided a difficulty in interpreting a result.
- There were divided into two main parts.
- Most of observations in the first half of the period stayed in State 3,
- while observations were in State 2 in the second half of the period.
+).
+ The plot is divided into two main parts.
+ In the first half of the period, observations stay in State3m wile observations
+ are in State2 in the second half of the time period.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -424,7 +426,7 @@ reference "L16B_NNY"
 \end_inset
 
  indicates a fluctuation in the value of the CPU utilization.
- Therefore, for observation or software package to remain in the same period
+ Therefore, for observation or software package to remain in the same state
  for a long duration without switching to other states seems somewhat unrealisti
 c.
  The next smallest BIC is from a model 6.
@@ -443,8 +445,8 @@ The model 6 which has the second smallest BIC appears to have the same output
 
  Hence, the selected model for this dataset was model 4 where its BIC was
  in the third place.
- Even though this model had a bit higher BIC than models 2 and 6, it produced
- more sensible result.
+ Even though model 4 had a bit higher BIC than models 2 and 6, the model
+ produced more sensible result.
 \end_layout
 
 \begin_layout Paragraph*
@@ -453,8 +455,8 @@ Software release L17A
 
 \begin_layout Standard
 Model 1 had the lowest BIC and appeared to have a good explanation when
- looking at a plot.
- Thus, it was preferably chosen.
+ examining a plot.
+ Thus, the model was preferably chosen.
 \end_layout
 
 \begin_layout Section
@@ -462,11 +464,12 @@ State inference
 \end_layout
 
 \begin_layout Standard
-Another important tasks after deciding which model will be used is to make
- an inference on the given states.
- A function from the package will estimate coefficients in each state but
- it does not provide the definition of these derived states.
- Interpretation and inference of the state needs to be specified by a user.
+Another important task after deciding which model will be used is to make
+ an inference on the derived states.
+ A function from the package will estimate coefficients in each state without
+ providing the definition of these states.
+ Therefore, an interpretation and inference of the state need to be specified
+ by a user.
  
 \begin_inset Note Note
 status open
@@ -647,21 +650,10 @@ EventPerSec
  of the fixed number of state.
  Having a constant value for these variables would be inadequate to characterize
  the whole time series data.
- On the contrary, the test environment does not necessarily need to have
- a switching mechanism.
- These test environment variables affect the CPU utilization but it can
- be to have this kinds of characteristic.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-...........
-\end_layout
-
-\end_inset
-
- 
+ On the contrary, the test environment does not necessarily require a switching
+ mechanism.
+ Although these test environment variables affect the CPU utilization, they
+ do not need to have different values in each state.
 \end_layout
 
 \begin_layout Standard
@@ -731,9 +723,19 @@ reference "chap:Output"
 
 \end_inset
 
-) will all values are greater than 0.9.
- This indicates that the model can .
+) which are greater than 0.9.
+ This indicates that the model fits with the data rather well.
  Nevertheless, high r-squared does not always 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+.....
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -837,15 +839,11 @@ As described above, a small dataset is proven to cause several problems
 \end_layout
 
 \begin_layout Standard
-The estimated coefficients in the model output
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-model validation on coefficient
+The estimated coefficients in the model output
 \end_layout
 
 \end_inset
@@ -854,37 +852,78 @@ model validation on coefficient
 \end_layout
 
 \begin_layout Standard
-One benefit from using a non-parametric analysis is that it does not require
- a prior assumption of a data distribution.
- This analysis is able to detect any type of distributional change within
- a time series.
- It can be noticed that variables which have influences on the CPU utilization
- are also include in the model when performing a Markov switching model.
+A benefit from using a non-parametric analysis is that it does not require
+ a prior assumption of a data distribution and is able to detect any type
+ of distributional change within a time series.
+ Another noted behavior which can be seen in the simulated data is that
+ if the pattern of changing from one state to another state in the data
+ is not obvious (
+\emph on
+Normal
+\emph default
+ to 
+\emph on
+Bad
+\emph default
+ state or 
+\emph on
+Good
+\emph default
+ to 
+\emph on
+Normal
+\emph default
+ state), the E-divisive method is unable to detect the location of changes.
+ For instance, the method cannot identify change in the first hundred observatio
+ns and at the end of the time series in the simulated Dataset 1.
+ Likewise, the simulated Dataset 2 had a rather difficult to notice of the
+ switching pattern.
+ The shift between states is not dramatic to see the huge difference.
+ Therefore, the E-divisive method can only detect two change point locations
+ where the shifts are obvious.
+ 
+\end_layout
+
+\begin_layout Standard
+After examining the results in both simulated data, the E-divisive method
+ and the Markov switching model appear to discover changes at around the
+ same time when the true changes occur, despite some false alarms and missed
+ detections.
+ However, the E-divisive method have less power in detecting changes in
+ the data.
+ Another thing that can be inferred is that for the real data where the
+ state is unknown, the true change might occur around locations where these
+ two methods are able to detect.
+ In addition, there is a high probability to be a true change if these two
+ methods identify the exact same location.
+\end_layout
+
+\begin_layout Standard
+Note that when performing a Markov switching model, variables which have
+ influences on the CPU utilization are also include in the model.
  Nevertheless, an E-divisive algorithm only consider values of the CPU utilizati
 on.
  With this difference, the E-divisive method will have even less power to
  identify true changes in the CPU utilization.
  Since there are other variables that affect the value of CPU utilization,
  it is insufficient to take into account the response variable.
- However, the E-divisive method can be used to obtain a general idea of
- estimated change points for the value of the CPU utilization.
- The E-divisive method appears to perform reasonably well in detecting changes
- as far as a non-parametric analysis could.
- As can be seen from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Comparison"
-
-\end_inset
-
-, the method is able to detect when a change is happened around the same
- time as the Markov switching model did.
  
 \begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
-Even though the E-divisive method might not provide the best result, it
+The E-divisive method appears to perform reasonably well in detecting changes
+ as far as a non-parametric analysis could.
+ As can be seen from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Real-data"
+
+\end_inset
+
+, the method is able to detect when a change is happened around the same
+ time as the Markov switching model did.
+ Even though the E-divisive method might not provide the best result, it
  can give a general idea of estimated change points.
 \end_layout
 
