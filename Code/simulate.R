@@ -209,14 +209,15 @@ chg_mswm <- which(diff(pred_state) != 0) + 1
 
 # three plots at once
 # yippie
-method <- c(rep("True",ind),rep("Markov switching model",ind),rep("E-divisive",ind))
-changePoints <- data.frame(changeP=c(chg_train, chg_mswm, out), method=c(rep("True",length(chg_train)), rep("Markov switching model",length(chg_mswm)), rep("E-divisive",length(out))))
+method <- c(rep("Actual",ind),rep("Markov switching model",ind),rep("E-divisive",ind))
+changePoints <- data.frame(changeP=c(chg_train, chg_mswm, out), method=c(rep("Actual",length(chg_train)), rep("Markov switching model",length(chg_mswm)), rep("E-divisive",length(out))))
 temp <- data.frame(index=rep(1:ind,3),y=rep(train$y,3), method)
+temp$method <- factor(temp$method, levels=c("Actual","Markov switching model","E-divisive"))
 ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("Simulated Dataset 1") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out)),rep("cyan3",length(chg_mswm)),rep("limegreen",length(chg_train))))
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("limegreen",length(chg_train)),rep("cyan3",length(chg_mswm)),rep("orangered",length(out))))
 
 
 .no <- function(){
@@ -433,14 +434,15 @@ chg_mswm2 <- which(diff(pred_state2) != 0) + 1
 
 # three plots at once
 # uhh... still so scary
-method <- c(rep("True",ind),rep("Markov switching model",ind),rep("E-divisive",ind))
-changePoints <- data.frame(changeP=c(chg_train2, chg_mswm2, out2), method=c(rep("True",length(chg_train2)), rep("Markov switching model",length(chg_mswm2)), rep("E-divisive",length(out2))))
+method <- c(rep("Actual",ind),rep("Markov switching model",ind),rep("E-divisive",ind))
+changePoints <- data.frame(changeP=c(chg_train2, chg_mswm2, out2), method=c(rep("Actual",length(chg_train2)), rep("Markov switching model",length(chg_mswm2)), rep("E-divisive",length(out2))))
 temp2 <- data.frame(index=rep(1:ind,3),y=rep(train2$yy,3), method)
+temp2$method <- factor(temp2$method, levels=c("Actual","Markov switching model","E-divisive"))
 ggplot(data=temp2, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("Simulated Dataset 2") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out2)),rep("cyan3",length(chg_mswm2)),rep("limegreen",length(chg_train2))))
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("limegreen",length(chg_train2)),rep("cyan3",length(chg_mswm2)),rep("orangered",length(out2))))
 
 
 

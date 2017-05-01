@@ -322,7 +322,7 @@ Critical assessment of the results obtained and the adequacy of the methods
 \begin_layout Standard
 In this chapter, the discussion of model selection for each given dataset
  is explained.
- Then, a state inference from the model is made for the given dataset.
+ Then, a state inference from the model is made.
  Lastly, a general discussion of this study is provided.
 \end_layout
 
@@ -338,22 +338,22 @@ name "subsec:Model-selection"
 \end_layout
 
 \begin_layout Standard
-In this analysis, a model with all switching coefficients, which was a three-sta
-te model from 
+In this analysis, a three-state model which had all switching coefficients
+ from Analysis I (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:States"
 
 \end_inset
 
-, acted as a baseline model for each dataset.
+) acted as a baseline model for each dataset.
  This model was used to compare with other models which had different combinatio
-n of switching coefficients in a particular dataset.
- If the fitted model has higher BIC than the baseline model, it means that
- this specific model performs worst and should not be considered for further
+n of switching coefficients.
+ If the model has higher BIC than the baseline model, it means that this
+ specific model performs worst and should not be considered for further
  analysis.
- However, it is insufficient to only look at the BIC when choosing model
- for the data.
+ However, only examining the BIC when choosing a model for the data is insuffici
+ent.
  Other aspects should also be taken into consideration along with the BIC
  such as model outputs or plots.
  
@@ -364,10 +364,11 @@ Software release L16A
 \end_layout
 
 \begin_layout Standard
-Even though model 3 had the lowest BIC, it was found in the output (not
- reported) that a coefficient of Paging had a zero standard error in one
- of the state.
- As a consequence, it led t-value of this parameter to infinity.
+Even though model 3 had the lowest BIC, a coefficient of 
+\emph on
+Paging
+\emph default
+ in one state had a zero standard error and led t-value to infinity.
  This zero value can be interpreted in two different ways: an actual zero
  or an extremely small value that a computer treated as zero because significant
  digit is lost due to the floating point.
@@ -378,11 +379,9 @@ Even though model 3 had the lowest BIC, it was found in the output (not
  data i.e., every data value is equal to the mean.
  Therefore, model 1 which had the second lowest BIC was chosen for this
  given dataset instead.
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The t statistic is the coefficient divided by its standard error.
@@ -405,17 +404,18 @@ Software release L16B
 
 \begin_layout Standard
 Model 2 had the least BIC among the other models.
- Nonetheless, its plot shown in 
+ Nonetheless, its plot provided somewhat difficulty in interpreting a result
+ (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_NNY"
 
 \end_inset
 
- provided a difficulty in interpreting a result.
- There were divided into two main parts.
- Most of observations in the first half of the period stayed in State 3,
- while observations were in State 2 in the second half of the period.
+).
+ The plot is divided into two main parts.
+ In the first half of the period, observations stay in State3 while observations
+ are in State2 in the second half of the time period.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -424,7 +424,7 @@ reference "L16B_NNY"
 \end_inset
 
  indicates a fluctuation in the value of the CPU utilization.
- Therefore, for observation or software package to remain in the same period
+ Therefore, for observation or software package to remain in the same state
  for a long duration without switching to other states seems somewhat unrealisti
 c.
  The next smallest BIC is from a model 6.
@@ -443,8 +443,8 @@ The model 6 which has the second smallest BIC appears to have the same output
 
  Hence, the selected model for this dataset was model 4 where its BIC was
  in the third place.
- Even though this model had a bit higher BIC than models 2 and 6, it produced
- more sensible result.
+ Even though model 4 had a bit higher BIC than models 2 and 6, the model
+ produced more sensible result.
 \end_layout
 
 \begin_layout Paragraph*
@@ -453,8 +453,8 @@ Software release L17A
 
 \begin_layout Standard
 Model 1 had the lowest BIC and appeared to have a good explanation when
- looking at a plot.
- Thus, it was preferably chosen.
+ examining a plot.
+ Thus, the model was preferably chosen.
 \end_layout
 
 \begin_layout Section
@@ -462,102 +462,189 @@ State inference
 \end_layout
 
 \begin_layout Standard
-Another important tasks after deciding which model will be used is to make
- an inference on the given states.
- A function from the package will estimate coefficients in each state but
- it does not provide the definition of these derived states.
- Interpretation and inference of the state needs to be specified by a user.
+Another important task after deciding which model will be used is to make
+ an inference on the derived states.
+ A function from the package will estimate coefficients in each state without
+ providing the definition of these states.
+ Therefore, an interpretation and inference of the state need to be specified
+ by a user.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-try to make an inference on the state as much as you can
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph*
-Software release L16A
-\end_layout
-
-\begin_layout Standard
+\begin_layout Paragraph
+Software release L16A (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16A_NN"
 
 \end_inset
 
-
+)
 \end_layout
 
+\begin_layout Itemize
+State1 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-It can be seen that State 1
+Despite periods where there are a decrease in CPU utilization value, two
+ peaks which are higher than 300 clearly imply that test cases in this state
+ perform badly.
+ Thus, the state is defined as a 
+\emph on
+Bad
+\emph default
+ state.
+ 
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+State2 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-State 2
+The state appears to be a 
+\emph on
+Good
+\emph default
+ state as there are many periods where test cases have low value in the
+ CPU utilization.
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+State3 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-State 3
+The performance for test cases in this state can be viewed as a 
+\emph on
+Good
+\emph default
+ state as well.
+ However, State2 seems to capture the period where test cases have lowest
+ values better than State3, and State3 has two periods of .
+ The state is, therefore, said to be a 
+\emph on
+Normal
+\emph default
+ state.
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph*
-Software release L16B
-\end_layout
-
-\begin_layout Standard
+Software release L16B (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_NYY"
 
 \end_inset
 
-
+)
 \end_layout
 
+\begin_layout Itemize
+State1 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-State 1
+There are many high peaks and most of them is in State1.
+ Hence, the state is said to be a 
+\emph on
+Bad
+\emph default
+ state.
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+State2 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-State 2
+It does not seem to have a low value a 
+\emph on
+Good
+\emph default
+ state
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+State3 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-State 3
+The CPU utilization value for test cases in this state are either high and
+ low.
+ It doesn't appear to have  a 
+\emph on
+Normal
+\emph default
+ state
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
-Software release L17A
-\end_layout
-
-\begin_layout Standard
+Software release L17A (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L17A_NNN"
 
 \end_inset
 
-
+)
 \end_layout
 
+\begin_layout Itemize
+State1 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-State 1
+a 
+\emph on
+Normal
+\emph default
+ state
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+State2 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-State 2
+a 
+\emph on
+Good
+\emph default
+ state
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+State3 
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-State 3
+a 
+\emph on
+Bad
+\emph default
+ state
 \end_layout
 
+\end_deeper
 \begin_layout Section
 General discussion
 \begin_inset CommandInset label
@@ -575,10 +662,10 @@ A thorough search of the relevant literature yielded that this thesis work
  the specific type of data – detecting the state of the CPU.
  In previous work, this model is mainly implemented in finance or signal
  processing.
- Researches and works on that matter were used as an inspiration, but because
- of some differences, it makes things slightly more complicated.
+ Researches and works on that matter were used as an inspiration; but because
+ of some differences, the procedure is slightly changed.
  A large amount of time was spent on understanding the data, examining which
- variables have a significant impact on the CPU utilization, and determining
+ variables had a significant impact on the CPU utilization, and determining
  which methods would provide the best possible outcome for this problem.
  Besides, after deciding on the most promising method, a lot of effort was
  invested studying implemented algorithms in the R package as well as modifying
@@ -594,14 +681,14 @@ NodeName
 , which is used to execute test cases, is assumed to be indifferent i.e.,
  performance of test cases are the same regardless of the machine.
  Therefore, selecting a minimum value of the CPU utilization of the test
- case for each software package when preprocessing the data is acceptable.
+ case for each software package in data preprocessing step is acceptable.
  
 \end_layout
 
 \begin_layout Standard
-More importantly, one has to understand and accept a risk when deciding
- on the number of states as there is no guarantee how many states would
- yield the best outcome.
+Above all, one has to understand and accept a risk when deciding on the
+ number of states as there is no guarantee how many states would yield the
+ best outcome.
  This risk is also applied to the situation when determining the number
  of switching coefficients in the model.
  In 
@@ -611,22 +698,23 @@ reference "sec:States"
 
 \end_inset
 
-, the number of states for applying Markov switching model of each dataset
- are three.
+, the number of chosen states after applying Markov switching model to each
+ dataset are three.
  The results from the model with two states offer less details and does
- not seem to cover all the happening situations.
- Furthermore, almost all graphs of the two-state model have one state with
- considerably long period and another state with fairly short period.
+ not seem to cover all happening situations.
+ Furthermore, all graphs of the two-state model have one state with a considerab
+ly long period and another state with a fairly short period.
  There is a problematic interpretation when trying to make a rough inference
- on the state.
- Despite lower BICs for the dataset of the software release L16B and L17A,
+ on the derived states.
+ Despite higher BICs for the dataset of the software release L16B and L17A,
  three-state model provides more interpretable plots.
  This three states also meets with a prior knowledge of the thesis objective.
- Note that Markov switching model with four states for each software release
- is also tested in the analysis.
+ Note that four-state Markov switching model for each software release is
+ also tested in the analysis.
  Apparently, defining four states causes more difficulty when fitting the
  model and making an inference on the states.
- The results are rather poor compare to the model with two and three states.
+ In addition, the results are rather poor compare to the model with two
+ and three states.
 \end_layout
 
 \begin_layout Standard
@@ -637,8 +725,8 @@ reference "sec:Switching"
 
 \end_inset
 
-, a hypothesis is made – the test environment variable is possible to have
- a switching effect.
+, a hypothesis was made – the test environment variable was possible to
+ have a switching effect.
  The reason for that is because local events in 
 \emph on
 EventPerSec
@@ -655,7 +743,7 @@ EventPerSec
 
 \begin_layout Standard
 Another thing worth mentioning is that when modeling the Markov switching
- model, it is better to try estimating simple models first.
+ model, it is better to try estimating a simple model first.
  The model's size grows exponentially according to the number of state 
 \begin_inset Formula $k$
 \end_inset
@@ -665,10 +753,11 @@ Another thing worth mentioning is that when modeling the Markov switching
 \end_inset
 
 .
- In addition, if all coefficients have switching effects, model will have
- more parameters to be estimated .
- The function will try to estimate coefficients, but there is no guarantee
- that the obtained results will be a global maximum.
+ In addition, if all coefficients have switching effects, the model will
+ have more parameters to be estimated.
+ The function in the package will try to fit the model and estimate coefficients
+, but there is no guarantee that the obtained results of the likelihood
+ will be a global maximum.
  As a consequence, the values of estimated coefficients cannot be completely
  trusted.
  
@@ -678,7 +767,7 @@ key "perlin2015ms_regress"
 
 \end_inset
 
- suggested that it is not recommended to estimate any model with 
+ suggested any model with 
 \begin_inset Formula $k>3$
 \end_inset
 
@@ -686,10 +775,10 @@ key "perlin2015ms_regress"
 \begin_inset Formula $n\geq4$
 \end_inset
 
-.
- This is one of the main reason why not including all local events which
- were generated in each test case and also making all the switching coefficients
- in the model.
+ is not recommended.
+ This is also one of the main reasons why not including all local events
+ which were generated in each test case, and not making all the switching
+ coefficients in the model.
  
 \end_layout
 
@@ -702,37 +791,53 @@ reference "sec:States"
 \end_inset
 
 , one variable in the dataset of the software release L16A, which is an
- exact linear combination of the other variables, is excluded from the regressio
-n model.
+ exact linear combination of the other variables, was excluded from the
+ regression model.
  This dataset has 57 observations for training the Markov switching model.
- The dataset (in this case the number of test cases in the software release)
- is rather small which make it easier for an occurrence of singularity.
+ The dataset (i.e., the number of test cases in the software release) is rather
+ small which makes a singularity has a higher chance of occurring.
  Therefore, unless there is more data, it is better to drop the variable
  from the regression model before doing a further analysis.
 \end_layout
 
 \begin_layout Standard
 For each software release, each state in the model have a significantly
- high r-squared (see 
+ high r-squared which are greater than 0.9 (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Output"
 
 \end_inset
 
-) which are greater than 0.9.
- This indicates that the model cl.
- Nevertheless, high r-squared does not always 
-\begin_inset Note Note
-status open
+).
+ R-squared is an intuitive measure to determine how well the model fits
+ the data.
+ In general, the higher r-squared is the better.
+ Nevertheless, high r-squared does not necessarily mean that the model fits
+ the data well.
+ R-square cannot determine whether the model is adequate or not.
+ Thus, the residual analysis is required to assess a model adequate.
+ 
+\begin_inset Note Comment
+status collapsed
 
 \begin_layout Plain Layout
-.....
+R-squared cannot determine whether the coefficient estimates and predictions
+ are biased, which is why you must assess the residual plots.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+One reason for getting a high r-squared is because of including many predictor
+ variables to the model.
+ R-squared increases when there are more terms.
+ Another reason, which is somehow a consequence of adding too many predictor
+ variables, is the data is overfitting the model.
+ As a result, model produces misleading high r-squared.
 \end_layout
 
 \begin_layout Standard
@@ -745,10 +850,10 @@ reference "sec:Residual"
 
 \end_inset
 
-, it reveals that residual does not completely follow a normal distribution
+, it reveals that residual does not completely follow the normal distribution
  for all three datasets.
- However, it should be recalled that the dataset used in this thesis is
- not sufficiently large.
+ However, recall that the dataset used in this thesis is not sufficiently
+ large.
  With small samples, it is difficult to spot a basic feature and the situation
  is often less clearer as it might represent more noise.
  
@@ -766,7 +871,7 @@ If the residuals appear to behave randomly, it suggests that the model fits
 \end_layout
 
 \begin_layout Plain Layout
-randomness tends to obscure the true behavior especially with small data
+randomness tends to obscure the actual behavior especially with small data
 \end_layout
 
 \begin_layout Plain Layout
@@ -798,15 +903,15 @@ The remaining residuals show that the model has captured the patterns in
 \end_layout
 
 \begin_layout Standard
-More importantly, it should be noted that the results of the Markov switching
- model could be affected by various types of bias.
+More importantly, the results of the Markov switching model could be affected
+ by various types of bias.
  First of all, a small dataset that is used to train the model.
- For this reason, a prediction for new observations might not be accurate
- as it should be.
  Due to a lack of data, the model will be less effective or unable to capture
- the behavior for the new observation that lie outside its range of training
+ the behavior for new observations that lie outside the range of training
  data.
- This is like what happened when making a prediction of a state for the
+ For this reason, a prediction for the new observations might not be accurate
+ as it should be.
+ This is like what happened when making a prediction of the state for the
  software release L16A (see 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -817,9 +922,9 @@ reference "sec:Predict"
 ).
  Second, other factors which are not considered in the model might also
  be the reason of causing a bias.
- The predictor variables which are chosen in this thesis are variables that
- have a partial prior knowledge and have been analyzed to significantly
- impact on CPU utilization.
+ The chosen predictor variables in this thesis are variables that have a
+ partial prior knowledge and have been analyzed to have significantly impact
+ on CPU utilization.
  However, it is possible that there are still some explanatory information
  that is overlooked.
  Finally, selecting the number of states and switching coefficients in the
@@ -828,7 +933,7 @@ reference "sec:Predict"
 \end_layout
 
 \begin_layout Standard
-As described above, a small dataset is proven to cause several problems
+As described above, the small dataset is proven to cause several problems
  and difficulty to the analysis.
  The size of data is crucial in statistical analysis because more information
  can be extracted and used as an input for the model to learn.
@@ -854,25 +959,11 @@ A benefit from using a non-parametric analysis is that it does not require
  of distributional change within a time series.
  Another noted behavior which can be seen in the simulated data is that
  if the pattern of changing from one state to another state in the data
- is not obvious (
-\emph on
-Normal
-\emph default
- to 
-\emph on
-Bad
-\emph default
- state or 
-\emph on
-Good
-\emph default
- to 
-\emph on
-Normal
-\emph default
- state), the E-divisive method is unable to detect the location of changes.
- For instance, the method cannot identify change in the first hundred observatio
-ns and at the end of the time series in the simulated Dataset 1.
+ is not obvious, the E-divisive method will be unable to detect the location
+ of changes.
+ For instance, the method cannot identify any changes in the first hundred
+ observations and at the end of the time series in the simulated Dataset
+ 1.
  Likewise, the simulated Dataset 2 had a rather difficult to notice of the
  switching pattern.
  The shift between states is not dramatic to see the huge difference.
@@ -882,28 +973,27 @@ ns and at the end of the time series in the simulated Dataset 1.
 \end_layout
 
 \begin_layout Standard
-After examining the results in both simulated data, the E-divisive method
- and the Markov switching model appear to discover changes at around the
- same time when the true changes occur, despite some false alarms and missed
- detections.
- However, the E-divisive method have less power in detecting changes in
- the data.
- Another thing that can be inferred is that for the real data where the
- state is unknown, the true change might occur around locations where these
- two methods are able to detect.
- In addition, there is a high probability to be a true change if these two
- methods identify the exact same location.
+After examining the results in both simulated datasets, the E-divisive method
+ proved to have less power in detecting changes in the data.
+ The E-divisive method and the Markov switching model appear to discover
+ changes at around the same time when the actual changes occur despite some
+ false alarms and missed detections.
+ This suggests that for the real data where the actual state is unknown,
+ the actual change might occur around locations where these two methods
+ are able to detect.
+ In addition, there is a high probability to be a actual change of the state
+ if these two methods can identify the change point at the exact same location.
 \end_layout
 
 \begin_layout Standard
 Note that when performing a Markov switching model, variables which have
- influences on the CPU utilization are also include in the model.
- Nevertheless, an E-divisive algorithm only consider values of the CPU utilizati
-on.
+ influences on the CPU utilization are also included in the model.
+ Nevertheless, an E-divisive method only considers the values of the CPU
+ utilization.
  With this difference, the E-divisive method will have even less power to
- identify true changes in the CPU utilization.
- Since there are other variables that affect the value of CPU utilization,
- it is insufficient to take into account the response variable.
+ identify actual changes in the CPU utilization.
+ Since there are other variables that affect the value of the CPU utilization,
+ it is insufficient to take into account only the response variable.
  
 \begin_inset Note Comment
 status collapsed
@@ -930,9 +1020,9 @@ reference "subsec:Real-data"
 \end_layout
 
 \begin_layout Standard
-State prediction function which is an additional implemented function in
- the package seems to work properly.
- This can be observed by looking at 
+The state prediction function which is an additional implemented function
+ in the package seems to work properly.
+ This can be observed by examining the results from 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Assessing"
@@ -940,20 +1030,20 @@ reference "sec:Assessing"
 \end_inset
 
 .
- The accuracy of the test set in a simulated data of Dataset 1 is significantly
+ The accuracy of the test set in the simulated Dataset 1 was significantly
  high.
- One reason for that might be because of the simulated data has a rather
- obvious pattern.
+ One reason for that might be because of the simulated data has an obvious
+ pattern.
  For instance, the value of the CPU usage is moderately low if it is generated
  from the Good state.
- Besides, each state remains in its own state for a while before switching
+ Besides, each state remained in its own state for a while before switching
  to the other states.
  Therefore, the model can completely capture the behavior of the time series
  data.
- In contrast, Dataset 2 has several switches between states and each state
- does not appear to have a long duration.
- The model still perform rather well even though the pattern of response
- variable is rather difficult to see in the plot.
+ In contrast, the simulated Dataset 2 had several switches between states
+ and each state did not have a long duration.
+ Even though the pattern of response variable is rather difficult to see
+ in the plot, the model still perform rather well for this dataset.
 \end_layout
 
 \begin_layout Standard

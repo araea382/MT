@@ -3461,9 +3461,8 @@ Non-parametric analysis
 \begin_layout Standard
 An E-divisive method was applied to all three datasets.
  The method reported one cluster for the dataset of the software release
- L16A.
- There were five clusters found in both datasets of the software release
- L16B and L17A.
+ L16A and five clusters for the dataset of each software release L16B and
+ L17A.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3471,8 +3470,8 @@ reference "ediv"
 
 \end_inset
 
- shows places in the time series data where the E-divisive method is able
- to detect the significant changes.
+ shows places in the time series data where the E-divisive method detected
+ the significant changes.
  
 \end_layout
 
@@ -3827,8 +3826,8 @@ Comparison between the Markov switching model and the E-divisive method
 \begin_layout Standard
 A comparison between the Markov switching model and the E-divisive method
  was made in this section.
- Two methods were applied to two simulated datasets, where the true changes
- are already known beforehand, and a real data.
+ Two methods were applied to two simulated datasets, where the actual changes
+ are already known beforehand, and then also applied to a real data.
 \end_layout
 
 \begin_layout Subsection
@@ -3836,42 +3835,35 @@ Simulated Dataset 1
 \end_layout
 
 \begin_layout Standard
-In 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_sim1"
 
 \end_inset
 
-, there are nine estimated change point locations in the simulated data.
- The Markov switching model detects more changes than what the data actually
- has.
- In contrast, the E-divisive method is able to identify changes less than
- the true changes in the data, and clearly less than the results from the
- Markov switching model.
- For the Markov switching model, the model reported two more locations.
- The plot illustrates that the model performs rather well in detecting the
- changes in the data.
- The model discovers most changes when they occur.
- However, there is one location where the model detect the change later
- than the actual change.
- 
+ illustrates that the simulated data contains nine estimated change point
+ locations.
+ For the Markov switching model, the model reported two extra locations.
+ The plot illustrates that, besides the extra detected, the model performs
+ rather well, as the model discovers all the changes accurately.
+ Only one change point location was indicated to occur later than its actual
+ occurrence time.
 \end_layout
 
 \begin_layout Standard
-A delay in detecting the changes for the E-divisive method can be seen in
- the plot.
- In total, there are three change point locations where the method identifies
- changes later than the true changes.
- Furthermore, one location is discovered by this method before the actual
- change occurs.
+In contrast, the E-divisive method detected changes fewer than the actual
+ changes in the data.
+ Furthermore, most of the detection are also not quite accurate as three
+ out of six detections are delayed and out one of six detections is indicated
+ to happen prior to its actual time.
  The E-divisive method is unable to detect any changes in the data at the
  beginning of the time period.
 \end_layout
 
 \begin_layout Standard
-When these two methods detect changes after the true changes, most of their
- estimated change point locations are only behind one or two time index.
+When these two methods detect changes after the actual changes, most of
+ their estimated change point locations are only behind by one or two time
+ index.
  To sum up, from this dataset, the Markov switching model had more false
  alarms while the E-divisive had more missed detections.
  
@@ -3879,7 +3871,7 @@ When these two methods detect changes after the true changes, most of their
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Another noticeable behavior is that if the change from one state to another
@@ -3922,9 +3914,10 @@ status open
 
 \begin_layout Plain Layout
 The simulated Dataset 1 showing the estimated change point locations indicated
- by dashed vertical lines from the E-divisive method (Top) and the Markov
- switching model (Middle).
- The true change points in the data are indicated in the bottom plot.
+ by dashed vertical lines from the Markov switching model (Middle) and the
+ E-divisive method (Bottom).
+ The actual change point locations in the data are indicated in the top
+ plot.
  
 \end_layout
 
@@ -3959,20 +3952,17 @@ reference "compare_sim2"
 
 \end_inset
 
- presents estimated change point locations of the E-divisive method and
- the Markov switching model, and also true change points in the data.
- The simulated dataset clearly contains numerous switches between states.
+ presents estimated change point locations of the Markov switching model,
+ the E-divisive method, and the actual change points in the data.
+ The simulated dataset contains numerous switches between states.
  Generally, the Markov switching model is able to identify the changes considera
 bly well despite a few false alarms and missed detections.
- 
-\end_layout
-
-\begin_layout Standard
-For the E-divisive method, two estimated change points are identified.
- The method is correctly estimated the location of the change in the data.
- However, the method has the worst performance in detecting changes as many
- change points are obviously failed to detect.
- 
+ On the other hand, the E-divisive method can detect only estimated change
+ points.
+ Both two detections were correctly located.
+ The method has quite poor performance as it failed to detect most of the
+ change points in the data.
+ The difference can be seen in the plot.
 \end_layout
 
 \begin_layout Standard
@@ -4000,9 +3990,10 @@ status open
 
 \begin_layout Plain Layout
 The simulated Dataset 2 showing the estimated change point locations indicated
- by dashed vertical lines from the E-divisive method (Top) and the Markov
- switching model (Middle).
- The true change points in the data are indicated in the bottom plot.
+ by dashed vertical lines from the Markov switching model (Middle) and the
+ E-divisive method (Bottom).
+ The actual change point locations in the data are indicated in the top
+ plot.
  
 \end_layout
 
@@ -4136,15 +4127,6 @@ Software release L16B
 \end_layout
 
 \begin_layout Standard
-Four estimated change point locations are identified from the E-divisive
- method for the software release L16B.
- They are likely to occur around the same period of time which are almost
- at the end of the time series data.
- The locations of the change point from the E-divisive method are approximately
- at peaks and negative peaks.
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_L16B"
@@ -4152,15 +4134,17 @@ reference "compare_L16B"
 \end_inset
 
  presents results of estimated change points from the Markov switching model
- and the E-divisive method.
- Many estimated change point locations are found by the Markov switching
+ and the E-divisive method for the software release L16B.
+ Sixty three estimated change point locations are found by the Markov switching
  model.
- Apparently, two methods are able to estimate change points almost at the
- same time.
- There is even one location where both methods detect a change at the exact
- time.
- Moreover, one change point is discovered by the E-divisive method but not
- by the Markov switching model.
+ On the contrary, only four estimated change point locations are identified
+ from the E-divisive method.
+ They are likely to occur around the same period of time.
+ Most of the locations of the change point detected by the E-divisive method
+ are at peaks and negative peaks.
+ Apparently, only one change point location is determined at the exact same
+ time from both methods, and two change points are closely located.
+ The rest detected locations are completely different for each method.
 \end_layout
 
 \begin_layout Standard
@@ -4292,17 +4276,8 @@ Software release L17A
 \end_layout
 
 \begin_layout Standard
-There are four estimated change point locations which are identified from
- the E-divisive method.
- These locations are rather spread out.
- The E-divisive method discovers changes when the CPU utilization was about
- to drop or increase its value.
- 
-\end_layout
-
-\begin_layout Standard
-Many changes are discovered by the Markov switching model as can be seen
- in 
+For the software release L17A, forty changes were discovered by the Markov
+ switching model as can be seen in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_L17A"
@@ -4310,9 +4285,14 @@ reference "compare_L17A"
 \end_inset
 
 .
- It is found that there is no single estimated change point from the two
- methods that are identified at the same time.
- Nevertheless, they seem to detect changes roughly at the same time.
+ However, only four change point locations were identified from the E-divisive
+ method.
+ These locations are rather spread out if compare to the results from the
+ software release L16B.
+ The E-divisive method discovered changes when the CPU utilization value
+ was about to decrease or increase.
+ The two methods seem to detect changes roughly at the same time.
+ Nevertheless, they are unable to identify the change at the exact time.
  
 \end_layout
 
