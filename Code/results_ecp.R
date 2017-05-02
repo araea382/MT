@@ -44,11 +44,12 @@ ind <- nrow(train_g2_L16B)
 method <- c(rep("Markov switching model",ind),rep("E-divisive",ind))
 changePoints <- data.frame(changeP=c(chg_mswm_L16B, out_L16B), method=c(rep("Markov switching model",length(chg_mswm_L16B)), rep("E-divisive",length(out_L16B))))
 temp <- data.frame(index=rep(1:ind,2),y=rep(train_g2_L16B$TotCpu,2), method)
+temp$method <- factor(temp$method, levels=c("Markov switching model","E-divisive"))
 ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("L16B") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out_L16B)),rep("cyan3",length(chg_mswm_L16B))))
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("cyan3",length(chg_mswm_L16B)),rep("orangered",length(out_L16B))))
 
 
 
@@ -56,6 +57,7 @@ ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
 # ecp
 # g2 L16A
 ###############
+set.seed(1)
 Ediv_L16A <- e.divisive(matrix(train_g2_L16A$TotCpu), R=499, min.size=5)
 Ediv_L16A$k.hat
 Ediv_L16A$estimates
@@ -75,11 +77,12 @@ ind <- nrow(train_g2_L16A)
 method <- c(rep("Markov switching model",ind),rep("E-divisive",ind))
 changePoints <- data.frame(changeP=c(chg_mswm_L16A, out_L16A), method=c(rep("Markov switching model",length(chg_mswm_L16A)), rep("E-divisive",length(out_L16A))))
 temp <- data.frame(index=rep(1:ind,2),y=rep(train_g2_L16A$TotCpu,2), method)
+temp$method <- factor(temp$method, levels=c("Markov switching model","E-divisive"))
 ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
     facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
     ggtitle("L16A") +
     theme(panel.spacing = unit(0.2, "lines")) +
-    geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out_L16A)),rep("cyan3",length(chg_mswm_L16A))))
+    geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("cyan3",length(chg_mswm_L16A)),rep("orangered",length(out_L16A))))
 
 
 ###############
@@ -129,11 +132,12 @@ ind <- nrow(train_g2_L17A)
 method <- c(rep("Markov switching model",ind),rep("E-divisive",ind))
 changePoints <- data.frame(changeP=c(chg_mswm_L17A, out_L17A), method=c(rep("Markov switching model",length(chg_mswm_L17A)), rep("E-divisive",length(out_L17A))))
 temp <- data.frame(index=rep(1:ind,2),y=rep(train_g2_L17A$TotCpu,2), method)
+temp$method <- factor(temp$method, levels=c("Markov switching model","E-divisive"))
 ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
   facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
   ggtitle("L17A") +
   theme(panel.spacing = unit(0.2, "lines")) +
-  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("orangered",length(out_L17A)),rep("cyan3",length(chg_mswm_L17A))))
+  geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("cyan3",length(chg_mswm_L17A)),rep("orangered",length(out_L17A))))
 
 
 

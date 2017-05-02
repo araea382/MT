@@ -905,7 +905,7 @@ name "L16B_2_smo"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement H
 wide false
 sideways false
 status open
@@ -945,11 +945,19 @@ name "L16B_3_smo"
 
 \begin_layout Plain Layout
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename picture/L16B_3_1.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
 
 \end_layout
 
@@ -957,7 +965,78 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Close-up on the observation
+Close-up on the observations 0-20
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename picture/L16B_3_2.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Close-up on the observations 75-115
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename picture/L16B_3_3.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Close-up on the observations 165-210
 \end_layout
 
 \end_inset
@@ -1086,6 +1165,44 @@ name "L17A_3_smo"
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename picture/L17A_3_1.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Close-up on the observations 15-45
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -1102,9 +1219,7 @@ reference "chap:Discussion"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset Note Comment
 status collapsed
 
@@ -1127,7 +1242,7 @@ reference "chap:Discussion"
 
 
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 smoothed inference probabilities mostly to show how the regimes are identified
@@ -3879,10 +3994,7 @@ reference "compare_sim1"
  rather well, as the model discovers all the changes accurately.
  Only one change point location was indicated to occur later than its actual
  occurrence time.
-\end_layout
-
-\begin_layout Standard
-In contrast, the E-divisive method detected changes fewer than the actual
+ In contrast, the E-divisive method detected changes fewer than the actual
  changes in the data.
  Furthermore, most of the detection are also not quite accurate as three
  out of six detections are delayed and out one of six detections is indicated
@@ -3898,26 +4010,6 @@ When these two methods detect changes after the actual changes, most of
  To sum up, from this dataset, the Markov switching model had more false
  alarms while the E-divisive had more missed detections.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Another noticeable behavior is that if the change from one state to another
- state in the data which is not obvious (low to high value or high to low
- value), the E-divisive method is unable to detect the changes.
- 
-\end_layout
-
-\begin_layout Plain Layout
-The E-divisive has clearly less power to detect the changes in the data.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4129,7 +4221,7 @@ status open
 \begin_layout Plain Layout
 The CPU utilization of the software release L16A.
  The dashed vertical lines indicate the locations of estimated change points
- from the Markov switching model (Bottom).
+ from the Markov switching model (Top).
  
 \end_layout
 
@@ -4204,7 +4296,7 @@ status open
 \begin_layout Plain Layout
 The CPU utilization of the software release L16B.
  The dashed vertical lines indicate the locations of estimated change points
- from the E-divisive method (Top) and the Markov switching model (Bottom).
+ from the Markov switching model (Top) and the E-divisive method (Bottom).
  
 \end_layout
 
@@ -4307,8 +4399,8 @@ Software release L17A
 \end_layout
 
 \begin_layout Standard
-For the software release L17A, forty changes were discovered by the Markov
- switching model as can be seen in 
+For the software release L17A, thirty seven changes were discovered by the
+ Markov switching model as can be seen in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_L17A"
@@ -4322,8 +4414,11 @@ reference "compare_L17A"
  software release L16B.
  The E-divisive method discovered changes when the CPU utilization value
  was about to decrease or increase.
- All the detect locations from both methods are at completely different
- time as shown in the plot.
+ From both methods, two change points are determined at exactly the same
+ locations, and another one which is located in the beginning is close to
+ each other.
+ Other detect locations are totally different as shown in the plot.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4352,7 +4447,7 @@ status open
 \begin_layout Plain Layout
 The CPU utilization of the software release L17A.
  The dashed vertical lines indicate the locations of estimated change points
- from the E-divisive method (Top) and the Markov switching model (Bottom).
+ from the Markov switching model (Top) and the E-divisive method (Bottom).
  
 \end_layout
 
