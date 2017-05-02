@@ -129,11 +129,15 @@ This is the summary of the thesis.
 \end_layout
 
 \begin_layout Standard
+This thesis proposes methods to analyze
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 Keywords:
 \series default
- Markov switching model
+ Markov switching model, Non-parametric, Change point analysis
 \end_layout
 
 \end_body

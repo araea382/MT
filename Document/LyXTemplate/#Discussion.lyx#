@@ -527,7 +527,8 @@ Good
 \emph default
  state as well.
  However, State2 seems to capture the period where test cases have lowest
- values better than State3, and State3 has two periods of .
+ values better than State3, and State3 has two periods of increasing to
+ higher CPU utilization values.
  The state is, therefore, said to be a 
 \emph on
 Normal
@@ -553,12 +554,14 @@ State1
 
 \begin_deeper
 \begin_layout Standard
-There are many high peaks and most of them is in State1.
- Hence, the state is said to be a 
+There are many high peaks occur in this state.
+ Moreover, test cases tend to increase the value of the CPU utilization
+ when they remain in the state.
+ A 
 \emph on
 Bad
 \emph default
- state.
+ state is an adequate condition for this state.
 \end_layout
 
 \end_deeper
@@ -568,11 +571,13 @@ State2
 
 \begin_deeper
 \begin_layout Standard
-It does not seem to have a low value a 
+The state could be characterized as a 
 \emph on
 Good
 \emph default
- state
+ state.
+ A decreasing pattern of the CPU utilization value can be seen in most of
+ the period.
 \end_layout
 
 \end_deeper
@@ -582,13 +587,15 @@ State3
 
 \begin_deeper
 \begin_layout Standard
-The CPU utilization value for test cases in this state are either high and
+The CPU utilization value for test cases in this state are either high or
  low.
- It doesn't appear to have  a 
+ The state contains the period of positive and negative peaks and does not
+ appear to have a specific characteristic for the state of the CPU.
+ For this reason, the state is said to be a 
 \emph on
 Normal
 \emph default
- state
+ state.
 \end_layout
 
 \end_deeper
@@ -609,7 +616,7 @@ State1
 
 \begin_deeper
 \begin_layout Standard
-a 
+There a 
 \emph on
 Normal
 \emph default
@@ -637,11 +644,12 @@ State3
 
 \begin_deeper
 \begin_layout Standard
-a 
+The only peak in the time series is in this state.
+ Because of this, a state is labeled as a 
 \emph on
 Bad
 \emph default
- state
+ state.
 \end_layout
 
 \end_deeper
@@ -850,8 +858,11 @@ reference "sec:Residual"
 
 \end_inset
 
-, it reveals that residual does not completely follow the normal distribution
+, it reveals that residuals did not completely follow the normal distribution
  for all three datasets.
+ This is not surprising as real data rarely have a well-defined structure.
+ Since the Markov switching model assumes normal distributed residuals,
+ the chosen models might have less.
  However, recall that the dataset used in this thesis is not sufficiently
  large.
  With small samples, it is difficult to spot a basic feature and the situation

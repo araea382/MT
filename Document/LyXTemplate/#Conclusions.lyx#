@@ -322,8 +322,7 @@ Evaluating the obtained results is rather difficult and complicated, mostly
  due to a lack of ground truths or the actual annotations of the state of
  the CPU.
  This is a common situation to an unsupervised learning problem.
- Besides, another difficulty of the Markov switching model usage is that
- a state inference is required.
+ Besides, another difficulty the usage of the Markov switching model, .
  Since the Markov switching model assumed a latent state, A sensible inference
  is needed in order to get a final and meaningful results that can be further
  used.

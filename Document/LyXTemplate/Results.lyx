@@ -796,7 +796,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/L16B_3_smo1.png
+	filename picture/L16A_3_smo1.png
 	lyxscale 50
 	scale 35
 
@@ -943,6 +943,38 @@ name "L16B_3_smo"
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Close-up on the observation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -1071,9 +1103,7 @@ reference "chap:Discussion"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset Note Comment
 status collapsed
 
@@ -1096,7 +1126,7 @@ reference "chap:Discussion"
 
 
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 smoothed inference probabilities mostly to show how the regimes are identified
@@ -3848,10 +3878,7 @@ reference "compare_sim1"
  rather well, as the model discovers all the changes accurately.
  Only one change point location was indicated to occur later than its actual
  occurrence time.
-\end_layout
-
-\begin_layout Standard
-In contrast, the E-divisive method detected changes fewer than the actual
+ In contrast, the E-divisive method detected changes fewer than the actual
  changes in the data.
  Furthermore, most of the detection are also not quite accurate as three
  out of six detections are delayed and out one of six detections is indicated
@@ -3867,26 +3894,6 @@ When these two methods detect changes after the actual changes, most of
  To sum up, from this dataset, the Markov switching model had more false
  alarms while the E-divisive had more missed detections.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Another noticeable behavior is that if the change from one state to another
- state in the data which is not obvious (low to high value or high to low
- value), the E-divisive method is unable to detect the changes.
- 
-\end_layout
-
-\begin_layout Plain Layout
-The E-divisive has clearly less power to detect the changes in the data.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4293,6 +4300,17 @@ reference "compare_L17A"
  was about to decrease or increase.
  All the detect locations from both methods are at completely different
  time as shown in the plot.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Change plot and number of changes in text
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

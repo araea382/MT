@@ -54,6 +54,25 @@ ggplot(data=L16B_3, aes(x=index, y=value, colour=variable)) + geom_line() +
   ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   theme_bw() + theme(legend.title = element_blank())
 
+
+
+# Close-up
+ggplot(data=L16B_3, aes(x=index, y=value, colour=variable)) + geom_line() +
+  ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  theme_bw() + theme(legend.title = element_blank()) + 
+  coord_cartesian(xlim=c(0,20))
+
+ggplot(data=L16B_3, aes(x=index, y=value, colour=variable)) + geom_line() +
+  ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  theme_bw() + theme(legend.title = element_blank()) + 
+  coord_cartesian(xlim=c(75,115))
+
+ggplot(data=L16B_3, aes(x=index, y=value, colour=variable)) + geom_line() +
+  ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  theme_bw() + theme(legend.title = element_blank()) + 
+  coord_cartesian(xlim=c(165,210))
+
+
 #--------------------------------#
 # plot with state area
 gen <- function(object,data){
@@ -107,10 +126,28 @@ L16B_2 <- as.data.frame(mswm_L16B_2@Fit@smoProb)
 L16B_2 <- cbind(index=seq(1,nrow(L16B_2)),L16B_2)
 colnames(L16B_2) <- c("index","State 1","State 2")
 
+# state <- sapply(1:nrow(train_g2_L16B), function(x){
+#   paste("State", which.max(mswm_L16B_2@Fit@smoProb[x,]))
+# })
+# L16B_2$variable <- state
+# 
+# value <- sapply(1:nrow(train_g2_L16B), function(x){
+#   if(L16B_2[x,4] == "State 1"){
+#     L16B_2[x,2]
+#   }else{
+#     L16B_2[x,3]
+#   }
+# })
+# 
+# L16B_2$value <- value
+# L16B_2 <- L16B_2[,-c(2,3)]
+
 L16B_2 <- melt(L16B_2, id="index")
 ggplot(data=L16B_2, aes(x=index, y=value, colour=variable)) + geom_line() +
   ylab("Smoothed Probabilities") + ggtitle("L16B") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-  theme_bw() + theme(legend.title = element_blank())
+  theme_bw() + theme(legend.title = element_blank()) 
+
++ coord_cartesian(ylim=c(0.5,1)) + geom_vline(xintercept=c(5,6), colour="blue", linetype="longdash")
 
 #--------------------------------#
 # plot with state area
@@ -298,6 +335,14 @@ L17A_3 <- melt(L17A_3, id="index")
 ggplot(data=L17A_3, aes(x=index, y=value, colour=variable)) + geom_line() +
   ylab("Smoothed Probabilities") + ggtitle("L17A") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
   theme_bw() + theme(legend.title = element_blank())
+
+
+# Close-up
+ggplot(data=L17A_3, aes(x=index, y=value, colour=variable)) + geom_line() +
+  ylab("Smoothed Probabilities") + ggtitle("L17A") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  theme_bw() + theme(legend.title = element_blank()) + 
+  coord_cartesian(xlim=c(15,45))
+
 
 #--------------------------------#
 # plot with state area

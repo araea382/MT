@@ -122,7 +122,7 @@ g2 + geom_vline(xintercept=out_L17A, color="red", size=0.6, linetype="dashed")
 
 
 #--------------------------------------#
-pred_state_L17A <- sapply(1:nrow(train_g2_L17A), function(x) which.max(mswm_L17A_NYY@Fit@smoProb[x,]))
+pred_state_L17A <- sapply(1:nrow(train_g2_L17A), function(x) which.max(mswm_L17A_NNN@Fit@smoProb[x,]))
 chg_mswm_L17A <- which(diff(pred_state_L17A) != 0) + 1
 
 ind <- nrow(train_g2_L17A)

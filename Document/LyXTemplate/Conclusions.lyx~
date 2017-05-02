@@ -298,16 +298,73 @@ Conclusions
 \end_layout
 
 \begin_layout Standard
-It can be concluded that
+This thesis assesses the ability of detecting the state of the CPU by applying
+ the Markov switching autoregressive model, and the E-divisive method which
+ is an approach in the non-parametric analysis.
+ 
 \end_layout
 
 \begin_layout Standard
-non-parametric seems to look good as well
+The number of states along with the number of parameter which have switching
+ effects in the model need to be determined beforehand.
+ The Markov switching autoregressive model 
 \end_layout
 
 \begin_layout Standard
-implemented function of state prediction appear to functionally work from
- the simulated data
+The E-divisive method is less powerful compare to the Markov switching model.
+ It is efficient to use with data which have an obvious shift in regime
+ in the time series.
+ 
+\end_layout
+
+\begin_layout Standard
+Evaluating the obtained results is rather difficult and complicated, mostly
+ due to a lack of ground truth or the actual annotation of the state of
+ the CPU.
+ This is a common situation to an unsupervised learning problem.
+ The annotation could be made .
+ Besides, with the Markov switching model, it is important to make a sensible
+ inference in order to get a meaningful results that can be further used.
+\end_layout
+
+\begin_layout Standard
+Implemented function of the state prediction appear to functionally work
+ well when investigating on the simulated data.
+\end_layout
+
+\begin_layout Standard
+The Markov switching model gave quite a promising results but several improvemen
+ts could also be done to increase the robustness of the analysis.
+ For future work, using more observations in data in the analysis is recommended
+ as it will make obtained results be more reliable.
+ Additional information will decrease an uncertainty in the data.
+ Another future extension is to consider on the interaction terms which
+ can 
+\end_layout
+
+\begin_layout Standard
+As the assumption of the distribution of residuals was not entirely fulfill,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This line indicates the amount of time the CPU spent in each of several
+ states, displayed as percentages.
+ The numbers reflect the percentage of the time since the last screen update
+ that the CPU spent in each state.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Idle: Nothing to do
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

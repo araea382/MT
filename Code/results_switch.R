@@ -148,7 +148,9 @@ colnames(L16B_3) <- c("index","State 1","State 2","State 3")
 L16B_3 <- melt(L16B_3, id="index")
 ggplot(data=L16B_3, aes(x=index, y=value, colour=variable)) + geom_line() +
     ylab("Smoothed Probabilities") + ggtitle("L16B_NYY") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
-    theme_bw() + theme(legend.title = element_blank())
+    theme_bw() + theme(legend.title = element_blank()) 
+
+
 
 #--------------------------------#
 # plot with state area
@@ -470,6 +472,7 @@ L17A_3 <- melt(L17A_3, id="index")
 ggplot(data=L17A_3, aes(x=index, y=value, colour=variable)) + geom_line() +
     ylab("Smoothed Probabilities") + ggtitle("L17A_NNN") + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
     theme_bw() + theme(legend.title = element_blank())
+
 
 #--------------------------------#
 # plot with state area

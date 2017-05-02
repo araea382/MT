@@ -796,7 +796,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/L16B_3_smo1.png
+	filename picture/L16A_3_smo1.png
 	lyxscale 50
 	scale 35
 
@@ -937,6 +937,37 @@ The smoothed probabilities of the software release L16B with three-state
 \begin_inset CommandInset label
 LatexCommand label
 name "L16B_3_smo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Close-up on the observation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -4291,14 +4322,8 @@ reference "compare_L17A"
  software release L16B.
  The E-divisive method discovered changes when the CPU utilization value
  was about to decrease or increase.
- All the detect locations from both methods are at completelyNone of the
- detect location from both methods ar ethe same Both methods 
-\end_layout
-
-\begin_layout Standard
-detect changes roughly at the same time.
- Nevertheless, they are unable to identify the change at the exact time.
- 
+ All the detect locations from both methods are at completely different
+ time as shown in the plot.
 \end_layout
 
 \begin_layout Standard
