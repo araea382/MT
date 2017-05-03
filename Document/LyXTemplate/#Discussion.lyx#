@@ -320,7 +320,7 @@ Critical assessment of the results obtained and the adequacy of the methods
 \end_layout
 
 \begin_layout Standard
-In this chapter, the discussion of model selection for each given dataset
+In this chapter, a discussion of the model selection for each given dataset
  is explained.
  Then, a state inference from the model is made.
  Lastly, a general discussion of this study is provided.
@@ -349,13 +349,13 @@ reference "sec:States"
 ) acted as a baseline model for each dataset.
  This model was used to compare with other models which had different combinatio
 n of switching coefficients.
- If the model has higher BIC than the baseline model, it means that this
- specific model performs worst and should not be considered for further
+ If the compared model has higher BIC than the baseline model, its performance
+ is concluded to be inferior and should not be considered for any further
  analysis.
  However, only examining the BIC when choosing a model for the data is insuffici
 ent.
- Other aspects should also be taken into consideration along with the BIC
- such as model outputs or plots.
+ Other aspects should also be taken into account along with the BIC such
+ as model outputs and plots.
  
 \end_layout
 
@@ -368,10 +368,9 @@ Even though model 3 had the lowest BIC, a coefficient of
 \emph on
 Paging
 \emph default
- in one state had a zero standard error and led t-value to infinity.
- This zero value can be interpreted in two different ways: an actual zero
- or an extremely small value that a computer treated as zero because significant
- digit is lost due to the floating point.
+ in one state had a zero standard error which led t-value to infinity.
+ This zero value can be interpreted as an actual zero or an extremely small
+ value that a computer treated as zero because significant digit is lost.
  Nevertheless, either way suggests that this model might not be a good model
  to use with this dataset as the model might be overfitting with the training
  data.

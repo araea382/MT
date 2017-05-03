@@ -7,6 +7,11 @@ library(reshape2)
 predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","DuProdName","Fdd.Tdd","NumCells")
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 
+# plotReg(mswm_L16B_3, expl=predictor[1], regime=1)
+# plotReg(mswm_L16B_3, expl=predictor[1], regime=2)
+# plotReg(mswm_L16B_3, expl=predictor[1], regime=3)
+
+
 ###############
 # g2 L16B
 # 3 states
