@@ -559,8 +559,8 @@ key "sharkey2014nonparametric"
 
 .
  In this study, the non-parametric analysis using hierarchical estimation
- techniques is also implemented for identifying the change of location in
- the time series.
+ techniques called an E-divisive algorithm is also implemented for identifying
+ the change of location in the time series.
  
 \end_layout
 

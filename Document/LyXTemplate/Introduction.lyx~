@@ -539,7 +539,7 @@ In this study, each software package in the system is viewed as a time point
  is taken into consideration when modeling the Markov switching model and
  becomes Markov switching autoregressive model.
  This model is applied to the given data in order to discover the changes
- in the .
+ in the performance.
 \end_layout
 
 \begin_layout Standard

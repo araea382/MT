@@ -538,10 +538,10 @@ name "release"
 
 \begin_layout Standard
 There are thousands of automated tests performed.
- Each test belongs to a particular suite of tests, which belongs to a particular
- Quality Assurance (QA) Capacity.
- For this thesis framework, one suite of the test cases that tests the signaling
- capacity is focused.
+ Each test belongs to a particular suite of tests, which belong to a particular
+ Quality Assurance (QA) area.
+ For this thesis, only a subset of test cases belonging to QA Capacity area,
+ that focus on signaling capacity, is used.
  The QA Capacity is responsible for testing and tracking test cases related
  to LTE node capacity.
  Each one of these test cases has a well-defined traffic model that it tries

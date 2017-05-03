@@ -1720,12 +1720,20 @@ In other words, the chain does not linger in State3 during the time series
  and almost at the end of the period.
  Another characteristic that could be observed is that State2 have more
  chance to switch to State3 rather than switch to State1.
+ In the plot, there is a period where there is no significant change in
+ the CPU utilization (observations 15-25) but there are some switches between
+ states.
+ Besides, there are some abrupt changes which are not detected by the model
+ such as observation 11.
  
-\begin_inset Note Note
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
 status open
 
 \begin_layout Plain Layout
-False positive..?
+These could somehow be viewed as false alarms.
 \end_layout
 
 \end_inset
@@ -2360,7 +2368,11 @@ reference "L16B_NYY"
  Another noticeable behavior from this switching mechanism is that there
  are several switches between State1 and State2 in the beginning, middle,
  and at the end of the time period.
- 
+ Both false alarms and missed detections can be seen in the plot.
+ There are periods where the CPU utilization value does not change much
+ but the model identifies some switches.
+ Also, there are periods where the model fails to detect changes which is
+ rather obvious.
 \end_layout
 
 \begin_layout Standard
@@ -2980,6 +2992,8 @@ reference "L17A_NNN"
  the chain to stay in the state.
  Furthermore, State2 tends to switch to State1 more often than to switch
  to State3.
+ The plot indicates some missed detections for this model which is happened
+ mostly in the duration of State3.
  
 \end_layout
 
@@ -4399,7 +4413,7 @@ Software release L17A
 \end_layout
 
 \begin_layout Standard
-For the software release L17A, thirty seven changes were discovered by the
+For the software release L17A, thirty-seven changes were discovered by the
  Markov switching model as can be seen in 
 \begin_inset CommandInset ref
 LatexCommand ref

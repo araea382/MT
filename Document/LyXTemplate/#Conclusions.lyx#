@@ -306,31 +306,47 @@ This thesis assesses the ability of detecting the state of the CPU by applying
 
 \begin_layout Standard
 The number of states along with the number of switching coefficients in
- the model need to be determined beforehand.
- The Markov switching autoregressive model 
+ the model were chosen and determined.
+ The Markov switching autoregressive model reported 
+\end_layout
+
+\begin_layout Standard
+The findings revealed that 
 \end_layout
 
 \begin_layout Standard
 The E-divisive method is less powerful compare to the Markov switching model.
- It is efficient to use with data which have an obvious shift in regime
+ It is efficient to use with data which have an obvious pattern of shifting
  in the time series.
+ Implemented function of the state prediction appear to functionally work
+ well when investigating on the simulated data.
+ The accuracy from both simulated datasets were high.
  
 \end_layout
 
 \begin_layout Standard
+The dataset of each software release is slightly small for especially the
+ software release L16A.
+\end_layout
+
+\begin_layout Standard
+Therefore, the resultsf
+\end_layout
+
+\begin_layout Standard
 Evaluating the obtained results is rather difficult and complicated, mostly
- due to a lack of ground truths or the actual annotations of the state of
- the CPU.
- This is a common situation to an unsupervised learning problem.
- Besides, another difficulty the usage of the Markov switching model, .
+ due to a lack of annotations or label of the state of the CPU.
+ This is a common situation to an unsupervised learning problem where the
+ actual is not often available.
+ Besides, another difficulty of the Markov switching model usage is that
+ a state inference is required.
  Since the Markov switching model assumed a latent state, A sensible inference
  is needed in order to get a final and meaningful results that can be further
  used.
 \end_layout
 
-\begin_layout Standard
-Implemented function of the state prediction appear to functionally work
- well when investigating on the simulated data.
+\begin_layout Section
+Further work
 \end_layout
 
 \begin_layout Standard
@@ -345,6 +361,27 @@ ts could also be done to increase the robustness of the analysis.
 
 \begin_layout Standard
 As the assumption of the distribution of residuals was not entirely fulfill,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+compare against other methods
+\end_layout
+
+\begin_layout Plain Layout
+mention of other metric 
+\end_layout
+
+\begin_layout Plain Layout
+what techniques could be used for predicting 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
