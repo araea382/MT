@@ -124,8 +124,40 @@ adds table of contents entry
 \end_layout
 
 \begin_layout Standard
-This is the summary of the thesis.
+This thesis proposes methods to analyze the CPU state.
  
+\end_layout
+
+\begin_layout Standard
+CPU utilization
+\end_layout
+
+\begin_layout Standard
+Markov switching model
+\end_layout
+
+\begin_layout Standard
+autoregressive model
+\end_layout
+
+\begin_layout Standard
+Markov switching autoregressive model
+\end_layout
+
+\begin_layout Standard
+E-divisive method
+\end_layout
+
+\begin_layout Standard
+Parametric and non-parametric analysis 
+\end_layout
+
+\begin_layout Standard
+simulated data
+\end_layout
+
+\begin_layout Standard
+Results show that
 \end_layout
 
 \begin_layout Standard
@@ -133,7 +165,7 @@ This is the summary of the thesis.
 \series bold
 Keywords:
 \series default
- Markov switching model
+ Markov switching model, Non-parametric, Change point analysis, CPU utilization
 \end_layout
 
 \end_body

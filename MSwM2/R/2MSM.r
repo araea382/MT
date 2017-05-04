@@ -864,6 +864,60 @@ setMethod(f="plotDiag",signature=c("MSM.linear","missing","ANY"),definition=.MSM
 setMethod(f="plotDiag",signature=c("MSM.linear","ANY","ANY"),definition=.MSM.larg.plotDiag)
 
 
+##########
+##### plotArea
+
+.MSM.plotArea <- function(object){
+  model <- object["model"]
+  p <- object@p
+  k <- object["k"]
+  require(ggplot2)
+  state <- apply(object@Fit@smoProb,1,which.max)
+  state <- factor(state)
+  index <- seq(1,length(state))
+  xmin <- index - 0.5
+  xmax <- index + 0.5
+  y <- model$model[,1]
+
+  if(p > 0){
+    y_ar <- model$model[,ncol(model$model)][1:p]
+    y <- c(y_ar, y)
+  }
+
+  temp <- data.frame(index, xmin, xmax, state, y=y, ymin=min(y), ymax=max(y))
+
+  g <- ggplot(data=temp, aes(x=index, y=y)) + geom_line() +
+    geom_rect(data=temp, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.3, inherit.aes=FALSE) +
+    ylab(paste(colnames(object@model$model)[1])) + theme_bw()
+
+  return(g)
+}
+setMethod(f="plotArea",signature=c("MSM.linear"),definition=.MSM.plotArea)
+
+
+
+##########
+##### plotSmo
+
+.MSM.plotSmo <- function(object){
+  k <- object["k"]
+  require(ggplot2)
+  require(reshape2)
+  temp <- as.data.frame(object@Fit@smoProb)
+  temp <- cbind(index=seq(1,nrow(temp)),temp)
+  colnames(temp) <- c("index", paste("State",1:k))
+
+  temp <- melt(temp, id="index")
+  g <- ggplot(data=temp, aes(x=index, y=value, colour=variable)) +
+    geom_line() + ylab("Smoothed Probabilities") +
+    theme_bw() + theme(legend.title = element_blank())
+
+  return(g)
+}
+setMethod(f="plotSmo",signature=c("MSM.linear"),definition=.MSM.plotSmo)
+
+
+
 
 ##########
 ##### resid

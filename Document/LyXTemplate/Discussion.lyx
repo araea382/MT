@@ -403,8 +403,8 @@ Software release L16B
 
 \begin_layout Standard
 Models 2 and 6 had the lowest BIC among the other models.
- Nonetheless, its plot provided a difficulty in interpreting a result (see
- 
+ Nonetheless, their plots are similar to each other and provided a difficulty
+ in interpreting results (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_NNY"

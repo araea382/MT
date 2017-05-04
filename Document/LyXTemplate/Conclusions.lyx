@@ -298,40 +298,30 @@ Conclusions
 \end_layout
 
 \begin_layout Standard
-This thesis assesses the ability of detecting the state of the CPU by applying
- the Markov switching autoregressive model, and the E-divisive method which
- is an approach in the non-parametric analysis.
+This thesis assesses the ability of detecting the performance of the Ericsson's
+ software products by applying the Markov switching autoregressive model,
+ and the E-divisive method which is an approach in the non-parametric analysis.
+ The simulated data with known state are used for the comparison of both
+ methods.
+ The results from a real data are presented with interpretations and discussions.
  
 \end_layout
 
 \begin_layout Standard
-The number of states along with the number of switching coefficients in
- the model were chosen and determined.
- The Markov switching autoregressive model reported 
-\end_layout
-
-\begin_layout Standard
-The findings revealed that 
-\end_layout
-
-\begin_layout Standard
-The E-divisive method is less powerful compare to the Markov switching model.
- It is efficient to use with data which have an obvious pattern of shifting
- in the time series.
+For the Markov switching model, the number of states and the number of switching
+ coefficients in the model were determined and chosen.
+ The findings from the simulated data revealed that the Markov switching
+ model is able to discover the switches between states with some false alarms
+ and missed detections.
+ The E-divisive method is less powerful compare to the Markov switching
+ model.
+ This method is efficient to use with data which have an obvious pattern
+ of shifting in the time series.
  Implemented function of the state prediction appear to functionally work
  well when investigating on the simulated data.
  The accuracy from both simulated datasets were high.
- 
-\end_layout
-
-\begin_layout Standard
-The dataset of each software release is slightly small for especially the
- software release L16A.
-\end_layout
-
-\begin_layout Standard
-Therefore, the results from the Markov switching model was considered to
- be the most representative for the analysis.
+ The results from the Markov switching model was considered to be the representa
+tive for the analysis.
  The E-divisive method was generally used as a guideline and also a confirmation
  for a change in the CPU state.
 \end_layout
@@ -340,16 +330,12 @@ Therefore, the results from the Markov switching model was considered to
 Evaluating the obtained results is rather difficult and complicated, mostly
  due to a lack of annotations or label of the state of the CPU.
  This is a common situation to an unsupervised learning problem where the
- actual is not often available.
+ ground truth is not often available.
  Besides, another difficulty of the Markov switching model usage is that
  a state inference is required.
- Since the Markov switching model assumed a latent state, A sensible inference
+ Since the Markov switching model assumed a latent state, a sensible inference
  is needed in order to get a final and meaningful results that can be further
  used.
-\end_layout
-
-\begin_layout Section
-Further work
 \end_layout
 
 \begin_layout Standard
@@ -358,37 +344,15 @@ ts could also be done to increase the robustness of the analysis.
  For future work, using more observations in data in the analysis is recommended
  as it will make obtained results be more reliable.
  Additional information will decrease an uncertainty in the data.
- Another future extension is to consider on the interaction terms which
- can 
-\end_layout
-
-\begin_layout Standard
-As the assumption of the distribution of residuals was not entirely fulfill,
-\end_layout
-
-\begin_layout Standard
-One 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-compare against other methods
-\end_layout
-
-\begin_layout Plain Layout
-mention of other metric 
-\end_layout
-
-\begin_layout Plain Layout
-what techniques could be used for predicting 
-\end_layout
-
-\end_inset
-
-
+ Another future extension is to consider on other predictor variables or
+ interaction terms which can also affect the CPU utilization.
+ As the assumption of the distribution of residuals was not entirely fulfill,
+ significant details that are used to explained the CPU utilization might
+ not all be caught by the model.
+ Finally, there are still some performance metrics in QA Capacity area which
+ have not been taken into account in the thesis such as a memory usage and
+ a latency.
+ Further work could also be extended to analyze these metrics.
 \end_layout
 
 \begin_layout Standard
@@ -405,6 +369,15 @@ This line indicates the amount of time the CPU spent in each of several
 
 \begin_layout Plain Layout
 Idle: Nothing to do
+\end_layout
+
+\begin_layout Plain Layout
+The dataset of each software release is slightly small especially for the
+ software release L16A.
+\end_layout
+
+\begin_layout Plain Layout
+semi-supervised
 \end_layout
 
 \end_inset

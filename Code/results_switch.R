@@ -11,6 +11,9 @@ fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 # plotReg(mswm_L16B_3, expl=predictor[1], regime=2)
 # plotReg(mswm_L16B_3, expl=predictor[1], regime=3)
 
+## use plotSmo() to create plot with smoothprob
+## use plotArea() to create plot with state area
+
 
 ###############
 # g2 L16B
@@ -21,7 +24,8 @@ summary(mod_L16B)
 
 # plot with state area
 gen <- function(object,data){
-    state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
+    state <- apply(object@Fit@smoProb,1,which.max)
+    # state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
     state <- factor(state)
     index=seq(1,nrow(data))
     xmin=index-0.5

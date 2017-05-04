@@ -2992,6 +2992,8 @@ reference "L17A_NNN"
  the chain to stay in the state.
  Furthermore, State2 tends to switch to State1 more often than to switch
  to State3.
+ The plot indicates some missed detections for this model which is happened
+ mostly in the duration of State3.
  
 \end_layout
 

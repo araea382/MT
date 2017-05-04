@@ -14,7 +14,9 @@ exportMethods(
     "plotProb",
     "plotReg",
     "summary",
-    "statePredict"
+    "statePredict",
+	"plotArea",
+	"plotSmo"
 )
 
 exportClasses(

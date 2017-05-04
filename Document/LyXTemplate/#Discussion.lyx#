@@ -371,11 +371,11 @@ Paging
  in one state had a zero standard error which led t-value to infinity.
  This zero value can be interpreted as an actual zero or an extremely small
  value that a computer treated as zero because significant digit is lost.
- Nevertheless, either way suggests that this model might not be a good model
- to use with this dataset as the model might be overfitting with the training
+ Nevertheless, either way suggests that this model is not a good model to
+ be used with this dataset as the model might be overfitting with the training
  data.
- The standard error equal to zero means that there is no variation in the
- data i.e., every data value is equal to the mean.
+ The standard error of zero means that there is no variation in the data
+ i.e., every data value is equal to the mean value.
  Therefore, model 1 which had the second lowest BIC was chosen for this
  given dataset instead.
  
@@ -402,9 +402,9 @@ Software release L16B
 \end_layout
 
 \begin_layout Standard
-Model 2 had the least BIC among the other models.
- Nonetheless, its plot provided somewhat difficulty in interpreting a result
- (see 
+Models 2 and 6 had the lowest BIC among the other models.
+ Nonetheless, its plot provided a difficulty in interpreting a result (see
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_NNY"
@@ -412,30 +412,14 @@ reference "L16B_NNY"
 \end_inset
 
 ).
- The plot is divided into two main parts.
- In the first half of the period, observations stay in State3 while observations
- are in State2 in the second half of the time period.
- There is a fluctuation in the CPU utilization value overall the time series
- data.
+ Observations stay in State3 in the first half of the period but stay in
+ State2 in the second half of the time period.
+ There are continuous fluctuations of the CPU utilization value through
+ out the whole time period.
  Therefore, for observations (or software packages) to remain in the same
- state for a long duration without switching to other states seem somewhat
- unrealistic.
- The next smallest BIC was from a model 6.
- However, the model established a result similar to the result from the
- model 2.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The model 6 which has the second smallest BIC appears to have the same output
- and graph like in model 2.
-\end_layout
-
-\end_inset
-
- Hence, the selected model for this dataset was model 4 where its BIC was
- in the third place.
+ state for a long duration without switching to other states seem unrealistic.
+ The selected model for this dataset was model 4 where its BIC was in the
+ third lowest place.
  Even though model 4 had slightly higher BIC than models 2 and 6, the model
  produced more sensible result.
 \end_layout
@@ -446,8 +430,8 @@ Software release L17A
 
 \begin_layout Standard
 Model 1 had the lowest BIC and appeared to have a good explanation when
- examining the plot.
- Thus, the model was preferably chosen.
+ examining its plot.
+ Thus, this model was chosen for this dataset.
 \end_layout
 
 \begin_layout Section
@@ -669,7 +653,7 @@ name "sec:General-discussion"
 \end_layout
 
 \begin_layout Standard
-A thorough search of the relevant literature yielded that this thesis work
+A thorough search of relevant literatures yielded that this thesis work
  might be the first time that Markov switching model has been applied to
  the specific type of data – CPU state.
  In previous work, this model was mainly implemented in finance or signal

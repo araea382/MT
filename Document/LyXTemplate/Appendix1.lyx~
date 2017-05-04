@@ -426,6 +426,48 @@ key "gill2004your"
 \end_layout
 
 \begin_layout Paragraph*
+Plots
+\end_layout
+
+\begin_layout Standard
+Two more plots for visualizing the results have been added to the package.
+ Name of functions and descriptions are provided below.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+State or Regime.
+ CHOOSE!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+plotSmo(object): Plot of smoothed probabilities with different states
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Creates a plot that show the smoothed probabilities.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+plotArea(object): Plot of response variable with state specifications
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Create a plot that showing the periods where the variable is in that specific
+ state.
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph*
 Categorical variable
 \end_layout
 
@@ -650,59 +692,18 @@ Output from the selected model (Model 1) of the software release L16A showing
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="12" columns="4">
+<lyxtabular version="3" rows="11" columns="4">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <row>
-<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-X
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\hat{\beta}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+Estimated coefficient
 \end_layout
 
 \end_inset
@@ -1392,59 +1393,18 @@ Output from the selected model (Model 4) of the software release L16B showing
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="15" columns="4">
+<lyxtabular version="3" rows="14" columns="4">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <row>
-<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-X
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\hat{\beta}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+Estimated coefficient
 \end_layout
 
 \end_inset
@@ -2264,59 +2224,18 @@ Output from the selected model (Model 1) of the software release L17A showing
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="14" columns="4">
+<lyxtabular version="3" rows="13" columns="4">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <row>
-<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-X
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\hat{\beta}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+Estimated coefficient
 \end_layout
 
 \end_inset
@@ -3049,19 +2968,6 @@ State 3
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-change
 \end_layout
 
 \end_inset

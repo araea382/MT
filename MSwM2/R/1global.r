@@ -22,3 +22,7 @@ setGeneric("em",function(object,control){standardGeneric("em")})
 setGeneric("hessian",function(object){standardGeneric("hessian")})
 
 setGeneric("statePredict",function(object,newdata){standardGeneric("statePredict")})
+
+setGeneric("plotArea",function(object,newdata){standardGeneric("plotArea")})
+
+setGeneric("plotSmo",function(object,newdata){standardGeneric("plotSmo")})

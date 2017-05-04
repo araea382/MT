@@ -311,11 +311,32 @@ name "sec:Background"
 \end_layout
 
 \begin_layout Standard
+In this study, 
+\emph on
+change point analysis
+\emph default
+ will be used to identify changes over time in performance of Ericsson's
+ software products.
+ Many test cases are executed for testing software packages in a simulation
+ environment.
+ Before launching the software products to its customers, the company needs
+ to test and determine how each software package performs.
+ The performance of these software packages is evaluated by considering
+ on CPU utilization (percentages of CPU's cycle spent on each process),
+ memory usage, and latency.
+ 
+\end_layout
+
+\begin_layout Standard
 Structural changes are often seen in time series data.
  This observable behavior is highly appealing to statistical modelers who
  want to develop a model which is well explained.
  A method to detect changes in time series data when a time instant is unknown
- is called change point analysis 
+ is called 
+\emph on
+change point analysis
+\emph default
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "basseville1993detection"
@@ -323,15 +344,15 @@ key "basseville1993detection"
 \end_inset
 
 .
- It has a bottom line for discovering the time point where the changes in
- time series occur.
+ The analysis discovers the time point where the changes occur.
  Change point analysis can be referred to different kinds of name such as
  breakpoint and turning point.
  However, 
 \emph on
 change-point
 \emph default
- is the commonly used term when the point in time series takes place.
+ is the commonly used term for the point in a time series where a change
+ takes place.
  Another important term which will be used in this thesis is 
 \emph on
 regime switch
@@ -345,10 +366,10 @@ key "weskamp2010change"
 \end_inset
 
 .
- Change point analysis has been studied over decades as it is a problem
+ Change point analysis has been studied for several decades as it is a problem
  of interest in many applications which the characteristic of data is collected
  over time.
- The change should be flagged as soon as it occurs in order to be properly
+ A change should be flagged as soon as it occurs in order to be properly
  dealt with such changes in time and reduced any possible consequences 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -426,19 +447,6 @@ key "basseville1993detection"
 \end_inset
 
  in streaming data as well.
- 
-\end_layout
-
-\begin_layout Standard
-In this study, change point analysis will be used to identify changes in
- performance of Ericsson's software products.
- Many test cases have been executed for testing software packages in a simulatio
-n environment.
- Before launching the software products to its customers, the company needs
- to test and determine how each software package performs.
- The performance of these software packages is evaluated by considering
- on CPU utilization (percentages of CPU's cycle spent on each process),
- memory usage, and latency.
  
 \end_layout
 
@@ -529,16 +537,17 @@ ics in different states at different time.
 \end_layout
 
 \begin_layout Standard
-Each software package in the system is viewed as a time point in time series
- and the performance of each software package is treated as an observed
- value.
- In this study, the observed value is not completely independent of each
+In this study, each software package in the system is viewed as a time point
+ in time series and the performance of each software package is treated
+ as an observed value.
+ It is proven that the observed value is not completely independent of each
  other i.e., the performance of the current software package depends on the
  performance from the prior version of the software package.
  Therefore, additional dependencies, with the first order autoregression,
  is taken into consideration when modeling the Markov switching model and
  becomes Markov switching autoregressive model.
- This
+ This model is applied to the given data in order to discover the changes
+ in the performance.
 \end_layout
 
 \begin_layout Standard
@@ -557,9 +566,21 @@ key "sharkey2014nonparametric"
 \end_inset
 
 .
- In this study, the non-parametric analysis using hierarchical estimation
- techniques is also implemented for identifying the change of location in
- the time series.
+ The non-parametric analysis using hierarchical estimation techniques based
+ on a divisive algorithm is implemented.
+ This method, which is called an E-divisive, is designed to perform multiple
+ change point analysis while trying to make a few assumptions as possible.
+ The E-divisive method estimates change points by using a binary bisection
+ approach and a permutation test.
+ The method also capable of estimating not only univariate data but also
+ multivariate data.
+ 
+\end_layout
+
+\begin_layout Standard
+In this study, the parametric analysis using the Markov switching autoregressive
+ model and the non-parametric analysis using the E-divisive method are used
+ for identifying the change of location in the time series data.
  
 \end_layout
 
