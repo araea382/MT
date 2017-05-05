@@ -909,8 +909,8 @@ key "rabiner1986introduction"
 
 .
  The time that transition between state occurs is random.
- In addition, the state assumes to follow the Markov property that the future
- state depends only on the current state.
+ In addition, the state transition are assumed to follow the Markov property
+ that the future state depends only on the current state.
  
 \end_layout
 
@@ -958,13 +958,14 @@ reference "msm"
 \color inherit
  denote the state sequence and observation sequence in the Markov process,
  respectively.
- The arrows from one state to another state in the diagram imply a conditional
+ The arrows from one state to another state in the diagram implies a conditional
  dependency.
  
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1020,7 +1021,7 @@ key "hamilton1989new"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y_{t}=X_{t}'\beta_{S_{t}}+\varepsilon_{t}\label{eq:general_mswm}
+y_{t}=X_{t}^{T}\beta_{S_{t}}+\varepsilon_{t}\label{eq:general_mswm}
 \end{equation}
 
 \end_inset
@@ -1080,14 +1081,23 @@ where
 \end_inset
 
 , where 
-\begin_inset Formula $S_{t}=i,$
+\begin_inset Formula $S_{t}\in\{1,...,k\}$
 \end_inset
 
  
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Formula $1\leqslant i\leqslant k$
 \end_inset
 
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1283,7 +1293,7 @@ Since the whole process
 \begin_inset Formula $t=0$
 \end_inset
 
- of each state also needs to be specified.
+ also needs to be specified.
  The probability which describes the starting distribution over states is
  denoted by
 \end_layout
@@ -1337,7 +1347,7 @@ key "hamilton2005regime"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset ref
@@ -1409,8 +1419,8 @@ Autoregressive (AR) model
 \end_layout
 
 \begin_layout Standard
-An autoregressive model is one type of time series models that is used to
- describe the time-varying process.
+An autoregressive model is one type of time series models used to describe
+ a time-varying process.
  The model is flexible in handling various kinds of time series patterns.
  The name autoregressive comes from how the model performs a regression
  of the variable against its own previous outputs 
@@ -1421,7 +1431,17 @@ key "cryer1986time"
 \end_inset
 
 .
- The number of autoregressive lags is denoted by 
+ The number of autoregressive lags (i.e., a time span between observations
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+ a later point in the data series
+\end_layout
+
+\end_inset
+
+) is denoted by 
 \begin_inset Formula $p$
 \end_inset
 
@@ -1504,7 +1524,8 @@ key "shannon2009formulation"
 \end_inset
 
 .
- 
+ Basically, this is the combination between the Markov switching model and
+ the autoregressive model.
 \end_layout
 
 \begin_layout Definition
@@ -1526,7 +1547,7 @@ The first order Markov switching autoregressive model is
 \color none
 \begin_inset Formula 
 \[
-y_{t}=X_{t}'\beta_{S_{t}}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{t}
+y_{t}=X_{t}^{T}\beta_{S_{t}}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{t}
 \]
 
 \end_inset
@@ -1568,13 +1589,24 @@ reference "msm-ar"
 \end_inset
 
 .
- It can be clearly seen that there is a dependency at the observation level
- and the observation is not independent from one another.
+ It can be clearly seen that there is a dependency at the observation level,
+ which is added .
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+ and that observations are not independent from one another.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1669,7 +1701,7 @@ key "kim1999state"
  used a Markov chain Monte Carlo simulation method based on the Bayesian
  inference.
  In this thesis framework, E-M algorithm is used in estimating parameters
- and its general procedure is briefly described below.
+ and is briefly described below.
  
 \end_layout
 
@@ -1678,8 +1710,8 @@ The Expectation-Maximization algorithm
 \end_layout
 
 \begin_layout Standard
-E-M algorithm is originally designed to deal with incomplete or missing
- values in data 
+E-M algorithm is originally designed to deal with the problem of incomplete
+ or missing values in data 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "dempster1977maximum"
@@ -1692,19 +1724,19 @@ key "dempster1977maximum"
 \begin_inset Formula $S_{t}$
 \end_inset
 
- can be viewed as missing values.
+ can be viewed as missing data values.
  The set of parameters 
 \begin_inset Formula $\theta$
 \end_inset
 
- is estimated by iterative two-step procedure.
+ are estimated by an iterative two-step procedure.
  In the first step, the algorithm starts with arbitrary initial parameters,
  and then finds the expected values of the state process from the given
  observations.
  In the second step of the iterative procedure, a new maximum likelihood
  from the derived parameters in the previous step is calculated.
  These two steps are repeated until the maximum value of the likelihood
- function is reached 
+ function is reached or converged 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "janczura2012efficient"
@@ -1712,6 +1744,53 @@ key "janczura2012efficient"
 \end_inset
 
 .
+ The two steps are known as the E-step and the M-step.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "em"
+
+\end_inset
+
+ illustrates the process of the E-M algorithm.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A flowchart showing the process of the Expectation-Maximization algorithm.
+ The algorithm begins with a set of initial values.
+ The E-step is performed by computing a filtering and smoothing algorithm.
+ Then, the M-step is performed.
+ The algorithm will iteratively compute until converge.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "em"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1741,6 +1820,14 @@ In this step,
  The obtained result is called smoothed inferences probability, and is denoted
  by 
 \begin_inset Formula $P(S_{t}=j|\Omega_{T};\theta)$
+\end_inset
+
+ where 
+\begin_inset Formula $T$
+\end_inset
+
+ is all observations in the data and 
+\begin_inset Formula $j=1,2,...,k$
 \end_inset
 
 .
@@ -1788,18 +1875,18 @@ A filtered probability is a probability of a non-observable Markov chain
 \end_inset
 
  is chosen from arbitrary values.
- The probabilities of each state, given that the available observation is
- up to time 
+ The probabilities of each state given available observations up to time
+ 
 \begin_inset Formula $t-1$
 \end_inset
 
-, is calculated by
+ is calculated by
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-P(S_{t}=j|\Omega_{t-1};\theta^{(n)})=\sum_{i=1}^{k}p_{ij}^{(n)}P(S_{t-1}=i|\Omega_{t-1};\theta^{(n)})
+P(S_{t}=j|\Omega_{t-1};\theta^{(n)})=\sum_{i=1}^{k}p_{ij}^{(n)}P(S_{t-1}=i|\Omega_{t-1};\theta^{(n)})\qquad j=1,2,...,k
 \end{equation}
 
 \end_inset
@@ -1844,7 +1931,7 @@ f(y_{t}|\Omega_{t-1};\theta^{(n)})=\sum_{j=1}^{k}f(y_{t}|S_{t}=j,\Omega_{t-1};\t
 
 \begin_layout Standard
 where 
-\begin_inset Formula $f(y_{t}|S_{t}=j,\Omega_{t-1};\theta)=\frac{1}{\sqrt{2\pi\sigma_{S_{t}}^{2}}}exp\left\{ -\frac{(y_{t}-\beta_{S_{t}})^{2}}{2\sigma_{S_{t}}^{2}}\right\} $
+\begin_inset Formula $f(y_{t}|S_{t},\Omega_{t-1};\theta)=\frac{1}{\sqrt{2\pi\sigma_{S_{t}}^{2}}}exp\left\{ -\frac{(y_{t}-\beta_{S_{t}})^{2}}{2\sigma_{S_{t}}^{2}}\right\} $
 \end_inset
 
  is the likelihood function in each state for time 
@@ -2032,15 +2119,15 @@ P(S_{t}=j|\Omega_{T};\theta^{(n)})=\sum_{i=1}^{k}\frac{P(S_{t+1}=i|\Omega_{T};\t
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Paragraph
+Full log-likelihood
+\end_layout
 
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout Standard
 Once the filtered probabilities are estimated, there is enough necessary
- information to calculate the full log-likelihood function.
+ information to compute the full log-likelihood function.
 \end_layout
 
 \begin_layout Standard
@@ -2068,7 +2155,7 @@ The new estimated model parameters
 \begin_inset Formula $\theta^{(n+1)}$
 \end_inset
 
- is obtained by finding a set of parameters that maximizes Equation 
+ are obtained by finding a set of parameters that maximizes Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:loglik"

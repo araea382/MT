@@ -434,12 +434,13 @@ which handles the high-level operation of the mobile for different UEs
 \end_layout
 
 \begin_layout Standard
-Paging messages are sent by MME to each eNB with cells in UE for the purpose
+Paging is used for the network setup when UE is in an idle mode to conserve
+ battery power.
+ MME sends Paging messages to each eNB with cells in UE for the purpose
  of notifying about incoming connection requests.
- The paging process mostly happens while UE is in idle mode.
  UE will wake up if it gets the Paging message and will react by triggering
  a RRC connection request message.
- This happens in paging per second.
+ The pagaing process happens in per unit of time as paging per second.
 \begin_inset Note Comment
 status collapsed
 
@@ -458,6 +459,7 @@ If the UE begins to go outside the range of the cell and enters the area
  order to avoid the call termination.
  The process of changing the serving cells or transferring an ongoing call
  from one cell to another is called a Handover.
+ The rate of hanover per second.
  
 \end_layout
 
@@ -1097,7 +1099,7 @@ EventsPerSec
 
 \begin_layout Standard
 \begin_inset Float table
-placement h
+placement H
 wide false
 sideways false
 status open

@@ -124,12 +124,8 @@ adds table of contents entry
 \end_layout
 
 \begin_layout Standard
-This thesis proposes methods to analyze the CPU state.
- 
-\end_layout
-
-\begin_layout Standard
-CPU utilization
+This thesis proposes methods to analyze the CPU utilization.
+ The state of the CPU
 \end_layout
 
 \begin_layout Standard

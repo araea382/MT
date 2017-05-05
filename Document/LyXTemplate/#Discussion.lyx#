@@ -429,9 +429,29 @@ Software release L17A
 \end_layout
 
 \begin_layout Standard
-Model 1 had the lowest BIC and appeared to have a good explanation when
- examining its plot.
- Thus, this model was chosen for this dataset.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Model 1 appeared to have a good model output and plot when comparing with
+ the rest of the models.
+ 
+\end_layout
+
+\end_inset
+
+The first four models with lowest BIC (Models 1, 5, 3, and 7, respectively)
+ had similar results both in model outputs and plots.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+explanation when examining its plot.
+\end_layout
+
+\end_inset
+
+ Thus, Model 1 which had the lowest BIC was chosen for this dataset.
 \end_layout
 
 \begin_layout Section
@@ -470,18 +490,23 @@ reference "L16A_NN"
 )
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
 \begin_layout Itemize
-State1 
+State1
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-Despite periods where there is a decrease in CPU utilization value, two
- peaks which are higher than 300 clearly imply that test cases in this state
- perform badly.
- Thus, the state is defined as a 
+\begin_layout Plain Layout
+Despite periods where there is a slightly decrease in CPU utilization value,
+ State1 contains two peaks which have the value of the CPU utilization higher
+ than 300.
+ This clearly implies that test cases in State1 perform badly and  is defined
+ as a 
 \emph on
-Bad
+Degradation
 \emph default
  state.
  
@@ -493,10 +518,10 @@ State2
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-The state appears to be a 
+\begin_layout Plain Layout
+The state appears to be an 
 \emph on
-Good
+Improvement
 \emph default
  state as there are many periods where test cases have low value in the
  CPU utilization.
@@ -508,7 +533,7 @@ State3
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 The performance for test cases in this state can be viewed as a 
 \emph on
 Good
@@ -519,12 +544,43 @@ Good
  higher CPU utilization values.
  The state is, therefore, said to be a 
 \emph on
-Normal
+Steady
 \emph default
  state.
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Despite periods where there is a slightly decrease in CPU utilization value,
+ State1 contains two peaks which have the value of the CPU utilization higher
+ than 300.
+ This clearly implies that test cases in State1 perform badly and should
+ be defined as a 
+\emph on
+Degradation
+\emph default
+ state.
+ As for State2 and State3, both can be viewed as an Improvement state.
+ However, State2 seems to have many periods where test cases drop to a lower
+ value in the CPU utilization.
+ State3 also has two periods of abrupt change to higher CPU utilization
+ values.
+ Therefore, State2 appears to be an 
+\emph on
+Improvement
+\emph default
+ state while State3 is said to be a 
+\emph on
+Steady
+\emph default
+ state.
+\end_layout
+
 \begin_layout Paragraph*
 Software release L16B (see 
 \begin_inset CommandInset ref
@@ -536,18 +592,22 @@ reference "L16B_NYY"
 )
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
 \begin_layout Itemize
 State1 
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 There are many high peaks occur in this state.
  Moreover, test cases tend to increase the value of the CPU utilization
  when they remain in the state.
  A 
 \emph on
-Bad
+Degradation
 \emph default
  state is adequate for defining behavior in this state.
 \end_layout
@@ -558,10 +618,10 @@ State2
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-The state could be characterized as a 
+\begin_layout Plain Layout
+The state could be characterized as an 
 \emph on
-Good
+Improvement
 \emph default
  state.
  A decreasing pattern of the CPU utilization value can be seen in most of
@@ -574,19 +634,52 @@ State3
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 The CPU utilization value for test cases in this state are either high or
  low.
  The state contains the period of positive and negative peaks and does not
  appear to have a specific characteristic for the state of the CPU.
  For this reason, the state is said to be a 
 \emph on
-Normal
+Steady
 \emph default
  state.
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are many high peaks occur in State1.
+ Moreover, test cases tend to increase the values of the CPU utilization
+ when they enter this state.
+ Hence, State1 is said to be a 
+\emph on
+Degradation
+\emph default
+ state.
+ State2 could be characterized as an 
+\emph on
+Improvement
+\emph default
+ state.
+ The reason for this is because a decreasing pattern of the CPU utilization
+ value for the test cases in State2 can be seen in most of the period.
+ The test cases which are in State3 have either high or low in the CPU utilizati
+on value.
+ State3 contains the period of positive and negative peaks, and does not
+ appear to have a specific characteristic for the state of the CPU.
+ The difficulty of making an interpretation for State3 infer that the state
+ may be defined as a 
+\emph on
+Steady
+\emph default
+ state.
+\end_layout
+
 \begin_layout Paragraph
 Software release L17A (see 
 \begin_inset CommandInset ref
@@ -598,15 +691,19 @@ reference "L17A_NNN"
 )
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
 \begin_layout Itemize
 State1 
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 There a 
 \emph on
-Normal
+Degradation
 \emph default
  state
 \end_layout
@@ -617,12 +714,15 @@ State2
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-Observations in this state have a decreasing pattern a 
+\begin_layout Plain Layout
+Most of observations in the state have a decreasing pattern when enter this
+ state which is often comes from State1.
+ As a consequence, an 
 \emph on
-Good
+Improvement
 \emph default
- state
+ state is given for this state.
+ 
 \end_layout
 
 \end_deeper
@@ -631,23 +731,54 @@ State3
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-The only peak in the time series data is in this state.
- Because of this, a state is labeled as a 
+\begin_layout Plain Layout
+The values of the CPU utilization for observations in the state have an
+ unclear pattern.
+ The value is quite fluctuate and because of this behavior, the state is
+ labeled as a 
 \emph on
-Bad
+Steady
 \emph default
  state.
+ There is a peak in the time series data which is viewed as an anomaly in
+ this case.
+ 
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-most of the green regions indicate relaxing state, where the cpu usage tends
- to decrease that's obvious but as for the red and blue, i don't think that
- we can say much about it this is probably because there exist some problem
- with the models both of them may either be steady-state or be degradation
- state it's hard to tell so from my view, they may not be clearly distinguish
- based on the current models
+Even though the value of the CPU utilization drop in the period of State1,
+ there is an increase in the CPU utilization values in most of the periods.
+ Hence, State1 could be defined as a 
+\emph on
+Degradation
+\emph default
+ state.
+ The CPU utilization values clearly decrease when test cases enter State2.
+ These test cases often switch from State1, which is thought to be a state
+ where the performance of the test cases perform badly.
+ As a consequence, this behavior indicates an improving in the test cases.
+ Thus, State2 is defined as an 
+\emph on
+Improvement
+\emph default
+ state.
+ On the contrary, the values of the CPU utilization for the test cases in
+ State3 have an unclear pattern.
+ The values are quite fluctuate and because of this behavior, the state
+ is labeled as a 
+\emph on
+Steady
+\emph default
+ state.
+ State3 also contains a peak which occur in the time series data.
+ This peak is viewed as an anomaly in this case.
+ 
 \end_layout
 
 \begin_layout Section
@@ -715,10 +846,6 @@ Above all, one has to understand and accept a risk when deciding on the
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 There is no fixed rules in deciding the number of states.
  Therefore, difference number of states were tried with the method in order
  to determine which number would be best for this analysis.

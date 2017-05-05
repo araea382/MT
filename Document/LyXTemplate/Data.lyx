@@ -434,12 +434,13 @@ which handles the high-level operation of the mobile for different UEs
 \end_layout
 
 \begin_layout Standard
-Paging messages are sent by MME to each eNB with cells in UE for the purpose
+Paging is used for the network setup when UE is in an idle mode to conserve
+ battery power.
+ MME sends Paging messages to each eNB with cells in UE for the purpose
  of notifying about incoming connection requests.
- The paging process mostly happens while UE is in idle mode.
  UE will wake up if it gets the Paging message and will react by triggering
  a RRC connection request message.
- This happens in paging per second.
+ The paging process happens as paging per second.
 \begin_inset Note Comment
 status collapsed
 
@@ -458,6 +459,7 @@ If the UE begins to go outside the range of the cell and enters the area
  order to avoid the call termination.
  The process of changing the serving cells or transferring an ongoing call
  from one cell to another is called a Handover.
+ The rate of handover is in per second.
  
 \end_layout
 
@@ -466,11 +468,7 @@ If the UE begins to go outside the range of the cell and enters the area
 status open
 
 \begin_layout Plain Layout
-Mention also change of serving base station/ serving call i.e., Handover
-\end_layout
-
-\begin_layout Plain Layout
-Also paging for completeness
+check content of two above paragraphs
 \end_layout
 
 \end_inset
@@ -599,23 +597,15 @@ There are thousands of automated tests performed.
  For this thesis, only a subset of test cases belonging to QA Capacity area,
  that focus on signaling capacity, is used.
  The QA Capacity is responsible for testing and tracking test cases related
- to LTE node capacity.
+ to eNB capacity.
  Each one of these test cases has a well-defined traffic model that it tries
  to execute.
  The traffic model, in this context, means certain intensity (per second)
- of procedures which can be seen as stimuli in the LTE node.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-add text
-\end_layout
-
-\end_inset
-
-The LTE node then increments one or more counters for each one of these
- procedures or stimuli that it detects.
+ of procedures which can be seen as stimuli in the eNB.
+ Basically simulating the signaling load from a large number of UEs served
+ simultaneously by the eNB.
+ The eNB then increments one or more counters for each one of these procedures
+ or stimuli that it detects.
  These counters are called local events and represented by 
 \emph on
 EventsPerSec
@@ -983,7 +973,8 @@ The relevant aspects of the data preprocessing step is describe here.
 \end_layout
 
 \begin_layout Standard
-Test cases are not always executed properly.
+Some test cases are filtered out in the preprocessing step because the test
+ cases are not always executed properly.
  The problem is either no traffic is generated during the test case or the
  data is not logged.
  This usually result in a missing value in the 

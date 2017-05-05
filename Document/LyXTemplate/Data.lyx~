@@ -430,12 +430,17 @@ which handles the high-level operation of the mobile for different UEs
  eNB when it first connects to the network.
  Then, the UE sends information about itself to establish a link between
  the UE and the eNB.
- Paging messages are sent by MME to each eNB with cells in UE for the purpose
+ 
+\end_layout
+
+\begin_layout Standard
+Paging is used for the network setup when UE is in an idle mode to conserve
+ battery power.
+ MME sends Paging messages to each eNB with cells in UE for the purpose
  of notifying about incoming connection requests.
- The paging process mostly happens while UE is in idle mode.
  UE will wake up if it gets the Paging message and will react by triggering
  a RRC connection request message.
- This happens in paging per second.
+ The paging process happens as paging per second.
 \begin_inset Note Comment
 status collapsed
 
@@ -445,11 +450,16 @@ The UE can enter the idle mode in order to conserve battery power.
 
 \end_inset
 
- If the UE begins to go outside the range of the cell and enters the area
+ 
+\end_layout
+
+\begin_layout Standard
+If the UE begins to go outside the range of the cell and enters the area
  covered by another cell, the call will be transferred to the new cell in
  order to avoid the call termination.
  The process of changing the serving cells or transferring an ongoing call
  from one cell to another is called a Handover.
+ The rate of handover is in per second.
  
 \end_layout
 
@@ -458,11 +468,7 @@ The UE can enter the idle mode in order to conserve battery power.
 status open
 
 \begin_layout Plain Layout
-Mention also change of serving base station/ serving call i.e., Handover
-\end_layout
-
-\begin_layout Plain Layout
-Also paging for completeness
+check content of two above paragraphs
 \end_layout
 
 \end_inset
@@ -540,6 +546,7 @@ reference "release"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -636,6 +643,7 @@ reference "sw"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -823,6 +831,7 @@ reference "eventspersec"
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -972,7 +981,8 @@ The relevant aspects of the data preprocessing step is describe here.
 \end_layout
 
 \begin_layout Standard
-Test cases are not always executed properly.
+Some test cases are filtered out in the preprocessing step because the test
+ cases are not always executed properly.
  The problem is either no traffic is generated during the test case or the
  data is not logged.
  This usually result in a missing value in the 
@@ -1086,6 +1096,7 @@ EventsPerSec
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open

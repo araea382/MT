@@ -301,25 +301,28 @@ Conclusions
 This thesis assesses the ability of detecting the performance of the Ericsson's
  software products by applying the Markov switching autoregressive model,
  and the E-divisive method which is an approach in the non-parametric analysis.
- The results are presented with interpretations and discussions.
- The simulated data with known state are used for the comparison of both
- methods.
+ The simulated data with known state are used for the comparison between
+ both methods.
+ The results from a real data are presented with interpretations and discussions.
+ 
 \end_layout
 
 \begin_layout Standard
 For the Markov switching model, the number of states and the number of switching
- coefficients in the model were determined and chosen.
- The findings revealed that the model is able to discover the switches between
- states with some false alarms and missed detections.
- The E-divisive method is less powerful compare to the Markov switching
- model.
- It is efficient to use with data which have an obvious pattern of shifting
- in the time series.
+ coefficients in the model were determined and chosen by examining the BIC,
+ along with model outputs and plots.
+ The findings from the simulated data revealed that the Markov switching
+ model is able to discover the switches between states rather well despite
+ some false alarms and missed detections.
+ On the contrary, the E-divisive method is less powerful compare to the
+ Markov switching model.
+ This method is efficient if data have an obvious pattern of shifting in
+ the time series.
  Implemented function of the state prediction appear to functionally work
  well when investigating on the simulated data.
  The accuracy from both simulated datasets were high.
- Therefore, the results from the Markov switching model was considered to
- be the most representative for the analysis.
+ The results from the Markov switching model was considered to be the representa
+tive for the analysis.
  The E-divisive method was generally used as a guideline and also a confirmation
  for a change in the CPU state.
 \end_layout
@@ -336,21 +339,50 @@ Evaluating the obtained results is rather difficult and complicated, mostly
  used.
 \end_layout
 
+\begin_layout Section
+Further work
+\end_layout
+
 \begin_layout Standard
 The Markov switching model gave quite a promising results but several improvemen
 ts could also be done to increase the robustness of the analysis.
- For future work, using more observations in data in the analysis is recommended
+ 
+\end_layout
+
+\begin_layout Standard
+For future work, using more observations in data in the analysis is recommended
  as it will make obtained results be more reliable.
  Additional information will decrease an uncertainty in the data.
- Another future extension is to consider on other predictor variables or
+ 
+\end_layout
+
+\begin_layout Standard
+Another future extension is to consider on other predictor variables or
  interaction terms which can also affect the CPU utilization.
  As the assumption of the distribution of residuals was not entirely fulfill,
  significant details that are used to explained the CPU utilization might
  not all be caught by the model.
- Finally, there are still some performance metrics in QA Capacity area which
- have not been taken into account in the thesis such as a memory usage and
- a latency.
+ Other distribution could also be made apart from a normal distribution.
+ 
+\end_layout
+
+\begin_layout Standard
+Furthermore, there are still some performance metrics in QA Capacity area
+ which have not been taken into account in the thesis such as a memory usage
+ and a latency.
  Further work could also be extended to analyze these metrics.
+\end_layout
+
+\begin_layout Standard
+Finally, in the future if some test cases has been label with state, a semi-supe
+rvised learning algorithm could also be implemented.
+ This is in between 
+\end_layout
+
+\begin_layout Standard
+Unsupervised learning technique is first used to discover structure in the
+ data or variables.
+ Thereafter, 
 \end_layout
 
 \begin_layout Standard
@@ -372,10 +404,6 @@ Idle: Nothing to do
 \begin_layout Plain Layout
 The dataset of each software release is slightly small especially for the
  software release L16A.
-\end_layout
-
-\begin_layout Plain Layout
-semi-supervised
 \end_layout
 
 \end_inset

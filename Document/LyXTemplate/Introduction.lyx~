@@ -451,11 +451,10 @@ key "basseville1993detection"
 \end_layout
 
 \begin_layout Standard
-Recently, a method called hidden Markov model or Markov switching model
- is widely used for discovering a change point in time series.
- Both terms are acceptable but being called differently regarding to the
- different fields of study.
- Markov switching model uses a concept of Markov chain to model an underlying
+In recent years, a method called hidden Markov model or Markov switching
+ model has become widely used for discovering change points in time series.
+ Both terms are accepted, usage varies with different fields of study.
+ Markov switching model uses a concept of a Markov chain to model an underlying
  segmentation as different states and then specify a distinct change of
  location.
  Hence, the method is able to identify a switch in time series when change
@@ -490,10 +489,10 @@ key "stanke2003gene"
 
 \end_inset
 
- where the prediction of gene is being made.
+ where protein coding genes are predicted.
  Markov switching model has been extensively applied in the field of economics
  and finance and has a large literature.
- For example, business cycle can be seen as hidden states with seasonal
+ For example, business cycles can be seen as hidden states with seasonal
  changes.
  The growth rate of gross domestic product (GDP) is modeled as a switching
  process to uncover business cycle phases i.e., expansion and recession.
@@ -523,9 +522,9 @@ key "kim1998testing"
 Markov switching model is one of the most well-known non linear time series
  models.
  This model can be applied to various time series data with dynamic behavior.
- The structural changes or regime shifts in data mean that constant parameter
- in time series model might be insufficient to capture these behaviors and
- describe their evolution.
+ The structural changes or regime shifts in data implies that constant parameter
+ settings in a time series model might be insufficient to capture these
+ behaviors and describe their evolution.
  Markov switching model takes the presence of shifting regime in time series
  into account and models multiple structures that can explain these characterist
 ics in different states at different time.
@@ -537,14 +536,14 @@ ics in different states at different time.
 \end_layout
 
 \begin_layout Standard
-In this study, each software package in the system is viewed as a time point
- in time series and the performance of each software package is treated
- as an observed value.
- It is proven that the observed value is not completely independent of each
- other i.e., the performance of the current software package depends on the
- performance from the prior version of the software package.
- Therefore, additional dependencies, with the first order autoregression,
- is taken into consideration when modeling the Markov switching model and
+For the current Ericsson setting, each software package running through
+ the test system is viewed as a time point in time series and the performance
+ of each software package is treated as an observed value.
+ It is proven that the observed values are not completely independent of
+ each other i.e., the performance of the current software package depends
+ on the performance from the prior version of the software package.
+ Therefore, additional dependencies are taken into consideration with the
+ first order autoregression when modeling the Markov switching model and
  becomes Markov switching autoregressive model.
  This model is applied to the given data in order to discover the changes
  in the performance.
@@ -555,9 +554,9 @@ There are two approaches, a parametric and a non-parametric analysis, for
  detecting the change point in the time series.
  The parametric analysis benefits from assuming some knowledge of data distribut
 ion and integrating it to the detection scheme.
- On the other hand, the non-parametric analysis is more flexible that there
- is no assumption made about the distribution.
- It can, therefore, apply to a wider range of application and capture various
+ On the other hand, the non-parametric analysis is more flexible in that
+ there are no assumption made about the distribution.
+ It can, therefore, apply to a wider range of applications and capture various
  kinds of changes 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -580,7 +579,7 @@ key "sharkey2014nonparametric"
 \begin_layout Standard
 In this study, the parametric analysis using the Markov switching autoregressive
  model and the non-parametric analysis using the E-divisive method are used
- for identifying the change of location in the time series data.
+ for identifying change point locations in the time series data.
  
 \end_layout
 
@@ -597,20 +596,20 @@ name "sec:Objective"
 
 \begin_layout Standard
 The core idea of this thesis is to reduce workload of manual inspection
- when the performance analysis of an update software package is required.
- With an increase amount of generated data from numerous test cases, the
+ when the performance analysis of an updated software package is required.
+ With an increased amount of generated data from numerous test cases, the
  inspection becomes tedious and inefficient to be done manually.
  The main objective of this thesis is to implement machine learning, an
  algorithm that has an ability to learn from data, in order to analyze the
  performance of the software package.
  The algorithm will help indicate whether the performance of the software
  package is in a degrading, improving or steady state.
- There is also worth to mention that the performance of a particular software
- package can vary on different test environment.
+ It is also worth mentioning that the performance of a particular software
+ package can vary on different test environments.
  The implemented algorithm should also be able to detect when the test environme
 nt is altered.
- This thesis only focuses on a CPU utilization which is one of the three
- essential factors for evaluating the performance of the upgrade software
+ This thesis only focuses on the CPU utilization, which is one of the three
+ essential factors for evaluating the performance of the upgraded software
  package.
 \end_layout
 

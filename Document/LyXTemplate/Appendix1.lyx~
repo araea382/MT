@@ -64,6 +64,7 @@
 \master MasterThesisTemplate.lyx
 \begin_modules
 customHeadersFooters
+logicalmkup
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -447,23 +448,50 @@ State or Regime.
 \end_layout
 
 \begin_layout Itemize
-plotSmo(object): Plot of smoothed probabilities with different states
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+plotSmo(object)
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Creates a plot that show the smoothed probabilities.
+Plot of smoothed probabilities with different states
+\end_layout
+
+\begin_layout Standard
+Description: Creates a plot that shows the smoothed probabilities for all
+ the states.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-plotArea(object): Plot of response variable with state specifications
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+plotArea(object)
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Create a plot that showing the periods where the variable is in that specific
- state.
+Plot of response variable with state specifications
+\end_layout
+
+\begin_layout Standard
+Description: Create a plot that shows the periods where the variable is
+ in the specific states.
 \end_layout
 
 \end_deeper
@@ -634,14 +662,12 @@ reference "eq:fProb"
 \end_layout
 
 \begin_layout Standard
-\begin_inset listings
-lstparams "language=R"
-inline false
+\noindent
+\begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
 \noindent
-
 statePredict(object, newdata)
 \end_layout
 
