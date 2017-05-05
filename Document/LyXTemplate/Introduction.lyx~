@@ -344,15 +344,15 @@ key "basseville1993detection"
 \end_inset
 
 .
- It has a bottom line for discovering the time point where the changes in
- time series occur.
+ The analysis discovers the time point where the changes occur.
  Change point analysis can be referred to different kinds of name such as
  breakpoint and turning point.
  However, 
 \emph on
 change-point
 \emph default
- is the commonly used term when the point in time series takes place.
+ is the commonly used term for the point in a time series where a change
+ takes place.
  Another important term which will be used in this thesis is 
 \emph on
 regime switch
@@ -366,11 +366,11 @@ key "weskamp2010change"
 \end_inset
 
 .
- Change point analysis has been studied over decades as it is a problem
+ Change point analysis has been studied for several decades as it is a problem
  of interest in many applications which the characteristic of data is collected
  over time.
- The change should be flagged as soon as it occurs in order to be properly
- dealt with such changes in time and reduced any possible consequences 
+ A change should be flagged as soon as it occurs in order to be properly
+ dealt with reducing any possible consequences 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sharkey2014nonparametric"
@@ -395,10 +395,10 @@ key "staudacher2005new"
 \end_layout
 
 \begin_layout Itemize
-Climate analysis: The temperature or climate variations is detected.
- This method gradually becomes important over the past few decades due to
- the effects of the global warming and the increases in greenhouse gas emissions
- 
+Climate analysis: The temperature or climate variations are detected.
+ This method has gradually become important over the past few decades due
+ to the effects of the global warming and the increases in greenhouse gas
+ emissions 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "reeves2007review,beaulieu2012change"
@@ -412,8 +412,8 @@ key "reeves2007review,beaulieu2012change"
 \begin_layout Itemize
 Quality control: Since industrial production is a continuous production
  process, in mass production process, if the product controlled value is
- not monitored and exceed the tolerant undetected, it could lead to the
- lost of a whole production lot 
+ not monitored and exceeds the tolerable level undetected, it could lead
+ to the loss of a whole production lot 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "page1954continuous"

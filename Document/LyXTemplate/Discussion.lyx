@@ -323,7 +323,7 @@ Critical assessment of the results obtained and the adequacy of the methods
 In this chapter, a discussion of the model selection for each given dataset
  is explained.
  Then, a state inference from the model is made.
- Lastly, a general discussion of this study is provided.
+ Lastly, a results discussion of this study is provided.
 \end_layout
 
 \begin_layout Section
@@ -439,8 +439,8 @@ State inference
 \end_layout
 
 \begin_layout Standard
-Another important task after deciding which model will be used is to make
- an inference on the derived states because the model output does not provide
+Another important task after the suitable model was decided is to make an
+ inference on the derived states because the model output does not provide
  any definition of these states.
  
 \begin_inset Note Comment
@@ -455,7 +455,7 @@ A function from the package will estimate coefficients in each state without
 \end_inset
 
 Therefore, an interpretation and inference of the state need to be specified.
- These state inferences for each dataset are shown below.
+ The state inferences for each dataset are shown below.
  
 \end_layout
 
@@ -476,12 +476,12 @@ State1
 
 \begin_deeper
 \begin_layout Standard
-Despite periods where there are a decrease in CPU utilization value, two
+Despite periods where there is a decrease in CPU utilization value, two
  peaks which are higher than 300 clearly imply that test cases in this state
  perform badly.
  Thus, the state is defined as a 
 \emph on
-Bad
+Degradation
 \emph default
  state.
  
@@ -496,7 +496,7 @@ State2
 \begin_layout Standard
 The state appears to be a 
 \emph on
-Good
+Improvement
 \emph default
  state as there are many periods where test cases have low value in the
  CPU utilization.
@@ -519,7 +519,7 @@ Good
  higher CPU utilization values.
  The state is, therefore, said to be a 
 \emph on
-Normal
+Steady
 \emph default
  state.
 \end_layout
@@ -547,7 +547,7 @@ There are many high peaks occur in this state.
  when they remain in the state.
  A 
 \emph on
-Bad
+Degradation
 \emph default
  state is adequate for defining behavior in this state.
 \end_layout
@@ -561,7 +561,7 @@ State2
 \begin_layout Standard
 The state could be characterized as a 
 \emph on
-Good
+Improvement
 \emph default
  state.
  A decreasing pattern of the CPU utilization value can be seen in most of
@@ -581,7 +581,7 @@ The CPU utilization value for test cases in this state are either high or
  appear to have a specific characteristic for the state of the CPU.
  For this reason, the state is said to be a 
 \emph on
-Normal
+Steady
 \emph default
  state.
 \end_layout
@@ -606,7 +606,7 @@ State1
 \begin_layout Standard
 There a 
 \emph on
-Normal
+Degradation
 \emph default
  state
 \end_layout
@@ -618,9 +618,9 @@ State2
 
 \begin_deeper
 \begin_layout Standard
-The period for this state is short and a decreasing pattern a 
+Observations in this state have a decreasing pattern a 
 \emph on
-Good
+Improvement
 \emph default
  state
 \end_layout
@@ -632,20 +632,30 @@ State3
 
 \begin_deeper
 \begin_layout Standard
-The only peak in the time series data is in this state.
+There is a peak in the time series data which is in this state.
+ This can be viewed as an anomaly.
  Because of this, a state is labeled as a 
 \emph on
-Bad
+Steady
 \emph default
  state.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+most of the green regions indicate relaxing state, where the cpu usage tends
+ to decrease that's obvious but as for the red and blue, i don't think that
+ we can say much about it this is probably because there exist some problem
+ with the models both of them may either be steady-state or be degradation
+ state it's hard to tell so from my view, they may not be clearly distinguish
+ based on the current models
+\end_layout
+
 \begin_layout Section
-General discussion
+Results discussion
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:General-discussion"
+name "sec:Results-discussion"
 
 \end_inset
 
@@ -654,19 +664,29 @@ name "sec:General-discussion"
 
 \begin_layout Standard
 A thorough search of relevant literature yielded that this thesis work might
- be the first time that Markov switching model has been applied to the specific
- type of data – CPU state.
- In previous work, this model was mainly implemented in finance or signal
- processing.
- Researches and works on that matter were used as an inspiration; but because
- of some differences, the procedure is slightly changed.
- A large amount of time was spent on understanding the data, examining which
+ be the first time that Markov switching model has been applied to the data
+ of CPU utilization.
+ In previous works, this model was mainly applied with financial data or
+ signal processing which were used as an inspiration for this study.
+ However, because of differences in the characteristic of data, the procedure
+ was slightly adjusted.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+A large amount of time was spent on understanding the data, examining which
  variables had a significant impact on the CPU utilization, and determining
  which methods would provide the best possible outcome for this problem.
  Besides, after deciding on the most promising method, a lot of effort was
  invested studying implemented algorithms in the R package as well as modifying
  code as necessary.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -677,40 +697,63 @@ NodeName
 , which is used to execute test cases, was assumed to be indifferent i.e.,
  performance of test cases are the same regardless of the machine.
  Therefore, selecting a minimum value of the CPU utilization of the test
- case for each software package in data preprocessing step is acceptable.
+ case for each software package in data preprocessing step is reasonable.
  
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 Above all, one has to understand and accept a risk when deciding on the
  number of states as there is no guarantee how many states would yield the
  best outcome.
  This risk is also applied to a situation when determining the number of
  switching coefficients in the model.
- In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:States"
+ 
+\end_layout
 
 \end_inset
 
-, the number of chosen states after applying Markov switching model to each
- dataset was three.
+
+\end_layout
+
+\begin_layout Standard
+There is no fixed rules in deciding the number of states.
+ Therefore, difference number of states were tried with the method in order
+ to determine which number would be best for this analysis.
  The results from the model with two states offered less details and did
- not seem to cover all happening situations.
- Furthermore, all graphs of the two-state model had one state with a considerabl
-y long period and another state with a fairly short period.
+ not cover all happening situations.
+ Furthermore, all the graphs of the two-state model are unrealistic and
+ also difficult in interpret.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+had one state with a considerably long period and another state with a very
+ short period.
  There is a problematic interpretation when trying to make a rough inference
  on the derived states.
- Despite higher BICs for the dataset of the software release L16B and L17A,
- three-state model provides more interpretable plots and the overall better
- fit to the time series data.
- This three states also meets with a prior defined state in the thesis objective.
- Note that four-state Markov switching model for each software release is
- also tested in the analysis.
+\end_layout
+
+\end_inset
+
+Despite higher BICs for the dataset of the software release L16B and L17A,
+ three-state model provides more interpretable plots and better fit to the
+ time series data.
+ The four-state Markov switching model for each software release was also
+ briefly tested in the analysis.
  Apparently, defining four states caused more difficulty when fitting the
  model and making an inference on the states.
- The results were rather poor compare to the model with two and three states.
+ The results were rather poor when compare to the model with two and three
+ states and was not include in the report.
+ Higher number of states are more likely to give worse results and were
+ not considered.
+ Thus, the number of chosen states after applying Markov switching model
+ to each dataset was three.
+ 
 \end_layout
 
 \begin_layout Standard

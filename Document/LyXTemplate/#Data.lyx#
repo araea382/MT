@@ -335,7 +335,7 @@ https://www.ericsson.com/
 
 \end_inset
 
-, founded by Lars Magnus Ericsson since 1876, is one of the world’s leader
+, founded by Lars Magnus Ericsson in 1876, is one of the world’s leaders
  in the telecommunication industry.
  The company provides services, software products, and infrastructure related
  to information and communications technology (ICT).
@@ -343,41 +343,6 @@ https://www.ericsson.com/
  Ericsson continuously expands its services and products beyond telecoms
  sector such as mobile broadband, cloud services, transportation, and network
  design.
-\end_layout
-
-\begin_layout Standard
-LTE, widely known as 4G, is a Long-Term Evolution of the 3G network.
- The high-level network architecture of LTE is shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lte"
-
-\end_inset
-
- and is described as follows 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "dahlman20134g"
-
-\end_inset
-
-.
- The E-UTRAN, an official standard name for the radio access network of
- LTE, is the entire radio access network.
- It handles the radio communication between the User Equipment (UE) or mobile
- device and the evolved base stations called eNB.
- Each eNB is a base station which controls and manages radio communications
- with multiple devices in one or more cells.
- Several base stations are connected to a Mobility Management Entity (MME),
- which handles the high-level operation of the mobile for different UEs.
- MME establishes a connection and runs a security application to ensure
- that the UE is allowed on the network.
- In LTE mobile network, multiple UEs are connected to a single base station.
- A new UE performs a cell search procedure by searching for an available
- eNB when it first connects to the network.
- Then, the UE sends information about itself to establish a link between
- the UE and the eNB.
- 
 \end_layout
 
 \begin_layout Standard
@@ -416,6 +381,96 @@ name "lte"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LTE, widely known as 4G, is a radio access technology for wireless cellular
+ communications.
+ The high-level network architecture of LTE is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lte"
+
+\end_inset
+
+ and is described as follows 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dahlman20134g"
+
+\end_inset
+
+.
+ The E-UTRAN, an official standard name for the radio access network of
+ LTE, is the entire radio access network.
+ It handles the radio communication between the User Equipment (UE) or mobile
+ device and the base stations called eNB.
+ Each base station controls and manages radio communications with multiple
+ devices in one or more cells.
+ Several base stations are connected to a Mobility Management Entity (MME),
+ which is a control-node for the LTE network.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+which handles the high-level operation of the mobile for different UEs
+\end_layout
+
+\end_inset
+
+ MME establishes a connection and runs a security application to ensure
+ that the UE is allowed on the network.
+ In LTE mobile network, multiple UEs are connected to a single base station.
+ A new UE performs a cell search procedure by searching for an available
+ eNB when it first connects to the network.
+ Then, the UE sends information about itself to establish a link between
+ the UE and the eNB.
+ 
+\end_layout
+
+\begin_layout Standard
+Paging messages are sent by MME to each eNB with cells in UE for the purpose
+ of notifying about incoming connection requests.
+ The paging process mostly happens while UE is in idle mode.
+ UE will wake up if it gets the Paging message and will react by triggering
+ a RRC connection request message.
+ This happens in paging per second.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The UE can enter the idle mode in order to conserve battery power.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+If the UE begins to go outside the range of the cell and enters the area
+ covered by another cell, the call will be transferred to the new cell in
+ order to avoid the call termination.
+ The process of changing the serving cells or transferring an ongoing call
+ from one cell to another is called a Handover.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mention also change of serving base station/ serving call i.e., Handover
+\end_layout
+
+\begin_layout Plain Layout
+Also paging for completeness
 \end_layout
 
 \end_inset
@@ -493,6 +548,7 @@ reference "release"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -538,19 +594,33 @@ name "release"
 
 \begin_layout Standard
 There are thousands of automated tests performed.
- Each test belongs to a particular suite of tests, which belongs to a particular
- Quality Assurance (QA) Capacity.
- For this thesis framework, one suite of the test cases that tests the signaling
- capacity is focused.
+ Each test belongs to a particular suite of tests, which belong to a particular
+ Quality Assurance (QA) area.
+ For this thesis, only a subset of test cases belonging to QA Capacity area,
+ that focus on signaling capacity, is used.
  The QA Capacity is responsible for testing and tracking test cases related
  to LTE node capacity.
  Each one of these test cases has a well-defined traffic model that it tries
  to execute.
- The traffic model in this context means certain intensity (per second)
- of procedures, which can be seen as stimuli in the LTE node.
- The LTE node then increments one or more counters for each one of these
+ The traffic model, in this context, means certain intensity (per second)
+ of procedures which can be seen as stimuli in the LTE node.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+add text
+\end_layout
+
+\end_inset
+
+The LTE node then increments one or more counters for each one of these
  procedures or stimuli that it detects.
- These counters are called local events and represented by EventsPerSec.
+ These counters are called local events and represented by 
+\emph on
+EventsPerSec
+\emph default
+.
  
 \end_layout
 
@@ -575,6 +645,7 @@ reference "sw"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -598,7 +669,7 @@ status open
 
 \begin_layout Plain Layout
 An example of one software package.
- First, a QA Capacity automated test suites is started.
+ First, QA Capacity automated test suites is started.
  For each test suite, a logging loop is started and a log is produced for
  each test case.
  The log file is fed to post-processing tools, and the data output is obtained.
@@ -626,10 +697,23 @@ Data description
 \end_layout
 
 \begin_layout Standard
-This data is the data for the second generation (G2) product which contains
- 2,781 test cases.
- The data is collected on 20 January 2017 and is extracted from log files
- produced by test cases.
+The data used in the thesis
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+for the second generation (
+\emph on
+G2
+\emph default
+) product which
+\end_layout
+
+\end_inset
+
+ contains 2,781 test cases.
+ It is collected on 20 January 2017 and is extracted from log files produced
+ by test cases.
  There are different types of test cases which are being executed in the
  automated test suites.
  Each test case is viewed as an observation in the data.
@@ -650,17 +734,17 @@ NodeName: IP address or the name of a base station
 \end_layout
 
 \begin_layout Itemize
-DuProdName: Product name
+DuProdName: Product hardware name
 \end_layout
 
 \begin_layout Itemize
 Fdd/Tdd: Different standard of LTE 4G Technology.
- Fdd and Tdd stand for frequency division duplex and time division duplex,
+ FDD and TDD stand for Frequency Division Duplex and Time Division Duplex,
  respectively.
 \end_layout
 
 \begin_layout Itemize
-NumCells: Number of cells in the Antenna 
+NumCells: Number of cells in the base station
 \end_layout
 
 \begin_layout Itemize
@@ -704,7 +788,17 @@ CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%: Performance of a test case in terms of CPU utilization
+TotCpu%
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+: Performance of a test case in terms of CPU utilization
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -716,13 +810,13 @@ PerThread%
 \end_layout
 
 \begin_layout Itemize
-EventsPerSec: Event intensity 
+EventsPerSec 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-This variable contains several local events that can be used when defining
- the test cases.
+The EventsPerSec variable, or Event intensity, contains several local events
+ that can be used when defining the test cases.
  Apparently, there is no fixed number of local events in this variable as
  different test cases involve different testing procedures.
  The local events along with their values are also varied depending on which
@@ -739,6 +833,7 @@ reference "eventspersec"
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -879,9 +974,10 @@ Data preprocessing
 \end_layout
 
 \begin_layout Standard
-The data, which consists of three software releases – L16A, L16B and L17A,
+The relevant aspects of the data preprocessing step is describe here.
+ The dataset, which spans three software releases – L16A, L16B and L17A,
  is split into three datasets according to the software release.
- The test case in each dataset is sorted by its software package version,
+ The test cases in each dataset are sorted by its software package version,
  which is named alphabetically.
  The name of the software package is used as a time point in the time series.
 \end_layout
@@ -890,8 +986,11 @@ The data, which consists of three software releases – L16A, L16B and L17A,
 Test cases are not always executed properly.
  The problem is either no traffic is generated during the test case or the
  data is not logged.
- This usually result in a missing value in the EventPerSec field, which
- causes the test case to be incomplete.
+ This usually result in a missing value in the 
+\emph on
+EventPerSec
+\emph default
+ field, which causes the test case to be incomplete.
  The particular test case and all the data related to the test case is ignored.
  If the value in any other fields is missing, the test case will also be
  ignored.
@@ -906,37 +1005,48 @@ reference "eventspersec"
 
 \end_inset
 
-, it can be seen that EventsPerSec variable stores multiple values separated
- by a tab character.
+, it can be seen that the 
+\emph on
+EventsPerSec
+\emph default
+ stores multiple values separated by a tab character.
  These tab-separated values in the field are split into columns.
  The process is done in order to turn its local events and values, which
- characterize the test case, into a useable parameter.
+ characterize the test case, into usable parameters.
  These parameters are later on used as predictor variables when the Markov
  switching model is applied.
 \end_layout
 
 \begin_layout Standard
 Each software release consists of several software packages.
- In one software package, numerous test cases are executed.
+ For each specific software package, numerous test cases are executed.
  Since a software package acts as a time point in the time series, the result
- is rather difficult to be visualized from every executed test case for
- each software package.
- Hence, a test case that has the lowest value of the CPU utilization (or
- minimum value of TotCpu%) is selected to represent a performance of a specific
+ is rather difficult to visualize using every executed test case for each
  software package.
+ Hence, the test case that has the lowest value of the CPU utilization (or
+ minimum value of 
+\emph on
+TotCpu%
+\emph default
+) is selected to represent a performance of the specific software package.
  Although taking an average of multiple runs for test cases in the software
  package appears to be a good approach, it does not yield the best outcome
  in this case.
  The first reason is that manipulating data can easily be misleading.
- It is, therefore, settled to keep the original data and always use the
- unmanipulated data to visualize the time series.
  Another important reason for not using the average value of the CPU utilization
  is that the essential information in the test case could be lost.
- Each test case has its own local events in EventsPerSec field that is used
- for identifying the test case.
+ Each test case has its own local events in 
+\emph on
+EventsPerSec
+\emph default
+ field that is used for identifying the test case.
  The details of these local events will be absent if the CPU utilization
  of the test case is averaged.
- 
+ It is, therefore, settled to keep the original data and always use the
+ unmanipulated data to visualize the time series.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Comment
 status collapsed
 
@@ -956,19 +1066,18 @@ tried to be optimistic...
 \end_layout
 
 \begin_layout Standard
-After performing all the steps described above, the dataset of software
+After performing all the steps described above, the dataset of the software
  release L16A, L16B and L17A consist of 64, 241, and 144 test cases, respectivel
 y.
  Lastly, each dataset with particular software release is divided into two
  subsets.
- Ninety percent of the dataset is used for training the model and the remaining
- ten percent is left out for testing.
- 
+ Ninety percents of the dataset is used for training the model and the remaining
+ ten percents is left out for testing the model 
 \end_layout
 
 \begin_layout Standard
 Some variables in the data are chosen to be used for further analysis.
- There are in total one response variable and six predictor variables.
+ In total, there are one response variable and six predictor variables.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -976,15 +1085,19 @@ reference "data"
 
 \end_inset
 
- shows the name of variables and their description.
- The first three predictor variables are local events of the test case which
- can be found in the EventsPerSec while the last three variables are considered
- as the test environment.
- These variables appear to have a high contribution to the CPU utilization.
+ shows the name of variables and their descriptions.
+ The first three predictor variables are local events of the test case,
+ which can be found in the 
+\emph on
+EventsPerSec
+\emph default
+, while the last three variables are considered as the test environment.
+ These variables appear to have a high influence to the CPU utilization.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -993,8 +1106,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the selected variables followed by the type and the unit measure
- 
+List of the selected variables followed by its type and unit measure 
 \end_layout
 
 \end_inset

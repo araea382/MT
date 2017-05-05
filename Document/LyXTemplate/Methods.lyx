@@ -66,6 +66,7 @@
 customHeadersFooters
 theorems-ams
 theorems-sec
+logicalmkup
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -316,14 +317,14 @@ Description of statistical and other methods used with references to the
 \begin_layout Standard
 In this chapter, methods used for performing the change point analysis in
  this thesis are explained.
- It first starts by providing general details about Markov chains.
- Later on, the simple Markov switching model feature and more general model
- specifications namely Markov switching autoregressive model are discussed.
- Next three sections are devoted to some methods for estimating the values
+ It first starts by providing general information about Markov chains.
+ Later on, the simple Markov switching model feature and model specification
+ namely Markov switching autoregressive model are discussed.
+ Thereafter, three sections are devoted to methods for estimating the values
  of parameters, predicting a state for a new observation and selecting a
  suitable model for the datasets.
- Another change point method in a non-parametric approach is described.
- Finally, a simulation technique  is explained.
+ Another change-point method in a non-parametric approach is described.
+ Finally, the simulation technique  is explained.
 \end_layout
 
 \begin_layout Section
@@ -338,8 +339,8 @@ name "sec:Markov-chains"
 \end_layout
 
 \begin_layout Standard
-A Markov chain is a random process which has a property that is given on
- the current value, the future is independent of the past.
+A Markov chain is a random process which has a property that is given the
+ current value, the future is independent of the past.
  A random process 
 \begin_inset Formula $X$
 \end_inset
@@ -348,24 +349,25 @@ A Markov chain is a random process which has a property that is given on
 \begin_inset Formula $X_{t}:\:t\in T$
 \end_inset
 
- indexed by a set of 
+ indexed by a set 
 \begin_inset Formula $T$
 \end_inset
 
-, where 
+.
+ When 
 \begin_inset Formula $T=\{0,1,2,...\}$
 \end_inset
 
- is called a discrete-time process, and 
+ the process is called a discrete-time process, and when 
 \begin_inset Formula $T=[0,\infty)$
 \end_inset
 
- is called a continuous-time process.
+ it is called a continuous-time process.
  Let 
 \begin_inset Formula $X_{t}$
 \end_inset
 
- be a sequence which has values from a state space 
+ be a sequence of values from a state space 
 \begin_inset Formula $S$
 \end_inset
 
@@ -422,7 +424,7 @@ If
 \begin_inset Formula $X_{t}=i$
 \end_inset
 
- then the chain is being in state 
+ then the chain is in state 
 \begin_inset Formula $i$
 \end_inset
 
@@ -464,7 +466,7 @@ describe the distribution of the next state given the current state
 \noun default
 \color inherit
 .
- This evolution of changing from 
+ The evolution of changing from 
 \begin_inset Formula $X_{t}=i$
 \end_inset
 
@@ -501,8 +503,8 @@ as
 \uwave default
 \noun default
 \color inherit
- Markov chains are frequently assumed that these probabilities depend only
- on 
+ For Markov chains, it is frequently assumed that these probabilities depend
+ only on 
 \begin_inset Formula $i$
 \end_inset
 
@@ -971,7 +973,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/msm.png
+	filename picture/msm1.png
 	lyxscale 50
 	scale 70
 
@@ -1107,11 +1109,20 @@ reference "eq:general_mswm"
 
 \end_inset
 
- is the simplest form for the switching model where there are 
+ is the simplest form for the switching model.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+where there are 
 \begin_inset Formula $k-1$
 \end_inset
 
  structural breaks in the model parameters.
+\end_layout
+
+\end_inset
+
  To aid understanding, the baseline model is assumed to have only two states
  
 \begin_inset Formula $(k=2)$
@@ -1143,7 +1154,11 @@ reference "eq:general_mswm"
 \end_inset
 
  is a known change point.
- The transition matrix 
+ 
+\end_layout
+
+\begin_layout Standard
+The transition matrix 
 \begin_inset Formula $\mathbf{P}$
 \end_inset
 
@@ -1164,7 +1179,67 @@ reference "eq:general_mswm"
 \end_inset
 
 .
- Since the whole process 
+ A diagram showing a state-transition is shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "transition"
+
+\end_inset
+
+.
+ Note that these probabilities are independent of 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/transition.png
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+State-transition diagram
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "transition"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the whole process 
 \family roman
 \series medium
 \shape up
@@ -1260,7 +1335,76 @@ key "hamilton2005regime"
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example"
+
+\end_inset
+
+ illustrates the concept of the Markov switching model usage.
+ It is assumed to have two states where 
+\end_layout
+
+\begin_layout Plain Layout
+switching mechanism
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/msm-ex.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of a time series data where an upward and downward trends are
+ latent state.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Autoregressive (AR) model
 \end_layout
 
@@ -1344,7 +1488,7 @@ If
  process.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Markov switching autoregressive model
 \end_layout
 
@@ -1439,7 +1583,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename picture/msm-ar.png
+	filename picture/msm-ar1.png
 	lyxscale 50
 	scale 70
 
@@ -2380,6 +2524,7 @@ The simulated data, which contains 500 observations, has three different
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -2436,6 +2581,7 @@ name "sim_data"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
