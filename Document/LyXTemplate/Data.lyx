@@ -356,8 +356,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename picture/LTE.PNG
-	lyxscale 60
-	scale 80
+	lyxscale 50
+	scale 60
 
 \end_inset
 
@@ -434,8 +434,12 @@ which handles the high-level operation of the mobile for different UEs
 \end_layout
 
 \begin_layout Standard
-Paging is used for the network setup when UE is in an idle mode to conserve
- battery power.
+
+\emph on
+Paging
+\emph default
+ is used for the network setup when UE is in an idle mode to conserve battery
+ power.
  MME sends Paging messages to each eNB with cells in UE for the purpose
  of notifying about incoming connection requests.
  UE will wake up if it gets the Paging message and will react by triggering
@@ -450,15 +454,15 @@ The UE can enter the idle mode in order to conserve battery power.
 
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
-If the UE begins to go outside the range of the cell and enters the area
+ If the UE begins to go outside the range of the cell and enters the area
  covered by another cell, the call will be transferred to the new cell in
  order to avoid the call termination.
  The process of changing the serving cells or transferring an ongoing call
- from one cell to another is called a Handover.
+ from one cell to another is called a 
+\emph on
+Handover
+\emph default
+.
  The rate of handover is in per second.
  
 \end_layout
@@ -557,7 +561,7 @@ status open
 \begin_inset Graphics
 	filename picture/Release.PNG
 	lyxscale 50
-	scale 70
+	scale 60
 
 \end_inset
 
@@ -1002,6 +1006,14 @@ EventsPerSec
 \emph default
  stores multiple values separated by a tab character.
  These tab-separated values in the field are split into columns.
+ Further detail is described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:EventsPerSec"
+
+\end_inset
+
+.
  The process is done in order to turn its local events and values, which
  characterize the test case, into usable parameters.
  These parameters are later on used as predictor variables when the Markov

@@ -752,8 +752,9 @@ Steady
 \end_layout
 
 \begin_layout Standard
-Even though the value of the CPU utilization drop in the period of State1,
- there is an increase in the CPU utilization values in most of the periods.
+Even though the values of the CPU utilization which stay in State1 drop
+ in some periods, there is an increase in the CPU utilization values in
+ most of the periods.
  Hence, State1 could be defined as a 
 \emph on
 Degradation
@@ -890,26 +891,41 @@ reference "sec:Switching"
 
 \end_inset
 
-, a hypothesis was made – test environment variable was possible to have
- a switching effect.
- The reason for that is because local events in 
+, a hypothesis that the test environment variable was possible to not have
+ a switching effect was made.
+ Among all the predictor variables, the local events variables in 
 \emph on
 EventPerSec
 \emph default
- is essential for each test case and should have flexible values in each
- of the fixed number of state.
- Having a constant value for these variables would be inadequate to characterize
- the whole time series data.
- On the contrary, the test environment does not necessarily require a switching
+ is more essential than the test environment variables.
+ Having a constant value for the local events variables would be inadequate
+ to characterize the whole time series data and its evolution.
+ However, the test environment variables do not necessarily require a switching
  mechanism.
+ This is why in this study, the test environment variables switch non-switching
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+for each test case and should have flexible values in each of the fixed
+ number of state.
  Although these test environment variables affect the CPU utilization, they
  do not need to have different values in each state.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Another thing worth mentioning is that when modeling the Markov switching
- model, it is better to try estimating a simple model first.
- The model's size grows exponentially according to the number of states
+ model, it is better to try estimating a simpler model first.
+ The size of the model grows exponentially according to the number of states
  
 \begin_inset Formula $k$
 \end_inset
@@ -921,10 +937,10 @@ Another thing worth mentioning is that when modeling the Markov switching
 .
  In addition, if all coefficients have switching effects, the model will
  have more parameters to be estimated.
- The function in the package will try to fit the model and estimate coefficients
-, but there is no guarantee that the obtained results of the likelihood
- will be a global maximum.
- As a consequence, the values of estimated coefficients cannot be completely
+ The function in the package will try to fit the model and estimate the
+ value of the coefficients, but there is no guarantee that the obtained
+ results of the likelihood will be a global maximum.
+ As a consequence, the estimated values of the coefficients cannot be completely
  trusted.
  
 \begin_inset CommandInset citation
@@ -942,9 +958,8 @@ key "perlin2015ms_regress"
 \end_inset
 
  is not recommended.
- This is also one of the main reasons why not including all local events
- which were generated in each test case, and not making the model to have
- all switching coefficients.
+ This is also the main reason why not all the local events were included,
+ and the model was not made to have all the switching coefficients.
  
 \end_layout
 
@@ -956,7 +971,11 @@ reference "sec:States"
 
 \end_inset
 
-, one variable in the dataset of the software release L16A
+, a variable called 
+\emph on
+DuProdName
+\emph default
+ in the dataset of the software release L16A
 \begin_inset Note Comment
 status collapsed
 
@@ -966,18 +985,46 @@ status collapsed
 
 \end_inset
 
- was excluded from the regression model.
- Fifty-seven observations in this dataset is used to train the Markov switching
+ was excluded from the regression model as it caused a singularity problem.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The singularity often happens when the size of data is small.
+ 
+\end_layout
+
+\end_inset
+
+This problem could be reduced by increasing the size of the data.
+ However, with a limited available data, fifty-seven observations in this
+ dataset, the variable 
+\emph on
+DuProdName
+\emph default
+ has to be drop from the regression model before doing a further analysis.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Fifty-seven observations in this dataset were used to train the Markov switching
  model.
  The dataset (or the number of test cases in the software release) is rather
- small which increases an occurrence of singularity.
+ small, which increases a probability of singularity occurrence.
  Therefore, unless there is more data, it is better to drop the variable
  from the regression model before doing a further analysis.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-For each software release, each state in the model have a significantly
- high r-squared which are greater than 0.9 (see 
+For each software release, each state in the model has a significantly high
+ r-squared value which is greater than 0.9 (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Output"
@@ -985,20 +1032,38 @@ reference "chap:Output"
 \end_inset
 
 ).
- R-squared is an intuitive measure to determine how well the model fits
- the data.
- In general, the higher r-squared is the better.
- Nevertheless, high r-squared does not necessarily mean that the model fits
- the data well.
- R-square cannot determine whether the model is adequate or not.
- In order to assess this, the residual analysis is required.
- 
+ R-squared value is an intuitive measurement to determine how well the model
+ fits with the data.
+ In general, the higher r-squared value is more preferable.
+ Nevertheless, high r-squared value does not necessarily mean that the model
+ fits well with the data because the model with high r-squared value could
+ be overfitting due to too many predictor variables were used in the model.
+ Using only r-squared value to determine adequacy of the model can be misleading.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 R-squared cannot determine whether the coefficient estimates and predictions
  are biased, which is why you must assess the residual plots.
+\end_layout
+
+\begin_layout Plain Layout
+R-squared value cannot be solely used to indicate whether the model is adequate
+ or not.
+ In order to assess this, a residual analysis is required.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+There are many factors that affect value of r-squared.
+ One factor is the number of predictor variables in the model.
+ R-squared value increases when there are more terms in the model.
+ Another reason, which is somehow a consequence of adding too many predictor
+ variables, is that the model might be overfitting the data.
+ As a result, the model produces misleading high r-squared.
 \end_layout
 
 \end_inset
@@ -1007,17 +1072,8 @@ R-squared cannot determine whether the coefficient estimates and predictions
 \end_layout
 
 \begin_layout Standard
-One reason for getting a high r-squared is because of including many predictor
- variables to the model.
- R-squared increases when there are more terms in the model.
- Another reason, which is somehow a consequence of adding too many predictor
- variables, is that the model might be overfitting the data.
- As a result, the model produces misleading high r-squared.
-\end_layout
-
-\begin_layout Standard
-A Q-Q plot is a visual check for an assumptiosteady n of normality which
- provides a rough idea whether or not the assumption is plausible.
+A Q-Q plot is a visual check for an assumption of normality which provides
+ a rough idea whether or not the assumption is plausible.
  From residual analysis in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1210,8 +1266,8 @@ reference "subsec:Real-data"
 \end_layout
 
 \begin_layout Standard
-The state prediction function which is an additionsteady al implemented
- function in the package seems to work properly.
+The state prediction function which is an additional implemented function
+ in the package seems to work properly.
  This can be observed by examining the results from 
 \begin_inset CommandInset ref
 LatexCommand ref

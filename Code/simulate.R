@@ -92,33 +92,37 @@ sum(diag(tab))/sum(tab) # overall accuracy
 library(caret)
 confusionMatrix(test_state, pred)
 
-# Y <- as.factor(state)
-# Y <- factor(Y,levels(Y)[c(2,3,1)])
-# cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-# 
-# temp2 <- data.frame(Y,X=seq(1:500))
-# ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
-#   xlab("index") + ylab("") + theme_bw() +
-#   theme(legend.title = element_blank(),
-#         axis.text.y=element_blank(),
-#         axis.ticks.y=element_blank()) +
-#   ggtitle("State of the simulated data") +
-#   scale_colour_manual(values=cbPalette)
-# 
-# p1<-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
-#     ggtitle("Simulated Dataset 1")+ theme_bw()
-# 
-# p2<-ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") +
-#     xlab("index") + ylab("") + theme_bw() +
-#     theme(legend.title = element_blank(),
-#           axis.ticks.y=element_blank(),
-#           axis.text.y=element_text(colour="white",size=5),
-#           legend.position="bottom") +
-#     ggtitle("State of the the Dataset 1")
-# 
-# require(gridExtra)
-# grid.arrange(p1,p2,nrow=2)
-# 
+Y <- as.factor(state)
+Y <- factor(Y,levels(Y)[c(2,3,1)])
+cbPalette <- c("#D55E00", "#56B4E9", "#009E73",  "#CC79A7")
+
+temp2 <- data.frame(Y,X=seq(1:500))
+ggplot() + geom_point(data=temp2, aes(x=X, y=Y, colour=Y)) +
+  xlab("index") + ylab("") + theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()) +
+  ggtitle("State of the simulated data") +
+  scale_colour_manual(values=cbPalette)
+
+p1<-ggplot(data.frame(index=seq(1:n),y), aes(x=index, y=y)) + geom_line() +
+    ggtitle("Simulated Dataset 1")+ theme_bw() +
+    theme(text = element_text(size=15))
+
+p2<-ggplot() + geom_bar(data=temp2, aes(x=X, y=Y, fill=Y, color=Y),stat="identity") +
+    xlab("index") + ylab("") + theme_bw() +
+    theme(legend.title = element_blank(),
+          axis.ticks.y=element_blank(),
+          axis.text.y=element_text(colour="white",size=7),
+          legend.position="bottom",
+          text = element_text(size=15)) +
+    ggtitle("State of the the Dataset 1") +
+    scale_colour_manual(values=cbPalette) +
+    scale_fill_manual(values=cbPalette)
+
+require(gridExtra)
+grid.arrange(p1,p2,nrow=2)
+ 
 # #--------------------------------#
 # # MSwM2
 # # smoothed prob plot
@@ -161,7 +165,7 @@ chg_mswm <- which(diff(pred_state) != 0) + 1
 # Ediv_sim$k.hat
 # Ediv_sim$estimates
 # out <- Ediv_sim$estimates[c(-1,-length(Ediv_sim$estimates))] # 112 162 221 241 285 353
-# 
+
 # dat <- data.frame(index=seq(1,nrow(train)), y=train$y)
 # ggplot(data=dat, aes(x=index, y=y)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
 #   geom_vline(xintercept=out, colour="red", linetype="longdash") +
@@ -324,27 +328,32 @@ tab2 <- table(actual=test_state2, predict=pred2)
 sum(diag(tab2))/sum(tab2) # overall accuracy
 1-sum(diag(tab2))/sum(tab2) # incorrect classification
 
-# 
-# YY <- as.factor(state2)
-# YY <- factor(YY,levels(YY)[c(2,3,1)])
-# 
-# temp2 <- data.frame(YY,X=seq(1:500))
-# 
-# # plot(x=seq(1,500),y=samp, type="h")
-# pp1 <- ggplot(data.frame(index=seq(1:n),yy), aes(x=index, y=yy)) + geom_line() +
-#   ggtitle("Simulated Dataset 2")+ theme_bw()
-# pp2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=YY, fill=YY, color=YY),stat="identity") +
-#   xlab("index") + ylab("") + theme_bw() +
-#   theme(legend.title = element_blank(),
-#                      axis.ticks.y=element_blank(),
-#                      axis.text.y=element_text(colour="white",size=5),
-#                      legend.position="bottom") +
-#   ggtitle("State of the Dataset 2")
-# 
-# 
-# grid.arrange(pp1,pp2,nrow=2)
-# 
-# 
+
+YY <- as.factor(state2)
+YY <- factor(YY,levels(YY)[c(2,3,1)])
+
+temp2 <- data.frame(YY,X=seq(1:500))
+
+# plot(x=seq(1,500),y=samp, type="h")
+pp1 <- ggplot(data.frame(index=seq(1:n),yy), aes(x=index, y=yy)) + geom_line() +
+  ggtitle("Simulated Dataset 2")+ ylab("y") + theme_bw()+
+  theme(text = element_text(size=15))
+
+pp2 <- ggplot() + geom_bar(data=temp2, aes(x=X, y=YY, fill=YY, color=YY),stat="identity") +
+  xlab("index") + ylab("") + theme_bw() +
+  theme(legend.title = element_blank(),
+                     axis.ticks.y=element_blank(),
+                     axis.text.y=element_text(colour="white",size=7),
+                     legend.position="bottom",
+                     text = element_text(size=15)) +
+  ggtitle("State of the Dataset 2")+
+    scale_colour_manual(values=cbPalette) +
+    scale_fill_manual(values=cbPalette)
+
+
+grid.arrange(pp1,pp2,nrow=2)
+
+
 # #--------------------------------#
 # # MSwM2
 # # smoothed prob plot

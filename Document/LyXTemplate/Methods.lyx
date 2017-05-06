@@ -1021,7 +1021,7 @@ key "hamilton1989new"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y_{t}=X_{t}^{T}\beta_{S_{t}}+\varepsilon_{t}\label{eq:general_mswm}
+y_{t}=X_{t}\beta_{S_{t}}+\varepsilon_{t}\label{eq:general_mswm}
 \end{equation}
 
 \end_inset
@@ -1053,7 +1053,8 @@ where
 \begin_inset Formula $X_{t}$
 \end_inset
 
- are predictor variables of the time series at time 
+ is a design matrix, also known as model matrix, containing values of predictor
+ variables of the time series at time 
 \family roman
 \series medium
 \shape up
@@ -1076,7 +1077,7 @@ where
 \begin_inset Formula $\beta_{S_{t}}$
 \end_inset
 
- are coefficients in state 
+ are a column vector of coefficients in state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -1343,9 +1344,7 @@ key "hamilton2005regime"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset Note Note
 status collapsed
 
@@ -1412,6 +1411,201 @@ name "example"
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A coefficient of a predictor variable in the Markov switching model can
+ have either different values in different state or a constant value in
+ all state.
+ The variable which have the former behavior is said to have a 
+\emph on
+switching effect
+\emph default
+.
+ Likewise, the variable which have the same coefficient in all states is
+ a variable that does not have a switching effect, or said to have a 
+\emph on
+non-switching effect.
+
+\emph default
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The predictor variable which has a switching effect is called state-dependent.
+ Likewise, the predictor variable which has a non-switching effect is called
+ state-independent.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A generalized form of Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:general_mswm"
+
+\end_inset
+
+ can be defined as 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "perlin2015ms_regress"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+y_{t}=\sum_{i=1}^{N_{s}}\beta_{i,S_{t}}X_{\text{i,}t}^{s}+\sum_{j=1}^{N_{ns}}\beta_{j,t}X_{j,t}^{ns}+\varepsilon_{t}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{s}$
+\end_inset
+
+ is the number of switching coefficients in the model
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{ns}$
+\end_inset
+
+ is the number of non-switching coefficients in the model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{t}=X_{t}^{ns}\alpha_{t}+X_{t}^{s}\beta_{S_{t}}+\varepsilon_{t}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X_{t}^{ns}$
+\end_inset
+
+ contains all predictor variables that have non-switching effect of the
+ time series at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\alpha_{t}$
+\end_inset
+
+ are non-switching coefficients of the time series at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X_{t}^{s}$
+\end_inset
+
+ contains all predictor variables that have the switching effect of the
+ time series at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\beta_{S_{t}}$
+\end_inset
+
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+are switching coefficients in state 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+, where 
+\begin_inset Formula $S_{t}\in\{1,...,k\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ follows a Normal distribution with zero mean and variance given by 
+\begin_inset Formula $\sigma_{S_{t}}^{2}$
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1547,7 +1741,7 @@ The first order Markov switching autoregressive model is
 \color none
 \begin_inset Formula 
 \[
-y_{t}=X_{t}^{T}\beta_{S_{t}}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{t}
+y_{t}=X_{t}\beta_{S_{t}}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{t}
 \]
 
 \end_inset
@@ -1589,8 +1783,7 @@ reference "msm-ar"
 \end_inset
 
 .
- It can be clearly seen that there is a dependency at the observation level,
- which is added .
+ It can be clearly seen that there is a dependency at the observation level.
 \begin_inset Note Comment
 status collapsed
 
@@ -1700,9 +1893,43 @@ key "kim1999state"
 
  used a Markov chain Monte Carlo simulation method based on the Bayesian
  inference.
- In this thesis framework, E-M algorithm is used in estimating parameters
- and is briefly described below.
  
+\end_layout
+
+\begin_layout Standard
+In this thesis framework, the E-M algorithm is used in estimating parameters
+ as the algorithm gives an effective results, numerically stable, and easy
+ to implement.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ryden2008versus"
+
+\end_inset
+
+ compared the computational perspective between the E-M algorithm and the
+ Gibbs sampling in estimating parameters.
+ In most cases, Gibbs sampling tended to have less computational time than
+ the E-M algorithm.
+ However, the study indicated that if the number of states was unknown,
+ the E-M algorithm would be simpler and quicker in computing the estimated
+ parameters for all candidate models.
+ The E-M algorithm is briefly described below.
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Summing up this case, we first remark that if one wants to compute only
+ the best model without any further information on how plausible it is relative
+ to other ones, then the simplest solution is using EM to compute MLEs for
+ all candidate models and then calculating and comparing their BICs or some
+ other penalized likelihood criterion.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1725,14 +1952,27 @@ key "dempster1977maximum"
 \end_inset
 
  can be viewed as missing data values.
- The set of parameters 
+ 
+\end_layout
+
+\begin_layout Standard
+The set of parameters 
 \begin_inset Formula $\theta$
 \end_inset
 
  are estimated by an iterative two-step procedure.
  In the first step, the algorithm starts with arbitrary initial parameters,
- and then finds the expected values of the state process from the given
- observations.
+ and then finds
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+include feed-back of values: hint to the detail in M-step
+\end_layout
+
+\end_inset
+
+ the expected values of the state process from the given observations.
  In the second step of the iterative procedure, a new maximum likelihood
  from the derived parameters in the previous step is calculated.
  These two steps are repeated until the maximum value of the likelihood
@@ -1763,6 +2003,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/em.png
+	lyxscale 40
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -1770,7 +2023,7 @@ A flowchart showing the process of the Expectation-Maximization algorithm.
  The algorithm begins with a set of initial values.
  The E-step is performed by computing a filtering and smoothing algorithm.
  Then, the M-step is performed.
- The algorithm will iteratively compute until converge.
+ Iterating both steps until convergence.
 \end_layout
 
 \end_inset
@@ -1803,7 +2056,12 @@ In this step,
 \end_inset
 
  is the derived set of parameters in M-step from the previous iteration,
- and the available observations of time 
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+ is a current iteration in the algorithm.
+ The available observations of time 
 \begin_inset Formula $t-1$
 \end_inset
 
@@ -1826,7 +2084,7 @@ In this step,
 \begin_inset Formula $T$
 \end_inset
 
- is all observations in the data and 
+ is the number of all observations in the data and 
 \begin_inset Formula $j=1,2,...,k$
 \end_inset
 
@@ -2163,8 +2421,8 @@ reference "eq:loglik"
 \end_inset
 
 .
- This new set of parameters is more precise than the previous estimated
- value of the maximum likelihood.
+ This new set of parameters is more precise and better than the previous
+ estimated value of the maximum likelihood.
  
 \begin_inset Formula $\theta^{(n+1)}$
 \end_inset
@@ -2194,14 +2452,64 @@ n.
  states.
  
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 any of the 
 \begin_inset Formula $k$
 \end_inset
 
- state
+ states
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Convergence of the E-M algorithm
+\end_layout
+
+\begin_layout Standard
+The E- and M-step are iteratively computed until the algorithm converges.
+ The algorithm will terminate when the different between the previous and
+ current estimate values is less than a specific value.
+ This specific value called a stopping criteria needs to be specified beforehand.
+ The convergence is assured since the value of the log-likelihood function
+ will increase in each iteration.
+ However, the E-M algorithm does not guarantee to always converge to a global
+ maximum.
+ The convergence of the algorithm is also possible to be only a local maxima.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+It is possible for the algorithm to converge to local maxima
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+(max(abs(object["Fit"]["logLikel"] - oldll))/(0.1 + max(abs(object["Fit"]["logLik
+el"]))) < control$tol)
+\end_layout
+
+\begin_layout Plain Layout
+&
+\end_layout
+
+\begin_layout Plain Layout
+(max(abs(object["Coef"]-oldcoef),na.rm=TRUE)/(0.1+max(abs(object["Coef"]),na.rm=TRU
+E)) < control$tol) )
 \end_layout
 
 \end_inset
@@ -2215,10 +2523,14 @@ State prediction
 
 \begin_layout Standard
 A function to predict the most probable state for the new observation is
- implemented in this analysis (see 
+ implemented in 
+\emph on
+R
+\emph default
+ in this analysis (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:MSwM-Package"
+reference "sec:MSwM-Package"
 
 \end_inset
 
@@ -2279,10 +2591,17 @@ Model selection
 \end_layout
 
 \begin_layout Standard
-Model selection is a task of selecting the most suitable model for a given
- set of data, based on the quality of the model.
+In this study, several Markov switching models will be carried out.
+ First, the number of states for the model will be chosen.
+ Then, the number of switching coefficients in the model will be decided.
+ Models will be selection is performed, based on the quality of the model.
+\end_layout
+
+\begin_layout Standard
+Model selection is a task of selecting the best model for a given set of
+ data.
  The Bayesian Information Criterion (BIC) is widely employed in the applied
- literature and proved to be useful in selecting the model among a finite
+ literature, and proved to be useful in selecting the model among a finite
  set of models.
  It is also known as Schwarz Information Criterion 
 \begin_inset CommandInset citation
@@ -2292,6 +2611,8 @@ key "schwarz1978estimating"
 \end_inset
 
 .
+ Model with the lowest value is preferred.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2343,9 +2664,24 @@ where
 \end_inset
 
  is the number of parameters to be estimated in the model.
- One benefit from using BIC is that this criterion heavily penalizes model
+ While including more parameters or terms will result in a higher likelihood,
+ it can also leads to an overfitting.
+ BIC attempts to reduce the risk of overfitting by taking into account the
+ number of parameters in the model.
+ Hence, BIC can heavily penalizes model complexity.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+One benefit from using BIC is that this criterion heavily penalizes model
  complexity as it takes into account the number of parameters in the model.
- In addition, BIC attempts to reduce the risk of over-fitting.
+ In addition, BIC attempts to reduce the risk of overfitting.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2401,8 +2737,12 @@ https://cran.r-project.org/web/packages/ecp/index.html
 
 \end_inset
 
- is an extension package in R which mainly focuses on computing a non-parametric
- test for multiple change point analysis.
+ is an extension package in 
+\emph on
+R
+\emph default
+ which mainly focuses on computing a non-parametric test for multiple change
+ point analysis.
  This change point method is applicable to both univariate and multivariate
  time series.
  A fundamental idea of the package is based on the hierarchical clustering
@@ -2485,52 +2825,26 @@ Simulation study
 \end_layout
 
 \begin_layout Standard
-Since the state of the CPU utilization in the data is unknown, an accuracy
- of the model cannot be computed.
- One possible solution to test and verify how well the implemented predict
- function performs is to used a simulation technique.
- The data that consists of two predictor variables and one response variable
+The state of the CPU in a real data is unknown in the study.
+ As a consequence, an accuracy of the Markov switching model and the E-divisive
+ method cannot be computed, and the comparison between both methods can
+ hardly make.
+ One possible solution to test how effective both methods are, and to verify
+ how well the implemented state prediction function performs is to used
+ a simulation technique.
+ The dataset that consists of two predictor variables and one response variable
  with already known states is simulated.
- 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $y$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- is assumed to be a value of a CPU usage.
  The actual models of each state are 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-y=\begin{cases}
+y_{t}=\begin{cases}
 \begin{array}{c}
-10+0.6X1_{t}-0.9X2_{t}+0.5Y_{t-1}+\varepsilon_{t}^{(1)}\\
-2+0.8X1_{t}+0.2Y_{t-1}+\varepsilon_{t}^{(2)}\\
--12+0.7X1_{t}+0.2X2_{t}-0.2Y_{t-1}+\varepsilon_{t}^{(3)}
+10+0.6X_{1,t}-0.9X{}_{2,t}+0.5y_{t-1}+\varepsilon_{t}^{(1)}\\
+2+0.8X_{1,t}+0.2y_{t-1}+\varepsilon_{t}^{(2)}\\
+-12+0.7X_{1,t}+0.2X{}_{2.t}-0.2y_{t-1}+\varepsilon_{t}^{(3)}
 \end{array} & \begin{array}{c}
 \varepsilon_{t}^{(1)}\sim N(0,1);\quad\mathrm{Normal}\\
 \varepsilon_{t}^{(2)}\sim N(2,0.5);\quad\mathrm{Bad}\\
@@ -2544,8 +2858,46 @@ y=\begin{cases}
 \end_layout
 
 \begin_layout Standard
+where 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is assumed to be a value of a CPU usage of the time series at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1,t}$
+\end_inset
+
+ is a predictor variable generated by a uniform distribution on 
+\begin_inset Formula $[50,200]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2,t}$
+\end_inset
+
+ is a predictor variable generated by a uniform distribution on 
+\begin_inset Formula $[0,50]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 There are two simulated datasets – Dataset 1 and Dataset 2 – and each of
  them contains 500 observations.
+ Both datasets have different time periods where the switches between states
+ occur.
+ The simulated Dataset 1 has a longer duration to remain in its own state
+ before switching to the other states than the simulated Dataset 2.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2721,6 +3073,39 @@ name "sim_data2"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Technical aspects
+\end_layout
+
+\begin_layout Standard
+The thesis work has been carried out using the 
+\emph on
+R
+\emph default
+ programming language for the purpose of data cleaning, preprocessing, and
+ analysis.
+ The Markov switching model was performed using the 
+\emph on
+MSwM
+\emph default
+ package.
+ Various extensions and modifications were implemented in the package (see
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:MSwM-Package"
+
+\end_inset
+
+).
+ For the E-divisive method, the 
+\emph on
+ecp
+\emph default
+ package was used.
+ 
 \end_layout
 
 \begin_layout Standard

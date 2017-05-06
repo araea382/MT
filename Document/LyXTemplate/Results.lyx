@@ -363,7 +363,7 @@ https://cran.r-project.org/web/packages/MSwM/index.html
  More details about the package can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:MSwM-Package"
+reference "sec:MSwM-Package"
 
 \end_inset
 
@@ -691,9 +691,12 @@ Software release L16A
 \begin_layout Standard
 Before performing the Markov switching autoregressive model, a standard
  linear regression model was fitted to the dataset first.
- It was found that one coefficient in the dataset of the software release
- L16A was not defined because of singularity i.e., a perfect correlation between
- predictor variables.
+ It was found that a coefficient of 
+\emph on
+DuProdName
+\emph default
+ in the dataset of the software release L16A was not defined because of
+ singularity i.e., a perfect correlation between predictor variables.
  Hence, 
 \emph on
 DuProdName 

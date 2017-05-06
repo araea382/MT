@@ -58,6 +58,8 @@
 
 % avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+\usepackage{algorithm,algpseudocode}
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -295,10 +297,25 @@ thepage
 \end_layout
 
 \begin_layout Chapter
-Software
+Implementation in 
+\emph on
+R
+\emph default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Implementation"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 Both R and Python are powerful programming languages for data analysis.
  Python has been known as a general purpose language with an easy to understand
  syntax.
@@ -312,7 +329,7 @@ Both R and Python are powerful programming languages for data analysis.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 With strengths and weaknesses between R and Python described earlier, R
  is chosen to be used in this study.
  R offers more implemented algorithms to solve the problem at hand.
@@ -323,12 +340,6 @@ With strengths and weaknesses between R and Python described earlier, R
  R proves to be a good choice as it provides a great feature in creating
  an interactive graphic.
 \end_layout
-
-\begin_layout Chapter
-MSwM Package
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:MSwM-Package"
 
 \end_inset
 
@@ -349,6 +360,169 @@ You may want to include an appendix to describe the software used in the
  Ideally, you could post your code online (github is a popular place) and
  link to it from here.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+EventsPerSec
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:EventsPerSec"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+EventsPerSec
+\emph default
+ variable contains several local events in the test case which are separated
+ by a tab character.
+ A function to split tab-separated values in the field into columns is described
+ by the following steps.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Extract local events in EventsPerSec
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+For{each test case}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Split the vector of local events with its value into elements} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+For{each element} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Split the element into the local event and the value}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+If{the column of the local event exists in the data}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Insert value}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Else{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Create new column for this local event and insert its value}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Replace missing value with zero}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+MSwM Package
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:MSwM-Package"
 
 \end_inset
 
@@ -385,7 +559,7 @@ Note that transition probability define it the other way
 \end_layout
 
 \begin_layout Standard
-Code is further implemented, and some modifications are also made in the
+Code was further implemented, and some modifications were also made in the
  function to handle warnings and errors produced when fitting the model.
  These modifications are described in more details here.
 \end_layout
@@ -640,15 +814,15 @@ These values do not have much effect to the algorithm.
 \end_layout
 
 \begin_layout Paragraph
-Predict function
+State prediction function
 \end_layout
 
 \begin_layout Standard
 An implementation for the state prediction is added in the package.
  This function predicts the most probable state that a new observation will
  belong to.
- The input of the predict function is the training model and a new set of
- the data.
+ The input of the state prediction function is the training model and a
+ new set of the data.
  The function computes filtered probabilities or Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -669,6 +843,233 @@ status open
 \begin_layout Plain Layout
 \noindent
 statePredict(object, newdata)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+State prediction function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+For{each observation in the test set}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Compute the probabilities of each state given that the available observati
+on is up to time $T$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$P(S_{T+1}=j|
+\backslash
+Omega_{T};
+\backslash
+theta)=
+\backslash
+sum_{i=1}^{k}p_{ij}P(S_{T}=i|
+\backslash
+Omega_{T};
+\backslash
+theta)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$ $
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Compute the conditional densities of $y_{T+1}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$f(y_{
+\backslash
+text{T+1}}|
+\backslash
+Omega_{T};
+\backslash
+theta)=
+\backslash
+sum_{j=1}^{k}f(y_{T+1}|S_{T+1}=j,
+\backslash
+Omega_{T};
+\backslash
+theta)P(S_{T+1}=j|
+\backslash
+Omega_{T};
+\backslash
+theta)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$ $
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Compute the filter probabilites of each state
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$P(S_{T+1}=j|
+\backslash
+Omega_{T+1};
+\backslash
+theta)=
+\backslash
+frac{f(y_{T+1}|S_{T+1}=j,
+\backslash
+Omega_{T};
+\backslash
+theta)P(S_{T+1}=j|
+\backslash
+Omega_{T};
+\backslash
+theta)}{f(y_{T+1}|
+\backslash
+Omega_{T};
+\backslash
+theta)}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$ $
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State{Find a state which has the maximum value in the filter probabilites}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
