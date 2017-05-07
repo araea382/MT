@@ -318,11 +318,16 @@ For the Markov switching model, the number of states and the number of switching
  Markov switching model.
  This method is efficient if data have an obvious pattern of shifting in
  the time series.
- Implemented function of the state prediction appear to functionally work
- well when investigating on the simulated data.
+ 
+\end_layout
+
+\begin_layout Standard
+Moreover, an implemented function of the state prediction appear to functionally
+ work well when investigating on the simulated data.
  The accuracy from both simulated datasets were high.
- The results from the Markov switching model was considered to be the representa
-tive for the analysis.
+ From performing both methods in the simulated data and the real data, the
+ results from the Markov switching model was considered to be the representative
+ for the analysis.
  The E-divisive method was generally used as a guideline and also a confirmation
  for a change in the CPU state.
 \end_layout
@@ -344,8 +349,8 @@ Further work
 \end_layout
 
 \begin_layout Standard
-The Markov switching model gave quite a promising results but several improvemen
-ts could also be done to increase the robustness of the analysis.
+The Markov switching model gave quite a promising result but several improvement
+s could also be done to increase the robustness of the analysis.
  
 \end_layout
 
@@ -374,9 +379,11 @@ Furthermore, there are still some performance metrics in QA Capacity area
 \end_layout
 
 \begin_layout Standard
-Finally, in the future if some test cases has been label with state, a semi-supe
-rvised learning algorithm could also be implemented.
- This is in between 
+Finally, in the future if some test cases has been labeled with state from
+ a domain expert, a semi-supervised learning algorithm, a technique that
+ falls between supervised learning and unsupervised learning, could also
+ be implemented.
+ 
 \end_layout
 
 \begin_layout Standard

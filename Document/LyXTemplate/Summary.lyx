@@ -124,40 +124,29 @@ adds table of contents entry
 \end_layout
 
 \begin_layout Standard
-This thesis proposes methods to analyze the CPU utilization.
- The state of the CPU
-\end_layout
-
-\begin_layout Standard
-Markov switching model
-\end_layout
-
-\begin_layout Standard
-autoregressive model
-\end_layout
-
-\begin_layout Standard
-Markov switching autoregressive model
-\end_layout
-
-\begin_layout Standard
-E-divisive method
-\end_layout
-
-\begin_layout Standard
-Parametric and non-parametric analysis 
-\end_layout
-
-\begin_layout Standard
-Using simulation 
-\end_layout
-
-\begin_layout Standard
-simulated data
-\end_layout
-
-\begin_layout Standard
-Results show that
+The purpose of this work is to apply machine learning techniques that are
+ suitable for detecting any changes in the state of the CPU, and also in
+ the test environment that effects the CPU utilization.
+ The CPU utilization which is one of the performance metrics of the software
+ is analyzed.
+ The detection relies on a time series model, based on a Markov switching
+ model, to identify the changes.
+ A historical behavior of the data can be described by a first-order autoregress
+ion.
+ The Markov switching model then becomes a Markov switching autoregressive
+ model.
+ Another approach based on a non-parametric analysis, a distribution-free
+ method that requires fewer assumptions, called an E-divisive method is
+ purposed.
+ The method is used to detect any abrupt change point locations in the time
+ series data.
+ Since the given data does not contain any ground truth about the state
+ of the CPU, the evaluation of the methods cannot be made.
+ A comparison between the Markov switching model and the E-divisive method
+ are studied using simulated datasets with a labeled data.
+ Results show that the former method is preferable because of its efficiency
+ and providing a better performance.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -165,8 +154,7 @@ Results show that
 \series bold
 Keywords:
 \series default
- Markov switching model, Non-parametric analysis, Change point analysis,
- CPU utilization
+ Markov switching model, Non-parametric analysis, CPU utilization
 \end_layout
 
 \end_body

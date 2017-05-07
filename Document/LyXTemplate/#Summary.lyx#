@@ -124,12 +124,34 @@ adds table of contents entry
 \end_layout
 
 \begin_layout Standard
-This is the summary of the thesis.
+The purpose of this work is to apply machine learning techniques that are
+ suitable for detecting any changes in the state of the CPU, and also in
+ the test environment that effects the CPU utilization.
+ The CPU utilization.
+ The detection relies on a time series model, based on a Markov switching
+ model, to identify the changes.
+ A historical behavior of the data can be described with a first-order autoregre
+ssion.
+ The Markov switching model then becomes a Markov switching autoregressive
+ model.
+ Another simpler approach based on a non-parametric analysis, a distribution-fre
+e method that requires fewer assumptions, called an E-divisive method is
+ purposed.
+ The method is used to detect any abrupt change point locations in the time
+ series data.
+ The comparison between the Markov switching model and the E-divisive method
+ are studied using simulated datasets with a labeled data.
+ Results show that the former method is preferable because of its efficiency
+ and providing a better performance.
  
 \end_layout
 
 \begin_layout Standard
-Keywords: 
+
+\series bold
+Keywords:
+\series default
+ Markov switching model, Non-parametric analysis, CPU utilization
 \end_layout
 
 \end_body

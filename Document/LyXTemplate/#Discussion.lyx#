@@ -354,8 +354,17 @@ n of switching coefficients.
  analysis.
  However, only examining the BIC when choosing a model for the data is insuffici
 ent.
- Other aspects should also be taken into account along with the BIC such
- as model outputs and plots.
+ Remark that BIC might be unreliable for a small or moderate dataset as
+ BIC is derived under the assumption of a normal distributed data 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ryden2008versus"
+
+\end_inset
+
+.
+ Therefore, other aspects should also be taken into account along with the
+ BIC such as model outputs and plots.
  
 \end_layout
 
@@ -748,7 +757,7 @@ Steady
 \end_deeper
 \end_inset
 
-
+ Sudden change in State1
 \end_layout
 
 \begin_layout Standard
@@ -884,6 +893,22 @@ Despite higher BICs for the dataset of the software release L16B and L17A,
 \end_layout
 
 \begin_layout Standard
+Among all the predictor variables, the local events variables in 
+\emph on
+EventPerSec
+\emph default
+ is more essential than the test environment variables.
+ Having a constant value for the local events variables would be inadequate
+ to characterize the whole time series data and its evolution.
+ However, the test environment variables do not necessarily require a switching
+ mechanism.
+ This is why in this study, the test environment variable was possible to
+ not have a switching effect.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -893,22 +918,8 @@ reference "sec:Switching"
 
 , a hypothesis that the test environment variable was possible to not have
  a switching effect was made.
- Among all the predictor variables, the local events variables in 
-\emph on
-EventPerSec
-\emph default
- is more essential than the test environment variables.
- Having a constant value for the local events variables would be inadequate
- to characterize the whole time series data and its evolution.
- However, the test environment variables do not necessarily require a switching
- mechanism.
- This is why in this study, the test environment variables switch non-switching
  
 \end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
 
 \begin_layout Plain Layout
 for each test case and should have flexible values in each of the fixed
@@ -1039,11 +1050,13 @@ reference "chap:Output"
  model is a good model because the model with high r-squared value could
  be overfitting due to too many predictor variables were used in the model.
  Using only r-squared value to determine adequacy of the model can be misleading.
+ A residual analysis should be considered when evaluating a model.
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 R-squared cannot determine whether the coefficient estimates and predictions
@@ -1072,24 +1085,23 @@ There are many factors that affect value of r-squared.
 \end_layout
 
 \begin_layout Standard
-A Q-Q plot is a visual check for an assumption of normality which provides
- a rough idea whether or not the assumption is plausible.
- From residual analysis in 
+A Q-Q plot is a visual check for an assumption of normality.
+ The plot provides a rough idea whether the assumption is plausible or not.
+ From the residual analysis in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Residual"
 
 \end_inset
 
-, it revealed that residuals did not completely follow the normal distribution
- for all three datasets.
+, it revealed that the residuals of all three datasets did not completely
+ follow the normal distribution.
  This is not surprising as real data rarely have a well-defined structure.
  Since the Markov switching model assumed normal distributed residuals,
- the chosen models might have lesser in credibility in the results.
- However, recall that the dataset used in this thesis is not sufficiently
- large.
- With small samples, the Q-Q plot is often less clearer and difficult to
- spot a basic feature as it might represent more noise.
+ the chosen models might have less credible results.
+ In addition, the dataset used in this thesis is not sufficiently large.
+ As a result, the Q-Q plot is often unclear and difficult to spot its basic
+ feature due to more noises.
  
 \begin_inset Note Comment
 status collapsed
@@ -1145,14 +1157,23 @@ The remaining residuals show that the model has captured the patterns in
 \begin_layout Standard
 More importantly, the results of the Markov switching model could be affected
  by various types of bias.
- First of all, training the model with a small dataset.
- Due to a lack of data, the model will be less effective or unable to capture
- the behavior for new observations that lie outside the range of training
- data.
- For this reason, a prediction for the new observations might not be accurate
+ Due to a small size of the training data, the training model will not be
+ very effective and unable to capture the behaviors of new observations
+ that lie outside the range of the training data.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+For this reason, a prediction for the new observations might not be accurate
  as it should be.
- This is like what happened when making a state prediction for the software
- release L16A (see 
+ 
+\end_layout
+
+\end_inset
+
+This could be seen in a state prediction of the software release L16A (see
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Predict"
@@ -1160,8 +1181,23 @@ reference "sec:Predict"
 \end_inset
 
 ).
- Second, other factors which are not considered in the model might also
- be the reason of causing a bias.
+ Secondly, only the predictor variables that have been analyzed to have
+ significant impacts on the CPU utilization were included in the model.
+ However, many other variables that is possible to have minor impact on
+ the CPU utilization but were overlooked.
+ Therefore, there might be some bias by not including these variables into
+ the analysis.
+ Finally, the criteria that has been used to select the number of states
+ and the number of switching coefficients in the model are rather subjective.
+ Hence, these chosen number might not be the best for different perspectives
+ and so could be counted as one of the bias as well.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+other factors which are not considered in the model might also be the reason
+ of causing a bias.
  The chosen predictor variables in this thesis are variables that have a
  partial prior knowledge and have been analyzed to have some significant
  impacts on CPU utilization.
@@ -1169,7 +1205,14 @@ reference "sec:Predict"
  that is overlooked.
  Finally, selecting the number of states and switching coefficients in the
  model could cause a bias as well.
+ Finally, selecting the number of states and the number of switching coefficient
+s in the model could cause a bias as well.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

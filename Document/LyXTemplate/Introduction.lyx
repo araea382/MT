@@ -542,8 +542,8 @@ For the current Ericsson setting, each software package running through
  It is proven that the observed values are not completely independent of
  each other i.e., the performance of the current software package depends
  on the performance from the prior version of the software package.
- Therefore, additional dependencies are taken into consideration by a first
- order autoregression when modeling.
+ Therefore, additional dependencies are taken into consideration by a first-orde
+r autoregression when modeling.
  The Markov switching model becomes the Markov switching autoregressive
  model.
  This model is applied to the given data in order to discover the changes

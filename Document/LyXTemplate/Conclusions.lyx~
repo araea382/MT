@@ -379,7 +379,7 @@ Furthermore, there are still some performance metrics in QA Capacity area
 \end_layout
 
 \begin_layout Standard
-Finally, in the future if some test cases has been label with state from
+Finally, in the future if some test cases has been labeled with state from
  a domain expert, a semi-supervised learning algorithm, a technique that
  falls between supervised learning and unsupervised learning, could also
  be implemented.
