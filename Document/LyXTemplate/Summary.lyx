@@ -124,28 +124,34 @@ adds table of contents entry
 \end_layout
 
 \begin_layout Standard
-The purpose of this work is to apply machine learning techniques that are
- suitable for detecting any changes in the state of the CPU, and also in
- the test environment that effects the CPU utilization.
- The CPU utilization which is one of the performance metrics of the software
- is analyzed.
- The detection relies on a time series model, based on a Markov switching
- model, to identify the changes.
+The core idea of this thesis is to reduce workload of manual inspection
+ when the performance analysis of an updated software is required.
+ CPU utilization, which is one of the essential factors for evaluating the
+ performance, is analyzed.
+ The purpose of this work is to apply machine learning techniques that are
+ suitable for detecting the state of the CPU utilization, and also any changes
+ in the test environment that effects the CPU utilization.
+ The detection relies on a Markov switching model to identify structural
+ changes, which are assumed to follow an unobserved Markov chain.
  A historical behavior of the data can be described by a first-order autoregress
 ion.
- The Markov switching model then becomes a Markov switching autoregressive
+ Then, the Markov switching model becomes a Markov switching autoregressive
  model.
  Another approach based on a non-parametric analysis, a distribution-free
  method that requires fewer assumptions, called an E-divisive method is
  purposed.
- The method is used to detect any abrupt change point locations in the time
- series data.
- Since the given data does not contain any ground truth about the state
- of the CPU, the evaluation of the methods cannot be made.
- A comparison between the Markov switching model and the E-divisive method
- are studied using simulated datasets with a labeled data.
+ This method used hierarchical clustering algorithm to detect multiple change
+ point locations in the time series data.
+ As the data used in this analysis does not contain any ground truths, the
+ evaluation of the methods is analyzed by generating simulated data with
+ a known state.
+ Also, a comparison between the Markov switching model and the E-divisive
+ method are studied based on the simulated data.
  Results show that the former method is preferable because of its efficiency
  and providing a better performance.
+ The E-divisive method have a higher rate of missed detections.
+ The results from applying the Markov switching autoregressive model to
+ the real data are presented with interpretations and discussions.
  
 \end_layout
 

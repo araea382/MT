@@ -1,0 +1,219 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,a4paper,english,intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn]{scrbook}
+\usepackage{lmodern}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setcounter{secnumdepth}{3}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{babel}
+\usepackage{array}
+\usepackage{verbatim}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[authoryear]{natbib}
+\usepackage{nomencl}
+% the following is useful when we have the old nomencl.sty package
+\providecommand{\printnomenclature}{\printglossary}
+\providecommand{\makenomenclature}{\makeglossary}
+\makenomenclature
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1,
+ breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}[chapter]
+\providecommand{\algorithmname}{Algorithm}
+\floatname{algorithm}{\protect\algorithmname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}[section]
+  \theoremstyle{definition}
+  \newtheorem{defn}[thm]{\protect\definitionname}
+  \theoremstyle{plain}
+  \newtheorem*{thm*}{\protect\theoremname}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% increases link area for cross-references and autoname them
+% if you change the document language to e.g. French
+% you must change "extrasenglish" to "extrasfrench"
+\AtBeginDocument{%
+ \renewcommand{\ref}[1]{\mbox{\autoref{#1}}}
+}
+\def\refnamechanges{%
+ \renewcommand*{\equationautorefname}[1]{}
+ \renewcommand{\sectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
+ %\renewcommand{\figureautorefname}{Fig.\negthinspace}
+ %\renewcommand{\tableautorefname}{Tab.\negthinspace}
+}
+\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
+
+% in case somebody want to have the label "Equation"
+%\renewcommand{\eqref}[1]{Equation~(\negthinspace\autoref{#1})}
+
+% that links to image floats jumps to the beginning
+% of the float and not to its caption
+\usepackage[figure]{hypcap}
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% makes caption labels bold
+% for more info about these settings, see
+% http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf
+\setkomafont{captionlabel}{\bfseries}
+\setcapindent{1em}
+
+% enables calculations
+\usepackage{calc}
+
+% fancy page header/footer settings
+% for more information see section 9 of
+% ftp://www.ctan.org/pub/tex-archive/macros/latex2e/contrib/fancyhdr/fancyhdr.pdf
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+% increases the bottom float placement fraction
+\renewcommand{\bottomfraction}{0.5}
+
+% avoids that floats are placed above its sections
+\let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+\usepackage{natbib}
+\usepackage{algorithm,algpseudocode}
+
+\@ifundefined{showcaptionsetup}{}{%
+ \PassOptionsToPackage{caption=false}{subfig}}
+\usepackage{subfig}
+\makeatother
+
+  \providecommand{\definitionname}{Definition}
+  \providecommand{\theoremname}{Theorem}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+
+
+\subject{Master Thesis in Statistics and Data Mining}
+
+\title{Applying Machine Learning to Performance Trend Analysis}
+
+\author{Araya Eamrurksiri}
+
+\publishers{\includegraphics{\string"LinkUniv sigill blk\string".png}\vspace{\baselineskip}\\
+Division of Statistics\\
+Department of Computer and Information Science\\
+Linköping University\\
+\vspace{-3cm}
+}
+
+\lowertitleback{\textbf{Supervisor}\smallskip{}
+\\
+Prof. Krzysztof Bartoszek \bigskip{}
+\\
+\textbf{Examiner}\smallskip{}
+\\
+Prof. Anders Nordgaard\smallskip{}
+\\
+}
+
+\dedication{\emph{Nothing endures but change (Heraclitus)}}
+
+\maketitle
+\cleardoublepage{}
+
+\lhead{\rightmark}
+
+\rhead[\leftmark]{}
+
+\lfoot[\thepage]{}
+
+\cfoot{}
+
+\rfoot[]{\thepage}
+
+\tableofcontents{}
+
+\cleardoublepage{}
+
+\pagestyle{plain}
+
+\include{Summary}
+
+\cleardoublepage{}
+
+\lhead[]{Acknowledgments}
+
+\rhead[Acknowledgments]{}
+
+\include{Acknowledgments}
+
+\cleardoublepage{}
+
+\pagestyle{fancy}
+
+\lhead[\chaptername~\thechapter]{\rightmark}
+
+\include{Introduction}
+
+\include{Data}
+
+\include{Methods}
+
+\include{Results}
+
+\include{Discussion}
+
+\include{Conclusions}
+
+\cleardoublepage{}
+
+
+\appendix
+\include{Appendix1}
+
+\cleardoublepage{}
+
+\bibliographystyle{apalike}
+\bibliography{ThesisTemplate}
+
+\cleardoublepage{}
+
+\lhead[]{Nomenclature}
+
+\rhead[Nomenclature]{}
+
+\printnomenclature[2.5cm]{}
+\end{document}

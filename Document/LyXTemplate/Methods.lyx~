@@ -1026,7 +1026,11 @@ y_{t}=X_{t}\beta_{S_{t}}+\varepsilon_{t}\label{eq:general_mswm}
 
 \end_inset
 
-where 
+where, 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -1049,7 +1053,8 @@ where
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $X_{t}$
 \end_inset
 
@@ -1073,7 +1078,8 @@ where
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $\beta_{S_{t}}$
 \end_inset
 
@@ -1101,7 +1107,8 @@ status collapsed
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
@@ -1520,10 +1527,11 @@ y_{t}=X_{t}^{ns}\alpha_{t}+X_{t}^{s}\beta_{S_{t}}+\varepsilon_{t}
 \end_layout
 
 \begin_layout Standard
-where 
+where, 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $X_{t}^{ns}$
 \end_inset
 
@@ -1535,7 +1543,8 @@ where
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $\alpha_{t}$
 \end_inset
 
@@ -1546,7 +1555,8 @@ where
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $X_{t}^{s}$
 \end_inset
 
@@ -1558,7 +1568,8 @@ where
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family roman
 \series medium
@@ -1597,7 +1608,8 @@ are switching coefficients in state
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $\varepsilon_{t}$
 \end_inset
 
@@ -1625,12 +1637,13 @@ key "cryer1986time"
 \end_inset
 
 .
- The number of autoregressive lags (i.e., a time span between observations
+ The number of autoregressive lags (i.e., the number of prior values used
+ in the model
 \begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
- a later point in the data series
+ a time span between observations/ a later point in the data series
 \end_layout
 
 \end_inset
@@ -2874,7 +2887,11 @@ y_{t}=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-where 
+where, 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -2885,7 +2902,8 @@ where
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $x_{1,t}$
 \end_inset
 
@@ -2900,7 +2918,8 @@ where
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $x_{2,t}$
 \end_inset
 

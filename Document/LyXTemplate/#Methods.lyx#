@@ -1637,12 +1637,13 @@ key "cryer1986time"
 \end_inset
 
 .
- The number of autoregressive lags (i.e., a time span between observations
+ The number of autoregressive lags (i.e., the number of prior values used
+ in the model
 \begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
- a later point in the data series
+ a time span between observations/ a later point in the data series
 \end_layout
 
 \end_inset

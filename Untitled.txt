@@ -1,0 +1,13 @@
+We also remark however that BIC is based on approximating the distribution of the MLE by a Normal, and may be unreliable, as exemplified by Scott (2002, Section 4.1), for data of small or moderate size.
+
+
+Hence, lower BIC implies either fewer explanatory variables, better fit, or both. 
+
+
+When the residuals are not normally distributed, then the hypothesis that they are a random dataset, is .NOT TRUE.
+
+This means that in that case your (regression) model does not explain all trends in the dataset. I guess, you don´t want unkown trends to remain in your dataset. I would feel uncomfortable with that, because this would mean that your model is not fully explaining the behaviour of your system.
+
+Only solution is to find a model that fully explains the behaviour of your system.  That means that you have to find a model, that shows residuals which are,... yes indeed, normally distributed. 
+
+Why do the residuals need to be normal when carrying out multi level modeling?. Available from: https://www.researchgate.net/post/Why_do_the_residuals_need_to_be_normal_when_carrying_out_multi_level_modeling [accessed May 8, 2017].

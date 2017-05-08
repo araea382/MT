@@ -1,0 +1,154 @@
+
+\lhead[\chaptername~\thechapter]{\rightmark}
+
+\rhead[\leftmark]{}
+
+\lfoot[\thepage]{}
+
+\cfoot{}
+
+\rfoot[]{\thepage}
+
+\chapter{Introduction}
+
+\section{Background \label{sec:Background}}
+
+In this study, \emph{change point analysis} will be used to identify
+changes over time in performance of Ericsson's software products.
+Many test cases are executed for testing software packages in a simulation
+environment. Before launching the software products to its customers,
+the company needs to test and determine how each software package
+performs. The performance of these software packages is evaluated
+by considering on CPU utilization (percentages of CPU's cycle spent
+on each process), memory usage, and latency. 
+
+Structural changes are often seen in time series data. This observable
+behavior is highly appealing to statistical modelers who want to develop
+a model which is well explained. A method to detect changes in time
+series data when a time instant is unknown is called \emph{change
+point analysis} \citep{basseville1993detection}. The analysis discovers
+the time point where the changes occur. Change point analysis can
+be referred to different kinds of name such as breakpoint and turning
+point. However, \emph{change-point} is the commonly used term for
+the point in a time series where a change takes place. Another important
+term which will be used in this thesis is \emph{regime switch} which
+refers to persistent changes in time series structure after the occurrence
+of change point \citep{weskamp2010change}. Change point analysis
+has been studied for several decades as it is a problem of interest
+in many applications which the characteristic of data is collected
+over time. A change should be flagged as soon as it occurs in order
+to be properly dealt with reducing any possible consequences \citep{sharkey2014nonparametric}.
+Here are some examples.
+\begin{itemize}
+\item Medical condition monitoring: Evaluate the sleep quality of patients
+based on their heart rate condition \citep{staudacher2005new}. 
+\item Climate analysis: The temperature or climate variations are detected.
+This method has gradually become important over the past few decades
+due to the effects of the global warming and the increases in greenhouse
+gas emissions \citep{reeves2007review,beaulieu2012change}. 
+\item Quality control: Since industrial production is a continuous production
+process, in mass production process, if the product controlled value
+is not monitored and exceeds the tolerable level undetected, it could
+lead to the loss of a whole production lot \citep{page1954continuous}. 
+\item Other applications: Identifying fraud transaction \citep{bolton2002statistical},
+detecting anomalies in the market price \citep{gu2013fast} and detecting
+signal processing \citep{basseville1993detection} in streaming data
+as well. 
+\end{itemize}
+In recent years, a method called hidden Markov model or Markov switching
+model has become widely used for discovering change points in time
+series. Both terms are accepted, usage varies with different fields
+of study. Markov switching model uses a concept of a Markov chain
+to model an underlying segmentation as different states and then specify
+a distinct change of location. Hence, the method is able to identify
+a switch in time series when change point occurs \citep{luong2012hidden}.
+This method is generally used in almost all current systems in speech
+recognition \citep{rabiner1989tutorial} and found to be important
+in climatology such as describing the state in the wind speed time
+series \citep{ailliot2012markov} and in biology \citep{stanke2003gene}
+where protein coding genes are predicted. Markov switching model has
+been extensively applied in the field of economics and finance and
+has a large literature. For example, business cycles can be seen as
+hidden states with seasonal changes. The growth rate of gross domestic
+product (GDP) is modeled as a switching process to uncover business
+cycle phases i.e., expansion and recession. The fitting model can
+also be used to understand the process where there is a transition
+between the economic state and the duration of each period \citep{hamilton1989new}.
+In finance data, time series of returns is modeled in order to investigate
+stock market situation i.e., bull or bear market \citep{kim1998testing}. 
+
+Markov switching model is one of the most well-known non linear time
+series models. This model can be applied to various time series data
+with dynamic behavior. The structural changes or regime shifts in
+data implies that constant parameter settings in a time series model
+might be insufficient to capture these behaviors and describe their
+evolution. Markov switching model takes the presence of shifting regime
+in time series into account and models multiple structures that can
+explain these characteristics in different states at different time.
+The shift between states or regimes comes from the switching mechanism
+which is assumed to follow an unobserved Markov chain. Thus, the model
+is able to capture more complex dynamic patterns and also identify
+the change of locations and regime switch in time series. 
+
+For the current Ericsson setting, each software package running through
+the test system is viewed as a time point in time series and the performance
+of each software package is treated as an observed value. It is proven
+that the observed values are not completely independent of each other
+i.e., the performance of the current software package depends on the
+performance from the prior version of the software package. Therefore,
+additional dependencies are taken into consideration by a first-order
+autoregression when modeling. The Markov switching model becomes the
+Markov switching autoregressive model. This model is applied to the
+given data in order to discover the changes in the performance.
+
+There are two approaches, a parametric and a non-parametric analysis,
+for detecting the change point in the time series. The parametric
+analysis benefits from assuming some knowledge of data distribution
+and integrating it to the detection scheme. On the other hand, the
+non-parametric analysis is more flexible in that there are no assumption
+made about the distribution. It can, therefore, apply to a wider range
+of applications and capture various kinds of changes \citep{sharkey2014nonparametric}.
+The non-parametric analysis using hierarchical estimation techniques
+based on a divisive algorithm is implemented. This method, which is
+called an E-divisive, is designed to perform multiple change point
+analysis while trying to make a few assumptions as possible. The E-divisive
+method estimates change points by using a binary bisection approach
+and a permutation test. The method also capable of estimating not
+only univariate data but also multivariate data. 
+
+In this study, the parametric analysis using the Markov switching
+autoregressive model and the non-parametric analysis using the E-divisive
+method are used for identifying change point locations in the time
+series data. 
+
+\section{Objective \label{sec:Objective}}
+
+The core idea of this thesis is to reduce workload of manual inspection
+when the performance analysis of an updated software package is required.
+With an increased amount of generated data from numerous test cases,
+the inspection becomes tedious and inefficient to be done manually.
+The main objective of this thesis is to implement machine learning,
+an algorithm that has an ability to learn from data, in order to analyze
+the performance of the software package. The algorithm will help indicate
+whether the performance of the software package is in a degrading,
+improving or steady state. It is also worth mentioning that the performance
+of a particular software package can vary on different test environments.
+The implemented algorithm should also be able to detect when the test
+environment is altered. This thesis only focuses on the CPU utilization,
+which is one of the three essential factors for evaluating the performance
+of the upgraded software package.
+
+To summarize, this thesis aims to:
+\begin{itemize}
+\item Detect the state of the CPU utilization (degrading, improving, or
+steady state)
+\item Detect whether there is any change in the test environment that effects
+the CPU utilization
+\end{itemize}
+The thesis is structured as follow: Chapter 2 provides details and
+descriptions of datasets used in the analysis. Chapter 3 presents
+methodology. Results from the analysis along with tables and plots
+are shown in Chapter 4. Chapter 5 discusses the outcomes and the obtained
+results. Lastly, Chapter 6 contains conclusion.
+
+

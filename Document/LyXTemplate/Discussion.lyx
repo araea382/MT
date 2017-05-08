@@ -1014,7 +1014,7 @@ This problem could be reduced by increasing the size of the data.
 \emph on
 DuProdName
 \emph default
- has to be drop from the regression model before doing a further analysis.
+ has to be dropped from the regression model before doing a further analysis.
  
 \begin_inset Note Comment
 status collapsed
@@ -1052,9 +1052,6 @@ reference "chap:Output"
  Using only r-squared value to determine adequacy of the model can be misleading.
  A residual analysis should be considered when evaluating a model.
  
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Comment
 status collapsed
 
@@ -1102,6 +1099,13 @@ reference "sec:Residual"
  In addition, the dataset used in this thesis is not sufficiently large.
  As a result, the Q-Q plot is often unclear and difficult to spot its basic
  feature due to more noises.
+ ACF and PACF plots are commonly used to check a randomness in a data and
+ also to identify a possible structure of a time series data.
+ The models of all three datasets seemed to capture the dependent structure
+ of the error terms in the data, even though a small amount of autocorrelation
+ were left in the residuals.
+ Moreover, these plots indicate that an AR(1) is already justified for these
+ datasets.
  
 \begin_inset Note Comment
 status collapsed
@@ -1132,6 +1136,10 @@ The model seems to capture the dependent structure of the error terms in
 
 \begin_layout Plain Layout
 heavy tail = high variance
+\end_layout
+
+\begin_layout Plain Layout
+independent of noise terms
 \end_layout
 
 \begin_layout Plain Layout
