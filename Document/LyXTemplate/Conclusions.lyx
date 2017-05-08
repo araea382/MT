@@ -298,51 +298,74 @@ Conclusions
 \end_layout
 
 \begin_layout Standard
-This thesis assesses the ability of detecting the performance of the Ericsson's
- software products by applying the Markov switching autoregressive model,
- and the E-divisive method which is an approach in the non-parametric analysis.
- The simulated data with known state are used for the comparison between
- both methods.
- The results from the real data are presented with interpretations and discussio
-ns.
+This thesis assesses an ability of detecting any changes in the performance
+ of the Ericsson's software products by applying the Markov switching autoregres
+sive model, and the E-divisive method.
+ The simulated datasets with known state were used to make a comparison
+ between both methods.
+ The results from applying the Markov switching model to the real data are
+ presented with interpretations and discussions.
  
 \end_layout
 
 \begin_layout Standard
 For the Markov switching model, the number of states and the number of switching
  coefficients in the model were determined and chosen by examining the BIC,
- along with model outputs and plots.
- The findings from the simulated data revealed that the Markov switching
- model is able to discover the switches between states rather well despite
+ along with model output and plot.
+ The findings from the simulated datasets revealed that the Markov switching
+ model was able to discover switches between states rather well, despite
  some false alarms and missed detections.
- On the contrary, the E-divisive method is less powerful compare to the
- Markov switching model.
- The method failed to detect many changes in the data.
- The E-divisive method performs better and more efficient if data have an
- obvious pattern of shifting in the time series.
+ The E-divisive method is less powerful compare to the Markov switching
+ model.
+ The method could detect less change point locations and failed to detect
+ many changes that were occurred in the simulated dataset.
+ The E-divisive method will perform better and will be more efficient if
+ the data have an obvious pattern of shifting in the time series.
+ From performing both methods in the simulated datasets and the real data,
+ the results from the Markov switching model was considered to be the representa
+tive for the analysis.
+ The E-divisive method was rather used as a guideline for any changes that
+ could happen in the data.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+and also a confirmation for the changes in the CPU state.
+\end_layout
+
+\end_inset
+
+The method could also be used together with the Markov switching model for
+ a confirmation of the changes in the CPU state.
+ After applying the Markov switching model to both simulated datasets, the
+ accuracy of the test sets implied that an implementation of a state prediction
+ function appears to functionally work well.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Moreover, an implementation of a state prediction function appears to functional
+ly work well when investigating on the simulated datasets.
+ The accuracy from both simulated datasets were high.
  
 \end_layout
 
-\begin_layout Standard
-Moreover, an implemented function of the state prediction appear to functionally
- work well when investigating on the simulated data.
- The accuracy from both simulated datasets were high.
- From performing both methods in the simulated data and the real data, the
- results from the Markov switching model was considered to be the representative
- for the analysis.
- The E-divisive method was generally used as a guideline and also a confirmation
- for a change in the CPU state.
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Evaluating the obtained results is rather difficult and complicated, mostly
  due to a lack of annotations or label of the state of the CPU.
  This is a common situation to an unsupervised learning problem where the
- ground truth is not often available.
- Besides, another difficulty of the Markov switching model usage is that
+ ground truths are not often available.
+ Besides, another difficulty of using the Markov switching model is that
  a state inference is required.
  Since the Markov switching model assumed a latent state, a sensible inference
- is needed in order to get a final and meaningful results that can be further
+ is needed in order to get a final and meaningful result that can be further
  used.
 \end_layout
 
@@ -353,11 +376,7 @@ Further work
 \begin_layout Standard
 The Markov switching model gave quite a promising result but several improvement
 s could also be done to increase a robustness of the analysis.
- 
-\end_layout
-
-\begin_layout Standard
-For future work, using more observations in the data is recommended.
+ For future work, using more observations in the data is recommended.
  Obtained results will be more reliable as additional information will decrease
  an uncertainty in the data.
  

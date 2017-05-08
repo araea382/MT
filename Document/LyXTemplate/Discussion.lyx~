@@ -1099,8 +1099,8 @@ reference "sec:Residual"
  In addition, the dataset used in this thesis is not sufficiently large.
  As a result, the Q-Q plot is often unclear and difficult to spot its basic
  feature due to more noises.
- ACF and PACF plots are used to check a randomness in a data and also to
- identify a possible structure of a time series data.
+ ACF and PACF plots are commonly used to check a randomness in a data and
+ also to identify a possible structure of a time series data.
  The models of all three datasets seemed to capture the dependent structure
  of the error terms in the data, even though a small amount of autocorrelation
  were left in the residuals.
@@ -1224,11 +1224,20 @@ s in the model could cause a bias as well.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 As described above, the small dataset is proven to cause several problems
  and difficulty to the analysis.
  The size of data is crucial in statistical analysis because more information
  can be extracted and used as an input for the model to learn.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1245,19 +1254,56 @@ The estimated coefficients in the model output
 \end_layout
 
 \begin_layout Standard
-A benefit from using a non-parametric analysis is that it does not require
- a prior assumption of a data distribution and is able to detect any type
- of distributional change within a time series.
- One noted behavior which can be seen from the results of the Markov switching
- model and the E-divisive method in the simulated data is that if a pattern
- of changing from one state to another state in the data is not obvious,
- the E-divisive method will be unable to detect locations of change points.
+A benefit of using a non-parametric analysis is that no assumption of the
+ data distribution is required and all type of distributional change within
+ a time series can be detected.
+ One behavior found from the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_sim1"
+
+\end_inset
+
+and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_sim2"
+
+\end_inset
+
+ is that if a pattern of a state in the data is not obvious, the E-divisive
+ method will be unable to detect locations of the change points.
  For instance, the method could not identify any changes in the first hundred
  observations, and also at the end of the time series in the simulated Dataset
  1.
- Besides, the duration between states also affect the ability of discovering
- the change point locations in the E-divisive method.
- To illustrate, the switching pattern is considerably difficult to notice
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Besides, the duration that time series stays in one state also affects the
+ ability of the E-divisive method to discover the change point locations.
+ In the simulated Dataset 2, many switches between states occur over the
+ time period.
+ As a result, the period of staying in each state is short.
+ 
+\end_layout
+
+\end_inset
+
+ This is more clear when examining the results in the simulated Dataset
+ 2 where the E-divisive method could only detect two change point locations.
+ If the response variable value fluctuates but the average value does not
+ change drastically, the E-divisive method will not be able to identify
+ the state change.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+To illustrate, the switching pattern is considerably difficult to notice
  in the simulated Dataset 2.
  The period of staying in the state is short and there are many switches
  between states occur over the period of time.
@@ -1268,10 +1314,15 @@ A benefit from using a non-parametric analysis is that it does not require
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-After examining the results in both simulated datasets, the E-divisive method
- proved to have less power in detecting changes in the data.
- The E-divisive method and the Markov switching model appear to discover
+The E-divisive method proved to have less power in detecting changes in
+ the data.
+ The Markov switching model and the E-divisive method appear to discover
  changes at around the same time when the actual changes occur, despite
  some false alarms and missed detections.
  This suggests that for the real data where the actual state is unknown,
@@ -1283,7 +1334,7 @@ After examining the results in both simulated datasets, the E-divisive method
 \end_layout
 
 \begin_layout Standard
-Note that when performing a Markov switching model, variables which have
+Note that when performing the Markov switching model, variables which have
  influences on the CPU utilization are also included in the model.
  Nonetheless, the E-divisive method only considers the values of the CPU
  utilization.

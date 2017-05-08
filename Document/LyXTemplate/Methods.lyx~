@@ -2322,7 +2322,7 @@ P(S_{t-1}=i,S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t},S_{t-1}=i,S_{t}=j|\Om
 \end_layout
 
 \begin_layout Paragraph
-Smoothing
+Smoothingtransition matrix
 \end_layout
 
 \begin_layout Standard
