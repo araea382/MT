@@ -321,8 +321,8 @@ In this chapter, methods used for performing the change point analysis in
  Later on, the simple Markov switching model feature and model specification
  namely Markov switching autoregressive model are discussed.
  Thereafter, three sections are devoted to methods for estimating the values
- of parameters, predicting a state for a new observation and selecting a
- suitable model for the datasets.
+ of parameters, predicting a state for a new observation, and selecting
+ a suitable model for the datasets.
  Another change-point method in a non-parametric approach is described.
  Finally, the simulation technique  is explained.
 \end_layout
@@ -552,7 +552,11 @@ for all
 \end_inset
 
 .
- A transition matrix 
+ A 
+\emph on
+transition matrix
+\emph default
+ 
 \begin_inset Formula $\mathbf{P}=(p_{ij})$
 \end_inset
 
@@ -1418,6 +1422,9 @@ name "example"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -2322,7 +2329,7 @@ P(S_{t-1}=i,S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t},S_{t-1}=i,S_{t}=j|\Om
 \end_layout
 
 \begin_layout Paragraph
-Smoothingtransition matrix
+Smoothing
 \end_layout
 
 \begin_layout Standard
@@ -2720,7 +2727,7 @@ Non-parametric analysis
 \begin_layout Standard
 A parametric analysis outperform a non-parametric analysis if the applied
  data belongs to a known distribution family.
- However, a parametric test does not perform well in detecting change point
+ However, a parametric test does not perform well in detecting change points
  of an unknown underlying distribution 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2774,7 +2781,7 @@ R
  point analysis.
  This change point method is applicable to both univariate and multivariate
  time series.
- A fundamental idea of the package is based on the hierarchical clustering
+ The fundamental idea of the package is based on the hierarchical clustering
  approach 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2792,22 +2799,14 @@ An E-divisive method is an algorithm in the
 ecp
 \emph default
  package.
- This algorithm performs a divisive clustering in order to estimate the
- multiple change points.
+ This algorithm performs a divisive clustering in order to estimate change
+ points.
  The E-divisive recursively partitions a time series and estimates a single
  change point in each iteration.
  Consequently, the new change point is located in each iteration, which
  divides the time series into different segments.
  The algorithm also uses a permutation test to compute the statistical significa
 nce of an estimated change point.
- More details about the estimation is described in 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "matteson2014nonparametric"
-
-\end_inset
-
-.
  The computational time of the E-divisive algorithm is 
 \begin_inset Formula $O(kT^{2})$
 \end_inset
@@ -2821,6 +2820,25 @@ key "matteson2014nonparametric"
 \end_inset
 
  is number of observations in the time series data.
+ More details about the estimation is described in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "matteson2014nonparametric"
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Say more?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

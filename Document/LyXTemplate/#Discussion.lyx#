@@ -574,10 +574,10 @@ Despite periods where there is a slightly decrease in CPU utilization value,
 Degradation
 \emph default
  state.
- As for State2 and State3, both can be viewed as an Improvement state.
+ As for State2 and State3, both states can be viewed as an Improvement state.
  However, State2 seems to have many periods where test cases drop to a lower
  value in the CPU utilization.
- State3 also has two periods of abrupt change to higher CPU utilization
+ State3 also has two periods of abrupt changes to higher CPU utilization
  values.
  Therefore, State2 appears to be an 
 \emph on
@@ -662,9 +662,8 @@ Steady
 \end_layout
 
 \begin_layout Standard
-There are many high peaks occur in State1.
- Moreover, test cases tend to increase the values of the CPU utilization
- when they enter this state.
+There are many high peaks occurred in State1, and test cases tend to increase
+ the values of the CPU utilization when they enter this state.
  Hence, State1 is said to be a 
 \emph on
 Degradation
@@ -675,13 +674,23 @@ Degradation
 Improvement
 \emph default
  state.
- The reason for this is because a decreasing pattern of the CPU utilization
- value for the test cases in State2 can be seen in most of the period.
- The test cases which are in State3 have either high or low in the CPU utilizati
-on value.
- State3 contains the period of positive and negative peaks, and does not
- appear to have a specific characteristic for the state of the CPU.
- The difficulty of making an interpretation for State3 infer that the state
+ The reason is that a decreasing pattern of the CPU utilization value for
+ the test cases in State2 can be seen in most of the period.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The test cases which are in State3 have either high or low in the CPU utilizatio
+n value.
+ 
+\end_layout
+
+\end_inset
+
+State3 contains the period of positive and negative peaks, and does not
+ appear to have a specific characteristic for the state of the CPU utilization.
+ The difficulty of making an interpretation for State3 infers that the state
  may be defined as a 
 \emph on
 Steady
@@ -757,20 +766,32 @@ Steady
 \end_deeper
 \end_inset
 
- Sudden change in State1
+ 
 \end_layout
 
 \begin_layout Standard
+Abrupt changes in the CPU utilization values when test cases enter State1
+ could be seen in most of the period.
+ Despite low values in some of the test cases, State1 appeared to have more
+ high value in the CPU utilization.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 Even though the values of the CPU utilization which stay in State1 drop
  in some periods, there is an increase in the CPU utilization values in
  most of the periods.
+\end_layout
+
+\end_inset
+
  Hence, State1 could be defined as a 
 \emph on
 Degradation
 \emph default
  state.
  The CPU utilization values clearly decrease when test cases enter State2.
- These test cases often switch from State1, which is thought to be a state
+ These test cases often switch from State1, which is thought to be the state
  where the performance of the test cases perform badly.
  As a consequence, this behavior indicates an improving in the test cases.
  Thus, State2 is defined as an 
@@ -778,8 +799,8 @@ Degradation
 Improvement
 \emph default
  state.
- On the contrary, the values of the CPU utilization for the test cases in
- State3 have an unclear pattern.
+ The test cases which stay in State3 have an unclear pattern in the CPU
+ utilization.
  The values are quite fluctuate and because of this behavior, the state
  is labeled as a 
 \emph on
@@ -1264,7 +1285,7 @@ reference "compare_sim1"
 
 \end_inset
 
-and 
+ and 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_sim2"
@@ -1291,24 +1312,12 @@ Besides, the duration that time series stays in one state also affects the
 
 \end_inset
 
-Besides, 
-\end_layout
-
-\begin_layout Standard
-drastic change of the local average
-\end_layout
-
-\begin_layout Standard
-data average gradually decrease or increase, the E-divisive will miss
-\end_layout
-
-\begin_layout Standard
-If the response variable value fluctuates but the average is still around
- the same value, the E-divisive method will not be able to identify the
- state change.
-\end_layout
-
-\begin_layout Standard
+ This is more clear when examining the results in the simulated Dataset
+ 2 where the E-divisive method could only detect two change point locations.
+ If the response variable value fluctuates but the average value does not
+ change drastically, the E-divisive method will not be able to identify
+ the state change.
+ 
 \begin_inset Note Comment
 status collapsed
 
@@ -1330,17 +1339,9 @@ To illustrate, the switching pattern is considerably difficult to notice
 \end_layout
 
 \begin_layout Standard
-local average of the response variable change dramatically 
-\end_layout
-
-\begin_layout Standard
-After examining the results in both simulated datasets, 
-\end_layout
-
-\begin_layout Standard
-the E-divisive method proved to have less power in detecting changes in
+The E-divisive method proved to have less power in detecting changes in
  the data.
- The E-divisive method and the Markov switching model appear to discover
+ The Markov switching model and the E-divisive method appear to discover
  changes at around the same time when the actual changes occur, despite
  some false alarms and missed detections.
  This suggests that for the real data where the actual state is unknown,
@@ -1352,7 +1353,7 @@ the E-divisive method proved to have less power in detecting changes in
 \end_layout
 
 \begin_layout Standard
-Note that when performing a Markov switching model, variables which have
+Note that when performing the Markov switching model, variables which have
  influences on the CPU utilization are also included in the model.
  Nonetheless, the E-divisive method only considers the values of the CPU
  utilization.

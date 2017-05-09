@@ -872,9 +872,9 @@ setMethod(f="plotDiag",signature=c("MSM.linear","ANY","ANY"),definition=.MSM.lar
   p <- object@p
   k <- object["k"]
   require(ggplot2)
-  state <- apply(object@Fit@smoProb,1,which.max)
-  state <- factor(state)
-  index <- seq(1,length(state))
+  regime <- apply(object@Fit@smoProb,1,which.max)
+  regime <- factor(regime)
+  index <- seq(1,length(regime))
   xmin <- index - 0.5
   xmax <- index + 0.5
   y <- model$model[,1]
@@ -884,10 +884,10 @@ setMethod(f="plotDiag",signature=c("MSM.linear","ANY","ANY"),definition=.MSM.lar
     y <- c(y_ar, y)
   }
 
-  temp <- data.frame(index, xmin, xmax, state, y=y, ymin=min(y), ymax=max(y))
+  temp <- data.frame(index, xmin, xmax, regime, y=y, ymin=min(y), ymax=max(y))
 
   g <- ggplot(data=temp, aes(x=index, y=y)) + geom_line() +
-    geom_rect(data=temp, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.3, inherit.aes=FALSE) +
+    geom_rect(data=temp, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=regime), alpha=0.3, inherit.aes=FALSE) +
     ylab(paste(colnames(object@model$model)[1])) + theme_bw()
 
   return(g)
@@ -905,7 +905,7 @@ setMethod(f="plotArea",signature=c("MSM.linear"),definition=.MSM.plotArea)
   require(reshape2)
   temp <- as.data.frame(object@Fit@smoProb)
   temp <- cbind(index=seq(1,nrow(temp)),temp)
-  colnames(temp) <- c("index", paste("State",1:k))
+  colnames(temp) <- c("index", paste("regime",1:k))
 
   temp <- melt(temp, id="index")
   g <- ggplot(data=temp, aes(x=index, y=value, colour=variable)) +
