@@ -1422,9 +1422,6 @@ name "example"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1450,7 +1447,7 @@ switching effect
 \emph default
 .
  Likewise, the variable which have the same coefficient in all states is
- a variable that does not have a switching effect, or said to have a 
+ the variable that does not have a switching effect, or said to have a 
 \emph on
 non-switching effect.
 

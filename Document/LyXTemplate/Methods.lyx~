@@ -321,8 +321,8 @@ In this chapter, methods used for performing the change point analysis in
  Later on, the simple Markov switching model feature and model specification
  namely Markov switching autoregressive model are discussed.
  Thereafter, three sections are devoted to methods for estimating the values
- of parameters, predicting a state for a new observation and selecting a
- suitable model for the datasets.
+ of parameters, predicting a state for a new observation, and selecting
+ a suitable model for the datasets.
  Another change-point method in a non-parametric approach is described.
  Finally, the simulation technique  is explained.
 \end_layout
@@ -1422,9 +1422,6 @@ name "example"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 

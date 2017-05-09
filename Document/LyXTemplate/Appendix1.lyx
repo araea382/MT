@@ -1078,7 +1078,7 @@ name "chap:Output"
 \end_layout
 
 \begin_layout Standard
-Outputs from applying Markov switching autogressive model for each dataset
+Outputs from applying Markov switching autoregressive model for each dataset
  are shown here.
 \end_layout
 

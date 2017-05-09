@@ -357,7 +357,7 @@ status open
 \begin_inset Graphics
 	filename picture/LTE.PNG
 	lyxscale 50
-	scale 60
+	scale 55
 
 \end_inset
 
@@ -564,7 +564,7 @@ status open
 \begin_inset Graphics
 	filename picture/Release.PNG
 	lyxscale 50
-	scale 60
+	scale 55
 
 \end_inset
 
@@ -1009,7 +1009,8 @@ EventsPerSec
 \emph default
  stores multiple values separated by a tab character.
  These tab-separated values in the field are split into columns.
- Further detail is described in 
+ A function is implemented to perform this process which is further described
+ in details in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:EventsPerSec"

@@ -373,20 +373,27 @@ Evaluating the obtained results is rather difficult and complicated, mostly
  due to a lack of annotations or label of the state of the CPU utilization.
  This is a common situation to an unsupervised learning problem where the
  ground truths are not often available.
- Besides, another difficulty of using the Markov switching model is that
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Besides, another difficulty of using the Markov switching model is that
  a state inference is required.
  Since the Markov switching model assumed latent states, a sensible inference
  is needed in order to get a final and meaningful result that can be further
  used.
 \end_layout
 
-\begin_layout Standard
-This work has provided a method to understand more about the properties
- of the CPU utilization state which will pave the way for futher analysis.
+\end_inset
+
+To conclude, this work has provided knowledge to understand more about the
+ properties of the state of the CPU utilization which will, later on, pave
+ the way for further analysis.
 \end_layout
 
 \begin_layout Section
-Further work
+Future work
 \end_layout
 
 \begin_layout Standard

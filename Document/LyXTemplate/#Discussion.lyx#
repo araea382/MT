@@ -807,8 +807,17 @@ Improvement
 Steady
 \emph default
  state.
+ The only peak in the time series data belonged to State3, and will be viewed
+ as an anomaly in this case.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
  State3 also contains a peak which occur in the time series data.
- This peak is viewed as an anomaly in this case.
+\end_layout
+
+\end_inset
+
  
 \end_layout
 
@@ -1276,8 +1285,10 @@ The estimated coefficients in the model output
 
 \begin_layout Standard
 A benefit of using a non-parametric analysis is that no assumption of the
- data distribution is required and all type of distributional change within
+ data distribution is required, and all type of distributional change within
  a time series can be detected.
+ However, the E-divisive method was proved to have less power in detecting
+ changes in the data.
  One behavior found from the 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1339,17 +1350,38 @@ To illustrate, the switching pattern is considerably difficult to notice
 \end_layout
 
 \begin_layout Standard
-The E-divisive method proved to have less power in detecting changes in
- the data.
- The Markov switching model and the E-divisive method appear to discover
- changes at around the same time when the actual changes occur, despite
- some false alarms and missed detections.
- This suggests that for the real data where the actual state is unknown,
- the actual changes might occur around locations where these two methods
- are able to detect.
- In addition, there is a high probability to be an actual change of the
- state if these two methods can identify the change point at the exact same
- location.
+Despite some false alarms and missed detections as seen when the methods
+ were tested with the simulated datasets, the detections are prone to be
+ accurate when both the Markov switching model and the E-divisive method
+ indicate the change at the exactly same location.
+ When applying methods to the real data, it could be concluded that the
+ state change happens if both methods locate the change at the exact location.
+ However, the location of the occurrence is possible to be slightly missed
+ located.
+ Furthermore, if both methods could detect the change at the close but not
+ exact location, the actual changes are likely to occur around these locations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+these two methods appear to discover changes at around the same location
+ that the actual changes occur.
+ This suggests that for the real data, where the actual state is unknown,
+ the actual changes might occur around locations which were detected by
+ these two methods.
+ Despite some false alarms and missed detections as seen when testing methods
+ with the simulated datasets, when applying both the Markov switching model
+ and the E-divisive method the to the real data if these two methods can
+ identify the change point at the exact same location, then there is a high
+ probability the the change is an actual change of the state.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
