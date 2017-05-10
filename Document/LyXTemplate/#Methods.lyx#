@@ -328,6 +328,336 @@ In this chapter, methods used for performing the change point analysis in
 \end_layout
 
 \begin_layout Section
+Survey of existing methods
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Change point detection, Anomaly detection, Intrusion detection, 
+\emph default
+or 
+\emph on
+Outlier detection
+\emph default
+ are the terms that closely related to one another.
+ The main idea of these terms is to identify and discover events that are
+ abnormal from a usual behavior.
+ There are several methods to address this types of problem.
+ A survey of existing methods have been done in the thesis and some of technique
+s are presented in this section.
+\end_layout
+
+\begin_layout Standard
+Based on previous work, the Hidden Markov model or Markov switching model
+ is mainly employed 
+\end_layout
+
+\begin_layout Standard
+are said to have a high computational cost
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "valdes2000adaptive"
+
+\end_inset
+
+ employed Bayesian inference techniques, specifically naive Bayesian network,
+ to create an intrusion detection system on traffic bursts.
+ Even though Bayesian network is effective in detecting anomalies in some
+ applications, there are some limitations that should be considered when
+ using this method.
+ As accuracy of the system depend heavily on certain assumptions, the detection
+ system will have low accuracy if an inaccurate model is implemented 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "patcha2007overview"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Support vector machine (SVM) is 
+\end_layout
+
+\begin_layout Standard
+SVM is fast and scalability 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sung2003identifying"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although this method is effective in identify new kinds of anomalies, the
+ method often has a higher rate of false alarms.
+ mainly because the relationships and dependencies between the features
+ are ignored.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sarasamma2005hierarchical"
+
+\end_inset
+
+ indicated that applied SVM method to identify attacks in the system for
+ class-specific detection.
+ 
+\end_layout
+
+\begin_layout Standard
+Self-organizing maps (SOM) developed by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kohonen1982self"
+
+\end_inset
+
+ is a well-known unsupervised learning algorithm based on a neural network
+ approach using for clustering.
+ SOM is efficient in handling large and high dimensional datasets.
+ The method reduces the difficulty of analyzing the high dimensional dataset
+ by mapping down onto the two-dimensional coordinate system.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "nousiainen2009anomaly"
+
+\end_inset
+
+ used SOM for an anomaly detection in a server log data.
+ The study presented an ability of the SOM method in detecting anomaly in
+ the data, and also compared the results from the SOM method with a threshold
+ based system.
+ A disadvantage of the SOM is that an initial weight vector affect a performance
+ of the SOM.
+ For this reason, it leads to an unstable clustering results.
+ Also, if the anomalies in the data tend to form into clusters, then this
+ method will not be able to detect these anomalies 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "chandola2009anomaly"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The obtained results from the Markov switching model is somehow different
+ from the results from other methods.
+ In general, other methods will generate a score anomaly detection
+\end_layout
+
+\begin_layout Standard
+Therefore, in this thesis framework, the Markov switching model is implemented.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+Change point analysis
+\emph default
+ or 
+\emph on
+Anomaly detection
+\emph default
+ are closely related to one another.
+ There are several techniques to address this types of problem.
+ A survey of existing methods have been done and some methods are reported
+ in this section as follow: 
+\end_layout
+
+\begin_layout Plain Layout
+The obtained results from the Markov switching model is somehow different
+ from the results from other anomaly detection.
+ In general, other methods will generate a score anomaly detection
+\end_layout
+
+\begin_layout Plain Layout
+Based on previous work
+\end_layout
+
+\begin_layout Plain Layout
+Therefore, the Markov switching model 
+\end_layout
+
+\begin_layout Subsection
+System call based sequence analysis
+\end_layout
+
+\begin_layout Subsection
+Bayesian network
+\end_layout
+
+\begin_layout Plain Layout
+A Bayesian network is a probabilistic graphical model
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand citet
+key "valdes2000adaptive"
+
+\end_inset
+
+ employed Bayesian inference techniques, specifically naive Bayesian network,
+ to detect anomalies on traffic bursts.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Even though Bayesian network is effective in detecting anomalies in some
+ applications, there are some limitations that should be considered when
+ using this method.
+ One main thing is that certain assumptions should be made when using the
+ method in order to have a detection system with a higher accuracy.
+ As accuracy of the system depend heavily on thThe system will heavily suffer
+ from an inaccurate model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "patcha2007overview"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Self-organizing maps (SOM)
+\end_layout
+
+\begin_layout Plain Layout
+Self-organizing maps (SOM) is a well-known unsupervised learning algorithm
+ based on a neural network approach using for clustering.
+ Clustering is a technique that dividing data into groups (called clusters).
+ Data in the same cluster are more similar to each other than data in the
+ other clusters.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+ This method can also be viewed as a constrained version of K-means clustering.
+\end_layout
+
+\end_inset
+
+ SOM is efficient in handling large and high dimensional datasets.
+ The method reduces the difficulty of analyzing the high dimensional dataset
+ by mapping down onto the two-dimensional coordinate system 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "friedman2001elements"
+
+\end_inset
+
+.
+ In recent years, SOM method has been widely used for anomaly detection
+ in a semi-supervised learning algorithm, a technique that falls between
+ a supervised learning and an unsupervised learning,
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand citet
+key "nousiainen2009anomaly"
+
+\end_inset
+
+ used SOM for an anomaly detection in a server log data.
+ The study presented an ability of the SOM method in detecting anomaly in
+ the data, and also compared the results from the SOM method with an alarm
+ threshold, which had been set to 
+\begin_inset Formula $\bar{x}\pm2.28\cdot\sigma$
+\end_inset
+
+, for each explanatory variable.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The threshold for these univariate cases had been set to 
+\begin_inset Formula $\bar{x}\pm2.28\cdot\sigma$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Results showed that SOM method could detect more anomalies than all the
+ obtained anomalies from every univariate tests.
+\end_layout
+
+\begin_layout Plain Layout
+A disadvantage of the SOM is that an initial weight vector affect a performance
+ of the SOM.
+ For this reason, it leads to an unstable clustering results.
+ Also, if the anomalies in the data tend to form into clusters, then this
+ method will not be able to detect these anomalies 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "chandola2009anomaly"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+AnomalyDetection 
+\emph on
+R
+\emph default
+ package
+\end_layout
+
+\begin_layout Plain Layout
+A package is implemented in 
+\emph on
+R
+\emph default
+ and released by Twitter.
+ The purpose of this package is to identify either local or global anomalies
+ that occur in the corresponding time series.
+ The main algorithm used in the package is a Seasonal Hybrid ESD (S-H-ESD)
+ algorithm based on a Generalized ESD test.
+ The Generalized EST test is a method to detect one or more outliers in
+ a data that follows an approximately normal distribution 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rosner1983percentage"
+
+\end_inset
+
+.
+ The time series decomposition and robust statistical metrics are employed
+ in the algorithm so that the package is sufficient robust to detect global
+ anomalies as well as local anomalies.
+ The package is also able to identify positive and negative anomalies, which
+ helps discover trends and issues.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Markov chains
 \begin_inset CommandInset label
 LatexCommand label

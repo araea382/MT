@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Recall: Thesis objectives}{3}{0}{1}
+\beamer@sectionintoc {2}{Markov switching model}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Markov switching autoregressive model}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Model estimation}{9}{0}{2}
+\beamer@sectionintoc {3}{What has been done?}{10}{0}{3}
+\beamer@sectionintoc {4}{Next step}{15}{0}{4}

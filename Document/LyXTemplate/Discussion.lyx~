@@ -1360,7 +1360,8 @@ Despite some false alarms and missed detections as seen when the methods
  However, the location of the occurrence is possible to be slightly missed
  located.
  Furthermore, if both methods could detect the change at the close but not
- exact location, the actual changes are possible to occur around these locations.
+ exact location, there are small chances that the detections could be false
+ alarms.
 \end_layout
 
 \begin_layout Standard

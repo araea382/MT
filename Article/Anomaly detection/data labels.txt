@@ -1,0 +1,12 @@
+chandola2009anomaly
+
+The labels associated with a data instance denote whether that instance is normal or
+anomalous. It should be noted that obtaining labeled data that is accurate as well
+as representative of all types of behaviors, is often prohibitively expensive. Labeling
+is often done manually by a human expert and hence substantial effort is required to
+obtain the labeled training data set. Typically, getting a labeled set of anomalous data
+instances that covers all possible type of anomalous behavior is more difficult than
+getting labels for normal behavior. Moreover, the anomalous behavior is often dynamic
+in nature, for example, new types of anomalies might arise, for which there is no labeled
+training data. In certain cases, such as air traffic safety, anomalous instances would
+translate to catastrophic events, and hence are very rare.

@@ -406,4 +406,82 @@
   publisher = {JSTOR},
 }
 
+@Book{friedman2001elements,
+  title     = {The elements of statistical learning},
+  publisher = {Springer series in statistics Springer, Berlin},
+  year      = {2001},
+  author    = {Friedman, Jerome and Hastie, Trevor and Tibshirani, Robert},
+  volume    = {1},
+}
+
+@Article{nousiainen2009anomaly,
+  author = {Nousiainen, Sami and Kilpi, Jorma and Silvonen, Paula and Hiirsalmi, Mikko},
+  title  = {Anomaly detection from server log data},
+  year   = {2009},
+}
+
+@Article{chandola2009anomaly,
+  author    = {Chandola, Varun and Banerjee, Arindam and Kumar, Vipin},
+  title     = {Anomaly detection: A survey},
+  journal   = {ACM computing surveys (CSUR)},
+  year      = {2009},
+  volume    = {41},
+  number    = {3},
+  pages     = {15},
+  publisher = {ACM},
+}
+
+@Article{rosner1983percentage,
+  author    = {Rosner, Bernard},
+  title     = {Percentage points for a generalized ESD many-outlier procedure},
+  journal   = {Technometrics},
+  year      = {1983},
+  volume    = {25},
+  number    = {2},
+  pages     = {165--172},
+  publisher = {Taylor \& Francis},
+}
+
+@Article{patcha2007overview,
+  author    = {Patcha, Animesh and Park, Jung-Min},
+  title     = {An overview of anomaly detection techniques: Existing solutions and latest technological trends},
+  journal   = {Computer networks},
+  year      = {2007},
+  volume    = {51},
+  number    = {12},
+  pages     = {3448--3470},
+  publisher = {Elsevier},
+}
+
+@InProceedings{valdes2000adaptive,
+  author       = {Valdes, Alfonso and Skinner, Keith},
+  title        = {Adaptive, model-based monitoring for cyber attack detection},
+  booktitle    = {International Workshop on Recent Advances in Intrusion Detection},
+  year         = {2000},
+  pages        = {80--93},
+  organization = {Springer},
+}
+
+@Article{kohonen1982self,
+  author    = {Kohonen, Teuvo},
+  title     = {Self-organized formation of topologically correct feature maps},
+  journal   = {Biological cybernetics},
+  year      = {1982},
+  volume    = {43},
+  number    = {1},
+  pages     = {59--69},
+  publisher = {Springer},
+}
+
+@Article{sarasamma2005hierarchical,
+  author    = {Sarasamma, Suseela T and Zhu, Qiuming A and Huff, Julie},
+  title     = {Hierarchical Kohonenen net for anomaly detection in network security},
+  journal   = {IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics)},
+  year      = {2005},
+  volume    = {35},
+  number    = {2},
+  pages     = {302--312},
+  publisher = {IEEE},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
