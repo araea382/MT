@@ -1289,7 +1289,54 @@ A benefit of using a non-parametric analysis is that no assumption of the
  a time series can be detected.
  However, the E-divisive method was proved to have less power in detecting
  changes in the data.
- One behavior found from the 
+ The main reason that the E-divisive method is not as powerful as the Markov
+ switching model is because the Markov switching model included variables
+ that have influences on the CPU utilization into the analysis but the E-divisiv
+e method only considered the values of the CPU utilization.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Note that when the Markov switching model was performed, variables that
+ have influences on the CPU utilization were also included in the model.
+ On the other hand, the E-divisive method only considered the values of
+ the CPU utilization.
+ With this difference, the E-divisive method will have less power to identify
+ actual changes in the CPU utilization.
+ Since there are other variables that affect the value of the CPU utilization,
+ it is insufficient to take into account only the response variable.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The E-divisive method appears to perform reasonably well in detecting changes
+ as far as a non-parametric analysis could.
+ As can be seen from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Real-data"
+
+\end_inset
+
+, the method is able to detect when a change is happened around the same
+ time as the Markov switching model did.
+ Even though the E-divisive method might not provide the best result, it
+ can give a general idea of estimated change points.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One behavior found from the 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_sim1"
@@ -1362,9 +1409,7 @@ Despite some false alarms and missed detections as seen when the methods
  Furthermore, if both methods could detect the change at the close but not
  exact location, there are small chances that the detections could be false
  alarms.
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset Note Comment
 status collapsed
 
@@ -1387,43 +1432,11 @@ these two methods appear to discover changes at around the same location
 \end_layout
 
 \begin_layout Standard
-Note that when performing the Markov switching model, variables which have
- influences on the CPU utilization are also included in the model.
- Nonetheless, the E-divisive method only considers the values of the CPU
- utilization.
- With this difference, the E-divisive method will have even less power to
- identify actual changes in the CPU utilization.
- Since there are other variables that affect the value of the CPU utilization,
- it is insufficient to take into account only the response variable.
- 
 \begin_inset Note Comment
 status collapsed
 
 \begin_layout Plain Layout
-The E-divisive method appears to perform reasonably well in detecting changes
- as far as a non-parametric analysis could.
- As can be seen from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Real-data"
-
-\end_inset
-
-, the method is able to detect when a change is happened around the same
- time as the Markov switching model did.
- Even though the E-divisive method might not provide the best result, it
- can give a general idea of estimated change points.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The state prediction function which is an additional implemented function
- in the package seems to work properly.
- This can be observed by examining the results from 
+This can be observed by examining the results from 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Assessing"
@@ -1431,22 +1444,11 @@ reference "sec:Assessing"
 \end_inset
 
 .
- The accuracy of the test set in the simulated Dataset 1 was significantly
- high.
- One reason for that might be because the simulated data had an obvious
- pattern in switching between states.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-For example, the value of the CPU usage is moderately low if it is generated
- from the Good state.
-\end_layout
-
-\end_inset
-
-Besides, each state remained in its own state for a while before switching
+ The accuracy of the model for the test set in the simulated Dataset 1 was
+ significantly high.
+ One reason is that the simulated data had an obvious pattern in switching
+ between states.
+ Besides, each state remained in its own state for a while before switching
  to the other states.
  Therefore, the model can completely capture the behavior of the time series
  data.
@@ -1457,17 +1459,54 @@ Besides, each state remained in its own state for a while before switching
  this dataset.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-DuProdName is not effect
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Assessing"
+
+\end_inset
+
+, the model evaluation for each model was performed.
+ The Markov switching model of the simulated Dataset 1 was able to predict
+ the state for the test set considerably well.
+ Estimated coefficients in each state were similar to the coefficients in
+ actual models as well, except for an intercept of State2.
+ The deviation between the actual and estimated coefficient is probably
+ a reason why the model predicted observations from other states to a 
+\emph on
+Normal
+\emph default
+ state.
+ For the simulated Dataset 2, estimated coefficients from the model were
+ not close to the actual coefficients, especially intercept values in all
+ states.
+ State2 or said to be a 
+\emph on
+Good 
+\emph default
+state had totally different value between the estimated and actual coefficient.
+ Therefore, the model had very worse performance when predicting observations
+ that came from the 
+\emph on
+Good
+\emph default
+ state.
+ However, the overall accuracy of the model was still rather high indicated
+ that the model performed well in identifying the switches between states.
+ 
+\end_layout
+
+\begin_layout Standard
+From the results obtained in this section, it can also be implied that a
+ state prediction function, an additional implemented function in the package,
+ is able to work properly.
+ 
 \end_layout
 
 \begin_layout Standard

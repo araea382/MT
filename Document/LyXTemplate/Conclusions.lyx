@@ -335,6 +335,8 @@ tive for the analysis.
 
 \end_inset
 
+ This method works well even though numerous switches between states were
+ occurred in the data.
  The E-divisive method was rather used as a guideline for any changes that
  could happen in the data.
  

@@ -484,4 +484,13 @@
   publisher = {IEEE},
 }
 
+@InProceedings{sung2003identifying,
+  author       = {Sung, Andrew H and Mukkamala, Srinivas},
+  title        = {Identifying important features for intrusion detection using support vector machines and neural networks},
+  booktitle    = {Applications and the Internet, 2003. Proceedings. 2003 Symposium on},
+  year         = {2003},
+  pages        = {209--216},
+  organization = {IEEE},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
