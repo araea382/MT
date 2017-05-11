@@ -315,6 +315,8 @@ For the Markov switching model, the number of states and the number of switching
  The findings from the simulated datasets revealed that the Markov switching
  model were able to discover switches between states rather well, despite
  some false alarms and missed detections.
+ This method works well even though numerous switches between states were
+ occurred in the data.
  The E-divisive method is less powerful compare to the Markov switching
  model.
  The method could identify fewer change point locations, and failed to detect
@@ -335,8 +337,6 @@ tive for the analysis.
 
 \end_inset
 
- This method works well even though numerous switches between states were
- occurred in the data.
  The E-divisive method was rather used as a guideline for any changes that
  could happen in the data.
  
@@ -407,9 +407,9 @@ s could also be done to increase a robustness of the analysis.
  As the assumption of the distribution of residuals was not entirely fulfill,
  significant details that were used to explained the CPU utilization might
  not all be caught by the model.
- Another future extension is to consider on the effects of interaction terms
- or the other predictor variables that might have an effect on the CPU utilizati
-on.
+ Hence, another future extension is to consider on the effects of interaction
+ terms or the other predictor variables that might have an effect on the
+ CPU utilization.
  Furthermore, there are still two more performance metrics in QA Capacity
  area which have not been taken into account in the thesis (e.g., a memory
  usage and a latency).
@@ -420,7 +420,7 @@ on.
  a supervised learning and an unsupervised learning, could also be implemented.
  Training a model with a large amount of unlabeled data and a small amount
  of labeled data could considerably improving an accuracy of the model.
- The semi-supervised learning could be of good practical use especially
+ The semi-supervised learning could be of good practical use, especially
  to an application where labeling all the data is very expensive and time-consum
 ing.
  

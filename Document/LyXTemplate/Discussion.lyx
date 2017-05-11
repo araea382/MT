@@ -322,8 +322,9 @@ Critical assessment of the results obtained and the adequacy of the methods
 \begin_layout Standard
 In this chapter, a discussion of the model selection for each given dataset
  is explained.
- Then, a state inference from the model is made.
- Lastly, a results discussion of this study is provided.
+ Then, a state inference from the model is made and effects on the test
+ environments is provided.
+ Lastly, a results discussion of this study is discussed.
 \end_layout
 
 \begin_layout Section
@@ -468,9 +469,8 @@ State inference
 \end_layout
 
 \begin_layout Standard
-Another important task after the suitable model was decided is to make an
- inference on the derived states because the model output does not provide
- any definition of these states.
+The model output after applying the Markov switching model with the dataset
+ does not provide any definition of the derived states.
  
 \begin_inset Note Comment
 status collapsed
@@ -483,7 +483,7 @@ A function from the package will estimate coefficients in each state without
 
 \end_inset
 
-Therefore, an interpretation and inference of the state need to be specified.
+Therefore, an interpretation and inference of these states need to be specified.
  The state inferences for each dataset are shown below.
  
 \end_layout
@@ -818,6 +818,119 @@ status collapsed
 
 \end_inset
 
+ 
+\end_layout
+
+\begin_layout Section
+Test environment
+\end_layout
+
+\begin_layout Standard
+This section contains a discussion about the effects of the test environments
+ - 
+\emph on
+DuProdName
+\emph default
+, 
+\emph on
+Fdd/Tdd
+\emph default
+, and 
+\emph on
+NumCells
+\emph default
+ - to the CPU utilization in each dataset.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Software release L16A (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output-L16A"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+There are only two variables, 
+\emph on
+Fdd/Tdd
+\emph default
+ and 
+\emph on
+NumCells
+\emph default
+, in the test environments that were included in the model.
+ The output indicates that both variables are statistically significant.
+ Therefore, changes in the test environments will have an impact on the
+ CPU utilization.
+\end_layout
+
+\begin_layout Paragraph
+Software release L16B (see
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output_L16B"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+All test environment variables are statistically significant, except for
+ the 
+\emph on
+Fdd/Tdd
+\emph default
+ in State1.
+ Hence, it can be concluded that changes in 
+\emph on
+DuProdName
+\emph default
+ and 
+\emph on
+NumCells
+\emph default
+ have significant effects on the CPU utilization.
+ 
+\emph on
+Fdd/Tdd
+\emph default
+ will affect the CPU utilization value when a test case is in State2 or
+ State3.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Software release L17A (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output_L17A"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+According to the output, 
+\emph on
+DuProdName
+\emph default
+ obviously has a significant effect on the CPU utilization whereas
+\emph on
+ Fdd/Tdd
+\emph default
+ does not have any.
+ It could also be said that 
+\emph on
+NumCells
+\emph default
+ has somewhat an impact on the CPU utilization.
  
 \end_layout
 
@@ -1271,19 +1384,6 @@ As described above, the small dataset is proven to cause several problems
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The estimated coefficients in the model output
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 A benefit of using a non-parametric analysis is that no assumption of the
  data distribution is required, and all type of distributional change within
  a time series can be detected.
@@ -1481,39 +1581,56 @@ reference "sec:Assessing"
 
 \end_inset
 
-, the model evaluation for each model was performed.
- The Markov switching model of the simulated Dataset 1 was able to predict
- the state for the test set considerably well.
- Estimated coefficients in each state were similar to the coefficients in
- actual models as well, except for an intercept of State2.
+, the evaluation for each model was performed.
+ The Markov switching model was able to predict the state for the test set
+ of the simulated Dataset 1 considerably well.
+ The estimated coefficients in each state were similar to the coefficients
+ in the actual models as well, except for an intercept of State2.
  State2 was considered to be a 
 \emph on
 Normal
 \emph default
  state.
  The deviation between the actual and estimated coefficient of the intercept
- in this state is probably a reason why the model predicted observations
- from other states as the 
+ in this state is probably a reason why the model made four out of hundread
+ wrong state predictions (i.e., the model indicated observations from the
+ 
+\emph on
+Bad
+\emph default
+ and 
+\emph on
+Good
+\emph default
+ state as the 
 \emph on
 Normal
 \emph default
- state.
- For the simulated Dataset 2, estimated coefficients from the model were
- not close to the actual coefficients, especially the values of intercept
- in all states.
- State2 or said to be a 
+ state).
+ For the simulated Dataset 2, most of the estimated coefficients from the
+ model were not close to the actual coefficients, especially the values
+ of intercept in every state.
+ State2, a 
 \emph on
 Good 
 \emph default
-state had totally different value between the estimated and actual coefficient.
- Therefore, the model had very worse performance when predicting observations
- that came from the 
+state, had a totally different value between the estimated and actual coefficien
+ts.
+ Therefore, the performance of the model was the worst when predicting observati
+ons that came from the 
 \emph on
 Good
 \emph default
  state.
- However, the overall accuracy of the model was still rather high indicated
- that the model performed well in identifying the switches between states.
+ However, the model was able to predict observations from a 
+\emph on
+Bad
+\emph default
+ state perfectly.
+ The overall accuracy of the model was still rather high despite numerous
+ switches between states in the data.
+ This indicated that the method performed well in identifying the switches
+ between states.
  
 \end_layout
 

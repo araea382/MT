@@ -4811,20 +4811,21 @@ reference "output-sim1"
 
 \end_inset
 
- present a model output of the Markov switching model of the simulated Dataset
- 1.
- Each state has a considerably high r-squared value that is greater than
+ presents a model output from applying the Markov switching model for the
+ simulated Dataset 1.
+ Each state has a considerably high r-squared value which is greater than
  0.9.
- State2 has the highest standard error.
- When inferring back to actual models that used to generate these three
- states in 
+ From the result, State2 has the highest standard error.
+ When inferring back to the actual models that was used to generate these
+ three states in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Simulation"
 
 \end_inset
 
-, it can be seen that State1, State2, and State3 are a 
+, it could be concluded that the result stateState1, State2, and State3
+ are a 
 \emph on
 Bad
 \emph default
@@ -5519,7 +5520,7 @@ reference "output-sim2"
 
 .
  The r-squared value of each state is less than the obtained result from
- the simulated Dataset 1, and standard error in each state is higher.
+ the simulated Dataset 1, but the standard error in each state is higher.
  However, it could be said that the model still performs rather well as
  the r-squared value is fairly high.
  State1 is said to be a 

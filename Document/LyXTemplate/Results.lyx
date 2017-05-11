@@ -1351,7 +1351,7 @@ reference "subsec:Model-selection"
 
 .
  It should be noted that these three chosen models will later be used throughout
- this thesis and the model outputs are shown in 
+ this thesis, and the model outputs are shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Output"
@@ -4811,20 +4811,21 @@ reference "output-sim1"
 
 \end_inset
 
- presents a model output of the Markov switching model of the simulated
+ presents outputs from applying the Markov switching model with the simulated
  Dataset 1.
  Each state has a considerably high r-squared value which is greater than
  0.9.
- It can be seen that State2 has the highest standard error.
- When inferring back to actual models that used to generate these three
- states in 
+ From the result, State2 has the highest standard error.
+ When inferring back to the actual models that was used to generate these
+ three states in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Simulation"
 
 \end_inset
 
-, State1, State2, and State3 are a 
+, it could be concluded that the result State1, State2, and State3 in the
+ table are a 
 \emph on
 Bad
 \emph default
@@ -4850,8 +4851,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Output from the model of the simulated Dataset 1 showing estimated coefficients,
- residual standard error, and r-squared for each state.
+Outputs from applying the Markov switching model with the simulated Dataset
+ 1.
+ The table shows estimated coefficients, residual standard error, and r-squared
+ for each state.
  A switching coefficient is followed by (S), and a significant coefficient
  is highlighted in bold.
 \end_layout
@@ -5510,7 +5513,8 @@ Simulated Dataset 2
 \end_layout
 
 \begin_layout Standard
-The Markov switching model of the simulated Dataset 2 are presented in 
+Outputs after applying the Markov switching model with the simulated Dataset
+ 2 are presented in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "output-sim2"
@@ -5518,10 +5522,12 @@ reference "output-sim2"
 \end_inset
 
 .
- The r-squared value of each state is less than the obtained result from
- the simulated Dataset 1, but the standard error in each state is higher.
- However, it could be said that the model still performs rather well as
- the r-squared value is fairly high.
+ The r-squared values of State1 and State3 are slightly lower than the obtained
+ result from the simulated Dataset 1, but the standard errors are significantly
+ higher.
+ However, State2 has close output value to the simulated Dataset1.
+ It could be said that the model still performs rather well as the r-squared
+ value is very high.
  State1 is said to be a 
 \emph on
 Bad
@@ -5549,8 +5555,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Output from the model of the simulated Dataset 2 showing estimated coefficients,
- residual standard error, and r-squared for each state.
+Outputs from applying the Markov switching model with the simulated Dataset
+ 2.
+ The table shows estimated coefficients, residual standard error, and r-squared
+ for each state.
  A switching coefficient is followed by (S), and a significant coefficient
  is highlighted in bold.
 \end_layout

@@ -149,22 +149,12 @@ ion.
  Besides, these simulated datasets are used for studying and comparing between
  the Markov switching model and the E-divisive method.
  Results show that the former method is preferable because of its better
- performance and more efficiency in detecting changes.
+ performance and more efficient in detecting changes.
  The E-divisive method can detect fewer changes and has a higher rate of
  missed detections.
  The results from applying the Markov switching autoregressive model to
  the real data are presented with interpretations and discussions.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-include the obvious pattern?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

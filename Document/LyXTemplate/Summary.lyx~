@@ -146,10 +146,10 @@ ion.
  As the data used in this analysis does not contain any ground truths, the
  evaluation of the methods is analyzed by generating simulated datasets
  with known states.
- Besides, these simulated datasets are used for comparing between the Markov
- switching model and the E-divisive method.
+ Besides, these simulated datasets are used for studying and comparing between
+ the Markov switching model and the E-divisive method.
  Results show that the former method is preferable because of its better
- performance and more efficiency in detecting changes.
+ performance and more efficient in detecting changes.
  The E-divisive method can detect fewer changes and has a higher rate of
  missed detections.
  The results from applying the Markov switching autoregressive model to
