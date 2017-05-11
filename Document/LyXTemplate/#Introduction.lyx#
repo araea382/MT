@@ -353,7 +353,17 @@ change-point
 \emph default
  is the commonly used term for the point in a time series where a change
  takes place.
- Another important term which will be used in this thesis is 
+ Another important term used in t 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+which will be used in this thesis
+\end_layout
+
+\end_inset
+
+ is 
 \emph on
 regime switch
 \emph default
@@ -542,9 +552,10 @@ For the current Ericsson setting, each software package running through
  It is proven that the observed values are not completely independent of
  each other i.e., the performance of the current software package depends
  on the performance from the prior version of the software package.
- Therefore, additional dependencies are taken into consideration with the
- first order autoregression when modeling the Markov switching model and
- becomes Markov switching autoregressive model.
+ Therefore, additional dependencies are taken into consideration by a first-orde
+r autoregression when modeling.
+ The Markov switching model becomes the Markov switching autoregressive
+ model.
  This model is applied to the given data in order to discover the changes
  in the performance.
 \end_layout
@@ -634,7 +645,7 @@ The thesis is structured as follow: Chapter 2 provides details and descriptions
  Results from the analysis along with tables and plots are shown in Chapter
  4.
  Chapter 5 discusses the outcomes and the obtained results.
- Lastly, Chapter 6 contains conclusion.
+ Lastly, Chapter 6 contains conclusion and future work.
 \end_layout
 
 \begin_layout Standard

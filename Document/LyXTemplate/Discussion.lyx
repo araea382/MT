@@ -1287,8 +1287,17 @@ The estimated coefficients in the model output
 A benefit of using a non-parametric analysis is that no assumption of the
  data distribution is required, and all type of distributional change within
  a time series can be detected.
- However, the E-divisive method was proved to have less power in detecting
- changes in the data.
+ In general, the non-parametric analysis performs well when applying to
+ the data of no known distributional form 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sharkey2014nonparametric"
+
+\end_inset
+
+.
+ However, the E-divisive method, based on the non-parametric approach, was
+ proved to have less power in detecting changes in the data in this analysis.
  The main reason that the E-divisive method is not as powerful as the Markov
  switching model is because the Markov switching model included variables
  that have influences on the CPU utilization into the analysis but the E-divisiv

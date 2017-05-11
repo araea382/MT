@@ -1,7 +1,17 @@
-\beamer@endinputifotherversion {3.36pt}
-\beamer@sectionintoc {1}{Thesis objectives}{3}{0}{1}
-\beamer@sectionintoc {2}{Markov switching model}{4}{0}{2}
-\beamer@subsectionintoc {2}{1}{Markov switching autoregressive model}{7}{0}{2}
-\beamer@subsectionintoc {2}{2}{Model estimation}{9}{0}{2}
-\beamer@sectionintoc {3}{What has been done?}{10}{0}{3}
-\beamer@sectionintoc {4}{Next step}{15}{0}{4}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Motivation}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Objectives}{4}{0}{1}
+\beamer@sectionintoc {2}{Data}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Data sources}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Data preprocessing}{6}{0}{2}
+\beamer@sectionintoc {3}{Method}{9}{0}{3}
+\beamer@subsectionintoc {3}{1}{Markov switching model}{9}{0}{3}
+\beamer@subsectionintoc {3}{2}{Model selection}{11}{0}{3}
+\beamer@subsectionintoc {3}{3}{E-divisive method}{12}{0}{3}
+\beamer@subsectionintoc {3}{4}{Simulation study for model evaluation}{13}{0}{3}
+\beamer@sectionintoc {4}{Results}{15}{0}{4}
+\beamer@subsectionintoc {4}{1}{Analysis I: Number of states}{15}{0}{4}
+\beamer@subsectionintoc {4}{2}{Analysis II: Number of switching coefficients}{16}{0}{4}
+\beamer@subsectionintoc {4}{3}{Comparison between the Markov switching model and the E-divisive method}{19}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{24}{0}{5}
+\beamer@subsectionintoc {5}{1}{Future work}{25}{0}{5}

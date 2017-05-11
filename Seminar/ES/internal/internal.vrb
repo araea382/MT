@@ -1,0 +1,26 @@
+\begin{comment}
+Software release
+\begin{itemize}
+	\item two major releases per year
+	\item labeled with L followed a number related to the year of release and a letter A or B
+\end{itemize}
+
+Software package
+\begin{itemize}
+	\item act as a snapshot or marker
+	\item labeled with R followed numbers and letters
+\end{itemize}
+\end{comment}
+
+\begin{itemize}
+	\item Software release
+	\item Software package - treated as a time point in the time series
+
+	\begin{figure}
+		\includegraphics[width=0.8\linewidth]{Release}
+		\caption{Several software packages that are launched in the timeline}
+	\end{figure}
+
+	\item Test cases \footnotesize{in QA capacity area on signaling capacity} \normalsize{- treated as an observation in the dataset}
+\end{itemize}
+

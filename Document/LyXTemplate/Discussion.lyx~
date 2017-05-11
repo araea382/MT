@@ -1287,8 +1287,17 @@ The estimated coefficients in the model output
 A benefit of using a non-parametric analysis is that no assumption of the
  data distribution is required, and all type of distributional change within
  a time series can be detected.
- However, the E-divisive method was proved to have less power in detecting
- changes in the data.
+ In general, the method performs well when applying to the data of no known
+ distributional form 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sharkey2014nonparametric"
+
+\end_inset
+
+.
+ However, the E-divisive method, based on the non-parametric approach, was
+ proved to have less power in detecting changes in the data in this analysis.
  The main reason that the E-divisive method is not as powerful as the Markov
  switching model is because the Markov switching model included variables
  that have influences on the CPU utilization into the analysis but the E-divisiv
@@ -1477,15 +1486,21 @@ reference "sec:Assessing"
  the state for the test set considerably well.
  Estimated coefficients in each state were similar to the coefficients in
  actual models as well, except for an intercept of State2.
- The deviation between the actual and estimated coefficient is probably
- a reason why the model predicted observations from other states to a 
+ State2 was considered to be a 
+\emph on
+Normal
+\emph default
+ state.
+ The deviation between the actual and estimated coefficient of the intercept
+ in this state is probably a reason why the model predicted observations
+ from other states as the 
 \emph on
 Normal
 \emph default
  state.
  For the simulated Dataset 2, estimated coefficients from the model were
- not close to the actual coefficients, especially intercept values in all
- states.
+ not close to the actual coefficients, especially the values of intercept
+ in all states.
  State2 or said to be a 
 \emph on
 Good 
