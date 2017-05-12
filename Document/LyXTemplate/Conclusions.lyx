@@ -408,8 +408,11 @@ s could also be done to increase a robustness of the analysis.
  significant details that were used to explained the CPU utilization might
  not all be caught by the model.
  Hence, another future extension is to consider on the effects of interaction
- terms or the other predictor variables that might have an effect on the
- CPU utilization.
+ terms or the other predictor variables, specifically local events in 
+\emph on
+EventsPerSec
+\emph default
+, that might have an effect on the CPU utilization.
  Furthermore, there are still two more performance metrics in QA Capacity
  area which have not been taken into account in the thesis (e.g., a memory
  usage and a latency).

@@ -896,11 +896,11 @@ DuProdName
 NumCells
 \emph default
  have significant effects on the CPU utilization.
- The effect of 
+ 
 \emph on
 Fdd/Tdd
 \emph default
- will only apply on the CPU utilization when a test case is in State2 or
+ will affect the CPU utilization value when a test case is in State2 or
  State3.
  
 \end_layout

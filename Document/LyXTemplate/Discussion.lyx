@@ -1191,7 +1191,8 @@ reference "chap:Output"
  In general, the higher r-squared value is more preferable.
  Nevertheless, high r-squared value does not necessarily indicate that the
  model is a good model because the model with high r-squared value could
- be overfitting due to too many predictor variables were used in the model.
+ be overfitting due to too many prModel 4: DuProdName is non-switching coefficie
+nt.edictor variables were used in the model.
  Using only r-squared value to determine adequacy of the model can be misleading.
  A residual analysis should be considered when evaluating a model.
  

@@ -1588,6 +1588,16 @@ Residual standard error
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "output-L16A"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -2431,6 +2441,18 @@ Residual standard error
 
 \end_layout
 
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "output_L16B"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -3214,6 +3236,18 @@ Residual standard error
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "output_L17A"
 
 \end_inset
 

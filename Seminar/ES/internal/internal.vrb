@@ -1,26 +1,31 @@
+Simulated Dataset 1 and Dataset 2
+
+\begin{itemize}
+	\item E-divisive is less powerful in detecting changes
+
+	$\rightarrow$ the method only look at the value of CPU utilization
+
+	\item Both method detect change at the same location
+
+	$\rightarrow$ high probability to be an actual change
+
+	\item Both method detect change close to one another but not exact location
+
+	$\rightarrow$ lower chance be a false alarm
+\end{itemize}
+
+
 \begin{comment}
-Software release
-\begin{itemize}
-	\item two major releases per year
-	\item labeled with L followed a number related to the year of release and a letter A or B
-\end{itemize}
+\begin{figure}
+	\includegraphics[width=1\linewidth]{compare_sim1}
+	\caption{The simulated Dataset 1 showing the estimated change point locations}
+\end{figure}
 
-Software package
-\begin{itemize}
-	\item act as a snapshot or marker
-	\item labeled with R followed numbers and letters
-\end{itemize}
+Simulated Dataset 2
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{compare_sim2}
+\caption{The simulated Dataset 2 showing the estimated change point locations}
+\end{figure}
 \end{comment}
-
-\begin{itemize}
-	\item Software release
-	\item Software package - treated as a time point in the time series
-
-	\begin{figure}
-		\includegraphics[width=0.8\linewidth]{Release}
-		\caption{Several software packages that are launched in the timeline}
-	\end{figure}
-
-	\item Test cases \footnotesize{in QA capacity area on signaling capacity} \normalsize{- treated as an observation in the dataset}
-\end{itemize}
 

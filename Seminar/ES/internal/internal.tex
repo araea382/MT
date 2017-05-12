@@ -85,16 +85,16 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[]{Apply machine learning to Performance trend analysis} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Master Thesis]{Apply machine learning to Performance trend analysis} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Araya Eamrurksiri} % Your name
-\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+\author{Araya Eamrurksiri}
+\institute[LiU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
- \\ % Your institution for the title page
+Linkoping university \\ % Your institution for the title page
 \medskip
 \textit{} % Your email address
 }
-\date{May 19, 2017} % Date, can be changed to a custom date
+\date{May 19, 2017}
 
 \begin{document}
 
@@ -102,10 +102,10 @@
 \titlepage % Print the title page as the first slide
 \end{frame}
 
-\begin{frame}
-%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-\end{frame}
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide
+%\tableofcontents 
+%\end{frame}
 
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -226,12 +226,59 @@ Predictor vairalbes
 %------------------------------------------------
 \section{Method} 
 \subsection{Markov switching model}
-\begin{frame}
+\begin{frame}[fragile]
 Markov switching model \cite{p1}
 
-Assuming that $S_{t}$ denote an unobservable state variable
+\begin{itemize}
+	\item Describe evolution of the process at different period of time
+	\item Involve multiple structures that can characterize the time series behaviors in different states
+	\item The switching mechanism between the states is assumed to be an unobserved Markov chain
+\end{itemize}
 
-$$y_{t} = X_{t}\beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0,\sigma^{2}_{S_{t}})$$
+\begin{comment}
+ - \footnotesize{a stochastic process which contains the probability of transition from one state to any other state}
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{graph3}
+\caption{Switch between states}%
+\includegraphics[width=0.5\textwidth]{msm1}
+\caption{Model structure}
+\end{figure}
+
+\begin{figure}[ht]
+\begin{minipage}[b]{0.45\linewidth}
+\centering
+\includegraphics[width=\textwidth]{msm-ex}
+\caption{Switch between states}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=\textwidth]{transition1}
+\caption{Model structure}
+\end{minipage}
+\end{figure}
+
+\end{comment}
+
+
+\begin{figure}
+	\includegraphics[width=0.45\textwidth]{msm-ex}
+	\hspace{0.1cm}
+	\includegraphics[width=0.45\textwidth]{transition1}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+
+\begin{block}{Markov switching autoregressive model}
+\[
+y_{t} = X_{t}\beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0,\sigma^{2}_{S_{t}})
+\]
+\end{block}
+
+Assuming that $S_{t}$ denote an unobservable state variable
 
 $y_{t}$ is the observed value of time series at time $t$ 
 
@@ -239,23 +286,27 @@ $X_{t}$ are the predictor variables of time series at time $t$
 
 $\beta_{S_{t}}$ are the coefficients in state $S_{t}$, where $S_{t}=1,2,...,k$
 
-$\phi_{1,S_{t}}$ is an autoregression coefficient of the observed value at time $t-1$ in state $S_{t}$
-
-The observation are drawn from the first order autoregressive model, AR(1).
-
+$\phi_{1,S_{t}}$ is an autoregression coefficient at time $t-1$ in state $S_{t}$
 
 \begin{figure}
-	\includegraphics[width=0.5\linewidth]{msm-ar1}
-	\caption{Model structure}
+	\includegraphics[width=0.6\linewidth]{msm-ar1}
+	\caption{Model with additional dependencies at observation level}
 \end{figure}
 
 \end{frame}
 
 %------------------------------------------------
 \begin{frame}
-df
-\end{frame}
+A coefficient of a predictor variable can have either different values in different state or a constant value in all state. 
 
+\vspace{1em}
+
+The variable that can take on different values is said to have a \textit{switching effect}. 
+
+\vspace{1em}
+
+The variable which have the same coefficient in all states is the variable that does not have a switching effect, or said to have a \textit{non-switching effect}. 
+\end{frame}
 
 %------------------------------------------------
 \subsection{Model selection}
@@ -271,21 +322,45 @@ Based on the applied literature, the information criteria called the Bayesian In
 
 $$\mathrm{BIC}=-2\ln(L(\hat{\theta}))+m\cdot\ln(T)$$
 
+Reduce overfitting problem by penalizing on the number of parameters in the model
 
 \end{frame}
 
 %------------------------------------------------
 \subsection{E-divisive method}
-\begin{frame}
+\begin{frame}[fragile]
+
+\begin{comment}
 E-divisive method \cite{p3}
 \begin{itemize}
 	\item Non-parametric approach: more flexible as no assumption about the distribution is made
 	\item Detects multiple change point locations based on a divisive hierarchical estimation algorithm
-	\item Algorithm: 
-	
-	recursively partition a time series, and perform a permutation test to find the statistical significance of an estimated change point. 
+	\item Algorithm: Recursively partition a time series, and perform a permutation test to find the statistical significance of an estimated change point.
+	\item Remark: Obtain a rough idea of the change point location 
 \end{itemize}
 
+\begin{figure}
+	\includegraphics[scale=0.3]{divisive}
+\end{figure}
+\end{comment}
+
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+	
+	\column{.65\textwidth} % Left column and width
+	E-divisive \cite{p3}
+	\begin{enumerate}
+		\item Non-parametric approach: more flexible as no assumption about the distribution is made
+		\item Detects multiple change point locations based on a divisive hierarchical estimation algorithm
+		\item Algorithm: Recursively partition a time series, and perform a permutation test to find the statistical significance of an estimated change point.
+		\item Remark: Obtain a rough idea of the change point location 
+	\end{enumerate}
+	
+	\column{.35\textwidth} % Right column and width
+	\begin{figure}
+		\includegraphics[width=1\linewidth]{divisive}
+	\end{figure}
+	
+\end{columns}
 
 \end{frame}
 
@@ -299,7 +374,7 @@ E-divisive method \cite{p3}
 	\item Simulated two datasets - Dataset 1 and Dataset 2 - with different switching between states
 \end{itemize}
 
-$$y_{t}=\begin{cases}
+$y_{t}=\begin{cases}
 	\begin{array}{c}
 		10+0.6X_{1,t}-0.9X{}_{2,t}+0.5y_{t-1}+\varepsilon_{t}^{(1)}\\
 		2+0.8X_{1,t}+0.2y_{t-1}+\varepsilon_{t}^{(2)}\\
@@ -308,20 +383,41 @@ $$y_{t}=\begin{cases}
 		\mathrm{Normal}\\
 		\mathrm{Bad}\\
 		\mathrm{Good}
-\end{array}\end{cases}$$
+\end{array}\end{cases}$
+\vspace{1em}
 
-$y_{t}$ is assumed to be a value of a CPU usage of the time series at time $t$
+$y_{t}$ is assumed to be value of a CPU usage
 
-$x_{1,t}\sim U[50,200]$ of the time series at time $t$
+$x_{1,t}\sim U[50,200]$
 
-$x_{2,t}\sim U[0,50]$ of the time series at time $t$
+$x_{2,t}\sim U[0,50]$ 
 
 $\varepsilon_{t}^{(1)}\sim N(0,1),\quad \varepsilon_{t}^{(2)}\sim N(2,0.5),\quad \mathrm{and} \quad \varepsilon_{t}^{(3)}\sim N(1,1)$
 
 \end{frame}
 
 %------------------------------------------------
-\section{Results}
+\begin{frame}
+
+\begin{figure}
+	\includegraphics[width=1\linewidth]{sim1}
+	\caption{A simulated data of Dataset 1 and the period in the time series when observation is in each state.}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+
+\begin{figure}
+	\includegraphics[width=1\linewidth]{sim2}
+	\caption{A simulated data of Dataset 2 and the period in the time series when observation is in each state.}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------
+\section{Results and Discussion}
 \subsection{Analysis I: Number of states}
 \begin{frame}
 Decide: Number of states
@@ -331,43 +427,180 @@ Hypothesis: Markov switching model with \textit{two} or \textit{three} states
 
 \begin{itemize}
 	\item BIC is one criteria to select the appropriate model but model output and plot should also be taken into account
-	\item \textbf{Three-state} model are chosen for further analysis
-	\item Remark: 
-	
-	Higher number of states $k\geq4$ are more likely to give worse results and were not considered
+	\item \textit{Three-state} model are chosen for further analysis
+	\item Remark: Higher number of states $k\geq4$ are more likely to give worse results and were not considered
 \end{itemize}
 
 \end{frame}
 
 %------------------------------------------------
 \subsection{Analysis II: Number of switching coefficients}
-\begin{frame}
+\begin{frame}[fragile]
 \small{Decide: Number of switching coefficients in the model
 
 Hypothesis: test environments is possible to have non-switching effects}
 \rule{\textwidth}{0.4pt}
 
+\begin{itemize}
+	\item Software release L16A: 
+	
+	\textit{Fdd/Tdd} and \textit{Numcells} are non-switching coefficients
+
+	\item Software release L16B: 
+	
+	\textit{DuProdName} is non-switching coefficient
+
+
+	\item Software release L17A: 
+	
+	\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells} are non-switching coefficients
+\end{itemize}
+
+\begin{comment}
 Software release L16A
 
 Model with Fdd/Tdd and Numcells are non-switching coefficients
 
+\begin{figure}
+\includegraphics[width=1\linewidth]{L16A_NN1}
+\caption{The CPU utilization showing the periods where the observation is in the specific state.}
+\end{figure}
+
+
+\small{Decide: Number of switching coefficients in the model
+
+Hypothesis: test environments is possible to have non-switching effects}
+\rule{\textwidth}{0.4pt}
+
+Software release L16B
+
+Model with DuProdName is non-switching coefficient.
+
+\begin{figure}
+	\includegraphics[width=1\linewidth]{L16B_NYY1}
+	\caption{The CPU utilization showing the periods where the observation is in the specific state.}
+\end{figure}
+
+
+\small{Decide: Number of switching coefficients in the model
+
+Hypothesis: test environments is possible to have non-switching effects}
+\rule{\textwidth}{0.4pt}
+
+
+Software release L17A
+
+Model with DuProdName, Fdd/Tdd, and NumCells are non-switching coefficients.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{L17A_NNN1}
+\caption{The CPU utilization showing the periods where the observation is in the specific state.}
+\end{figure}
+\end{comment}
+
+\end{frame}
+
+%------------------------------------------------
+\subsection{Comparison between the Markov switching model and the E-divisive method}
+\begin{frame}[fragile]
+Simulated Dataset 1 and Dataset 2
+
+\begin{itemize}
+	\item E-divisive is less powerful in detecting changes
+	
+	$\rightarrow$ the method only look at the value of CPU utilization
+	
+	\item Both method detect change at the same location 
+	
+	$\rightarrow$ high probability to be an actual change
+	
+	\item Both method detect change close to one another but not exact location 
+	
+	$\rightarrow$ lower chance be a false alarm
+\end{itemize}
+
+
+\begin{comment}
+\begin{figure}
+	\includegraphics[width=1\linewidth]{compare_sim1}
+	\caption{The simulated Dataset 1 showing the estimated change point locations}
+\end{figure}
+
+Simulated Dataset 2
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{compare_sim2}
+\caption{The simulated Dataset 2 showing the estimated change point locations}
+\end{figure}
+\end{comment}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+Real data: Software release L16A
+
+\begin{itemize}
+	\item E-divisive cannot detect any changes in the time series data
+	\item No comparison is made
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+Real data: Software release L16B
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\begin{figure}
+	\includegraphics[width=1\linewidth]{compare_L16B}
+	\caption{The estimated change point locations}
+\end{figure}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+Real data: Software release L17A
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\begin{figure}
+	\includegraphics[width=1\linewidth]{compare_L17A}
+	\caption{The estimated change point locations}
+\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\subsection{State inference}
+\begin{frame}
+Software release L16A
+
+\begin{itemize}
+	\item State 1: Degradation
+	\item State 2: Improvement
+	\item State 3: Steady
+\end{itemize}
 
 \begin{figure}
 	\includegraphics[width=1\linewidth]{L16A_NN1}
 	\caption{The CPU utilization showing the periods where the observation is in the specific state.}
 \end{figure}
 
-
 \end{frame}
 
 %------------------------------------------------
 \begin{frame}
-\small{Decide: Number of switching coefficients in the model
-	
-Hypothesis: test environments is possible to have non-switching effects}
-\rule{\textwidth}{0.4pt}
-
 Software release L16B
+
+\begin{itemize}
+	\item State 1: Degradation
+	\item State 2: Improvement
+	\item State 3: Steady
+\end{itemize}
 
 \begin{figure}
 	\includegraphics[width=1\linewidth]{L16B_NYY1}
@@ -378,12 +611,13 @@ Software release L16B
 
 %------------------------------------------------
 \begin{frame}
-\small{Decide: Number of switching coefficients in the model
-	
-Hypothesis: test environments is possible to have non-switching effects}
-\rule{\textwidth}{0.4pt}
-
 Software release L17A
+
+\begin{itemize}
+	\item State 1: Degradation
+	\item State 2: Improvement
+	\item State 3: Steady
+\end{itemize}
 
 \begin{figure}
 	\includegraphics[width=1\linewidth]{L17A_NNN1}
@@ -393,41 +627,24 @@ Software release L17A
 \end{frame}
 
 %------------------------------------------------
-\subsection{Comparison between the Markov switching model and the E-divisive method}
+\subsection{Test environment}
 \begin{frame}
-Simulated Dataset 1
+Effects of test environments -\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells} - on the CPU utilization
 
-\begin{figure}
-	\includegraphics[width=1\linewidth]{compare_sim1}
-	\caption{The simulated Dataset 1 showing the estimated change point locations}
-\end{figure}
-
-\end{frame}
-
-%------------------------------------------------
-\begin{frame}
-Simulated Dataset 2
-
-\begin{figure}
-	\includegraphics[width=1\linewidth]{compare_sim2}
-	\caption{The simulated Dataset 2 showing the estimated change point locations}
-\end{figure}
-
-\end{frame}
-
-%------------------------------------------------
-\begin{frame}
-Real data: Software release L16A
-
-\end{frame}
-%------------------------------------------------
-\begin{frame}
-Real data: Software release L16B
-
-\end{frame}
-%------------------------------------------------
-\begin{frame}
-Real data: Software release L17A
+\begin{itemize}
+	\item Software release L16A:
+	
+	\textit{Fdd/Tdd} and \textit{NumCells}
+	
+	\item Software release L16B:
+	
+	\textit{DuProdName} and \textit{NumCells}
+	
+	\item Software release L17A:
+	
+	\textit{DuProdName} 
+	
+\end{itemize}
 
 \end{frame}
 
@@ -435,7 +652,10 @@ Real data: Software release L17A
 \section{Conclusion}
 \begin{frame}
 %\frametitle{Conslusion}
-Concludeeeee
+\begin{itemize}
+	\item 
+	\item 
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -444,15 +664,16 @@ Concludeeeee
 %\frametitle{Future work}
 \begin{itemize}
 	\item Larger dataset
-	\item Effects of other variables
+	\item Effects of interaction terms or other local events
 	\item Consider on the other performance metrics (e.g.,memory usage and latency) 
-	\item Use semi-supervised learning algorithm if some test cases are labeled with state
+	\item Use semi-supervised learning algorithm (e.g., Self-Organizing Maps) if some test cases are labeled with state
 \end{itemize}
 \end{frame}
 
 %------------------------------------------------
+\subsection{References}
 \begin{frame}
-\frametitle{References}
+%\frametitle{References}
 \footnotesize{
 	\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
 		\bibitem[Hamilton, 1989]{p1} James D Hamilton (1989)
