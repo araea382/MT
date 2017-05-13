@@ -371,7 +371,7 @@ E-divisive method \cite{p3}
 	\item State of the CPU utilization is unknown
 	\pause
 	
-	\item Simulated two datasets - Dataset 1 and Dataset 2 - with different switching between states
+	\item Simulated two datasets - Dataset 1 and Dataset 2 - with high and low persistent state, respectively.
 \end{itemize}
 
 $y_{t}=\begin{cases}
@@ -438,7 +438,7 @@ Hypothesis: Markov switching model with \textit{two} or \textit{three} states
 \begin{frame}[fragile]
 \small{Decide: Number of switching coefficients in the model
 
-Hypothesis: test environments is possible to have non-switching effects}
+Hypothesis: Test environments is possible to have non-switching effects}
 \rule{\textwidth}{0.4pt}
 
 \begin{itemize}
@@ -510,11 +510,11 @@ Simulated Dataset 1 and Dataset 2
 	
 	$\rightarrow$ the method only look at the value of CPU utilization
 	
-	\item Both method detect change at the same location 
+	\item Both method detect changes at the same location 
 	
 	$\rightarrow$ high probability to be an actual change
 	
-	\item Both method detect change close to one another but not exact location 
+	\item Both method detect changes close to one another but not exact location 
 	
 	$\rightarrow$ lower chance be a false alarm
 \end{itemize}
@@ -551,12 +551,12 @@ Real data: Software release L16A
 Real data: Software release L16B
 
 \begin{itemize}
-	\item 
+	\item E-divisive method detects change-points at 130, 135, 153, and 170
 \end{itemize}
 
 \begin{figure}
 	\includegraphics[width=1\linewidth]{compare_L16B}
-	\caption{The estimated change point locations}
+	\caption{The estimated change point locations from both methods}
 \end{figure}
 
 \end{frame}
@@ -565,12 +565,12 @@ Real data: Software release L16B
 Real data: Software release L17A
 
 \begin{itemize}
-	\item 
+	\item E-divisive method detects change-point at 9, 77, 82, and 105
 \end{itemize}
 
 \begin{figure}
 	\includegraphics[width=1\linewidth]{compare_L17A}
-	\caption{The estimated change point locations}
+	\caption{The estimated change point locations from both methods}
 \end{figure}
 \end{frame}
 
@@ -649,6 +649,25 @@ Effects of test environments -\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit
 \end{frame}
 
 %------------------------------------------------
+\subsection{State prediction}
+\begin{frame}
+
+	
+	\begin{itemize}
+		\item Software release L16A:
+		
+		
+		\item Software release L16B:
+		
+		
+		\item Software release L17A:
+		
+
+	\end{itemize}
+	
+\end{frame}
+
+%------------------------------------------------
 \section{Conclusion}
 \begin{frame}
 %\frametitle{Conslusion}
@@ -664,8 +683,9 @@ Effects of test environments -\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit
 %\frametitle{Future work}
 \begin{itemize}
 	\item Larger dataset
-	\item Effects of interaction terms or other local events
 	\item Consider on the other performance metrics (e.g.,memory usage and latency) 
+	\item Apply the Markov switching model to each QA Capacity test case type (one model for one type)
+	\item Normalize feature set by introducing \textit{weight} parameters
 	\item Use semi-supervised learning algorithm (e.g., Self-Organizing Maps) if some test cases are labeled with state
 \end{itemize}
 \end{frame}

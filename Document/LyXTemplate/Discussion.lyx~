@@ -322,8 +322,8 @@ Critical assessment of the results obtained and the adequacy of the methods
 \begin_layout Standard
 In this chapter, a discussion of the model selection for each given dataset
  is explained.
- Then, a state inference from the model is made and effects on the test
- environments is provided.
+ Then, a state inference from the model is made and effects of the test
+ environments are provided.
  Lastly, a results discussion of this study is discussed.
 \end_layout
 
@@ -370,7 +370,7 @@ key "ryden2008versus"
 \end_layout
 
 \begin_layout Paragraph*
-Software release L16A
+Software release A
 \end_layout
 
 \begin_layout Standard
@@ -408,7 +408,7 @@ The t statistic is the coefficient divided by its standard error.
 \end_layout
 
 \begin_layout Paragraph*
-Software release L16B
+Software release B
 \end_layout
 
 \begin_layout Standard
@@ -435,7 +435,7 @@ reference "L16B_NNY"
 \end_layout
 
 \begin_layout Paragraph*
-Software release L17A
+Software release C
 \end_layout
 
 \begin_layout Standard
@@ -489,7 +489,7 @@ Therefore, an interpretation and inference of these states need to be specified.
 \end_layout
 
 \begin_layout Paragraph
-Software release L16A (see 
+Software release A (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16A_NN"
@@ -591,7 +591,7 @@ Steady
 \end_layout
 
 \begin_layout Paragraph*
-Software release L16B (see 
+Software release B (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_NYY"
@@ -699,7 +699,7 @@ Steady
 \end_layout
 
 \begin_layout Paragraph
-Software release L17A (see 
+Software release C (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L17A_NNN"
@@ -844,7 +844,7 @@ NumCells
 \end_layout
 
 \begin_layout Paragraph
-Software release L16A (see 
+Software release A (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "output-L16A"
@@ -870,7 +870,7 @@ NumCells
 \end_layout
 
 \begin_layout Paragraph
-Software release L16B (see
+Software release B (see
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "output_L16B"
@@ -906,7 +906,7 @@ Fdd/Tdd
 \end_layout
 
 \begin_layout Paragraph
-Software release L17A (see 
+Software release C (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "output_L17A"
@@ -930,8 +930,8 @@ DuProdName
 \emph on
 NumCells
 \emph default
- has somewhat an impact on the CPU utilization.
- 
+ has somewhat an impact on the CPU utilization; however, this is not always
+ the case and should have been taken with care.
 \end_layout
 
 \begin_layout Section
@@ -1019,9 +1019,9 @@ had one state with a considerably long period and another state with a very
 
 \end_inset
 
-Despite higher BICs for the dataset of the software release L16B and L17A,
- three-state model provides more interpretable plots and better fit to the
- time series data.
+Despite higher BICs for the dataset of the software release B and C, three-state
+ model provides more interpretable plots and better fit to the time series
+ data.
  The four-state Markov switching model for each software release was also
  briefly tested in the analysis.
  Apparently, defining four states caused more difficulty when fitting the
@@ -1129,7 +1129,7 @@ reference "sec:States"
 \emph on
 DuProdName
 \emph default
- in the dataset of the software release L16A
+ in the dataset of the software release A
 \begin_inset Note Comment
 status collapsed
 
@@ -1174,6 +1174,24 @@ Fifty-seven observations in this dataset were used to train the Markov switching
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Note that in this study, the unfiltered data has been used for the analysis.
+ This data contains all the QA capacity test case types which are executed
+ in the system.
+ Each test case type in the data established different value in its local
+ events (e.g., one test case type has 
+\emph on
+RrcConnectionSetupComplete
+\emph default
+ value very high while another type has value of this local events very
+ low).
+ In data preprocressing step, the minimum value of the CPU utilization of
+ each software package is selected, regardless the type of test case.
+ As a consequence, many type of test cases are presented in the final datasets,
+ and one can easily notice the sudden drop in the CPU utilization in the
+ plot of all three software release.
 \end_layout
 
 \begin_layout Standard
@@ -1255,7 +1273,7 @@ status collapsed
 
 \begin_layout Plain Layout
 The assumption of a normally distributed residuals is justified for software
- release L16B.
+ release B.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1323,7 +1341,7 @@ For this reason, a prediction for the new observations might not be accurate
 
 \end_inset
 
-This could be seen in a state prediction of the software release L16A (see
+This could be seen in a state prediction of the software release A (see
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1592,7 +1610,7 @@ Normal
 \emph default
  state.
  The deviation between the actual and estimated coefficient of the intercept
- in this state is probably a reason why the model made four out of hundread
+ in this state is probably a reason why the model made four out of hundred
  wrong state predictions (i.e., the model indicated observations from the
  
 \emph on

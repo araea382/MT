@@ -1,3 +1,4 @@
+\beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Motivation}{2}{0}{1}
 \beamer@subsectionintoc {1}{2}{Objectives}{3}{0}{1}
@@ -15,6 +16,7 @@
 \beamer@subsectionintoc {4}{3}{Comparison between the Markov switching model and the E-divisive method}{19}{0}{4}
 \beamer@subsectionintoc {4}{4}{State inference}{23}{0}{4}
 \beamer@subsectionintoc {4}{5}{Test environment}{26}{0}{4}
-\beamer@sectionintoc {5}{Conclusion}{27}{0}{5}
-\beamer@subsectionintoc {5}{1}{Future work}{28}{0}{5}
-\beamer@subsectionintoc {5}{2}{References}{29}{0}{5}
+\beamer@subsectionintoc {4}{6}{State prediction}{27}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{28}{0}{5}
+\beamer@subsectionintoc {5}{1}{Future work}{29}{0}{5}
+\beamer@subsectionintoc {5}{2}{References}{30}{0}{5}

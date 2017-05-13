@@ -150,8 +150,10 @@ ion.
  the Markov switching model and the E-divisive method.
  Results show that the former method is preferable because of its better
  performance and more efficient in detecting changes.
- The E-divisive method can detect fewer changes and has a higher rate of
- missed detections.
+ Some information about the state of the CPU utilization are also obtained
+ from performing the Markov switching model.
+ The E-divisive method is proved to have less power in detecting changes
+ and has a higher rate of missed detections.
  The results from applying the Markov switching autoregressive model to
  the real data are presented with interpretations and discussions.
  

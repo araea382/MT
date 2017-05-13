@@ -972,9 +972,15 @@ Data preprocessing
 
 \begin_layout Standard
 The relevant aspects of the data preprocessing step is describe here.
- The dataset, which spans three software releases – L16A, L16B and L17A,
- is split into three datasets according to the software release.
- The test cases in each dataset are sorted by its software package version,
+ The dataset, which spans three software releases, is split into three datasets
+ according to the software release.
+ In this thesis framework, Ericsson software release will be referred as
+ A, B, and C.
+ 
+\end_layout
+
+\begin_layout Standard
+The test cases in each dataset are sorted by its software package version,
  which is named alphabetically.
  The name of the software package is used as a time point in the time series.
 \end_layout
@@ -1009,7 +1015,7 @@ EventsPerSec
 \emph default
  stores multiple values separated by a tab character.
  These tab-separated values in the field are split into columns.
- A function is implemented to perform this process which is further described
+ A function is implemented to perform this process and is further described
  in details in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1074,8 +1080,7 @@ tried to be optimistic...
 
 \begin_layout Standard
 After performing all the steps described above, the dataset of the software
- release L16A, L16B and L17A consist of 64, 241, and 144 test cases, respectivel
-y.
+ release A, B, and C consist of 64, 241, and 144 test cases, respectively.
  Lastly, each dataset with particular software release is divided into two
  subsets.
  Ninety percents of the dataset is used for training the model and the remaining

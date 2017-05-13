@@ -467,11 +467,11 @@ reference "state-bic"
 \end_inset
 
 .
- For the software release L16A, the BIC suggests that the three-state Markov
+ For the software release A, the BIC suggests that the three-state Markov
  switching autoregressive model gives a better fit in comparison to the
  two-state model.
  However, the models with two states for the remaining two software releases,
- L16B and L17A, had lower BICs.
+ B and C, had lower BICs.
  
 \begin_inset Note Comment
 status collapsed
@@ -590,7 +590,7 @@ BIC
 \begin_inset Text
 
 \begin_layout Plain Layout
-L16A
+A
 \end_layout
 
 \end_inset
@@ -619,7 +619,7 @@ L16A
 \begin_inset Text
 
 \begin_layout Plain Layout
-L16B
+B
 \end_layout
 
 \end_inset
@@ -648,7 +648,7 @@ L16B
 \begin_inset Text
 
 \begin_layout Plain Layout
-L17A
+C
 \end_layout
 
 \end_inset
@@ -685,7 +685,7 @@ L17A
 \end_layout
 
 \begin_layout Subsection
-Software release L16A
+Software release A
 \end_layout
 
 \begin_layout Standard
@@ -695,8 +695,8 @@ Before performing the Markov switching autoregressive model, a standard
 \emph on
 DuProdName
 \emph default
- in the dataset of the software release L16A was not defined because of
- singularity i.e., a perfect correlation between predictor variables.
+ in the dataset of the software release A was not defined because of singularity
+ i.e., a perfect correlation between predictor variables.
  Hence, 
 \emph on
 DuProdName 
@@ -768,7 +768,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities of the software release L16A with two-state model
+The smoothed probabilities of the software release A with two-state model
 \end_layout
 
 \end_inset
@@ -809,8 +809,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities of the software release L16A with three-state
- model
+The smoothed probabilities of the software release A with three-state model
 \end_layout
 
 \end_inset
@@ -831,7 +830,7 @@ name "L16A_3_smo"
 \end_layout
 
 \begin_layout Subsection
-Software release L16B
+Software release B
 \end_layout
 
 \begin_layout Standard
@@ -843,7 +842,7 @@ reference "L16B_2_smo"
 \end_inset
 
 , the Markov chain has several periods where it switches back and forth
- between two states of the software release L16B.
+ between two states of the software release B.
  The durations of the chain being in State2 is longer than the durations
  of the chain staying in State 1.
  Although the chain temporarily stays in State1, it remains in this state
@@ -886,7 +885,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities of the software release L16B with two-state model
+The smoothed probabilities of the software release B with two-state model
 \end_layout
 
 \end_inset
@@ -930,8 +929,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities of the software release L16B with three-state
- model
+The smoothed probabilities of the software release B with three-state model
 \end_layout
 
 \end_inset
@@ -973,10 +971,6 @@ Close-up on the observations 0-20
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1047,10 +1041,6 @@ Close-up on the observations 165-210
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1062,12 +1052,12 @@ Close-up on the observations 165-210
 \end_layout
 
 \begin_layout Subsection
-Software release L17A
+Software release C
 \end_layout
 
 \begin_layout Standard
 There are a number of switches between states in the two-state model of
- the software release L17A.
+ the software release C.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1113,8 +1103,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities of the software release L17A with three-state
- model
+The smoothed probabilities of the software release C with three-state model
 \end_layout
 
 \end_inset
@@ -1152,8 +1141,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities of the software release L17A with three-state
- model
+The smoothed probabilities of the software release C with three-state model
 \end_layout
 
 \end_inset
@@ -1229,7 +1217,7 @@ status collapsed
 \begin_layout Plain Layout
 The outputs from the models along with the plots provide more interpretable
  results when defining the model with three states in the software release
- L16B and L17A (see 
+ B and C (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Discussion"
@@ -1351,7 +1339,7 @@ reference "subsec:Model-selection"
 
 .
  It should be noted that these three chosen models will later be used throughout
- this thesis and the model outputs are shown in 
+ this thesis, and the model outputs are shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Output"
@@ -1363,11 +1351,11 @@ reference "chap:Output"
 \end_layout
 
 \begin_layout Subsection
-Software release L16A
+Software release A
 \end_layout
 
 \begin_layout Standard
-For the dataset of the software release L16A, 
+For the dataset of the software release A, 
 \emph on
 DuProdName
 \emph default
@@ -1418,8 +1406,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of the software release L16A along with its
- BIC.
+List of the model structure of the software release A along with its BIC.
  The last line is the result taken from the three-state model in the Analysis
  I.
  The line in bold indicates the selected model.
@@ -1702,7 +1689,7 @@ reference "L16A_NN"
 
 \end_inset
 
- indicates the CPU utilization of the software release L16A and also shows
+ indicates the CPU utilization of the software release A and also shows
  the periods of the derived state from the model.
  From the plot, State2 clearly has the longest duration to remain in its
  own state.
@@ -1765,7 +1752,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L16A showing the periods where
+The CPU utilization of the software release A showing the periods where
  the observation is in the specific state.
  
 \begin_inset Newline newline
@@ -1792,11 +1779,11 @@ name "L16A_NN"
 \end_layout
 
 \begin_layout Subsection
-Software release L16B
+Software release B
 \end_layout
 
 \begin_layout Standard
-For the software release L16B, 
+For the software release B, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L16B_switch"
@@ -1833,8 +1820,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of the software release L16B along with its
- BIC.
+List of the model structure of the software release B along with its BIC.
  The last line is the result taken from the three-state model in the Analysis
  I.
  The line in bold indicates the selected model.
@@ -2402,7 +2388,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L16B showing the periods where
+The CPU utilization of the software release B showing the periods where
  the observation is in the specific state.
  
 \begin_inset Newline newline
@@ -2429,7 +2415,7 @@ name "L16B_NYY"
 \end_layout
 
 \begin_layout Subsection
-Software release L17A
+Software release C
 \end_layout
 
 \begin_layout Standard
@@ -2439,7 +2425,7 @@ reference "L17A_switch"
 
 \end_inset
 
- presents model structure of the software release L17A.
+ presents model structure of the software release C.
  Only model 2 has higher BIC than the model which have all switching coefficient
 s.
  The least BIC is from the first model that all three variables in the test
@@ -2457,8 +2443,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-List of the model structure of the software release L17A along with its
- BIC.
+List of the model structure of the software release C along with its BIC.
  The last line is the result taken from the three-state model in the Analysis
  I.
  The line in bold indicates the selected model.
@@ -3024,7 +3009,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L17A showing the periods where
+The CPU utilization of the software release C showing the periods where
  the observation is in the specific state.
  
 \begin_inset Newline newline
@@ -3142,7 +3127,7 @@ reference "L17A_plotDiag"
 \end_layout
 
 \begin_layout Subsection
-Software release L16A
+Software release A
 \end_layout
 
 \begin_layout Standard
@@ -3208,7 +3193,7 @@ status open
 
 \begin_layout Plain Layout
 The normal Q-Q plot and the ACF/PACF of pooled residuals of the software
- release L16A
+ release A
 \end_layout
 
 \end_inset
@@ -3229,7 +3214,7 @@ name "L16A_plotDiag"
 \end_layout
 
 \begin_layout Subsection
-Software release L16B
+Software release B
 \end_layout
 
 \begin_layout Standard
@@ -3289,7 +3274,7 @@ status open
 
 \begin_layout Plain Layout
 The normal Q-Q plot and the ACF/PACF of pooled residuals of the software
- release L16B
+ release B
 \end_layout
 
 \end_inset
@@ -3310,7 +3295,7 @@ name "L16B_plotDiag"
 \end_layout
 
 \begin_layout Subsection
-Software release L17A
+Software release C
 \end_layout
 
 \begin_layout Standard
@@ -3379,7 +3364,7 @@ status open
 
 \begin_layout Plain Layout
 The normal Q-Q plot and the ACF/PACF of pooled residuals of the software
- release L17A
+ release C
 \end_layout
 
 \end_inset
@@ -3439,7 +3424,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Normal Q-Q plot of software release L16A
+Normal Q-Q plot of software release A
 \end_layout
 
 \end_inset
@@ -3480,7 +3465,7 @@ status open
 
 \begin_layout Plain Layout
 ACF/PACF of pooled residuals and ACF/PACF of square residuals of software
- release L16A
+ release A
 \end_layout
 
 \end_inset
@@ -3531,7 +3516,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Normal Q-Q plot of software release L16B
+Normal Q-Q plot of software release B
 \end_layout
 
 \end_inset
@@ -3592,7 +3577,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Normal Q-Q plot of software release L17A
+Normal Q-Q plot of software release C
 \end_layout
 
 \end_inset
@@ -3624,8 +3609,7 @@ Non-parametric analysis
 \begin_layout Standard
 An E-divisive method was applied to all three datasets.
  The method reported one cluster for the dataset of the software release
- L16A and five clusters for the dataset of each software release L16B and
- L17A.
+ A and five clusters for the dataset of each software release B and C.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3697,7 +3681,7 @@ Change-point location
 \begin_inset Text
 
 \begin_layout Plain Layout
-L16A
+A
 \end_layout
 
 \end_inset
@@ -3717,7 +3701,7 @@ L16A
 \begin_inset Text
 
 \begin_layout Plain Layout
-L16B
+B
 \end_layout
 
 \end_inset
@@ -3737,7 +3721,7 @@ L16B
 \begin_inset Text
 
 \begin_layout Plain Layout
-L17A
+C
 \end_layout
 
 \end_inset
@@ -3765,9 +3749,8 @@ L17A
 \end_layout
 
 \begin_layout Standard
-The CPU utilization of the software release L16A, L16B and L17A along with
- its estimated change points in the time series are plotted and shown later
- in 
+The CPU utilization of the software release A, B and C along with its estimated
+ change points in the time series are plotted and shown later in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Real-data"
@@ -3783,12 +3766,12 @@ reference "subsec:Real-data"
 status collapsed
 
 \begin_layout Subsection
-Software release L16A
+Software release A
 \end_layout
 
 \begin_layout Plain Layout
 It can be seen that the E-divisive method could not identify any changes
- in the dataset of the software release L16A.
+ in the dataset of the software release A.
  
 \end_layout
 
@@ -3818,7 +3801,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L16A
+The CPU utilization of the software release A
 \end_layout
 
 \end_inset
@@ -3842,12 +3825,12 @@ name "ediv_L16A"
 \end_layout
 
 \begin_layout Subsection
-Software release L16B
+Software release B
 \end_layout
 
 \begin_layout Plain Layout
 Four change points were identified from the method for the software release
- L16B and L17A.
+ B and C.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3855,7 +3838,7 @@ reference "ediv_L16B"
 
 \end_inset
 
-, the estimated change points for the dataset of the software release L16B
+, the estimated change points for the dataset of the software release B
  are likely to occur around the same period of time, which are almost at
  the end of the time series data.
  The estimated points from the method are approximately at peaks and negative
@@ -3887,7 +3870,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L16B.
+The CPU utilization of the software release B.
  The red dashed vertical lines indicate the locations of estimated change
  points.
  
@@ -3911,12 +3894,12 @@ name "ediv_L16B"
 \end_layout
 
 \begin_layout Subsection
-Software release L17A
+Software release C
 \end_layout
 
 \begin_layout Plain Layout
-On the contrary, the result of the dataset of the software release L17A,
- which is shown in 
+On the contrary, the result of the dataset of the software release C, which
+ is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ediv_L17A"
@@ -3954,7 +3937,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L17A.
+The CPU utilization of the software release C.
  The red dashed vertical lines indicate the locations of estimated change
  points.
  
@@ -4169,7 +4152,7 @@ name "subsec:Real-data"
 \end_layout
 
 \begin_layout Subsubsection
-Software release L16A
+Software release A
 \end_layout
 
 \begin_layout Standard
@@ -4194,7 +4177,7 @@ status collapsed
 \begin_layout Plain Layout
 As previously mentioned, no estimated change points was discovered when
  applying the E-divisive algorithm to the dataset of the software release
- L16A.
+ A.
 \end_layout
 
 \end_inset
@@ -4207,7 +4190,7 @@ reference "ediv"
 \end_inset
 
 , the E-divisive method could not identify any changes in the dataset of
- the software release L16A.
+ the software release A.
  Thus, a comparison between two methods could not be made for this dataset.
  
 \end_layout
@@ -4236,7 +4219,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L16A.
+The CPU utilization of the software release A.
  The dashed vertical lines indicate the locations of estimated change points
  from the Markov switching model (Top).
  
@@ -4263,7 +4246,7 @@ name "compare_L16A"
 \end_layout
 
 \begin_layout Subsubsection
-Software release L16B
+Software release B
 \end_layout
 
 \begin_layout Standard
@@ -4274,7 +4257,7 @@ reference "compare_L16B"
 \end_inset
 
  presents results of estimated change points from the Markov switching model
- and the E-divisive method for the software release L16B.
+ and the E-divisive method for the software release B.
  Sixty three estimated change point locations are found by the Markov switching
  model.
  On the contrary, only four estimated change point locations are identified
@@ -4311,7 +4294,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L16B.
+The CPU utilization of the software release B.
  The dashed vertical lines indicate the locations of estimated change points
  from the Markov switching model (Top) and the E-divisive method (Bottom).
  
@@ -4350,7 +4333,7 @@ reference "compare_L16B-1"
 
  presents results of switches between states from the Markov switching model
  and change point locations from the E-divisive method for the software
- release L16B.
+ release B.
  There is one location where the E-divisive method detects a change but
  the Markov switching model does not show any switches.
  As can be seen, the E-divisive method appears to detect changes when State2
@@ -4412,11 +4395,11 @@ name "compare_L16B-1"
 \end_layout
 
 \begin_layout Subsubsection
-Software release L17A
+Software release C
 \end_layout
 
 \begin_layout Standard
-For the software release L17A, thirty-seven changes were discovered by the
+For the software release C, thirty-seven changes were discovered by the
  Markov switching model as can be seen in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4428,7 +4411,7 @@ reference "compare_L17A"
  However, only four change point locations were identified from the E-divisive
  method.
  These locations are rather spread out if compare to the results from the
- software release L16B.
+ software release B.
  The E-divisive method discovered changes when the CPU utilization value
  was about to decrease or increase.
  From both methods, two change points are determined at exactly the same
@@ -4462,7 +4445,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L17A.
+The CPU utilization of the software release C.
  The dashed vertical lines indicate the locations of estimated change points
  from the Markov switching model (Top) and the E-divisive method (Bottom).
  
@@ -4577,11 +4560,11 @@ In this section, the state prediction function was implemented to the test
 \end_layout
 
 \begin_layout Subsection
-Software release L16A
+Software release A
 \end_layout
 
 \begin_layout Standard
-For the software release L16A, there are 7 observations in total.
+For the software release A, there are 7 observations in total.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4621,7 +4604,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The predicted state of the test set in the software release L16A 
+The predicted state of the test set in the software release A 
 \end_layout
 
 \end_inset
@@ -4645,12 +4628,12 @@ name "predict_L16A"
 \end_layout
 
 \begin_layout Subsection
-Software release L16B
+Software release B
 \end_layout
 
 \begin_layout Standard
 In total, there are 25 observations in the test set of the software release
- L16B.
+ B.
  The result after applying the predict function to the test set is shown
  in 
 \begin_inset CommandInset ref
@@ -4691,7 +4674,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The predicted state of the test set in the software release L16B
+The predicted state of the test set in the software release B
 \end_layout
 
 \end_inset
@@ -4715,12 +4698,11 @@ name "predict_L16B"
 \end_layout
 
 \begin_layout Subsection
-Software release L17A
+Software release C
 \end_layout
 
 \begin_layout Standard
-The test set of the software release L17A consists of 15 observations in
- total.
+The test set of the software release C consists of 15 observations in total.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4762,7 +4744,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The predicted state of the test set in the software release L17A
+The predicted state of the test set in the software release C
 \end_layout
 
 \end_inset
@@ -4811,8 +4793,8 @@ reference "output-sim1"
 
 \end_inset
 
- presents a model output from applying the Markov switching model for the
- simulated Dataset 1.
+ presents outputs from applying the Markov switching model with the simulated
+ Dataset 1.
  Each state has a considerably high r-squared value which is greater than
  0.9.
  From the result, State2 has the highest standard error.
@@ -4824,8 +4806,8 @@ reference "sec:Simulation"
 
 \end_inset
 
-, it could be concluded that the result stateState1, State2, and State3
- are a 
+, it could be concluded that the result State1, State2, and State3 in the
+ table are a 
 \emph on
 Bad
 \emph default
@@ -4851,8 +4833,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Output from the model of the simulated Dataset 1 showing estimated coefficients,
- residual standard error, and r-squared for each state.
+Outputs from applying the Markov switching model with the simulated Dataset
+ 1.
+ The table shows estimated coefficients, residual standard error, and r-squared
+ for each state.
  A switching coefficient is followed by (S), and a significant coefficient
  is highlighted in bold.
 \end_layout
@@ -5511,7 +5495,8 @@ Simulated Dataset 2
 \end_layout
 
 \begin_layout Standard
-The Markov switching model of the simulated Dataset 2 are presented in 
+Outputs after applying the Markov switching model with the simulated Dataset
+ 2 are presented in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "output-sim2"
@@ -5519,10 +5504,12 @@ reference "output-sim2"
 \end_inset
 
 .
- The r-squared value of each state is less than the obtained result from
- the simulated Dataset 1, but the standard error in each state is higher.
- However, it could be said that the model still performs rather well as
- the r-squared value is fairly high.
+ The r-squared values of State1 and State3 are slightly lower than the obtained
+ result from the simulated Dataset 1, but the standard errors are significantly
+ higher.
+ However, State2 has close output value to the simulated Dataset1.
+ It could be said that the model still performs rather well as the r-squared
+ value is very high.
  State1 is said to be a 
 \emph on
 Bad
@@ -5550,8 +5537,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Output from the model of the simulated Dataset 2 showing estimated coefficients,
- residual standard error, and r-squared for each state.
+Outputs from applying the Markov switching model with the simulated Dataset
+ 2.
+ The table shows estimated coefficients, residual standard error, and r-squared
+ for each state.
  A switching coefficient is followed by (S), and a significant coefficient
  is highlighted in bold.
 \end_layout

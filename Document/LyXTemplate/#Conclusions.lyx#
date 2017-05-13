@@ -401,10 +401,15 @@ Future work
 \begin_layout Standard
 The Markov switching model gave quite a promising result but several improvement
 s could also be done to increase a robustness of the analysis.
- For future work, using more observations in the data is recommended.
+ For future work, more extensive data is recommended.
  Obtained results will be more reliable as additional information will decrease
  an uncertainty in the data.
- As the assumption of the distribution of residuals was not entirely fulfill,
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+As the assumption of the distribution of residuals was not entirely fulfill,
  significant details that were used to explained the CPU utilization might
  not all be caught by the model.
  Hence, another future extension is to consider on the effects of interaction
@@ -413,12 +418,41 @@ s could also be done to increase a robustness of the analysis.
 EventsPerSec
 \emph default
 , that might have an effect on the CPU utilization.
- Furthermore, there are still two more performance metrics in QA Capacity
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Furthermore, there are still two more performance metrics in QA Capacity
  area which have not been taken into account in the thesis (e.g., a memory
  usage and a latency).
  The analysis could also be extended to analyze these metrics in a further
  work.
- Finally, in the future if some test cases have been labeled by a domain
+ 
+\end_layout
+
+\begin_layout Standard
+Another future extension to get the best state prediction is to consider
+ applying the Markov switching autoregressive model on the different QA
+ Capacity test case types i.e., one model for each type of test case.
+ Results are expected to be more accurate because value of the CPU utilization
+ will be slightly more stable and not that fluctuate.
+\end_layout
+
+\begin_layout Standard
+It would also be interesting to use normalize value by introducing weight
+ parameters instead of using the real value of the local events and the
+ CPU utilization.
+ Different weights can be given to the local events depending on how much
+ effects it has on the CPU utilization.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, in the future if some test cases have been labeled by a domain
  expert, a semi-supervised learning algorithm, a technique that falls between
  a supervised learning and an unsupervised learning, could also be implemented.
  Training a model with a large amount of unlabeled data and a small amount

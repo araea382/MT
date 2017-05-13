@@ -439,8 +439,7 @@ key "nousiainen2009anomaly"
  in the data, and also compared the results from the SOM method with a threshold
  based system.
  A disadvantage of the SOM is that initial weight vector affects a performance
- of the SOM.
- For this reason, which leads to an unstable clustering result.
+ of the SOM, which leads to an unstable clustering result.
  Besides, if the anomalies in the data tend to form into clusters, this
  method will not be able to detect these anomalies 
 \begin_inset CommandInset citation
@@ -2087,17 +2086,17 @@ key "ryden2008versus"
 
 \end_inset
 
- compared the computational perspective between the E-M algorithm and the
- Gibbs sampling in estimating parameters.
- In most cases, Gibbs sampling tended to have less computational time than
- the E-M algorithm.
- However, the study indicated that if the number of states was unknown,
- the E-M algorithm would be simpler and quicker in computing the estimated
- parameters for all candidate models.
+ compared the computational perspective in estimating parameters between
+ the E-M algorithm and the Gibbs sampling.
+ In most cases, the Gibbs sampling tended to have less computational time
+ than the E-M algorithm.
+ However, the study indicated that if the number of states was unknown and
+ only point estimate was sufficient, the E-M algorithm would typically be
+ simpler and quicker solution in computing the estimated parameters.
  The E-M algorithm is briefly described below.
  
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Summing up this case, we first remark that if one wants to compute only
@@ -2655,7 +2654,11 @@ Convergence of the E-M algorithm
 The E- and M-step are iteratively computed until the algorithm converges.
  The algorithm will terminate when the different between the previous and
  current estimate values is less than a specific value.
- This specific value called a stopping criteria needs to be specified beforehand.
+ This specific value called a 
+\emph on
+stopping criteria
+\emph default
+ needs to be specified beforehand.
  The convergence is assured since the value of the log-likelihood function
  will increase in each iteration.
  However, the E-M algorithm does not guarantee to always converge to a global
@@ -3039,7 +3042,7 @@ name "sec:Simulation"
 \end_layout
 
 \begin_layout Standard
-The state of the CPU in a real data is unknown in the study.
+The state of the CPU utilization in a real data is unknown in the study.
  As a consequence, an accuracy of the Markov switching model and the E-divisive
  method cannot be computed, and the comparison between both methods can
  hardly make.

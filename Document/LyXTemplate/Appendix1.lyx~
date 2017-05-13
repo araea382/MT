@@ -1078,7 +1078,7 @@ name "chap:Output"
 \end_layout
 
 \begin_layout Standard
-Outputs from applying Markov switching autoregressive models for each dataset
+Outputs from applying Markov switching autoregressive models with each dataset
  are shown here.
 \end_layout
 
@@ -1094,7 +1094,7 @@ status open
 
 \begin_layout Plain Layout
 Outputs from applying the selected model (Model 1) with the software release
- L16A.
+ A.
  The table shows estimated coefficients, residual standard error, and r-squared
  for each state.
  A switching coefficient is followed by (S), and a significant coefficient
@@ -1618,7 +1618,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Transition probabilities of the selected model of the software release L16A
+Transition probabilities of the selected model of the software release A
 \end_layout
 
 \end_inset
@@ -1817,7 +1817,7 @@ status open
 
 \begin_layout Plain Layout
 Outputs from applying the selected model (Model 4) with the software release
- L16B.
+ B.
  The table shows estimated coefficients, residual standard error, and r-squared
  for each state.
  A switching coefficient is followed by (S), and a significant coefficient
@@ -2473,7 +2473,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Transition probabilities of the selected model of the software release L16B
+Transition probabilities of the selected model of the software release B
 \end_layout
 
 \end_inset
@@ -2672,7 +2672,7 @@ status open
 
 \begin_layout Plain Layout
 Outputs from applying the selected model (Model 1) with the software release
- L17A.
+ C.
  The table shows estimated coefficients, residual standard error, and r-squared
  for each state.
  A switching coefficient is followed by (S), and a significant coefficient
@@ -3274,7 +3274,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Transition probabilities of the selected model of the software release L17A
+Transition probabilities of the selected model of the software release C
 \end_layout
 
 \end_inset
@@ -3485,7 +3485,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L16B showing the periods where
+The CPU utilization of the software release B showing the periods where
  the observation is in the specific state.
  
 \begin_inset Newline newline
