@@ -204,7 +204,7 @@ Response variable
 	\item TotCpu\%: CPU utilization
 \end{itemize}	
 \vspace{1em}
-Predictor vairalbes
+Predictor variables
 \begin{itemize}
 	\item EventsPerSec
 	\begin{itemize}
@@ -417,7 +417,30 @@ $\varepsilon_{t}^{(1)}\sim N(0,1),\quad \varepsilon_{t}^{(2)}\sim N(2,0.5),\quad
 \end{frame}
 
 %------------------------------------------------
+\subsection{Tools}
+\begin{frame}
+	\texttt{R} programming
+	
+	\begin{itemize}
+		\item Markov switching model is performed using \textit{MSwM} package.
+		
+		Various extensions and modifications were made in the package. 
+		
+		For example, 
+		
+		$\quad \rightarrow$ Make the function to be more stable to use with categorical variables
+		
+		$\quad \rightarrow$ State prediction function
+		
+		\item E-divisive method is performed using \textit{ecp} package
+	\end{itemize}
+	
+\end{frame}
+
+
+%------------------------------------------------
 \section{Results and Discussion}
+
 \subsection{Analysis I: Number of states}
 \begin{frame}
 Decide: Number of states
@@ -426,8 +449,9 @@ Hypothesis: Markov switching model with \textit{two} or \textit{three} states
 \rule{\textwidth}{0.4pt}
 
 \begin{itemize}
-	\item BIC is one criteria to select the appropriate model but model output and plot should also be taken into account
-	\item \textit{Three-state} model are chosen for further analysis
+	\item Model selection: Model with lower BIC value is preferable
+	\item BIC is one criteria to select the appropriate model, but model output and plot should also be taken into account as well
+	\item \textit{Three-state} model was chosen for further analysis
 	\item Remark: Higher number of states $k\geq4$ are more likely to give worse results and were not considered
 \end{itemize}
 
@@ -438,7 +462,7 @@ Hypothesis: Markov switching model with \textit{two} or \textit{three} states
 \begin{frame}[fragile]
 \small{Decide: Number of switching coefficients in the model
 
-Hypothesis: Test environments is possible to have non-switching effects}
+Hypothesis: Test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{Numcells}) is possible to have non-switching effects}
 \rule{\textwidth}{0.4pt}
 
 \begin{itemize}
@@ -504,7 +528,7 @@ Model with DuProdName, Fdd/Tdd, and NumCells are non-switching coefficients.
 \subsection{Comparison between the Markov switching model and the E-divisive method}
 \begin{frame}[fragile]
 Simulated Dataset 1 and Dataset 2
-
+\pause
 \begin{itemize}
 	\item E-divisive is less powerful in detecting changes
 	
@@ -629,7 +653,7 @@ Software release L17A
 %------------------------------------------------
 \subsection{Test environment}
 \begin{frame}
-Effects of test environments -\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells} - on the CPU utilization
+Effects of test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells}) on the CPU utilization
 
 \begin{itemize}
 	\item Software release L16A:
@@ -649,31 +673,19 @@ Effects of test environments -\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit
 \end{frame}
 
 %------------------------------------------------
-\subsection{State prediction}
-\begin{frame}
-
+%\subsection{State prediction}
+%\begin{frame}
 	
-	\begin{itemize}
-		\item Software release L16A:
-		
-		
-		\item Software release L16B:
-		
-		
-		\item Software release L17A:
-		
-
-	\end{itemize}
-	
-\end{frame}
+%\end{frame}
 
 %------------------------------------------------
 \section{Conclusion}
+\subsection{Conclusion}
 \begin{frame}
-%\frametitle{Conslusion}
 \begin{itemize}
-	\item 
-	\item 
+	\item Markov switching model is able to identify any changes between states, despite some false alarms and missed detections
+	\item E-divisive method can detect fewer change point locations and failed to detect many changes
+	\item Both methods could be used together to confirm the state change
 \end{itemize}
 \end{frame}
 
@@ -684,9 +696,9 @@ Effects of test environments -\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit
 \begin{itemize}
 	\item Larger dataset
 	\item Consider on the other performance metrics (e.g.,memory usage and latency) 
-	\item Apply the Markov switching model to each QA Capacity test case type (one model for one type)
+	\item Apply the Markov switching model to each QA Capacity test case type (i.e., one model for one type of test case)
 	\item Normalize feature set by introducing \textit{weight} parameters
-	\item Use semi-supervised learning algorithm (e.g., Self-Organizing Maps) if some test cases are labeled with state
+	\item Use semi-supervised learning algorithm if some test cases are labeled with state
 \end{itemize}
 \end{frame}
 

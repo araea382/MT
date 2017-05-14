@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.18)  13 MAY 2017 20:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.18)  14 MAY 2017 23:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -969,7 +969,7 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 \openout4 = `internal.vrb'.
 
  (./internal.vrb Excluding 'comment' comment.
-<Release.png, id=339, 588.1975pt x 162.6075pt>
+<Release.png, id=356, 588.1975pt x 162.6075pt>
 File: Release.png Graphic file (type png)
  <use Release.png>
 Package pdftex.def Info: Release.png used on input line 20.
@@ -986,13 +986,13 @@ Package pdftex.def Info: Release.png used on input line 20.
 \openout4 = `internal.vrb'.
 
  (./internal.vrb Excluding 'comment' comment.
-<msm-ex.png, id=574, 473.77pt x 420.57124pt>
+<msm-ex.png, id=599, 473.77pt x 420.57124pt>
 File: msm-ex.png Graphic file (type png)
  <use msm-ex.png>
 Package pdftex.def Info: msm-ex.png used on input line 36.
 (pdftex.def)             Requested size: 138.2795pt x 122.75188pt.
 
-<transition1.png, id=575, 384.43625pt x 189.70876pt>
+<transition1.png, id=600, 384.43625pt x 189.70876pt>
 File: transition1.png Graphic file (type png)
  <use transition1.png>
 Package pdftex.def Info: transition1.png used on input line 38.
@@ -1017,7 +1017,7 @@ line 296.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) <msm-ar1.png, id=638, 502.87875pt x 168.63pt>
+) <msm-ar1.png, id=665, 502.87875pt x 168.63pt>
 File: msm-ar1.png Graphic file (type png)
  <use msm-ar1.png>
 Package pdftex.def Info: msm-ar1.png used on input line 296.
@@ -1032,7 +1032,7 @@ Package pdftex.def Info: msm-ar1.png used on input line 296.
 \openout4 = `internal.vrb'.
 
  (./internal.vrb Excluding 'comment' comment.
-<divisive.png, id=817, 291.33844pt x 256.70906pt>
+<divisive.png, id=851, 291.33844pt x 256.70906pt>
 File: divisive.png Graphic file (type png)
  <use divisive.png>
 Package pdftex.def Info: divisive.png used on input line 29.
@@ -1043,7 +1043,7 @@ Package pdftex.def Info: divisive.png used on input line 29.
 
 ] [14
 
-] <sim1.png, id=993, 1204.5pt x 752.8125pt>
+] <sim1.png, id=1032, 1204.5pt x 752.8125pt>
 File: sim1.png Graphic file (type png)
 
 <use sim1.png>
@@ -1051,7 +1051,7 @@ Package pdftex.def Info: sim1.png used on input line 407.
 (pdftex.def)             Requested size: 307.28987pt x 192.0508pt.
  [15
 
- <./sim1.png>] <sim2.png, id=1052, 1204.5pt x 752.8125pt>
+ <./sim1.png>] <sim2.png, id=1093, 1204.5pt x 752.8125pt>
 File: sim2.png Graphic file (type png)
 
 <use sim2.png>
@@ -1061,11 +1061,7 @@ Package pdftex.def Info: sim2.png used on input line 417.
 
  <./sim2.png>] [17
 
-]
-\openout4 = `internal.vrb'.
-
- (./internal.vrb
-Excluding 'comment' comment.) [18
+] [18
 
 ]
 \openout4 = `internal.vrb'.
@@ -1073,58 +1069,65 @@ Excluding 'comment' comment.) [18
  (./internal.vrb
 Excluding 'comment' comment.) [19
 
-] [20
+]
+\openout4 = `internal.vrb'.
+
+ (./internal.vrb
+Excluding 'comment' comment.) [20
+
+] (./internal.vrb
+Excluding 'comment' comment.) [21
+
+] [22
 
 ]
-<compare_L16B.png, id=1337, 1204.5pt x 451.6875pt>
+<compare_L16B.png, id=1508, 1204.5pt x 451.6875pt>
 File: compare_L16B.png Graphic file (type png)
  <use compare_L16B.png>
-Package pdftex.def Info: compare_L16B.png used on input line 562.
+Package pdftex.def Info: compare_L16B.png used on input line 586.
 (pdftex.def)             Requested size: 307.28987pt x 115.23047pt.
 
-[21
+[23
 
- <./compare_L16B.png>] <compare_L17A.png, id=1396, 1204.5pt x 451.6875pt>
+ <./compare_L16B.png>] <compare_L17A.png, id=1569, 1204.5pt x 451.6875pt>
 File: compare_L17A.png Graphic file (type png)
 
 <use compare_L17A.png>
-Package pdftex.def Info: compare_L17A.png used on input line 575.
+Package pdftex.def Info: compare_L17A.png used on input line 599.
 (pdftex.def)             Requested size: 307.28987pt x 115.23047pt.
- [22
+ [24
 
  <./compare_L17A.png>]
-<L16A_NN1.png, id=1454, 1204.5pt x 351.3125pt>
+<L16A_NN1.png, id=1629, 1204.5pt x 351.3125pt>
 File: L16A_NN1.png Graphic file (type png)
  <use L16A_NN1.png>
-Package pdftex.def Info: L16A_NN1.png used on input line 593.
-(pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
- [23
-
- <./L16A_NN1.png>] <L16B_NYY1.png, id=1513, 1204.5pt x 351.3125pt>
-File: L16B_NYY1.png Graphic file (type png)
- <use L16B_NYY1.png>
-Package pdftex.def Info: L16B_NYY1.png used on input line 610.
-(pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
-
-[24
-
- <./L16B_NYY1.png>] <L17A_NNN1.png, id=1572, 1204.5pt x 351.3125pt>
-File: L17A_NNN1.png Graphic file (type png)
-
-<use L17A_NNN1.png>
-Package pdftex.def Info: L17A_NNN1.png used on input line 627.
+Package pdftex.def Info: L16A_NN1.png used on input line 617.
 (pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
  [25
 
- <./L17A_NNN1.png>] [26
+ <./L16A_NN1.png>] <L16B_NYY1.png, id=1691, 1204.5pt x 351.3125pt>
+File: L16B_NYY1.png Graphic file (type png)
+ <use L16B_NYY1.png>
+Package pdftex.def Info: L16B_NYY1.png used on input line 634.
+(pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
 
-] [27
+[26
 
-] [28
+ <./L16B_NYY1.png>] <L17A_NNN1.png, id=1751, 1204.5pt x 351.3125pt>
+File: L17A_NNN1.png Graphic file (type png)
+
+<use L17A_NNN1.png>
+Package pdftex.def Info: L17A_NNN1.png used on input line 651.
+(pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
+ [27
+
+ <./L17A_NNN1.png>] [28
 
 ] [29
 
 ] [30
+
+] [31
 
  </usr/local/texlive/2015/texmf-dist/tex/latex/beamer/art/beamericonarticle.pdf
 >]
@@ -1137,58 +1140,46 @@ Package pdftex.def Info: L17A_NNN1.png used on input line 627.
 \tf@snm=\write9
 \openout9 = `internal.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 721.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 721.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 730.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 730.
+ (./internal.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 730.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 730.
+Package rerunfilecheck Info: File `internal.out' has not changed.
+(rerunfilecheck)             Checksum: 412330F0347E5937920C075F710CFE1C;1439.
 
-(./internal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 721.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 721.
-
-
-Package rerunfilecheck Warning: File `internal.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `internal.out':
-(rerunfilecheck)             Before: 00FA904FAFB08B750057CEC7BBEF9400;1322
-(rerunfilecheck)             After:  BF441274AF3F3EF56681B37A10904743;1389.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 721.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 730.
  ) 
 Here is how much of TeX's memory you used:
- 17149 strings out of 493089
- 330668 string characters out of 6134842
- 417765 words of memory out of 5000000
- 20112 multiletter control sequences out of 15000+600000
- 13021 words of font info for 46 fonts, out of 8000000 for 9000
+ 17162 strings out of 493089
+ 330810 string characters out of 6134842
+ 420115 words of memory out of 5000000
+ 20121 multiletter control sequences out of 15000+600000
+ 13189 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,20n,57p,388b,820s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Outline0.5.2.29} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Outline0.5.1.28} has been referenced but does not e
-xist, replaced by a fixed one
-
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on internal.pdf (30 pages, 1010084 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on internal.pdf (31 pages, 1023999 bytes).
 PDF statistics:
- 1991 PDF objects out of 2073 (max. 8388607)
- 1854 compressed objects within 19 object streams
- 87 named destinations out of 1000 (max. 500000)
- 317 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2124 PDF objects out of 2487 (max. 8388607)
+ 1982 compressed objects within 20 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 333 words of extra memory for PDF output out of 10000 (max. 10000000)
 
