@@ -1,23 +1,21 @@
-\beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Motivation}{2}{0}{1}
 \beamer@subsectionintoc {1}{2}{Objectives}{3}{0}{1}
 \beamer@sectionintoc {2}{Data}{4}{0}{2}
 \beamer@subsectionintoc {2}{1}{Data sources}{4}{0}{2}
 \beamer@subsectionintoc {2}{2}{Data preprocessing}{5}{0}{2}
-\beamer@sectionintoc {3}{Method}{8}{0}{3}
-\beamer@subsectionintoc {3}{1}{Markov switching model}{8}{0}{3}
-\beamer@subsectionintoc {3}{2}{Model selection}{11}{0}{3}
-\beamer@subsectionintoc {3}{3}{E-divisive method}{12}{0}{3}
-\beamer@subsectionintoc {3}{4}{Simulation study for model evaluation}{13}{0}{3}
-\beamer@subsectionintoc {3}{5}{Tools}{17}{0}{3}
-\beamer@sectionintoc {4}{Results and Discussion}{18}{0}{4}
-\beamer@subsectionintoc {4}{1}{Analysis I: Number of states}{18}{0}{4}
-\beamer@subsectionintoc {4}{2}{Analysis II: Number of switching coefficients}{19}{0}{4}
-\beamer@subsectionintoc {4}{3}{Comparison between the Markov switching model and the E-divisive method}{20}{0}{4}
-\beamer@subsectionintoc {4}{4}{State inference}{25}{0}{4}
-\beamer@subsectionintoc {4}{5}{Test environment}{28}{0}{4}
-\beamer@sectionintoc {5}{Conclusion}{29}{0}{5}
-\beamer@subsectionintoc {5}{1}{Conclusion}{29}{0}{5}
-\beamer@subsectionintoc {5}{2}{Future work}{30}{0}{5}
-\beamer@subsectionintoc {5}{3}{References}{31}{0}{5}
+\beamer@sectionintoc {3}{Method}{7}{0}{3}
+\beamer@subsectionintoc {3}{1}{Markov switching model}{7}{0}{3}
+\beamer@subsectionintoc {3}{2}{E-divisive method}{11}{0}{3}
+\beamer@subsectionintoc {3}{3}{Simulation study for model evaluation}{12}{0}{3}
+\beamer@subsectionintoc {3}{4}{Tools}{16}{0}{3}
+\beamer@sectionintoc {4}{Results and Discussion}{17}{0}{4}
+\beamer@subsectionintoc {4}{1}{Analysis I: Number of states}{17}{0}{4}
+\beamer@subsectionintoc {4}{2}{Analysis II: Number of switching coefficients}{18}{0}{4}
+\beamer@subsectionintoc {4}{3}{Comparison between the Markov switching model and the E-divisive method}{19}{0}{4}
+\beamer@subsectionintoc {4}{4}{State inference}{24}{0}{4}
+\beamer@subsectionintoc {4}{5}{Test environment}{27}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{28}{0}{5}
+\beamer@subsectionintoc {5}{1}{Conclusion}{28}{0}{5}
+\beamer@subsectionintoc {5}{2}{Future work}{29}{0}{5}
+\beamer@subsectionintoc {5}{3}{References}{30}{0}{5}

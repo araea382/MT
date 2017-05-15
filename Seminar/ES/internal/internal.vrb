@@ -1,17 +1,13 @@
 Simulated Dataset 1 and Dataset 2
 \pause
 \begin{itemize}
-	\item E-divisive is less powerful in detecting changes
-
-	$\rightarrow$ the method only look at the value of CPU utilization
-
 	\item Both method detect changes at the same location
 
 	$\rightarrow$ high probability to be an actual change
 
-	\item Both method detect changes close to one another but not exact location
+	\item Both method detect changes close to one another but not at the exact location
 
-	$\rightarrow$ lower chance be a false alarm
+	$\rightarrow$ lower chance to be a false alarm
 \end{itemize}
 
 

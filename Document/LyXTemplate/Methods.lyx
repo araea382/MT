@@ -342,7 +342,7 @@ Outlier detection
 \emph default
  are terms that closely related to one another.
  The main idea of these terms is to identify and discover events that are
- abnormal from a usual behavior.
+ abnormal from the usual behavior.
  There are several methods to address this types of problem.
  A survey of existing methods has been done in the thesis, and some methods
  are presented in this section.
