@@ -85,7 +85,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Master Thesis]{Apply machine learning to Performance trend analysis} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Master Thesis]{Apply Machine Learning to Performance Trend Analysis} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Araya Eamrurksiri}
 \institute[LiU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -538,11 +538,11 @@ Model with DuProdName, Fdd/Tdd, and NumCells are non-switching coefficients.
 Simulated Dataset 1 and Dataset 2
 \pause
 \begin{itemize}
-	\item Both method detect changes at the same location 
+	\item Both methods detect changes at the same location 
 	
 	$\rightarrow$ high probability to be an actual change
 	
-	\item Both method detect changes close to one another but not at the exact location 
+	\item Both methods detect changes close to one another but not at the exact location 
 	
 	$\rightarrow$ lower chance to be a false alarm
 \end{itemize}
@@ -661,7 +661,7 @@ Software release L17A
 
 %------------------------------------------------
 \subsection{Test environment}
-\begin{frame}
+\begin{frame}[fragile]
 Effects of test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells}) on the CPU utilization
 
 \begin{itemize}
@@ -679,13 +679,40 @@ Effects of test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit
 	
 \end{itemize}
 
+\begin{comment}
+\subsection{State prediction}
+\begin{frame}
+Software release L16A
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{predict_L16A1}
+\caption{The state prediction of the test set}
+\end{figure}
+%\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+Software release L16B
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{predict_L16B1}
+\caption{The state prediction of the test set}
+\end{figure}
+%\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+Software release L17A
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{predict_L17A1}
+\caption{The state prediction of the test set}
+\end{figure}
+%\end{frame}
+\end{comment}
 \end{frame}
 
 %------------------------------------------------
-%\subsection{State prediction}
-%\begin{frame}
-	
-%\end{frame}
 
 %------------------------------------------------
 \section{Conclusion}
@@ -693,7 +720,7 @@ Effects of test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit
 \begin{frame}
 \begin{itemize}
 	\item Markov switching model is able to identify any changes between states, despite some false alarms and missed detections
-	\item E-divisive method  is less powerful as it can detect fewer changes and failed to detect many changes.
+	\item E-divisive method  is less powerful as it can detect fewer changes and failed to detect many changes
 	
 	$\rightarrow$ the method only take into account the value of the CPU utilization
 	

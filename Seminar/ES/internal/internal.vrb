@@ -1,27 +1,48 @@
-Simulated Dataset 1 and Dataset 2
-\pause
+Effects of test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells}) on the CPU utilization
+
 \begin{itemize}
-	\item Both method detect changes at the same location
+	\item Software release L16A:
 
-	$\rightarrow$ high probability to be an actual change
+	\textit{Fdd/Tdd} and \textit{NumCells}
 
-	\item Both method detect changes close to one another but not at the exact location
+	\item Software release L16B:
 
-	$\rightarrow$ lower chance to be a false alarm
+	\textit{DuProdName} and \textit{NumCells}
+
+	\item Software release L17A:
+
+	\textit{DuProdName}
+
 \end{itemize}
 
-
 \begin{comment}
-\begin{figure}
-	\includegraphics[width=1\linewidth]{compare_sim1}
-	\caption{The simulated Dataset 1 showing the estimated change point locations}
-\end{figure}
-
-Simulated Dataset 2
+\subsection{State prediction}
+\begin{frame}
+Software release L16A
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{compare_sim2}
-\caption{The simulated Dataset 2 showing the estimated change point locations}
+\includegraphics[width=1\linewidth]{predict_L16A1}
+\caption{The state prediction of the test set}
 \end{figure}
+%\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+Software release L16B
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{predict_L16B1}
+\caption{The state prediction of the test set}
+\end{figure}
+%\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+Software release L17A
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{predict_L17A1}
+\caption{The state prediction of the test set}
+\end{figure}
+%\end{frame}
 \end{comment}
-
