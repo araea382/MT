@@ -119,7 +119,7 @@ Linkoping university \\ % Your institution for the title page
 \begin{itemize}
 	\item Many test cases are executed for testing software packages 
 	\item Evaluate the performance of an updated software package by visualizing the graph 
-	\item Tool or algorithm that can reduce workload of manual inspection
+	\item Algorithm that can reduce workload of manual inspection
 \end{itemize}	
 
 \end{frame}
@@ -173,7 +173,7 @@ Software package
 %\frametitle{Data preprocessing}
 Data is collected on January 20, 2017
 
-Three datasets: Software release L16A, L16B, and L17B
+Three datasets: Software release L16A, L16B, and L17A
 \begin{itemize}
 	\item Sorted by software package version
 	\item Filtered out test cases which are not executed properly
@@ -227,7 +227,8 @@ Predictor variables
 Method 
 \begin{itemize}
 	\item Markov switching model
-	\item E-divisive 
+	\item E-divisive method
+	\item Tools
 \end{itemize}
 \end{frame}
 %------------------------------------------------
@@ -312,7 +313,11 @@ $\phi_{1,S_{t}}$ is an autoregression coefficient at time $t-1$ in state $S_{t}$
 	\]
 \end{block}
 
-A coefficient of a predictor variable, $\beta_{S_{t}}$, can have either different values in different state or a constant value in all state. 
+Assuming that $S_{t}$ denote an unobservable state variable
+
+\vspace{1em}
+
+A coefficient of a predictor variable can have either different values in different state, $\beta_{S_{t}}$,  or a constant value in all state, $\beta$. 
 
 \vspace{1em}
 
@@ -320,7 +325,7 @@ The variable whose coefficient can take on \textit{different} values is said to 
 
 \vspace{1em}
 
-The variable which have the \textit{same} coefficient in all states is the variable that does not have a switching effect, or said to have a \textbf{non-switching effect}. 
+The variable which has the \textit{same} coefficient in all states is the variable that does not have a switching effect, or said to have a \textbf{non-switching effect}. 
 \end{frame}
 
 %------------------------------------------------
@@ -386,6 +391,29 @@ E-divisive method \cite{p3}
 
 %------------------------------------------------
 \section{Results and Discussion}
+
+\begin{frame}
+	Results and Discussion
+	
+	\begin{itemize}
+		\item Markov switching model
+		\begin{itemize}
+			\item Analysis I: Number of state
+			\item Analysis II: Number of switching coefficients
+		\end{itemize}
+		
+		\item E-divisive method
+		\item Comparison between both methods
+		\begin{itemize}
+			\item Simulated data
+			\item Real data
+		\end{itemize}
+		
+		\item State inference on the results from the Markov switching model
+	\end{itemize}
+	
+\end{frame}
+%------------------------------------------------
 \subsection{Markov switching model}
 \begin{frame}
 When applying the Markov switching model, we need to decide on
@@ -407,8 +435,11 @@ $$\mathrm{BIC}=-2\ln(L(\hat{\theta}))+m\cdot\ln(T)$$
 \end{frame}
 
 %------------------------------------------------
-\subsection{Markov switching model}
+%\subsection{Markov switching model}
 \begin{frame}
+
+Analysis I
+
 Decide: Number of states
 
 Hypothesis: Markov switching model with \textit{two} or \textit{three} states
@@ -416,30 +447,36 @@ Hypothesis: Markov switching model with \textit{two} or \textit{three} states
 
 \begin{itemize}
 	\item Model with lower BIC value is preferable
-	\item Model output along with plot should also be taken into account as well
-	\item Two-state model provide less details and unrealistic to make an interpretation, depite lower BICs in some dataset
-	\item \textbf{Three-state} model was chosen for further analysis
-	\item Remark: Higher number of states $k\geq4$ are more likely to give worse results and were not considered
+	\item However, model output along with plot should also be taken into account as well
+	\pause
+	\item Two-state model offered less details, and plots were unrealistic and difficult to make an interpretation
+	\item \textbf{Three-state} model was chosen for further analysis as it provided more intepretable plots and better fit
+	\item \small{Remark: Higher number of states $k\geq4$ are more likely to give worse results and were not considered}
 \end{itemize}
 
 \end{frame}
 
 %------------------------------------------------
-\subsection{Markov switching model}
+%\subsection{Markov switching model}
 \begin{frame}[fragile]
+Analysis II
+
 Decide: Number of switching coefficients in the model
 
 Hypothesis: Test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{Numcells}) is possible to have non-switching effects
 \rule{\textwidth}{0.4pt}
 
 \begin{itemize}
-	\item Attempt to reduce the number of parameters to be estimated in the model
-	\item Algorithm used numerical optimization (EM-algorithm)
+	\item \small{\textit{Recall: The variable whose coefficient is \textit{constant} in all states are said to have a non-switching effect}}
+	
+	\item \normalsize{Attempt to reduce the number of parameters to be estimated in the model
+	\item Algorithm used numerical optimization (E-M algorithm)
 	
 	$\rightarrow$ more estimated parameters will make the obtained result unstable 
+	
+	\item Each dataset of the software release was tested with different models
+	\item Three final models for each dataset were obtained}
 \end{itemize}
-
-The three final Markov switching models for each dataset are ready
 
 
 \begin{comment}
@@ -508,8 +545,8 @@ Model with DuProdName, Fdd/Tdd, and NumCells are non-switching coefficients.
 \begin{frame}
 
 \begin{itemize}
-	\item Apply to all three datasets
-	\item The E-divisive algorithm only uses the value of the CPU utilization
+	\item Apply the E-divisive method to all three datasets of the software release L16A, L16B, and L17A
+	\item Input: the value of the CPU utilization
 \end{itemize}
 	
 \end{frame}
@@ -520,9 +557,11 @@ Model with DuProdName, Fdd/Tdd, and NumCells are non-switching coefficients.
 \begin{itemize}
 	\item In the real data, the state of the CPU utilization is unknown $\rightarrow$ Evaluation of the model can't be made
 	\pause
-	\vspace{1em}
+	%\vspace{1em}
 	
-	\item Simulated two datasets (Dataset 1 and Dataset 2) with high and low persistent state, respectively.
+	\item Simulated two datasets (Dataset 1 and Dataset 2) with the ground truth about the state. 
+	
+	The real models for each state are
 \end{itemize}
 
 $y_{t}=\begin{cases}
@@ -568,11 +607,10 @@ $\varepsilon_{t}^{(1)}\sim N(0,1),\quad \varepsilon_{t}^{(2)}\sim N(2,0.5),\quad
 \end{frame}
 
 %------------------------------------------------
-\subsection{Comparison between the Markov switching model and the E-divisive method}
+\subsection{Comparison between both methods}
 \begin{frame}[fragile]
 Apply the Markov switching model and the E-divisive method to the simulated Dataset 1 and Dataset 2, it is found that
-
-
+\pause
 
 \begin{itemize}
 	\item Both methods detect changes at the same location 
@@ -782,6 +820,8 @@ Software release L17A
 	\item Apply the Markov switching model to each QA Capacity test case type (i.e., one model for one type of test case)
 	\item Normalize feature set by introducing \textit{weight} parameters
 	\item Use semi-supervised learning algorithm if some test cases are labeled with state
+	
+	$\rightarrow$ combining clustering-based and classification-based methods 
 \end{itemize}
 \end{frame}
 

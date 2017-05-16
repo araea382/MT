@@ -1,3 +1,4 @@
+\beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Motivation}{2}{0}{1}
 \beamer@subsectionintoc {1}{2}{Objectives}{3}{0}{1}
@@ -9,15 +10,13 @@
 \beamer@subsectionintoc {3}{2}{E-divisive method}{11}{0}{3}
 \beamer@subsectionintoc {3}{3}{Tools}{12}{0}{3}
 \beamer@sectionintoc {4}{Results and Discussion}{13}{0}{4}
-\beamer@subsectionintoc {4}{1}{Markov switching model}{13}{0}{4}
-\beamer@subsectionintoc {4}{2}{Markov switching model}{14}{0}{4}
-\beamer@subsectionintoc {4}{3}{Markov switching model}{15}{0}{4}
-\beamer@subsectionintoc {4}{4}{E-divisive}{16}{0}{4}
-\beamer@subsectionintoc {4}{5}{Simulation study for model evaluation}{17}{0}{4}
-\beamer@subsectionintoc {4}{6}{Comparison between the Markov switching model and the E-divisive method}{21}{0}{4}
-\beamer@subsectionintoc {4}{7}{State inference}{25}{0}{4}
-\beamer@subsectionintoc {4}{8}{Test environment}{28}{0}{4}
-\beamer@sectionintoc {5}{Conclusion}{29}{0}{5}
-\beamer@subsectionintoc {5}{1}{Conclusion}{29}{0}{5}
-\beamer@subsectionintoc {5}{2}{Future work}{30}{0}{5}
-\beamer@subsectionintoc {5}{3}{References}{31}{0}{5}
+\beamer@subsectionintoc {4}{1}{Markov switching model}{14}{0}{4}
+\beamer@subsectionintoc {4}{2}{E-divisive}{18}{0}{4}
+\beamer@subsectionintoc {4}{3}{Simulation study for model evaluation}{19}{0}{4}
+\beamer@subsectionintoc {4}{4}{Comparison between both methods}{23}{0}{4}
+\beamer@subsectionintoc {4}{5}{State inference}{28}{0}{4}
+\beamer@subsectionintoc {4}{6}{Test environment}{31}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{32}{0}{5}
+\beamer@subsectionintoc {5}{1}{Conclusion}{32}{0}{5}
+\beamer@subsectionintoc {5}{2}{Future work}{33}{0}{5}
+\beamer@subsectionintoc {5}{3}{References}{34}{0}{5}
