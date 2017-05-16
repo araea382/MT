@@ -85,7 +85,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Master Thesis]{Apply Machine Learning to Performance Trend Analysis} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Master Thesis]{Applying Machine Learning to LTE/5G Performance Trend Analysis} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Araya Eamrurksiri}
 \institute[LiU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -219,11 +219,18 @@ Predictor variables
 	\end{itemize}
 \end{itemize}
 
-
 \end{frame}
 
 %------------------------------------------------
 \section{Method} 
+\begin{frame}
+Method 
+\begin{itemize}
+	\item Markov switching model
+	\item E-divisive 
+\end{itemize}
+\end{frame}
+%------------------------------------------------
 \subsection{Markov switching model}
 \begin{frame}[fragile]
 Markov switching model \cite{p1}
@@ -283,14 +290,14 @@ Assuming that $S_{t}$ denote an unobservable state variable
 
 $y_{t}$ is the observed value of time series at time $t$ 
 
-$X_{t}$ are the predictor variables of time series at time $t$ 
+$X_{t}$ is a design matrix containing the predictor variables of time series at time $t$ 
 
-$\beta_{S_{t}}$ are the coefficients in state $S_{t}$, where $S_{t}=1,2,...,k$
+$\beta_{S_{t}}$ are a column vector of the coefficients in state $S_{t}$, where $S_{t}=1,2,...,k$
 
 $\phi_{1,S_{t}}$ is an autoregression coefficient at time $t-1$ in state $S_{t}$
 
 \begin{figure}
-	\includegraphics[width=0.6\linewidth]{msm-ar1}
+	\includegraphics[width=0.5\linewidth]{msm-ar1}
 	\caption{Model with additional dependencies at observation level}
 \end{figure}
 
@@ -298,36 +305,22 @@ $\phi_{1,S_{t}}$ is an autoregression coefficient at time $t-1$ in state $S_{t}$
 
 %------------------------------------------------
 \begin{frame}
-A coefficient of a predictor variable can have either different values in different state or a constant value in all state. 
+
+\begin{block}{Markov switching autoregressive model}
+	\[
+	y_{t} = X_{t}\beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0,\sigma^{2}_{S_{t}})
+	\]
+\end{block}
+
+A coefficient of a predictor variable, $\beta_{S_{t}}$, can have either different values in different state or a constant value in all state. 
 
 \vspace{1em}
 
-The variable that can take on different values is said to have a \textit{switching effect}. 
+The variable whose coefficient can take on \textit{different} values is said to have a \textbf{switching effect}. 
 
 \vspace{1em}
 
-The variable which have the same coefficient in all states is the variable that does not have a switching effect, or said to have a \textit{non-switching effect}. 
-\end{frame}
-
-%------------------------------------------------
-%\subsection{Model selection}
-\begin{frame}
-When applying the Markov switching model, we need to decide on
-\begin{itemize}
-	\item Number of states, $k$
-	\item Number of switching coefficients in the model
-\end{itemize}
-\vspace{1em}
-
-Based on the applied literature, the information criteria called the Bayesian Information Criterion (BIC) is used for model selection
-
-$$\mathrm{BIC}=-2\ln(L(\hat{\theta}))+m\cdot\ln(T)$$
-
-\footnotesize{where, $m$ is the number of parameters and $T$ is the number of observations}
-\vspace{1em}
-
-\normalsize{BIC attempts to reduce an overfitting problem by penalizing on the number of parameters in the model}
-
+The variable which have the \textit{same} coefficient in all states is the variable that does not have a switching effect, or said to have a \textbf{non-switching effect}. 
 \end{frame}
 
 %------------------------------------------------
@@ -362,93 +355,59 @@ E-divisive method \cite{p3}
 	\column{.35\textwidth} % Right column and width
 	\begin{figure}
 		\includegraphics[width=1\linewidth]{divisive}
+		\caption{Divisive hierarchical clustering}
 	\end{figure}
 	
 \end{columns}
 
 \end{frame}
-
-%------------------------------------------------
-\subsection{Simulation study for model evaluation}
-\begin{frame}
-\begin{itemize}
-	\item State of the CPU utilization is unknown $\rightarrow$ Evaluation of the model can't be made
-	\pause
-	\vspace{1em}
-	
-	\item Simulated two datasets - Dataset 1 and Dataset 2 - with high and low persistent state, respectively.
-\end{itemize}
-
-$y_{t}=\begin{cases}
-	\begin{array}{c}
-		10+0.6X_{1,t}-0.9X{}_{2,t}+0.5y_{t-1}+\varepsilon_{t}^{(1)}\\
-		2+0.8X_{1,t}+0.2y_{t-1}+\varepsilon_{t}^{(2)}\\
-		-12+0.7X_{1,t}+0.2X{}_{2.t}-0.2y_{t-1}+\varepsilon_{t}^{(3)}
-	\end{array} & \begin{array}{c}
-		\mathrm{Normal}\\
-		\mathrm{Bad}\\
-		\mathrm{Good}
-\end{array}\end{cases}$
-\vspace{1em}
-
-$y_{t}$ is assumed to be value of a CPU usage
-
-$x_{1,t}\sim U[50,200]$
-
-$x_{2,t}\sim U[0,50]$ 
-
-$\varepsilon_{t}^{(1)}\sim N(0,1),\quad \varepsilon_{t}^{(2)}\sim N(2,0.5),\quad \mathrm{and} \quad \varepsilon_{t}^{(3)}\sim N(1,1)$
-
-\end{frame}
-
-%------------------------------------------------
-\begin{frame}
-
-\begin{figure}
-	\includegraphics[width=1\linewidth]{sim1}
-	\caption{A simulated data of Dataset 1 and the period in the time series when observation is in each state.}
-\end{figure}
-
-\end{frame}
-
-%------------------------------------------------
-\begin{frame}
-
-\begin{figure}
-	\includegraphics[width=1\linewidth]{sim2}
-	\caption{A simulated data of Dataset 2 and the period in the time series when observation is in each state.}
-\end{figure}
-
-\end{frame}
-
 %------------------------------------------------
 \subsection{Tools}
 \begin{frame}
-	\texttt{R} programming
-	
-	\begin{itemize}
-		\item Markov switching model is performed using \textit{MSwM} package.
-		
-		Various extensions and modifications were made in the package. 
-		
-		For example, 
-		
-		$\quad \rightarrow$ Make it more stable to use with categorical variables
-		
-		$\quad \rightarrow$ State prediction function
-		
-		$\quad \rightarrow$ Plot for visualizing the results
-		
-		\item E-divisive method is performed using \textit{ecp} package
-	\end{itemize}
-	
-\end{frame}
+\texttt{R} programming
 
+\begin{itemize}
+	\item Markov switching model is performed using \textit{MSwM} package \cite{p2}
+	
+	Various extensions and modifications were made in the package
+	
+	For example, 
+	
+	$\quad \rightarrow$ Make it more stable to use with categorical variables
+	
+	$\quad \rightarrow$ State prediction function
+	
+	$\quad \rightarrow$ Plot for visualizing the results
+	
+	\item E-divisive method is performed using \textit{ecp} package \cite{p3}
+\end{itemize}
+
+\end{frame}
 
 %------------------------------------------------
 \section{Results and Discussion}
+\subsection{Markov switching model}
+\begin{frame}
+When applying the Markov switching model, we need to decide on
+\begin{itemize}
+	\item Number of states, $k$
+	\item Number of switching coefficients in the model
+\end{itemize}
+\vspace{1em}
 
-\subsection{Analysis I: Number of states}
+Based on the applied literature, the information criteria called the Bayesian Information Criterion (BIC) is used for model selection
+
+$$\mathrm{BIC}=-2\ln(L(\hat{\theta}))+m\cdot\ln(T)$$
+
+\footnotesize{where, $m$ is the number of parameters and $T$ is the number of observations}
+\vspace{1em}
+
+\normalsize{BIC attempts to reduce an overfitting problem by penalizing on the number of parameters in the model}
+
+\end{frame}
+
+%------------------------------------------------
+\subsection{Markov switching model}
 \begin{frame}
 Decide: Number of states
 
@@ -457,22 +416,33 @@ Hypothesis: Markov switching model with \textit{two} or \textit{three} states
 
 \begin{itemize}
 	\item Model with lower BIC value is preferable
-	\item BIC is one criteria to select the appropriate model, but model output and plot should also be taken into account as well
-	\item Two-state model provide less details and unrealistic to make an interpretation depite lower BICs in some dataset
-	\item \textit{Three-state} model was chosen for further analysis
+	\item Model output along with plot should also be taken into account as well
+	\item Two-state model provide less details and unrealistic to make an interpretation, depite lower BICs in some dataset
+	\item \textbf{Three-state} model was chosen for further analysis
 	\item Remark: Higher number of states $k\geq4$ are more likely to give worse results and were not considered
 \end{itemize}
 
 \end{frame}
 
 %------------------------------------------------
-\subsection{Analysis II: Number of switching coefficients}
+\subsection{Markov switching model}
 \begin{frame}[fragile]
-\small{Decide: Number of switching coefficients in the model
+Decide: Number of switching coefficients in the model
 
-Hypothesis: Test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{Numcells}) is possible to have non-switching effects}
+Hypothesis: Test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{Numcells}) is possible to have non-switching effects
 \rule{\textwidth}{0.4pt}
 
+\begin{itemize}
+	\item Attempt to reduce the number of parameters to be estimated in the model
+	\item Algorithm used numerical optimization (EM-algorithm)
+	
+	$\rightarrow$ more estimated parameters will make the obtained result unstable 
+\end{itemize}
+
+The three final Markov switching models for each dataset are ready
+
+
+\begin{comment}
 \begin{itemize}
 	\item Software release L16A: 
 	
@@ -487,6 +457,7 @@ Hypothesis: Test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \texti
 	
 	\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells} are non-switching coefficients
 \end{itemize}
+\end{comment}
 
 \begin{comment}
 Software release L16A
@@ -533,10 +504,76 @@ Model with DuProdName, Fdd/Tdd, and NumCells are non-switching coefficients.
 \end{frame}
 
 %------------------------------------------------
+\subsection{E-divisive}
+\begin{frame}
+
+\begin{itemize}
+	\item Apply to all three datasets
+	\item The E-divisive algorithm only uses the value of the CPU utilization
+\end{itemize}
+	
+\end{frame}
+
+%------------------------------------------------
+\subsection{Simulation study for model evaluation}
+\begin{frame}
+\begin{itemize}
+	\item In the real data, the state of the CPU utilization is unknown $\rightarrow$ Evaluation of the model can't be made
+	\pause
+	\vspace{1em}
+	
+	\item Simulated two datasets (Dataset 1 and Dataset 2) with high and low persistent state, respectively.
+\end{itemize}
+
+$y_{t}=\begin{cases}
+\begin{array}{c}
+10+0.6X_{1,t}-0.9X{}_{2,t}+0.5y_{t-1}+\varepsilon_{t}^{(1)}\\
+2+0.8X_{1,t}+0.2y_{t-1}+\varepsilon_{t}^{(2)}\\
+-12+0.7X_{1,t}+0.2X{}_{2.t}-0.2y_{t-1}+\varepsilon_{t}^{(3)}
+\end{array} & \begin{array}{c}
+\mathrm{Normal}\\
+\mathrm{Bad}\\
+\mathrm{Good}
+\end{array}\end{cases}$
+\vspace{1em}
+
+$y_{t}$ is assumed to be value of a CPU usage
+
+$x_{1,t}\sim U[50,200]$
+
+$x_{2,t}\sim U[0,50]$ 
+
+$\varepsilon_{t}^{(1)}\sim N(0,1),\quad \varepsilon_{t}^{(2)}\sim N(2,0.5),\quad \mathrm{and} \quad \varepsilon_{t}^{(3)}\sim N(1,1)$
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{sim1}
+\caption{A simulated data of Dataset 1 and the period in the time series when observation is in each state.}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{sim2}
+\caption{A simulated data of Dataset 2 and the period in the time series when observation is in each state.}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------
 \subsection{Comparison between the Markov switching model and the E-divisive method}
 \begin{frame}[fragile]
-Simulated Dataset 1 and Dataset 2
-\pause
+Apply the Markov switching model and the E-divisive method to the simulated Dataset 1 and Dataset 2, it is found that
+
+
+
 \begin{itemize}
 	\item Both methods detect changes at the same location 
 	
@@ -570,12 +607,11 @@ Real data: Software release L16A
 
 \begin{itemize}
 	\item E-divisive cannot detect any changes in the time series data
-	\item No comparison is made
 \end{itemize}
 
 \begin{figure}
 	\includegraphics[width=1\linewidth]{compare_L16A}
-	\caption{The estimated change point locations from both methods}
+	\caption{Top: Results from the Markov switching model, Bottom: The change point locations from the E-divisive}
 \end{figure}
 
 \end{frame}
@@ -589,7 +625,7 @@ Real data: Software release L16B
 
 \begin{figure}
 	\includegraphics[width=1\linewidth]{compare_L16B}
-	\caption{The estimated change point locations from both methods}
+	\caption{Top: Results from the Markov switching model, Bottom: The change point locations from the E-divisive}
 \end{figure}
 
 \end{frame}
@@ -603,7 +639,7 @@ Real data: Software release L17A
 
 \begin{figure}
 	\includegraphics[width=1\linewidth]{compare_L17A}
-	\caption{The estimated change point locations from both methods}
+	\caption{Top: Results from the Markov switching model, Bottom: The change point locations from the E-divisive}
 \end{figure}
 \end{frame}
 
@@ -614,8 +650,8 @@ Software release L16A
 
 \begin{itemize}
 	\item State 1: Degradation
-	\item State 2: Improvement
-	\item State 3: Steady
+	%\item State 2: Improvement
+	%\item State 3: Steady
 \end{itemize}
 
 \begin{figure}
@@ -631,8 +667,8 @@ Software release L16B
 
 \begin{itemize}
 	\item State 1: Degradation
-	\item State 2: Improvement
-	\item State 3: Steady
+	%\item State 2: Improvement
+	%\item State 3: Steady
 \end{itemize}
 
 \begin{figure}
@@ -648,8 +684,8 @@ Software release L17A
 
 \begin{itemize}
 	\item State 1: Degradation
-	\item State 2: Improvement
-	\item State 3: Steady
+	%\item State 2: Improvement
+	%\item State 3: Steady
 \end{itemize}
 
 \begin{figure}
@@ -713,13 +749,21 @@ Software release L17A
 \end{frame}
 
 %------------------------------------------------
+%\subsection{Model evaluation}
+%\begin{frame}
+%The accuracy of the model
 
+%\begin{itemize}
+%	\item Simulated Dataset 1: 0.96
+%	\item Simulated Dataset 2: 0.80
+%\end{itemize}
+%\end{frame}
 %------------------------------------------------
 \section{Conclusion}
 \subsection{Conclusion}
 \begin{frame}
 \begin{itemize}
-	\item Markov switching model is able to identify any changes between states, despite some false alarms and missed detections
+	\item Markov switching model is able to identify any changes between states rather well, despite some false alarms and missed detections
 	\item E-divisive method  is less powerful as it can detect fewer changes and failed to detect many changes
 	
 	$\rightarrow$ the method only take into account the value of the CPU utilization
