@@ -887,7 +887,7 @@ setMethod(f="plotDiag",signature=c("MSM.linear","ANY","ANY"),definition=.MSM.lar
   temp <- data.frame(index, xmin, xmax, regime, y=y, ymin=min(y), ymax=max(y))
 
   g <- ggplot(data=temp, aes(x=index, y=y)) + geom_line() +
-    geom_rect(data=temp, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=regime), alpha=0.3, inherit.aes=FALSE) +
+    geom_rect(data=temp, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=regime), alpha=0.4, inherit.aes=FALSE) +
     ylab(paste(colnames(object@model$model)[1])) + theme_bw()
 
   return(g)
