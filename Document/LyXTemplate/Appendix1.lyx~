@@ -666,7 +666,11 @@ Categorical variable
 The package does not appear to work well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
- R refers to categorical variables as factors.
+ 
+\emph on
+R
+\emph default
+ refers to categorical variables as factors.
  Most of the time, an order of the factor does not matter in the study.
  However, sometimes the order of the factor is of interest in the analysis
  and needs to be specified for the purpose of comparison or obtaining a
@@ -1080,6 +1084,56 @@ name "chap:Output"
 \begin_layout Standard
 Outputs from applying Markov switching autoregressive models with each dataset
  are shown here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename picture/L16B_NNY1.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The CPU utilization of the software release B showing the periods where
+ the observation is in the specific state.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Model 2: DuProdName and Fdd/Tdd are non-switching coefficients.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L16B_NNY"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3450,56 +3504,6 @@ State 3
 
 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/L16B_NNY1.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The CPU utilization of the software release B showing the periods where
- the observation is in the specific state.
- 
-\begin_inset Newline newline
-\end_inset
-
-Model 2: DuProdName and Fdd/Tdd are non-switching coefficients.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "L16B_NNY"
 
 \end_inset
 

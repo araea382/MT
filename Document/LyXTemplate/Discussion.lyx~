@@ -500,71 +500,6 @@ reference "L16A_NN"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Itemize
-State1
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-Despite periods where there is a slightly decrease in CPU utilization value,
- State1 contains two peaks which have the value of the CPU utilization higher
- than 300.
- This clearly implies that test cases in State1 perform badly and  is defined
- as a 
-\emph on
-Degradation
-\emph default
- state.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State2 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The state appears to be an 
-\emph on
-Improvement
-\emph default
- state as there are many periods where test cases have low value in the
- CPU utilization.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State3 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The performance for test cases in this state can be viewed as a 
-\emph on
-Good
-\emph default
- state as well.
- However, State2 seems to capture the period where test cases have lowest
- values better than State3, and State3 has two periods of increasing to
- higher CPU utilization values.
- The state is, therefore, said to be a 
-\emph on
-Steady
-\emph default
- state.
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Despite periods where there is a slightly decrease in CPU utilization value,
  State1 contains two peaks which have the value of the CPU utilization higher
  than 300.
@@ -575,19 +510,9 @@ Degradation
 \emph default
  state.
  As for State2 and State3, both states can be viewed as an Improvement state.
- However, State2 seems to have many periods where test cases drop to a lower
- value in the CPU utilization.
- State3 also has two periods of abrupt changes to higher CPU utilization
- values.
- Therefore, State2 appears to be an 
-\emph on
-Improvement
-\emph default
- state while State3 is said to be a 
-\emph on
-Steady
-\emph default
- state.
+ However, they may not be clearly distinguish between each other based on
+ the current models.
+ 
 \end_layout
 
 \begin_layout Paragraph*
@@ -602,66 +527,6 @@ reference "L16B_NYY"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Itemize
-State1 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-There are many high peaks occur in this state.
- Moreover, test cases tend to increase the value of the CPU utilization
- when they remain in the state.
- A 
-\emph on
-Degradation
-\emph default
- state is adequate for defining behavior in this state.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State2 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The state could be characterized as an 
-\emph on
-Improvement
-\emph default
- state.
- A decreasing pattern of the CPU utilization value can be seen in most of
- the period.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State3 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The CPU utilization value for test cases in this state are either high or
- low.
- The state contains the period of positive and negative peaks and does not
- appear to have a specific characteristic for the state of the CPU.
- For this reason, the state is said to be a 
-\emph on
-Steady
-\emph default
- state.
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 There are many high peaks occurred in State1, and test cases tend to increase
  the values of the CPU utilization when they enter this state.
  Hence, State1 is said to be a 
@@ -669,33 +534,11 @@ There are many high peaks occurred in State1, and test cases tend to increase
 Degradation
 \emph default
  state.
- State2 could be characterized as an 
-\emph on
-Improvement
-\emph default
- state.
- The reason is that a decreasing pattern of the CPU utilization value for
- the test cases in State2 can be seen in most of the period.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The test cases which are in State3 have either high or low in the CPU utilizatio
-n value.
- 
-\end_layout
-
-\end_inset
-
-State3 contains the period of positive and negative peaks, and does not
+ Nevertheless, the plot does not indicate any particular behavior in State2;
+ therefore, nothing much can be inferred for this state.
+ State3 contains the period of positive and negative peaks, and does not
  appear to have a specific characteristic for the state of the CPU utilization.
- The difficulty of making an interpretation for State3 infers that the state
- may be defined as a 
-\emph on
-Steady
-\emph default
- state.
+ This also provide a difficulty of making an interpretation for State3.
 \end_layout
 
 \begin_layout Paragraph
@@ -710,115 +553,20 @@ reference "L17A_NNN"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Itemize
-State1 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-There a 
-\emph on
-Degradation
-\emph default
- state
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State2 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-Most of observations in the state have a decreasing pattern when enter this
- state which is often comes from State1.
- As a consequence, an 
-\emph on
-Improvement
-\emph default
- state is given for this state.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State3 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The values of the CPU utilization for observations in the state have an
- unclear pattern.
- The value is quite fluctuate and because of this behavior, the state is
- labeled as a 
-\emph on
-Steady
-\emph default
- state.
- There is a peak in the time series data which is viewed as an anomaly in
- this case.
- 
-\end_layout
-
-\end_deeper
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
 Abrupt changes in the CPU utilization values when test cases enter State1
  could be seen in most of the period.
  Despite low values in some of the test cases, State1 appeared to have more
  high value in the CPU utilization.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Even though the values of the CPU utilization which stay in State1 drop
- in some periods, there is an increase in the CPU utilization values in
- most of the periods.
-\end_layout
-
-\end_inset
-
  Hence, State1 could be defined as a 
 \emph on
 Degradation
 \emph default
- state.
- The CPU utilization values clearly decrease when test cases enter State2.
- These test cases often switch from State1, which is thought to be the state
- where the performance of the test cases perform badly.
- As a consequence, this behavior indicates an improving in the test cases.
- Thus, State2 is defined as an 
-\emph on
-Improvement
-\emph default
- state.
- The test cases which stay in State3 have an unclear pattern in the CPU
- utilization.
- The values are quite fluctuate and because of this behavior, the state
- is labeled as a 
-\emph on
-Steady
-\emph default
- state.
- The only peak in the time series data belonged to State3, and will be viewed
- as an anomaly in this case.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
- State3 also contains a peak which occur in the time series data.
-\end_layout
-
-\end_inset
-
- 
+ state.The CPU utilization values tend to decrease its value in State2.
+ This can be seen as an improving but it can not directly infer that.
+ Similarly to the software release B, State3 does not seem to have a distinctive
+ behavior.
+ The values of the CPU utilization rather fluctuate and so an inference
+ for this state couldn't be made.
 \end_layout
 
 \begin_layout Section
@@ -1189,9 +937,9 @@ RrcConnectionSetupComplete
  low).
  In data preprocressing step, the minimum value of the CPU utilization of
  each software package is selected, regardless the type of test case.
- As a consequence, many type of test cases are presented in the final datasets,
- and one can easily notice the sudden drop in the CPU utilization in the
- plot of all three software release.
+ As a consequence, many type of test cases are presented in the final datasets.
+ This leads to the sudden drop in the CPU utilization as can be seen in
+ the plot of each software release.
 \end_layout
 
 \begin_layout Standard
@@ -1358,7 +1106,7 @@ reference "sec:Predict"
  the analysis.
  Finally, the criteria that has been used to select the number of states
  and the number of switching coefficients in the model are rather subjective.
- Hence, these chosen number might not be the best for different perspectives
+ Hence, these chosen numbers might not be the best for different perspectives
  and so could be counted as one of the bias as well.
  
 \begin_inset Note Comment

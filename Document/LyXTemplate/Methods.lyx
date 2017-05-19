@@ -2774,7 +2774,19 @@ Model selection
 \end_layout
 
 \begin_layout Standard
-In this study, several Markov switching models will be carried out.
+One of the most difficult tasks when modeling the Markov switching model
+ is to decide on the number of states 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rabiner1986introduction"
+
+\end_inset
+
+.
+ The analysis will be conducted on a trial and error basis before settling
+ on the most appropriate size of the model.
+ In this study, several Markov switching models with different setting will
+ be carried out.
  First, the number of states 
 \begin_inset Formula $k$
 \end_inset

@@ -80,28 +80,28 @@ plotArea(mswm_L16B_2)
 # ONLY CPU
 # fit linear model
 # DuProdName and Fdd/Tdd only has one factor
-mod_L16B <- lm(TotCpu~1, data=g2_L16B2)
-summary(mod_L16B)
+mod_L16B_cpu <- lm(TotCpu~1, data=g2_L16B2)
+summary(mod_L16B_cpu)
 
 # perform Markov switching autoregressive model
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-# names(switch) <- c(names(mod_L16B$coefficients),"AR","var")
+switch <- rep(TRUE,length(mod_L16B_cpu$coefficients)+1+1)
+# names(switch) <- c(names(mod_L16B_cpu$coefficients),"AR","var")
 # switch[c(5)] <- FALSE  # defining non-switching effect to DuProdName
 
 set.seed(1)
-mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
-summary(mswm_L16B_3)
+mswm_L16B_3_cpu <- MSwM2::msmFit(mod_L16B_cpu, k=3, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
+summary(mswm_L16B_3_cpu)
 
 set.seed(1)
-mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
-summary(mswm_L16B_2)
+mswm_L16B_2_cpu <- MSwM2::msmFit(mod_L16B_cpu, k=2, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
+summary(mswm_L16B_2_cpu)
 
 # plot
-plotSmo(mswm_L16B_3)
-plotArea(mswm_L16B_3)
+plotSmo(mswm_L16B_3_cpu)
+plotArea(mswm_L16B_3_cpu)
 
-plotSmo(mswm_L16B_2)
-plotArea(mswm_L16B_2)
+plotSmo(mswm_L16B_2_cpu)
+plotArea(mswm_L16B_2_cpu)
 
 
 set.seed(1)
@@ -116,8 +116,8 @@ ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() + scale_color_manual(valu
     ggtitle("E-divisive L16B") + theme_bw() + coord_cartesian(ylim = c(50, 300)) 
 
 
-pred_state_L16B <- sapply(1:nrow(g2_L16B2), function(x) which.max(mswm_L16B_3@Fit@smoProb[x,]))
-chg_mswm_L16B <- which(diff(pred_state_L16B) != 0) + 1
+pred_state_L16B_cpu <- sapply(1:nrow(g2_L16B2), function(x) which.max(mswm_L16B_3_cpu@Fit@smoProb[x,]))
+chg_mswm_L16B_cpu <- which(diff(pred_state_L16B_cpu) != 0) + 1
 # 3   4  10  64 137
 
 
@@ -125,31 +125,31 @@ chg_mswm_L16B <- which(diff(pred_state_L16B) != 0) + 1
 # ONLY RrcConnectionSetupComplete
 # fit linear model
 # DuProdName and Fdd/Tdd only has one factor
-mod_L16B <- lm(TotCpu~RrcConnectionSetupComplete, data=g2_L16B2)
-summary(mod_L16B)
+mod_L16B_rrc <- lm(TotCpu~RrcConnectionSetupComplete, data=g2_L16B2)
+summary(mod_L16B_rrc)
 
 # perform Markov switching autoregressive model
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
-# names(switch) <- c(names(mod_L16B$coefficients),"AR","var")
+switch <- rep(TRUE,length(mod_L16B_rrc$coefficients)+1+1)
+# names(switch) <- c(names(mod_L16B_rrc$coefficients),"AR","var")
 # switch[c(5)] <- FALSE  # defining non-switching effect to DuProdName
 
 set.seed(1)
-mswm_L16B_3 <- MSwM2::msmFit(mod_L16B, k=3, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
-summary(mswm_L16B_3)
+mswm_L16B_3_rrc <- MSwM2::msmFit(mod_L16B_rrc, k=3, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
+summary(mswm_L16B_3_rrc)
 
 set.seed(1)
-mswm_L16B_2 <- MSwM2::msmFit(mod_L16B, k=2, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
-summary(mswm_L16B_2)
+mswm_L16B_2_rrc <- MSwM2::msmFit(mod_L16B_rrc, k=2, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
+summary(mswm_L16B_2_rrc)
 
 # plot
-plotSmo(mswm_L16B_3)
-plotArea(mswm_L16B_3)
+plotSmo(mswm_L16B_3_rrc)
+plotArea(mswm_L16B_3_rrc)
 
-plotSmo(mswm_L16B_2)
-plotArea(mswm_L16B_2)
+plotSmo(mswm_L16B_2_rrc)
+plotArea(mswm_L16B_2_rrc)
 
 
-pred_state_L16B <- sapply(1:nrow(g2_L16B2), function(x) which.max(mswm_L16B_3@Fit@smoProb[x,]))
-chg_mswm_L16B <- which(diff(pred_state_L16B) != 0) + 1
+pred_state_L16B_rrc <- sapply(1:nrow(g2_L16B2), function(x) which.max(mswm_L16B_3_rrc@Fit@smoProb[x,]))
+chg_mswm_L16B_rrc <- which(diff(pred_state_L16B_rrc) != 0) + 1
 
 
