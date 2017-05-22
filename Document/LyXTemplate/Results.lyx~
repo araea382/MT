@@ -345,7 +345,7 @@ name "sec:States"
 \end_layout
 
 \begin_layout Standard
-To estimate the set of necessary parameters, an 
+To estimate the set of necessary parameters, the 
 \emph on
 MSwM
 \begin_inset Foot
@@ -368,8 +368,8 @@ reference "sec:MSwM-Package"
 \end_inset
 
 .
- A complete linear Markov switching autoregressive model in this thesis
- framework is defined as
+ A complete linear Markov switching model in this thesis framework is defined
+ as
 \end_layout
 
 \begin_layout Standard
@@ -407,59 +407,48 @@ The estimation was made under the assumptions of two or three states
  These two numbers come from a hypothesis that the state of the CPU utilization
  might have two states (
 \emph on
-Normal
+Steady
 \emph default
  and 
 \emph on
-Bad
+Degradation
 \emph default
 , 
 \emph on
-Normal
+Steady
 \emph default
  and 
 \emph on
-Good
+Improvement
 \emph default
 , 
 \emph on
-Bad
+Degradation
 \emph default
  and 
 \emph on
-Good
+Improvement
 \emph default
 ) or three states (
 \emph on
-Normal
+Steady
 \emph default
 , 
 \emph on
-Bad
+Degradation
 \emph default
 , and 
 \emph on
-Good
+Improvement
 \emph default
 ).
  During the estimation, a normality assumption was also applied to the distribut
 ion of residuals.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-REASON: (easier to compare...what else?)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-BICs from fitting the Markov switching autoregressive model are shown in
- 
+BICs from fitting the Markov switching model are shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "state-bic"
@@ -468,21 +457,9 @@ reference "state-bic"
 
 .
  For the software release A, the BIC suggests that the three-state Markov
- switching autoregressive model gives a better fit in comparison to the
- two-state model.
+ switching model gives a better fit in comparison to the two-state model.
  However, the models with two states for the remaining two software releases,
  B and C, had lower BICs.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-yielded better results (lower BICs).
- 
-\end_layout
-
-\end_inset
-
  
 \end_layout
 
@@ -526,7 +503,14 @@ name "state-bic"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\quad$
+\end_inset
+
 Software release
+\begin_inset Formula $\quad$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -689,8 +673,8 @@ Software release A
 \end_layout
 
 \begin_layout Standard
-Before performing the Markov switching autoregressive model, a standard
- linear regression model was fitted to the dataset first.
+Before performing the Markov switching model, a standard linear regression
+ model was fitted to the dataset first.
  It was found that a coefficient of 
 \emph on
 DuProdName
@@ -701,7 +685,7 @@ DuProdName
 \emph on
 DuProdName 
 \emph default
-variable was dropped from Equation 
+was dropped from Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:mswm"
@@ -843,11 +827,11 @@ reference "L16B_2_smo"
 
 , the Markov chain has several periods where it switches back and forth
  between two states of the software release B.
- The durations of the chain being in State2 is longer than the durations
- of the chain staying in State 1.
- Although the chain temporarily stays in State1, it remains in this state
- for a few moments in the middle of the time period (observation 91-99 and
- 101-114) before returning to State2.
+ The duration of the chain being in State2 is longer than the duration of
+ the chain staying in State 1.
+ Although the chain briefly stays in State1, it remains in this state for
+ a few moments in the middle of the time period (observation 91-99 and 101-114)
+ before returning to State2.
  Apparently, there are more switches between states in the three-state model,
  especially in the beginning, middle, and at the end of the period.
  
@@ -858,7 +842,7 @@ reference "L16B_3_smo"
 \end_inset
 
  shows that the chain remains in State3 over a considerable period as shown
- throughout observation 15-39, 42-67, and 140-170.
+ throughout observations 15-39, 42-67, and 140-170.
 \end_layout
 
 \begin_layout Standard
@@ -943,6 +927,18 @@ name "L16B_3_smo"
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
 \begin_inset Float figure
@@ -1046,6 +1042,25 @@ Close-up on the observations 165-210
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Close-up for the smoothed probabilities of the software release B from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_3_smo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -1067,7 +1082,7 @@ reference "L17A_2_smo"
 
 , when the Markov chain is in State1, it continues to stay in its state
  for a while before leaving to State2.
- Furthermore, the chain has a fairly short duration of staying in State2.
+ Furthermore, the chain stays a fairly short duration in State2.
  After the chain visits State2, it instantly switches back to State1.
  
 \begin_inset CommandInset ref
@@ -1076,7 +1091,7 @@ reference "L17A_3_smo"
 
 \end_inset
 
- presents the chain which has many switches between State1 and State2 in
+ presents the chain which has many switches between State1 and State3 in
  the first half of the time period.
  The chain for the three-state model also stays in State2 significantly
  long from observation 104 to 129, which is the end of the time series.
@@ -1103,7 +1118,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The smoothed probabilities of the software release C with three-state model
+The smoothed probabilities of the software release C with two-state model
 \end_layout
 
 \end_inset
@@ -1156,6 +1171,18 @@ name "L17A_3_smo"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
 \begin_layout Plain Layout
 \begin_inset Float figure
 wide false
@@ -1185,12 +1212,31 @@ Close-up on the observations 15-45
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Close-up for the smoothed probabilities of the software release C from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L17A_3_smo"
+
+\end_inset
+
 
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -1211,37 +1257,6 @@ reference "chap:Discussion"
 
 .
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The outputs from the models along with the plots provide more interpretable
- results when defining the model with three states in the software release
- B and C (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Discussion"
-
-\end_inset
-
-).
- Consequently, the three-state models for each software release were further
- analyzed in the thesis.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-smoothed inference probabilities mostly to show how the regimes are identified
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -1256,75 +1271,18 @@ name "sec:Switching"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{align*}
-y_{t}= & \beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}+\beta_{Paging,S_{t}}+\beta_{X2HandoverRequest,S_{t}}\\
- & +\beta_{DuProdName,S_{t}}+\beta_{Fdd/Tdd,S_{t}}+\beta_{NumCells,S_{t}}+\phi_{1,S_{t}}+\varepsilon_{S_{t}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{multline*}
-y_{t}=\beta_{0,S_{t}}+\beta_{RrcConnectionSetupComplete,S_{t}}+\beta_{Paging,S_{t}}+\beta_{X2HandoverRequest,S_{t}}+\\
-+\beta_{Fdd/Tdd,S_{t}}+\beta_{NumCells,S_{t}}+\phi_{1,S_{t}}+\varepsilon_{S_{t}}
-\end{multline*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{align*}
-y_{t}= & \beta_{0,S_{t}}+\beta_{1,S_{t}}X_{RrcConnectionSetupComplete,t}+\beta_{2,S_{t}}X_{Paging,t}+\beta_{3,S_{t}}X_{X2HandoverRequest,t}\\
- & +\beta_{4,S_{t}}X_{DuProdName,t}+\beta_{5,S_{t}}X_{Fdd/Tdd,t}+\beta_{6,S_{t}}X_{NumCells,t}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{S_{t}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-state-dependent parameters
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The fitted Markov switching autoregressive models in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:States"
-
-\end_inset
-
- were performed by assuming that every parameter in the model had switching
- effects i.e., coefficients can have different values in different periods.
+In this section, the number of switching coefficients to be included in
+ the model were decided based on applying the Markov switching model with
+ the selected number of states from Analysis I i.e., three-state Markov switching
+ model.
+ The fitted Markov switching models in Analysis I were performed by assuming
+ that every parameter in the model had switching effects i.e., coefficients
+ can have different values in different periods.
  However, in practice, each coefficient can have either a switching or non-switc
 hing effect.
- Therefore, Markov switching autoregressive models were applied to each
- dataset again but with a hypothesis that the variables considered as a
- test environment are possible to have non-switching effects.
+ Therefore, Markov switching models were applied to each dataset again but
+ with a hypothesis that the variables considered as a test environment are
+ possible to have non-switching effects.
  In this section, the structure of all the models from all three datasets
  are reported in the tables.
  The best model is selected for each dataset and its state specification
@@ -1380,20 +1338,8 @@ Fdd/Tdd
 \emph on
 NumCells
 \emph default
- have switching effects, was selected to be used with this dataset.
+ do not have switching effects, was selected to be used with this dataset.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-From the obtained outputs, it is found that a linear regression for State3
- in all three models has r-squared equals to 1 with moderately small residual
- standard error.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1691,44 +1637,20 @@ reference "L16A_NN"
 
  indicates the CPU utilization of the software release A and also shows
  the periods of the derived state from the model.
- From the plot, State2 clearly has the longest duration to remain in its
- own state.
- When the chain moves to either State1 or State3, it immediately switches
- to the other states.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-In other words, the chain does not linger in State3 during the time series
- period.
- 
-\end_layout
-
-\end_inset
-
- However, the duration that the chain stays in State1 is longer in the beginning
+ From the plot, State2 clearly has the longest duration without switching
+ state.
+ When the chain moves to either State1 or State3, most of the time it immediatel
+y switches to another state.
+ However, the duration when the chain stays in State1 is longer in the beginning
  and almost at the end of the period.
- Another characteristic that could be observed is that State2 have more
- chance to switch to State3 rather than switch to State1.
+ Another characteristic that could be observed is that State2 switches more
+ often to State3 rather than to State1.
  In the plot, there is a period where there is no significant change in
  the CPU utilization (observations 15-25) but there are some switches between
  states.
  Besides, there are some abrupt changes which are not detected by the model
  such as observation 11.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-These could somehow be viewed as false alarms.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2355,9 +2277,8 @@ reference "L16B_NYY"
  There are three durations where the chain stays in State3 for a long period
  of time.
  Another noticeable behavior from this switching mechanism is that there
- are several switches between State1 and State2 in the beginning, middle,
- and at the end of the time period.
- Both false alarms and missed detections can be seen in the plot.
+ are several switches to State1 and State2 in the beginning, middle, and
+ at the end of the time period.
  There are periods where the CPU utilization value does not change much
  but the model identifies some switches.
  Also, there are periods where the model fails to detect changes which is
@@ -2428,8 +2349,8 @@ reference "L17A_switch"
  presents model structure of the software release C.
  Only model 2 has higher BIC than the model which have all switching coefficient
 s.
- The least BIC is from the first model that all three variables in the test
- environment have non-switching effects.
+ The least BIC is from the first model of which all three variables in the
+ test environment have non-switching effects.
  This model was also chosen to be further used for this dataset.
 \end_layout
 
@@ -3047,46 +2968,7 @@ name "sec:Residual"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Different types of plots of the residuals from a fitted model provide informatio
-n on the adequacy of different aspects of the model.
-\end_layout
-
-\begin_layout Plain Layout
-- sufficiency of the functional part of the model: scatter plots of residuals
- versus predictors 
-\end_layout
-
-\begin_layout Plain Layout
-- non-constant variation across the data: scatter plots of residuals versus
- predictors; for data collected over time, also plots of residuals against
- time 
-\end_layout
-
-\begin_layout Plain Layout
-- drift in the errors (data collected over time): run charts of the response
- and errors versus time 
-\end_layout
-
-\begin_layout Plain Layout
-- independence of errors: lag plot 
-\end_layout
-
-\begin_layout Plain Layout
-- normality of errors: histogram and normal probability plot
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Pooled residuals of the selected Markov switching autoregressive model from
- 
+Pooled residuals of the selected Markov switching model from 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Switching"
@@ -3143,17 +3025,6 @@ reference "L16A_plotDiag"
  There is an evidence of autocorrelation in the residuals of this model,
  which can be seen in both ACF and PACF plot, at lag 8.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-This provides some evidence that the residual is somehow independently and
- identically distributed.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3230,8 +3101,8 @@ reference "L16B_plotDiag"
  The data has more extreme values than it should if the data truly comes
  from a normal distribution.
  In addition, both the ACF and PACF plots show that there is a small amount
- of autocorrelation remain in the residuals.
- The statistically significant correlation of this model are at lags 6 and
+ of autocorrelation remaining in the residuals.
+ The statistically significant correlation of this model is at lags 6 and
  10.
  The significance at lag 4 both in the ACF and PACF plots is slightly higher
  than two standard errors.
@@ -3299,7 +3170,7 @@ Software release C
 \end_layout
 
 \begin_layout Standard
-A Q-Q plot in 
+The Q-Q plot in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "L17A_plotDiag"
@@ -3307,24 +3178,12 @@ reference "L17A_plotDiag"
 \end_inset
 
  suggests that a distribution of the pooled residuals may have a tail thicker
- than that of a normal distribution.
+ than that the one of a normal distribution.
  It is visible that there are many extreme positive and negative residuals
  in the plot.
- Furthermore, the ACF plot of pooled residuals are significant for the first
- two lags, whereas the PACF plot is significant only at lag 2.
+ Furthermore, both the ACF and PACF plots of pooled residuals are significant
+ for the first two lags.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The model seems to capture the dependent structure of the error terms in
- the time series, except for the reported significant lag.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3384,224 +3243,6 @@ name "L17A_plotDiag"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "L16A_QQ"
-
-\end_inset
-
-, the residual of State 1 does not seems to follow a normal distribution.
- The residuals of State 2 and State 3 both have heavy-tailed.
- A few outliers can also be seen in the plot.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/L16A_QQ.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Normal Q-Q plot of software release A
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "L16A_QQ"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/L16A_ACF.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-ACF/PACF of pooled residuals and ACF/PACF of square residuals of software
- release A
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-It is clearly that State 1 does not come from a Normal distribution in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "L16B_QQ"
-
-\end_inset
-
-.
- There are three different lines in one plot.
- Both State 2 and State 3 appear to fall is a straight line with some deviations
- in their tails.
- This is a characteristics of the heavy-tailed distribution.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/L16B_QQ.png
-	lyxscale 50
-	scale 45
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Normal Q-Q plot of software release B
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "L16B_QQ"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "L17A_QQ"
-
-\end_inset
-
- presents State 1 heavy-tailed
-\end_layout
-
-\begin_layout Plain Layout
-State 2 bimodal
-\end_layout
-
-\begin_layout Plain Layout
-State 3 right skew
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/L17A_QQ.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Normal Q-Q plot of software release C
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "L17A_QQ"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Non-parametric analysis
 \end_layout
@@ -3619,7 +3260,8 @@ reference "ediv"
 
  shows places in the time series data where the E-divisive method detected
  the significant changes.
- 
+ There is no estimated change point location for the dataset of the software
+ release A.
 \end_layout
 
 \begin_layout Standard
@@ -3761,210 +3403,6 @@ reference "subsec:Real-data"
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subsection
-Software release A
-\end_layout
-
-\begin_layout Plain Layout
-It can be seen that the E-divisive method could not identify any changes
- in the dataset of the software release A.
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/ediv_L16A1.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The CPU utilization of the software release A
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "ediv_L16A"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Software release B
-\end_layout
-
-\begin_layout Plain Layout
-Four change points were identified from the method for the software release
- B and C.
- In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ediv_L16B"
-
-\end_inset
-
-, the estimated change points for the dataset of the software release B
- are likely to occur around the same period of time, which are almost at
- the end of the time series data.
- The estimated points from the method are approximately at peaks and negative
- peaks.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/ediv_L16B1.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The CPU utilization of the software release B.
- The red dashed vertical lines indicate the locations of estimated change
- points.
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "ediv_L16B"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Software release C
-\end_layout
-
-\begin_layout Plain Layout
-On the contrary, the result of the dataset of the software release C, which
- is shown in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ediv_L17A"
-
-\end_inset
-
-, have the estimated change points rather spread out.
- The E-divisive method discovers changes when the CPU utilization was about
- to drop or increase its value.
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/ediv_L17A1.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The CPU utilization of the software release C.
- The red dashed vertical lines indicate the locations of estimated change
- points.
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "ediv_L17A"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Comparison between the Markov switching model and the E-divisive method
 \end_layout
@@ -3972,8 +3410,8 @@ Comparison between the Markov switching model and the E-divisive method
 \begin_layout Standard
 A comparison between the Markov switching model and the E-divisive method
  was made in this section.
- Two methods were applied to two simulated datasets, where the actual changes
- are already known beforehand, and then also applied to a real data.
+ These two methods were applied to two simulated datasets, where the actual
+ changes are already known beforehand, and then also applied to a real data.
 \end_layout
 
 \begin_layout Subsection
@@ -3994,10 +3432,10 @@ reference "compare_sim1"
  rather well, as the model discovers all the changes accurately.
  Only one change point location was indicated to occur later than its actual
  occurrence time.
- In contrast, the E-divisive method detected changes fewer than the actual
- changes in the data.
+ In contrast, the E-divisive method detected fewer changes than the number
+ of actual changes in the data.
  Furthermore, most of the detection are also not quite accurate as three
- out of six detections are delayed and out one of six detections is indicated
+ out of six detections are delayed and one out of six detections is indicated
  to happen prior to its actual time.
  The E-divisive method is unable to detect any changes in the data at the
  beginning of the time period.
@@ -4080,8 +3518,8 @@ reference "compare_sim2"
  The simulated dataset contains numerous switches between states.
  Generally, the Markov switching model is able to identify the changes considera
 bly well despite a few false alarms and missed detections.
- On the other hand, the E-divisive method can detect only estimated change
- points.
+ On the other hand, the E-divisive method can detect only two estimated
+ change points.
  Both two detections were correctly located.
  The method has quite poor performance as it failed to detect most of the
  change points in the data.
@@ -4156,32 +3594,6 @@ Software release A
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-One noticeable thing is that the E-divisive method was able to identify
- the changes of the data less than the Markov switching autoregressive model.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-As previously mentioned, no estimated change points was discovered when
- applying the E-divisive algorithm to the dataset of the software release
- A.
-\end_layout
-
-\end_inset
-
 According to 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4258,16 +3670,16 @@ reference "compare_L16B"
 
  presents results of estimated change points from the Markov switching model
  and the E-divisive method for the software release B.
- Sixty three estimated change point locations are found by the Markov switching
+ Sixty-three estimated change point locations are found by the Markov switching
  model.
  On the contrary, only four estimated change point locations are identified
  from the E-divisive method.
  They are likely to occur around the same period of time.
  Most of the locations of the change point detected by the E-divisive method
- are at peaks and negative peaks.
+ are at positive and negative peaks.
  Apparently, only one change point location is determined at the exact same
  time from both methods, and two change points are closely located.
- The rest detected locations are completely different for each method.
+ The rest of the detected locations are completely different for each method.
 \end_layout
 
 \begin_layout Standard
@@ -4320,80 +3732,6 @@ name "compare_L16B"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "compare_L16B-1"
-
-\end_inset
-
- presents results of switches between states from the Markov switching model
- and change point locations from the E-divisive method for the software
- release B.
- There is one location where the E-divisive method detects a change but
- the Markov switching model does not show any switches.
- As can be seen, the E-divisive method appears to detect changes when State2
- switches to State3.
- At observation 130, the E-divisive method discovers a switch in the state
- at the same time as Markov switching model does.
- However, the E-divisive method identifies switches after and before the
- Markov switching model does at observations 135 and 170, respectively.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/compare_L16B_smo1.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The combined results of the Markov switching autoregressive model and the
- E-divisive method for the software release 16B
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "compare_L16B-1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 Software release C
 \end_layout
@@ -4410,13 +3748,13 @@ reference "compare_L17A"
 .
  However, only four change point locations were identified from the E-divisive
  method.
- These locations are rather spread out if compare to the results from the
+ These locations are rather spread out if compared to the results from the
  software release B.
  The E-divisive method discovered changes when the CPU utilization value
  was about to decrease or increase.
  From both methods, two change points are determined at exactly the same
  locations, and another one which is located in the beginning is close to
- each other.
+ one another.
  Other detect locations are totally different as shown in the plot.
  
 \end_layout
@@ -4471,77 +3809,6 @@ name "compare_L17A"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "compare_L17A-1"
-
-\end_inset
-
-, a change is reported from the E-divisive method at observation 105 whereas
- no switch between states could be found from the result of the Markov switching
- model.
- It is visible that the E-divisive method is able to detect a switch from
- State1 to State3, and also a switch from State3 to State1.
- Both two methods could detect the changes at the same period of time at
- observations 77 and 82.
- The E-divisive method detects a change at observation 9 which is before
- there was a switch in the state from the result of the Markov switching
- model.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/compare_L17A_smo1.png
-	lyxscale 50
-	scale 35
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-The combined results of the Markov switching autoregressive model and the
- E-divisive method for the software release 17A
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "compare_L17A-1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Predicting the state of the CPU utilization 
 \begin_inset CommandInset label
@@ -4574,8 +3841,8 @@ reference "predict_L16A"
 
 , only two states, State1 and State2, are assigned for these observations.
  The first three observations are in State2.
- Afterwards, observation tends to switch back and forth between both states
- until the end of the time period.
+ Afterwards, the observations tend to switch back and forth between both
+ states until the end of the time period.
  Note that the most likely state for the last observation of the test set
  is unable to be predicted, and so it does not belong to any state.
 \end_layout
@@ -4716,7 +3983,7 @@ reference "predict_L17A"
  The time period between the observations between 4 and 7 switch between
  states rapidly.
  The observations visit a particular state for one time, and then immediately
- move to the other states.
+ move to the another state.
  
 \end_layout
 
@@ -4777,8 +4044,8 @@ name "sec:Assessing"
 
 \begin_layout Standard
 Eighty percents of the observations from the simulated data were fitted
- with Markov switching autoregressive model, and the remaining was used
- as a test set to evaluate a performance of the model.
+ with Markov switching model, and the remaining was used as a test set to
+ evaluate the performance of the model.
  
 \end_layout
 
@@ -4797,8 +4064,8 @@ reference "output-sim1"
  Dataset 1.
  Each state has a considerably high r-squared value which is greater than
  0.9.
- From the result, State2 has the highest standard error.
- When inferring back to the actual models that was used to generate these
+ From the results, State2 has the highest standard error.
+ When inferring back to the actual models that were used to generate these
  three states in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5505,7 +4772,7 @@ reference "output-sim2"
 
 .
  The r-squared values of State1 and State3 are slightly lower than the obtained
- result from the simulated Dataset 1, but the standard errors are significantly
+ results from the simulated Dataset 1, but the standard errors are significantly
  higher.
  However, State2 has close output value to the simulated Dataset1.
  It could be said that the model still performs rather well as the r-squared

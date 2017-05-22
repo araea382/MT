@@ -331,7 +331,7 @@ change point analysis
 Structural changes are often seen in time series data.
  This observable behavior is highly appealing to statistical modelers who
  want to develop a model which is well explained.
- A method to detect changes in time series data when a time instant is unknown
+ A method to detect changes in time series data when a time index is unknown
  is called 
 \emph on
 change point analysis
@@ -353,7 +353,17 @@ change-point
 \emph default
  is the commonly used term for the point in a time series where a change
  takes place.
- Another important term which will be used in this thesis is 
+ Another important term used in this area 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+which will be used in this thesis
+\end_layout
+
+\end_inset
+
+ is 
 \emph on
 regime switch
 \emph default
@@ -367,8 +377,8 @@ key "weskamp2010change"
 
 .
  Change point analysis has been studied for several decades as it is a problem
- of interest in many applications which the characteristic of data is collected
- over time.
+ of interest in many applications in which the characteristic of data is
+ collected over time.
  A change should be flagged as soon as it occurs in order to be properly
  dealt with reducing any possible consequences 
 \begin_inset CommandInset citation
@@ -466,16 +476,16 @@ key "luong2012hidden"
 \end_inset
 
 .
- This method is generally used in almost all current systems in speech recogniti
-on 
+ This method is used in almost all current systems in speech recognition
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rabiner1989tutorial"
 
 \end_inset
 
- and found to be important in climatology such as describing the state in
- the wind speed time series 
+ and is found to be important in climatology such as describing the state
+ in the wind speed time series 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ailliot2012markov"
@@ -536,9 +546,9 @@ ics in different states at different time.
 \end_layout
 
 \begin_layout Standard
-For the current Ericsson setting, each software package running through
- the test system is viewed as a time point in time series and the performance
- of each software package is treated as an observed value.
+For the current Ericsson setting, each software package version running
+ through the test system is viewed as a time point in time series and the
+ performance of each software package is treated as an observed value.
  It is proven that the observed values are not completely independent of
  each other i.e., the performance of the current software package depends
  on the performance from the prior version of the software package.
@@ -599,10 +609,10 @@ name "sec:Objective"
 The core idea of this thesis is to reduce workload of manual inspection
  when the performance analysis of an updated software package is required.
  With an increased amount of generated data from numerous test cases, the
- inspection becomes tedious and inefficient to be done manually.
- The main objective of this thesis is to implement machine learning, an
- algorithm that has an ability to learn from data, in order to analyze the
- performance of the software package.
+ inspection becomes very tedious and inefficient to be done manually.
+ The main objective of this thesis is to implement a machine learning algorithm
+ that has an ability to learn from data in order to analyze the performance
+ of the software package.
  The algorithm will help indicate whether the performance of the software
  package is in a degrading, improving or steady state.
  It is also worth mentioning that the performance of a particular software

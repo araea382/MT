@@ -1,7 +1,7 @@
 library(data.table) # for importing data to R
-library(gtools) # for sorting RW column
+library(gtools) # for sorting Release and SW column in aescending order
 library(dplyr) # for data manipulation
-library(stringr) # for extract_component()
+library(stringr) # for using in extract_component()
 library(ggplot2) # for graphics
 library(MSwM2) # for performing Markov switching model
 library(ecp) # for performaing E-divisive method
@@ -18,7 +18,7 @@ g2 <- filter(g2, EventsPerSec != "")
 g2 <- as.data.table(g2)
 
 #-----------------------------------------------------#
-# sort on multiple columns
+# function to sort on multiple columns
 # converting all character vectors to factors with mixedsorted sorted levels, and pass all vectors on to the standard order function
 # http://stackoverflow.com/questions/20396582/order-a-mixed-vector-numbers-with-letters
 multi.mixedorder <- function(..., na.last = TRUE, decreasing = FALSE){
@@ -35,7 +35,7 @@ multi.mixedorder <- function(..., na.last = TRUE, decreasing = FALSE){
 }
 
 #-----------------------------------------------------#
-# get minimum value of TotCpu in each SW
+# function to get minimum value of TotCpu in each SW
 get_min <- function(data, y){
   require("lazyeval")
   sw_name <- unique(data$SW)
@@ -60,7 +60,7 @@ get_min <- function(data, y){
 g2_sort <- g2[multi.mixedorder(Release, SW),]
 
 #-----------------------------------------------------#
-# Extract local events in EventPerSec column
+# function to extract local events in EventPerSec column
 extract_component <- function(data){
   for(j in 1:nrow(data)){
     events <- as.character(data[j,17])
@@ -90,17 +90,20 @@ g2_sort <- g2_sort[-which(g2_extract$`Active(anon):` != 0),] # remove test cases
 g2_extract <- extract_component(g2_sort) # extract local events again
 
 #-----------------------------------------------------#
-# rename variable
+# rename variable in order to properly use in fitting the Markov switching model
 colnames(g2_extract)[which(colnames(g2_extract)=="TotCpu%")] <- "TotCpu"
 colnames(g2_extract)[which(colnames(g2_extract)=="Fdd/Tdd")] <- "Fdd.Tdd"
 
 #-----------------------------------------------------#
-# get dataset for each software release
+# function to get dataset for each SW
 get_subset <- function(data, release){
+  # filter Release
   data <- data[which(Release == release)]
+  
+  # select test case which has minimum value
   data1 <- get_min(data, "TotCpu")
   
-  # DuProdName, Fdd/Tdd, NumCells to factor
+  # change DuProdName, Fdd/Tdd, NumCells to factor
   data1$DuProdName <- as.factor(data1$DuProdName)
   data1$Fdd.Tdd <- as.factor(data1$Fdd.Tdd)
   data1$NumCells <- as.factor(data1$NumCells)
@@ -118,7 +121,7 @@ g2_L17A <- get_subset(g2_extract, "L17A")
 g2_L17B <- get_subset(g2_extract, "L17B")
 
 #-----------------------------------------------------#
-# split dataset into train and test set 
+# function to split dataset into training and test set 
 train_test <- function(data, num){
   train_num <- floor(nrow(data) * num)
   train <- data[1:train_num,]
@@ -126,7 +129,7 @@ train_test <- function(data, num){
   return(list(train=train,test=test))
 }
 
-num <- 0.9
+num <- 0.9 # training set with 90%
 train_g2_L16A <- train_test(g2_L16A, num)$train
 test_g2_L16A <- train_test(g2_L16A, num)$test
 
@@ -137,10 +140,9 @@ train_g2_L17A <- train_test(g2_L17A, num)$train
 test_g2_L17A <- train_test(g2_L17A, num)$test
 
 #-----------------------------------------------------#
-# define predictor variables and create formulat for linear model
+# define predictor variables and create formula for linear model
 predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","DuProdName","Fdd.Tdd","NumCells")
 fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
-
 
 
 #----------------------------------------------------------------------#
@@ -149,7 +151,8 @@ fmla <- as.formula(paste("TotCpu ~ ", paste(predictor, collapse= "+")))
 #-----------------------------------------------------#
 # software release L16A
 #-----------------------------------------------------#
-# define predictor variables- drop DuProdName
+# define predictor variables
+# drop DuProdName because of singularity
 predictor2 <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","Fdd.Tdd","NumCells")
 fmla2 <- as.formula(paste("TotCpu ~ ", paste(predictor2, collapse= "+")))
 
@@ -159,7 +162,7 @@ summary(mod_L16A)
 
 # perform Markov switching autoregressive model
 # (1) NN
-switch <- rep(TRUE,length(mod_L16A$coefficients)+1+1)
+switch <- rep(TRUE,length(mod_L16A$coefficients)+1+1) # make all variables to have switching effect
 names(switch) <- c(names(mod_L16A$coefficients),"AR","var")
 switch[c(5,6,7)] <- FALSE # defining non-switching effect to Fdd.Tdd and NumCells
 
@@ -183,7 +186,7 @@ summary(mod_L16B)
 
 # perform Markov switching autoregressive model
 # (4) NYY
-switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1)
+switch <- rep(TRUE,length(mod_L16B$coefficients)+1+1) # make all variables to have switching effect
 names(switch) <- c(names(mod_L16B$coefficients),"AR","var")
 switch[c(5)] <- FALSE  # defining non-switching effect to DuProdName
 
@@ -207,7 +210,7 @@ summary(mod_L17A)
 
 # perform Markov switching autoregressive model
 # (1) NNN
-switch <- rep(TRUE,length(mod_L17A$coefficients)+1+1)
+switch <- rep(TRUE,length(mod_L17A$coefficients)+1+1) # make all variables to have switching effect
 names(switch) <- c(names(mod_L17A$coefficients),"AR","var")
 switch[c(5,6,7,8,9)] <- FALSE  # defining non-switching effect to all test environments
 
@@ -224,7 +227,7 @@ pred_L17A <- MSwM2::statePredict(mswm_L17A_NNN, test_g2_L17A)
 
 
 #----------------------------------------------------------------------#
-# E-divisive
+# E-divisive method
 #----------------------------------------------------------------------#
 #-----------------------------------------------------#
 # software release L16A
@@ -232,7 +235,7 @@ pred_L17A <- MSwM2::statePredict(mswm_L17A_NNN, test_g2_L17A)
 set.seed(1)
 Ediv_L16A <- e.divisive(matrix(train_g2_L16A$TotCpu), R=499, min.size=5)
 Ediv_L16A$estimates
-out_L16A <- Ediv_L16A$estimates[c(-1,-length(Ediv_L16A$estimates))] # change point locations
+out_L16A <- Ediv_L16A$estimates[c(-1,-length(Ediv_L16A$estimates))] # estimated change point locations
 
 
 #-----------------------------------------------------#
@@ -241,7 +244,7 @@ out_L16A <- Ediv_L16A$estimates[c(-1,-length(Ediv_L16A$estimates))] # change poi
 set.seed(1)
 Ediv_L16B <- e.divisive(matrix(train_g2_L16B$TotCpu), R=499, min.size=5)
 Ediv_L16B$estimates
-out_L16B <- Ediv_L16B$estimates[c(-1,-length(Ediv_L16B$estimates))] # change point locations
+out_L16B <- Ediv_L16B$estimates[c(-1,-length(Ediv_L16B$estimates))] # estimated change point locations
 
 
 #-----------------------------------------------------#
@@ -250,9 +253,35 @@ out_L16B <- Ediv_L16B$estimates[c(-1,-length(Ediv_L16B$estimates))] # change poi
 set.seed(1)
 Ediv_L17A <- e.divisive(matrix(train_g2_L17A$TotCpu), R=499, min.size=5)
 Ediv_L17A$estimates 
-out_L17A <- Ediv_L17A$estimates[c(-1,-length(Ediv_L17A$estimates))] # change point locations
+out_L17A <- Ediv_L17A$estimates[c(-1,-length(Ediv_L17A$estimates))] # estimated change point locations
 
 
 #----------------------------------------------------------------------#
 # Comparison graphs
 #----------------------------------------------------------------------#
+# function to plot the results from both methods
+plotCompare <- function(data, markov, ediv){
+  ind <- nrow(data)
+  
+  # the state change from Markov switching model
+  pred_state <- sapply(1:ind, function(x) which.max(markov@Fit@smoProb[x,]))
+  chg_mswm <- which(diff(pred_state) != 0) + 1
+  
+  # dataframe with matching method and the change points
+  method <- c(rep("Markov switching model",ind),rep("E-divisive",ind))
+  changePoints <- data.frame(changeP=c(chg_mswm, ediv), method=c(rep("Markov switching model",length(chg_mswm)), rep("E-divisive",length(ediv))))
+  temp <- data.frame(index=rep(1:ind,2),y=rep(data$TotCpu,2), method)
+  temp$method <- factor(temp$method, levels=c("Markov switching model","E-divisive"))
+  
+  g <- ggplot(data=temp, aes(x=index,y=y)) + geom_line() +
+    facet_grid(method ~ ., scales = 'free_y') + theme_bw() +
+    ggtitle("L16B") +
+    theme(panel.spacing = unit(0.2, "lines")) +
+    geom_vline(aes(xintercept=changeP), data=changePoints, linetype="longdash", colour=c(rep("cyan3",length(chg_mswm)),rep("orangered",length(ediv))))
+  
+  return(g)
+}
+
+plotCompare(train_g2_L16B, mswm_L16B_NYY, out_L16B)
+
+

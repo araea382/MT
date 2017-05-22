@@ -311,32 +311,40 @@ sive model and the E-divisive method.
 \begin_layout Standard
 For the Markov switching model, the number of states and the number of switching
  coefficients in the model were determined and chosen by examining the BIC,
- along with model output and plot.
+ along with model outputs and plots.
  The findings from the simulated datasets revealed that the Markov switching
  model were able to discover switches between states rather well, despite
  some false alarms and missed detections.
- This method works well even though numerous switches between states were
- occurred in the data.
- The E-divisive method is less powerful compare to the Markov switching
- model.
- The method could identify fewer change point locations, and failed to detect
- many changes that were occurred in the simulated datasets.
- The E-divisive method will perform better and will be more efficient if
- the data have an obvious pattern of shifting in the time series.
- Based on the results from the simulated datasets and the real data, the
- Markov switching model was considered to be the representative method for
- the analysis.
-\begin_inset Note Comment
-status collapsed
+ This method works well even though numerous switches between states did
+ occur
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-From performing both methods in the simulated datasets and the real data,
- the results from the Markov switching model was considered to be the representa
-tive for the analysis.
+***
 \end_layout
 
 \end_inset
 
+ in the data.
+ The E-divisive method is less powerful compared to the Markov switching
+ model.
+ The method could identify fewer change point locations, and failed to detect
+ many changes that were occurred
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+****
+\end_layout
+
+\end_inset
+
+ in the simulated datasets.
+ The E-divisive method will perform better and will be more efficient if
+ the data have an obvious pattern of shifting in the time series.
+ Based on the results from the simulated datasets and the real data, the
+ Markov switching model was considered to be a suitable method for the analysis.
  The E-divisive method was rather used as a guideline for any changes that
  could happen in the data.
  
@@ -353,7 +361,7 @@ The method could also be used together with the Markov switching model for
  a confirmation of the changes in the data when the actual state is unknown.
  After applying the Markov switching model to both simulated datasets, the
  accuracy of the test sets implied that an implementation of a state prediction
- function appears to functionally work well.
+ function appears to work well.
  
 \begin_inset Note Comment
 status collapsed
@@ -371,8 +379,8 @@ ly work well when investigating on the simulated datasets.
 \end_layout
 
 \begin_layout Standard
-Evaluating the obtained results is rather difficult and complicated, mostly
- due to a lack of annotations or label of the state of the CPU utilization.
+Evaluating the obtained results is rather difficult, mostly due to a lack
+ of annotations or label of the state of the CPU utilization.
  This is a common situation to an unsupervised learning problem where the
  ground truths are not often available.
  
@@ -399,8 +407,8 @@ Future work
 \end_layout
 
 \begin_layout Standard
-The Markov switching model gave quite a promising result but several improvement
-s could also be done to increase a robustness of the analysis.
+The Markov switching model gave quite promising results but several improvements
+ could also be done to increase the robustness of the analysis.
  For future work, more extensive data is recommended.
  Obtained results will be more reliable as additional information will decrease
  an uncertainty in the data.
@@ -427,8 +435,8 @@ EventsPerSec
 
 \begin_layout Standard
 Furthermore, there are still two more performance metrics in QA Capacity
- area which have not been taken into account in the thesis (e.g., a memory
- usage and a latency).
+ area which have not been taken into account in the thesis i.e., memory usage
+ and latency.
  The analysis could also be extended to analyze these metrics in a further
  work.
  
@@ -439,54 +447,33 @@ Another future extension to get the best state prediction is to consider
  applying the Markov switching autoregressive model on the different QA
  Capacity test case types i.e., one model for each type of test case.
  Results are expected to be more accurate as value of the CPU utilization
- will be slightly more stable and not so fluctuate.
+ will be slightly more stable and not so fluctuating.
 \end_layout
 
 \begin_layout Standard
-It would also be interesting to use normalize value by introducing weight
+It would also be interesting to use normalized values by introducing weight
  parameters instead of using the real value of the local events in the 
 \emph on
 EventsPerSec
 \emph default
  and the CPU utilization.
  Different weights can be given to the local events depending on how much
- effects it has on the CPU utilization.
- These values are sum up and then divided by the CPU utilization value to
- get a final value that represents a value of specific test case type with
- respect to the CPU utilization.
+ effect it has on the CPU utilization.
+ These values are summed up and then divided by the CPU utilization value
+ to get a final value that represents a value with respect to a specific
+ type of test case and the CPU utilization.
 \end_layout
 
 \begin_layout Standard
 Finally, in the future if some test cases have been labeled by an area expert,
- a semi-supervised learning algorithm, a technique that falls between a
- supervised learning and an unsupervised learning, could also be implemented.
+ a semi-supervised learning algorithm, a technique that falls between supervised
+ and unsupervised learning, could also be implemented.
  Training a model with a large amount of unlabeled data and a small amount
- of labeled data could considerably improving an accuracy of the model.
+ of labeled data could considerably improve the accuracy of the model.
  The semi-supervised learning could be of good practical use, especially
- to an application where labeling all the data is very expensive and time-consum
-ing.
+ for applications where labeling all the data is very expensive and time-consumi
+ng.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-This line indicates the amount of time the CPU spent in each of several
- states, displayed as percentages.
- The numbers reflect the percentage of the time since the last screen update
- that the CPU spent in each state.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Idle: Nothing to do
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

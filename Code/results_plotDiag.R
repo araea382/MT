@@ -1,6 +1,7 @@
 library(MSwM2)
 library(ggplot2)
 library(gridExtra)
+library(forecast)
 
 # one test case per SW
 predictor <- c("RrcConnectionSetupComplete","Paging","X2HandoverRequest","DuProdName","Fdd.Tdd","NumCells")
@@ -51,8 +52,8 @@ ggplot(data=d) + geom_point(aes(x=fit,y=residPooled)) + theme_bw() +
 plotDiag(mswm_L16B_NYY, which=1)
 
 par(mfrow=c(2,1))
-acf(residPooled,ylim=c(-1,1),main="ACF of Residuals")
-pacf(residPooled,ylim=c(-1,1),main="PACF of Residuals")
+Acf(residPooled,ylim=c(-1,1),main="ACF of Residuals")
+Pacf(residPooled,ylim=c(-1,1),main="PACF of Residuals")
 
 
 L16B_NYY <- as.data.frame(mswm_L16B_NYY["Fit"]["error"])
@@ -115,8 +116,8 @@ plot(x=fit, y=residPooled,ylab="Residuals")
 plot(fit, ylab="Residuals")
 
 par(mfrow=c(2,1))
-acf(residPooled,ylim=c(-1,1),main="ACF of Residuals", lag.max=20)
-pacf(residPooled,ylim=c(-1,1),main="PACF of Residuals")
+Acf(residPooled,ylim=c(-1,1),main="ACF of Residuals", lag.max=20)
+Pacf(residPooled,ylim=c(-1,1),main="PACF of Residuals")
 
 qqplot.data <- function(vec, ind){
     # following four lines from base R's qqline()
@@ -177,8 +178,8 @@ ggplot(data=d) + geom_point(aes(x=fit,y=residPooled)) + theme_bw() +
   xlab("Fitted value") + ggtitle("Residuals versus the Fitted values")
 
 par(mfrow=c(2,1))
-acf(residPooled,ylim=c(-1,1),main="ACF of Residuals")
-pacf(residPooled,ylim=c(-1,1),main="PACF of Residuals")
+Acf(residPooled,ylim=c(-1,1),main="ACF of Residuals")
+Pacf(residPooled,ylim=c(-1,1),main="PACF of Residuals")
 
 
 L17A_NNN <- as.data.frame(mswm_L17A_NNN["Fit"]["error"])

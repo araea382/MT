@@ -79,7 +79,6 @@ plotArea(mswm_L16B_2)
 #-----------------------------------------------------#
 # ONLY CPU
 # fit linear model
-# DuProdName and Fdd/Tdd only has one factor
 mod_L16B_cpu <- lm(TotCpu~1, data=g2_L16B2)
 summary(mod_L16B_cpu)
 
@@ -124,7 +123,6 @@ chg_mswm_L16B_cpu <- which(diff(pred_state_L16B_cpu) != 0) + 1
 #-----------------------------------------------------#
 # ONLY RrcConnectionSetupComplete
 # fit linear model
-# DuProdName and Fdd/Tdd only has one factor
 mod_L16B_rrc <- lm(TotCpu~RrcConnectionSetupComplete, data=g2_L16B2)
 summary(mod_L16B_rrc)
 

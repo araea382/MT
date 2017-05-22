@@ -324,7 +324,7 @@ In this chapter, a discussion of the model selection for each given dataset
  is explained.
  Then, a state inference from the model is made and effects of the test
  environments are provided.
- Lastly, a results discussion of this study is discussed.
+ The last section is devoted to a results discussion of this study.
 \end_layout
 
 \begin_layout Section
@@ -336,6 +336,112 @@ name "subsec:Model-selection"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+There is no fixed rules in deciding the number of states.
+ Therefore, difference number of states were tried with the method in order
+ to determine which number would be best for this analysis.
+ The results from the model with two states offered less details and did
+ not cover all happening situations.
+ Furthermore, all the graphs of the two-state model are unrealistic and
+ also difficult in interpret.
+ Despite higher BICs for the dataset of the software release B and C, three-stat
+e model provides more interpretable plots and better fit to the time series
+ data.
+ The four-state Markov switching model for each software release was also
+ briefly tested in the analysis.
+ Apparently, defining four states caused more difficulty when fitting the
+ model and making an inference on the states.
+ The results were rather poor when compare to the model with two and three
+ states and was not include in the report.
+ Higher number of states are more likely to give worse results and were
+ not considered.
+ Thus, the number of chosen states after applying Markov switching model
+ to each dataset was three.
+ 
+\end_layout
+
+\begin_layout Standard
+Among all the predictor variables, the local events variables in 
+\emph on
+EventPerSec
+\emph default
+ is more essential than the test environment variables.
+ Having a constant value for the local events variables would be inadequate
+ to characterize the whole time series data and its evolution.
+ However, the test environment variables do not necessarily require a switching
+ mechanism.
+ This is why in this study, the test environment variable was possible to
+ not have a switching effect.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Switching"
+
+\end_inset
+
+, a hypothesis that the test environment variable was possible to not have
+ a switching effect was made.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+for each test case and should have flexible values in each of the fixed
+ number of state.
+ Although these test environment variables affect the CPU utilization, they
+ do not need to have different values in each state.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Another thing worth mentioning is that when modeling the Markov switching
+ model, it is better to try estimating a simpler model first.
+ The size of the model grows exponentially according to the number of states
+ 
+\begin_inset Formula $k$
+\end_inset
+
+, and the number of predictor variables 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ In addition, if all coefficients have switching effects, the model will
+ have more parameters to be estimated.
+ The function in the package will try to fit the model and estimate the
+ value of the coefficients, but there is no guarantee that the obtained
+ results of the likelihood will be a global maximum.
+ As a consequence, the estimated values of the coefficients cannot be completely
+ trusted.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "perlin2015ms_regress"
+
+\end_inset
+
+ suggested any model with 
+\begin_inset Formula $k>3$
+\end_inset
+
+ and 
+\begin_inset Formula $n\geq4$
+\end_inset
+
+ is not recommended.
+ This is also the main reason why not all the local events were included,
+ and the model was not made to have all the switching coefficients.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -439,28 +545,8 @@ Software release C
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Model 1 appeared to have a good model output and plot when comparing with
- the rest of the models.
- 
-\end_layout
-
-\end_inset
-
 The first four models with lowest BIC (Models 1, 5, 3, and 7, respectively)
  had similar results both in model outputs and plots.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-explanation when examining its plot.
-\end_layout
-
-\end_inset
-
  Thus, Model 1 which had the lowest BIC was chosen for this dataset.
 \end_layout
 
@@ -471,19 +557,7 @@ State inference
 \begin_layout Standard
 The model output after applying the Markov switching model with the dataset
  does not provide any definition of the derived states.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-A function from the package will estimate coefficients in each state without
- providing the definition of these states.
- 
-\end_layout
-
-\end_inset
-
-Therefore, an interpretation and inference of these states need to be specified.
+ Therefore, an interpretation and inference of these states need to be specified.
  The state inferences for each dataset are shown below.
  
 \end_layout
@@ -734,136 +808,16 @@ NodeName
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-Above all, one has to understand and accept a risk when deciding on the
- number of states as there is no guarantee how many states would yield the
- best outcome.
- This risk is also applied to a situation when determining the number of
- switching coefficients in the model.
- 
-\end_layout
-
-\end_inset
-
-There is no fixed rules in deciding the number of states.
- Therefore, difference number of states were tried with the method in order
- to determine which number would be best for this analysis.
- The results from the model with two states offered less details and did
- not cover all happening situations.
- Furthermore, all the graphs of the two-state model are unrealistic and
- also difficult in interpret.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-had one state with a considerably long period and another state with a very
- short period.
- There is a problematic interpretation when trying to make a rough inference
- on the derived states.
-\end_layout
-
-\end_inset
-
-Despite higher BICs for the dataset of the software release B and C, three-state
- model provides more interpretable plots and better fit to the time series
- data.
- The four-state Markov switching model for each software release was also
- briefly tested in the analysis.
- Apparently, defining four states caused more difficulty when fitting the
- model and making an inference on the states.
- The results were rather poor when compare to the model with two and three
- states and was not include in the report.
- Higher number of states are more likely to give worse results and were
- not considered.
- Thus, the number of chosen states after applying Markov switching model
- to each dataset was three.
- 
-\end_layout
-
-\begin_layout Standard
-Among all the predictor variables, the local events variables in 
-\emph on
-EventPerSec
-\emph default
- is more essential than the test environment variables.
- Having a constant value for the local events variables would be inadequate
- to characterize the whole time series data and its evolution.
- However, the test environment variables do not necessarily require a switching
- mechanism.
- This is why in this study, the test environment variable was possible to
- not have a switching effect.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Switching"
-
-\end_inset
-
-, a hypothesis that the test environment variable was possible to not have
- a switching effect was made.
- 
-\end_layout
-
-\begin_layout Plain Layout
-for each test case and should have flexible values in each of the fixed
- number of state.
- Although these test environment variables affect the CPU utilization, they
- do not need to have different values in each state.
+I'm here
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Another thing worth mentioning is that when modeling the Markov switching
- model, it is better to try estimating a simpler model first.
- The size of the model grows exponentially according to the number of states
- 
-\begin_inset Formula $k$
-\end_inset
-
-, and the number of predictor variables 
-\begin_inset Formula $n$
-\end_inset
-
-.
- In addition, if all coefficients have switching effects, the model will
- have more parameters to be estimated.
- The function in the package will try to fit the model and estimate the
- value of the coefficients, but there is no guarantee that the obtained
- results of the likelihood will be a global maximum.
- As a consequence, the estimated values of the coefficients cannot be completely
- trusted.
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "perlin2015ms_regress"
-
-\end_inset
-
- suggested any model with 
-\begin_inset Formula $k>3$
-\end_inset
-
- and 
-\begin_inset Formula $n\geq4$
-\end_inset
-
- is not recommended.
- This is also the main reason why not all the local events were included,
- and the model was not made to have all the switching coefficients.
- 
 \end_layout
 
 \begin_layout Standard

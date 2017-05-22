@@ -339,6 +339,139 @@ name "subsec:Model-selection"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Above all, one has to understand and accept a risk when deciding on the
+ number of states as there is no guarantee how many states would yield the
+ best outcome.
+ This risk is also applied to a situation when determining the number of
+ switching coefficients in the model.
+ 
+\end_layout
+
+\end_inset
+
+There is no fixed rules in deciding the number of states.
+ Therefore, difference number of states were tried with the method in order
+ to determine which number would be best for this analysis.
+ The results from the model with two states offered less details and did
+ not cover all happening situations.
+ Furthermore, all the graphs of the two-state model are unrealistic and
+ also difficult in interpret.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+had one state with a considerably long period and another state with a very
+ short period.
+ There is a problematic interpretation when trying to make a rough inference
+ on the derived states.
+\end_layout
+
+\end_inset
+
+Despite higher BICs for the dataset of the software release B and C, three-state
+ model provides more interpretable plots and better fit to the time series
+ data.
+ The four-state Markov switching model for each software release was also
+ briefly tested in the analysis.
+ Apparently, defining four states caused more difficulty when fitting the
+ model and making an inference on the states.
+ The results were rather poor when compare to the model with two and three
+ states and was not include in the report.
+ Higher number of states are more likely to give worse results and were
+ not considered.
+ Thus, the number of chosen states after applying Markov switching model
+ to each dataset was three.
+ 
+\end_layout
+
+\begin_layout Standard
+Among all the predictor variables, the local events variables in 
+\emph on
+EventPerSec
+\emph default
+ is more essential than the test environment variables.
+ Having a constant value for the local events variables would be inadequate
+ to characterize the whole time series data and its evolution.
+ However, the test environment variables do not necessarily require a switching
+ mechanism.
+ This is why in this study, the test environment variable was possible to
+ not have a switching effect.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Switching"
+
+\end_inset
+
+, a hypothesis that the test environment variable was possible to not have
+ a switching effect was made.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+for each test case and should have flexible values in each of the fixed
+ number of state.
+ Although these test environment variables affect the CPU utilization, they
+ do not need to have different values in each state.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Another thing worth mentioning is that when modeling the Markov switching
+ model, it is better to try estimating a simpler model first.
+ The size of the model grows exponentially according to the number of states
+ 
+\begin_inset Formula $k$
+\end_inset
+
+, and the number of predictor variables 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ In addition, if all coefficients have switching effects, the model will
+ have more parameters to be estimated.
+ The function in the package will try to fit the model and estimate the
+ value of the coefficients, but there is no guarantee that the obtained
+ results of the likelihood will be a global maximum.
+ As a consequence, the estimated values of the coefficients cannot be completely
+ trusted.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "perlin2015ms_regress"
+
+\end_inset
+
+ suggested any model with 
+\begin_inset Formula $k>3$
+\end_inset
+
+ and 
+\begin_inset Formula $n\geq4$
+\end_inset
+
+ is not recommended.
+ This is also the main reason why not all the local events were included,
+ and the model was not made to have all the switching coefficients.
+ 
+\end_layout
+
+\begin_layout Standard
 In this analysis, a three-state model which had all switching coefficients
  from Analysis I (see 
 \begin_inset CommandInset ref
@@ -500,71 +633,6 @@ reference "L16A_NN"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Itemize
-State1
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-Despite periods where there is a slightly decrease in CPU utilization value,
- State1 contains two peaks which have the value of the CPU utilization higher
- than 300.
- This clearly implies that test cases in State1 perform badly and  is defined
- as a 
-\emph on
-Degradation
-\emph default
- state.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State2 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The state appears to be an 
-\emph on
-Improvement
-\emph default
- state as there are many periods where test cases have low value in the
- CPU utilization.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State3 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The performance for test cases in this state can be viewed as a 
-\emph on
-Good
-\emph default
- state as well.
- However, State2 seems to capture the period where test cases have lowest
- values better than State3, and State3 has two periods of increasing to
- higher CPU utilization values.
- The state is, therefore, said to be a 
-\emph on
-Steady
-\emph default
- state.
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Despite periods where there is a slightly decrease in CPU utilization value,
  State1 contains two peaks which have the value of the CPU utilization higher
  than 300.
@@ -575,19 +643,9 @@ Degradation
 \emph default
  state.
  As for State2 and State3, both states can be viewed as an Improvement state.
- However, State2 seems to have many periods where test cases drop to a lower
- value in the CPU utilization.
- State3 also has two periods of abrupt changes to higher CPU utilization
- values.
- Therefore, State2 appears to be an 
-\emph on
-Improvement
-\emph default
- state while State3 is said to be a 
-\emph on
-Steady
-\emph default
- state.
+ However, they may not be clearly distinguish between each other based on
+ the current models.
+ 
 \end_layout
 
 \begin_layout Paragraph*
@@ -602,66 +660,6 @@ reference "L16B_NYY"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Itemize
-State1 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-There are many high peaks occur in this state.
- Moreover, test cases tend to increase the value of the CPU utilization
- when they remain in the state.
- A 
-\emph on
-Degradation
-\emph default
- state is adequate for defining behavior in this state.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State2 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The state could be characterized as an 
-\emph on
-Improvement
-\emph default
- state.
- A decreasing pattern of the CPU utilization value can be seen in most of
- the period.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State3 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The CPU utilization value for test cases in this state are either high or
- low.
- The state contains the period of positive and negative peaks and does not
- appear to have a specific characteristic for the state of the CPU.
- For this reason, the state is said to be a 
-\emph on
-Steady
-\emph default
- state.
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 There are many high peaks occurred in State1, and test cases tend to increase
  the values of the CPU utilization when they enter this state.
  Hence, State1 is said to be a 
@@ -669,33 +667,11 @@ There are many high peaks occurred in State1, and test cases tend to increase
 Degradation
 \emph default
  state.
- State2 could be characterized as an 
-\emph on
-Improvement
-\emph default
- state.
- The reason is that a decreasing pattern of the CPU utilization value for
- the test cases in State2 can be seen in most of the period.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The test cases which are in State3 have either high or low in the CPU utilizatio
-n value.
- 
-\end_layout
-
-\end_inset
-
-State3 contains the period of positive and negative peaks, and does not
+ Nevertheless, the plot does not indicate any particular behavior in State2;
+ therefore, nothing much can be inferred for this state.
+ State3 contains the period of positive and negative peaks, and does not
  appear to have a specific characteristic for the state of the CPU utilization.
- The difficulty of making an interpretation for State3 infers that the state
- may be defined as a 
-\emph on
-Steady
-\emph default
- state.
+ This also provides a difficulty of making an interpretation for State3.
 \end_layout
 
 \begin_layout Paragraph
@@ -710,115 +686,21 @@ reference "L17A_NNN"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Itemize
-State1 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-There a 
-\emph on
-Degradation
-\emph default
- state
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State2 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-Most of observations in the state have a decreasing pattern when enter this
- state which is often comes from State1.
- As a consequence, an 
-\emph on
-Improvement
-\emph default
- state is given for this state.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-State3 
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-The values of the CPU utilization for observations in the state have an
- unclear pattern.
- The value is quite fluctuate and because of this behavior, the state is
- labeled as a 
-\emph on
-Steady
-\emph default
- state.
- There is a peak in the time series data which is viewed as an anomaly in
- this case.
- 
-\end_layout
-
-\end_deeper
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
 Abrupt changes in the CPU utilization values when test cases enter State1
  could be seen in most of the period.
  Despite low values in some of the test cases, State1 appeared to have more
  high value in the CPU utilization.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Even though the values of the CPU utilization which stay in State1 drop
- in some periods, there is an increase in the CPU utilization values in
- most of the periods.
-\end_layout
-
-\end_inset
-
  Hence, State1 could be defined as a 
 \emph on
 Degradation
 \emph default
- state.
- The CPU utilization values clearly decrease when test cases enter State2.
- These test cases often switch from State1, which is thought to be the state
- where the performance of the test cases perform badly.
- As a consequence, this behavior indicates an improving in the test cases.
- Thus, State2 is defined as an 
-\emph on
-Improvement
-\emph default
- state.
- The test cases which stay in State3 have an unclear pattern in the CPU
- utilization.
- The values are quite fluctuate and because of this behavior, the state
- is labeled as a 
-\emph on
-Steady
-\emph default
- state.
- The only peak in the time series data belonged to State3, and will be viewed
- as an anomaly in this case.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
- State3 also contains a peak which occur in the time series data.
-\end_layout
-
-\end_inset
-
- 
+ state.The CPU utilization values tend to decrease its value in State2.
+ This can be seen as an improving but it is still a bit unclear to directly
+ define the state.
+ Similarly to the software release B, State3 does not seem to have a distinctive
+ behavior.
+ The values of the CPU utilization rather fluctuate and so an inference
+ for this state couldn't be made.
 \end_layout
 
 \begin_layout Section
@@ -985,136 +867,16 @@ NodeName
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-Above all, one has to understand and accept a risk when deciding on the
- number of states as there is no guarantee how many states would yield the
- best outcome.
- This risk is also applied to a situation when determining the number of
- switching coefficients in the model.
- 
-\end_layout
-
-\end_inset
-
-There is no fixed rules in deciding the number of states.
- Therefore, difference number of states were tried with the method in order
- to determine which number would be best for this analysis.
- The results from the model with two states offered less details and did
- not cover all happening situations.
- Furthermore, all the graphs of the two-state model are unrealistic and
- also difficult in interpret.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-had one state with a considerably long period and another state with a very
- short period.
- There is a problematic interpretation when trying to make a rough inference
- on the derived states.
-\end_layout
-
-\end_inset
-
-Despite higher BICs for the dataset of the software release B and C, three-state
- model provides more interpretable plots and better fit to the time series
- data.
- The four-state Markov switching model for each software release was also
- briefly tested in the analysis.
- Apparently, defining four states caused more difficulty when fitting the
- model and making an inference on the states.
- The results were rather poor when compare to the model with two and three
- states and was not include in the report.
- Higher number of states are more likely to give worse results and were
- not considered.
- Thus, the number of chosen states after applying Markov switching model
- to each dataset was three.
- 
-\end_layout
-
-\begin_layout Standard
-Among all the predictor variables, the local events variables in 
-\emph on
-EventPerSec
-\emph default
- is more essential than the test environment variables.
- Having a constant value for the local events variables would be inadequate
- to characterize the whole time series data and its evolution.
- However, the test environment variables do not necessarily require a switching
- mechanism.
- This is why in this study, the test environment variable was possible to
- not have a switching effect.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Switching"
-
-\end_inset
-
-, a hypothesis that the test environment variable was possible to not have
- a switching effect was made.
- 
-\end_layout
-
-\begin_layout Plain Layout
-for each test case and should have flexible values in each of the fixed
- number of state.
- Although these test environment variables affect the CPU utilization, they
- do not need to have different values in each state.
+I'm here
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Another thing worth mentioning is that when modeling the Markov switching
- model, it is better to try estimating a simpler model first.
- The size of the model grows exponentially according to the number of states
- 
-\begin_inset Formula $k$
-\end_inset
-
-, and the number of predictor variables 
-\begin_inset Formula $n$
-\end_inset
-
-.
- In addition, if all coefficients have switching effects, the model will
- have more parameters to be estimated.
- The function in the package will try to fit the model and estimate the
- value of the coefficients, but there is no guarantee that the obtained
- results of the likelihood will be a global maximum.
- As a consequence, the estimated values of the coefficients cannot be completely
- trusted.
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "perlin2015ms_regress"
-
-\end_inset
-
- suggested any model with 
-\begin_inset Formula $k>3$
-\end_inset
-
- and 
-\begin_inset Formula $n\geq4$
-\end_inset
-
- is not recommended.
- This is also the main reason why not all the local events were included,
- and the model was not made to have all the switching coefficients.
- 
 \end_layout
 
 \begin_layout Standard
@@ -1178,6 +940,8 @@ Fifty-seven observations in this dataset were used to train the Markov switching
 
 \begin_layout Standard
 Note that in this study, the unfiltered data has been used for the analysis.
+ This data contains all the QA capacity test case types which are executed
+ in the system.
  Each test case type in the data established different value in its local
  events (e.g., one test case type has 
 \emph on
@@ -1187,10 +951,9 @@ RrcConnectionSetupComplete
  low).
  In data preprocressing step, the minimum value of the CPU utilization of
  each software package is selected, regardless the type of test case.
- As a consequence, This data contains all the QA capacity test case types
- which are executed in the system.
- One can easily notice the sudden drop in the CPU utilization in the plot
- of all three software release.
+ As a consequence, many type of test cases are presented in the final datasets.
+ This leads to the sudden drop in the CPU utilization as can be seen in
+ the plot of each software release.
 \end_layout
 
 \begin_layout Standard
@@ -1357,7 +1120,7 @@ reference "sec:Predict"
  the analysis.
  Finally, the criteria that has been used to select the number of states
  and the number of switching coefficients in the model are rather subjective.
- Hence, these chosen number might not be the best for different perspectives
+ Hence, these chosen numbers might not be the best for different perspectives
  and so could be counted as one of the bias as well.
  
 \begin_inset Note Comment

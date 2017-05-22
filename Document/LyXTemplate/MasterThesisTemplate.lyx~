@@ -241,7 +241,7 @@ Master Thesis in Statistics and Data Mining
 \end_layout
 
 \begin_layout Title
-Applying Machine Learning to Performance Trend Analysis
+Applying Machine Learning to LTE/5G Performance Trend Analysis
 \end_layout
 
 \begin_layout Author
@@ -306,8 +306,12 @@ Supervisor
 \begin_inset Newline newline
 \end_inset
 
-Prof.
- Krzysztof Bartoszek 
+Dr.
+ Krzysztof Bartoszek
+\end_layout
+
+\begin_layout Lowertitleback
+Ericsson: Armin Catovic, and Jonas Eriksson
 \begin_inset VSpace bigskip
 \end_inset
 
