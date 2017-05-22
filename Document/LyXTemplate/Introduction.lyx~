@@ -353,17 +353,7 @@ change-point
 \emph default
  is the commonly used term for the point in a time series where a change
  takes place.
- Another important term used in this area 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-which will be used in this thesis
-\end_layout
-
-\end_inset
-
- is 
+ Another important term used in this area is 
 \emph on
 regime switch
 \emph default

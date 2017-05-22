@@ -12,245 +12,28 @@
 \chapter{Discussion\label{chap:Discussion}}
 
 In this chapter, a discussion of the model selection for each given
-dataset is explained. Then, a state inference from the model is made.
-Lastly, a results discussion of this study is provided.
+dataset is explained. Then, a state inference from the model is made
+and effects of the test environments are provided. The last section
+is devoted to a results discussion of this study.
 
 \section{Model selection \label{subsec:Model-selection}}
 
-In this analysis, a three-state model which had all switching coefficients
-from Analysis I (see \ref{sec:States}) acted as a baseline model
-for each dataset. This model was used to compare with other models
-which had different combination of switching coefficients. If the
-compared model has higher BIC than the baseline model, its performance
-is concluded to be inferior and should not be considered for any further
-analysis. However, only examining the BIC when choosing a model for
-the data is insufficient. Remark that BIC might be unreliable for
-a small or moderate dataset as BIC is derived under the assumption
-of a normal distributed data \citep{ryden2008versus}. Therefore,
-other aspects should also be taken into account along with the BIC
-such as model outputs and plots. 
-
-\paragraph*{Software release L16A}
-
-Even though model 3 had the lowest BIC, a coefficient of \emph{Paging}
-in one state had a zero standard error which led t-value to infinity.
-This zero value can be interpreted as an actual zero or an extremely
-small value that a computer treated as zero because significant digit
-is lost. Nevertheless, either way suggests that this model is not
-a good model to be used with this dataset as the model might be overfitting
-with the training data. The standard error of zero means that there
-is no variation in the data i.e., every data value is equal to the
-mean value. Therefore, model 1 which had the second lowest BIC was
-chosen for this given dataset instead. %
-\begin{comment}
-The t statistic is the coefficient divided by its standard error.
-The standard error is an estimate of the standard deviation of the
-coefficient, the amount it varies across cases. It can be thought
-of as a measure of the precision with which the regression coefficient
-is measured. If a coefficient is large compared to its standard error,
-then it is probably different from 0.
-\end{comment}
-
-
-\paragraph*{Software release L16B}
-
-Models 2 and 6 had the lowest BIC among the other models. Nonetheless,
-their plots are similar to each other and provided a difficulty in
-interpreting results (see \ref{L16B_NNY}). Observations stay in State3
-in the first half of the period but stay in State2 in the second half
-of the time period. There are continuous fluctuations of the CPU utilization
-value through out the whole time period. Therefore, for observations
-(or software packages) to remain in the same state for a long duration
-without switching to other states seem unrealistic. The selected model
-for this dataset was model 4 where its BIC was in the third lowest
-place. Even though model 4 had slightly higher BIC than models 2 and
-6, the model produced more sensible result.
-
-\paragraph*{Software release L17A}
-
-\begin{comment}
-Model 1 appeared to have a good model output and plot when comparing
-with the rest of the models. 
-\end{comment}
-The first four models with lowest BIC (Models 1, 5, 3, and 7, respectively)
-had similar results both in model outputs and plots.%
-\begin{comment}
-explanation when examining its plot.
-\end{comment}
-{} Thus, Model 1 which had the lowest BIC was chosen for this dataset.
-
-\section{State inference}
-
-Another important task after the suitable model was decided is to
-make an inference on the derived states because the model output does
-not provide any definition of these states. %
-\begin{comment}
-A function from the package will estimate coefficients in each state
-without providing the definition of these states. 
-\end{comment}
-Therefore, an interpretation and inference of the state need to be
-specified. The state inferences for each dataset are shown below. 
-
-\paragraph{Software release L16A (see \ref{L16A_NN})}
-
-\begin{comment}
-\begin{itemize}
-\item State1
-
-Despite periods where there is a slightly decrease in CPU utilization
-value, State1 contains two peaks which have the value of the CPU utilization
-higher than 300. This clearly implies that test cases in State1 perform
-badly and  is defined as a \emph{Degradation} state. 
-\item State2 
-
-The state appears to be an \emph{Improvement} state as there are many
-periods where test cases have low value in the CPU utilization.
-\item State3 
-
-The performance for test cases in this state can be viewed as a \emph{Good}
-state as well. However, State2 seems to capture the period where test
-cases have lowest values better than State3, and State3 has two periods
-of increasing to higher CPU utilization values. The state is, therefore,
-said to be a \emph{Steady} state.
-\end{itemize}
-\end{comment}
-
-Despite periods where there is a slightly decrease in CPU utilization
-value, State1 contains two peaks which have the value of the CPU utilization
-higher than 300. This clearly implies that test cases in State1 perform
-badly and should be defined as a \emph{Degradation} state. As for
-State2 and State3, both can be viewed as an Improvement state. However,
-State2 seems to have many periods where test cases drop to a lower
-value in the CPU utilization. State3 also has two periods of abrupt
-change to higher CPU utilization values. Therefore, State2 appears
-to be an \emph{Improvement} state while State3 is said to be a \emph{Steady}
-state.
-
-\paragraph*{Software release L16B (see \ref{L16B_NYY})}
-
-\begin{comment}
-\begin{itemize}
-\item State1 
-
-There are many high peaks occur in this state. Moreover, test cases
-tend to increase the value of the CPU utilization when they remain
-in the state. A \emph{Degradation} state is adequate for defining
-behavior in this state.
-\item State2 
-
-The state could be characterized as an \emph{Improvement} state. A
-decreasing pattern of the CPU utilization value can be seen in most
-of the period.
-\item State3 
-
-The CPU utilization value for test cases in this state are either
-high or low. The state contains the period of positive and negative
-peaks and does not appear to have a specific characteristic for the
-state of the CPU. For this reason, the state is said to be a \emph{Steady}
-state.
-\end{itemize}
-\end{comment}
-
-There are many high peaks occur in State1. Moreover, test cases tend
-to increase the values of the CPU utilization when they enter this
-state. Hence, State1 is said to be a \emph{Degradation} state. State2
-could be characterized as an \emph{Improvement} state. The reason
-for this is because a decreasing pattern of the CPU utilization value
-for the test cases in State2 can be seen in most of the period. The
-test cases which are in State3 have either high or low in the CPU
-utilization value. State3 contains the period of positive and negative
-peaks, and does not appear to have a specific characteristic for the
-state of the CPU. The difficulty of making an interpretation for State3
-infer that the state may be defined as a \emph{Steady} state.
-
-\paragraph{Software release L17A (see \ref{L17A_NNN})}
-
-\begin{comment}
-\begin{itemize}
-\item State1 
-
-There a \emph{Degradation} state
-\item State2 
-
-Most of observations in the state have a decreasing pattern when enter
-this state which is often comes from State1. As a consequence, an
-\emph{Improvement} state is given for this state. 
-\item State3 
-
-The values of the CPU utilization for observations in the state have
-an unclear pattern. The value is quite fluctuate and because of this
-behavior, the state is labeled as a \emph{Steady} state. There is
-a peak in the time series data which is viewed as an anomaly in this
-case. 
-\end{itemize}
-\end{comment}
-{} Sudden change in State1
-
-Even though the values of the CPU utilization which stay in State1
-drop in some periods, there is an increase in the CPU utilization
-values in most of the periods. Hence, State1 could be defined as a
-\emph{Degradation} state. The CPU utilization values clearly decrease
-when test cases enter State2. These test cases often switch from State1,
-which is thought to be a state where the performance of the test cases
-perform badly. As a consequence, this behavior indicates an improving
-in the test cases. Thus, State2 is defined as an \emph{Improvement}
-state. On the contrary, the values of the CPU utilization for the
-test cases in State3 have an unclear pattern. The values are quite
-fluctuate and because of this behavior, the state is labeled as a
-\emph{Steady} state. State3 also contains a peak which occur in the
-time series data. This peak is viewed as an anomaly in this case. 
-
-\section{Results discussion\label{sec:Results-discussion}}
-
-A thorough search of relevant literature yielded that this thesis
-work might be the first time that Markov switching model has been
-applied to the data of CPU utilization. In previous works, this model
-was mainly applied with financial data or signal processing which
-were used as an inspiration for this study. However, because of differences
-in the characteristic of data, the procedure was slightly adjusted.
-\begin{comment}
-A large amount of time was spent on understanding the data, examining
-which variables had a significant impact on the CPU utilization, and
-determining which methods would provide the best possible outcome
-for this problem. Besides, after deciding on the most promising method,
-a lot of effort was invested studying implemented algorithms in the
-R package as well as modifying code as necessary. 
-\end{comment}
-
-In this study, \emph{NodeName}, which is used to execute test cases,
-was assumed to be indifferent i.e., performance of test cases are
-the same regardless of the machine. Therefore, selecting a minimum
-value of the CPU utilization of the test case for each software package
-in data preprocessing step is reasonable. 
-
-\begin{comment}
-Above all, one has to understand and accept a risk when deciding on
-the number of states as there is no guarantee how many states would
-yield the best outcome. This risk is also applied to a situation when
-determining the number of switching coefficients in the model. 
-\end{comment}
 There is no fixed rules in deciding the number of states. Therefore,
 difference number of states were tried with the method in order to
 determine which number would be best for this analysis. The results
 from the model with two states offered less details and did not cover
 all happening situations. Furthermore, all the graphs of the two-state
-model are unrealistic and also difficult in interpret. %
-\begin{comment}
-had one state with a considerably long period and another state with
-a very short period. There is a problematic interpretation when trying
-to make a rough inference on the derived states.
-\end{comment}
-Despite higher BICs for the dataset of the software release L16B and
-L17A, three-state model provides more interpretable plots and better
-fit to the time series data. The four-state Markov switching model
-for each software release was also briefly tested in the analysis.
-Apparently, defining four states caused more difficulty when fitting
-the model and making an inference on the states. The results were
-rather poor when compare to the model with two and three states and
-was not include in the report. Higher number of states are more likely
-to give worse results and were not considered. Thus, the number of
-chosen states after applying Markov switching model to each dataset
-was three. 
+model are unrealistic and also difficult in interpret. Despite higher
+BICs for the dataset of the software release B and C, three-state
+model provides more interpretable plots and better fit to the time
+series data. The four-state Markov switching model for each software
+release was also briefly tested in the analysis. Apparently, defining
+four states caused more difficulty when fitting the model and making
+an inference on the states. The results were rather poor when compare
+to the model with two and three states and was not include in the
+report. Higher number of states are more likely to give worse results
+and were not considered. Thus, the number of chosen states after applying
+Markov switching model to each dataset was three. 
 
 Among all the predictor variables, the local events variables in \emph{EventPerSec}
 is more essential than the test environment variables. Having a constant
@@ -283,8 +66,156 @@ any model with $k>3$ and $n\geq4$ is not recommended. This is also
 the main reason why not all the local events were included, and the
 model was not made to have all the switching coefficients. 
 
+In this analysis, a three-state model which had all switching coefficients
+from Analysis I (see \ref{sec:States}) acted as a baseline model
+for each dataset. This model was used to compare with other models
+which had different combination of switching coefficients. If the
+compared model has higher BIC than the baseline model, its performance
+is concluded to be inferior and should not be considered for any further
+analysis. However, only examining the BIC when choosing a model for
+the data is insufficient. Remark that BIC might be unreliable for
+a small or moderate dataset as BIC is derived under the assumption
+of a normal distributed data \citep{ryden2008versus}. Therefore,
+other aspects should also be taken into account along with the BIC
+such as model outputs and plots. 
+
+\paragraph*{Software release A}
+
+Even though model 3 had the lowest BIC, a coefficient of \emph{Paging}
+in one state had a zero standard error which led t-value to infinity.
+This zero value can be interpreted as an actual zero or an extremely
+small value that a computer treated as zero because significant digit
+is lost. Nevertheless, either way suggests that this model is not
+a good model to be used with this dataset as the model might be overfitting
+with the training data. The standard error of zero means that there
+is no variation in the data i.e., every data value is equal to the
+mean value. Therefore, model 1 which had the second lowest BIC was
+chosen for this given dataset instead. %
+\begin{comment}
+The t statistic is the coefficient divided by its standard error.
+The standard error is an estimate of the standard deviation of the
+coefficient, the amount it varies across cases. It can be thought
+of as a measure of the precision with which the regression coefficient
+is measured. If a coefficient is large compared to its standard error,
+then it is probably different from 0.
+\end{comment}
+
+
+\paragraph*{Software release B}
+
+Models 2 and 6 had the lowest BIC among the other models. Nonetheless,
+their plots are similar to each other and provided a difficulty in
+interpreting results (see \ref{L16B_NNY}). Observations stay in State3
+in the first half of the period but stay in State2 in the second half
+of the time period. There are continuous fluctuations of the CPU utilization
+value through out the whole time period. Therefore, for observations
+(or software packages) to remain in the same state for a long duration
+without switching to other states seem unrealistic. The selected model
+for this dataset was model 4 where its BIC was in the third lowest
+place. Even though model 4 had slightly higher BIC than models 2 and
+6, the model produced more sensible result.
+
+\paragraph*{Software release C}
+
+The first four models with lowest BIC (Models 1, 5, 3, and 7, respectively)
+had similar results both in model outputs and plots. Thus, Model 1
+which had the lowest BIC was chosen for this dataset.
+
+\section{State inference}
+
+The model output after applying the Markov switching model with the
+dataset does not provide any definition of the derived states. Therefore,
+an interpretation and inference of these states need to be specified.
+The state inferences for each dataset are shown below. 
+
+\paragraph{Software release A (see \ref{L16A_NN})}
+
+Despite periods where there is a slightly decrease in CPU utilization
+value, State1 contains two peaks which have the value of the CPU utilization
+higher than 300. This clearly implies that test cases in State1 perform
+badly and should be defined as a \emph{Degradation} state. As for
+State2 and State3, both states can be viewed as an Improvement state.
+However, they may not be clearly distinguish between each other based
+on the current models. 
+
+\paragraph*{Software release B (see \ref{L16B_NYY})}
+
+There are many high peaks occurred in State1, and test cases tend
+to increase the values of the CPU utilization when they enter this
+state. Hence, State1 is said to be a \emph{Degradation} state. Nevertheless,
+the plot does not indicate any particular behavior in State2; therefore,
+nothing much can be inferred for this state. State3 contains the period
+of positive and negative peaks, and does not appear to have a specific
+characteristic for the state of the CPU utilization. This also provides
+a difficulty of making an interpretation for State3.
+
+\paragraph{Software release C (see \ref{L17A_NNN})}
+
+Abrupt changes in the CPU utilization values when test cases enter
+State1 could be seen in most of the period. Despite low values in
+some of the test cases, State1 appeared to have more high value in
+the CPU utilization. Hence, State1 could be defined as a \emph{Degradation}
+state.The CPU utilization values tend to decrease its value in State2.
+This can be seen as an improving but it is still a bit unclear to
+directly define the state. Similarly to the software release B, State3
+does not seem to have a distinctive behavior. The values of the CPU
+utilization rather fluctuate and so an inference for this state couldn't
+be made.
+
+\section{Test environment}
+
+This section contains a discussion about the effects of the test environments
+- \emph{DuProdName}, \emph{Fdd/Tdd}, and \emph{NumCells} - to the
+CPU utilization in each dataset. 
+
+\paragraph{Software release A (see \ref{output-L16A})}
+
+There are only two variables, \emph{Fdd/Tdd} and \emph{NumCells},
+in the test environments that were included in the model. The output
+indicates that both variables are statistically significant. Therefore,
+changes in the test environments will have an impact on the CPU utilization.
+
+\paragraph{Software release B (see\ref{output_L16B})}
+
+All test environment variables are statistically significant, except
+for the \emph{Fdd/Tdd} in State1. Hence, it can be concluded that
+changes in \emph{DuProdName} and \emph{NumCells} have significant
+effects on the CPU utilization. \emph{Fdd/Tdd} will affect the CPU
+utilization value when a test case is in State2 or State3. 
+
+\paragraph{Software release C (see \ref{output_L17A})}
+
+According to the output, \emph{DuProdName} obviously has a significant
+effect on the CPU utilization whereas\emph{ Fdd/Tdd} does not have
+any. It could also be said that \emph{NumCells} has somewhat an impact
+on the CPU utilization; however, this is not always the case and should
+have been taken with care.
+
+\section{Results discussion\label{sec:Results-discussion}}
+
+A thorough search of relevant literature yielded that this thesis
+work might be the first time that Markov switching model has been
+applied to the data of CPU utilization. In previous works, this model
+was mainly applied with financial data or signal processing which
+were used as an inspiration for this study. However, because of differences
+in the characteristic of data, the procedure was slightly adjusted.
+\begin{comment}
+A large amount of time was spent on understanding the data, examining
+which variables had a significant impact on the CPU utilization, and
+determining which methods would provide the best possible outcome
+for this problem. Besides, after deciding on the most promising method,
+a lot of effort was invested studying implemented algorithms in the
+R package as well as modifying code as necessary. 
+\end{comment}
+
+In this study, \emph{NodeName}, which is used to execute test cases,
+was assumed to be indifferent i.e., performance of test cases are
+the same regardless of the machine. Therefore, selecting a minimum
+value of the CPU utilization of the test case for each software package
+in data preprocessing step is reasonable. 
+
 As mentioned previously in \ref{sec:States}, a variable called \emph{DuProdName}
-in the dataset of the software release L16A%
+in the dataset of the software release A%
 \begin{comment}
 , which is an exact linear combination of the other variables,
 \end{comment}
@@ -305,6 +236,18 @@ occurrence. Therefore, unless there is more data, it is better to
 drop the variable from the regression model before doing a further
 analysis.
 \end{comment}
+
+Note that in this study, the unfiltered data has been used for the
+analysis. This data contains all the QA capacity test case types which
+are executed in the system. Each test case type in the data established
+different value in its local events (e.g., one test case type has
+\emph{RrcConnectionSetupComplete} value very high while another type
+has value of this local events very low). In data preprocressing step,
+the minimum value of the CPU utilization of each software package
+is selected, regardless the type of test case. As a consequence, many
+type of test cases are presented in the final datasets. This leads
+to the sudden drop in the CPU utilization as can be seen in the plot
+of each software release.
 
 For each software release, each state in the model has a significantly
 high r-squared value which is greater than 0.9 (see \ref{chap:Output}).
@@ -342,16 +285,15 @@ normal distributed residuals, the chosen models might have less credible
 results. In addition, the dataset used in this thesis is not sufficiently
 large. As a result, the Q-Q plot is often unclear and difficult to
 spot its basic feature due to more noises. ACF and PACF plots are
-used to check a randomness in a data and also to identify a possible
-structure of a time series data. The models of all three datasets
-seemed to capture the dependent structure of the error terms in the
-data, even though a small amount of autocorrelation were left in the
-residuals. This suggests that the models could be slightly improved.
-However, these plots indicate that using AR(1) is already justified
-for these datasets. %
+commonly used to check a randomness in a data and also to identify
+a possible structure of a time series data. The models of all three
+datasets seemed to capture the dependent structure of the error terms
+in the data, even though a small amount of autocorrelation were left
+in the residuals. Moreover, these plots indicate that an AR(1) is
+already justified for these datasets. %
 \begin{comment}
 The assumption of a normally distributed residuals is justified for
-software release L16B.
+software release B.
 
 If the residuals appear to behave randomly, it suggests that the model
 fits the data well.
@@ -390,7 +332,7 @@ of the training data. %
 For this reason, a prediction for the new observations might not be
 accurate as it should be. 
 \end{comment}
-This could be seen in a state prediction of the software release L16A
+This could be seen in a state prediction of the software release A
 (see \ref{sec:Predict}). Secondly, only the predictor variables that
 have been analyzed to have significant impacts on the CPU utilization
 were included in the model. However, many other variables that is
@@ -398,7 +340,7 @@ possible to have minor impact on the CPU utilization but were overlooked.
 Therefore, there might be some bias by not including these variables
 into the analysis. Finally, the criteria that has been used to select
 the number of states and the number of switching coefficients in the
-model are rather subjective. Hence, these chosen number might not
+model are rather subjective. Hence, these chosen numbers might not
 be the best for different perspectives and so could be counted as
 one of the bias as well. %
 \begin{comment}
@@ -413,48 +355,35 @@ the number of states and the number of switching coefficients in the
 model could cause a bias as well. 
 \end{comment}
 
+\begin{comment}
 As described above, the small dataset is proven to cause several problems
 and difficulty to the analysis. The size of data is crucial in statistical
 analysis because more information can be extracted and used as an
 input for the model to learn. 
+\end{comment}
 
-A benefit from using a non-parametric analysis is that it does not
-require a prior assumption of a data distribution and is able to detect
-any type of distributional change within a time series. One noted
-behavior which can be seen from the results of the Markov switching
-model and the E-divisive method in the simulated data is that if a
-pattern of changing from one state to another state in the data is
-not obvious, the E-divisive method will be unable to detect locations
-of change points. For instance, the method could not identify any
-changes in the first hundred observations, and also at the end of
-the time series in the simulated Dataset 1. Besides, the duration
-between states also affect the ability of discovering the change point
-locations in the E-divisive method. To illustrate, the switching pattern
-is considerably difficult to notice in the simulated Dataset 2. The
-period of staying in the state is short and there are many switches
-between states occur over the period of time. The shift for the response
-variable is not dramatic that one can see the huge difference when
-there is a switch in the state. Therefore, the E-divisive method could
-only detect two change point locations where the shifts were obvious. 
-
-After examining the results in both simulated datasets, the E-divisive
-method proved to have less power in detecting changes in the data.
-The E-divisive method and the Markov switching model appear to discover
-changes at around the same time when the actual changes occur, despite
-some false alarms and missed detections. This suggests that for the
-real data where the actual state is unknown, the actual changes might
-occur around locations where these two methods are able to detect.
-In addition, there is a high probability to be an actual change of
-the state if these two methods can identify the change point at the
-exact same location.
-
-Note that when performing a Markov switching model, variables which
-have influences on the CPU utilization are also included in the model.
-Nonetheless, the E-divisive method only considers the values of the
-CPU utilization. With this difference, the E-divisive method will
-have even less power to identify actual changes in the CPU utilization.
-Since there are other variables that affect the value of the CPU utilization,
-it is insufficient to take into account only the response variable.
+A benefit of using a non-parametric analysis is that no assumption
+of the data distribution is required, and all type of distributional
+change within a time series can be detected. In general, the non-parametric
+analysis performs well when applying to the data of no known distributional
+form \citep{sharkey2014nonparametric}. However, the E-divisive method,
+based on the non-parametric approach, was proved to have less power
+in detecting changes in the data in this analysis. The main reason
+that the E-divisive method is not as powerful as the Markov switching
+model is because the Markov switching model included variables that
+have influences on the CPU utilization into the analysis but the E-divisive
+method only considered the values of the CPU utilization. %
+\begin{comment}
+Note that when the Markov switching model was performed, variables
+that have influences on the CPU utilization were also included in
+the model. On the other hand, the E-divisive method only considered
+the values of the CPU utilization. With this difference, the E-divisive
+method will have less power to identify actual changes in the CPU
+utilization. Since there are other variables that affect the value
+of the CPU utilization, it is insufficient to take into account only
+the response variable.
+\end{comment}
+{} %
 \begin{comment}
 The E-divisive method appears to perform reasonably well in detecting
 changes as far as a non-parametric analysis could. As can be seen
@@ -464,22 +393,94 @@ did. Even though the E-divisive method might not provide the best
 result, it can give a general idea of estimated change points.
 \end{comment}
 
-The state prediction function which is an additional implemented function
-in the package seems to work properly. This can be observed by examining
-the results from \ref{sec:Assessing}. The accuracy of the test set
-in the simulated Dataset 1 was significantly high. One reason for
-that might be because the simulated data had an obvious pattern in
-switching between states. %
+One behavior found from the \ref{compare_sim1} and \ref{compare_sim2}
+is that if a pattern of a state in the data is not obvious, the E-divisive
+method will be unable to detect locations of the change points. For
+instance, the method could not identify any changes in the first hundred
+observations, and also at the end of the time series in the simulated
+Dataset 1. %
 \begin{comment}
-For example, the value of the CPU usage is moderately low if it is
-generated from the Good state.
+Besides, the duration that time series stays in one state also affects
+the ability of the E-divisive method to discover the change point
+locations. In the simulated Dataset 2, many switches between states
+occur over the time period. As a result, the period of staying in
+each state is short. 
 \end{comment}
-Besides, each state remained in its own state for a while before switching
-to the other states. Therefore, the model can completely capture the
-behavior of the time series data. In contrast, the simulated Dataset
-2 had several switches between states and each state did not have
-a long duration. Even though the pattern of the response variable
-is rather difficult to see in the plot, the Markov switching model
-still perform rather well for this dataset.
+{} This is more clear when examining the results in the simulated Dataset
+2 where the E-divisive method could only detect two change point locations.
+If the response variable value fluctuates but the average value does
+not change drastically, the E-divisive method will not be able to
+identify the state change. %
+\begin{comment}
+To illustrate, the switching pattern is considerably difficult to
+notice in the simulated Dataset 2. The period of staying in the state
+is short and there are many switches between states occur over the
+period of time. The shift for the response variable is not dramatic
+that one can see the huge difference when there is a switch in the
+state. Therefore, the E-divisive method could only detect two change
+point locations where the shifts were obvious. 
+\end{comment}
+
+Despite some false alarms and missed detections as seen when the methods
+were tested with the simulated datasets, the detections are prone
+to be accurate when both the Markov switching model and the E-divisive
+method indicate the change at the exactly same location. When applying
+the methods to the real data, it could be concluded that the state
+change actually happens if both methods locate the change at the exact
+location. However, the location of the occurrence is possible to be
+slightly missed located. Furthermore, if both methods could detect
+the change at the close but not exact location, there are small chances
+that the detections could be false alarms. %
+\begin{comment}
+these two methods appear to discover changes at around the same location
+that the actual changes occur. This suggests that for the real data,
+where the actual state is unknown, the actual changes might occur
+around locations which were detected by these two methods. Despite
+some false alarms and missed detections as seen when testing methods
+with the simulated datasets, when applying both the Markov switching
+model and the E-divisive method the to the real data if these two
+methods can identify the change point at the exact same location,
+then there is a high probability the the change is an actual change
+of the state.
+\end{comment}
+
+\begin{comment}
+This can be observed by examining the results from \ref{sec:Assessing}.
+The accuracy of the model for the test set in the simulated Dataset
+1 was significantly high. One reason is that the simulated data had
+an obvious pattern in switching between states. Besides, each state
+remained in its own state for a while before switching to the other
+states. Therefore, the model can completely capture the behavior of
+the time series data. In contrast, the simulated Dataset 2 had several
+switches between states and each state did not have a long duration.
+Even though the pattern of the response variable is rather difficult
+to see in the plot, the Markov switching model still perform rather
+well for this dataset.
+\end{comment}
+
+In \ref{sec:Assessing}, the evaluation for each model was performed.
+The Markov switching model was able to predict the state for the test
+set of the simulated Dataset 1 considerably well. The estimated coefficients
+in each state were similar to the coefficients in the actual models
+as well, except for an intercept of State2. State2 was considered
+to be a \emph{Normal} state. The deviation between the actual and
+estimated coefficient of the intercept in this state is probably a
+reason why the model made four out of hundred wrong state predictions
+(i.e., the model indicated observations from the \emph{Bad} and \emph{Good}
+state as the \emph{Normal} state). For the simulated Dataset 2, most
+of the estimated coefficients from the model were not close to the
+actual coefficients, especially the values of intercept in every state.
+State2, a \emph{Good }state, had a totally different value between
+the estimated and actual coefficients. Therefore, the performance
+of the model was the worst when predicting observations that came
+from the \emph{Good} state. However, the model was able to predict
+observations from a \emph{Bad} state perfectly. The overall accuracy
+of the model was still rather high despite numerous switches between
+states in the data. This indicated that the method performed well
+in identifying the switches between states. 
+
+From the results obtained in this section, it can also be implied
+that a state prediction function, an additional implemented function
+in the package, is able to work properly. 
 
 

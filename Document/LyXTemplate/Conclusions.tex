@@ -11,78 +11,100 @@
 
 \chapter{Conclusions }
 
-This thesis assesses the ability of detecting the performance of the
-Ericsson's software products by applying the Markov switching autoregressive
-model, and the E-divisive method which is an approach in the non-parametric
-analysis. The simulated data with known state are used for the comparison
-between both methods. The results from a real data are presented with
-interpretations and discussions. 
+This thesis assesses an ability of detecting any changes in the performance
+of the Ericsson's software products by applying the Markov switching
+autoregressive model and the E-divisive method. The simulated datasets
+with known states were used to make a comparison between both methods.
+The results from applying the Markov switching model to the real data
+were presented with interpretations and discussions. 
 
 For the Markov switching model, the number of states and the number
 of switching coefficients in the model were determined and chosen
 by examining the BIC, along with model outputs and plots. The findings
-from the simulated data revealed that the Markov switching model is
-able to discover the switches between states rather well despite some
-false alarms and missed detections. On the contrary, the E-divisive
-method is less powerful compare to the Markov switching model. This
-method is efficient if data have an obvious pattern of shifting in
-the time series. 
-
-Moreover, an implemented function of the state prediction appear to
-functionally work well when investigating on the simulated data. The
-accuracy from both simulated datasets were high. From performing both
-methods in the simulated data and the real data, the results from
-the Markov switching model was considered to be the representative
-for the analysis. The E-divisive method was generally used as a guideline
-and also a confirmation for a change in the CPU state.
-
-Evaluating the obtained results is rather difficult and complicated,
-mostly due to a lack of annotations or label of the state of the CPU.
-This is a common situation to an unsupervised learning problem where
-the ground truth is not often available. Besides, another difficulty
-of the Markov switching model usage is that a state inference is required.
-Since the Markov switching model assumed a latent state, a sensible
-inference is needed in order to get a final and meaningful results
-that can be further used.
-
-\section{Further work}
-
-The Markov switching model gave quite a promising result but several
-improvements could also be done to increase the robustness of the
-analysis. 
-
-For future work, using more observations in data in the analysis is
-recommended as it will make obtained results be more reliable. Additional
-information will decrease an uncertainty in the data. 
-
-Another future extension is to consider on other predictor variables
-or interaction terms which can also affect the CPU utilization. As
-the assumption of the distribution of residuals was not entirely fulfill,
-significant details that are used to explained the CPU utilization
-might not all be caught by the model. Other distribution could also
-be made apart from a normal distribution. 
-
-Furthermore, there are still some performance metrics in QA Capacity
-area which have not been taken into account in the thesis such as
-a memory usage and a latency. Further work could also be extended
-to analyze these metrics.
-
-Finally, in the future if some test cases have been labeled with state
-from a domain expert, a semi-supervised learning algorithm, a technique
-that falls between supervised learning and unsupervised learning,
-could also be implemented. Training a model with a large amount of
-unlabeled data and a small amount of labeled data could considerable
-improving an accuracy of the model. The semi-supervised technique
-is a great practical use as labeling all data is a very time-consuming
-operation. 
-
+from the simulated datasets revealed that the Markov switching model
+were able to discover switches between states rather well, despite
+some false alarms and missed detections. This method works well even
+though numerous switches between states did occur in the data. The
+E-divisive method is less powerful compared to the Markov switching
+model. The method could identify fewer change point locations, and
+failed to detect many changes that were occurred in the simulated
+datasets. The E-divisive method will perform better and will be more
+efficient if the data have an obvious pattern of shifting in the time
+series. Based on the results from the simulated datasets and the real
+data, the Markov switching model was considered to be the suitable
+method for the analysis. The E-divisive method was rather used as
+a guideline for any changes that could happen in the data. %
 \begin{comment}
-This line indicates the amount of time the CPU spent in each of several
-states, displayed as percentages. The numbers reflect the percentage
-of the time since the last screen update that the CPU spent in each
-state. 
-
-Idle: Nothing to do
+and also a confirmation for the changes in the CPU state.
 \end{comment}
+The method could also be used together with the Markov switching model
+for a confirmation of the changes in the data when the actual state
+is unknown. After applying the Markov switching model to both simulated
+datasets, the accuracy of the test sets implied that an implementation
+of a state prediction function appears to work well. %
+\begin{comment}
+Moreover, an implementation of a state prediction function appears
+to functionally work well when investigating on the simulated datasets.
+The accuracy from both simulated datasets were high. 
+\end{comment}
+
+Evaluating the obtained results is rather difficult, mostly due to
+a lack of annotations or label of the state of the CPU utilization.
+This is a common situation to an unsupervised learning problem where
+the ground truths are not often available. %
+\begin{comment}
+Besides, another difficulty of using the Markov switching model is
+that a state inference is required. Since the Markov switching model
+assumed latent states, a sensible inference is needed in order to
+get a final and meaningful result that can be further used.
+\end{comment}
+To conclude, this work has provided knowledge to understand more about
+the properties of the state of the CPU utilization which will, in
+turn, pave the way for further analysis.
+
+\section{Future work}
+
+The Markov switching model gave quite promising results but several
+improvements could also be done to increase the robustness of the
+analysis. For future work, more extensive data is recommended. Obtained
+results will be more reliable as additional information will decrease
+an uncertainty in the data. %
+\begin{comment}
+As the assumption of the distribution of residuals was not entirely
+fulfill, significant details that were used to explained the CPU utilization
+might not all be caught by the model. Hence, another future extension
+is to consider on the effects of interaction terms or the other predictor
+variables, specifically local events in \emph{EventsPerSec}, that
+might have an effect on the CPU utilization.
+\end{comment}
+{} 
+
+Furthermore, there are still two more performance metrics in QA Capacity
+area which have not been taken into account in the thesis i.e., memory
+usage and latency. The analysis could also be extended to analyze
+these metrics in a further work. 
+
+Another future extension to get the best state prediction is to consider
+applying the Markov switching autoregressive model on the different
+QA Capacity test case types i.e., one model for each type of test
+case. Results are expected to be more accurate as value of the CPU
+utilization will be slightly more stable and not so fluctuating.
+
+It would also be interesting to use normalized values by introducing
+weight parameters instead of using the real value of the local events
+in the \emph{EventsPerSec} and the CPU utilization. Different weights
+can be given to the local events depending on how much effect it has
+on the CPU utilization. These values are summed up and then divided
+by the CPU utilization value to get a final value that represents
+a value with respect to a specific type of test case and the CPU utilization.
+
+Finally, in the future if some test cases have been labeled by an
+area expert, a semi-supervised learning algorithm, a technique that
+falls between supervised and unsupervised learning, could also be
+implemented. Training a model with a large amount of unlabeled data
+and a small amount of labeled data could considerably improve the
+accuracy of the model. The semi-supervised learning could be of good
+practical use, especially for applications where labeling all the
+data is very expensive and time-consuming. 
 
 

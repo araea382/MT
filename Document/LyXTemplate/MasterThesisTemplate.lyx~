@@ -306,12 +306,24 @@ Supervisor
 \begin_inset Newline newline
 \end_inset
 
-Dr.
- Krzysztof Bartoszek
-\end_layout
 
-\begin_layout Lowertitleback
-Ericsson: Armin Catovic, and Jonas Eriksson
+\emph on
+LiU:
+\emph default
+ Dr.
+ Krzysztof Bartoszek
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Ericsson: 
+\emph default
+Armin Catovic and Jonas Eriksson
 \begin_inset VSpace bigskip
 \end_inset
 

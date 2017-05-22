@@ -55,14 +55,14 @@ by the following steps.
 \EndIf
 \EndFor
 \EndFor
-\State{Replace missing value with zero}
+\State{Replace missing values with zero}
 \end{algorithmic}
 \end{algorithm}
 
 
 \section{MSwM Package\label{sec:MSwM-Package}}
 
-A \emph{MSwM} package in R \citep{mswm} is mainly used to perform
+The \emph{MSwM} package in R \citep{mswm} is mainly used to perform
 an univariate autoregressive Markov switching model for linear and
 generalized models. The package implements an Expectation-Maximization
 (E-M) algorithm to fit the Markov switching model. 
@@ -83,7 +83,7 @@ with respect to parameters, for a numerical optimization. In some
 cases, the Hessian matrix will not be invertible as the matrix is
 singular. Consequently, the function cannot compute the standard error
 of estimated parameters. It is assumed that the singularity is coming
-from numerics issue i.e., the matrix is not singular but computationally
+from numeric issues i.e., the matrix is not singular but computationally
 it is. This non-invertible Hessian is solved by using generalized
 inverse (or pseudoinverse) procedure \citep{gill2004your}. 
 
@@ -94,27 +94,27 @@ package. Name of functions and descriptions are provided below.
 \begin{itemize}
 \item \code{plotSmo(object)} 
 
-Plot of smoothed probabilities with different states
+Plot of smoothed probabilities with different regimes
 
 Description: Creates a plot that shows the smoothed probabilities
-for all the states.
+for all the regimes.
 \item \code{plotArea(object)} 
 
-Plot of response variable with state specifications
+Plot of response variable with regimes specifications
 
 Description: Create a plot that shows the periods where the variable
-is in the specific states.
+is in a specific regime.
 \end{itemize}
 
 \paragraph*{Categorical variable}
 
 The package does not appear to work well with categorical predictor
 variables. Hence, a further implementation in the code for handling
-with categorical variables is done. R refers to categorical variables
-as factors. Most of the time, an order of the factor does not matter
-in the study. However, sometimes the order of the factor is of interest
-in the analysis and needs to be specified for the purpose of comparison
-or obtaining a meaningful interpretation. 
+with categorical variables is done. \emph{R} refers to categorical
+variables as factors. Most of the time, the order of the factor does
+not matter in the study. However, sometimes the order of the factor
+is of interest in the analysis and needs to be specified for the purpose
+of comparison or obtaining a meaningful interpretation. 
 
 \begin{comment}
 finding the highest occurrence and set it to be reference level
@@ -125,13 +125,13 @@ finding the highest occurrence and set it to be reference level
 
 When performing the Markov switching model, a function in the package
 first randomly divides the data into different subsets, and then separately
-fit the model to each subset to get initial coefficients in each state.
-These coefficients are later used for further analysis e.g., computing
-condition means, conditional residuals of the model, and likelihood
-of the parameters for each state.
+fits the model to each subset to get initial coefficients in each
+state. These coefficients are later used for further analysis e.g.,
+computing conditional means, conditional residuals of the model, and
+likelihood of the parameters for each state.
 
 It is worth noting that the function computes conditional means for
-each state by using matrix multiplication $\ensuremath{\hat{y}=X\hat{\beta}}$.
+each state by using matrix multiplication: $\ensuremath{\hat{y}=X\hat{\beta}}$.
 Therefore, if NAs exist in the coefficient matrix $\hat{\beta}$,
 these conditional means $\hat{y}$ will become NAs, and so does conditional
 residuals and likelihood of the parameters.
@@ -146,25 +146,17 @@ what generated an error and NA coefficient:
 Then, NA coefficient is generated for this specific variable because
 of singularity.
 \item Containing all levels of the variable in a subset is rather difficult,
-especially if the variable consists of several number of levels or
-many states are specified. For this reason, the missing level of the
-variable in any subset will have an NA coefficient. 
+especially if the variable consists of several numbers of levels or
+if many states are specified. For this reason, the missing level of
+the variable in any subset will have an NA coefficient. 
 \item A categorical variable in a subset contains only one factor level
 which causes an error in fitting a regression model.
 \end{itemize}
 One approach to resolve this issue is by removing the process of partitioning
 the data in the beginning, and fitting the model with the whole data
-to get the initial coefficients instead. %
-\begin{comment}
-The parameters in each state will then have the same coefficient values.
-\end{comment}
-{} It proved that dividing data into subsets in the original function
-is only a method to get the starting values of coefficients in each
-state. %
-\begin{comment}
-These values do not have much effect to the algorithm. 
-\end{comment}
-
+to get the initial coefficients instead. It proved that dividing data
+into subsets in the original function is only a method to get the
+starting values of coefficients in each state. 
 
 \paragraph{State prediction function}
 
@@ -197,14 +189,14 @@ $f(y_{\text{T+1}}|\Omega_{T};\theta)=\sum_{j=1}^{k}f(y_{T+1}|S_{T+1}=j,\Omega_{T
 $ $
 }
 
-\State{Compute the filter probabilites of each state
+\State{Compute the filtered probabilites of each state
 
 $P(S_{T+1}=j|\Omega_{T+1};\theta)=\frac{f(y_{T+1}|S_{T+1}=j,\Omega_{T};\theta)P(S_{T+1}=j|\Omega_{T};\theta)}{f(y_{T+1}|\Omega_{T};\theta)}$
 
 $ $
 }
 
-\State{Find a state which has the maximum value in the filter probabilites}
+\State{Find a state which has the maximum value in the filtered probabilites}
 \EndFor
 \end{algorithmic}
 \end{algorithm}
@@ -212,16 +204,16 @@ $ $
 
 \chapter{Output \label{chap:Output}}
 
-Outputs from applying Markov switching autogressive model for each
-dataset are shown here.
+Outputs from applying Markov switching models with each dataset are
+shown here.
 
 \begin{table}[H]
-\caption{Output from the selected model (Model 1) of the software release L16A
-showing estimated coefficients, residual standard error, and r-squared
-for each state. A switching coefficient is followed by (S), and a
-significant coefficient is highlighted in bold.}
+\caption{Outputs from applying the selected model (Model 1) with the software
+release A. The table shows estimated coefficients, residual standard
+error, and r-squared for each state. A switching coefficient is followed
+by (S), and a significant coefficient is highlighted in bold.}
 
-\centering{}%
+\begin{centering}
 \begin{tabular}{lr@{\extracolsep{0pt}.}lr@{\extracolsep{0pt}.}lr@{\extracolsep{0pt}.}l}
 \toprule 
 Estimated coefficient & \multicolumn{2}{c}{State 1} & \multicolumn{2}{c}{State 2} & \multicolumn{2}{c}{State 3}\tabularnewline
@@ -240,11 +232,14 @@ Residual standard error & 5&2028 & 1&4562 & 0&2018\tabularnewline
 $r^{2}$ & 0&9970 & 0&9995 & 1&0000\tabularnewline
 \bottomrule
 \end{tabular}
+\par\end{centering}
+\label{output-L16A}
 \end{table}
 
+\begin{comment}
 \begin{table}[H]
 \caption{Transition probabilities of the selected model of the software release
-L16A}
+A}
 
 \centering{}%
 \begin{tabular}{cccc}
@@ -260,14 +255,15 @@ State 3 & 0.007 & 0.216 & 0\tabularnewline
 \bottomrule
 \end{tabular}
 \end{table}
+\end{comment}
 
 \begin{table}[H]
-\caption{Output from the selected model (Model 4) of the software release L16B
-showing estimated coefficients, residual standard error, and r-squared
-for each state. A switching coefficient is followed by (S), and a
-significant coefficient is highlighted in bold.}
+\caption{Outputs from applying the selected model (Model 4) with the software
+release B. The table shows estimated coefficients, residual standard
+error, and r-squared for each state. A switching coefficient is followed
+by (S), and a significant coefficient is highlighted in bold.}
 
-\centering{}%
+\begin{centering}
 \begin{tabular}{lr@{\extracolsep{0pt}.}lr@{\extracolsep{0pt}.}lr@{\extracolsep{0pt}.}l}
 \toprule 
 Estimated coefficient & \multicolumn{2}{c}{State 1} & \multicolumn{2}{c}{State 2} & \multicolumn{2}{c}{State 3}\tabularnewline
@@ -289,11 +285,14 @@ Residual standard error & 21&1321 & 1&1277 & 3&7431\tabularnewline
 $r^{2}$ & 0&9373 & 0&9996 & 0&9972\tabularnewline
 \bottomrule
 \end{tabular}
+\par\end{centering}
+\centering{}\label{output_L16B}
 \end{table}
 
+\begin{comment}
 \begin{table}[H]
 \caption{Transition probabilities of the selected model of the software release
-L16B}
+B}
 
 \centering{}%
 \begin{tabular}{cccc}
@@ -309,14 +308,15 @@ State 3 & 0.293 & 0.314 & 0.84\tabularnewline
 \bottomrule
 \end{tabular}
 \end{table}
+\end{comment}
 
 \begin{table}[H]
-\caption{Output from the selected model (Model 1) of the software release L17A
-showing estimated coefficients, residual standard error, and r-squared
-for each state. A switching coefficient is followed by (S), and a
-significant coefficient is highlighted in bold.}
+\caption{Outputs from applying the selected model (Model 1) with the software
+release C. The table shows estimated coefficients, residual standard
+error, and r-squared for each state. A switching coefficient is followed
+by (S), and a significant coefficient is highlighted in bold.}
 
-\centering{}%
+\begin{centering}
 \begin{tabular}{lr@{\extracolsep{0pt}.}lr@{\extracolsep{0pt}.}lr@{\extracolsep{0pt}.}l}
 \toprule 
 Estimated coefficient & \multicolumn{2}{c}{State 1} & \multicolumn{2}{c}{State 2} & \multicolumn{2}{c}{State 3}\tabularnewline
@@ -337,11 +337,14 @@ Residual standard error & 3&8316 & 14&8584 & 5&6141\tabularnewline
 $r^{2}$ & 0&9973 & 0&9138 & 0&9927\tabularnewline
 \bottomrule
 \end{tabular}
+\par\end{centering}
+\centering{}\label{output_L17A}
 \end{table}
 
+\begin{comment}
 \begin{table}[H]
 \caption{Transition probabilities of the selected model of the software release
-L17A}
+C}
 
 \centering{}%
 \begin{tabular}{cccc}
@@ -357,12 +360,13 @@ State 3 & 0.142 & 0.189 & 0.798\tabularnewline
 \bottomrule
 \end{tabular}
 \end{table}
+\end{comment}
 
 \begin{figure}[H]
 \begin{centering}
 \includegraphics[scale=0.35]{picture/L16B_NNY1}
 \par\end{centering}
-\caption{The CPU utilization of the software release L16B showing the periods
+\caption{The CPU utilization of the software release B showing the periods
 where the observation is in the specific state. \protect \\
 Model 2: DuProdName and Fdd/Tdd are non-switching coefficients.}
 \label{L16B_NNY}

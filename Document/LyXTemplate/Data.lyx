@@ -708,6 +708,10 @@ LogFilePath: Path for log file produced by a test case
 \end_layout
 
 \begin_layout Paragraph
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Paragraph
 Observable memory
 \end_layout
 
@@ -729,6 +733,11 @@ PageCacheKiB
 
 \begin_layout Itemize
 RealFreeKiB
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -933,13 +942,32 @@ Some test cases are filtered out in the preprocessing step because the test
  data is not logged.
  This usually results in a missing value in the 
 \emph on
-EventPerSec
+EventsPerSec
 \emph default
  field, which causes the test case to be incomplete.
- The particular test case and all the data related to the test case is ignored.
- If the value in any other fields is missing, the test case will also be
+ The local events in the 
+\emph on
+EventsPerSec
+\emph default
+ field are used to define the test case type and will also be used as predictor
+ variables for a further analysis.
+ If there is no value or no local events in this field, the particular test
+ case and all the data related to the test case is ignored.
+ These incomplete test cases in the data are accounted for four percent
+ of all the test cases in the data.
+ 
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+If the value in any other fields is missing, the test case will also be
  ignored.
- These incomplete test cases in the data are accounted for four percents.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -986,9 +1014,8 @@ TotCpu%
  Although taking an average of multiple runs for test cases in the software
  package appears to be a good approach, it does not yield the best outcome
  in this case.
- The first reason is that manipulating data can easily be misleading.
- Another important reason for not using the average value of the CPU utilization
- is that the essential information in the test case could be lost.
+ The essential information in the test case could be lost if using the average
+ value of the CPU utilization.
  Each test case has its own local events in 
 \emph on
 EventsPerSec
@@ -998,6 +1025,18 @@ EventsPerSec
  of the test case is averaged.
  It is, therefore, settled to keep the original data and always use the
  unmanipulated data to visualize the time series.
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+The first reason is that manipulating data can easily be misleading.
+ Another important reason for not using the average value of the CPU utilization
+ is that 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

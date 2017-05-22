@@ -414,15 +414,6 @@ key "dahlman20134g"
  devices in one or more cells.
  Several base stations are connected to a Mobility Management Entity (MME),
  which is a control-node for the LTE network.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-which handles the high-level operation of the mobile for different UEs
-\end_layout
-
-\end_inset
-
  MME establishes a connection and runs a security application to ensure
  that the UE is allowed on the network.
  In LTE mobile network, multiple UEs are connected to a single base station.
@@ -449,37 +440,12 @@ Handover
  Area (TA) where the UE is registered.
  UE will wake up if it gets the Paging message and will react by triggering
  a Radio Resource Control (RRC) connection request message.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The UE can enter the idle mode in order to conserve battery power.
-\end_layout
-
-\end_inset
-
  Handover is a process of changing the serving cells or transferring an
  ongoing call from one cell to another.
  For instance, if the UE begins to go outside the range of the cell and
  enters the area covered by another cell, the call will be transferred to
  the new cell in order to avoid the call termination.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-(from Bro) UEs in an idle state are expected to conserve battery as efficient
- as possible.
- Therefore, in order to achieve that goal, paging is needed for a network
- setup.
- If MME want to notify each eNB with cells in UE for an incoming request,
- MME must sends Paging messages to wake UE up.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -693,21 +659,7 @@ Data description
 \end_layout
 
 \begin_layout Standard
-The data used in the thesis
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-for the second generation (
-\emph on
-G2
-\emph default
-) product which
-\end_layout
-
-\end_inset
-
- contains 2,781 test cases.
+The data used in the thesis contains 2,781 test cases.
  It is collected on 20 January 2017 and is extracted from log files produced
  by test cases.
  There are different types of test cases which are being executed in the
@@ -785,16 +737,6 @@ CPU
 
 \begin_layout Itemize
 TotCpu%
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-: Performance of a test case in terms of CPU utilization
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -991,18 +933,27 @@ Some test cases are filtered out in the preprocessing step because the test
  data is not logged.
  This usually results in a missing value in the 
 \emph on
-EventPerSec
+EventsPerSec
 \emph default
  field, which causes the test case to be incomplete.
- The particular test case and all the data related to the test case is ignored.
- If the value in any other fields is missing, the test case will also be
- ignored.
+ The local events in the 
+\emph on
+EventPerSec
+\emph default
+ field are used to define the test case type and will also be used as predictor
+ variables for a further analysis.
+ If there is no value or no local events in this field, the particular test
+ case and all the data related to the test case is ignored.
+ These incomplete test cases in the data are accounted for four percent
+ of all the test cases in the data.
  
-\begin_inset Note Note
-status open
+\begin_inset Note Comment
+status collapsed
 
 \begin_layout Plain Layout
-These four percentage
+If the value in any other fields is missing, the test case will also be
+ ignored.
+ 
 \end_layout
 
 \end_inset
@@ -1054,9 +1005,8 @@ TotCpu%
  Although taking an average of multiple runs for test cases in the software
  package appears to be a good approach, it does not yield the best outcome
  in this case.
- The first reason is that manipulating data can easily be misleading.
- Another important reason for not using the average value of the CPU utilization
- is that the essential information in the test case could be lost.
+ The essential information in the test case could be lost if using the average
+ value of the CPU utilization.
  Each test case has its own local events in 
 \emph on
 EventsPerSec
@@ -1069,22 +1019,9 @@ EventsPerSec
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The reason for choosing the minimum value of the CPU utilization is because
- 
-\end_layout
-
-\begin_layout Plain Layout
-tried to be optimistic...
- ?
-\end_layout
-
-\end_inset
-
-
+The first reason is that manipulating data can easily be misleading.
+ Another important reason for not using the average value of the CPU utilization
+ is that 
 \end_layout
 
 \begin_layout Standard
@@ -1098,17 +1035,6 @@ After performing all the steps described above, the datasets of the software
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Some variables in the data are chosen to be used for further analysis by
- an area expert.
- 
-\end_layout
-
-\end_inset
-
 In total, there are one response variable and six predictor variables.
  
 \begin_inset CommandInset ref
