@@ -3536,16 +3536,36 @@ name "L16B_NNY"
 \end_layout
 
 \begin_layout Standard
-One future extension for this analysis is to restrict data to oThe dataset
- of the software release B which contains only a specific test case type.
+One future extension for this analysis is to restrict data to a specific
+ test case type.
+ This was briefly tested with the dataset of the software release B by selecting
+ the type of test case which had 
+\emph on
+RrcConnectionSetupComplete
+\emph default
+ value around 164 and 166.
+ The Markov switching model was performed with only the 
+\emph on
+TotCpu
+\emph default
+ as a response variable.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "TC8"
+reference "TC8_2"
 
 \end_inset
 
- shows the result of applying the Markov switching model with this dataset.
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TC8_3"
+
+\end_inset
+
+ show the results of applying the Markov switching model with two and three
+ states with this dataset, respectively.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3558,7 +3578,9 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization
+The CPU utilization of a specific type of test case in the software release
+ B where the observation is in the specific state.
+ The two-state model
 \end_layout
 
 \end_inset
@@ -3569,7 +3591,89 @@ The CPU utilization
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "TC8"
+name "TC8_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The CPU utilization of three-state model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "TC8_3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TC8_ediv"
+
+\end_inset
+
+ presents the estimated change point locations from the E-divisive method.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The dashed vertical lines indicate the locations of estimated change points
+ from the E-divisive method.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "TC8_ediv"
 
 \end_inset
 

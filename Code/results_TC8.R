@@ -103,6 +103,34 @@ plotSmo(mswm_L16B_2_cpu)
 plotArea(mswm_L16B_2_cpu)
 
 
+# plot with state area
+gen <- function(object,data){
+  state <- apply(object@Fit@smoProb,1,which.max)
+  # state <- sapply(1:nrow(data), function(x) which.max(object@Fit@smoProb[x,]))
+  state <- factor(state)
+  index=seq(1,nrow(data))
+  xmin=index-0.5
+  xmax=index+0.5
+  y=data$TotCpu
+  ans <- data.frame(index,xmin,xmax,state,y=y,ymin=min(y),ymax=max(y))
+  return(ans)
+}
+
+state_L16B_3 <- gen(mswm_L16B_3_cpu, g2_L16B2)
+ggplot(data=state_L16B_3, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L16B_3, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("Software release B") + theme_bw()
+
+
+state_L16B_2 <- gen(mswm_L16B_2_cpu, g2_L16B2)
+ggplot(data=state_L16B_2, aes(x=index, y=y)) + geom_line() +
+  geom_rect(data=state_L16B_2, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, fill=state), alpha=0.2, inherit.aes=FALSE) +
+  scale_fill_manual(values=c("red","green","blue")) + 
+  ylab("TotCpu") + ggtitle("Software release B") + theme_bw()
+
+
+#----------------------------#
 set.seed(1)
 Ediv_L16B <- e.divisive(matrix(g2_L16B2$TotCpu), R=499, min.size=5)
 Ediv_L16B$estimates
@@ -112,8 +140,9 @@ out_L16B <- Ediv_L16B$estimates[c(-1,-length(Ediv_L16B$estimates))]
 dat <- data.frame(index=seq(1,nrow(g2_L16B2)), TotCpu=g2_L16B2$TotCpu)
 ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
     geom_vline(xintercept=out_L16B, colour="red", linetype="longdash") +
-    ggtitle("E-divisive L16B") + theme_bw() + coord_cartesian(ylim = c(50, 300)) 
+    ggtitle("E-divisive L16B") + theme_bw() 
 
+# + coord_cartesian(ylim = c(50, 300)) 
 
 pred_state_L16B_cpu <- sapply(1:nrow(g2_L16B2), function(x) which.max(mswm_L16B_3_cpu@Fit@smoProb[x,]))
 chg_mswm_L16B_cpu <- which(diff(pred_state_L16B_cpu) != 0) + 1

@@ -443,8 +443,7 @@ Another future extension to get a more interpretable results and the best
  will be slightly more stable and not so fluctuating.
  The analysis of restricted the data to a specific test case type is proved
  to be a good approach as the analysis was briefly tested with the software
- release B.
- The results are presented in the 
+ release B and the results are presented in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Output"

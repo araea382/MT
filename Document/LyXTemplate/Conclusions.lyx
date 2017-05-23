@@ -442,8 +442,8 @@ Another future extension to get a more interpretable results and the best
  Results are expected to be more accurate as value of the CPU utilization
  will be slightly more stable and not so fluctuating.
  The analysis of restricted the data to a specific test case type is proved
- to be a good approach as the analysis was briefly tested with the software
- release B and the results are presented in 
+ to be a good approach as the analysis was briefly tested and the results
+ are presented in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Output"
