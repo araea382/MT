@@ -20,13 +20,13 @@ Lars Magnus Ericsson in 1876, is one of the world\textquoteright s
 leaders in the telecommunication industry. The company provides services,
 software products, and infrastructure related to information and communications
 technology (ICT). Its head quarter is located in Stockholm, Sweden.
-Ericsson continuously expands its services and products beyond telecommunication
-industry such as mobile broadband, cloud services, transportation,
-and network design.
+Ericsson continuously expands its services and products beyond telecoms
+sector such as mobile broadband, cloud services, transportation, and
+network design.
 
 \begin{figure}[h]
 \begin{centering}
-\includegraphics[scale=0.55]{picture/LTE}
+\includegraphics[scale=0.55]{picture/LTE.PNG}
 \par\end{centering}
 \caption{LTE architecture overview}
 \label{lte}
@@ -41,36 +41,52 @@ between the User Equipment (UE) or mobile device and the base stations
 called eNB. Each base station controls and manages radio communications
 with multiple devices in one or more cells. Several base stations
 are connected to a Mobility Management Entity (MME), which is a control-node
-for the LTE network. MME establishes a connection and runs a security
-application to ensure that the UE is allowed on the network. In LTE
-mobile network, multiple UEs are connected to a single base station.
-A new UE performs a cell search procedure by searching for an available
-eNB when it first connects to the network. Then, the UE sends information
-about itself to establish a link between the UE and the eNB. 
+for the LTE network.%
+\begin{comment}
+which handles the high-level operation of the mobile for different
+UEs
+\end{comment}
+{} MME establishes a connection and runs a security application to ensure
+that the UE is allowed on the network. In LTE mobile network, multiple
+UEs are connected to a single base station. A new UE performs a cell
+search procedure by searching for an available eNB when it first connects
+to the network. Then, the UE sends information about itself to establish
+a link between the UE and the eNB. 
 
 Network procedures that will be briefly described here are \emph{Paging}
-and \emph{Handover}. Paging is used for the network setup when a UE
-is in an idle mode. If a MME wants to notify a UE about incoming connection
-requests, the MME will send paging messages to each eNB with cells
-belonging to the Tracking Area (TA) where the UE is registered. UE
-will wake up if it gets the Paging message and will react by triggering
-a Radio Resource Control (RRC) connection request message. Handover
-is a process of changing the serving cells or transferring an ongoing
-call from one cell to another. For instance, if the UE begins to go
-outside the range of the cell and enters the area covered by another
-cell, the call will be transferred to the new cell in order to avoid
-the call termination. 
+and \emph{Handover}. Paging is used for the network setup when UE
+is in an idle mode. If MME wants to notify UE about incoming connection
+requests, MME will send paging messages to each eNB with cells belonging
+to the Tracking Area (TA) where the UE is registered. UE will wake
+up if it gets the Paging message and will react by triggering a RRC
+connection request message. The paging process happens in number of
+paging per second.%
+\begin{comment}
+The UE can enter the idle mode in order to conserve battery power.
+\end{comment}
+{} Handover is a process of changing the serving cells or transferring
+an ongoing call from one cell to another. For instance, if the UE
+begins to go outside the range of the cell and enters the area covered
+by another cell, the call will be transferred to the new cell in order
+to avoid the call termination. The rate of handover is in second.
+\begin{comment}
+(from Bro) UEs in an idle state are expected to conserve battery as
+efficient as possible. Therefore, in order to achieve that goal, paging
+is needed for a network setup. If MME want to notify each eNB with
+cells in UE for an incoming request, MME must sends Paging messages
+to wake UE up.
+\end{comment}
 
 Ericsson makes a global \emph{software release} in roughly 6-month
-cycles i.e., two major releases per year. Each of these releases contains
-a bundle of features and functionalities that is intended for all
-the customers. The software release is labeled with \emph{L} followed
+cycles or two major releases per year. Each of these releases contains
+a bundle of features and functionality that is intended for all the
+customers. The software release is labeled with \emph{L} followed
 by a number related to the year of release and a letter either \emph{A}
 or \emph{B,} which generally corresponds to the $1^{st}$ and $2^{nd}$
 half of that year. Ericsson opens up a track for each software release
 and begins a code integration track. This track becomes the main track
 of the work or the focal branch for all code deliveries. There are
-hundreds of teams producing code, and each team commits its code to
+hundreds of teams producing code, and each team commit the code to
 this track continuously. In order to create a structure for this contribution,
 a daily \emph{software package} is built which can be seen as a snapshot
 or a marker in the continuous delivery timeline. This software package
@@ -84,7 +100,7 @@ and software packages.
 
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[scale=0.55]{picture/Release}
+\includegraphics[scale=0.55]{picture/Release.PNG}
 \par\end{centering}
 \caption{An example of one software release that begins a code integration
 track. Several software packages are launched in the timeline.}
@@ -106,17 +122,17 @@ of these procedures or stimuli that it detects. These counters are
 called local events and represented by \emph{EventsPerSec}. 
 
 A logging loop is started during the execution of these test cases
-of QA Capacity, signaling capacity. The logging loop collects several
-metrics, and a subset of these metrics is what this thesis is currently
-studying. Once the logging loop is finished, it is written to a log
-file. Then, there are cron jobs that slowly scan through this infrastructure
-once a day to find latest logs and do a post-processing. The final
-output is either CSV data or JSON encoded charts. The flowchart of
-this process is illustrated in \ref{sw}.
+of QA Capacity \textendash{} signaling capacity. The logging loop
+collects several metrics, and a subset of these metrics is what this
+thesis is currently studying. Once the logging loop is finished, it
+is written to a log file. Then, there are cron jobs that slowly scan
+through this infrastructure once a day to find latest logs and do
+a post-processing. The final output is either CSV data or JSON encoded
+charts. The flowchart of this process is illustrated in \ref{sw}.
 
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[scale=0.7]{picture/SW}
+\includegraphics[scale=0.7]{picture/SW.PNG}
 \par\end{centering}
 \caption{An example of one software package. First, QA Capacity automated test
 suites is started. For each test suite, a logging loop is started
@@ -128,11 +144,15 @@ tools, and the data output is obtained.}
 
 \section{Data description}
 
-The data used in the thesis contains 2,781 test cases. It is collected
-on 20 January 2017 and is extracted from log files produced by test
-cases. There are different types of test cases which are being executed
-in the automated test suites. Each test case is viewed as an observation
-in the data. The following are the variables in the data:
+The data used in the thesis%
+\begin{comment}
+for the second generation (\emph{G2}) product which
+\end{comment}
+{} contains 2,781 test cases. It is collected on 20 January 2017 and
+is extracted from log files produced by test cases. There are different
+types of test cases which are being executed in the automated test
+suites. Each test case is viewed as an observation in the data. The
+following are the variables in the data:
 
 \paragraph{Metadata of test case}
 \begin{itemize}
@@ -148,9 +168,6 @@ for Frequency Division Duplex and Time Division Duplex, respectively.
 \item LogFilePath: Path for log file produced by a test case
 \end{itemize}
 
-\paragraph{%
-\begin{comment}
-
 \paragraph{Observable memory}
 \begin{itemize}
 \item MemFreeKiB
@@ -159,12 +176,13 @@ for Frequency Division Duplex and Time Division Duplex, respectively.
 \item PageCacheKiB
 \item RealFreeKiB
 \end{itemize}
-\end{comment}
-}
 
 \paragraph{CPU}
 \begin{itemize}
-\item TotCpu\%
+\item TotCpu\%%
+\begin{comment}
+: Performance of a test case in terms of CPU utilization
+\end{comment}
 \item PerCpu\%
 \item PerThread\%
 \item EventsPerSec 
@@ -206,40 +224,28 @@ McX2HandoverRequest=98.70 Paging=1399.94 PerBbLcgEvent=26.14
 
 \section{Data preprocessing}
 
-The relevant aspects of the data preprocessing step are describe here.
-The dataset, which spans three software releases, is split into three
-datasets according to the software release. In this thesis framework,
-Ericsson software releases will be referred as software release A,
-B, and C. 
-
-The test cases in each dataset are sorted by their software package
-version, which is named alphabetically. The name of the software package
-is used as a time point in the time series.
+The relevant aspects of the data preprocessing step is describe here.
+The dataset, which spans three software releases \textendash{} L16A,
+L16B and L17A, is split into three datasets according to the software
+release. The test cases in each dataset are sorted by its software
+package version, which is named alphabetically. The name of the software
+package is used as a time point in the time series.
 
 Some test cases are filtered out in the preprocessing step because
 the test cases are not always executed properly. The problem is either
 no traffic is generated during the test case or the data is not logged.
-This usually results in a missing value in the \emph{EventsPerSec}
-field, which causes the test case to be incomplete. The local events
-in the \emph{EventsPerSec} field are used to define the test case
-type and will also be used as predictor variables for a further analysis.
-If there is no value or no local events in this field, the particular
-test case and all the data related to the test case is ignored. These
-incomplete test cases in the data are accounted for four percent of
-all the test cases in the data. %
-\begin{comment}
-If the value in any other fields is missing, the test case will also
-be ignored. 
-\end{comment}
+This usually result in a missing value in the \emph{EventPerSec} field,
+which causes the test case to be incomplete. The particular test case
+and all the data related to the test case is ignored. If the value
+in any other fields is missing, the test case will also be ignored. 
 
 In \ref{eventspersec}, it can be seen that the \emph{EventsPerSec}
 stores multiple values separated by a tab character. These tab-separated
-values in the field are split into columns. A function is implemented
-to perform this process and is further described in details in \ref{sec:EventsPerSec}.
-The process is done in order to turn its local events and values,
-which characterize the test case, into usable parameters. These parameters
-are later on used as predictor variables when the Markov switching
-model is applied.
+values in the field are split into columns. Further detail is described
+in \ref{sec:EventsPerSec}. The process is done in order to turn its
+local events and values, which characterize the test case, into usable
+parameters. These parameters are later on used as predictor variables
+when the Markov switching model is applied.
 
 Each software release consists of several software packages. For each
 specific software package, numerous test cases are executed. Since
@@ -250,34 +256,37 @@ of the CPU utilization (or minimum value of \emph{TotCpu\%}) is selected
 to represent a performance of the specific software package. Although
 taking an average of multiple runs for test cases in the software
 package appears to be a good approach, it does not yield the best
-outcome in this case. The essential information in the test case could
-be lost if using the average value of the CPU utilization. Each test
-case has its own local events in \emph{EventsPerSec} field that is
-used for identifying the test case. The details of these local events
-will be absent if the CPU utilization of the test case is averaged.
-It is, therefore, settled to keep the original data and always use
-the unmanipulated data to visualize the time series.%
+outcome in this case. The first reason is that manipulating data can
+easily be misleading. Another important reason for not using the average
+value of the CPU utilization is that the essential information in
+the test case could be lost. Each test case has its own local events
+in \emph{EventsPerSec} field that is used for identifying the test
+case. The details of these local events will be absent if the CPU
+utilization of the test case is averaged. It is, therefore, settled
+to keep the original data and always use the unmanipulated data to
+visualize the time series.
+
 \begin{comment}
-The first reason is that manipulating data can easily be misleading.
-Another important reason for not using the average value of the CPU
-utilization is that 
+The reason for choosing the minimum value of the CPU utilization is
+because 
+
+tried to be optimistic... ?
 \end{comment}
 
-After performing all the steps described above, the datasets of the
-software release A, B, and C consist of 64, 241, and 144 test cases,
-respectively. Lastly, each dataset with particular software release
-is divided into two subsets. Ninety percents of the dataset is used
-for training the model and the remaining ten percents is left out
-for testing the model. 
+After performing all the steps described above, the dataset of the
+software release L16A, L16B and L17A consist of 64, 241, and 144 test
+cases, respectively. Lastly, each dataset with particular software
+release is divided into two subsets. Ninety percents of the dataset
+is used for training the model and the remaining ten percents is left
+out for testing the model 
 
+Some variables in the data are chosen to be used for further analysis.
 In total, there are one response variable and six predictor variables.
-\ref{data} shows the name of the variables and their descriptions.
-These predictor variables have been analyzed and are chosen by an
-area expert. The first three predictor variables are local events
-of the test case, which can be found in the \emph{EventsPerSec. }They
-are considered to be the main components in defining the test case
-type. The last three variables are considered as the test environment.
-These variables appear to have a high influence to the CPU utilization.
+\ref{data} shows the name of variables and their descriptions. The
+first three predictor variables are local events of the test case,
+which can be found in the \emph{EventsPerSec}, while the last three
+variables are considered as the test environment. These variables
+appear to have a high influence to the CPU utilization.
 
 \begin{table}[H]
 \caption{List of the selected variables followed by its type and unit measure }

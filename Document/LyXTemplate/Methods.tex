@@ -11,74 +11,15 @@
 
 \chapter{Methods}
 
-This chapter first starts by providing a survey of existing methods
-that address the problem of detecting changes in a system. Later on,
-general information about Markov chains, the simple Markov switching
-model feature, and model specification namely Markov switching autoregressive
+In this chapter, methods used for performing the change point analysis
+in this thesis are explained. It first starts by providing general
+information about Markov chains. Later on, the simple Markov switching
+model feature and model specification namely Markov switching autoregressive
 model are discussed. Thereafter, three sections are devoted to methods
 for estimating the values of parameters, predicting a state for a
-new observation, and selecting a suitable model for the datasets.
-Another change-point method in a non-parametric approach called the
-E-divisive is described. Finally, the simulation technique is explained.
-
-\section{Survey of existing methods}
-
-\emph{Change point detection, Anomaly detection, Intrusion detection,
-}or \emph{Outlier detection} are terms that are closely related to
-one another. The main idea of these terms is to identify and discover
-events that are abnormal from the usual behavior. There are several
-methods to address these types of problem. A survey of existing methods
-has been done in the thesis, and some methods are presented in this
-section.
-
-\citet{valdes2000adaptive} employed a Bayesian inference technique,
-specifically a naive Bayesian network, to create an intrusion detection
-system on traffic bursts. Even though the Bayesian network is effective
-in detecting anomalies in some applications, there are some limitations
-that should be considered when using this method. As accuracy of a
-detection system depends heavily on certain assumptions, the system
-will have low accuracy if an inaccurate model is implemented \citep{patcha2007overview}.
-
-Support vector machine (SVM) introduced in \citet{cortes1995support}
-is a supervised learning algorithm to deal with a classification analysis
-problem by using the idea of separating hyperplanes. The main reason
-that SVM is used in anomaly detection is because of its speed and
-scalability \citep{sung2003identifying}. Although this method is
-effective in identifying new kinds of anomalies, the method often
-has a higher rate of false alarms due to the fact that the SVM method
-ignores the relationships and dependencies between the features \citep{sarasamma2005hierarchical}. 
-
-Self-organizing maps (SOM) developed by \citet{kohonen1982self} is
-a well-known unsupervised neural network approach for cluster analysis.
-SOM is efficient in handling large and high dimensional datasets.
-\citet{nousiainen2009anomaly} used SOM for an anomaly detection in
-a server log data. The study presented an ability of the SOM method
-in detecting anomalies in the data, and also compared the results
-from the SOM method with a threshold based system. A disadvantage
-of the SOM is that initial weight vector affects a performance of
-the SOM, which leads to an unstable clustering result. Besides, if
-the anomalies in the data tend to form clusters, this method will
-not be able to detect these anomalies \citep{chandola2009anomaly}. 
-
-Based on previous works, the Hidden Markov model or the Markov switching
-model has also been used in identifying changes and anomalies. One
-drawback from the method based on the Markov chain is that the method
-has a high computational cost, which is not scalable for an online
-change application \citep{patcha2007overview}. Apart from changes
-that can be detected in the data, some knowledge about the unobservable
-condition of the system can also be obtained. This additional information
-makes the method more appealing than the other methods. Therefore,
-the Markov switching model is implemented in this thesis framework.
-\begin{comment}
-A hidden Markov model\textquoteright s states represent some unobservable
-condition of the sys- tem being modeled. In each state, there is a
-certain probability of producing any of the observable system outputs
-and a separate probability indicating the likely next states. By having
-different output probability distributions in each of the states,
-and allowing the system to change states over time, the model is capable
-of representing non-stationary sequences.
-\end{comment}
-
+new observation and selecting a suitable model for the datasets. Another
+change-point method in a non-parametric approach is described. Finally,
+the simulation technique  is explained.
 
 \section{Markov chains\label{sec:Markov-chains}}
 
@@ -106,12 +47,12 @@ $i$th state at the $t$th step.
 
 There are transitions between states which describe the distribution
 of the next state given the current state. The evolution of changing
-from $X_{t}=i$ to $X_{t}=j$ is defined as the transition probability
-$P(X_{t}=j|X_{t-1}=i)$. For Markov chains, it is frequently assumed
+from $X_{t}=i$ to $X_{t}=j$ is defined by the transition probability
+as $P(X_{t}=j|X_{t-1}=i)$. For Markov chains, it is frequently assumed
 that these probabilities depend only on $i$ and $j$ and do not depend
 on $t$.
 \begin{defn}
-\citep[p.214]{grimmett2001probability} A Markov chain is time-homogeneous
+\citep[p.214]{grimmett2001probability} The chain is time-homogeneous
 if
 
 \[
@@ -119,11 +60,11 @@ P(X_{t+1}=j|X_{t}=i)=P(X_{1}=j|X_{0}=i)
 \]
 
 for all $t,i,j$. The probability of the transition is independent
-of $t$. A \emph{transition matrix} $\mathbf{P}=(p_{ij})$ is a matrix
-of transition probabilities 
+of $t$. A transition matrix $\mathbf{P}=(p_{ij})$ is a matrix of
+transition probabilities 
 
 \[
-p_{ij}=P(X_{t}=j|X_{t-1}=i)\qquad\mathrm{for}\,\mathrm{all\,}t,i,j
+p_{ij}=P(X_{t}=j|X_{t-1}=i)
 \]
 \end{defn}
 \begin{thm*}
@@ -137,32 +78,21 @@ for all $i,j$
 \end{thm*}
 
 \begin{defn}
-\citep[p.227]{grimmett2001probability} The vector $\pi$ is called
-a stationary distribution if $\pi$ has entries $(\pi_{j}:\:j\in S)$
-that satisfies
-\begin{itemize}
-\item $\pi_{j}\geq0$ for all $j$, and $\sum_{j}\pi_{j}=1$
-\item $\pi=\pi\mathbf{P}$, which is $\pi_{j}=\sum_{i}\pi_{i}p_{ij}$for
-all $j$
-\end{itemize}
-\end{defn}
-
-\begin{defn}
-\citep[p.220]{grimmett2001probability} A state $i$ is called persistent
+\citep[p.220]{grimmett2001probability} State $i$ is called persistent
 (or recurrent) if
 
 \[
-P(X_{t}=i\mathrm{\:for\,}\mathrm{some\,\mathrm{t}}\geq1|X_{0}=i)=1
+P(X_{t}=i\mathrm{\:for\,}\mathrm{some\,\mathrm{n}}\geq1|X_{0}=i)=1
 \]
 \end{defn}
 
-Let $f_{ij}(t)=P(X_{1}\neq j,X_{2}\neq j,...,X_{t}=j|X_{0}=i)$ be
-the probability of visiting state $j$ first by starting from $i$,
+Let $f_{ij}(n)=P(X_{1}\neq j,X_{2}\neq j,...,X_{t}\neq j|X_{0}=i)$
+be the probability of visiting state $j$ first by starting from $i$,
 takes place at $t$th step.
 
 \begin{defn}
 \citep[p.222]{grimmett2001probability} The mean recurrence time of
-a persistent state $i$ is defined as
+a state $i$ is defined as
 
 \[
 \mu_{i}=E(T_{i}|X_{0}=i)=\sum_{n}n\cdot f_{ii}(n)
@@ -173,8 +103,8 @@ is finite. Otherwise, the state $i$ is null persistent.
 \end{defn}
 
 \begin{defn}
-\citep[p.222]{grimmett2001probability} The period $d(i)$ of a state
-$i$ is defined as 
+\citep[p.222]{grimmett2001probability} A state $i$ that has a period
+$d(i)$ is defined as 
 
 \[
 d(i)=gcd\{n:\:p_{ii}(n)>0\}
@@ -196,13 +126,8 @@ to every other states.
 \end{defn}
 
 \begin{thm*}
-If all states in an irreducible Markov chain are ergodic, the chain
-is said to be ergodic.
-\end{thm*}
-
-\begin{thm*}
-\citep{manning2008introduction} If there is an aperiodic finite state,
-an irreducible Markov chain is the same thing as an ergodic Markov
+\citep{manning2008introduction} If there is a aperiodic finite state
+space, an irreducible Markov chain is the same thing as ergodic Markov
 chain. 
 \end{thm*}
 
@@ -214,10 +139,10 @@ Markov chain. The model structure consists of two stochastic processes
 embedded in two levels of hierarchy. One process is an underlying
 stochastic process that is not normally observable, but possible to
 be observed through another stochastic process which generates the
-sequence of observation \citep{rabiner1986introduction}. The transition
-time between two states is random. In addition, the state transitions
-are assumed to follow the Markov property that the future state depends
-only on the current state. 
+sequence of observation \citep{rabiner1986introduction}. The time
+that transition between state occurs is random. In addition, the state
+transition are assumed to follow the Markov property that the future
+state depends only on the current state. 
 
 The Markov switching model is able to model more complex stochastic
 processes and describe changes in the dynamic behavior. A general
@@ -228,7 +153,7 @@ state to another state in the diagram implies a conditional dependency.
 
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[scale=0.6]{picture/msm1}
+\includegraphics[scale=0.7]{picture/msm1}
 \par\end{centering}
 \caption{Model structure}
 \label{msm}
@@ -245,14 +170,21 @@ where,
 \item [{$X_{t}$}] is a design matrix, also known as model matrix, containing
 values of predictor variables of the time series at time $t$
 \item [{$\beta_{S_{t}}$}] are a column vector of coefficients in state
-$S_{t}$, where $S_{t}\in\{1,...,k\}$ 
-\item [{$\varepsilon_{t}$}] follows a normal distribution with zero mean
+$S_{t}$, where $S_{t}\in\{1,...,k\}$ %
+\begin{comment}
+$1\leqslant i\leqslant k$ 
+\end{comment}
+\item [{$\varepsilon_{t}$}] follows a Normal distribution with zero mean
 and variance given by $\sigma_{S_{t}}^{2}$ 
 \end{labeling}
 Equation \ref{eq:general_mswm} is the simplest form for the switching
-model. To aid understanding, the baseline model is assumed to have
-only two states $(k=2)$ in this discussion. $S_{t}$ is a random
-variable which is assumed that the value $S_{t}=1$ for $t=1,2,...,t_{0}$
+model.%
+\begin{comment}
+where there are $k-1$ structural breaks in the model parameters.
+\end{comment}
+{} To aid understanding, the baseline model is assumed to have only
+two states $(k=2)$ in this discussion. $S_{t}$ is a random variable
+which is assumed that the value $S_{t}=1$ for $t=1,2,...,t_{0}$
 and $S_{t}=2$ for $t=t_{0}+1,t_{0}+2,...,T$ where $t_{0}$ is a
 known change point. 
 
@@ -277,60 +209,41 @@ the starting distribution over states is denoted by
 \pi_{i}=P(S_{0}=i)
 \]
 
-There are several options for choosing the probability of the initial
+There are several options for computing the probability of the initial
 state. One procedure is to commonly set $P(S_{0}=i)=0.5$. Alternatively,
-by presuming an ergodic Markov chain \citep{hamilton2005regime},
-the initial state or steady state is stationary distribution is 
+the unconditional probability of $S_{t}$ 
 
 \[
-\pi_{i}=P(S_{0}=i)=\frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
+\pi_{1}=P(S_{0}=1)=\frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
 \]
 
-which is from solving the system of equations $\pi=\pi\mathbf{P}$.
-\begin{proof}
-Let $\pi=(\pi_{1},\pi_{2})'$ and $\mathbf{P}=\left[\begin{array}{cc}
-p_{ii} & 1-p_{ii}\\
-1-p_{jj} & p_{jj}
-\end{array}\right]$
+can be used by presuming an ergodic Markov chain \citep{hamilton2005regime}.
+\newline
 
-From 
-\[
-\pi=\pi\mathbf{P}
-\]
-
-Then,
-
-\begin{align*}
-\pi_{1} & =\pi_{1}p_{ii}+\pi_{2}(1-p_{jj})\\
-\pi_{2} & =\pi_{1}(1-p_{ii})+\pi_{2}p_{jj}
-\end{align*}
-
-Therefore, 
-\[
-\pi_{2}=\frac{\pi_{1}(1-p_{ii})}{1-p_{jj}}
-\]
-
-and 
-\[
-\pi_{1}+\pi_{2}=1
-\]
-
-Therefore,
-
-\[
-\pi_{1}=\frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
-\]
-\end{proof}
 A coefficient of a predictor variable in the Markov switching model
 can have either different values in different state or a constant
 value in all state. The variable which have the former behavior is
 said to have a \emph{switching effect}. Likewise, the variable which
-have the same coefficient in all states is the variable that does
-not have a switching effect, or said to have a \emph{non-switching
-effect.} 
+have the same coefficient in all states is a variable that does not
+have a switching effect, or said to have a \emph{non-switching effect.}
+\begin{comment}
+The predictor variable which has a switching effect is called state-dependent.
+Likewise, the predictor variable which has a non-switching effect
+is called state-independent.
+\end{comment}
 
 A generalized form of Equation \ref{eq:general_mswm} can be defined
 as \citep{perlin2015ms_regress}
+
+\begin{comment}
+\begin{equation}
+y_{t}=\sum_{i=1}^{N_{s}}\beta_{i,S_{t}}X_{\text{i,}t}^{s}+\sum_{j=1}^{N_{ns}}\beta_{j,t}X_{j,t}^{ns}+\varepsilon_{t}
+\end{equation}
+
+$N_{s}$ is the number of switching coefficients in the model
+
+$N_{ns}$ is the number of non-switching coefficients in the model
+\end{comment}
 
 \begin{equation}
 y_{t}=X_{t}^{ns}\alpha_{t}+X_{t}^{s}\beta_{S_{t}}+\varepsilon_{t}
@@ -346,7 +259,7 @@ at time $t$
 effect of the time series at time $t$
 \item [{$\beta_{S_{t}}$}] are switching coefficients in state $S_{t}$,
 where $S_{t}\in\{1,...,k\}$
-\item [{$\varepsilon_{t}$}] follows a normal distribution with zero mean
+\item [{$\varepsilon_{t}$}] follows a Normal distribution with zero mean
 and variance given by $\sigma_{S_{t}}^{2}$ 
 \end{labeling}
 
@@ -357,19 +270,27 @@ describe a time-varying process. The model is flexible in handling
 various kinds of time series patterns. The name autoregressive comes
 from how the model performs a regression of the variable against its
 own previous outputs \citep{cryer1986time}. The number of autoregressive
-lags (i.e., the number of prior values used in the model) is denoted
-by $p$. 
+lags (i.e., the number of prior values used in the model%
+\begin{comment}
+ a time span between observations/ a later point in the data series
+\end{comment}
+) is denoted by $p$. 
 \begin{defn}
 An autoregressive model of order $p$ or AR(p) model can be written
 as 
+
+\[
+y_{t}=c+\phi_{1}y_{t-1}+\phi_{2}y_{t-2}+...+\phi_{p}y_{t-p}+\varepsilon_{t}
+\]
+or
 
 \[
 y_{t}=c+\sum_{i=1}^{p}\phi_{i}y_{t-i}+\varepsilon_{t}
 \]
 
 where $c$ is a constant, $\phi_{i}$ are coefficients in the autoregression
-and $\varepsilon_{t}$ follows a normal distribution with zero mean
-and variance $\sigma^{2}$.
+and $\varepsilon_{t}$ is a Gaussian white noise with zero mean and
+variance $\sigma^{2}$.
 \end{defn}
 If $p$ is equal to one, the model AR(1) is called the first order
 autoregression process.
@@ -377,8 +298,8 @@ autoregression process.
 \subsection{Markov switching autoregressive model}
 
 A Markov switching autoregressive model is an extension of a basic
-Markov switching model where observations are drawn from an autoregressive
-process. The model relaxes the conditional independence assumption
+Markov switching model where observations are drawn from an autoregression
+process. The model relaxes the conditional independent assumption
 by allowing an observation to depend on both past observation and
 a current state \citep{shannon2009formulation}. Basically, this is
 the combination between the Markov switching model and the autoregressive
@@ -390,16 +311,19 @@ The first order Markov switching autoregressive model is
 y_{t}=X_{t}\beta_{S_{t}}+\phi_{1,S_{t}}y_{t-1}+\varepsilon_{t}
 \]
 
-where $\phi_{1,S_{t}}$ is an autoregressive coefficient of the observed
+where $\phi_{1,S_{t}}$ is an autoregression coefficient of the observed
 value at time $t-1$ in state $S_{t}$. $\varepsilon_{t}$ follows
-a normal distribution with zero mean and variance given by $\sigma_{S_{t}}^{2}$.
+a Normal distribution with zero mean and variance given by $\sigma_{S_{t}}^{2}$.
 \end{defn}
 The structure of the model is shown in \ref{msm-ar}. It can be clearly
-seen that there is a dependency at the observation level.
+seen that there is a dependency at the observation level.%
+\begin{comment}
+ and that observations are not independent from one another. 
+\end{comment}
 
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[scale=0.6]{picture/msm-ar1}
+\includegraphics[scale=0.7]{picture/msm-ar1}
 \par\end{centering}
 \caption{Model structure of Markov switching AR(1)}
 \label{msm-ar}
@@ -409,29 +333,26 @@ Assuming two states $S_{t}=1$ or $2$, the set of parameters that
 are necessary to describe the law of probability that governs $y_{t}$
 are $\theta=\{\beta_{1},\beta_{2},\phi_{1,1},\phi_{1,2},\sigma_{1}^{2},\sigma_{2}^{2},\pi_{1},\pi_{2},p_{11},p_{22}\}$. 
 
-For the simplicity, in this thesis, the term Markov switching autoregressive
-model will be addressed as the Markov switching model.
-
 \section{Parameter estimation}
 
-There are various ways to estimate parameters of a Markov switching
-model. Methods which have been widely used are as follows: E-M algorithm
-\citep{hamilton1990analysis,kim1994dynamic} uses the maximum likelihood
-criterion, Segmental K-means \citep{juang1990segmental} uses K-means
-algorithm and maximizes the state-optimized likelihood criterion,
-and Gibbs sampling \citep{kim1999state} uses a Markov chain Monte
+There are various ways to estimate parameters of Markov switching
+model. Methods which have been widely used are as follow: E-M algorithm
+\citep{hamilton1990analysis,kim1994dynamic} used the maximum likelihood
+criterion, Segmental K-means \citep{juang1990segmental} used K-means
+algorithm and maximized the state-optimized likelihood criterion,
+and Gibbs sampling \citep{kim1999state} used a Markov chain Monte
 Carlo simulation method based on the Bayesian inference. 
 
 In this thesis framework, the E-M algorithm is used in estimating
-parameters as the algorithm gives effective results, numerically stable,
-and easy to implement. \citet{ryden2008versus} compared the computational
-perspective in estimating parameters between the E-M algorithm and
-the Gibbs sampling. In most cases, the Gibbs sampling tended to have
-less computational time than the E-M algorithm. However, the study
-indicated that if the number of states was unknown and only point
-estimate was sufficient, the E-M algorithm would typically be simpler
-and quicker solution in computing the estimated parameters. The E-M
-algorithm is briefly described below. %
+parameters as the algorithm gives an effective results, numerically
+stable, and easy to implement. \citet{ryden2008versus} compared the
+computational perspective between the E-M algorithm and the Gibbs
+sampling in estimating parameters. In most cases, Gibbs sampling tended
+to have less computational time than the E-M algorithm. However, the
+study indicated that if the number of states was unknown, the E-M
+algorithm would be simpler and quicker in computing the estimated
+parameters for all candidate models. The E-M algorithm is briefly
+described below. %
 \begin{comment}
 Summing up this case, we first remark that if one wants to compute
 only the best model without any further information on how plausible
@@ -454,7 +375,7 @@ initial parameters, and then finds the expected values of the state
 process from the given observations. In the second step of the iterative
 procedure, a new maximum likelihood from the derived parameters in
 the previous step is calculated. These two steps are repeated until
-the maximum value of the likelihood function is reached or has converged
+the maximum value of the likelihood function is reached or converged
 \citep{janczura2012efficient}. The two steps are known as the E-step
 and the M-step. \ref{em} illustrates the process of the E-M algorithm.
 
@@ -577,27 +498,46 @@ state. The probabilities of states are considered as weights.
 
 The new estimated model parameters $\theta^{(n+1)}$ are obtained
 by finding a set of parameters that maximizes Equation \ref{eq:loglik}.
-This new set of parameters is more precise than the previous estimated
-value of the maximum likelihood. $\theta^{(n+1)}$ serves as a set
-of parameters in the next iteration of the E-step. 
+This new set of parameters is more precise and better than the previous
+estimated value of the maximum likelihood. $\theta^{(n+1)}$ serves
+as a set of parameters in the next iteration of the E-step. 
 
 Each individual parameter in $\theta^{(n+1)}$ are taken from its
-maximum value, which is determined by taking the partial derivative
-of the log-likelihood function with respect to each parameter. Generally,
+maximum value, which is determined by taking partial derivative of
+the log-likelihood function with respect to each parameter. Generally,
 this process is similar to the standard maximum likelihood estimation.
 However, it has to be weighted by the smoothed probabilities because
-each observation $y_{t}$ contains probability from each $k$ states. 
+each observation $y_{t}$ contains probability from each $k$ states.
+\begin{comment}
+any of the $k$ states
+\end{comment}
+
 
 \subsubsection{Convergence of the E-M algorithm}
 
 The E- and M-step are iteratively computed until the algorithm converges.
 The algorithm will terminate when the different between the previous
 and current estimate values is less than a specific value. This specific
-value called a \emph{stopping criterion} needs to be specified beforehand.
+value called a stopping criteria needs to be specified beforehand.
 The convergence is assured since the value of the log-likelihood function
 will increase in each iteration. However, the E-M algorithm does not
 guarantee to always converge to a global maximum. The convergence
-of the algorithm is also likely to be only a local maxima. 
+of the algorithm is also possible to be only a local maxima. %
+\begin{comment}
+It is possible for the algorithm to converge to local maxima
+\end{comment}
+
+\begin{comment}
+(max(abs(object{[}\textquotedbl{}Fit\textquotedbl{}{]}{[}\textquotedbl{}logLikel\textquotedbl{}{]}
+- oldll))/(0.1 + max(abs(object{[}\textquotedbl{}Fit\textquotedbl{}{]}{[}\textquotedbl{}logLikel\textquotedbl{}{]})))
+< control\$tol)
+
+\&
+
+(max(abs(object{[}\textquotedbl{}Coef\textquotedbl{}{]}-oldcoef),na.rm=TRUE)/(0.1+max(abs(object{[}\textquotedbl{}Coef\textquotedbl{}{]}),na.rm=TRUE))
+< control\$tol) )
+\end{comment}
+
 
 \section{State prediction}
 
@@ -620,15 +560,10 @@ probability.
 
 \section{Model selection}
 
-One of the most difficult tasks when modeling the Markov switching
-model is to decide on the number of states \citep{rabiner1986introduction}.
-The analysis will be conducted on a trial and error basis before settling
-on the most appropriate size of the model. In this study, several
-Markov switching models with different setting will be carried out.
+In this study, several Markov switching models will be carried out.
 First, the number of states $k$ for the model will be chosen. Then,
-the number of switching coefficients in the model will be decided
-based on the selected number of states. Models will be selected based
-on the quality of the model. 
+the number of switching coefficients in the model will be decided.
+Models will be selected based on the quality of the model. 
 
 Model selection is a task of selecting the best model for a given
 set of data. The Bayesian Information Criterion (BIC) is widely employed
@@ -645,25 +580,32 @@ which has a lower value of BIC is preferred.
 where $L(\hat{\theta})$ represents the maximized value of the likelihood
 function, $T$ is the number of observations, and $m$ is the number
 of parameters to be estimated in the model. While including more parameters
-or terms will result in a higher likelihood, it can also lead to an
-overfitting. BIC attempts to reduce the risk of overfitting by taking
-into account the number of parameters in the model. BIC can, therefore,
-heavily penalize a complex model. 
+or terms will result in a higher likelihood, it can also leads to
+an overfitting. BIC attempts to reduce the risk of overfitting by
+taking into account the number of parameters in the model. BIC can,
+therefore, heavily penalizes a model complexity. %
+\begin{comment}
+One benefit from using BIC is that this criterion heavily penalizes
+model complexity as it takes into account the number of parameters
+in the model. In addition, BIC attempts to reduce the risk of overfitting.
+\end{comment}
+
 
 \section{Non-parametric analysis}
 
-A parametric analysis outperforms a non-parametric analysis if the
-applied data belong to a known distribution family. However, a parametric
-test does not perform well in detecting change points of an unknown
+A parametric analysis outperform a non-parametric analysis if the
+applied data belongs to a known distribution family. However, a parametric
+test does not perform well in detecting change point of an unknown
 underlying distribution \citep{sharkey2014nonparametric}. Applying
 a non-parametric analysis to a real-world process gives a real advantage
-to the analysis. Data collected from a real-world process usually
-do not have a well-defined structure, which are more suitable to be
-applied with the non-parametric analysis that is not too restrictive
+to the analysis. Data collected from a real-world process, in general,
+usually does not have a well-defined structure, which is more suitable
+to be applied with the non-parametric analysis that is not too restricted
 \citep{hawkins2010nonparametric}. For this reason, the non-parametric
 analysis is implemented in order to get a rough idea of the change
 point location in this thesis framework. The obtained result is also
-compared with the result from using the Markov switching model.
+compared with the result from using the Markov switching autoregressive
+model.
 
 \subsubsection*{E-divisive}
 
@@ -671,33 +613,45 @@ An \emph{ecp}\footnote{https://cran.r-project.org/web/packages/ecp/index.html}
 is an extension package in \emph{R} which mainly focuses on computing
 a non-parametric test for multiple change point analysis. This change
 point method is applicable to both univariate and multivariate time
-series. The fundamental idea of the package is based on the hierarchical
+series. A fundamental idea of the package is based on the hierarchical
 clustering approach \citep{james2013ecp}. 
 
 An E-divisive method is an algorithm in the \emph{ecp} package. This
-algorithm performs a divisive clustering in order to estimate change
-points. The E-divisive recursively partitions a time series and estimates
-a single change point at each iteration. Consequently, the new change
-point is located in each iteration, which divides the time series
-into different segments. The algorithm also uses a permutation test
-to compute the statistical significance of an estimated change point.
+algorithm performs a divisive clustering in order to estimate the
+multiple change points. The E-divisive recursively partitions a time
+series and estimates a single change point in each iteration. Consequently,
+the new change point is located in each iteration, which divides the
+time series into different segments. The algorithm also uses a permutation
+test to compute the statistical significance of an estimated change
+point. More details about the estimation is described in \citet{matteson2014nonparametric}.
 The computational time of the E-divisive algorithm is $O(kT^{2})$,
-where $k$ is the number of estimated change points and $T$ is the
-number of observations in the time series data. More details about
-the estimation is described in \citet{matteson2014nonparametric}.
+where $k$ is number of estimated change points and $T$ is number
+of observations in the time series data.
+
+\begin{comment}
+E-agglomerative
+
+The E-agglomerative algorithm performs an agglomerative clustering
+in favor of estimating the multiple change points. The algorithm tries
+to maximize a goodness of fit test after merging segments in the iteration.
+The estimated change point is defined by the iteration that maximized
+a goodness of fit statistic. This algorithm allows users to input
+an initial segmentation for the time series or a prior knowledge of
+the possible change point in order to reduce the computation time. 
+\end{comment}
 
 
-\section{Simulation study for model evaluation \label{sec:Simulation}}
+\section{Simulation study}
 
-The state of the CPU utilization in a real data is unknown in the
-study. As a consequence, an accuracy of the Markov switching model
-and the E-divisive method cannot be computed, and the comparison between
-both methods can hardly be made. One possible solution to test how
-effective both methods are, and to verify how well the implemented
-state prediction function performs is to use a simulation technique.
-The dataset that consists of two predictor variables and one response
-variable with already known states is simulated. The actual models
-of each state are 
+The state of the CPU in a real data is unknown in the study. As a
+consequence, an accuracy of the Markov switching model and the E-divisive
+method cannot be computed, and the comparison between both methods
+can hardly make. One possible solution to test how effective both
+methods are, and to verify how well the implemented state prediction
+function performs is to used a simulation technique. The dataset that
+consists of two predictor variables and one response variable with
+already known states is simulated. The actual models of each state
+are 
 
 \[
 y_{t}=\begin{cases}
@@ -716,9 +670,9 @@ where,
 \begin{labeling}{00.00.0000}
 \item [{$y_{t}$}] is assumed to be a value of a CPU usage of the time
 series at time $t$
-\item [{$X_{1,t}$}] is a predictor variable generated by a uniform distribution
+\item [{$x_{1,t}$}] is a predictor variable generated by a uniform distribution
 on $[50,200]$ of the time series at time $t$
-\item [{$X_{2,t}$}] is a predictor variable generated by a uniform distribution
+\item [{$x_{2,t}$}] is a predictor variable generated by a uniform distribution
 on $[0,50]$ of the time series at time $t$
 \end{labeling}
 There are two simulated datasets \textendash{} Dataset 1 and Dataset
@@ -728,7 +682,18 @@ The simulated Dataset 1 has a longer duration to remain in its own
 state before switching to the other states than the simulated Dataset
 2. \ref{sim_data} and \ref{sim_data2} present plots of $y$ over
 a period of time, and the period where observations in the data belong
-to one of the states for the first and second simulated data, respectively.
+to one of the state for the first and second simulated data, respectively.
+
+\begin{comment}
+The simulated data contains 500 observations. \ref{sim_data} presents
+a plot of $y$ over a period of time, and the period where observations
+in the data belong to one of the state.
+\end{comment}
+
+\begin{comment}
+The simulated data, which contains 500 observations, has three different
+states \textendash{} Normal, Bad and Good. 
+\end{comment}
 
 \begin{figure}[H]
 \begin{centering}
@@ -757,9 +722,7 @@ The thesis work has been carried out using the \emph{R} programming
 language for the purpose of data cleaning, preprocessing, and analysis.
 The Markov switching model was performed using the \emph{MSwM} package.
 Various extensions and modifications were implemented in the package
-e.g., handling predictor categorical variables, the state prediction
-function, and plots for visualizing the results (More details can
-be found in \ref{sec:MSwM-Package}). For the E-divisive method, the
-\emph{ecp} package was used. 
+(see \ref{sec:MSwM-Package}). For the E-divisive method, the \emph{ecp}
+package was used. 
 
 

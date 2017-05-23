@@ -33,12 +33,12 @@
  {hyperref}
 \hypersetup{
  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false}
-\usepackage{breakurl}
 
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-\special{papersize=\the\paperwidth,\the\paperheight}
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
 
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
@@ -128,11 +128,11 @@
 
 \subject{Master Thesis in Statistics and Data Mining}
 
-\title{Applying Machine Learning to LTE/5G Performance Trend Analysis}
+\title{Applying Machine Learning to Performance Trend Analysis}
 
 \author{Araya Eamrurksiri}
 
-\publishers{\includegraphics{\string"LinkUniv sigill blk\string".eps}\vspace{\baselineskip}\\
+\publishers{\includegraphics{\string"LinkUniv sigill blk\string".png}\vspace{\baselineskip}\\
 Division of Statistics\\
 Department of Computer and Information Science\\
 Linköping University\\
@@ -141,9 +141,7 @@ Linköping University\\
 
 \lowertitleback{\textbf{Supervisor}\smallskip{}
 \\
-\emph{LiU:} Dr. Krzysztof Bartoszek\\
-\\
-\emph{Ericsson: }Armin Catovic and Jonas Eriksson\bigskip{}
+Prof. Krzysztof Bartoszek \bigskip{}
 \\
 \textbf{Examiner}\smallskip{}
 \\
