@@ -416,18 +416,6 @@ key "kohonen1982self"
  is a well-known unsupervised neural network approach for cluster analysis.
  SOM is efficient in handling large and high dimensional datasets.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The method reduces the difficulty of analyzing the high dimensional dataset
- by mapping down onto the two-dimensional coordinate system.
- 
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset citation
 LatexCommand citet
 key "nousiainen2009anomaly"
@@ -466,36 +454,50 @@ key "patcha2007overview"
 
 .
  Apart from changes that can be detected in the data, some knowledge about
- the unobservable condition of the system can also be obtained such as an
- uncertainty of change points.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-uncertainty of change points?
-\end_layout
-
-\end_inset
-
-This additional information makes the method more appealing than the other
+ the unobservable condition of the system can also be obtained.
+ This additional information makes the method more appealing than the other
  methods.
  Therefore, the Markov switching model is implemented in this thesis framework.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Detecting an anomaly in the data is one part of identify whether there are
- any changes in the data or not.
- In this study, the algorithm should be able to provide knowledge about
- the state and when changes.
- This objective leads to a Markov switching model which is later explained
- in more detail in sec 3.3.
 \end_layout
+
+\begin_layout Section
+Technical aspects
+\end_layout
+
+\begin_layout Standard
+The thesis work has been carried out using the 
+\emph on
+R
+\emph default
+ programming language 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rprogram"
 
 \end_inset
 
+ for the purpose of data cleaning, preprocessing, and analysis.
+ The Markov switching model was performed using the 
+\emph on
+MSwM
+\emph default
+ package.
+ Various extensions and modifications were further implemented in the package
+ e.g., handling predictor categorical variables, the state prediction function,
+ and plots for visualizing the results (More details can be found in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:MSwM-Package"
+
+\end_inset
+
+).
+ For the E-divisive method, the 
+\emph on
+ecp
+\emph default
+ package was used.
  
 \end_layout
 
@@ -699,7 +701,11 @@ key "grimmett2001probability"
 
 \end_inset
 
- A Markov chain is time-homogeneous if
+ A Markov chain is 
+\emph on
+time-homogeneous
+\emph default
+ if
 \end_layout
 
 \begin_layout Definition
@@ -793,6 +799,85 @@ The sum of each row equal to one or
 
  for all 
 \begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:-The-vector"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+after "p.227"
+key "grimmett2001probability"
+
+\end_inset
+
+ The vector 
+\begin_inset Formula $\pi$
+\end_inset
+
+ is called a 
+\emph on
+stationary distribution
+\emph default
+ if 
+\begin_inset Formula $\pi$
+\end_inset
+
+ has entries 
+\begin_inset Formula $(\pi_{j}:\:j\in S)$
+\end_inset
+
+ that satisfies
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\pi_{j}\geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $j$
+\end_inset
+
+, and 
+\begin_inset Formula $\sum_{j}\pi_{j}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\pi=\pi\mathbf{P}$
+\end_inset
+
+, which is 
+\begin_inset Formula $\pi_{j}=\sum_{i}\pi_{i}p_{ij}$
+\end_inset
+
+ for all 
+\begin_inset Formula $j$
 \end_inset
 
 
@@ -923,20 +1008,20 @@ key "grimmett2001probability"
 \end_layout
 
 \begin_layout Definition
-State 
+A persistent state 
 \begin_inset Formula $i$
 \end_inset
 
- is a non-null persistent (or positive recurrent) if 
+ is non-null (or positive recurrent) if 
 \begin_inset Formula $\mu_{i}$
 \end_inset
 
  is finite.
- Otherwise, the state 
+ Otherwise, the persistent state 
 \begin_inset Formula $i$
 \end_inset
 
- is null persistent.
+ is null.
  
 \end_layout
 
@@ -1053,6 +1138,24 @@ status open
 
 \end_layout
 
+\begin_layout Definition
+If all states in an irreducible Markov chain are ergodic, the chain is said
+ to be ergodic.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Theorem*
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1060,8 +1163,8 @@ key "manning2008introduction"
 
 \end_inset
 
- If there is an aperiodic finite state space, an irreducible Markov chain
- is the same thing as an ergodic Markov chain.
+ If there is an aperiodic finite state, an irreducible Markov chain is the
+ same thing as an ergodic Markov chain.
  
 \end_layout
 
@@ -1085,19 +1188,8 @@ key "rabiner1986introduction"
 
 .
  The transition time between two states is random.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The time that transition between state occurs is random.
- 
-\end_layout
-
-\end_inset
-
-In addition, the state transitions are assumed to follow the Markov property
- that the future state depends only on the current state.
+ In addition, the state are assumed to follow the Markov property that the
+ future state depends only on the current state.
  
 \end_layout
 
@@ -1279,19 +1371,6 @@ where,
 \end_inset
 
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula $1\leqslant i\leqslant k$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Labeling
@@ -1315,19 +1394,6 @@ reference "eq:general_mswm"
 \end_inset
 
  is the simplest form for the switching model.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-where there are 
-\begin_inset Formula $k-1$
-\end_inset
-
- structural breaks in the model parameters.
-\end_layout
-
-\end_inset
-
  To aid understanding, the baseline model is assumed to have only two states
  
 \begin_inset Formula $(k=2)$
@@ -1505,33 +1571,22 @@ Since the whole process
 \end_layout
 
 \begin_layout Standard
-There are several options for computing the probability of the initial state.
- One procedure is to commonly set 
+There are several options for choosing the probability of the initial state.
+ One procedure is to set 
 \begin_inset Formula $P(S_{0}=i)=0.5$
 \end_inset
 
 .
- Alternatively, the unconditional probability of 
-\begin_inset Formula $S_{t}$
-\end_inset
-
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-CHANGE
-\end_layout
-
-\end_inset
-
-
+ Alternatively, one can take the initial distribution to be the stationary
+ distribution of the Markov Chain (assuming that the stationary distribution
+ exists).
+ Then, an initial state is 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\pi_{1}=P(S_{0}=1)=\frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
+\pi_{i}=P(S_{0}=i)=\frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
 \]
 
 \end_inset
@@ -1540,90 +1595,100 @@ CHANGE
 \end_layout
 
 \begin_layout Standard
-can be used by presuming an ergodic Markov chain 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "hamilton2005regime"
-
+which is simply from solving the system of equations 
+\begin_inset Formula $\pi=\pi\mathbf{P}$
 \end_inset
 
 .
  
-\begin_inset Note Note
-status collapsed
+\end_layout
 
-\begin_layout Plain Layout
+\begin_layout Proof
+Let 
+\begin_inset Formula $\pi=(\pi_{1},\pi_{2})'$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{P}=\left[\begin{array}{cc}
+p_{ii} & 1-p_{ii}\\
+1-p_{jj} & p_{jj}
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Definition
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "example"
+reference "def:-The-vector"
 
 \end_inset
 
- illustrates the concept of the Markov switching model usage.
- It is assumed to have two states where 
-\end_layout
-
-\begin_layout Plain Layout
-switching mechanism
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename picture/msm-ex.png
-	lyxscale 30
-	scale 50
+ of a stationary distribution, 
+\begin_inset Formula 
+\begin{eqnarray}
+\pi & = & \pi\mathbf{P}\label{eq:1}
+\end{eqnarray}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-An example of a time series data where an upward and downward trends are
- latent state.
-\end_layout
+and
+\begin_inset Formula 
+\begin{eqnarray}
+\pi_{1}+\pi_{2} & = & 1\label{eq:2}
+\end{eqnarray}
 
 \end_inset
 
+From 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
 
-\begin_inset CommandInset label
-LatexCommand label
-name "example"
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{eqnarray*}
+\pi_{1} & = & \pi_{1}p_{ii}+\pi_{2}(1-p_{jj})\\
+\pi_{2} & = & \pi_{1}(1-p_{ii})+\pi_{2}p_{jj}
+\end{eqnarray*}
+
+\end_inset
+
+Therefore,
+\begin_inset Formula 
+\begin{eqnarray}
+\pi_{2} & = & \frac{\pi_{1}(1-p_{ii})}{1-p_{jj}}\label{eq:3}
+\end{eqnarray}
 
 \end_inset
 
 
 \end_layout
 
+\begin_layout Proof
+Substitute 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+
 \end_inset
 
-
-\end_layout
+ into Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
 
 \end_inset
 
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-newline
-\end_layout
+, then
+\begin_inset Formula 
+\begin{eqnarray*}
+\pi_{1} & = & \frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
+\end{eqnarray*}
 
 \end_inset
 
@@ -1646,18 +1711,6 @@ non-switching effect.
 
 \emph default
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The predictor variable which has a switching effect is called state-dependent.
- Likewise, the predictor variable which has a non-switching effect is called
- state-independent.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1672,40 +1725,6 @@ reference "eq:general_mswm"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "perlin2015ms_regress"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{equation}
-y_{t}=\sum_{i=1}^{N_{s}}\beta_{i,S_{t}}X_{\text{i,}t}^{s}+\sum_{j=1}^{N_{ns}}\beta_{j,t}X_{j,t}^{ns}+\varepsilon_{t}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $N_{s}$
-\end_inset
-
- is the number of switching coefficients in the model
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $N_{ns}$
-\end_inset
-
- is the number of non-switching coefficients in the model
-\end_layout
 
 \end_inset
 
@@ -1835,17 +1854,7 @@ key "cryer1986time"
 
 .
  The number of autoregressive lags (i.e., the number of prior values used
- in the model
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
- a time span between observations/ a later point in the data series
-\end_layout
-
-\end_inset
-
-) is denoted by 
+ in the model) is denoted by 
 \begin_inset Formula $p$
 \end_inset
 
@@ -1983,17 +1992,6 @@ reference "msm-ar"
 
 .
  It can be clearly seen that there is a dependency at the observation level.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
- and that observations are not independent from one another.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2166,17 +2164,8 @@ The set of parameters
 
  are estimated by an iterative two-step procedure.
  In the first step, the algorithm starts with arbitrary initial parameters,
- and then finds
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-include feed-back of values: hint to the detail in M-step
-\end_layout
-
-\end_inset
-
- the expected values of the state process from the given observations.
+ and then finds the expected values of the state process from the given
+ observations.
  In the second step of the iterative procedure, a new maximum likelihood
  from the derived parameters in the previous step is calculated.
  These two steps are repeated until the maximum value of the likelihood
@@ -2683,12 +2672,10 @@ State prediction
 \end_layout
 
 \begin_layout Standard
-A function to predict the most probable state for the new observation is
- implemented in 
-\emph on
-R
-\emph default
- as an additional function in the package for this analysis (see 
+The package used for performing the Markov switching model does not provide
+ a function to predict the most probable state for the new observation.
+ Therefore, the state prediction function is implemented as an additional
+ function in the package for this analysis (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:MSwM-Package"
@@ -2971,17 +2958,6 @@ key "matteson2014nonparametric"
 
 .
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Say more?....
- just wait and see
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3217,40 +3193,6 @@ name "sim_data2"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Technical aspects
-\end_layout
-
-\begin_layout Standard
-The thesis work has been carried out using the 
-\emph on
-R
-\emph default
- programming language for the purpose of data cleaning, preprocessing, and
- analysis.
- The Markov switching model was performed using the 
-\emph on
-MSwM
-\emph default
- package.
- Various extensions and modifications were implemented in the package e.g.,
- handling predictor categorical variables, the state prediction function,
- and plots for visualizing the results (more details can be found in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:MSwM-Package"
-
-\end_inset
-
-).
- For the E-divisive method, the 
-\emph on
-ecp
-\emph default
- package was used.
- 
 \end_layout
 
 \begin_layout Standard

@@ -322,8 +322,8 @@ change point analysis
  Before launching the software products to its customers, the company needs
  to test and determine how each software package performs.
  The performance of these software packages is evaluated by considering
- on CPU utilization (percentages of CPU's cycle spent on each process),
- memory usage, and latency.
+ on the Central Processing Unit (CPU) utilization (percentages of CPU's
+ cycle spent on each process), memory usage, and latency.
  
 \end_layout
 
@@ -567,7 +567,7 @@ key "sharkey2014nonparametric"
 
 .
  The non-parametric analysis using hierarchical estimation techniques based
- on a divisive algorithm is implemented.
+ on a divisive algorithm is used.
  This method, which is called an E-divisive, is designed to perform multiple
  change point analysis while trying to make a few assumptions as possible.
  The E-divisive method estimates change points by using a binary bisection

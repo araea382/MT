@@ -708,43 +708,20 @@ LogFilePath: Path for log file produced by a test case
 \end_layout
 
 \begin_layout Paragraph
-Observable memory
-\end_layout
-
-\begin_layout Itemize
-MemFreeKiB
-\end_layout
-
-\begin_layout Itemize
-SwapFreeKiB
-\end_layout
-
-\begin_layout Itemize
-BufferCacheKiB
-\end_layout
-
-\begin_layout Itemize
-PageCacheKiB
-\end_layout
-
-\begin_layout Itemize
-RealFreeKiB
-\end_layout
-
-\begin_layout Paragraph
 CPU
 \end_layout
 
 \begin_layout Itemize
-TotCpu%
+TotCpu%: CPU utilization, each second, as a sum of all CPU cores
 \end_layout
 
 \begin_layout Itemize
-PerCpu%
+PerCpu%: CPU utilization, each second, per each CPU core
 \end_layout
 
 \begin_layout Itemize
-PerThread%
+PerThread%: Percentage of TotCpu%, each second, that is used by a specific
+ LTE application thread
 \end_layout
 
 \begin_layout Itemize
@@ -933,13 +910,19 @@ Some test cases are filtered out in the preprocessing step because the test
  data is not logged.
  This usually results in a missing value in the 
 \emph on
-EventPerSec
+EventsPerSec
 \emph default
  field, which causes the test case to be incomplete.
- The particular test case and all the data related to the test case is ignored.
- If the value in any other fields is missing, the test case will also be
- ignored.
- These incomplete test cases in the data are accounted for four percents.
+ The local events in the 
+\emph on
+EventsPerSec
+\emph default
+ field are used to define the test case type and will also be used as predictor
+ variables for a further analysis.
+ If there is no value or no local events in this field, the particular test
+ case and all the data related to the test case is ignored.
+ These incomplete test cases in the data are accounted for four percent
+ of all the test cases in the data.
 \end_layout
 
 \begin_layout Standard

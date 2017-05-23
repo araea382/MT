@@ -3823,6 +3823,8 @@ name "sec:Predict"
 \begin_layout Standard
 In this section, the state prediction function was implemented to the test
  set in order to predict the most probable state for new observations.
+ The training models were the obtained Markov switching models from Analysis
+ II.
  
 \end_layout
 
@@ -5157,10 +5159,6 @@ Bad
  which had 
 \emph on
 Good
-\emph default
- and 
-\emph on
-Normal
 \emph default
  state.
  Nine observations from a 

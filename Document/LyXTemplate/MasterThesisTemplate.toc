@@ -1,0 +1,77 @@
+\select@language {english}
+\contentsline {chapter}{Abstract}{1}{chapter*.2}
+\contentsline {chapter}{Acknowledgments}{3}{chapter*.3}
+\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Background }{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}Objective }{7}{section.1.2}
+\contentsline {chapter}{\numberline {2}Data}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Data sources}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Data description}{12}{section.2.2}
+\contentsline {paragraph}{\nonumberline Metadata of test case}{12}{section*.7}
+\contentsline {paragraph}{\nonumberline CPU}{12}{section*.8}
+\contentsline {section}{\numberline {2.3}Data preprocessing}{13}{section.2.3}
+\contentsline {chapter}{\numberline {3}Methods}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}Survey of existing methods}{15}{section.3.1}
+\contentsline {section}{\numberline {3.2}Technical aspects}{16}{section.3.2}
+\contentsline {section}{\numberline {3.3}Markov chains}{16}{section.3.3}
+\contentsline {section}{\numberline {3.4}Markov switching model}{18}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Autoregressive (AR) model}{21}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Markov switching autoregressive model}{21}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Parameter estimation}{22}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}The Expectation-Maximization algorithm}{22}{subsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.1.1}E-step}{23}{subsubsection.3.5.1.1}
+\contentsline {paragraph}{\nonumberline Filtering}{23}{section*.13}
+\contentsline {paragraph}{\nonumberline Smoothing}{24}{section*.14}
+\contentsline {paragraph}{\nonumberline Full log-likelihood}{25}{section*.15}
+\contentsline {subsubsection}{\numberline {3.5.1.2}M-step}{25}{subsubsection.3.5.1.2}
+\contentsline {subsubsection}{\numberline {3.5.1.3}Convergence of the E-M algorithm}{25}{subsubsection.3.5.1.3}
+\contentsline {section}{\numberline {3.6}State prediction}{25}{section.3.6}
+\contentsline {section}{\numberline {3.7}Model selection}{26}{section.3.7}
+\contentsline {section}{\numberline {3.8}Non-parametric analysis}{26}{section.3.8}
+\contentsline {section}{\numberline {3.9}Simulation study for model evaluation }{27}{section.3.9}
+\contentsline {chapter}{\numberline {4}Results}{31}{chapter.4}
+\contentsline {section}{\numberline {4.1}Analysis I: Number of States }{31}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Software release A}{32}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Software release B}{33}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Software release C}{34}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Analysis II: Number of Switching coefficients }{36}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Software release A}{36}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Software release B}{37}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Software release C}{38}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Residual analysis}{39}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Software release A}{40}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Software release B}{40}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Software release C}{41}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Non-parametric analysis}{42}{section.4.4}
+\contentsline {section}{\numberline {4.5}Comparison between the Markov switching model and the E-divisive method}{42}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Simulated Dataset 1}{42}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Simulated Dataset 2}{43}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Real data }{44}{subsection.4.5.3}
+\contentsline {subsubsection}{\numberline {4.5.3.1}Software release A}{44}{subsubsection.4.5.3.1}
+\contentsline {subsubsection}{\numberline {4.5.3.2}Software release B}{45}{subsubsection.4.5.3.2}
+\contentsline {subsubsection}{\numberline {4.5.3.3}Software release C}{46}{subsubsection.4.5.3.3}
+\contentsline {section}{\numberline {4.6}Predicting the state of the CPU utilization }{46}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Software release A}{46}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Software release B}{47}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Software release C}{47}{subsection.4.6.3}
+\contentsline {section}{\numberline {4.7}Model evaluation }{48}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Simulated Dataset 1}{48}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.2}Simulated Dataset 2}{49}{subsection.4.7.2}
+\contentsline {chapter}{\numberline {5}Discussion}{51}{chapter.5}
+\contentsline {section}{\numberline {5.1}Model selection }{51}{section.5.1}
+\contentsline {section}{\numberline {5.2}State inference}{53}{section.5.2}
+\contentsline {paragraph}{\nonumberline Software release A (see \unhbox \voidb@x \hbox {\autoref {L16A_NN}})}{53}{section*.44}
+\contentsline {paragraph}{\nonumberline Software release C (see \unhbox \voidb@x \hbox {\autoref {L17A_NNN}})}{53}{section*.46}
+\contentsline {section}{\numberline {5.3}Test environment}{53}{section.5.3}
+\contentsline {paragraph}{\nonumberline Software release A (see \unhbox \voidb@x \hbox {\autoref {output-L16A}})}{53}{section*.47}
+\contentsline {paragraph}{\nonumberline Software release B (see\unhbox \voidb@x \hbox {\autoref {output_L16B}})}{54}{section*.48}
+\contentsline {paragraph}{\nonumberline Software release C (see \unhbox \voidb@x \hbox {\autoref {output_L17A}})}{54}{section*.49}
+\contentsline {section}{\numberline {5.4}Results discussion}{54}{section.5.4}
+\contentsline {chapter}{\numberline {6}Conclusions}{57}{chapter.6}
+\contentsline {section}{\numberline {6.1}Future work}{57}{section.6.1}
+\contentsline {chapter}{\numberline {A}Implementation in \emph {R}}{59}{appendix.A}
+\contentsline {section}{\numberline {A.1}EventsPerSec}{59}{section.A.1}
+\contentsline {section}{\numberline {A.2}MSwM Package}{59}{section.A.2}
+\contentsline {paragraph}{\nonumberline Non-invertible Hessian}{60}{section*.51}
+\contentsline {paragraph}{\nonumberline State prediction function}{61}{section*.55}
+\contentsline {chapter}{\numberline {B}Output }{63}{appendix.B}

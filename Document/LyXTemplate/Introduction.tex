@@ -22,22 +22,25 @@ performs. The performance of these software packages is evaluated
 by considering on CPU utilization (percentages of CPU's cycle spent
 on each process), memory usage, and latency. 
 
+The Central Processing Unit (CPU) is an electronic component that
+responsible for executing the commands from the 
+
 Structural changes are often seen in time series data. This observable
 behavior is highly appealing to statistical modelers who want to develop
 a model which is well explained. A method to detect changes in time
-series data when a time instant is unknown is called \emph{change
-point analysis} \citep{basseville1993detection}. The analysis discovers
+series data when a time index is unknown is called \emph{change point
+analysis} \citep{basseville1993detection}. The analysis discovers
 the time point where the changes occur. Change point analysis can
 be referred to different kinds of name such as breakpoint and turning
 point. However, \emph{change-point} is the commonly used term for
 the point in a time series where a change takes place. Another important
-term which will be used in this thesis is \emph{regime switch} which
-refers to persistent changes in time series structure after the occurrence
-of change point \citep{weskamp2010change}. Change point analysis
-has been studied for several decades as it is a problem of interest
-in many applications which the characteristic of data is collected
-over time. A change should be flagged as soon as it occurs in order
-to be properly dealt with reducing any possible consequences \citep{sharkey2014nonparametric}.
+term used in this area is \emph{regime switch} which refers to persistent
+changes in time series structure after the occurrence of change point
+\citep{weskamp2010change}. Change point analysis has been studied
+for several decades as it is a problem of interest in many applications
+in which the characteristic of data is collected over time. A change
+should be flagged as soon as it occurs in order to be properly dealt
+with reducing any possible consequences \citep{sharkey2014nonparametric}.
 Here are some examples.
 \begin{itemize}
 \item Medical condition monitoring: Evaluate the sleep quality of patients
@@ -62,20 +65,20 @@ of study. Markov switching model uses a concept of a Markov chain
 to model an underlying segmentation as different states and then specify
 a distinct change of location. Hence, the method is able to identify
 a switch in time series when change point occurs \citep{luong2012hidden}.
-This method is generally used in almost all current systems in speech
-recognition \citep{rabiner1989tutorial} and found to be important
-in climatology such as describing the state in the wind speed time
-series \citep{ailliot2012markov} and in biology \citep{stanke2003gene}
-where protein coding genes are predicted. Markov switching model has
-been extensively applied in the field of economics and finance and
-has a large literature. For example, business cycles can be seen as
-hidden states with seasonal changes. The growth rate of gross domestic
-product (GDP) is modeled as a switching process to uncover business
-cycle phases i.e., expansion and recession. The fitting model can
-also be used to understand the process where there is a transition
-between the economic state and the duration of each period \citep{hamilton1989new}.
-In finance data, time series of returns is modeled in order to investigate
-stock market situation i.e., bull or bear market \citep{kim1998testing}. 
+This method is used in almost all current systems in speech recognition
+\citep{rabiner1989tutorial} and is found to be important in climatology
+such as describing the state in the wind speed time series \citep{ailliot2012markov}
+and in biology \citep{stanke2003gene} where protein coding genes
+are predicted. Markov switching model has been extensively applied
+in the field of economics and finance and has a large literature.
+For example, business cycles can be seen as hidden states with seasonal
+changes. The growth rate of gross domestic product (GDP) is modeled
+as a switching process to uncover business cycle phases i.e., expansion
+and recession. The fitting model can also be used to understand the
+process where there is a transition between the economic state and
+the duration of each period \citep{hamilton1989new}. In finance data,
+time series of returns is modeled in order to investigate stock market
+situation i.e., bull or bear market \citep{kim1998testing}. 
 
 Markov switching model is one of the most well-known non linear time
 series models. This model can be applied to various time series data
@@ -90,16 +93,17 @@ which is assumed to follow an unobserved Markov chain. Thus, the model
 is able to capture more complex dynamic patterns and also identify
 the change of locations and regime switch in time series. 
 
-For the current Ericsson setting, each software package running through
-the test system is viewed as a time point in time series and the performance
-of each software package is treated as an observed value. It is proven
-that the observed values are not completely independent of each other
-i.e., the performance of the current software package depends on the
-performance from the prior version of the software package. Therefore,
-additional dependencies are taken into consideration by a first-order
-autoregression when modeling. The Markov switching model becomes the
-Markov switching autoregressive model. This model is applied to the
-given data in order to discover the changes in the performance.
+For the current Ericsson setting, each software package version running
+through the test system is viewed as a time point in time series and
+the performance of each software package is treated as an observed
+value. It is proven that the observed values are not completely independent
+of each other i.e., the performance of the current software package
+depends on the performance from the prior version of the software
+package. Therefore, additional dependencies are taken into consideration
+by a first-order autoregression when modeling. The Markov switching
+model becomes the Markov switching autoregressive model. This model
+is applied to the given data in order to discover the changes in the
+performance.
 
 There are two approaches, a parametric and a non-parametric analysis,
 for detecting the change point in the time series. The parametric
@@ -109,9 +113,9 @@ non-parametric analysis is more flexible in that there are no assumption
 made about the distribution. It can, therefore, apply to a wider range
 of applications and capture various kinds of changes \citep{sharkey2014nonparametric}.
 The non-parametric analysis using hierarchical estimation techniques
-based on a divisive algorithm is implemented. This method, which is
-called an E-divisive, is designed to perform multiple change point
-analysis while trying to make a few assumptions as possible. The E-divisive
+based on a divisive algorithm is used. This method, which is called
+an E-divisive, is designed to perform multiple change point analysis
+while trying to make a few assumptions as possible. The E-divisive
 method estimates change points by using a binary bisection approach
 and a permutation test. The method also capable of estimating not
 only univariate data but also multivariate data. 
@@ -126,9 +130,9 @@ series data.
 The core idea of this thesis is to reduce workload of manual inspection
 when the performance analysis of an updated software package is required.
 With an increased amount of generated data from numerous test cases,
-the inspection becomes tedious and inefficient to be done manually.
-The main objective of this thesis is to implement machine learning,
-an algorithm that has an ability to learn from data, in order to analyze
+the inspection becomes very tedious and inefficient to be done manually.
+The main objective of this thesis is to implement a machine learning
+algorithm that has an ability to learn from data in order to analyze
 the performance of the software package. The algorithm will help indicate
 whether the performance of the software package is in a degrading,
 improving or steady state. It is also worth mentioning that the performance
@@ -149,6 +153,6 @@ The thesis is structured as follow: Chapter 2 provides details and
 descriptions of datasets used in the analysis. Chapter 3 presents
 methodology. Results from the analysis along with tables and plots
 are shown in Chapter 4. Chapter 5 discusses the outcomes and the obtained
-results. Lastly, Chapter 6 contains conclusion.
+results. Lastly, Chapter 6 contains conclusion and future work.
 
 

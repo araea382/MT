@@ -7,7 +7,7 @@ library(reshape2)
 
 # g2_extract
 # TC8
-g2_extract2 <- dplyr::filter(g2_extract, RrcConnectionSetupComplete > 165 & RrcConnectionSetupComplete < 166)
+g2_extract2 <- dplyr::filter(g2_extract, RrcConnectionSetupComplete > 164 & RrcConnectionSetupComplete < 166)
 g2_extract2 <- data.table(g2_extract2)
 
 g2_L16A2 <- get_subset(g2_extract2, "L16A") # 64 -> 36 

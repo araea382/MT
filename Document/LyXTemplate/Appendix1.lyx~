@@ -970,7 +970,7 @@ $ $
 
 
 \backslash
-State{Compute the filter probabilites of each state
+State{Compute the filtered probabilites of each state
 \end_layout
 
 \begin_layout Plain Layout
@@ -1022,7 +1022,7 @@ $ $
 
 
 \backslash
-State{Find a state which has the maximum value in the filter probabilites}
+State{Find a state which has the maximum value in the filtered probabilites}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1061,8 +1061,29 @@ name "chap:Output"
 \end_layout
 
 \begin_layout Standard
-Outputs from applying Markov switching models with each dataset are shown
- here.
+Outputs from applying Markov switching models with each dataset of the software
+ release A, B, and C are shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output-L16A"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output_L16B"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output_L17A"
+
+\end_inset
+
+, respectively.
 \end_layout
 
 \begin_layout Standard
@@ -3445,6 +3466,26 @@ State 3
 \end_layout
 
 \begin_layout Standard
+The result of applying the Markov switching model where 
+\emph on
+DuProdName
+\emph default
+ and 
+\emph on
+Fdd/Tdd
+\emph default
+ are non-switching coefficients with the dataset of the software release
+ B is presented in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_NNY"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -3483,6 +3524,52 @@ Model 2: DuProdName and Fdd/Tdd are non-switching coefficients.
 \begin_inset CommandInset label
 LatexCommand label
 name "L16B_NNY"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One future extension for this analysis is to restrict data to oThe dataset
+ of the software release B which contains only a specific test case type.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TC8"
+
+\end_inset
+
+ shows the result of applying the Markov switching model with this dataset.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The CPU utilization
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "TC8"
 
 \end_inset
 

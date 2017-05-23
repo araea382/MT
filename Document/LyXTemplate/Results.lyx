@@ -359,7 +359,11 @@ https://cran.r-project.org/web/packages/MSwM/index.html
 
 
 \emph default
- package in R was used.
+ package in 
+\emph on
+R 
+\emph default
+was used.
  More details about the package can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3823,6 +3827,8 @@ name "sec:Predict"
 \begin_layout Standard
 In this section, the state prediction function was implemented to the test
  set in order to predict the most probable state for new observations.
+ The training models were the obtained Markov switching models from Analysis
+ II.
  
 \end_layout
 

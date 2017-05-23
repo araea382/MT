@@ -498,7 +498,7 @@ EndFor
 
 
 \backslash
-State{Replace missing value with zero}
+State{Replace missing values with zero}
 \end_layout
 
 \begin_layout Plain Layout
@@ -530,7 +530,7 @@ name "sec:MSwM-Package"
 \end_layout
 
 \begin_layout Standard
-A 
+The 
 \emph on
 MSwM
 \emph default
@@ -586,7 +586,7 @@ The package uses a Hessian, a matrix of second order partial derivatives
  is singular.
  Consequently, the function cannot compute the standard error of estimated
  parameters.
- It is assumed that the singularity is coming from numerics issue i.e., the
+ It is assumed that the singularity is coming from numeric issues i.e., the
  matrix is not singular but computationally it is.
  This non-invertible Hessian is solved by using generalized inverse (or
  pseudoinverse) procedure 
@@ -666,8 +666,12 @@ Categorical variable
 The package does not appear to work well with categorical predictor variables.
  Hence, a further implementation in the code for handling with categorical
  variables is done.
- R refers to categorical variables as factors.
- Most of the time, an order of the factor does not matter in the study.
+ 
+\emph on
+R
+\emph default
+ refers to categorical variables as factors.
+ Most of the time, the order of the factor does not matter in the study.
  However, sometimes the order of the factor is of interest in the analysis
  and needs to be specified for the purpose of comparison or obtaining a
  meaningful interpretation.
@@ -693,16 +697,16 @@ NA coefficients
 
 \begin_layout Standard
 When performing the Markov switching model, a function in the package first
- randomly divides the data into different subsets, and then separately fit
+ randomly divides the data into different subsets, and then separately fits
  the model to each subset to get initial coefficients in each state.
- These coefficients are later used for further analysis e.g., computing condition
- means, conditional residuals of the model, and likelihood of the parameters
+ These coefficients are later used for further analysis e.g., computing conditiona
+l means, conditional residuals of the model, and likelihood of the parameters
  for each state.
 \end_layout
 
 \begin_layout Standard
 It is worth noting that the function computes conditional means for each
- state by using matrix multiplication 
+ state by using matrix multiplication: 
 \begin_inset Formula $\ensuremath{\hat{y}=X\hat{\beta}}$
 \end_inset
 
@@ -760,8 +764,8 @@ A variable in a subset contains the same value in all observations.
 
 \begin_layout Itemize
 Containing all levels of the variable in a subset is rather difficult, especiall
-y if the variable consists of several number of levels or many states are
- specified.
+y if the variable consists of several numbers of levels or if many states
+ are specified.
  For this reason, the missing level of the variable in any subset will have
  an NA coefficient.
  
@@ -776,30 +780,9 @@ A categorical variable in a subset contains only one factor level which
 One approach to resolve this issue is by removing the process of partitioning
  the data in the beginning, and fitting the model with the whole data to
  get the initial coefficients instead.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The parameters in each state will then have the same coefficient values.
-\end_layout
-
-\end_inset
-
  It proved that dividing data into subsets in the original function is only
  a method to get the starting values of coefficients in each state.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-These values do not have much effect to the algorithm.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph
@@ -987,7 +970,7 @@ $ $
 
 
 \backslash
-State{Compute the filter probabilites of each state
+State{Compute the filtered probabilites of each state
 \end_layout
 
 \begin_layout Plain Layout
@@ -1039,7 +1022,7 @@ $ $
 
 
 \backslash
-State{Find a state which has the maximum value in the filter probabilites}
+State{Find a state which has the maximum value in the filtered probabilites}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1078,8 +1061,29 @@ name "chap:Output"
 \end_layout
 
 \begin_layout Standard
-Outputs from applying Markov switching autogressive model for each dataset
- are shown here.
+Outputs from applying Markov switching models with each dataset of the software
+ release A, B, and C are shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output-L16A"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output_L16B"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "output_L17A"
+
+\end_inset
+
+, respectively.
 \end_layout
 
 \begin_layout Standard
@@ -1093,9 +1097,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Output from the selected model (Model 1) of the software release L16A showing
- estimated coefficients, residual standard error, and r-squared for each
- state.
+Outputs from applying the selected model (Model 1) with the software release
+ A.
+ The table shows estimated coefficients, residual standard error, and r-squared
+ for each state.
  A switching coefficient is followed by (S), and a significant coefficient
  is highlighted in bold.
 \end_layout
@@ -1587,12 +1592,26 @@ Residual standard error
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "output-L16A"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Float table
 placement H
 wide false
@@ -1603,7 +1622,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Transition probabilities of the selected model of the software release L16A
+Transition probabilities of the selected model of the software release A
 \end_layout
 
 \end_inset
@@ -1785,6 +1804,11 @@ State 3
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float table
 placement H
@@ -1796,9 +1820,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Output from the selected model (Model 4) of the software release L16B showing
- estimated coefficients, residual standard error, and r-squared for each
- state.
+Outputs from applying the selected model (Model 4) with the software release
+ B.
+ The table shows estimated coefficients, residual standard error, and r-squared
+ for each state.
  A switching coefficient is followed by (S), and a significant coefficient
  is highlighted in bold.
 \end_layout
@@ -2420,12 +2445,28 @@ Residual standard error
 
 \end_layout
 
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "output_L16B"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Float table
 placement H
 wide false
@@ -2436,7 +2477,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Transition probabilities of the selected model of the software release L16B
+Transition probabilities of the selected model of the software release B
 \end_layout
 
 \end_inset
@@ -2618,6 +2659,11 @@ State 3
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float table
 placement H
@@ -2629,9 +2675,10 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Output from the selected model (Model 1) of the software release L17A showing
- estimated coefficients, residual standard error, and r-squared for each
- state.
+Outputs from applying the selected model (Model 1) with the software release
+ C.
+ The table shows estimated coefficients, residual standard error, and r-squared
+ for each state.
  A switching coefficient is followed by (S), and a significant coefficient
  is highlighted in bold.
 \end_layout
@@ -3199,12 +3246,28 @@ Residual standard error
 
 \end_layout
 
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "output_L17A"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Float table
 placement H
 wide false
@@ -3215,7 +3278,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Transition probabilities of the selected model of the software release L17A
+Transition probabilities of the selected model of the software release C
 \end_layout
 
 \end_inset
@@ -3397,6 +3460,31 @@ State 3
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The result of applying the Markov switching model where 
+\emph on
+DuProdName
+\emph default
+ and 
+\emph on
+Fdd/Tdd
+\emph default
+ are non-switching coefficients with the dataset of the software release
+ B is presented in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L16B_NNY"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -3421,7 +3509,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The CPU utilization of the software release L16B showing the periods where
+The CPU utilization of the software release B showing the periods where
  the observation is in the specific state.
  
 \begin_inset Newline newline
@@ -3448,343 +3536,20 @@ name "L16B_NNY"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Output from the model of the simulated Dataset 1 showing estimated coefficients,
- residual standard error, and r-squared for each state.
- A switching coefficient is followed by (S), and a significant coefficient
- is highlighted in bold.
-\end_layout
+One future extension for this analysis is to restrict data to oThe dataset
+ of the software release B which contains only a specific test case type.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TC8"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="left" valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Estimated coefficient
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-State 1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-State 2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-State 3
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-(Intercept)(S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-1.3024
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-5.5339
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
--14.3116
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x1(S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.8005
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.5900
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.7005
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x2(S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.0003
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
--0.8610
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.1941
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-y_1(S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.1902
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.3843
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
--0.1927
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Residual standard error
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.4900
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7.3013
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.8255
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $r^{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.998
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.9467
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.9962
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ shows the result of applying the Markov switching model with this dataset.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-placement H
+\begin_inset Float figure
 wide false
 sideways false
 status open
@@ -3793,10 +3558,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Output from the model of the simulated Dataset 2 showing estimated coefficients,
- residual standard error, and r-squared for each state.
- A switching coefficient is followed by (S), and a significant coefficient
- is highlighted in bold.
+The CPU utilization
 \end_layout
 
 \end_inset
@@ -3805,307 +3567,9 @@ Output from the model of the simulated Dataset 2 showing estimated coefficients,
 \end_layout
 
 \begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="left" valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Estimated coefficient
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-State 1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-State 2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-State 3
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-(Intercept)(S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-1.3024
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-9.0219
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-23.1711
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x1(S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.8005
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.5401
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.5546
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x2(S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.0003
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.2599
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
--1.1239
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-y_1(S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.1902
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
--0.0882
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-0.2272
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Residual standard error
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6.6367
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5.3211
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7.5079
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $r^{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.998
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.9480
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.9337
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
+\begin_inset CommandInset label
+LatexCommand label
+name "TC8"
 
 \end_inset
 

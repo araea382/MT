@@ -322,9 +322,14 @@ change point analysis
  Before launching the software products to its customers, the company needs
  to test and determine how each software package performs.
  The performance of these software packages is evaluated by considering
- on CPU utilization (percentages of CPU's cycle spent on each process),
- memory usage, and latency.
+ on the Central Processing Unit (CPU) utilization (percentages of CPU's
+ cycle spent on each process), memory usage, and latency.
  
+\end_layout
+
+\begin_layout Standard
+The Central Processing Unit (CPU) is an electronic component that responsible
+ for executing the commands from the 
 \end_layout
 
 \begin_layout Standard
@@ -353,17 +358,7 @@ change-point
 \emph default
  is the commonly used term for the point in a time series where a change
  takes place.
- Another important term used in this area 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-which will be used in this thesis
-\end_layout
-
-\end_inset
-
- is 
+ Another important term used in this area is 
 \emph on
 regime switch
 \emph default
@@ -577,7 +572,7 @@ key "sharkey2014nonparametric"
 
 .
  The non-parametric analysis using hierarchical estimation techniques based
- on a divisive algorithm is implemented.
+ on a divisive algorithm is used.
  This method, which is called an E-divisive, is designed to perform multiple
  change point analysis while trying to make a few assumptions as possible.
  The E-divisive method estimates change points by using a binary bisection
@@ -609,10 +604,10 @@ name "sec:Objective"
 The core idea of this thesis is to reduce workload of manual inspection
  when the performance analysis of an updated software package is required.
  With an increased amount of generated data from numerous test cases, the
- inspection becomes tedious and inefficient to be done manually.
- The main objective of this thesis is to implement machine learning, an
- algorithm that has an ability to learn from data, in order to analyze the
- performance of the software package.
+ inspection becomes very tedious and inefficient to be done manually.
+ The main objective of this thesis is to implement a machine learning algorithm
+ that has an ability to learn from data in order to analyze the performance
+ of the software package.
  The algorithm will help indicate whether the performance of the software
  package is in a degrading, improving or steady state.
  It is also worth mentioning that the performance of a particular software

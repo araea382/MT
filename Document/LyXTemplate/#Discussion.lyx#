@@ -324,7 +324,7 @@ In this chapter, a discussion of the model selection for each given dataset
  is explained.
  Then, a state inference from the model is made and effects of the test
  environments are provided.
- Lastly, a results discussion of this study is discussed.
+ The last section is devoted to a results discussion of this study.
 \end_layout
 
 \begin_layout Section
@@ -339,49 +339,22 @@ name "subsec:Model-selection"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Above all, one has to understand and accept a risk when deciding on the
- number of states as there is no guarantee how many states would yield the
- best outcome.
- This risk is also applied to a situation when determining the number of
- switching coefficients in the model.
- 
-\end_layout
-
-\end_inset
-
 There is no fixed rules in deciding the number of states.
- Therefore, difference number of states were tried with the method in order
+ Therefore, different number of states were tried with the method in order
  to determine which number would be best for this analysis.
  The results from the model with two states offered less details and did
  not cover all happening situations.
  Furthermore, all the graphs of the two-state model are unrealistic and
- also difficult in interpret.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-had one state with a considerably long period and another state with a very
- short period.
- There is a problematic interpretation when trying to make a rough inference
- on the derived states.
-\end_layout
-
-\end_inset
-
-Despite higher BICs for the dataset of the software release B and C, three-state
- model provides more interpretable plots and better fit to the time series
- data.
+ also difficult to interpret.
+ Despite higher BICs for the dataset of the software release B and C, the
+ three-state model provides more interpretable plots and better fit to the
+ time series data.
  The four-state Markov switching model for each software release was also
  briefly tested in the analysis.
  Apparently, defining four states caused more difficulty when fitting the
  model and making an inference on the states.
- The results were rather poor when compare to the model with two and three
- states and was not include in the report.
+ The results were rather poor when compared to the models with two and three
+ states and were not included in the report.
  Higher number of states are more likely to give worse results and were
  not considered.
  Thus, the number of chosen states after applying Markov switching model
@@ -394,7 +367,7 @@ Among all the predictor variables, the local events variables in
 \emph on
 EventPerSec
 \emph default
- is more essential than the test environment variables.
+ are more essential than the test environment variables.
  Having a constant value for the local events variables would be inadequate
  to characterize the whole time series data and its evolution.
  However, the test environment variables do not necessarily require a switching
@@ -513,7 +486,8 @@ Paging
 \emph default
  in one state had a zero standard error which led t-value to infinity.
  This zero value can be interpreted as an actual zero or an extremely small
- value that a computer treated as zero because significant digit is lost.
+ value that a computer treated as zero because the significant digits are
+ lost.
  Nevertheless, either way suggests that this model is not a good model to
  be used with this dataset as the model might be overfitting with the training
  data.
@@ -557,8 +531,8 @@ reference "L16B_NNY"
 ).
  Observations stay in State3 in the first half of the period but stay in
  State2 in the second half of the time period.
- There are continuous fluctuations of the CPU utilization value through
- out the whole time period.
+ There are continuous fluctuations of the CPU utilization value throughout
+ the whole time period.
  Therefore, for observations (or software packages) to remain in the same
  state for a long duration without switching to other states seem unrealistic.
  The selected model for this dataset was model 4 where its BIC was in the
@@ -572,28 +546,8 @@ Software release C
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Model 1 appeared to have a good model output and plot when comparing with
- the rest of the models.
- 
-\end_layout
-
-\end_inset
-
 The first four models with lowest BIC (Models 1, 5, 3, and 7, respectively)
  had similar results both in model outputs and plots.
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-explanation when examining its plot.
-\end_layout
-
-\end_inset
-
  Thus, Model 1 which had the lowest BIC was chosen for this dataset.
 \end_layout
 
@@ -604,19 +558,7 @@ State inference
 \begin_layout Standard
 The model output after applying the Markov switching model with the dataset
  does not provide any definition of the derived states.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-A function from the package will estimate coefficients in each state without
- providing the definition of these states.
- 
-\end_layout
-
-\end_inset
-
-Therefore, an interpretation and inference of these states need to be specified.
+ Therefore, an interpretation and inference of these states need to be specified.
  The state inferences for each dataset are shown below.
  
 \end_layout
@@ -688,8 +630,8 @@ reference "L17A_NNN"
 \begin_layout Standard
 Abrupt changes in the CPU utilization values when test cases enter State1
  could be seen in most of the period.
- Despite low values in some of the test cases, State1 appeared to have more
- high value in the CPU utilization.
+ Despite low values in some of the test cases, State1 appears to have higher
+ values in the CPU utilization.
  Hence, State1 could be defined as a 
 \emph on
 Degradation
@@ -813,7 +755,7 @@ DuProdName
 NumCells
 \emph default
  has somewhat an impact on the CPU utilization; however, this is not always
- the case and should have been taken with care.
+ the case and should be taken with care.
 \end_layout
 
 \begin_layout Section
@@ -833,8 +775,8 @@ A thorough search of relevant literature yielded that this thesis work might
  of CPU utilization.
  In previous works, this model was mainly applied with financial data or
  signal processing which were used as an inspiration for this study.
- However, because of differences in the characteristic of data, the procedure
- was slightly adjusted.
+ However, because of differences in the characteristic of the data, the
+ procedure was slightly adjusted.
  
 \begin_inset Note Comment
 status collapsed
@@ -860,7 +802,8 @@ In this study,
 NodeName
 \emph default
 , which is used to execute test cases, was assumed to be indifferent i.e.,
- performance of test cases are the same regardless of the machine.
+ the performance of test cases is the same regardless of the machine that
+ used for running the test cases.
  Therefore, selecting a minimum value of the CPU utilization of the test
  case for each software package in data preprocessing step is reasonable.
  
@@ -939,19 +882,19 @@ Fifty-seven observations in this dataset were used to train the Markov switching
 \end_layout
 
 \begin_layout Standard
-Note that in this study, the unfiltered data has been used for the analysis.
- This data contains all the QA capacity test case types which are executed
+Note that in this study, the unfiltered data have been used for the analysis.
+ These data contain all the QA capacity test case types which are executed
  in the system.
- Each test case type in the data established different value in its local
+ Each test case type in the data established different values in its local
  events (e.g., one test case type has 
 \emph on
 RrcConnectionSetupComplete
 \emph default
  value very high while another type has value of this local events very
  low).
- In data preprocressing step, the minimum value of the CPU utilization of
- each software package is selected, regardless the type of test case.
- As a consequence, many type of test cases are presented in the final datasets.
+ In the data preprocressing step, the minimum value of the CPU utilization
+ of each software package is selected, regardless the type of test case.
+ As a consequence, many types of test cases are presented in the final datasets.
  This leads to the sudden drop in the CPU utilization as can be seen in
  the plot of each software release.
 \end_layout
@@ -968,10 +911,11 @@ reference "chap:Output"
 ).
  R-squared value is an intuitive measurement to determine how well the model
  fits with the data.
- In general, the higher r-squared value is more preferable.
- Nevertheless, high r-squared value does not necessarily indicate that the
- model is a good model because the model with high r-squared value could
- be overfitting due to too many predictor variables were used in the model.
+ In general, a higher r-squared value is preferable.
+ Nevertheless, a high r-squared value does not necessarily indicate that
+ the model is a good model because the model with high r-squared value could
+ be overfitting due to the fact that too many predictor variables were used
+ in the model.
  Using only r-squared value to determine adequacy of the model can be misleading.
  A residual analysis should be considered when evaluating a model.
  
@@ -1114,8 +1058,8 @@ reference "sec:Predict"
 ).
  Secondly, only the predictor variables that have been analyzed to have
  significant impacts on the CPU utilization were included in the model.
- However, many other variables that is possible to have minor impact on
- the CPU utilization but were overlooked.
+ However, many other variables that are likely to have minor impact on the
+ CPU utilization were overlooked.
  Therefore, there might be some bias by not including these variables into
  the analysis.
  Finally, the criteria that has been used to select the number of states
@@ -1165,7 +1109,7 @@ As described above, the small dataset is proven to cause several problems
 
 \begin_layout Standard
 A benefit of using a non-parametric analysis is that no assumption of the
- data distribution is required, and all type of distributional change within
+ data distribution is required, and all types of distributional change within
  a time series can be detected.
  In general, the non-parametric analysis performs well when applying to
  the data of no known distributional form 
@@ -1180,8 +1124,8 @@ key "sharkey2014nonparametric"
  proved to have less power in detecting changes in the data in this analysis.
  The main reason that the E-divisive method is not as powerful as the Markov
  switching model is because the Markov switching model included variables
- that have influences on the CPU utilization into the analysis but the E-divisiv
-e method only considered the values of the CPU utilization.
+ that have influence on the CPU utilization into the analysis but the E-divisive
+ method only considered the values of the CPU utilization.
  
 \begin_inset Note Comment
 status collapsed
@@ -1240,7 +1184,7 @@ reference "compare_sim2"
 \end_inset
 
  is that if a pattern of a state in the data is not obvious, the E-divisive
- method will be unable to detect locations of the change points.
+ method will be unable to detect the locations of the change points.
  For instance, the method could not identify any changes in the first hundred
  observations, and also at the end of the time series in the simulated Dataset
  1.
@@ -1259,7 +1203,7 @@ Besides, the duration that time series stays in one state also affects the
 
 \end_inset
 
- This is more clear when examining the results in the simulated Dataset
+ This is even more clear when examining the results in the simulated Dataset
  2 where the E-divisive method could only detect two change point locations.
  If the response variable value fluctuates but the average value does not
  change drastically, the E-divisive method will not be able to identify
@@ -1361,7 +1305,7 @@ reference "sec:Assessing"
 
 \end_inset
 
-, the evaluation for each model was performed.
+, an evaluation for each model was performed.
  The Markov switching model was able to predict the state for the test set
  of the simulated Dataset 1 considerably well.
  The estimated coefficients in each state were similar to the coefficients
@@ -1390,7 +1334,7 @@ Normal
  For the simulated Dataset 2, most of the estimated coefficients from the
  model were not close to the actual coefficients, especially the values
  of intercept in every state.
- State2, a 
+ State2, the 
 \emph on
 Good 
 \emph default

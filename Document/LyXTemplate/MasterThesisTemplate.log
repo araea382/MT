@@ -1,0 +1,1655 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210) (preloaded format=pdflatex 2017.1.26)  23 MAY 2017 11:09
+entering extended mode
+**./MasterThesisTemplate.tex
+(MasterThesisTemplate.tex
+LaTeX2e <2016/03/31> patch level 3
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrbook.cls"
+Document Class: scrbook 2016/06/14 v3.21 KOMA-Script document class (book)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrkbase.sty"
+Package: scrkbase 2016/06/14 v3.21 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrbase.sty"
+Package: scrbase 2016/06/14 v3.21 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.
+sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrlfile.sty"
+Package: scrlfile 2016/06/14 v3.21 KOMA-Script package (loading files)
+
+Package scrlfile, 2016/06/14 v3.21 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+))) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\tocbasic.sty"
+Package: tocbasic 2016/06/14 v3.21 KOMA-Script package (handling toc-files)
+\scr@dte@tocline@numberwidth=\skip41
+\scr@dte@tocline@numbox=\box26
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 132.
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 133.
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 134.
+Package tocbasic Info: defining new hook before heading of `' on input line 160
+2.
+Package scrbook Info: You've used standard option `12pt'.
+(scrbook)             This is correct!
+(scrbook)             Internally I'm using `fontsize=12pt'.
+(scrbook)             If you'd like to set the option with \KOMAoptions,
+(scrbook)             you'd have to use `fontsize=12pt' there
+(scrbook)             instead of `12pt', too.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fleqn.clo"
+File: fleqn.clo 2016/12/29 v1.2a Standard LaTeX option (flush left equations)
+\mathindent=\dimen102
+Applying: [2015/01/01] Make \[ robust on input line 50.
+LaTeX Info: Redefining \[ on input line 51.
+Already applied: [0000/00/00] Make \[ robust on input line 62.
+Applying: [2015/01/01] Make \] robust on input line 74.
+LaTeX Info: Redefining \] on input line 75.
+Already applied: [0000/00/00] Make \] robust on input line 83.
+)
+Class scrbook Info: File `scrsize12pt.clo' used to setup font sizes on input li
+ne 2269.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\scrsize12pt.clo"
+File: scrsize12pt.clo 2016/06/14 v3.21 KOMA-Script font size class option (12pt
+)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\koma-script\typearea.sty"
+Package: typearea 2016/06/14 v3.21 KOMA-Script package (type area)
+
+Package typearea, 2016/06/14 v3.21 KOMA-Script package (type area)
+                  Copyright (C) Frank Neukam, 1992-1994
+                  Copyright (C) Markus Kohm, 1994-
+
+\ta@bcor=\skip42
+\ta@div=\count79
+Package typearea Info: You've used standard option `a4paper'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `paper=a4'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `paper=a4' there
+(typearea)             instead of `a4paper', too.
+\ta@hblk=\skip43
+\ta@vblk=\skip44
+\ta@temp=\skip45
+\footheight=\skip46
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 12
+(typearea)             BCOR = 28.45274pt
+(typearea)             \paperwidth      = 597.50793pt
+(typearea)              \textwidth      = 426.7914pt
+(typearea)              DIV departure   = -1%
+(typearea)              \evensidemargin = 22.57254pt
+(typearea)              \oddsidemargin  = 3.60402pt
+(typearea)             \paperheight     = 845.04694pt
+(typearea)              \textheight     = 635.5pt
+(typearea)              \topmargin      = -41.72441pt
+(typearea)              \headheight     = 18.125pt
+(typearea)              \headsep        = 21.75pt
+(typearea)              \topskip        = 12.0pt
+(typearea)              \footskip       = 50.75pt
+(typearea)              \baselineskip   = 14.5pt
+(typearea)              on input line 1529.
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\scr@dte@part@maxnumwidth=\skip47
+\scr@dte@chapter@maxnumwidth=\skip48
+\scr@dte@section@maxnumwidth=\skip49
+\scr@dte@subsection@maxnumwidth=\skip50
+\scr@dte@subsubsection@maxnumwidth=\skip51
+\scr@dte@paragraph@maxnumwidth=\skip52
+\scr@dte@subparagraph@maxnumwidth=\skip53
+LaTeX Info: Redefining \textsubscript on input line 4782.
+\abovecaptionskip=\skip54
+\belowcaptionskip=\skip55
+\c@pti@nb@sid@b@x=\box27
+\c@figure=\count87
+\c@table=\count88
+Class scrbook Info: Redefining `\numberline' on input line 5813.
+\bibindent=\dimen103
+) ("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\lmodern.sty
+"
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc.sty
+"
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+ ("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.st
+y"
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\latin9.def"
+File: latin9.def 2015/03/17 v1.2c Input encoding file
+))
+
+Class scrbook Warning: Usage of package `fancyhdr' together
+(scrbook)              with a KOMA-Script class is not recommended.
+(scrbook)              I'd suggest to use 
+(scrbook)              package `scrlayer-scrpage'.
+(scrbook)              Nevertheless, using requested
+(scrbook)              package `fancyhdr' on input line 10.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+Package: fancyhdr 2016/09/06 3.8 Extensive control of page headers and footers
+\fancy@headwidth=\skip56
+\f@ncyO@elh=\skip57
+\f@ncyO@erh=\skip58
+\f@ncyO@olh=\skip59
+\f@ncyO@orh=\skip60
+\f@ncyO@elf=\skip61
+\f@ncyO@erf=\skip62
+\f@ncyO@olf=\skip63
+\f@ncyO@orf=\skip64
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.st
+y"
+Package: babel 2016/04/23 3.9r The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-english\en
+glish.ldf"
+Language: english 2017/01/24 v3.3q English support from the babel system
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.de
+f"
+File: babel.def 2016/04/23 3.9r Babel common definitions
+\babel@savecnt=\count89
+\U@D=\dimen104
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen105
+\extrarowheight=\dimen106
+\NC@list=\toks17
+\extratabsurround=\skip65
+\backup@length=\skip66
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\verbatim.s
+ty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks18
+\verbatim@line=\toks19
+\verbatim@in@stream=\read1
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count90
+\float@exts=\toks20
+\float@box=\box28
+\@float@everytoks=\toks21
+\@floatcapt=\box29
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen107
+\lightrulewidth=\dimen108
+\cmidrulewidth=\dimen109
+\belowrulesep=\dimen110
+\belowbottomsep=\dimen111
+\aboverulesep=\dimen112
+\abovetopsep=\dimen113
+\cmidrulesep=\dimen114
+\cmidrulekern=\dimen115
+\defaultaddspace=\dimen116
+\@cmidla=\count91
+\@cmidlb=\count92
+\@aboverulesep=\dimen117
+\@belowrulesep=\dimen118
+\@thisruleclass=\count93
+\@lastruleclass=\count94
+\@thisrulewidth=\dimen119
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\multirow\multiro
+w.sty"
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip67
+\multirow@cntb=\count95
+\multirow@dima=\skip68
+\bigstrutjot=\dimen120
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.
+sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip69
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.
+sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.s
+ty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks22
+\ex@=\dimen121
+))
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.s
+ty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen122
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.s
+ty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count96
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count97
+\leftroot@=\count98
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count99
+\DOTSCASE@=\count100
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box30
+\strutbox@=\box31
+\big@size=\dimen123
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count101
+\c@MaxMatrixCols=\count102
+\dotsspace@=\muskip10
+\c@parentequation=\count103
+\dspbrk@lvl=\count104
+\tag@help=\toks23
+\row@=\count105
+\column@=\count106
+\maxfields@=\count107
+\andhelp@=\toks24
+\eqnshift@=\dimen124
+\alignsep@=\dimen125
+\tagshift@=\dimen126
+\tagwidth@=\dimen127
+\totwidth@=\dimen128
+\lineht@=\dimen129
+\@envbody=\toks25
+\multlinegap=\skip70
+\multlinetaggap=\skip71
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.st
+y"
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks27
+\thm@bodyfont=\toks28
+\thm@headfont=\toks29
+\thm@notefont=\toks30
+\thm@headpunct=\toks31
+\thm@preskip=\skip72
+\thm@postskip=\skip73
+\thm@headsep=\skip74
+\dth@everypar=\toks32
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb
+.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfont
+s.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
+x.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
+s.sty"
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.st
+y"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\gra
+phics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdf
+tex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwa
+rerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcm
+ds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count108
+))
+\Gin@req@height=\dimen130
+\Gin@req@width=\dimen131
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip75
+\bibsep=\skip76
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count109
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\nomencl\nomencl.sty"
+Package: nomencl 2005/09/22 v4.2 Nomenclature package (LN)
+\nomlabelwidth=\dimen132
+\nom@tempdim=\dimen133
+\nomitemsep=\skip77
+)
+\@nomenclaturefile=\write3
+\openout3 = `MasterThesisTemplate.nlo'.
+
+
+Writing nomenclature file MasterThesisTemplate.nlo
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperre
+f.sty"
+Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsu
+b-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsu
+b-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxete
+x.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook
+.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptio
+ns.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen134
+\Hy@linkcounter=\count110
+\Hy@pagecounter=\count111
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.
+def"
+File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count112
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperre
+f.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4374.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\puenc.d
+ef"
+File: puenc.def 2017/03/14 v6.85a Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `pdfusetitle' set `true' on input line 4374.
+Package hyperref Info: Option `bookmarks' set `true' on input line 4374.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4374
+.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4374.
+Package hyperref Info: Option `breaklinks' set `false' on input line 4374.
+Package hyperref Info: Option `colorlinks' set `false' on input line 4374.
+Package hyperref Info: Hyper figures OFF on input line 4498.
+Package hyperref Info: Link nesting OFF on input line 4503.
+Package hyperref Info: Hyper index ON on input line 4506.
+Package hyperref Info: Plain pages OFF on input line 4513.
+Package hyperref Info: Backreferencing OFF on input line 4518.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4751.
+\c@Hy@tempcnt=\count113
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5104.
+\XeTeXLinkMargin=\dimen135
+\Fld@menulength=\count114
+\Field@Width=\dimen136
+\Fld@charsize=\dimen137
+Package hyperref Info: Hyper figures OFF on input line 6358.
+Package hyperref Info: Link nesting OFF on input line 6363.
+Package hyperref Info: Hyper index ON on input line 6366.
+Package hyperref Info: backreferencing OFF on input line 6373.
+Package hyperref Info: Link coloring OFF on input line 6378.
+Package hyperref Info: Link coloring with OCG OFF on input line 6383.
+Package hyperref Info: PDF/A mode OFF on input line 6388.
+LaTeX Info: Redefining \ref on input line 6428.
+LaTeX Info: Redefining \pageref on input line 6432.
+\Hy@abspage=\count115
+\c@Item=\count116
+\c@Hfootnote=\count117
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex
+.def"
+File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
+\Fld@listcount=\count118
+\c@bookmark@seq@number=\count119
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfi
+lecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip78
+)
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 35.
+Package hyperref Info: Option `plainpages' set `false' on input line 35.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\breakurl\breakurl.sty"
+Package: breakurl 2013/04/10 v1.40 Breakable hyperref URLs
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.
+sty"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xkeyva
+l.tex"
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xkvuti
+ls.tex"
+\XKV@toks=\toks33
+\XKV@tempa@toks=\toks34
+)
+\XKV@depth=\count120
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+
+Package breakurl Warning: You are using breakurl while processing via pdflatex.
+
+(breakurl)                \burl will be just a synonym of \url.
+(breakurl)                 on input line 48.
+
+)
+\@float@every@algorithm=\toks35
+\c@algorithm=\count121
+\c@thm=\count122
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\hypcap.
+sty"
+Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count123
+\calc@Bcount=\count124
+\calc@Adimen=\dimen138
+\calc@Bdimen=\dimen139
+\calc@Askip=\skip79
+\calc@Bskip=\skip80
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count125
+\calc@Cskip=\skip81
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithms\algor
+ithm.sty"
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+))
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithmicx\alg
+pseudocode.sty"
+Package: algpseudocode 
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithmicx\alg
+orithmicx.sty"
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count126
+\c@ALG@rem=\count127
+\c@ALG@nested=\count128
+\ALG@tlm=\skip82
+\ALG@thistlm=\skip83
+\c@ALG@Lnr=\count129
+\c@ALG@blocknr=\count130
+\c@ALG@storecount=\count131
+\c@ALG@tmpcounter=\count132
+\ALG@tmplength=\skip84
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\subfig\subfig.sty"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen140
+\captionmargin@=\dimen141
+\captionwidth=\dimen142
+\caption@tempdima=\dimen143
+\caption@indent=\dimen144
+\caption@parindent=\dimen145
+\caption@hangindent=\dimen146
+)
+Package caption Info: KOMA-Script document class.
+\c@ContinuedFloat=\count133
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: hypcap package is loaded.
+)
+\c@KVtest=\count134
+\sf@farskip=\skip85
+\sf@captopadj=\dimen147
+\sf@capskip=\skip86
+\sf@nearskip=\skip87
+\c@subfigure=\count135
+\c@subfigure@save=\count136
+\c@lofdepth=\count137
+\c@subtable=\count138
+\c@subtable@save=\count139
+\c@lotdepth=\count140
+\sf@top=\skip88
+\sf@bottom=\skip89
+)
+(MasterThesisTemplate.aux (Summary.aux) (Acknowledgments.aux) (Introduction.aux
+) (Data.aux) (Methods.aux) (Results.aux) (Discussion.aux) (Conclusions.aux)
+(Appendix1.aux))
+\openout1 = `MasterThesisTemplate.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 126.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count141
+\scratchdimen=\dimen148
+\scratchbox=\box32
+\nofMPsegments=\count142
+\nofMParguments=\count143
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count144
+\MPscratchDim=\dimen149
+\MPnumerator=\count145
+\makeMPintoPDFobject=\count146
+\everyMPtoPDFconversion=\toks37
+)
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopd
+f-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.
+sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+\AtBeginShipoutBox=\box33
+Package hyperref Info: Link coloring OFF on input line 126.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref
+.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\getti
+tlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count147
+)
+LaTeX Info: Redefining \ref on input line 126.
+LaTeX Info: Redefining \pageref on input line 126.
+LaTeX Info: Redefining \nameref on input line 126.
+ (MasterThesisTemplate.out) (MasterThesisTemplate.out)
+\@outlinefile=\write4
+\openout4 = `MasterThesisTemplate.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 156.
+
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmss.fd"
+File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 156.
+
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 156.
+
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 156
+.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 156
+.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <17.28> on input line 156.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 156.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 156.
+LaTeX Font Info:    Try loading font information for U+msa on input line 156.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
+"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 156.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Package epstopdf Info: Source file: <"LinkUniv sigill blk".eps>
+(epstopdf)                    date: 2017-05-23 08:12:49
+(epstopdf)                    size: 273993 bytes
+(epstopdf)             Output file: <"LinkUniv sigill blk"-eps-converted-to.pdf
+>
+(epstopdf)             Command: <epstopdf --outfile="LinkUniv sigill blk"-eps-c
+onverted-to.pdf "LinkUniv sigill blk".eps>
+(epstopdf)             \includegraphics on input line 156.
+runsystem(epstopdf --outfile="LinkUniv sigill blk"-eps-converted-to.pdf "LinkUn
+iv sigill blk".eps)...quotation error in system command.
+
+Package epstopdf Info: Result file: <"LinkUniv sigill blk"-eps-converted-to.pdf
+>.
+
+
+! Package pdftex.def Error: File `"LinkUniv sigill blk"-eps-converted-to.pdf' n
+ot found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.156 \cleardoublepage
+                      {}
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 156.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+[1
+
+
+Non-PDF special ignored!
+
+
+{C:/Users/EARAEAM/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 156--156
+
+ []
+
+[2
+
+] [3
+
+] [4
+
+
+] (MasterThesisTemplate.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 5.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 5.
+ [1
+
+
+
+
+
+
+]
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <12> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 72.
+)
+\tf@toc=\write5
+\openout5 = `MasterThesisTemplate.toc'.
+
+ [2]
+\openout2 = `Summary.aux'.
+
+ (Summary.tex)pdfTeX warning (ext4): destination with the same identifier (name
+{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.174 \include{Summary}
+                        [1
+
+
+
+
+
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.176 \cleardoublepage
+                      {} [2
+
+
+
+]
+\openout2 = `Acknowledgments.aux'.
+
+ (Acknowledgments.tex
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 6.
+
+("C:\Users\EARAEAM\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.fd"
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 6.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.182 \include{Acknowledgments}
+                                [3
+
+
+
+]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.184 \cleardoublepage
+                      {} [4
+
+
+
+]
+\openout2 = `Introduction.aux'.
+
+ (Introduction.tex
+chapter 1.
+
+Class scrbook Warning: \float@addtolists detected!
+(scrbook)              Implementation of \float@addtolist became
+(scrbook)              deprecated in KOMA-Script v3.01 2008/11/14 and
+(scrbook)              has been replaced by several more flexible
+(scrbook)              features of package `tocbasic`.
+(scrbook)              Since Version 3.12 support for deprecated
+(scrbook)              \float@addtolist interface has been
+(scrbook)              restricted to only some of the KOMA-Script
+(scrbook)              features and been removed from others.
+(scrbook)              Loading of package `scrhack' may help to
+(scrbook)              avoid this warning, if you are using a
+(scrbook)              a package that still implements the
+(scrbook)              deprecated \float@addtolist interface .
+
+
+Package natbib Warning: Citation `basseville1993detection' on page 5 undefined 
+on input line 32.
+
+
+Package natbib Warning: Citation `weskamp2010change' on page 5 undefined on inp
+ut line 39.
+
+
+Package natbib Warning: Citation `sharkey2014nonparametric' on page 5 undefined
+ on input line 43.
+
+
+Package natbib Warning: Citation `staudacher2005new' on page 5 undefined on inp
+ut line 47.
+
+
+Package natbib Warning: Citation `reeves2007review' on page 5 undefined on inpu
+t line 51.
+
+
+Package natbib Warning: Citation `beaulieu2012change' on page 5 undefined on in
+put line 51.
+
+
+Package natbib Warning: Citation `page1954continuous' on page 5 undefined on in
+put line 55.
+
+
+Package natbib Warning: Citation `bolton2002statistical' on page 5 undefined on
+ input line 56.
+
+
+Package natbib Warning: Citation `gu2013fast' on page 5 undefined on input line
+ 57.
+
+
+Package natbib Warning: Citation `basseville1993detection' on page 5 undefined 
+on input line 58.
+
+[5
+
+
+
+]
+
+Package natbib Warning: Citation `luong2012hidden' on page 6 undefined on input
+ line 67.
+
+
+Package natbib Warning: Citation `rabiner1989tutorial' on page 6 undefined on i
+nput line 69.
+
+
+Package natbib Warning: Citation `ailliot2012markov' on page 6 undefined on inp
+ut line 70.
+
+
+Package natbib Warning: Citation `stanke2003gene' on page 6 undefined on input 
+line 71.
+
+
+Package natbib Warning: Citation `hamilton1989new' on page 6 undefined on input
+ line 79.
+
+
+Package natbib Warning: Citation `kim1998testing' on page 6 undefined on input 
+line 81.
+
+
+Package natbib Warning: Citation `sharkey2014nonparametric' on page 6 undefined
+ on input line 114.
+
+[6]) [7]
+\openout2 = `Data.aux'.
+
+ (Data.tex [8
+
+
+
+
+]
+chapter 2.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 18.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 18.
+<picture/LTE.png, id=363, 380.42125pt x 363.3575pt>
+File: picture/LTE.png Graphic file (type png)
+ <use picture/LTE.png>
+Package pdftex.def Info: picture/LTE.png used on input line 29.
+(pdftex.def)             Requested size: 209.23232pt x 199.84723pt.
+
+
+Package natbib Warning: Citation `dahlman20134g' on page 9 undefined on input l
+ine 37.
+
+[9 <./picture/LTE.png>] <picture/Release.png, id=377, 588.1975pt x 162.6075pt>
+File: picture/Release.png Graphic file (type png)
+
+<use picture/Release.png>
+Package pdftex.def Info: picture/Release.png used on input line 87.
+(pdftex.def)             Requested size: 323.50961pt x 89.43439pt.
+ [10 <./picture/Release.png>]
+<picture/SW.png, id=387, 539.01375pt x 376.40625pt>
+File: picture/SW.png Graphic file (type png)
+ <use picture/SW.png>
+Package pdftex.def Info: picture/SW.png used on input line 119.
+(pdftex.def)             Requested size: 377.30704pt x 263.48257pt.
+
+Underfull \vbox (badness 5050) has occurred while \output is active []
+
+ [11 <./picture/SW.png>]
+Underfull \vbox (badness 1418) has occurred while \output is active []
+
+ [12]
+[13]) [14]
+\openout2 = `Methods.aux'.
+
+ (Methods.tex
+chapter 3.
+
+Package natbib Warning: Citation `valdes2000adaptive' on page 15 undefined on i
+nput line 34.
+
+
+Package natbib Warning: Citation `patcha2007overview' on page 15 undefined on i
+nput line 40.
+
+
+Package natbib Warning: Citation `cortes1995support' on page 15 undefined on in
+put line 42.
+
+
+Package natbib Warning: Citation `sung2003identifying' on page 15 undefined on 
+input line 46.
+
+
+Package natbib Warning: Citation `sarasamma2005hierarchical' on page 15 undefin
+ed on input line 49.
+
+
+Package natbib Warning: Citation `kohonen1982self' on page 15 undefined on inpu
+t line 51.
+
+
+Package natbib Warning: Citation `nousiainen2009anomaly' on page 15 undefined o
+n input line 54.
+
+
+Package natbib Warning: Citation `chandola2009anomaly' on page 15 undefined on 
+input line 61.
+
+[15
+
+
+
+
+]
+
+Package natbib Warning: Citation `patcha2007overview' on page 16 undefined on i
+nput line 67.
+
+
+Package natbib Warning: Citation `rprogram' on page 16 undefined on input line 
+76.
+
+
+Package natbib Warning: Citation `grimmett2001probability' on page 16 undefined
+ on input line 96.
+
+[16]
+
+Package natbib Warning: Citation `grimmett2001probability' on page 17 undefined
+ on input line 115.
+
+
+Package natbib Warning: Citation `grimmett2001probability' on page 17 undefined
+ on input line 131.
+
+LaTeX Font Info:    Font shape `OMS/lmr/m/it' in size <12> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 134.
+
+Package natbib Warning: Citation `grimmett2001probability' on page 17 undefined
+ on input line 141.
+
+
+Package natbib Warning: Citation `grimmett2001probability' on page 17 undefined
+ on input line 152.
+
+
+Package natbib Warning: Citation `grimmett2001probability' on page 17 undefined
+ on input line 165.
+
+
+Package natbib Warning: Citation `grimmett2001probability' on page 17 undefined
+ on input line 177.
+
+[17]
+
+Package natbib Warning: Citation `grimmett2001probability' on page 18 undefined
+ on input line 190.
+
+
+Package natbib Warning: Citation `manning2008introduction' on page 18 undefined
+ on input line 205.
+
+
+Package natbib Warning: Citation `rabiner1986introduction' on page 18 undefined
+ on input line 218.
+
+<picture/msm1.png, id=439, 510.90875pt x 180.675pt>
+File: picture/msm1.png Graphic file (type png)
+ <use picture/msm1.png>
+Package pdftex.def Info: picture/msm1.png used on input line 232.
+(pdftex.def)             Requested size: 306.5476pt x 108.40582pt.
+
+
+Package natbib Warning: Citation `hamilton1989new' on page 18 undefined on inpu
+t line 238.
+
+[18 <./picture/msm1.png>]
+<picture/transition.png, id=451, 366.36874pt x 180.675pt>
+File: picture/transition.png Graphic file (type png)
+
+<use picture/transition.png>
+Package pdftex.def Info: picture/transition.png used on input line 267.
+(pdftex.def)             Requested size: 219.82294pt x 108.40582pt.
+
+
+Package natbib Warning: Citation `hamilton2005regime' on page 19 undefined on i
+nput line 283.
+
+[19 <./picture/transition.png>]
+
+Package natbib Warning: Citation `perlin2015ms_regress' on page 20 undefined on
+ input line 329.
+
+[20]
+
+Package natbib Warning: Citation `cryer1986time' on page 21 undefined on input 
+line 355.
+
+
+Package natbib Warning: Citation `shannon2009formulation' on page 21 undefined 
+on input line 379.
+
+<picture/msm-ar1.png, id=475, 502.87875pt x 168.63pt>
+File: picture/msm-ar1.png Graphic file (type png)
+
+<use picture/msm-ar1.png>
+Package pdftex.def Info: picture/msm-ar1.png used on input line 398.
+(pdftex.def)             Requested size: 301.72957pt x 101.17877pt.
+ [21]
+
+Package natbib Warning: Citation `hamilton1990analysis' on page 22 undefined on
+ input line 415.
+
+
+Package natbib Warning: Citation `kim1994dynamic' on page 22 undefined on input
+ line 415.
+
+
+Package natbib Warning: Citation `juang1990segmental' on page 22 undefined on i
+nput line 416.
+
+
+Package natbib Warning: Citation `kim1999state' on page 22 undefined on input l
+ine 418.
+
+
+Package natbib Warning: Citation `ryden2008versus' on page 22 undefined on inpu
+t line 423.
+
+
+Package natbib Warning: Citation `dempster1977maximum' on page 22 undefined on 
+input line 443.
+
+
+Package natbib Warning: Citation `janczura2012efficient' on page 22 undefined o
+n input line 454.
+
+[22 <./picture/msm-ar1.png>]
+<picture/em.png, id=489, 757.83125pt x 165.61874pt>
+File: picture/em.png Graphic file (type png)
+ <use picture/em.png>
+Package pdftex.def Info: picture/em.png used on input line 459.
+(pdftex.def)             Requested size: 416.80847pt x 91.09058pt.
+
+
+Package natbib Warning: Citation `kim1994dynamic' on page 23 undefined on input
+ line 481.
+
+[23 <./picture/em.png>] [24] [25]
+
+Package natbib Warning: Citation `rabiner1986introduction' on page 26 undefined
+ on input line 621.
+
+
+Package natbib Warning: Citation `leroux1992maximum' on page 26 undefined on in
+put line 633.
+
+
+Package natbib Warning: Citation `schwarz1978estimating' on page 26 undefined o
+n input line 635.
+
+
+Package natbib Warning: Citation `sharkey2014nonparametric' on page 26 undefine
+d on input line 655.
+
+
+Package natbib Warning: Citation `hawkins2010nonparametric' on page 26 undefine
+d on input line 660.
+
+[26]
+
+Package natbib Warning: Citation `james2013ecp' on page 27 undefined on input l
+ine 672.
+
+
+Package natbib Warning: Citation `matteson2014nonparametric' on page 27 undefin
+ed on input line 684.
+
+[27] <picture/sim1.png, id=536, 1204.5pt x 752.8125pt>
+File: picture/sim1.png Graphic file (type png)
+ <use picture/sim1.png>
+Package pdftex.def Info: picture/sim1.png used on input line 731.
+(pdftex.def)             Requested size: 421.58131pt x 263.48831pt.
+
+<picture/sim2.png, id=537, 1204.5pt x 752.8125pt>
+File: picture/sim2.png Graphic file (type png)
+ <use picture/sim2.png>
+Package pdftex.def Info: picture/sim2.png used on input line 741.
+(pdftex.def)             Requested size: 421.58131pt x 263.48831pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [28 <./picture/sim1.png>]) [29 <./picture/sim2.png>]
+\openout2 = `Results.aux'.
+
+ (Results.tex [30
+
+
+
+
+]
+chapter 4.
+[31] <picture/L16A_2_smo1.png, id=569, 1204.5pt x 351.3125pt>
+File: picture/L16A_2_smo1.png Graphic file (type png)
+
+<use picture/L16A_2_smo1.png>
+Package pdftex.def Info: picture/L16A_2_smo1.png used on input line 98.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+<picture/L16A_3_smo1.png, id=570, 1204.5pt x 351.3125pt>
+File: picture/L16A_3_smo1.png Graphic file (type png)
+
+<use picture/L16A_3_smo1.png>
+Package pdftex.def Info: picture/L16A_3_smo1.png used on input line 104.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+ [32 <./picture/L16A_2_smo1.png>]
+<picture/L16B_2_smo1.png, id=580, 1204.5pt x 351.3125pt>
+File: picture/L16B_2_smo1.png Graphic file (type png)
+
+<use picture/L16B_2_smo1.png>
+Package pdftex.def Info: picture/L16B_2_smo1.png used on input line 126.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+<picture/L16B_3_smo1.png, id=581, 1204.5pt x 351.3125pt>
+File: picture/L16B_3_smo1.png Graphic file (type png)
+
+<use picture/L16B_3_smo1.png>
+Package pdftex.def Info: picture/L16B_3_smo1.png used on input line 135.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33 <./picture/L16A_3_smo1.png> <./picture/L16B_2_smo1.png>]
+<picture/L16B_3_1.png, id=590, 602.25pt x 301.125pt>
+File: picture/L16B_3_1.png Graphic file (type png)
+
+<use picture/L16B_3_1.png>
+Package pdftex.def Info: picture/L16B_3_1.png used on input line 145.
+(pdftex.def)             Requested size: 210.79065pt x 105.39532pt.
+
+<picture/L16B_3_2.png, id=591, 602.25pt x 301.125pt>
+File: picture/L16B_3_2.png Graphic file (type png)
+
+<use picture/L16B_3_2.png>
+Package pdftex.def Info: picture/L16B_3_2.png used on input line 147.
+(pdftex.def)             Requested size: 210.79065pt x 105.39532pt.
+
+Overfull \hbox (2.62312pt too wide) in paragraph at lines 145--148
+[][][][] 
+ []
+
+<picture/L16B_3_3.png, id=592, 602.25pt x 301.125pt>
+File: picture/L16B_3_3.png Graphic file (type png)
+
+<use picture/L16B_3_3.png>
+Package pdftex.def Info: picture/L16B_3_3.png used on input line 151.
+(pdftex.def)             Requested size: 210.79065pt x 105.39532pt.
+ [34 <./picture/L16B_3_smo1.png> <./picture/L16B_3_1.png> <./picture/L16B_3_2.p
+ng> <./picture/L16B_3_3.png>]
+<picture/L17A_2_smo1.png, id=612, 1204.5pt x 351.3125pt>
+File: picture/L17A_2_smo1.png Graphic file (type png)
+
+<use picture/L17A_2_smo1.png>
+Package pdftex.def Info: picture/L17A_2_smo1.png used on input line 171.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+<picture/L17A_3_smo1.png, id=613, 1204.5pt x 351.3125pt>
+File: picture/L17A_3_smo1.png Graphic file (type png)
+
+<use picture/L17A_3_smo1.png>
+Package pdftex.def Info: picture/L17A_3_smo1.png used on input line 176.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+<picture/L17A_3_1.png, id=614, 602.25pt x 301.125pt>
+File: picture/L17A_3_1.png Graphic file (type png)
+
+<use picture/L17A_3_1.png>
+Package pdftex.def Info: picture/L17A_3_1.png used on input line 184.
+(pdftex.def)             Requested size: 210.79065pt x 105.39532pt.
+ [35 <./picture/L17A_2_smo1.png> <./picture/L17A_3_smo1.png> <./picture/L17A_3_
+1.png>] [36]
+<picture/L16A_NN1.png, id=637, 1204.5pt x 351.3125pt>
+File: picture/L16A_NN1.png Graphic file (type png)
+
+<use picture/L16A_NN1.png>
+Package pdftex.def Info: picture/L16A_NN1.png used on input line 262.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<picture/L16B_NYY1.png, id=640, 1204.5pt x 351.3125pt>
+File: picture/L16B_NYY1.png Graphic file (type png)
+
+<use picture/L16B_NYY1.png>
+Package pdftex.def Info: picture/L16B_NYY1.png used on input line 317.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37 <./picture/L16A_NN1.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<picture/L17A_NNN1.png, id=651, 1204.5pt x 351.3125pt>
+File: picture/L17A_NNN1.png Graphic file (type png)
+
+<use picture/L17A_NNN1.png>
+Package pdftex.def Info: picture/L17A_NNN1.png used on input line 371.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+ [38 <./picture/L16B_NYY1.png>] [39 <./picture/L17A_NNN1.png>] <picture/L16A_QQ
+Pool.png, id=672, 602.25pt x 602.25pt>
+File: picture/L16A_QQPool.png Graphic file (type png)
+
+<use picture/L16A_QQPool.png>
+Package pdftex.def Info: picture/L16A_QQPool.png used on input line 401.
+(pdftex.def)             Requested size: 180.67639pt x 180.67639pt.
+
+<picture/L16A_ACFPool.png, id=673, 602.25pt x 602.25pt>
+File: picture/L16A_ACFPool.png Graphic file (type png)
+
+<use picture/L16A_ACFPool.png>
+Package pdftex.def Info: picture/L16A_ACFPool.png used on input line 401.
+(pdftex.def)             Requested size: 180.67639pt x 180.67639pt.
+
+<picture/L16B_QQPool.png, id=675, 602.25pt x 602.25pt>
+File: picture/L16B_QQPool.png Graphic file (type png)
+
+<use picture/L16B_QQPool.png>
+Package pdftex.def Info: picture/L16B_QQPool.png used on input line 422.
+(pdftex.def)             Requested size: 180.67639pt x 180.67639pt.
+
+<picture/L16B_ACFPool.png, id=676, 602.25pt x 602.25pt>
+File: picture/L16B_ACFPool.png Graphic file (type png)
+
+<use picture/L16B_ACFPool.png>
+Package pdftex.def Info: picture/L16B_ACFPool.png used on input line 422.
+(pdftex.def)             Requested size: 180.67639pt x 180.67639pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [40 <./picture/L16A_QQPool.png> <./picture/L16A_ACFPool.png>]
+<picture/L17A_QQPool.png, id=684, 602.25pt x 602.25pt>
+File: picture/L17A_QQPool.png Graphic file (type png)
+
+<use picture/L17A_QQPool.png>
+Package pdftex.def Info: picture/L17A_QQPool.png used on input line 441.
+(pdftex.def)             Requested size: 180.67639pt x 180.67639pt.
+
+<picture/L17A_ACFPool.png, id=685, 602.25pt x 602.25pt>
+File: picture/L17A_ACFPool.png Graphic file (type png)
+
+<use picture/L17A_ACFPool.png>
+Package pdftex.def Info: picture/L17A_ACFPool.png used on input line 441.
+(pdftex.def)             Requested size: 180.67639pt x 180.67639pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [41 <./picture/L16B_QQPool.png> <./picture/L16B_ACFPool.png> <./picture/L17A_Q
+QPool.png> <./picture/L17A_ACFPool.png>] [42]
+<picture/compare_sim1.png, id=703, 1204.5pt x 652.4375pt>
+File: picture/compare_sim1.png Graphic file (type png)
+
+<use picture/compare_sim1.png>
+Package pdftex.def Info: picture/compare_sim1.png used on input line 509.
+(pdftex.def)             Requested size: 421.58131pt x 228.35654pt.
+
+Overfull \hbox (2.56694pt too wide) in paragraph at lines 522--532
+[] \T1/lmr/m/n/12 presents es-ti-mated change point lo-ca-tions of the Markov s
+witch-ing model,
+ []
+
+<picture/compare_sim2.png, id=705, 1204.5pt x 652.4375pt>
+File: picture/compare_sim2.png Graphic file (type png)
+
+<use picture/compare_sim2.png>
+Package pdftex.def Info: picture/compare_sim2.png used on input line 535.
+(pdftex.def)             Requested size: 421.58131pt x 228.35654pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [43 <./picture/compare_sim1.png>]
+<picture/compare_L16A.png, id=714, 1204.5pt x 451.6875pt>
+File: picture/compare_L16A.png Graphic file (type png)
+
+<use picture/compare_L16A.png>
+Package pdftex.def Info: picture/compare_L16A.png used on input line 556.
+(pdftex.def)             Requested size: 421.58131pt x 158.09299pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [44 <./picture/compare_sim2.png>]
+<picture/compare_L16B.png, id=722, 1204.5pt x 451.6875pt>
+File: picture/compare_L16B.png Graphic file (type png)
+
+<use picture/compare_L16B.png>
+Package pdftex.def Info: picture/compare_L16B.png used on input line 582.
+(pdftex.def)             Requested size: 421.58131pt x 158.09299pt.
+ [45 <./picture/compare_L16A.png> <./picture/compare_L16B.png>] <picture/compar
+e_L17A.png, id=733, 1204.5pt x 451.6875pt>
+File: picture/compare_L17A.png Graphic file (type png)
+
+<use picture/compare_L17A.png>
+Package pdftex.def Info: picture/compare_L17A.png used on input line 607.
+(pdftex.def)             Requested size: 421.58131pt x 158.09299pt.
+
+<picture/predict_L16A1.png, id=735, 1204.5pt x 351.3125pt>
+File: picture/predict_L16A1.png Graphic file (type png)
+
+<use picture/predict_L16A1.png>
+Package pdftex.def Info: picture/predict_L16A1.png used on input line 634.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46 <./picture/compare_L17A.png>]
+<picture/predict_L16B1.png, id=745, 1204.5pt x 351.3125pt>
+File: picture/predict_L16B1.png Graphic file (type png)
+
+<use picture/predict_L16B1.png>
+Package pdftex.def Info: picture/predict_L16B1.png used on input line 654.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+<picture/predict_L17A1.png, id=747, 1204.5pt x 351.3125pt>
+File: picture/predict_L17A1.png Graphic file (type png)
+
+<use picture/predict_L17A1.png>
+Package pdftex.def Info: picture/predict_L17A1.png used on input line 674.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[47 <./picture/predict_L16A1.png> <./picture/predict_L16B1.png>] [48 <./picture
+/predict_L17A1.png>] [49]) [50]
+\openout2 = `Discussion.aux'.
+
+ (Discussion.tex
+chapter 5.
+
+Package natbib Warning: Citation `perlin2015ms_regress' on page 51 undefined on
+ input line 64.
+
+[51
+
+
+
+
+]
+
+Package natbib Warning: Citation `ryden2008versus' on page 52 undefined on inpu
+t line 78.
+
+
+Underfull \vbox (badness 1360) has occurred while \output is active []
+
+ [52]
+[53] [54]
+
+Package natbib Warning: Citation `sharkey2014nonparametric' on page 55 undefine
+d on input line 370.
+
+[55]) [56]
+\openout2 = `Conclusions.aux'.
+
+ (Conclusions.tex
+chapter 6.
+[57
+
+
+
+
+]) [58]
+\openout2 = `Appendix1.aux'.
+
+ (Appendix1.tex
+chapter A.
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <24.88> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 12.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 44.
+
+Package natbib Warning: Citation `mswm' on page 59 undefined on input line 65.
+
+
+Package natbib Warning: Citation `gill2004your' on page 59 undefined on input l
+ine 88.
+
+[59
+
+
+
+
+
+
+] [60] [61] [62
+
+
+]
+chapter B.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [63]
+<picture/L16B_NNY1.png, id=870, 1204.5pt x 351.3125pt>
+File: picture/L16B_NNY1.png Graphic file (type png)
+
+<use picture/L16B_NNY1.png>
+Package pdftex.def Info: picture/L16B_NNY1.png used on input line 367.
+(pdftex.def)             Requested size: 421.58131pt x 122.96121pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [64])
+[65 <./picture/L16B_NNY1.png>] [66
+
+
+
+]
+No file MasterThesisTemplate.bbl.
+No file MasterThesisTemplate.nls.
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+(MasterThesisTemplate.aux (Summary.aux) (Acknowledgments.aux) (Introduction.aux
+) (Data.aux) (Methods.aux) (Results.aux) (Discussion.aux) (Conclusions.aux)
+(Appendix1.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package rerunfilecheck Info: File `MasterThesisTemplate.out' has not changed.
+(rerunfilecheck)             Checksum: 4F2A64479C52F89ED4BC7823586D6E1B;10596.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
+ ) 
+Here is how much of TeX's memory you used:
+ 15822 strings out of 493333
+ 243205 string characters out of 3136602
+ 415085 words of memory out of 3000000
+ 18772 multiletter control sequences out of 15000+200000
+ 106261 words of font info for 78 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 67i,14n,108p,8853b,546s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.
+enc}{C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-r
+m.enc}{C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm
+-mathit.enc}{C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
+/lm/lm-mathex.enc}{C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/enc
+/dvips/lm/lm-mathsy.enc}<C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/lm/lmbx10.pfb><C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/lm/lmbx12.pfb><C:/Users/EARAEAM/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Users/EARAEAM/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/lm/lmmi12.pfb><C:/Users/EARAEAM/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi6.pfb><C:/Users/EARAEAM/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Users/EARAEAM/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/EARAEA
+M/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/E
+ARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Us
+ers/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C
+:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pf
+b><C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr
+8.pfb><C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
+/lmri12.pfb><C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmssbo10.pfb><C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/lm/lmssbx10.pfb><C:/Users/EARAEAM/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/lm/lmsy10.pfb><C:/Users/EARAEAM/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/EARAEAM/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Users/EARAEAM/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on MasterThesisTemplate.pdf (72 pages, 3300338 bytes).
+PDF statistics:
+ 1004 PDF objects out of 1200 (max. 8388607)
+ 234 named destinations out of 1000 (max. 500000)
+ 658 words of extra memory for PDF output out of 10000 (max. 10000000)
+

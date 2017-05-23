@@ -3823,6 +3823,8 @@ name "sec:Predict"
 \begin_layout Standard
 In this section, the state prediction function was implemented to the test
  set in order to predict the most probable state for new observations.
+ The training models were the obtained Markov switching model from Analysis
+ II.
  
 \end_layout
 
@@ -3983,7 +3985,7 @@ reference "predict_L17A"
  The time period between the observations between 4 and 7 switch between
  states rapidly.
  The observations visit a particular state for one time, and then immediately
- move to the other states.
+ move to the another state.
  
 \end_layout
 
@@ -4045,7 +4047,7 @@ name "sec:Assessing"
 \begin_layout Standard
 Eighty percents of the observations from the simulated data were fitted
  with Markov switching model, and the remaining was used as a test set to
- evaluate a performance of the model.
+ evaluate the performance of the model.
  
 \end_layout
 
@@ -4064,8 +4066,8 @@ reference "output-sim1"
  Dataset 1.
  Each state has a considerably high r-squared value which is greater than
  0.9.
- From the result, State2 has the highest standard error.
- When inferring back to the actual models that was used to generate these
+ From the results, State2 has the highest standard error.
+ When inferring back to the actual models that were used to generate these
  three states in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4772,7 +4774,7 @@ reference "output-sim2"
 
 .
  The r-squared values of State1 and State3 are slightly lower than the obtained
- result from the simulated Dataset 1, but the standard errors are significantly
+ results from the simulated Dataset 1, but the standard errors are significantly
  higher.
  However, State2 has close output value to the simulated Dataset1.
  It could be said that the model still performs rather well as the r-squared
@@ -5157,10 +5159,6 @@ Bad
  which had 
 \emph on
 Good
-\emph default
- and 
-\emph on
-Normal
 \emph default
  state.
  Nine observations from a 

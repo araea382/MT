@@ -328,6 +328,11 @@ change point analysis
 \end_layout
 
 \begin_layout Standard
+The Central Processing Unit (CPU) is an electronic component that responsible
+ for executing the commands from the 
+\end_layout
+
+\begin_layout Standard
 Structural changes are often seen in time series data.
  This observable behavior is highly appealing to statistical modelers who
  want to develop a model which is well explained.
@@ -353,17 +358,7 @@ change-point
 \emph default
  is the commonly used term for the point in a time series where a change
  takes place.
- Another important term used in this area 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-which will be used in this thesis
-\end_layout
-
-\end_inset
-
- is 
+ Another important term used in this area is 
 \emph on
 regime switch
 \emph default
@@ -577,7 +572,7 @@ key "sharkey2014nonparametric"
 
 .
  The non-parametric analysis using hierarchical estimation techniques based
- on a divisive algorithm is implemented.
+ on a divisive algorithm is used.
  This method, which is called an E-divisive, is designed to perform multiple
  change point analysis while trying to make a few assumptions as possible.
  The E-divisive method estimates change points by using a binary bisection
