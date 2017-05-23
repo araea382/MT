@@ -140,7 +140,7 @@ out_L16B <- Ediv_L16B$estimates[c(-1,-length(Ediv_L16B$estimates))]
 dat <- data.frame(index=seq(1,nrow(g2_L16B2)), TotCpu=g2_L16B2$TotCpu)
 ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
     geom_vline(xintercept=out_L16B, colour="red", linetype="longdash") +
-    ggtitle("E-divisive L16B") + theme_bw() 
+    ggtitle("E-divisive") + theme_bw() 
 
 # + coord_cartesian(ylim = c(50, 300)) 
 
