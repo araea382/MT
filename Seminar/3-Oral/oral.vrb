@@ -1,0 +1,48 @@
+Effects of test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells}) on the CPU utilization
+
+\begin{itemize}
+\item Software release L16A:
+
+\textit{Fdd/Tdd} and \textit{NumCells}
+
+\item Software release L16B:
+
+\textit{DuProdName} and \textit{NumCells}
+
+\item Software release L17A:
+
+\textit{DuProdName}
+
+\end{itemize}
+
+\begin{comment}
+\subsection{State prediction}
+\begin{frame}
+Software release L16A
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{predict_L16A1}
+\caption{The state prediction of the test set}
+\end{figure}
+%\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+Software release L16B
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{predict_L16B1}
+\caption{The state prediction of the test set}
+\end{figure}
+%\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+Software release L17A
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{predict_L17A1}
+\caption{The state prediction of the test set}
+\end{figure}
+%\end{frame}
+\end{comment}

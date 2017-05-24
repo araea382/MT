@@ -2276,8 +2276,8 @@ reference "L16B_NYY"
 \end_inset
 
 .
- However, the state which has the longest duration remaining in its own
- state is State3.
+ However, the state which has the longest duration without switching state
+ is State3.
  There are three durations where the chain stays in State3 for a long period
  of time.
  Another noticeable behavior from this switching mechanism is that there

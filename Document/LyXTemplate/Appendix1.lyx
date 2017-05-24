@@ -1061,8 +1061,8 @@ name "chap:Output"
 \end_layout
 
 \begin_layout Standard
-Outputs from applying Markov switching models with each dataset of the software
- release A, B, and C are shown in 
+Outputs from applying the Markov switching models with each dataset of the
+ software release A, B, and C are shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "output-L16A"

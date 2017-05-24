@@ -3594,7 +3594,7 @@ status open
 \begin_layout Plain Layout
 The CPU utilization of a specific type of test case in the software release
  B where the observation is in the specific state.
- The two-state model.
+ The two-state Markov switching model.
 \end_layout
 
 \end_inset
@@ -3645,7 +3645,7 @@ status open
 \begin_layout Plain Layout
 The CPU utilization of a specific type of test case in the software release
  B where the observation is in the specific state.
- The three-state .
+ The three-state Markov switching model.
 \end_layout
 
 \end_inset

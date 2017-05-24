@@ -359,7 +359,11 @@ https://cran.r-project.org/web/packages/MSwM/index.html
 
 
 \emph default
- package in R was used.
+ package in 
+\emph on
+R 
+\emph default
+was used.
  More details about the package can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref

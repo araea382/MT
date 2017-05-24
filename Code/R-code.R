@@ -285,3 +285,53 @@ plotCompare <- function(data, markov, ediv){
 plotCompare(train_g2_L16B, mswm_L16B_NYY, out_L16B)
 
 
+#----------------------------------------------------------------------#
+# software release L16B 
+# Test case type: TC8
+#----------------------------------------------------------------------#
+# select 164 < RrcConnectionSetupComplete < 166
+g2_extract2 <- dplyr::filter(g2_extract, RrcConnectionSetupComplete > 164 & RrcConnectionSetupComplete < 166)
+g2_extract2 <- data.table(g2_extract2)
+
+# for software release L16B
+g2_L16B_TC8 <- get_subset(g2_extract2, "L16B") # 241 -> 143
+
+mod_L16B_TC8 <- lm(TotCpu~1, data=g2_L16B_TC8)
+summary(mod_L16B_TC8)
+
+# perform Markov switching autoregressive model
+switch <- rep(TRUE,length(mod_L16B_TC8$coefficients)+1+1)
+# names(switch) <- c(names(mod_L16B_TC8$coefficients),"AR","var")
+# switch[c(5)] <- FALSE 
+
+# two states
+set.seed(1)
+mswm_L16B_2_TC8 <- MSwM2::msmFit(mod_L16B_TC8, k=2, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
+summary(mswm_L16B_2_TC8)
+
+# three states
+set.seed(1)
+mswm_L16B_3_TC8 <- MSwM2::msmFit(mod_L16B_TC8, k=3, p=1, sw=switch, control=list(trace=FALSE, maxiter=1000, parallel=FALSE))
+summary(mswm_L16B_3_TC8)
+
+# plot
+plotSmo(mswm_L16B_2_TC8)
+plotArea(mswm_L16B_2_TC8)
+
+plotSmo(mswm_L16B_3_TC8)
+plotArea(mswm_L16B_3_TC8)
+
+
+# E-divisive method
+set.seed(1)
+Ediv_L16B <- e.divisive(matrix(g2_L16B_TC8$TotCpu), R=499, min.size=5)
+Ediv_L16B$estimates
+out_L16B <- Ediv_L16B$estimates[c(-1,-length(Ediv_L16B$estimates))]
+
+dat <- data.frame(index=seq(1,nrow(g2_L16B_TC8)), TotCpu=g2_L16B_TC8$TotCpu)
+ggplot(data=dat, aes(x=index, y=TotCpu)) + geom_line() + scale_color_manual(values=c("#F8766D","#00BA38","#619CFF")) +
+  geom_vline(xintercept=out_L16B, colour="red", linetype="longdash") +
+  ggtitle("E-divisive") + theme_bw() 
+
+
+
