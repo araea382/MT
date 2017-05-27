@@ -94,7 +94,7 @@
 	\medskip
 	\textit{} % Your email address
 }
-\date{May 19, 2017}
+\date{June 2, 2017}
 
 \begin{document}
 	
@@ -129,7 +129,7 @@
 %\frametitle{Objectives}
 \begin{itemize}
 \item Detect the state of the CPU utilization (degrading, improving, or steady state)
-\item Detect whether there is any change in the test environment that effects the CPU utilization
+\item Detect whether there is any change in the test environment that affects the CPU utilization
 \end{itemize}
 \end{frame}
 
@@ -173,7 +173,7 @@ Software package
 %\frametitle{Data preprocessing}
 Data is collected on January 20, 2017
 
-Three datasets: Software release L16A, L16B, and L17A
+Three datasets: Software release A, B, and C
 \begin{itemize}
 \item Sorted by software package version
 \item Filtered out test cases which are not executed properly
@@ -233,52 +233,6 @@ Method
 \end{frame}
 %------------------------------------------------
 \subsection{Markov switching model}
-\begin{frame}[fragile]
-Markov switching model \cite{p1}
-
-\begin{itemize}
-\item Describe evolution of the process at different period of time
-\item Involve multiple structures that can characterize the time series behaviors in different states
-\item The switching mechanism between the states is assumed to be an unobserved Markov chain
-% a process which contains the probability of transition from one state to any other state
-\end{itemize}
-
-\begin{comment}
-- \footnotesize{a stochastic process which contains the probability of transition from one state to any other state}
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{graph3}
-\caption{Switch between states}%
-\includegraphics[width=0.5\textwidth]{msm1}
-\caption{Model structure}
-\end{figure}
-
-\begin{figure}[ht]
-\begin{minipage}[b]{0.45\linewidth}
-\centering
-\includegraphics[width=\textwidth]{msm-ex}
-\caption{Switch between states}
-\end{minipage}
-\hspace{0.1cm}
-\begin{minipage}[b]{0.5\linewidth}
-\centering
-\includegraphics[width=\textwidth]{transition1}
-\caption{Model structure}
-\end{minipage}
-\end{figure}
-
-\end{comment}
-
-
-%\begin{figure}
-%\includegraphics[width=0.4\textwidth]{msm-ex}
-%\hspace{0.1cm}
-%\includegraphics[width=0.35\textwidth]{transition1}
-%\caption{Left: Time series data and period where there are switches between states, Right: Transition probabilities}
-%\end{figure}
-
-\end{frame}
-
-%------------------------------------------------
 \begin{frame}
 
 \begin{block}{Markov switching autoregressive model}
@@ -637,7 +591,7 @@ Simulated Dataset 2
 
 %------------------------------------------------
 \begin{frame}
-Real data: Software release L16A
+Real data: Software release A
 
 \begin{itemize}
 \item E-divisive cannot detect any changes in the time series data
@@ -651,7 +605,7 @@ Real data: Software release L16A
 \end{frame}
 %------------------------------------------------
 \begin{frame}
-Real data: Software release L16B
+Real data: Software release B
 
 \begin{itemize}
 \item E-divisive method detects change-points at 130, 135, 153, and 170
@@ -665,7 +619,7 @@ Real data: Software release L16B
 \end{frame}
 %------------------------------------------------
 \begin{frame}
-Real data: Software release L17A
+Real data: Software release C
 
 \begin{itemize}
 \item E-divisive method detects change-point at 9, 77, 82, and 105
@@ -680,7 +634,7 @@ Real data: Software release L17A
 %------------------------------------------------
 \subsection{State inference}
 \begin{frame}
-Software release L16A
+Software release A
 \pause
 
 \begin{itemize}
@@ -698,7 +652,7 @@ Software release L16A
 
 %------------------------------------------------
 \begin{frame}
-Software release L16B
+Software release B
 
 \begin{itemize}
 \item State 1: Degradation
@@ -715,7 +669,7 @@ Software release L16B
 
 %------------------------------------------------
 \begin{frame}
-Software release L17A
+Software release C
 
 \begin{itemize}
 \item State 1: Degradation
@@ -736,15 +690,15 @@ Software release L17A
 Effects of test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells}) on the CPU utilization
 
 \begin{itemize}
-\item Software release L16A:
+\item Software release A:
 
 \textit{Fdd/Tdd} and \textit{NumCells}
 
-\item Software release L16B:
+\item Software release B:
 
 \textit{DuProdName} and \textit{NumCells}
 
-\item Software release L17A:
+\item Software release C:
 
 \textit{DuProdName} 
 

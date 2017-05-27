@@ -322,8 +322,8 @@ change point analysis
  Before launching the software products to its customers, the company needs
  to test and determine how each software package performs.
  The performance of these software packages is evaluated by considering
- on the Central Processing Unit (CPU) utilization (percentages of CPU's
- cycle spent on each process), memory usage, and latency.
+ the Central Processing Unit (CPU) utilization (percentages of CPU's cycle
+ spent on each process), memory usage, and latency.
  
 \end_layout
 
@@ -344,14 +344,14 @@ key "basseville1993detection"
 \end_inset
 
 .
- The analysis discovers the time point where the changes occur.
+ The analysis discovers the time point when the changes occur.
  Change point analysis can be referred to different kinds of name such as
  breakpoint and turning point.
  However, 
 \emph on
 change-point
 \emph default
- is the commonly used term for the point in a time series where a change
+ is the commonly used term for the point in a time series when a change
  takes place.
  Another important term used in this area is 
 \emph on
@@ -410,10 +410,10 @@ key "reeves2007review,beaulieu2012change"
 \end_layout
 
 \begin_layout Itemize
-Quality control: Since industrial production is a continuous production
- process, in mass production process, if the product controlled value is
- not monitored and exceeds the tolerable level undetected, it could lead
- to the loss of a whole production lot 
+Quality control: An industrial production is a continuous production process.
+ In mass production process, if the product controlled value is not monitored
+ and exceeds the tolerable level undetected, it could lead to the loss of
+ a whole production lot 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "page1954continuous"
@@ -439,14 +439,14 @@ key "gu2013fast"
 
 \end_inset
 
- and detecting signal processing 
+, and detecting signal processing 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "basseville1993detection"
 
 \end_inset
 
- in streaming data as well.
+ in streaming data.
  
 \end_layout
 
@@ -556,7 +556,7 @@ There are two approaches, a parametric and a non-parametric analysis, for
  The parametric analysis benefits from assuming some knowledge of data distribut
 ion and integrating it to the detection scheme.
  On the other hand, the non-parametric analysis is more flexible in that
- there are no assumption made about the distribution.
+ there is no assumption made about the distribution.
  It can, therefore, apply to a wider range of applications and capture various
  kinds of changes 
 \begin_inset CommandInset citation
@@ -569,10 +569,10 @@ key "sharkey2014nonparametric"
  The non-parametric analysis using hierarchical estimation techniques based
  on a divisive algorithm is used.
  This method, which is called an E-divisive, is designed to perform multiple
- change point analysis while trying to make a few assumptions as possible.
+ change point analysis while trying to make as few assumptions as possible.
  The E-divisive method estimates change points by using a binary bisection
  approach and a permutation test.
- The method also capable of estimating not only univariate data but also
+ The method is also capable of estimating not only univariate data but also
  multivariate data.
  
 \end_layout
@@ -604,7 +604,7 @@ The core idea of this thesis is to reduce workload of manual inspection
  that has an ability to learn from data in order to analyze the performance
  of the software package.
  The algorithm will help indicate whether the performance of the software
- package is in a degrading, improving or steady state.
+ package is in a degradation, improvement or steady state.
  It is also worth mentioning that the performance of a particular software
  package can vary on different test environments.
  The implemented algorithm should also be able to detect when the test environme
@@ -619,12 +619,12 @@ To summarize, this thesis aims to:
 \end_layout
 
 \begin_layout Itemize
-Detect the state of the CPU utilization (degrading, improving, or steady
+Detect the state of the CPU utilization (degradation, improvement, or steady
  state)
 \end_layout
 
 \begin_layout Itemize
-Detect whether there is any change in the test environment that effects
+Detect whether there is any change in the test environment that affects
  the CPU utilization
 \end_layout
 

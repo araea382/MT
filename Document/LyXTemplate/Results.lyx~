@@ -320,8 +320,6 @@ The most relevant results of the analysis are shown and organized in this
  I).
  Then, the number of parameters that have switching effects in the model
  was determined (Analysis II).
- A model selection was performed for Analysis I and Analysis II in order
- to find the most appropriate model for each given dataset.
  An analysis of residuals was carried out as a means to validate the models.
  The results are shown in a later section.
  Next, the results of a non-parametric analysis are presented, and a comparison
@@ -728,11 +726,8 @@ reference "L16A_3_smo"
 \end_inset
 
 .
- Note that State2 in the two-state model seems to be defined as State1 in
- the three-state model instead.
- Moreover, the periods of State1, which has a rather long duration in the
- two-state model, now contains several switches between states in the three-stat
-e model.
+ Note that State2 (Green) in the two-state model seems to be defined as
+ State1 (Red) in the three-state model instead.
 \end_layout
 
 \begin_layout Standard
@@ -1275,18 +1270,14 @@ name "sec:Switching"
 \end_layout
 
 \begin_layout Standard
-In this section, the number of switching coefficients to be included in
- the model were decided based on applying the Markov switching model with
- the selected number of states from Analysis I i.e., three-state Markov switching
- model.
- The fitted Markov switching models in Analysis I were performed by assuming
+The fitted Markov switching models in Analysis I were performed by assuming
  that every parameter in the model had switching effects i.e., coefficients
  can have different values in different periods.
  However, in practice, each coefficient can have either a switching or non-switc
 hing effect.
- Therefore, Markov switching models were applied to each dataset again but
- with a hypothesis that the variables considered as a test environment are
- possible to have non-switching effects.
+ Therefore, the three-state Markov switching models were applied to each
+ dataset again but with a hypothesis that the variables considered as a
+ test environment are possible to have non-switching effects.
  In this section, the structure of all the models from all three datasets
  are reported in the tables.
  The best model is selected for each dataset and its state specification
@@ -1295,7 +1286,7 @@ hing effect.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Model-selection"
+reference "chap:Discussion"
 
 \end_inset
 
@@ -1643,8 +1634,8 @@ reference "L16A_NN"
  the periods of the derived state from the model.
  From the plot, State2 clearly has the longest duration without switching
  state.
- When the chain moves to either State1 or State3, most of the time it immediatel
-y switches to another state.
+ When the chain moves to either State1 or State3, it immediately switches
+ to another state most of the time.
  However, the duration when the chain stays in State1 is longer in the beginning
  and almost at the end of the period.
  Another characteristic that could be observed is that State2 switches more
@@ -2276,8 +2267,8 @@ reference "L16B_NYY"
 \end_inset
 
 .
- However, the state which has the longest duration remaining in its own
- state is State3.
+ However, the state which has the longest duration without switching state
+ is State3.
  There are three durations where the chain stays in State3 for a long period
  of time.
  Another noticeable behavior from this switching mechanism is that there
@@ -2972,13 +2963,7 @@ name "sec:Residual"
 \end_layout
 
 \begin_layout Standard
-Pooled residuals of the selected Markov switching model from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Switching"
-
-\end_inset
-
+Pooled residuals of the selected Markov switching model from Analysis II
  were analyzed to determine how well the model fitted with an assumption
  of a normal distribution.
  A Quantile-Quantile (Q-Q) plot is an effective tool for assessing normality.
@@ -3106,8 +3091,17 @@ reference "L16B_plotDiag"
  from a normal distribution.
  In addition, both the ACF and PACF plots show that there is a small amount
  of autocorrelation remaining in the residuals.
- The statistically significant correlation of this model is at lags 6 and
- 10.
+ The statistically significant correlation of this model is
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+are
+\end_layout
+
+\end_inset
+
+ at lags 6 and 10.
  The significance at lag 4 both in the ACF and PACF plots is slightly higher
  than two standard errors.
 \end_layout
@@ -3182,7 +3176,7 @@ reference "L17A_plotDiag"
 \end_inset
 
  suggests that a distribution of the pooled residuals may have a tail thicker
- than that the one of a normal distribution.
+ than that of a normal distribution.
  It is visible that there are many extreme positive and negative residuals
  in the plot.
  Furthermore, both the ACF and PACF plots of pooled residuals are significant
@@ -3264,8 +3258,7 @@ reference "ediv"
 
  shows places in the time series data where the E-divisive method detected
  the significant changes.
- There is no estimated change point location for the dataset of the software
- release A.
+ For the software release A, no estimated change point location was found.
 \end_layout
 
 \begin_layout Standard
@@ -3395,7 +3388,7 @@ C
 \end_layout
 
 \begin_layout Standard
-The CPU utilization of the software release A, B and C along with its estimated
+The CPU utilization of the software release A, B, and C along with its estimated
  change points in the time series are plotted and shown later in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3415,7 +3408,7 @@ Comparison between the Markov switching model and the E-divisive method
 A comparison between the Markov switching model and the E-divisive method
  was made in this section.
  These two methods were applied to two simulated datasets, where the actual
- changes are already known beforehand, and then also applied to a real data.
+ changes are already known beforehand, and real data.
 \end_layout
 
 \begin_layout Subsection
@@ -3429,7 +3422,7 @@ reference "compare_sim1"
 
 \end_inset
 
- illustrates that the simulated data contains nine estimated change point
+ illustrates that the simulated dataset contains nine actual change point
  locations.
  For the Markov switching model, the model reported two extra locations.
  The plot illustrates that, besides the extra detected, the model performs
@@ -3517,8 +3510,8 @@ reference "compare_sim2"
 
 \end_inset
 
- presents estimated change point locations of the Markov switching model,
- the E-divisive method, and the actual change points in the data.
+ presents the actual change points, estimated change point locations of
+ the Markov switching model and the E-divisive method in the data.
  The simulated dataset contains numerous switches between states.
  Generally, the Markov switching model is able to identify the changes considera
 bly well despite a few false alarms and missed detections.
@@ -3674,9 +3667,9 @@ reference "compare_L16B"
 
  presents results of estimated change points from the Markov switching model
  and the E-divisive method for the software release B.
- Sixty-three estimated change point locations are found by the Markov switching
+ Sixty-three estimated change point locations were found by the Markov switching
  model.
- On the contrary, only four estimated change point locations are identified
+ On the contrary, only four estimated change point locations were identified
  from the E-divisive method.
  They are likely to occur around the same period of time.
  Most of the locations of the change point detected by the E-divisive method
@@ -3837,7 +3830,7 @@ Software release A
 \end_layout
 
 \begin_layout Standard
-For the software release A, there are 7 observations in total.
+For the software release A, there are seven observations in total.
  In 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3905,10 +3898,10 @@ Software release B
 \end_layout
 
 \begin_layout Standard
-In total, there are 25 observations in the test set of the software release
- B.
- The result after applying the predict function to the test set is shown
- in 
+In total, there are twenty-five observations in the test set of the software
+ release B.
+ The result after applying the state prediction function to the test set
+ is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "predict_L16B"
@@ -3975,7 +3968,8 @@ Software release C
 \end_layout
 
 \begin_layout Standard
-The test set of the software release C consists of 15 observations in total.
+The test set of the software release C consists of fifteen observations
+ in total.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3986,10 +3980,10 @@ reference "predict_L17A"
  illustrates that the observations stay in State2 for a considerably long
  period of time (observation 10-15).
  There are several switches between states shown in the plot.
- The time period between the observations between 4 and 7 switch between
- states rapidly.
+ The time period between the observations 4 and 7 switch between states
+ rapidly.
  The observations visit a particular state for one time, and then immediately
- move to the another state.
+ move to another state.
  
 \end_layout
 
@@ -4049,7 +4043,7 @@ name "sec:Assessing"
 \end_layout
 
 \begin_layout Standard
-Eighty percents of the observations from the simulated data were fitted
+Eighty percents of the observations from the simulated datasets were fitted
  with Markov switching model, and the remaining was used as a test set to
  evaluate the performance of the model.
  
@@ -4457,7 +4451,11 @@ reference "confusion"
 \emph on
 Bad
 \emph default
- state which were incorrectly predicted to be in a Normal state.
+ state which were incorrectly predicted to be in a 
+\emph on
+Normal
+\emph default
+ state.
  Moreover, two more observations from a 
 \emph on
 Good

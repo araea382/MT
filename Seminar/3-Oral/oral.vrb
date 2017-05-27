@@ -1,15 +1,15 @@
 Effects of test environments (\textit{DuProdName}, \textit{Fdd/Tdd}, and \textit{NumCells}) on the CPU utilization
 
 \begin{itemize}
-\item Software release L16A:
+\item Software release A:
 
 \textit{Fdd/Tdd} and \textit{NumCells}
 
-\item Software release L16B:
+\item Software release B:
 
 \textit{DuProdName} and \textit{NumCells}
 
-\item Software release L17A:
+\item Software release C:
 
 \textit{DuProdName}
 

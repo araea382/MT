@@ -126,18 +126,8 @@ adds table of contents entry
 \begin_layout Standard
 The core idea of this thesis is to reduce workload of manual inspection
  when the performance analysis of an updated software is required.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-define the word CPU
-\end_layout
-
-\end_inset
-
-CPU utilization, which is one of the essential factors for evaluating the
- performance, is analyzed.
+ The Central Processing Unit (CPU) utilization, which is one of the essential
+ factors for evaluating the performance, is analyzed.
  The purpose of this work is to apply machine learning techniques that are
  suitable for detecting the state of the CPU utilization, and also any changes
  in the test environment that affects the CPU utilization.

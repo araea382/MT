@@ -318,7 +318,7 @@ Description of statistical and other methods used with references to the
 This chapter first starts by providing a survey of existing methods that
  address the problem of detecting changes in a system.
  Later on, general information about Markov chains, the simple Markov switching
- model feature, and model specification namely Markov switching autoregressive
+ model feature, and a model specification namely Markov switching autoregressive
  model are discussed.
  Thereafter, three sections are devoted to methods for estimating the values
  of parameters, predicting a state for a new observation, and selecting
@@ -441,7 +441,7 @@ key "chandola2009anomaly"
 \end_layout
 
 \begin_layout Standard
-Based on previous works, the Hidden Markov model or the Markov switching
+Based on previous works, the hidden Markov model or the Markov switching
  model has also been used in identifying changes and anomalies.
  One drawback from the method based on the Markov chain is that the method
  has a high computational cost, which is not scalable for an online change
@@ -1337,8 +1337,8 @@ where,
 \begin_inset Formula $X_{t}$
 \end_inset
 
- is a design matrix, also known as model matrix, containing values of predictor
- variables of the time series at time 
+ is a design matrix, also known as a model matrix, containing values of
+ predictor variables of the time series at time 
 \family roman
 \series medium
 \shape up
@@ -1578,7 +1578,7 @@ There are several options for choosing the probability of the initial state.
 
 .
  Alternatively, one can take the initial distribution to be the stationary
- distribution of the Markov Chain (assuming that the stationary distribution
+ distribution of the Markov chain (assuming that the stationary distribution
  exists).
  Then, an initial state is 
 \end_layout
@@ -1619,14 +1619,14 @@ p_{ii} & 1-p_{ii}\\
 \end_layout
 
 \begin_layout Proof
-Definition
+From Definition
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:-The-vector"
 
 \end_inset
 
- of a stationary distribution, 
+, 
 \begin_inset Formula 
 \begin{eqnarray}
 \pi & = & \pi\mathbf{P}\label{eq:1}
@@ -1748,11 +1748,35 @@ where,
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is an observed value of the time series at time 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Formula $X_{t}^{ns}$
 \end_inset
 
- contains all predictor variables that have non-switching effect of the
- time series at time 
+ is a design matrix containing values of all predictor variables that have
+ non-switching effect of the time series at time 
 \begin_inset Formula $t$
 \end_inset
 
@@ -1764,7 +1788,8 @@ where,
 \begin_inset Formula $\alpha_{t}$
 \end_inset
 
- are non-switching coefficients of the time series at time 
+ are a column vector of non-switching coefficients of the time series at
+ time 
 \begin_inset Formula $t$
 \end_inset
 
@@ -1776,8 +1801,8 @@ where,
 \begin_inset Formula $X_{t}^{s}$
 \end_inset
 
- contains all predictor variables that have the switching effect of the
- time series at time 
+ is a design matrix containing values of all predictor variables that have
+ the switching effect of the time series at time 
 \begin_inset Formula $t$
 \end_inset
 
@@ -1813,7 +1838,7 @@ where,
 \uwave default
 \noun default
 \color inherit
-are switching coefficients in state 
+are a column vector of switching coefficients in state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -2162,7 +2187,7 @@ The set of parameters
 \begin_inset Formula $\theta$
 \end_inset
 
- are estimated by an iterative two-step procedure.
+ is estimated by an iterative two-step procedure.
  In the first step, the algorithm starts with arbitrary initial parameters,
  and then finds the expected values of the state process from the given
  observations.
@@ -2326,8 +2351,7 @@ A filtered probability is a probability of a non-observable Markov chain
 \end_inset
 
  is chosen from arbitrary values.
- The probabilities of each state given available observations up to time
- 
+ The probability of each state given available observations up to time 
 \begin_inset Formula $t-1$
 \end_inset
 
@@ -2629,8 +2653,9 @@ Each individual parameter in
 \begin_inset Formula $\theta^{(n+1)}$
 \end_inset
 
- are taken from its maximum value, which is determined by taking the partial
- derivative of the log-likelihood function with respect to each parameter.
+ is taken from the maximum value of the log-likelihood, which is determined
+ by taking the partial derivative of the log-likelihood function with respect
+ to each parameter.
  Generally, this process is similar to the standard maximum likelihood estimatio
 n.
  However, it has to be weighted by the smoothed probabilities because each
@@ -2651,7 +2676,7 @@ Convergence of the E-M algorithm
 \end_layout
 
 \begin_layout Standard
-The E- and M-step are iteratively computed until the algorithm converges.
+The E-step and M-step are iteratively computed until the algorithm converges.
  The algorithm will terminate when the different between the previous and
  current estimate values is less than a specific value.
  This specific value called a 
@@ -2910,7 +2935,7 @@ R
  point analysis.
  This change point method is applicable to both univariate and multivariate
  time series.
- The fundamental idea of the package is based on the hierarchical clustering
+ The fundamental idea of the package is based on a hierarchical clustering
  approach 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2927,10 +2952,9 @@ An E-divisive method is an algorithm in the
 \emph on
 ecp
 \emph default
- package.
- This algorithm performs a divisive clustering in order to estimate change
+ package which performs a divisive clustering in order to estimate change
  points.
- The E-divisive recursively partitions a time series and estimates a single
+ The algorithm recursively partitions a time series and estimates a single
  change point at each iteration.
  Consequently, the new change point is located in each iteration, which
  divides the time series into different segments.

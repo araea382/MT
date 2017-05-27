@@ -339,7 +339,7 @@ https://www.ericsson.com/
  in the telecommunication industry.
  The company provides services, software products, and infrastructure related
  to information and communications technology (ICT).
- Its head quarter is located in Stockholm, Sweden.
+ Its headquarters is located in Stockholm, Sweden.
  Ericsson continuously expands its services and products beyond telecommunicatio
 n industry such as mobile broadband, cloud services, transportation, and
  network design.
@@ -410,13 +410,13 @@ key "dahlman20134g"
  LTE, is the entire radio access network.
  It handles the radio communication between the User Equipment (UE) or mobile
  device and the base stations called eNB.
- Each base station controls and manages radio communications with multiple
- devices in one or more cells.
- Several base stations are connected to a Mobility Management Entity (MME),
- which is a control-node for the LTE network.
+ Each eNB controls and manages radio communications with multiple devices
+ in one or more cells.
+ Several eNBs are connected to a Mobility Management Entity (MME), which
+ is a control-node for the LTE network.
  MME establishes a connection and runs a security application to ensure
  that the UE is allowed on the network.
- In LTE mobile network, multiple UEs are connected to a single base station.
+ In LTE mobile network, multiple UEs are connected to a single eNB.
  A new UE performs a cell search procedure by searching for an available
  eNB when it first connects to the network.
  Then, the UE sends information about itself to establish a link between
@@ -567,7 +567,7 @@ There are thousands of automated tests performed.
  Each test belongs to a particular suite of tests, which belong to a particular
  Quality Assurance (QA) area.
  For this thesis, only a subset of test cases belonging to QA Capacity area,
- that focus on signaling capacity, is used.
+ that focuses on signaling capacity, is used.
  The QA Capacity is responsible for testing and tracking test cases related
  to eNB capacity.
  Each one of these test cases has a well-defined traffic model that it tries
@@ -919,8 +919,8 @@ EventsPerSec
 \emph default
  field are used to define the test case type and will also be used as predictor
  variables for a further analysis.
- If there is no value or no local events in this field, the particular test
- case and all the data related to the test case is ignored.
+ Therefore, if there is no value or no local events in this field, the particula
+r test case and all the data related to the test case will be ignored.
  These incomplete test cases in the data are accounted for four percent
  of all the test cases in the data.
 \end_layout
@@ -969,9 +969,8 @@ TotCpu%
  Although taking an average of multiple runs for test cases in the software
  package appears to be a good approach, it does not yield the best outcome
  in this case.
- The first reason is that manipulating data can easily be misleading.
- Another important reason for not using the average value of the CPU utilization
- is that the essential information in the test case could be lost.
+ The essential information in the test case could be lost if using the average
+ value of the CPU utilization.
  Each test case has its own local events in 
 \emph on
 EventsPerSec

@@ -534,7 +534,11 @@ The
 \emph on
 MSwM
 \emph default
- package in R 
+ package in 
+\emph on
+R
+\emph default
+ 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "mswm"
@@ -1061,8 +1065,8 @@ name "chap:Output"
 \end_layout
 
 \begin_layout Standard
-Outputs from applying Markov switching models with each dataset of the software
- release A, B, and C are shown in 
+Outputs from applying the Markov switching models with each dataset of the
+ software release A, B, and C are shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "output-L16A"
@@ -3548,7 +3552,7 @@ RrcConnectionSetupComplete
 \emph on
 TotCpu
 \emph default
- as a response variable.
+ as a response variable and no predictor variable.
  
 \begin_inset CommandInset ref
 LatexCommand ref

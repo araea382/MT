@@ -339,7 +339,7 @@ name "subsec:Model-selection"
 \end_layout
 
 \begin_layout Standard
-There is no fixed rules in deciding the number of states.
+There are no fixed rules in deciding the number of states.
  Therefore, different number of states were tried with the method in order
  to determine which number would be best for this analysis.
  The results from the model with two states offered less details and did
@@ -365,7 +365,7 @@ There is no fixed rules in deciding the number of states.
 \begin_layout Standard
 Among all the predictor variables, the local events variables in 
 \emph on
-EventPerSec
+EventsPerSec
 \emph default
  are more essential than the test environment variables.
  Having a constant value for the local events variables would be inadequate
@@ -439,23 +439,16 @@ key "perlin2015ms_regress"
 \end_inset
 
  is not recommended.
- This is also the main reason why not all the local events were included,
- and the model was not made to have all the switching coefficients.
+ This is also the main reason why not all the local events were included
+ in the model, and the model was not made to have all the switching coefficients.
  
 \end_layout
 
 \begin_layout Standard
-In this analysis, a three-state model which had all switching coefficients
- from Analysis I (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:States"
-
-\end_inset
-
-) acted as a baseline model for each dataset.
- This model was used to compare with other models which had different combinatio
-n of switching coefficients.
+The three-state model which had all switching coefficients from Analysis
+ I acted as a baseline model for each dataset.
+ Then, in Analysis II, this model was used to compare with other models
+ which had different combination of switching coefficients.
  If the compared model has higher BIC than the baseline model, its performance
  is concluded to be inferior and should not be considered for any further
  analysis.
@@ -584,9 +577,13 @@ Despite periods where there is a slightly decrease in CPU utilization value,
 Degradation
 \emph default
  state.
- As for State2 and State3, both states can be viewed as an Improvement state.
+ As for State2 and State3, both states can be viewed as an 
+\emph on
+Improvement
+\emph default
+ state.
  However, they may not be clearly distinguish between each other based on
- the current models.
+ the current model.
  
 \end_layout
 
@@ -609,8 +606,8 @@ There are many high peaks occurred in State1, and test cases tend to increase
 Degradation
 \emph default
  state.
- Nevertheless, the plot does not indicate any particular behavior in State2;
- therefore, nothing much can be inferred for this state.
+ The plot does not indicate any particular behavior in State2; therefore,
+ nothing much can be inferred for this state.
  State3 contains the period of positive and negative peaks, and does not
  appear to have a specific characteristic for the state of the CPU utilization.
  This also provides a difficulty of making an interpretation for State3.
@@ -636,7 +633,8 @@ Abrupt changes in the CPU utilization values when test cases enter State1
 \emph on
 Degradation
 \emph default
- state.The CPU utilization values tend to decrease its value in State2.
+ state.
+ The CPU utilization values tend to decrease its value in State2.
  This can be seen as an improving but it is still a bit unclear to directly
  define the state.
  Similarly to the software release B, State3 does not seem to have a distinctive
@@ -651,7 +649,7 @@ Test environment
 
 \begin_layout Standard
 This section contains a discussion about the effects of the test environments
- - 
+ (
 \emph on
 DuProdName
 \emph default
@@ -663,7 +661,7 @@ Fdd/Tdd
 \emph on
 NumCells
 \emph default
- - to the CPU utilization in each dataset.
+) to the CPU utilization in each dataset.
  
 \end_layout
 
@@ -802,7 +800,7 @@ In this study,
 NodeName
 \emph default
 , which is used to execute test cases, was assumed to be indifferent i.e.,
- the performance of test cases is the same regardless of the machine that
+ the performance of test cases is the same regardless of the hardware that
  used for running the test cases.
  Therefore, selecting a minimum value of the CPU utilization of the test
  case for each software package in data preprocessing step is reasonable.
@@ -895,8 +893,8 @@ RrcConnectionSetupComplete
  In the data preprocressing step, the minimum value of the CPU utilization
  of each software package is selected, regardless the type of test case.
  As a consequence, many types of test cases are presented in the final datasets.
- This leads to the sudden drop in the CPU utilization as can be seen in
- the plot of each software release.
+ This leads to the sudden drop or rise in the CPU utilization as can be
+ seen in the plot of each software release.
 \end_layout
 
 \begin_layout Standard
@@ -909,15 +907,16 @@ reference "chap:Output"
 \end_inset
 
 ).
- R-squared value is an intuitive measurement to determine how well the model
- fits with the data.
+ The r-squared value is an intuitive measurement to determine how well the
+ model fits with the data.
  In general, a higher r-squared value is preferable.
  Nevertheless, a high r-squared value does not necessarily indicate that
  the model is a good model because the model with high r-squared value could
  be overfitting due to the fact that too many predictor variables were used
  in the model.
- Using only r-squared value to determine adequacy of the model can be misleading.
- A residual analysis should be considered when evaluating a model.
+ Using only the r-squared value to determine adequacy of the model can be
+ misleading.
+ A residual analysis should also be considered when evaluating a model.
  
 \begin_inset Note Comment
 status collapsed
@@ -1047,8 +1046,8 @@ For this reason, a prediction for the new observations might not be accurate
 
 \end_inset
 
-This could be seen in a state prediction of the software release A (see
- 
+This could be seen in the results of a state prediction of the software
+ release A (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Predict"
