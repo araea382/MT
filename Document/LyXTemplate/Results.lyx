@@ -58,6 +58,8 @@
 
 % avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+\usepackage{cleveref} % cross-reference
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -324,10 +326,10 @@ The most relevant results of the analysis are shown and organized in this
  The results are shown in a later section.
  Next, the results of a non-parametric analysis are presented, and a comparison
  between the results of Markov switching model analysis and the results
- of non-parametric analysis are illustrated.
+ of E-divisive are illustrated.
  The last two sections report the results of a state prediction of the new
- observations in each dataset, and an evaluation of the predicting function
- using a simulated data.
+ observations in each dataset, and an evaluation of the Markov switching
+ model using simulated datasets.
  
 \end_layout
 
@@ -365,7 +367,7 @@ was used.
  More details about the package can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:MSwM-Package"
+reference "chap:Implementation"
 
 \end_inset
 
@@ -1312,7 +1314,8 @@ For the dataset of the software release A,
 \emph on
 DuProdName
 \emph default
- was not included in the model fitting as explained previously.
+ was not included in the model fitting as explained previously in Analysis
+ I.
  Only two variables of the test environment were left to try whether they
  could have non-switching effects or not.
  The result is shown in 
@@ -2892,8 +2895,8 @@ reference "L17A_NNN"
 .
  Around the end of the time series period, State3 appears to have a longer
  duration and fewer switches to State1.
- State2 seems to be the only state which has a fairly short duration for
- the chain to stay in the state.
+ State2 seems to be the only state which has a fairly short period for the
+ chain to stay in the state.
  Furthermore, State2 tends to switch to State1 more often than to switch
  to State3.
  The plot indicates some missed detections for this model which is happened
@@ -3390,9 +3393,15 @@ C
 \begin_layout Standard
 The CPU utilization of the software release A, B, and C along with its estimated
  change points in the time series are plotted and shown later in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Real-data"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cref{subsec:Real-data}
+\end_layout
 
 \end_inset
 
@@ -3422,7 +3431,7 @@ reference "compare_sim1"
 
 \end_inset
 
- illustrates that the simulated dataset contains nine actual change point
+ illustrates that the simulated Dataset 1 contains nine actual change point
  locations.
  For the Markov switching model, the model reported two extra locations.
  The plot illustrates that, besides the extra detected, the model performs
@@ -3512,7 +3521,7 @@ reference "compare_sim2"
 
  presents the actual change points, estimated change point locations of
  the Markov switching model and the E-divisive method in the data.
- The simulated dataset contains numerous switches between states.
+ The simulated Dataset 2 contains numerous switches between states.
  Generally, the Markov switching model is able to identify the changes considera
 bly well despite a few false alarms and missed detections.
  On the other hand, the E-divisive method can detect only two estimated
@@ -3820,8 +3829,8 @@ name "sec:Predict"
 \begin_layout Standard
 In this section, the state prediction function was implemented to the test
  set in order to predict the most probable state for new observations.
- The training models were the obtained Markov switching models from Analysis
- II.
+ The training models were the selected Markov switching models for each
+ dataset of the software release from Analysis II.
  
 \end_layout
 
@@ -3978,7 +3987,7 @@ reference "predict_L17A"
 \end_inset
 
  illustrates that the observations stay in State2 for a considerably long
- period of time (observation 10-15).
+ duration (observation 10-15).
  There are several switches between states shown in the plot.
  The time period between the observations 4 and 7 switch between states
  rapidly.
@@ -4067,9 +4076,15 @@ reference "output-sim1"
  From the results, State2 has the highest standard error.
  When inferring back to the actual models that were used to generate these
  three states in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Simulation"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cref{sec:Simulation}
+\end_layout
 
 \end_inset
 
@@ -4439,7 +4454,8 @@ name "output-sim1"
 \end_layout
 
 \begin_layout Standard
-The result of the model performance using Dataset 1 is shown in 
+The result of the model performance using the sinulated Dataset 1 is shown
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "confusion"

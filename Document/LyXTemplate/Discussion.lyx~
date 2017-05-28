@@ -58,6 +58,8 @@
 
 % avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+\usepackage{cleveref} % cross-reference
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -821,14 +823,7 @@ I'm here
 \end_layout
 
 \begin_layout Standard
-As mentioned previously in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:States"
-
-\end_inset
-
-, a variable called 
+As mentioned previously in Analysis I, a variable called 
 \emph on
 DuProdName
 \emph default
@@ -951,9 +946,15 @@ There are many factors that affect value of r-squared.
 A Q-Q plot is a visual check for an assumption of normality.
  The plot provides a rough idea whether the assumption is plausible or not.
  From the residual analysis in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Residual"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cref{sec:Residual}
+\end_layout
 
 \end_inset
 
@@ -1046,15 +1047,8 @@ For this reason, a prediction for the new observations might not be accurate
 
 \end_inset
 
-This could be seen in a state prediction of the software release A (see
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Predict"
-
-\end_inset
-
-).
+This could be seen in the results of a state prediction of the software
+ release A.
  Secondly, only the predictor variables that have been analyzed to have
  significant impacts on the CPU utilization were included in the model.
  However, many other variables that are likely to have minor impact on the
@@ -1297,15 +1291,7 @@ reference "sec:Assessing"
 \end_layout
 
 \begin_layout Standard
-In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Assessing"
-
-\end_inset
-
-, an evaluation for each model was performed.
- The Markov switching model was able to predict the state for the test set
+The Markov switching model was able to predict the state for the test set
  of the simulated Dataset 1 considerably well.
  The estimated coefficients in each state were similar to the coefficients
  in the actual models as well, except for an intercept of State2.
@@ -1354,13 +1340,9 @@ Bad
  switches between states in the data.
  This indicated that the method performed well in identifying the switches
  between states.
- 
-\end_layout
-
-\begin_layout Standard
-From the results obtained in this section, it can also be implied that a
- state prediction function, an additional implemented function in the package,
- is able to work properly.
+ From the results obtained in this section, it can also be implied that
+ a state prediction function, an additional implemented function in the
+ package, is able to work properly.
  
 \end_layout
 

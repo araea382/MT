@@ -969,9 +969,8 @@ TotCpu%
  Although taking an average of multiple runs for test cases in the software
  package appears to be a good approach, it does not yield the best outcome
  in this case.
- The first reason is that manipulating data can easily be misleading.
- Another important reason for not using the average value of the CPU utilization
- is that the essential information in the test case could be lost.
+ The essential information in the test case could be lost if using the average
+ value of the CPU utilization.
  Each test case has its own local events in 
 \emph on
 EventsPerSec

@@ -58,6 +58,8 @@
 
 % avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+\usepackage{cleveref} % cross-reference
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -488,7 +490,7 @@ MSwM
  and plots for visualizing the results (More details can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:MSwM-Package"
+reference "chap:Implementation"
 
 \end_inset
 
@@ -2703,7 +2705,7 @@ The package used for performing the Markov switching model does not provide
  function in the package for this analysis (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:MSwM-Package"
+reference "chap:Implementation"
 
 \end_inset
 

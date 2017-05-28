@@ -3548,7 +3548,7 @@ One future extension for this analysis is to restrict data to a specific
 RrcConnectionSetupComplete
 \emph default
  value between 164 and 166.
- The Markov switching model was performed with only the 
+ The Markov switching model was performed with the 
 \emph on
 TotCpu
 \emph default

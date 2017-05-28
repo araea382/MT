@@ -605,64 +605,6 @@ key "gill2004your"
 \end_layout
 
 \begin_layout Paragraph*
-Plots
-\end_layout
-
-\begin_layout Standard
-Two more plots for visualizing the results have been added to the package.
- Name of functions and descriptions are provided below.
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-plotSmo(object)
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Plot of smoothed probabilities with different regimes
-\end_layout
-
-\begin_layout Standard
-Description: Creates a plot that shows the smoothed probabilities for all
- the regimes.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-plotArea(object)
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Plot of response variable with regimes specifications
-\end_layout
-
-\begin_layout Standard
-Description: Create a plot that shows the periods where the variable is
- in a specific regime.
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph*
 Categorical variable
 \end_layout
 
@@ -789,6 +731,64 @@ One approach to resolve this issue is by removing the process of partitioning
  
 \end_layout
 
+\begin_layout Paragraph*
+Plots
+\end_layout
+
+\begin_layout Standard
+Two more plots for visualizing the results have been added to the package.
+ Name of functions and descriptions are provided below.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+plotSmo(object)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Plot of smoothed probabilities with different regimes
+\end_layout
+
+\begin_layout Standard
+Description: Creates a plot that shows the smoothed probabilities for all
+ the regimes.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+plotArea(object)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Plot of response variable with regimes specifications
+\end_layout
+
+\begin_layout Standard
+Description: Create a plot that shows the periods where the variable is
+ in a specific regime.
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 State prediction function
 \end_layout

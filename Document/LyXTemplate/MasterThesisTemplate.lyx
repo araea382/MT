@@ -61,6 +61,8 @@
 
 \usepackage{natbib}
 \usepackage{algorithm,algpseudocode}
+
+\usepackage{cleveref} % cross-reference
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -306,16 +308,15 @@ Supervisor
 \begin_inset Newline newline
 \end_inset
 
+LiU: Krzysztof Bartoszek
+\emph on
 
-\emph on
-LiU:
+\begin_inset Newline newline
+\end_inset
+
+
 \emph default
- Dr.
- Krzysztof Bartoszek, 
-\emph on
-Ericsson: 
-\emph default
-Armin Catovic and Jonas Eriksson
+Ericsson: Armin Catovic and Jonas Eriksson
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -335,8 +336,7 @@ Examiner
 \begin_inset Newline newline
 \end_inset
 
-Prof.
- Anders Nordgaard
+Anders Nordgaard
 \begin_inset VSpace smallskip
 \end_inset
 

@@ -943,7 +943,7 @@ EventsPerSec
  in details in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:EventsPerSec"
+reference "chap:Implementation"
 
 \end_inset
 

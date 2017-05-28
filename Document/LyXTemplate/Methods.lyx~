@@ -58,6 +58,8 @@
 
 % avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+\usepackage{cleveref} % cross-reference
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -488,7 +490,7 @@ MSwM
  and plots for visualizing the results (More details can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:MSwM-Package"
+reference "chap:Implementation"
 
 \end_inset
 
@@ -3077,8 +3079,8 @@ where,
 \end_layout
 
 \begin_layout Standard
-There are two simulated datasets – Dataset 1 and Dataset 2 – and each of
- them contains 500 observations.
+There are two simulated datasets, Dataset 1 and Dataset 2, and each of them
+ contains 500 observations.
  Both datasets have different time periods where the switches between states
  occur.
  The simulated Dataset 1 has a longer duration to remain in its own state

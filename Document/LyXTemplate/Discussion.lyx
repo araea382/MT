@@ -58,6 +58,8 @@
 
 % avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+\usepackage{cleveref} % cross-reference
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -662,18 +664,18 @@ Fdd/Tdd
 NumCells
 \emph default
 ) to the CPU utilization in each dataset.
- 
-\end_layout
-
-\begin_layout Paragraph
-Software release A (see 
+ Outputs are shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "output-L16A"
+reference "chap:Output"
 
 \end_inset
 
-)
+.
+\end_layout
+
+\begin_layout Paragraph
+Software release A
 \end_layout
 
 \begin_layout Standard
@@ -692,14 +694,7 @@ NumCells
 \end_layout
 
 \begin_layout Paragraph
-Software release B (see
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "output_L16B"
-
-\end_inset
-
-)
+Software release B
 \end_layout
 
 \begin_layout Standard
@@ -728,14 +723,7 @@ Fdd/Tdd
 \end_layout
 
 \begin_layout Paragraph
-Software release C (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "output_L17A"
-
-\end_inset
-
-)
+Software release C
 \end_layout
 
 \begin_layout Standard
@@ -776,22 +764,6 @@ A thorough search of relevant literature yielded that this thesis work might
  However, because of differences in the characteristic of the data, the
  procedure was slightly adjusted.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-A large amount of time was spent on understanding the data, examining which
- variables had a significant impact on the CPU utilization, and determining
- which methods would provide the best possible outcome for this problem.
- Besides, after deciding on the most promising method, a lot of effort was
- invested studying implemented algorithms in the R package as well as modifying
- code as necessary.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -808,53 +780,13 @@ NodeName
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-I'm here
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-As mentioned previously in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:States"
-
-\end_inset
-
-, a variable called 
+As mentioned previously in Analysis I, a variable called 
 \emph on
 DuProdName
 \emph default
- in the dataset of the software release A
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-, which is an exact linear combination of the other variables,
-\end_layout
-
-\end_inset
-
- was excluded from the regression model as it caused a singularity problem.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The singularity often happens when the size of data is small.
- 
-\end_layout
-
-\end_inset
-
-This problem could be reduced by increasing the size of the data.
+ in the dataset of the software release A was excluded from the regression
+ model as it caused a singularity problem.
+ This problem could be reduced by increasing the size of the data.
  However, with a limited available data, fifty-seven observations in this
  dataset, the variable 
 \emph on
@@ -862,21 +794,6 @@ DuProdName
 \emph default
  has to be dropped from the regression model before doing a further analysis.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Fifty-seven observations in this dataset were used to train the Markov switching
- model.
- The dataset (or the number of test cases in the software release) is rather
- small, which increases a probability of singularity occurrence.
- Therefore, unless there is more data, it is better to drop the variable
- from the regression model before doing a further analysis.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -918,42 +835,21 @@ reference "chap:Output"
  misleading.
  A residual analysis should also be considered when evaluating a model.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-R-squared cannot determine whether the coefficient estimates and predictions
- are biased, which is why you must assess the residual plots.
-\end_layout
-
-\begin_layout Plain Layout
-R-squared value cannot be solely used to indicate whether the model is adequate
- or not.
- In order to assess this, a residual analysis is required.
- 
-\end_layout
-
-\begin_layout Plain Layout
-There are many factors that affect value of r-squared.
- One factor is the number of predictor variables in the model.
- R-squared value increases when there are more terms in the model.
- Another reason, which is somehow a consequence of adding too many predictor
- variables, is that the model might be overfitting the data.
- As a result, the model produces misleading high r-squared.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 A Q-Q plot is a visual check for an assumption of normality.
  The plot provides a rough idea whether the assumption is plausible or not.
  From the residual analysis in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Residual"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cref{sec:Residual}
+\end_layout
 
 \end_inset
 
@@ -973,59 +869,6 @@ reference "sec:Residual"
  Moreover, these plots indicate that an AR(1) is already justified for these
  datasets.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The assumption of a normally distributed residuals is justified for software
- release B.
-\end_layout
-
-\begin_layout Plain Layout
-If the residuals appear to behave randomly, it suggests that the model fits
- the data well.
-\end_layout
-
-\begin_layout Plain Layout
-randomness tends to obscure the actual behavior especially with small data
-\end_layout
-
-\begin_layout Plain Layout
-Furthermore, the model is able to capture the pattern of data rather well.
-\end_layout
-
-\begin_layout Plain Layout
-The model seems to capture the dependent structure of the error terms in
- the time series, except for the reported significant lag.
- 
-\end_layout
-
-\begin_layout Plain Layout
-heavy tail = high variance
-\end_layout
-
-\begin_layout Plain Layout
-independent of noise terms
-\end_layout
-
-\begin_layout Plain Layout
-There is an outlier in the residuals (2004:Q4) which suggests there was
- something unusual happening in that quarter.
- It would be worth investigating that outlier to see if there were any unusual
- circumstances or events that may have reduced beer production for the quarter.
-\end_layout
-
-\begin_layout Plain Layout
-The remaining residuals show that the model has captured the patterns in
- the data quite well, although there is a small amount of autocorrelation
- left in the residuals (seen in the significant spike in the ACF plot).
- This suggests that the model can be slightly improved, although it is unlikely
- to make much difference to the resulting forecasts.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1034,27 +877,8 @@ More importantly, the results of the Markov switching model could be affected
  Due to a small size of the training data, the training model will not be
  very effective and unable to capture the behaviors of new observations
  that lie outside the range of the training data.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-For this reason, a prediction for the new observations might not be accurate
- as it should be.
- 
-\end_layout
-
-\end_inset
-
-This could be seen in the results of a state prediction of the software
- release A (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Predict"
-
-\end_inset
-
-).
+ This could be seen in the results of a state prediction of the software
+ release A.
  Secondly, only the predictor variables that have been analyzed to have
  significant impacts on the CPU utilization were included in the model.
  However, many other variables that are likely to have minor impact on the
@@ -1066,44 +890,6 @@ reference "sec:Predict"
  Hence, these chosen numbers might not be the best for different perspectives
  and so could be counted as one of the bias as well.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-other factors which are not considered in the model might also be the reason
- of causing a bias.
- The chosen predictor variables in this thesis are variables that have a
- partial prior knowledge and have been analyzed to have some significant
- impacts on CPU utilization.
- However, it is possible that there are still some explanatory information
- that is overlooked.
- Finally, selecting the number of states and switching coefficients in the
- model could cause a bias as well.
- Finally, selecting the number of states and the number of switching coefficient
-s in the model could cause a bias as well.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-As described above, the small dataset is proven to cause several problems
- and difficulty to the analysis.
- The size of data is crucial in statistical analysis because more information
- can be extracted and used as an input for the model to learn.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1126,45 +912,6 @@ key "sharkey2014nonparametric"
  that have influence on the CPU utilization into the analysis but the E-divisive
  method only considered the values of the CPU utilization.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Note that when the Markov switching model was performed, variables that
- have influences on the CPU utilization were also included in the model.
- On the other hand, the E-divisive method only considered the values of
- the CPU utilization.
- With this difference, the E-divisive method will have less power to identify
- actual changes in the CPU utilization.
- Since there are other variables that affect the value of the CPU utilization,
- it is insufficient to take into account only the response variable.
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-The E-divisive method appears to perform reasonably well in detecting changes
- as far as a non-parametric analysis could.
- As can be seen from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Real-data"
-
-\end_inset
-
-, the method is able to detect when a change is happened around the same
- time as the Markov switching model did.
- Even though the E-divisive method might not provide the best result, it
- can give a general idea of estimated change points.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1187,45 +934,12 @@ reference "compare_sim2"
  For instance, the method could not identify any changes in the first hundred
  observations, and also at the end of the time series in the simulated Dataset
  1.
- 
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-Besides, the duration that time series stays in one state also affects the
- ability of the E-divisive method to discover the change point locations.
- In the simulated Dataset 2, many switches between states occur over the
- time period.
- As a result, the period of staying in each state is short.
- 
-\end_layout
-
-\end_inset
-
  This is even more clear when examining the results in the simulated Dataset
  2 where the E-divisive method could only detect two change point locations.
  If the response variable value fluctuates but the average value does not
  change drastically, the E-divisive method will not be able to identify
  the state change.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-To illustrate, the switching pattern is considerably difficult to notice
- in the simulated Dataset 2.
- The period of staying in the state is short and there are many switches
- between states occur over the period of time.
- The shift for the response variable is not dramatic that one can see the
- huge difference when there is a switch in the state.
- Therefore, the E-divisive method could only detect two change point locations
- where the shifts were obvious.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1242,70 +956,10 @@ Despite some false alarms and missed detections as seen when the methods
  exact location, there are small chances that the detections could be false
  alarms.
  
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-these two methods appear to discover changes at around the same location
- that the actual changes occur.
- This suggests that for the real data, where the actual state is unknown,
- the actual changes might occur around locations which were detected by
- these two methods.
- Despite some false alarms and missed detections as seen when testing methods
- with the simulated datasets, when applying both the Markov switching model
- and the E-divisive method the to the real data if these two methods can
- identify the change point at the exact same location, then there is a high
- probability the the change is an actual change of the state.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status collapsed
-
-\begin_layout Plain Layout
-This can be observed by examining the results from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Assessing"
-
-\end_inset
-
-.
- The accuracy of the model for the test set in the simulated Dataset 1 was
- significantly high.
- One reason is that the simulated data had an obvious pattern in switching
- between states.
- Besides, each state remained in its own state for a while before switching
- to the other states.
- Therefore, the model can completely capture the behavior of the time series
- data.
- In contrast, the simulated Dataset 2 had several switches between states
- and each state did not have a long duration.
- Even though the pattern of the response variable is rather difficult to
- see in the plot, the Markov switching model still perform rather well for
- this dataset.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Assessing"
-
-\end_inset
-
-, an evaluation for each model was performed.
- The Markov switching model was able to predict the state for the test set
+The Markov switching model was able to predict the state for the test set
  of the simulated Dataset 1 considerably well.
  The estimated coefficients in each state were similar to the coefficients
  in the actual models as well, except for an intercept of State2.
@@ -1354,13 +1008,9 @@ Bad
  switches between states in the data.
  This indicated that the method performed well in identifying the switches
  between states.
- 
-\end_layout
-
-\begin_layout Standard
-From the results obtained in this section, it can also be implied that a
- state prediction function, an additional implemented function in the package,
- is able to work properly.
+ From the results obtained in this section, it can also be implied that
+ a state prediction function, an additional implemented function in the
+ package, is able to work properly.
  
 \end_layout
 
