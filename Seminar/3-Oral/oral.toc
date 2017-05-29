@@ -4,7 +4,7 @@
 \beamer@subsectionintoc {1}{2}{Objectives}{3}{0}{1}
 \beamer@sectionintoc {2}{Data}{4}{0}{2}
 \beamer@subsectionintoc {2}{1}{Data sources}{4}{0}{2}
-\beamer@subsectionintoc {2}{2}{Data preprocessing}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Data preprocessing}{6}{0}{2}
 \beamer@sectionintoc {3}{Method}{7}{0}{3}
 \beamer@subsectionintoc {3}{1}{Markov switching model}{8}{0}{3}
 \beamer@subsectionintoc {3}{2}{E-divisive method}{10}{0}{3}

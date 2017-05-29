@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.18)  26 MAY 2017 18:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.18)  29 MAY 2017 10:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -964,59 +964,67 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 
 ] [3
 
-]
-\openout4 = `Oral.vrb'.
+] <LTE.png, id=344, 380.42125pt x 363.3575pt>
+File: LTE.png Graphic file (type png)
+ <use LTE.png>
+Package pdftex.def Info: LTE.png used on input line 144.
+(pdftex.def)             Requested size: 184.3758pt x 176.11172pt.
+ [4
 
- (./Oral.vrb Excluding 'comment' comment.) [4
-
-] [5
-
-] [6
-
-] [7
-
-]
-LaTeX Font Info:    Try loading font information for U+msa on input line 259.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
+ <./LTE.png>]
+LaTeX Font Info:    Try loading font information for U+msa on input line 171.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 259.
+LaTeX Font Info:    Try loading font information for U+msb on input line 171.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 259.
+line 171.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) [8
+) <data-mix2.png, id=403, 468.75125pt x 396.48125pt>
+File: data-mix2.png Graphic file (type png)
+ <use data-mix2.png>
+Package pdftex.def Info: data-mix2.png used on input line 171.
+(pdftex.def)             Requested size: 199.73653pt x 168.9409pt.
+
+[5
+
+ <./data-mix2.png>] [6
+
+] [7
+
+] [8
 
 ] [9
 
 ]
-\openout4 = `Oral.vrb'.
+<divisive.png, id=702, 291.33844pt x 256.70906pt>
+File: divisive.png Graphic file (type png)
+ <use divisive.png>
+Package pdftex.def Info: divisive.png used on input line 263.
+(pdftex.def)             Requested size: 107.55333pt x 94.76933pt.
+ [10
 
- (./Oral.vrb Excluding 'comment' comment.) [10
-
-] [11
+ <./divisive.png>] [11
 
 ] [12
 
 ] [13
 
-]
-[14
+] [14
 
 ] [15
 
 ]
 \openout4 = `Oral.vrb'.
 
- (./Oral.vrb Excluding 'comment' comment.
-Excluding 'comment' comment.) [16
+ (./Oral.vrb) [16
 
 ] [17
 
@@ -1025,18 +1033,18 @@ Excluding 'comment' comment.) [16
 ] [19
 
 ]
-<sim1.png, id=1295, 1204.5pt x 752.8125pt>
+<sim1.png, id=1282, 1204.5pt x 752.8125pt>
 File: sim1.png Graphic file (type png)
  <use sim1.png>
-Package pdftex.def Info: sim1.png used on input line 547.
+Package pdftex.def Info: sim1.png used on input line 429.
 (pdftex.def)             Requested size: 307.28987pt x 192.0508pt.
  [20
 
  <./sim1.png>]
-<sim2.png, id=1356, 1204.5pt x 752.8125pt>
+<sim2.png, id=1340, 1204.5pt x 752.8125pt>
 File: sim2.png Graphic file (type png)
  <use sim2.png>
-Package pdftex.def Info: sim2.png used on input line 557.
+Package pdftex.def Info: sim2.png used on input line 439.
 (pdftex.def)             Requested size: 307.28987pt x 192.0508pt.
  [21
 
@@ -1044,73 +1052,71 @@ Package pdftex.def Info: sim2.png used on input line 557.
 \openout4 = `Oral.vrb'.
 
 
-(./Oral.vrb Excluding 'comment' comment.) [22
+(./Oral.vrb) [22
 
-] (./Oral.vrb
-Excluding 'comment' comment.) [23
+] (./Oral.vrb) [23
 
 ]
-<compare_L16A.png, id=1531, 1204.5pt x 451.6875pt>
+<compare_L16A.png, id=1513, 1204.5pt x 451.6875pt>
 File: compare_L16A.png Graphic file (type png)
  <use compare_L16A.png>
-Package pdftex.def Info: compare_L16A.png used on input line 605.
+Package pdftex.def Info: compare_L16A.png used on input line 472.
 (pdftex.def)             Requested size: 307.28987pt x 115.23047pt.
 
 [24
 
- <./compare_L16A.png>] <compare_L16B.png, id=1591, 1204.5pt x 451.6875pt>
+ <./compare_L16A.png>] <compare_L16B.png, id=1572, 1204.5pt x 451.6875pt>
 File: compare_L16B.png Graphic file (type png)
 
 <use compare_L16B.png>
-Package pdftex.def Info: compare_L16B.png used on input line 619.
+Package pdftex.def Info: compare_L16B.png used on input line 486.
 (pdftex.def)             Requested size: 307.28987pt x 115.23047pt.
  [25
 
  <./compare_L16B.png>]
-<compare_L17A.png, id=1651, 1204.5pt x 451.6875pt>
+<compare_L17A.png, id=1631, 1204.5pt x 451.6875pt>
 File: compare_L17A.png Graphic file (type png)
  <use compare_L17A.png>
-Package pdftex.def Info: compare_L17A.png used on input line 632.
+Package pdftex.def Info: compare_L17A.png used on input line 499.
 (pdftex.def)             Requested size: 307.28987pt x 115.23047pt.
 
 [26
 
- <./compare_L17A.png>] <L16A_NN1.png, id=1711, 1204.5pt x 351.3125pt>
+ <./compare_L17A.png>] <L16A_NN1.png, id=1690, 1204.5pt x 351.3125pt>
 File: L16A_NN1.png Graphic file (type png)
 
 <use L16A_NN1.png>
-Package pdftex.def Info: L16A_NN1.png used on input line 651.
+Package pdftex.def Info: L16A_NN1.png used on input line 518.
 (pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
  [27
 
  <./L16A_NN1.png>]
 File: L16A_NN1.png Graphic file (type png)
  <use L16A_NN1.png>
-Package pdftex.def Info: L16A_NN1.png used on input line 651.
+Package pdftex.def Info: L16A_NN1.png used on input line 518.
 (pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
  [28
 
 ]
-<L16B_NYY1.png, id=1829, 1204.5pt x 351.3125pt>
+<L16B_NYY1.png, id=1806, 1204.5pt x 351.3125pt>
 File: L16B_NYY1.png Graphic file (type png)
  <use L16B_NYY1.png>
-Package pdftex.def Info: L16B_NYY1.png used on input line 668.
+Package pdftex.def Info: L16B_NYY1.png used on input line 535.
 (pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
  [29
 
- <./L16B_NYY1.png>] <L17A_NNN1.png, id=1889, 1204.5pt x 351.3125pt>
+ <./L16B_NYY1.png>] <L17A_NNN1.png, id=1864, 1204.5pt x 351.3125pt>
 File: L17A_NNN1.png Graphic file (type png)
 
 <use L17A_NNN1.png>
-Package pdftex.def Info: L17A_NNN1.png used on input line 685.
+Package pdftex.def Info: L17A_NNN1.png used on input line 552.
 (pdftex.def)             Requested size: 307.28987pt x 89.6237pt.
  [30
 
  <./L17A_NNN1.png>]
 \openout4 = `Oral.vrb'.
 
- (./Oral.vrb
-Excluding 'comment' comment.) [31
+ (./Oral.vrb) [31
 
 ] [32
 
@@ -1129,28 +1135,29 @@ Excluding 'comment' comment.) [31
 \tf@snm=\write9
 \openout9 = `Oral.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 804.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 804.
- (./Oral.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 804.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 804.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 629.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 629.
+
+(./Oral.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 629.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 629.
 Package rerunfilecheck Info: File `Oral.out' has not changed.
-(rerunfilecheck)             Checksum: 8ACE9042809A2432FA66647687104DEA;1292.
+(rerunfilecheck)             Checksum: 8EC584F933071A6C993AE1A8945EF00E;1292.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 804.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 629.
  ) 
 Here is how much of TeX's memory you used:
- 17174 strings out of 493089
- 330786 string characters out of 6134842
- 418789 words of memory out of 5000000
- 20124 multiletter control sequences out of 15000+600000
+ 17182 strings out of 493089
+ 330939 string characters out of 6134842
+ 419246 words of memory out of 5000000
+ 20133 multiletter control sequences out of 15000+600000
  18618 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,20n,57p,384b,820s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,20n,57p,384b,806s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -1166,10 +1173,10 @@ l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Oral.pdf (34 pages, 997087 bytes).
+Output written on Oral.pdf (34 pages, 1133687 bytes).
 PDF statistics:
- 2262 PDF objects out of 2487 (max. 8388607)
- 2123 compressed objects within 22 object streams
+ 2232 PDF objects out of 2487 (max. 8388607)
+ 2089 compressed objects within 21 object streams
  93 named destinations out of 1000 (max. 500000)
- 305 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 320 words of extra memory for PDF output out of 10000 (max. 10000000)
 
