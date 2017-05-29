@@ -1,8 +1,0 @@
-econometrics-03-00289-v2
-
-All this illustrates why BIC does not choose the right model (results of Tables 2,
-3 and 7): if the regimes are not properly identified, the estimation will be less accurate and the value of
-the likelihood function lower. Thus, AIC and BIC have higher values and become inaccurate in selecting
-the model. The loss functions computed with the true volatility are not affected by the likelihood value
-and are more efficient than the information criteria.
-
