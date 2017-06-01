@@ -120,7 +120,7 @@ In Ericsson,
 \begin{itemize}
 	\item Many test cases are executed for testing software packages 
 	\item Evaluate the performance of an updated software package by visualizing the graph 
-	\item Algorithm that can reduce workload of manual inspection
+	\item Algorithm that can reduce the workload of manual inspection
 \end{itemize}	
 
 \end{frame}
@@ -159,6 +159,10 @@ In Ericsson,
 		\item Test case
 		
 		$\rightarrow$ an \textit{observation} in the dataset 
+		
+		\vspace{0.5em}
+		
+		\small{Remark: There are different types of test cases}
 	\end{itemize}
 	
 	\column{.65\textwidth} % Right column and width
@@ -175,9 +179,25 @@ In Ericsson,
 %------------------------------------------------
 \subsection{Data preprocessing}
 \begin{frame}
-Three datasets: Software release A, B, and C contain 64, 241, and 144 test cases, respectively
+	%\frametitle{Data preprocessing}
+	Data is collected on January 20, 2017
+	
+	Three datasets: Software release A, B, and C
+	\begin{itemize}
+		\item Sorted by software package version
+		\item Filtered out test cases which are not executed properly
+		\item Selected test case which has the \textit{lowest} value of the CPU utilization to represent a performance of a specific software package
+	\end{itemize}
+	
+	In total, each dataset contains 64, 241, and 144 test cases, respectively
+	
+\end{frame}
 
-\vspace{1em}
+%------------------------------------------------
+\begin{frame}
+%Three datasets: Software release A, B, and C contain 64, 241, and 144 test cases, respectively
+
+%\vspace{1em}
 
 Response variable 
 \begin{itemize}
@@ -193,7 +213,7 @@ Predictor variables
 		\item Paging
 		\item X2HandoverRequest
 	\end{itemize}	
-		\item Test environments
+		\item test environments
 	\begin{itemize}
 		\item DuProdName: Product hardware name
 		\item Fdd/Tdd: Different standard of LTE 4G Technology
@@ -213,10 +233,36 @@ Method
 	\item Tools
 \end{itemize}
 \end{frame}
+
 %------------------------------------------------
 \subsection{Markov switching model}
 \begin{frame}
+	
+	\begin{block}{Markov switching autoregressive model}
+		\[
+		y_{t} = X_{t}\beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0,\sigma^{2}_{S_{t}})
+		\]
+	\end{block}
+	
+	Assuming that $S_{t}$ denote an unobservable state variable
+	
+	$y_{t}$ is the observed value of time series at time $t$ 
+	
+	$X_{t}$ is a design matrix containing the predictor variables of time series at time $t$ 
+	
+	$\beta_{S_{t}}$ are a column vector of the coefficients in state $S_{t}$, where $S_{t}=1,2,...,k$
+	
+	$\phi_{1,S_{t}}$ is an autoregression coefficient at time $t-1$ in state $S_{t}$
+	
+	\begin{figure}
+		\includegraphics[width=0.5\linewidth]{msm-ar1}
+		\caption{Model with additional dependencies at observation level}
+	\end{figure}
+	
+\end{frame}
 
+%------------------------------------------------
+\begin{frame}
 \begin{block}{Markov switching autoregressive model}
 \[
 y_{t} = X_{t}\beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}, \quad \varepsilon_{t} \sim N(0,\sigma^{2}_{S_{t}})
@@ -226,7 +272,7 @@ y_{t} = X_{t}\beta_{S_{t}} + \phi_{1,S_{t}} y_{t-1} + \varepsilon_{t}, \quad \va
 Assuming that $S_{t}$ denote an unobservable state variable
 
 \vspace{1em}
-\pause
+%\pause
 A coefficient of a predictor variable can have either different values in different state, $\beta_{S_{t}}$,  or a constant value in all state, $\beta$. 
 
 \vspace{1em}
@@ -246,12 +292,12 @@ The variable which has the \textit{same} coefficient in all states is the variab
 
 \column{.65\textwidth} % Left column and width
 E-divisive \cite{p3}
-\begin{enumerate}
+\begin{itemize}
 	\item Non-parametric approach: more flexible as no assumption about the distribution is made
 	\item Detects multiple change point locations based on a divisive hierarchical estimation algorithm
 	\item Algorithm: Recursively partition a time series, and perform a permutation test to find the statistical significance of an estimated change point.
 	\item Remark: Obtain a rough idea of the change point location 
-\end{enumerate}
+\end{itemize}
 
 \column{.35\textwidth} % Right column and width
 \begin{figure}
@@ -278,7 +324,7 @@ $\quad \rightarrow$ Make it more stable to use with categorical variables
 
 $\quad \rightarrow$ State prediction function
 
-$\quad \rightarrow$ Plot for visualizing the results
+$\quad \rightarrow$ Plots for visualizing the results
 
 	\item E-divisive method is performed using \textit{ecp} package \cite{p3}
 \end{itemize}
@@ -411,9 +457,9 @@ $y_{t}=\begin{cases}
 
 $y_{t}$ is assumed to be value of a CPU usage
 
-$x_{1,t}\sim U[50,200]$
+$X_{1,t}\sim U[50,200]$
 
-$x_{2,t}\sim U[0,50]$ 
+$X_{2,t}\sim U[0,50]$ 
 
 $\varepsilon_{t}^{(1)}\sim N(0,1),\quad \varepsilon_{t}^{(2)}\sim N(2,0.5),\quad \mathrm{and} \quad \varepsilon_{t}^{(3)}\sim N(1,1)$
 
@@ -441,9 +487,27 @@ $\varepsilon_{t}^{(1)}\sim N(0,1),\quad \varepsilon_{t}^{(2)}\sim N(2,0.5),\quad
 
 %------------------------------------------------
 \subsection{Comparison between both methods}
+
+\begin{frame}
+	Apply the Markov switching model and the E-divisive method to the simulated Dataset 1 and Dataset 2
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+	\includegraphics[width=1\linewidth]{compare_sim1}
+	\caption{Top: Actual change point, Middle: Markov switching model, Bottom: E-divisive method}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\includegraphics[width=1\linewidth]{compare_sim2}
+		\caption{Top: Actual change point, Middle: Markov switching model, Bottom: E-divisive method}
+	\end{figure}
+\end{frame}
+
 \begin{frame}[fragile]
-Apply the Markov switching model and the E-divisive method to the simulated Dataset 1 and Dataset 2, it is found that
-\pause
+It is found that
 
 \begin{itemize}
 	\item Both methods detect changes at the same location 
@@ -454,7 +518,9 @@ Apply the Markov switching model and the E-divisive method to the simulated Data
 	
 	$\rightarrow$ lower chance to be a false alarm
 	
-	%\item  If the response variable value fluctuates but the average value does not change drastically, the E-divisive method will not be able to identify the state change.
+	\item  The response variable value fluctuates but the average value does not change drastically
+	
+	$\rightarrow$ E-divisive method will not be able to identify the state change
 \end{itemize}
 
 \end{frame}
