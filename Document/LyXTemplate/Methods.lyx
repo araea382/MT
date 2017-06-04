@@ -468,7 +468,7 @@ Technical aspects
 \end_layout
 
 \begin_layout Standard
-The thesis work has been carried out using the 
+This thesis work has been carried out using the 
 \emph on
 R
 \emph default
@@ -874,7 +874,7 @@ stationary distribution
 \begin_inset Formula $\pi=\pi\mathbf{P}$
 \end_inset
 
-, which is 
+, that is 
 \begin_inset Formula $\pi_{j}=\sum_{i}\pi_{i}p_{ij}$
 \end_inset
 
@@ -1181,7 +1181,7 @@ A Markov switching model is a switching model where the shifting back and
  levels of hierarchy.
  One process is an underlying stochastic process that is not normally observable
 , but possible to be observed through another stochastic process which generates
- the sequence of observation 
+ the sequence of observations 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rabiner1986introduction"
@@ -1190,8 +1190,8 @@ key "rabiner1986introduction"
 
 .
  The transition time between two states is random.
- In addition, the state are assumed to follow the Markov property that the
- future state depends only on the current state.
+ In addition, the states are assumed to follow the Markov property that
+ the future state depends only on the current state.
  
 \end_layout
 
@@ -1435,7 +1435,7 @@ The transition matrix
 \begin_inset Formula $\mathbf{P}$
 \end_inset
 
- is an 
+ is a 
 \begin_inset Formula $2\mathrm{x}2$
 \end_inset
 
@@ -1597,7 +1597,7 @@ There are several options for choosing the probability of the initial state.
 \end_layout
 
 \begin_layout Standard
-which is simply from solving the system of equations 
+which is simply obtained from solving the system of equations 
 \begin_inset Formula $\pi=\pi\mathbf{P}$
 \end_inset
 
@@ -1790,7 +1790,7 @@ where,
 \begin_inset Formula $\alpha_{t}$
 \end_inset
 
- are a column vector of non-switching coefficients of the time series at
+ is a column vector of non-switching coefficients of the time series at
  time 
 \begin_inset Formula $t$
 \end_inset
@@ -1840,7 +1840,7 @@ where,
 \uwave default
 \noun default
 \color inherit
-are a column vector of switching coefficients in state 
+is a column vector of switching coefficients in state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -2679,7 +2679,7 @@ Convergence of the E-M algorithm
 
 \begin_layout Standard
 The E-step and M-step are iteratively computed until the algorithm converges.
- The algorithm will terminate when the different between the previous and
+ The algorithm will terminate when the difference between the previous and
  current estimate values is less than a specific value.
  This specific value called a 
 \emph on
@@ -2777,8 +2777,8 @@ key "rabiner1986introduction"
 .
  The analysis will be conducted on a trial and error basis before settling
  on the most appropriate size of the model.
- In this study, several Markov switching models with different setting will
- be carried out.
+ In this study, several Markov switching models with different settings
+ will be carried out.
  First, the number of states 
 \begin_inset Formula $k$
 \end_inset
@@ -2815,7 +2815,7 @@ key "schwarz1978estimating"
 \end_inset
 
 .
- Model which has a lower value of BIC is preferred.
+ The model which has a lower value of BIC is preferred.
  
 \end_layout
 

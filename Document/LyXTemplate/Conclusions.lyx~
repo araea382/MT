@@ -415,9 +415,9 @@ Furthermore, there are still two more performance metrics in QA Capacity
 
 \begin_layout Standard
 Another future extension to get more interpretable results and the best
- state prediction is to consider applying the Markov switching model with
- the different QA Capacity test case types i.e., one model for each type of
- test case.
+ state prediction is to consider applying each Markov switching model with
+ specific QA Capacity test case types i.e., one model for each type of test
+ case.
  Results are expected to be more accurate as value of the CPU utilization
  will be slightly more stable and not so fluctuating.
  The analysis of restricted the data to a specific test case type is proved

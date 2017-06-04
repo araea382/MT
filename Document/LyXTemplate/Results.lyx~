@@ -4076,9 +4076,15 @@ reference "output-sim1"
  From the results, State2 has the highest standard error.
  When inferring back to the actual models that were used to generate these
  three states in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Simulation"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cref{sec:Simulation}
+\end_layout
 
 \end_inset
 

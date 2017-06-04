@@ -921,7 +921,7 @@ EventsPerSec
  variables for a further analysis.
  Therefore, if there is no value or no local events in this field, the particula
 r test case and all the data related to the test case will be ignored.
- These incomplete test cases in the data are accounted for four percent
+ These incomplete test cases in the data are accounted for four percents
  of all the test cases in the data.
 \end_layout
 

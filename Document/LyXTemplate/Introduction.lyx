@@ -596,7 +596,7 @@ name "sec:Objective"
 \end_layout
 
 \begin_layout Standard
-The core idea of this thesis is to reduce workload of manual inspection
+The core idea of this thesis is to reduce the workload of manual inspection
  when the performance analysis of an updated software package is required.
  With an increased amount of generated data from numerous test cases, the
  inspection becomes very tedious and inefficient to be done manually.

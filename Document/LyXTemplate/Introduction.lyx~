@@ -624,7 +624,7 @@ Detect the state of the CPU utilization (degradation, improvement, or steady
 \end_layout
 
 \begin_layout Itemize
-Detect whether there is any change in the test environment that effects
+Detect whether there is any change in the test environment that affects
  the CPU utilization
 \end_layout
 

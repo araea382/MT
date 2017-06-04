@@ -342,7 +342,7 @@ name "subsec:Model-selection"
 
 \begin_layout Standard
 There are no fixed rules in deciding the number of states.
- Therefore, different number of states were tried with the method in order
+ Therefore, different numbers of states were tried with the method in order
  to determine which number would be best for this analysis.
  The results from the model with two states offered less details and did
  not cover all happening situations.
@@ -357,7 +357,7 @@ There are no fixed rules in deciding the number of states.
  model and making an inference on the states.
  The results were rather poor when compared to the models with two and three
  states and were not included in the report.
- Higher number of states are more likely to give worse results and were
+ Higher numbers of states are more likely to give worse results and were
  not considered.
  Thus, the number of chosen states after applying Markov switching model
  to each dataset was three.
@@ -584,8 +584,8 @@ Degradation
 Improvement
 \emph default
  state.
- However, they may not be clearly distinguish between each other based on
- the current model.
+ However, they may not be clearly distinguished between each other based
+ on the current model.
  
 \end_layout
 
@@ -609,7 +609,7 @@ Degradation
 \emph default
  state.
  The plot does not indicate any particular behavior in State2; therefore,
- nothing much can be inferred for this state.
+ nothing more can be inferred for this state.
  State3 contains the period of positive and negative peaks, and does not
  appear to have a specific characteristic for the state of the CPU utilization.
  This also provides a difficulty of making an interpretation for State3.
@@ -637,8 +637,11 @@ Degradation
 \emph default
  state.
  The CPU utilization values tend to decrease its value in State2.
- This can be seen as an improving but it is still a bit unclear to directly
- define the state.
+ This can be seen as an 
+\emph on
+Improvement
+\emph default
+ state but it is still a bit unclear to directly define the state.
  Similarly to the software release B, State3 does not seem to have a distinctive
  behavior.
  The values of the CPU utilization rather fluctuate, and so an inference
@@ -773,7 +776,7 @@ NodeName
 \emph default
 , which is used to execute test cases, was assumed to be indifferent i.e.,
  the performance of test cases is the same regardless of the hardware that
- used for running the test cases.
+ was used for running the test cases.
  Therefore, selecting a minimum value of the CPU utilization of the test
  case for each software package in data preprocessing step is reasonable.
  
@@ -788,7 +791,7 @@ DuProdName
  model as it caused a singularity problem.
  This problem could be reduced by increasing the size of the data.
  However, with a limited available data, fifty-seven observations in this
- dataset, the variable 
+ training dataset, the variable 
 \emph on
 DuProdName
 \emph default
@@ -805,8 +808,7 @@ Note that in this study, the unfiltered data have been used for the analysis.
 \emph on
 RrcConnectionSetupComplete
 \emph default
- value very high while another type has value of this local events very
- low).
+ value very high while another type has value of this local event very low).
  In the data preprocressing step, the minimum value of the CPU utilization
  of each software package is selected, regardless the type of test case.
  As a consequence, many types of test cases are presented in the final datasets.
@@ -885,7 +887,7 @@ More importantly, the results of the Markov switching model could be affected
  CPU utilization were overlooked.
  Therefore, there might be some bias by not including these variables into
  the analysis.
- Finally, the criteria that has been used to select the number of states
+ Finally, the criteria that have been used to select the number of states
  and the number of switching coefficients in the model are rather subjective.
  Hence, these chosen numbers might not be the best for different perspectives
  and so could be counted as one of the bias as well.

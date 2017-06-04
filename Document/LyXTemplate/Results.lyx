@@ -3521,7 +3521,17 @@ reference "compare_sim2"
 
  presents the actual change points, estimated change point locations of
  the Markov switching model and the E-divisive method in the data.
- The simulated Dataset 2 contains numerous switches between states.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Did prefer the previous formulation
+\end_layout
+
+\end_inset
+
+The simulated Dataset 2 contains numerous switches between states.
  Generally, the Markov switching model is able to identify the changes considera
 bly well despite a few false alarms and missed detections.
  On the other hand, the E-divisive method can detect only two estimated

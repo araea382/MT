@@ -140,7 +140,7 @@ ion.
  model.
  Another approach based on a non-parametric analysis, a distribution-free
  method that requires fewer assumptions, called an E-divisive method, is
- purposed.
+ proposed.
  This method uses a hierarchical clustering algorithm to detect multiple
  change point locations in the time series data.
  As the data used in this analysis does not contain any ground truth, the

@@ -974,7 +974,7 @@ $ $
 
 
 \backslash
-State{Compute the filtered probabilites of each state
+State{Compute the filtered probabilities of each state
 \end_layout
 
 \begin_layout Plain Layout
@@ -1026,7 +1026,7 @@ $ $
 
 
 \backslash
-State{Find a state which has the maximum value in the filtered probabilites}
+State{Find a state which has the maximum value in the filtered probabilities}
 \end_layout
 
 \begin_layout Plain Layout
