@@ -3519,8 +3519,8 @@ reference "compare_sim2"
 
 \end_inset
 
- presents the actual change points, estimated change point locations of
- the Markov switching model and the E-divisive method in the data.
+ presents estimated change point locations of the Markov switching model,
+ the E-divisive method, and the actual change points in the data.
  The simulated Dataset 2 contains numerous switches between states.
  Generally, the Markov switching model is able to identify the changes considera
 bly well despite a few false alarms and missed detections.

@@ -322,8 +322,8 @@ The most relevant results of the analysis are shown and organized in this
  I).
  Then, the number of parameters that have switching effects in the model
  was determined (Analysis II).
- An analysis of residuals was carried out as a means to validate the models.
- The results are shown in a later section.
+ An analysis of residuals was carried out as a means to validate the models
+ and the results are shown in a later section.
  Next, the results of a non-parametric analysis are presented, and a comparison
  between the results of Markov switching model analysis and the results
  of E-divisive are illustrated.
@@ -3519,19 +3519,9 @@ reference "compare_sim2"
 
 \end_inset
 
- presents the actual change points, estimated change point locations of
- the Markov switching model and the E-divisive method in the data.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Did prefer the previous formulation
-\end_layout
-
-\end_inset
-
-The simulated Dataset 2 contains numerous switches between states.
+ presents estimated change point locations of the Markov switching model,
+ the E-divisive method, and the actual change points in the data.
+ The simulated Dataset 2 contains numerous switches between states.
  Generally, the Markov switching model is able to identify the changes considera
 bly well despite a few false alarms and missed detections.
  On the other hand, the E-divisive method can detect only two estimated

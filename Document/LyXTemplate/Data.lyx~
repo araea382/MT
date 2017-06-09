@@ -725,13 +725,13 @@ PerThread%: Percentage of TotCpu%, each second, that is used by a specific
 \end_layout
 
 \begin_layout Itemize
-EventsPerSec 
+EventsPerSec: Event intensity
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-The EventsPerSec variable, or Event intensity, contains several local events
- that can be used when defining the test cases.
+The EventsPerSec variable contains several local events that can be used
+ when defining the test cases.
  Apparently, there is no fixed number of local events in this variable as
  different test cases involve different testing procedures.
  The local events along with their values are also varied depending on which
@@ -921,7 +921,7 @@ EventsPerSec
  variables for a further analysis.
  Therefore, if there is no value or no local events in this field, the particula
 r test case and all the data related to the test case will be ignored.
- These incomplete test cases in the data are accounted for four percent
+ These incomplete test cases in the data are accounted for four percents
  of all the test cases in the data.
 \end_layout
 
@@ -969,15 +969,14 @@ TotCpu%
  Although taking an average of multiple runs for test cases in the software
  package appears to be a good approach, it does not yield the best outcome
  in this case.
- The essential information in the test case could be lost if using the average
- value of the CPU utilization.
  Each test case has its own local events in 
 \emph on
 EventsPerSec
 \emph default
  field that is used for identifying the test case.
- The details of these local events will be absent if the CPU utilization
- of the test case is averaged.
+ The details of these local events which are considered to be an essential
+ inforamtion in the test case will be absent if the CPU utilization of the
+ test case is averaged.
  It is, therefore, settled to keep the original data and always use the
  unmanipulated data to visualize the time series.
 \end_layout

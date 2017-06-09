@@ -1607,7 +1607,7 @@ which is simply obtained from solving the system of equations
 
 \begin_layout Proof
 Let 
-\begin_inset Formula $\pi=(\pi_{1},\pi_{2})'$
+\begin_inset Formula $\pi=(\pi_{i},\pi_{j})'$
 \end_inset
 
  and 
@@ -1639,7 +1639,7 @@ reference "def:-The-vector"
 and
 \begin_inset Formula 
 \begin{eqnarray}
-\pi_{1}+\pi_{2} & = & 1\label{eq:2}
+\pi_{i}+\pi_{j} & = & 1\label{eq:2}
 \end{eqnarray}
 
 \end_inset
@@ -1654,8 +1654,8 @@ reference "eq:1"
 ,
 \begin_inset Formula 
 \begin{eqnarray*}
-\pi_{1} & = & \pi_{1}p_{ii}+\pi_{2}(1-p_{jj})\\
-\pi_{2} & = & \pi_{1}(1-p_{ii})+\pi_{2}p_{jj}
+\pi_{i} & = & \pi_{i}p_{ii}+\pi_{j}(1-p_{jj})\\
+\pi_{j} & = & \pi_{i}(1-p_{ii})+\pi_{j}p_{jj}
 \end{eqnarray*}
 
 \end_inset
@@ -1663,7 +1663,7 @@ reference "eq:1"
 Therefore,
 \begin_inset Formula 
 \begin{eqnarray}
-\pi_{2} & = & \frac{\pi_{1}(1-p_{ii})}{1-p_{jj}}\label{eq:3}
+\pi_{j} & = & \frac{\pi_{i}(1-p_{ii})}{1-p_{jj}}\label{eq:3}
 \end{eqnarray}
 
 \end_inset
@@ -1689,7 +1689,7 @@ reference "eq:2"
 , then
 \begin_inset Formula 
 \begin{eqnarray*}
-\pi_{1} & = & \frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
+\pi_{i} & = & \frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
 \end{eqnarray*}
 
 \end_inset
@@ -2777,8 +2777,8 @@ key "rabiner1986introduction"
 .
  The analysis will be conducted on a trial and error basis before settling
  on the most appropriate size of the model.
- In this study, several Markov switching models with different setting will
- be carried out.
+ In this study, several Markov switching models with different settings
+ will be carried out.
  First, the number of states 
 \begin_inset Formula $k$
 \end_inset
@@ -2815,7 +2815,7 @@ key "schwarz1978estimating"
 \end_inset
 
 .
- Model which has a lower value of BIC is preferred.
+ The model which has a lower value of BIC is preferred.
  
 \end_layout
 
