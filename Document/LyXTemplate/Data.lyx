@@ -389,8 +389,8 @@ name "lte"
 \end_layout
 
 \begin_layout Standard
-LTE, widely known as 4G, is a radio access technology for wireless cellular
- communications.
+LTE (Long-Term Evolution), widely known as 4G, is a radio access technology
+ for wireless cellular communications.
  The high-level network architecture of LTE is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -892,8 +892,8 @@ Data preprocessing
 The relevant aspects of the data preprocessing step are describe here.
  The dataset, which spans three software releases, is split into three datasets
  according to the software release.
- In this thesis framework, Ericsson software releases will be referred as
- software release A, B, and C.
+ In this thesis framework, Ericsson software releases will be referred to
+ as software release A, B, and C.
  
 \end_layout
 
@@ -921,8 +921,8 @@ EventsPerSec
  variables for a further analysis.
  Therefore, if there is no value or no local events in this field, the particula
 r test case and all the data related to the test case will be ignored.
- These incomplete test cases in the data are accounted for four percents
- of all the test cases in the data.
+ These incomplete test cases in the data account for four percent of all
+ the test cases in the data.
 \end_layout
 
 \begin_layout Standard
@@ -974,7 +974,7 @@ TotCpu%
 EventsPerSec
 \emph default
  field that is used for identifying the test case.
- The details of these local events which are considered to be an essential
+ The details of these local events which are considered to be essential
  information in the test case will be absent if the CPU utilization of the
  test case is averaged.
  It is, therefore, settled to keep the original data and always use the
@@ -984,10 +984,10 @@ EventsPerSec
 \begin_layout Standard
 After performing all the steps described above, the datasets of the software
  release A, B, and C consist of 64, 241, and 144 test cases, respectively.
- Lastly, each dataset with particular software release is divided into two
- subsets.
- Ninety percents of the dataset is used for training the model and the remaining
- ten percents is left out for testing the model.
+ Lastly, each dataset with a particular software release is divided into
+ two subsets.
+ Ninety percent of the dataset is used for training the model and the remaining
+ ten percent is left out for testing the model.
  
 \end_layout
 

@@ -429,7 +429,7 @@ key "nousiainen2009anomaly"
  The study presented an ability of the SOM method in detecting anomalies
  in the data, and also compared the results from the SOM method with a threshold
  based system.
- A disadvantage of the SOM is that initial weight vector affects a performance
+ A disadvantage of the SOM is that initial weight vector affects the performance
  of the SOM, which leads to an unstable clustering result.
  Besides, if the anomalies in the data tend to form clusters, this method
  will not be able to detect these anomalies 
@@ -446,7 +446,7 @@ key "chandola2009anomaly"
 \begin_layout Standard
 Based on previous works, the hidden Markov model or the Markov switching
  model has also been used in identifying changes and anomalies.
- One drawback from the method based on the Markov chain is that the method
+ One drawback of the method based on the Markov chain is that the method
  has a high computational cost, which is not scalable for an online change
  application 
 \begin_inset CommandInset citation
@@ -1407,7 +1407,7 @@ reference "eq:general_mswm"
 \begin_inset Formula $S_{t}$
 \end_inset
 
- is a random variable which is assumed that the value 
+ is a random variable for which it is assumed that the value 
 \begin_inset Formula $S_{t}=1$
 \end_inset
 
@@ -1583,7 +1583,7 @@ There are several options for choosing the probability of the initial state.
  Alternatively, one can take the initial distribution to be the stationary
  distribution of the Markov chain (assuming that the stationary distribution
  exists).
- Then, an initial state is 
+ Then, the probability of an initial state is 
 \end_layout
 
 \begin_layout Standard
@@ -1700,8 +1700,8 @@ reference "eq:2"
 
 \begin_layout Standard
 A coefficient of a predictor variable in the Markov switching model can
- have either different values in different state or a constant value in
- all state.
+ have either different values in different states or a constant value in
+ all states.
  The variable which have the former behavior is said to have a 
 \emph on
 switching effect
@@ -2441,8 +2441,8 @@ P(S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n
 \end_layout
 
 \begin_layout Standard
-The process above is computed iteratively until all the observation is reached
- i.e., 
+The process above is computed iteratively until all the observations are
+ reached i.e., 
 \begin_inset Formula $t=T$
 \end_inset
 
@@ -2691,7 +2691,7 @@ stopping criterion
  will increase in each iteration.
  However, the E-M algorithm does not guarantee to always converge to a global
  maximum.
- The convergence of the algorithm is also likely to be only a local maxima.
+ The convergence of the algorithm is also likely to be only a local maximum.
  
 \end_layout
 
@@ -3006,7 +3006,7 @@ The state of the CPU utilization in a real data is unknown in the study.
  One possible solution to test how effective both methods are, and to verify
  how well the implemented state prediction function performs is to use a
  simulation technique.
- The dataset that consists of two predictor variables and one response variable
+ A dataset that consists of two predictor variables and one response variable
  with already known states is simulated.
  The actual models of each state are 
 \end_layout

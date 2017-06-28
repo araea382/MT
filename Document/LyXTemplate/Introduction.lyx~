@@ -358,7 +358,7 @@ change-point
 regime switch
 \emph default
  which refers to persistent changes in time series structure after the occurrenc
-e of change point 
+e of a change point 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "weskamp2010change"
@@ -370,7 +370,7 @@ key "weskamp2010change"
  of interest in many applications in which the characteristic of data is
  collected over time.
  A change should be flagged as soon as it occurs in order to be properly
- dealt with reducing any possible consequences 
+ dealt with reducing any undesired possible consequences 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "sharkey2014nonparametric"
@@ -457,8 +457,8 @@ In recent years, a method called hidden Markov model or Markov switching
  Markov switching model uses a concept of a Markov chain to model an underlying
  segmentation as different states and then specify a distinct change of
  location.
- Hence, the method is able to identify a switch in time series when change
- point occurs 
+ Hence, the method is able to identify a switch in the time series when
+ a change point occurs 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "luong2012hidden"
@@ -494,10 +494,10 @@ key "stanke2003gene"
  and finance and has a large literature.
  For example, business cycles can be seen as hidden states with seasonal
  changes.
- The growth rate of gross domestic product (GDP) is modeled as a switching
+ The growth rate of the gross domestic product (GDP) is modeled as a switching
  process to uncover business cycle phases i.e., expansion and recession.
- The fitting model can also be used to understand the process where there
- is a transition between the economic state and the duration of each period
+ The fitted model can also be used to understand the process where there
+ is a transition between the economic states and the duration of each period
  
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -506,8 +506,8 @@ key "hamilton1989new"
 \end_inset
 
 .
- In finance data, time series of returns is modeled in order to investigate
- stock market situation i.e., bull or bear market 
+ In finance data, time series of returns are modeled in order to investigate
+ the stock market situation i.e., bull or bear market 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "kim1998testing"
@@ -522,14 +522,14 @@ key "kim1998testing"
 Markov switching model is one of the most well-known non linear time series
  models.
  This model can be applied to various time series data with dynamic behavior.
- The structural changes or regime shifts in data implies that constant parameter
+ The structural changes or regime shifts in data imply that constant parameter
  settings in a time series model might be insufficient to capture these
  behaviors and describe their evolution.
  Markov switching model takes the presence of shifting regime in time series
  into account and models multiple structures that can explain these characterist
-ics in different states at different time.
- The shift between states or regimes comes from the switching mechanism
- which is assumed to follow an unobserved Markov chain.
+ics in different states at different time points.
+ A shift between states or regimes comes from the switching mechanism which
+ is assumed to follow an unobserved Markov chain.
  Thus, the model is able to capture more complex dynamic patterns and also
  identify the change of locations and regime switch in time series.
  
@@ -553,8 +553,8 @@ r autoregression when modeling.
 \begin_layout Standard
 There are two approaches, a parametric and a non-parametric analysis, for
  detecting the change point in the time series.
- The parametric analysis benefits from assuming some knowledge of data distribut
-ion and integrating it to the detection scheme.
+ The parametric analysis benefits from assuming some knowledge of the data
+ distribution and integrating it to the detection scheme.
  On the other hand, the non-parametric analysis is more flexible in that
  there is no assumption made about the distribution.
  It can, therefore, apply to a wider range of applications and capture various
@@ -596,7 +596,7 @@ name "sec:Objective"
 \end_layout
 
 \begin_layout Standard
-The core idea of this thesis is to reduce workload of manual inspection
+The core idea of this thesis is to reduce the workload of manual inspection
  when the performance analysis of an updated software package is required.
  With an increased amount of generated data from numerous test cases, the
  inspection becomes very tedious and inefficient to be done manually.

@@ -348,9 +348,9 @@ There are no fixed rules in deciding the number of states.
  not cover all happening situations.
  Furthermore, all the graphs of the two-state model are unrealistic and
  also difficult to interpret.
- Despite higher BICs for the dataset of the software release B and C, the
- three-state model provides more interpretable plots and better fit to the
- time series data.
+ Despite higher BICs for the datasets of software release B and C, the three-sta
+te model provides more interpretable plots and better fit to the time series
+ data.
  The four-state Markov switching model for each software release was also
  briefly tested in the analysis.
  Apparently, defining four states caused more difficulty when fitting the
@@ -762,7 +762,7 @@ name "sec:Results-discussion"
 A thorough search of relevant literature yielded that this thesis work might
  be the first time that Markov switching model has been applied to the data
  of CPU utilization.
- In previous works, this model was mainly applied with financial data or
+ In previous work, this model was mainly applied with financial data or
  signal processing which were used as an inspiration for this study.
  However, because of differences in the characteristic of the data, the
  procedure was slightly adjusted.
@@ -882,12 +882,12 @@ More importantly, the results of the Markov switching model could be affected
  This could be seen in the results of a state prediction of the software
  release A.
  Secondly, only the predictor variables that have been analyzed to have
- significant impacts on the CPU utilization were included in the model.
+ significant impact on the CPU utilization were included in the model.
  However, many other variables that are likely to have minor impact on the
  CPU utilization were overlooked.
  Therefore, there might be some bias by not including these variables into
  the analysis.
- Finally, the criteria that has been used to select the number of states
+ Finally, the criteria that have been used to select the number of states
  and the number of switching coefficients in the model are rather subjective.
  Hence, these chosen numbers might not be the best for different perspectives
  and so could be counted as one of the bias as well.
@@ -917,7 +917,7 @@ key "sharkey2014nonparametric"
 \end_layout
 
 \begin_layout Standard
-One behavior found from the 
+One behavior found from 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "compare_sim1"

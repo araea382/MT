@@ -58,6 +58,8 @@
 
 % avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+\usepackage{cleveref} % cross-reference
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -323,7 +325,8 @@ This chapter first starts by providing a survey of existing methods that
  Thereafter, three sections are devoted to methods for estimating the values
  of parameters, predicting a state for a new observation, and selecting
  a suitable model for the datasets.
- Another change-point method in a non-parametric approach is described.
+ Another change-point method based on a non-parametric approach called E-divisiv
+e is described.
  Finally, the simulation technique is explained.
 \end_layout
 
@@ -426,7 +429,7 @@ key "nousiainen2009anomaly"
  The study presented an ability of the SOM method in detecting anomalies
  in the data, and also compared the results from the SOM method with a threshold
  based system.
- A disadvantage of the SOM is that initial weight vector affects a performance
+ A disadvantage of the SOM is that initial weight vector affects the performance
  of the SOM, which leads to an unstable clustering result.
  Besides, if the anomalies in the data tend to form clusters, this method
  will not be able to detect these anomalies 
@@ -443,7 +446,7 @@ key "chandola2009anomaly"
 \begin_layout Standard
 Based on previous works, the hidden Markov model or the Markov switching
  model has also been used in identifying changes and anomalies.
- One drawback from the method based on the Markov chain is that the method
+ One drawback of the method based on the Markov chain is that the method
  has a high computational cost, which is not scalable for an online change
  application 
 \begin_inset CommandInset citation
@@ -466,7 +469,7 @@ Technical aspects
 \end_layout
 
 \begin_layout Standard
-The thesis work has been carried out using the 
+This thesis work has been carried out using the 
 \emph on
 R
 \emph default
@@ -488,7 +491,7 @@ MSwM
  and plots for visualizing the results (More details can be found in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Markov-chains"
+reference "chap:Implementation"
 
 \end_inset
 
@@ -872,7 +875,7 @@ stationary distribution
 \begin_inset Formula $\pi=\pi\mathbf{P}$
 \end_inset
 
-, which is 
+, that is 
 \begin_inset Formula $\pi_{j}=\sum_{i}\pi_{i}p_{ij}$
 \end_inset
 
@@ -1179,7 +1182,7 @@ A Markov switching model is a switching model where the shifting back and
  levels of hierarchy.
  One process is an underlying stochastic process that is not normally observable
 , but possible to be observed through another stochastic process which generates
- the sequence of observation 
+ the sequence of observations 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "rabiner1986introduction"
@@ -1188,8 +1191,8 @@ key "rabiner1986introduction"
 
 .
  The transition time between two states is random.
- In addition, the state are assumed to follow the Markov property that the
- future state depends only on the current state.
+ In addition, the states are assumed to follow the Markov property that
+ the future state depends only on the current state.
  
 \end_layout
 
@@ -1404,7 +1407,7 @@ reference "eq:general_mswm"
 \begin_inset Formula $S_{t}$
 \end_inset
 
- is a random variable which is assumed that the value 
+ is a random variable for which it is assumed that the value 
 \begin_inset Formula $S_{t}=1$
 \end_inset
 
@@ -1433,7 +1436,7 @@ The transition matrix
 \begin_inset Formula $\mathbf{P}$
 \end_inset
 
- is an 
+ is a 
 \begin_inset Formula $2\mathrm{x}2$
 \end_inset
 
@@ -1580,7 +1583,7 @@ There are several options for choosing the probability of the initial state.
  Alternatively, one can take the initial distribution to be the stationary
  distribution of the Markov chain (assuming that the stationary distribution
  exists).
- Then, an initial state is 
+ Then, the probability of an initial state is 
 \end_layout
 
 \begin_layout Standard
@@ -1595,7 +1598,7 @@ There are several options for choosing the probability of the initial state.
 \end_layout
 
 \begin_layout Standard
-which is simply from solving the system of equations 
+which is simply obtained from solving the system of equations 
 \begin_inset Formula $\pi=\pi\mathbf{P}$
 \end_inset
 
@@ -1605,7 +1608,7 @@ which is simply from solving the system of equations
 
 \begin_layout Proof
 Let 
-\begin_inset Formula $\pi=(\pi_{1},\pi_{2})'$
+\begin_inset Formula $\pi=(\pi_{i},\pi_{j})'$
 \end_inset
 
  and 
@@ -1637,7 +1640,7 @@ reference "def:-The-vector"
 and
 \begin_inset Formula 
 \begin{eqnarray}
-\pi_{1}+\pi_{2} & = & 1\label{eq:2}
+\pi_{i}+\pi_{j} & = & 1\label{eq:2}
 \end{eqnarray}
 
 \end_inset
@@ -1652,8 +1655,8 @@ reference "eq:1"
 ,
 \begin_inset Formula 
 \begin{eqnarray*}
-\pi_{1} & = & \pi_{1}p_{ii}+\pi_{2}(1-p_{jj})\\
-\pi_{2} & = & \pi_{1}(1-p_{ii})+\pi_{2}p_{jj}
+\pi_{i} & = & \pi_{i}p_{ii}+\pi_{j}(1-p_{jj})\\
+\pi_{j} & = & \pi_{i}(1-p_{ii})+\pi_{j}p_{jj}
 \end{eqnarray*}
 
 \end_inset
@@ -1661,7 +1664,7 @@ reference "eq:1"
 Therefore,
 \begin_inset Formula 
 \begin{eqnarray}
-\pi_{2} & = & \frac{\pi_{1}(1-p_{ii})}{1-p_{jj}}\label{eq:3}
+\pi_{j} & = & \frac{\pi_{i}(1-p_{ii})}{1-p_{jj}}\label{eq:3}
 \end{eqnarray}
 
 \end_inset
@@ -1687,7 +1690,7 @@ reference "eq:2"
 , then
 \begin_inset Formula 
 \begin{eqnarray*}
-\pi_{1} & = & \frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
+\pi_{i} & = & \frac{1-p_{jj}}{2-p_{ii}-p_{jj}}
 \end{eqnarray*}
 
 \end_inset
@@ -1697,8 +1700,8 @@ reference "eq:2"
 
 \begin_layout Standard
 A coefficient of a predictor variable in the Markov switching model can
- have either different values in different state or a constant value in
- all state.
+ have either different values in different states or a constant value in
+ all states.
  The variable which have the former behavior is said to have a 
 \emph on
 switching effect
@@ -1788,7 +1791,7 @@ where,
 \begin_inset Formula $\alpha_{t}$
 \end_inset
 
- are a column vector of non-switching coefficients of the time series at
+ is a column vector of non-switching coefficients of the time series at
  time 
 \begin_inset Formula $t$
 \end_inset
@@ -1838,7 +1841,7 @@ where,
 \uwave default
 \noun default
 \color inherit
-are a column vector of switching coefficients in state 
+is a column vector of switching coefficients in state 
 \begin_inset Formula $S_{t}$
 \end_inset
 
@@ -2438,8 +2441,8 @@ P(S_{t}=j|\Omega_{t};\theta^{(n)})=\frac{f(y_{t}|S_{t}=j,\Omega_{t-1};\theta^{(n
 \end_layout
 
 \begin_layout Standard
-The process above is computed iteratively until all the observation is reached
- i.e., 
+The process above is computed iteratively until all the observations are
+ reached i.e., 
 \begin_inset Formula $t=T$
 \end_inset
 
@@ -2677,7 +2680,7 @@ Convergence of the E-M algorithm
 
 \begin_layout Standard
 The E-step and M-step are iteratively computed until the algorithm converges.
- The algorithm will terminate when the different between the previous and
+ The algorithm will terminate when the difference between the previous and
  current estimate values is less than a specific value.
  This specific value called a 
 \emph on
@@ -2688,7 +2691,7 @@ stopping criterion
  will increase in each iteration.
  However, the E-M algorithm does not guarantee to always converge to a global
  maximum.
- The convergence of the algorithm is also likely to be only a local maxima.
+ The convergence of the algorithm is also likely to be only a local maximum.
  
 \end_layout
 
@@ -2703,7 +2706,7 @@ The package used for performing the Markov switching model does not provide
  function in the package for this analysis (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:MSwM-Package"
+reference "chap:Implementation"
 
 \end_inset
 
@@ -2775,8 +2778,8 @@ key "rabiner1986introduction"
 .
  The analysis will be conducted on a trial and error basis before settling
  on the most appropriate size of the model.
- In this study, several Markov switching models with different setting will
- be carried out.
+ In this study, several Markov switching models with different settings
+ will be carried out.
  First, the number of states 
 \begin_inset Formula $k$
 \end_inset
@@ -2813,7 +2816,7 @@ key "schwarz1978estimating"
 \end_inset
 
 .
- Model which has a lower value of BIC is preferred.
+ The model which has a lower value of BIC is preferred.
  
 \end_layout
 
@@ -3003,7 +3006,7 @@ The state of the CPU utilization in a real data is unknown in the study.
  One possible solution to test how effective both methods are, and to verify
  how well the implemented state prediction function performs is to use a
  simulation technique.
- The dataset that consists of two predictor variables and one response variable
+ A dataset that consists of two predictor variables and one response variable
  with already known states is simulated.
  The actual models of each state are 
 \end_layout

@@ -313,7 +313,7 @@ For the Markov switching model, the number of states and the number of switching
  coefficients in the model were determined and chosen by examining the BIC,
  along with model outputs and plots.
  The findings from the simulated datasets revealed that the Markov switching
- model were able to discover switches between states rather well, despite
+ model was able to discover switches between states rather well, despite
  some false alarms and missed detections.
  This method works well even with numerous switches between states in the
  data.
@@ -382,7 +382,7 @@ The Markov switching model gave quite promising results but several improvements
  could also be done to increase the robustness of the analysis.
  For future work, more extensive data is recommended.
  Obtained results will be more reliable as additional information will decrease
- an uncertainty in the data.
+ the uncertainty in the data.
  
 \begin_inset Note Comment
 status collapsed
@@ -405,7 +405,7 @@ EventsPerSec
 \end_layout
 
 \begin_layout Standard
-Furthermore, there are still two more performance metrics in QA Capacity
+Furthermore, there are still two more performance metrics in the QA Capacity
  area which have not been taken into account in the thesis i.e., memory usage
  and latency.
  The analysis could also be extended to analyze these metrics in a further

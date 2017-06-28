@@ -3450,7 +3450,7 @@ reference "compare_sim1"
 \begin_layout Standard
 When these two methods detect changes after the actual changes, most of
  their estimated change point locations are only behind by one or two time
- index.
+ indices.
  To sum up, from this dataset, the Markov switching model had more false
  alarms while the E-divisive had more missed detections.
  
@@ -3608,7 +3608,14 @@ reference "ediv"
 \end_inset
 
 , the E-divisive method could not identify any changes in the dataset of
- the software release A.
+ the software release A as can be seen from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "compare_L16A"
+
+\end_inset
+
+.
  Thus, a comparison between two methods could not be made for this dataset.
  
 \end_layout
@@ -4052,7 +4059,7 @@ name "sec:Assessing"
 \end_layout
 
 \begin_layout Standard
-Eighty percents of the observations from the simulated datasets were fitted
+Eighty percent of the observations from the simulated datasets were fitted
  with Markov switching model, and the remaining was used as a test set to
  evaluate the performance of the model.
  

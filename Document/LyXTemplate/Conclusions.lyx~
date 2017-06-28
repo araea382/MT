@@ -313,7 +313,7 @@ For the Markov switching model, the number of states and the number of switching
  coefficients in the model were determined and chosen by examining the BIC,
  along with model outputs and plots.
  The findings from the simulated datasets revealed that the Markov switching
- model were able to discover switches between states rather well, despite
+ model was able to discover switches between states rather well, despite
  some false alarms and missed detections.
  This method works well even with numerous switches between states in the
  data.
@@ -420,7 +420,7 @@ Another future extension to get more interpretable results and the best
  case.
  Results are expected to be more accurate as value of the CPU utilization
  will be slightly more stable and not so fluctuating.
- The analysis of restricted the data to a specific test case type is proved
+ The analysis of restricting the data to a specific test case type is proved
  to be a good approach as the analysis was briefly tested and the results
  are presented in 
 \begin_inset CommandInset ref
